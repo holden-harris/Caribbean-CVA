@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Ignore shapefiles
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+
+# Ignore entire shapefile folder
+*./data/species-distribution-shapefiles
