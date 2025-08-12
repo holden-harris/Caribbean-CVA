@@ -108,8 +108,8 @@ write.csv(sp_attributes, "fishbase_species_attributes.csv", row.names = FALSE)
 
 This script uses the [`rfishbase`](https://github.com/ropensci/rfishbase) R package to access FishBase and SeaLifeBase data. 
 
-**Citation:** Boettiger, C., Chamberlain, S., Temple Lang, D., Wainwright, P., Cazelles, K., & Su, G. (2025).  rfishbase: R Interface to FishBase (Version 5.0.1) [R package]. Retrieved from: [https://docs.ropensci.org/rfishbase](https://docs.ropensci.org/rfishbase)
-> *A programmatic interface to FishBase, re-written based on a RESTful API. Access tables describing over 30,000 species of fish, including biology, ecology, and morphology. Also supports experimental access to SeaLifeBase, covering nearly 200,000 aquatic species not found in FishBase.*
+**Citation:** Boettiger, C., Chamberlain, S., Lang, D. T., Wainwright, P., Cazelles, K., & Su, G. (2025).  rfishbase: R Interface to FishBase (Version 5.0.1) [R package]. Retrieved from: [https://docs.ropensci.org/rfishbase](https://docs.ropensci.org/rfishbase)
+> A programmatic interface to FishBase, re-written based on a RESTful API. Access tables describing over 30,000 species of fish, including biology, ecology, and morphology. Also supports experimental access to SeaLifeBase, covering nearly 200,000 aquatic species not found in FishBase.
 
 - **CRAN release date**: January 12, 2025  
 - **Maintainer**: Carl Boettiger (<cboettig@gmail.com>)  
