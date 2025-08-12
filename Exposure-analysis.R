@@ -51,42 +51,43 @@ species <- sf::st_read("./data/species-distribution-shapefiles/AtlanticHerring.s
 ##------------------------------------------------------------------------------
 ## Make maps for species distribution
 
-# Panel A: species distribution
-pA <- ggplot() +
-  geom_contour(data = bathy_df, aes(x = x, y = y, z = z),
-               breaks = c(-200, -1000), color = "gray70",
-               size = 0.3, linetype = "dashed") +
-  geom_sf(data = world, fill = "gray90", color = "gray40", linewidth = 0.2) +
-  geom_sf(data = species, fill = "gray20", color = NA, alpha = 0.95) +
-  coord_sf(xlim = xlim_carib, ylim = ylim_carib, expand = FALSE) +
-  labs(title = "(A) Species or Stock Distribution", x = "Longitude", y = "Latitude") +
-  theme_minimal(); pA
+# Assumes these objects already exist:
+#   species     : sf polygon of species range (EPSG:4326)
+#   world       : sf world countries for land context
+#   bathy_df    : data.frame with columns x, y, z (bathymetry), e.g., from marmap::fortify.bathy()
+#   xlim_carib  : c(lon_min, lon_max) numeric vector for Caribbean bbox
+#   ylim_carib  : c(lat_min, lat_max) numeric vector for Caribbean bbox
 
-
-
-
-
-
-
-# basemap & bathy
-
-
-
-world <- ne_countries(scale = "medium", returnclass = "sf")
-bathy <- getNOAA.bathy(lon1 = -100, lon2 = -45, lat1 = -10, lat2 = 35, resolution = 1)
-bathy_raster <- marmap::as.raster(bathy)
-crop_extent <- extent(-90, -55, -5, 35)
-bathy_cropped <- crop(bathy_raster, crop_extent)
-bathy_df <- as.data.frame(rasterToPoints(bathy_cropped))
-colnames(bathy_df) <- c("x", "y", "z")
-
-## Plot
-ggplot() +
-  geom_contour(data = bathy_df, aes(x = x, y = y, z = z),
-               breaks = c(-200, -1000), color = "gray70", size = 0.3, linetype = "dashed") +
-  #geom_sf(data = world, fill = "gray90", color = "gray40") +  # use full map
-  geom_sf(data = species_shp, color = "red", size = 0.5, alpha = 0.7) +
-  coord_sf(xlim = c(-100, -45), ylim = c(-5, 35), expand = FALSE) +
-  labs(title = "Distribution of Atlantic Herring",
-       x = "Longitude", y = "Latitude") +
-  theme_minimal()
+pA <- ggplot() +  
+#  geom_contour(   ## draw bathymetry as dashed contour lines
+#    data = bathy_df,
+#    aes(x = x, y = y, z = z),
+#    breaks = c(-400, -800, -1600),  ## isobaths
+#    color = "blue", alpha = 0.5,                ## light gray lines
+#    linewidth = 0.3,                  ## thin lines (use linewidth for geoms in ggplot >=3.4)
+#  ) +
+  geom_sf(        ## draw land polygons for geographic context
+    data = world,
+    fill = "gray80",  # fill color for land
+    color = "gray30", # separates countries
+    linewidth = 0.5
+  ) +
+  geom_sf(        # draw the species distribution polygon
+    data = species,
+    fill = "black",                   # solid black fill...
+    color = "black",                       # ...with no border stroke
+    alpha = 0.5                       # ...but semi-transparent so bathy/coastlines show through
+  ) +
+  coord_sf(       # set the map window (crop) using Caribbean bbox
+    xlim = xlim_carib, ylim = ylim_carib, expand = FALSE  # no padding around the bbox
+  ) +
+  labs(           # titles and axis labels
+    title = "(A) Species or Stock Distribution",
+  ) +
+  theme_minimal() +                    # clean base theme
+  theme(                               
+    axis.text  = element_text(color = "black"),  # axis tick labels black
+    axis.title = element_text(color = "black"),  # axis title black (if not blank)
+    axis.ticks   = element_line(color = "gray90") # show axis ticks (theme_minimal hides them by default)
+  ); pA  # print the plot
+    
