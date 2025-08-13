@@ -69,9 +69,29 @@ All of the generated maps are here:
 [outputs/disbribution-maps on GitHub](https:/)
 
 --- 
-## Example Maps
+# Maps Produced
 ![Atlantic Herring](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/atlantic-herring.png?raw=true)
-![King Mackerel](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/king-mackerel.png)
-![Misty Grouper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/misty-grouper.png)
-
-
+![Ballyhoo](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/ballyhoo.png?raw=true)
+![Blue Runner](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/blue-runner.png?raw=true)
+![Diadema](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/diadema.png?raw=true)
+![Dolphinfish](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/dolphinfish.png?raw=true)
+![Gray Angelfish](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/gray-angelfish.png?raw=true)
+![Hogfish](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/hogfish.png?raw=true)
+![King Mackerel](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/king-mackerel.png?raw=true)
+![Lane Snapper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/lane-snapper.png?raw=true)
+![Misty Grouper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/misty-grouper.png?raw=true)
+![Mutton Snapper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/mutton-snapper.png?raw=true)
+![Nassau Grouper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/nassau-grouper.png?raw=true)
+![Queen Conch](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/queen-conch.png?raw=true)
+![Queen Snapper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/queen-snapper.png?raw=true)
+![Queen Triggerfish](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/queen-triggerfish.png?raw=true)
+![Rainbow Parrotfish](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/rainbow-parrotfish.png?raw=true)
+![Red Grouper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/red-grouper.png?raw=true)
+![Redhind](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/redhind.png?raw=true)
+![Sea Cucumber](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/sea-cucumber.png?raw=true)
+![Silk Snapper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/silk-snapper.png?raw=true)
+![Spiny Lobster](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/spiny-lobster.png?raw=true)
+![Stoplight Parrotfish](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/stoplight-parrotfish.png?raw=true)
+![White Mullet](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/white-mullet.png?raw=true)
+![Yellowfin Grouper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/yellowfin-grouper.png?raw=true)
+![Yellowtail Snapper](https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/disbribution-maps/yellowtail-snapper.png?raw=true) 
