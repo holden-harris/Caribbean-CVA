@@ -1,6 +1,10 @@
 # Caribbean CVA – Generating Species Distribution Maps
 
-This script loops through all species distribution shapefiles in `./data/species-distribution-shapefiles/` and produces standardized PNG maps showing each species' range within a Caribbean bounding box.
+This script loops through all species distribution shapefiles in `./data/species-distribution-shapefiles/` and produces standardized PNG maps showing each species' range within a Caribbean bounding box. The loop automates map creation for any number of shapefiles in the directory.
+
+- All maps share the same bounding box, symbology, and formatting, making them visually comparable.
+- Utility functions make it easy to adapt the script to other projects or naming conventions.
+- By saving maps as PNGs in a standard folder, outputs can be tracked and displayed directly on GitHub.
 
 ---
 
@@ -20,37 +24,27 @@ This bounding box is stored both as:
 
 ---
 
-## Loading basemap data
+## Loading basemap data and utility functions
 
 The code uses `rnaturalearth` to load a medium-scale global land polygon (`world`), which is used as the basemap for all plots.
-
----
-
-## Utility functions
 
 Two helper functions streamline file and label handling:
 
 1. **`name_from_shp(path)`**  
-   - Extracts the base filename from a shapefile path.
-   - Cleans it up by inserting spaces in CamelCase, replacing underscores/hyphens, and trimming whitespace.  
-   - Result: `"AtlanticHerring.shp"` → `"Atlantic Herring"`.
+   - Extracts the base filename from a shapefile path and cleans it up by inserting spaces in CamelCase, replacing underscores/hyphens, and trimming whitespace.  
+   - Example: `"AtlanticHerring.shp"` → `"Atlantic Herring"`.
 
 2. **`slugify(name)`**  
    - Converts a name into a lowercase, hyphen-separated string safe for filenames.  
-   - Result: `"Atlantic Herring"` → `"atlantic-herring"`.
-
----
-
-## Finding shapefiles
-
-The code searches the `./data/species-distribution-shapefiles/` directory for all `.shp` files.  
-If none are found, it stops with an error.
+   - Example: `"Atlantic Herring"` → `"atlantic-herring"`.
 
 ---
 
 ## Looping through species
 
-For each shapefile found:
+The code searches the `./data/species-distribution-shapefiles/` directory for all `.shp` files.  
+
+The loop conducts the following for each shapefile:
 
 1. **Identify the species name** using `name_from_shp()`.
 2. **Read the shapefile** into an `sf` object, ensure it’s valid, and reproject to WGS84 (`EPSG:4326`).
