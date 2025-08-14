@@ -3,12 +3,14 @@
 .RData
 .Ruserdata
 
+*.nc
+
 # Ignore shapefiles
-*.shp
-*.shx
-*.dbf
-*.prj
-*.cpg
+#*.shp
+#*.shx
+#*.dbf
+#*.prj
+#*.cpg
 
 # Ignore entire shapefile folder
-*./data/species-distribution-shapefiles
+#*`./data/species-distribution-shapefiles/
