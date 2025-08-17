@@ -14,3 +14,4 @@
 
 # Ignore entire shapefile folder
 #*`./data/species-distribution-shapefiles/
+./hoard/
