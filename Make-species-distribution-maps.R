@@ -11,9 +11,7 @@ rm(list = ls()); gc()
 library(dplyr)
 library(sf)
 library(ggplot2)
-library(dplyr)
 library(rnaturalearth)
-#library(rnaturalearthdata)
 library(raster)
 
 ## -----------------------------------------------------------------------------
@@ -37,7 +35,7 @@ carib_bbox_sf <- sf::st_as_sfc( ## sf polygon for masking/overlays
               crs = 4326)
 )
 
-## Pull marmap bathymetry (takes a min to pull the API, depending on size and resolution)
+## Pull marmap bathymetry 
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
 ## -----------------------------------------------------------------------------
@@ -47,7 +45,6 @@ name_from_shp <- function(path) { # Base path -> "Nice Name"
   base <- gsub("(?<=[a-z])(?=[A-Z])", " ", base, perl = TRUE)  # replace _, -, . with spaces
   base <- gsub("[_\\.\\-]+", " ", base)  # squeeze multiple spaces, trim
   base <- gsub("\\s+", " ", trimws(base))   # Title Case (keeps Genus species looking right)
-  #base <- tools::toTitleCase(tolower(base))
   base
 }
 
@@ -88,12 +85,11 @@ for (i in 1:length(shp_files)){
     ) +
     geom_sf(        ## draw the species distribution polygon
       data = species,
-      fill = "black",                   # solid black fill...
-      color = "black",                       # ...with no border stroke
-      alpha = 0.5                       # ...but semi-transparent so bathy/coastlines show through
+      fill = "black", color = "black",  ## solid black fill  
+      alpha = 0.5                       ## but semi-transparent so bathy/coastlines show through
     ) +
     coord_sf(       ## set the map window (crop) using Caribbean bbox
-      xlim = xlim_carib, ylim = ylim_carib, expand = FALSE  # no padding around the bbox
+      xlim = xlim_carib, ylim = ylim_carib, expand = FALSE  ## no padding around the bbox
     ) +
     labs(           ## titles and axis labels
       title = paste("(A) Spatial distribution:", species_name),
