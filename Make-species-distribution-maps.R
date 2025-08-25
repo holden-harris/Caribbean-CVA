@@ -35,7 +35,7 @@ carib_bbox_sf <- sf::st_as_sfc( ## sf polygon for masking/overlays
               crs = 4326)
 )
 
-## Pull marmap bathymetry 
+## Pull worldmap
 world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
 ## -----------------------------------------------------------------------------
