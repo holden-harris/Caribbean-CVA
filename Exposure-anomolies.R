@@ -247,13 +247,13 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
   )
   
   ## -----------------------------------------------------------------------------
-  ## Histogram of anomalies 
+  ## Make histogram of anomalies 
   
   anom_histogram_gg <- function(r, species_name, exp_name, domain) {
     vals <- terra::values(r)
     vals <- vals[is.finite(vals)]
     df <- data.frame(anom = vals)
-    bin_num <- 25
+    bin_num <- 50
     
     ggplot(df, aes(x = anom, fill = ..x..)) +
       geom_histogram(bins = bin_num, color = "gray25") +
@@ -278,10 +278,64 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
       )
   }
   
-    # usage:
+  ## Make plots
   p_hist_range <- anom_histogram_gg(anom_masked, species_name, "O200", "Entire range"); p_hist_range
   p_hist_carib <- anom_histogram_gg(anom_masked_carib, species_name, "O200", "Caribbean"); p_hist_carib
   
+  ## -----------------------------------------------------------------------------
+  ## Make summary of anomalies 
+  
+  anom_summary_bars <- function(r, species_name, exp_name, domain) {
+    # 1. get raster values
+    vals <- terra::values(r)
+    vals <- vals[is.finite(vals)]
+    df <- data.frame(anom = vals)
+    
+    # 2. cut into categories
+    df$cat <- cut(
+      df$anom,
+      breaks = c(-Inf, -1.5, -0.5, 0.5, 1.5, Inf),
+      labels = c("< -1.5", "-1.5 to -0.5", "-0.5 to +0.5", "0.5 to 1.5", "> 1.5"),
+      right = TRUE
+    )
+    
+    # 3. assign representative values for coloring (bin midpoints)
+    cat_vals <- c(-2, -1, 0, 1, 2)  
+    cols <- setNames(
+      turbo(5)[as.integer(scales::rescale(cat_vals, to = c(1,5)))],
+      levels(df$cat)
+    )
+    
+    # 4. summarize counts and percents
+    df_sum <- as.data.frame(table(df$cat))
+    colnames(df_sum) <- c("Category", "Count")
+    df_sum$Category <- factor(df_sum$Category, levels = levels(df$cat))
+    df_sum$Percent <- 100 * df_sum$Count / sum(df_sum$Count)
+    
+    # 5. plot with labels
+    ggplot(df_sum, aes(x = Category, y = Count, fill = Category)) +
+      geom_col(color = "gray25") +
+      geom_text(aes(label = paste0(round(Percent,1), "%")),
+                vjust = -0.5, color = "black", size = 3.5) +
+      scale_fill_manual(values = cols, guide = "none") +
+      scale_y_continuous(
+        expand = expansion(mult = c(0, 0.05))  # 0 bottom, 5% top padding
+      ) +
+      coord_cartesian(clip = "off") +          # don't clip the top labels
+      labs(title = paste0(species_name, " | ", exp_name, " | ", domain),
+           x = "Anomaly category", y = "Count") +
+      theme_minimal(base_size = 12) +
+      theme(axis.text=element_text(color="black"),
+            axis.title=element_text(color="black"),
+            axis.ticks=element_line(color="black"),
+            axis.line.x=element_line(color="black"),
+            axis.line.y=element_line(color="black"),
+            panel.grid.major.x = element_blank(),
+            plot.margin = margin(5, 10, 5, 10))
+  }
+  
+  p_summary_range <- anom_summary_bars(anom_masked, species_name, "O200", "Entire range"); p_summary_range
+  p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, "O200", "Caribbean"); p_summary_carib
   
   
   
