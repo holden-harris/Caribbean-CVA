@@ -9,12 +9,10 @@
 ## Clear environment and load packages
 rm(list = ls()); gc()
 library(dplyr)
-#library(ncdf4)
 library(raster)    
 library(terra)
 library(sp)
 library(sf)
-#library(grDevices)
 library(viridisLite) 
 library(ggplot2)
 library(rnaturalearth)
@@ -151,100 +149,77 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
   df_mask_carib <- as.data.frame(anom_masked_carib, xy = TRUE, na.rm = TRUE)
   names(df_mask_carib)[3] <- "anom"   # third column is the values
   
-  ## Plots ---------------------------------------------------------------------
-  ## Pull worldmap
-  world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") 
+  ## ---------------------------------------------------------------------------
+  ## Overlap map plot
+  world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") ## Pull worldmap 
   
   ## Plot overlap -- Entire species range
-  plot_overlap_range <- ggplot() +
-    geom_tile(data = df_mask, aes(x = x, y = y, fill = anom)) +
-    geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
-    scale_fill_gradientn(colors = turbo(100), name = exp_name) +
-    coord_sf(xlim = lims$xlim, ylim = lims$ylim, expand = FALSE) +
-    labs(title = paste0(exp_name, " | ", species_name, " | W. Atlantic Range"), x = "", y = "") +
-    theme_minimal() +
-    theme(                               
-      axis.text  = element_text(color = "black"),   ## axis tick labels black
-      axis.title = element_text(color = "black"),   ## axis title black (if not blank)
-      axis.ticks   = element_line(color = "gray90") ## show axis ticks (theme_minimal hides them by default)
-    ); plot_overlap_range
+  ## df must have columns: x, y, anom  (like your df_mask / df_mask_carib)
+  overlap_range <- function(df, species_name, exp_name, domain,
+                            xlim, ylim, legend_title = NULL, world = NULL, 
+                            base_size = 12) {
+    if (is.null(world)) {
+      world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+    }
+    if (is.null(legend_title)) {
+      legend_title <- paste0("Standardized \nanomaly\n", exp_name)
+    }
+    main_title <- paste0(species_name, " | ", exp_name, " | ", domain, " | ", nrow(df), "cells")
+    
+    ggplot() +
+      geom_tile(data = df, aes(x = x, y = y, fill = anom)) +
+      geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
+      scale_fill_gradientn(colors = turbo(100), name = legend_title) +
+      coord_sf(xlim = xlim, ylim = ylim, expand = FALSE) +
+      labs(title = paste0(exp_name, " | ", species_name, " | ", domain, " | ", nrow(df), "cells"),
+           x = "", y = "") +
+      theme_minimal(base_size = base_size) +
+      theme(
+        axis.text   = element_text(color = "black"),
+        axis.title  = element_text(color = "black"),
+        axis.ticks  = element_line(color = "gray90")
+      )
+  }
+  
+  p_overlap_range <- overlap_range(
+    df           = df_mask,
+    species_name = species_name,
+    exp_name     = exp_name,
+    domain       = "W. Atlantic Range",
+    xlim         = lims$xlim,
+    ylim         = lims$ylim,
+  ); p_overlap_range
+    
+  p_overlap_carib <- overlap_range(
+    df           = df_mask_carib,
+    species_name = species_name,
+    exp_name     = exp_name,
+    domain       = "Caribbean",
+    xlim         = xlim_carib,
+    ylim         = ylim_carib,
+  ); p_overlap_carib
+  
   
   ## Plot overlap -- Caribbean Only
-  plot_overlap_carib <- ggplot() +
+  
+  domain <-  "Caribbean"
+  p_overlap_carib <- ggplot() +
     geom_tile(data = df_mask_carib, aes(x = x, y = y, fill = anom)) +
     geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
-    scale_fill_gradientn(colors = turbo(100), name = exp_name) +
+    scale_fill_gradientn(colors = turbo(100), name = paste0("Standardized \nanomaly\n", exp_name)) +
     coord_sf(xlim = xlim_carib, ylim = ylim_carib, expand = FALSE) +
-    labs(title = paste0(exp_name, " | ", species_name, " | Caribbean"), x = "", y = "") +
-    theme_minimal() +
+    labs(title = paste0(species_name, " | ", exp_name, " | ", domain, " | ", nrow(df_mask_carib), " cells"), x = "", y = "") +
+    theme_minimal(base_size = 12) +
     theme(                               
       axis.text  = element_text(color = "black"),   ## axis tick labels black
       axis.title = element_text(color = "black"),   ## axis title black (if not blank)
       axis.ticks   = element_line(color = "gray90") ## show axis ticks (theme_minimal hides them by default)
-    ); plot_overlap_carib
+    ); p_overlap_carib
   
   ## Plot together
-  p1 <- plot_overlap_range  + theme(legend.position = "none")
-  p2 <- plot_overlap_carib  # keep legend here
+  p1 <- p_overlap_range  + theme(legend.position = "none")
+  p2 <- p_overlap_carib  # keep legend here
   comb_overlaps_plots <- cowplot::plot_grid(p1, p2, ncol = 2, labels = c("", "")); comb_overlaps_plots
-  
-  ## -----------------------------------------------------------------------------
-  ## Grid cell count histogram and barplot
-  
-  ## ---- HMS-style histogram of anomalies (panel D) ------------------------------
-  ## anom_masked: SpatRaster/Raster* of anomalies already masked to species range
-  ## species_name: string for title
-  ## exp_name: label for x-axis (e.g., "SST st anom" or "o200m st anom")
-  
-  anom_histogram <- function(anom_masked, species_name, exp_name = "", domain = "") {
-    
-    ## Pull raster values
-    vals <- if (inherits(anom_masked, "SpatRaster")) {
-      terra::values(anom_masked, mat = FALSE)
-    } else {
-      raster::values(anom_masked)
-    }
-    vals <- vals[is.finite(vals)]
-    
-    ## Set breaks at 0.25 increments spanning the masked data and use same colors as HMS
-    breaks <- seq(floor(min(vals)), ceiling(max(vals)), by = 0.25)
-    my_colors <- rep("red", length(breaks))
-    my_colors[breaks >= -0.5 & breaks <=  0.5] <- "green"
-    my_colors[breaks <  -0.5 & breaks >= -1.5] <- "yellow"
-    my_colors[breaks >   0.5 & breaks <=  1.5] <- "yellow"
-    my_colors[breaks <  -1.5 & breaks >= -2.0] <- "orange"
-    my_colors[breaks >   1.5 & breaks <=  2.0] <- "orange"
-    
-    ## Make the histogram (freq=FALSE so y-axis is proportion/density)
-    h <- hist(vals,
-              breaks = breaks,
-              freq   = FALSE,
-              col    = my_colors,
-              xlab   = paste(exp_name, "anomalies"),
-              ylab   = "Percent",
-              main   = paste0(exp_name, " | ", species_name, " | ", domain))
-  }
-
-  par(mfrow=c(1,2))
-  anom_histogram(anom_masked, species_name, exp_name = "0200", domain = "Entire range")  
-  anom_histogram(anom_masked_carib, species_name, exp_name = "0200", domain = "Caribbean")  
-  par(mfrow=c(1,1))
-    
-  # install.packages("cowplot") # if needed
-  library(ggplotify)
-  library(cowplot)
-  
-  p1 <- plot_overlap_range  + theme(legend.position = "none")
-  p2 <- plot_overlap_carib
-  p3 <- as.ggplot(~ anom_histogram(anom_masked,       species_name, exp_name = "O200", domain = "Entire range"))
-  p4 <- as.ggplot(~ anom_histogram(anom_masked_carib, species_name, exp_name = "O200", domain = "Caribbean"))
-  
-  cowplot::plot_grid(
-    cowplot::plot_grid(p1, p2, ncol = 2, labels = c("", "")),
-    cowplot::plot_grid(p3, p4, ncol = 2, labels = c("", "")),
-    ncol = 1,
-    rel_heights = c(1, 1)
-  )
   
   ## -----------------------------------------------------------------------------
   ## Make histogram of anomalies 
@@ -286,12 +261,12 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
   ## Make summary of anomalies 
   
   anom_summary_bars <- function(r, species_name, exp_name, domain) {
-    # 1. get raster values
+    ## First get raster values
     vals <- terra::values(r)
     vals <- vals[is.finite(vals)]
     df <- data.frame(anom = vals)
     
-    # 2. cut into categories
+    ## Cut into categories
     df$cat <- cut(
       df$anom,
       breaks = c(-Inf, -1.5, -0.5, 0.5, 1.5, Inf),
@@ -299,20 +274,20 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
       right = TRUE
     )
     
-    # 3. assign representative values for coloring (bin midpoints)
+    ## Assign representative values for coloring (bin midpoints)
     cat_vals <- c(-2, -1, 0, 1, 2)  
     cols <- setNames(
       turbo(5)[as.integer(scales::rescale(cat_vals, to = c(1,5)))],
       levels(df$cat)
     )
     
-    # 4. summarize counts and percents
+    ## Summarize counts and percents
     df_sum <- as.data.frame(table(df$cat))
     colnames(df_sum) <- c("Category", "Count")
     df_sum$Category <- factor(df_sum$Category, levels = levels(df$cat))
     df_sum$Percent <- 100 * df_sum$Count / sum(df_sum$Count)
     
-    # 5. plot with labels
+    ## Make plot with labels
     ggplot(df_sum, aes(x = Category, y = Count, fill = Category)) +
       geom_col(color = "gray25") +
       geom_text(aes(label = paste0(round(Percent,1), "%")),
@@ -337,6 +312,33 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
   p_summary_range <- anom_summary_bars(anom_masked, species_name, "O200", "Entire range"); p_summary_range
   p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, "O200", "Caribbean"); p_summary_carib
   
+  ## -----------------------------------------------------------------------------
+  ## Plot overlap map, histogram, and summary bar chart together
+  
+  ## Keep one legend (from the Caribbean map, say)
+  leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
+  
+  ## Remove legends from the others
+  a <- p_overlap_range + theme(legend.position = "none")
+  b <- p_overlap_carib + theme(legend.position = "none")
+  c <- p_hist_range   + theme(legend.position = "none")
+  d <- p_hist_carib   + theme(legend.position = "none")
+  e <- p_summary_range
+  f <- p_summary_carib
+  
+  row1 <- cowplot::plot_grid(a, b, ncol = 2, align = "hv", axis = "tblr") ## Row 1: overlap maps
+  row2 <- cowplot::plot_grid(c, d, ncol = 2, align = "hv", axis = "tblr") ## Row 2: histograms
+  row3 <- cowplot::plot_grid(e, f, ncol = 2, align = "hv", axis = "tblr") ## Row 3: summarized bars
+  main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
+                             rel_heights = c(1, 1, 1), align = "v") ## Stack the three rows
+  
+  ## Add the legend column on the right
+  final_6panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
+  final_6panel
+
+  ## Save plot
+  # ggsave(file.path(out_dir, paste0(species_name, "_6panel.png")),
+  #        final_6panel, width = 10, height = 10, dpi = 300)
   
   
   
@@ -344,6 +346,66 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  ## -----------------------------------------------------------------------------
+  ## Grid cell count histogram and barplot
+  
+  ## ---- HMS-style histogram of anomalies (panel D) ------------------------------
+  ## anom_masked: SpatRaster/Raster* of anomalies already masked to species range
+  ## species_name: string for title
+  ## exp_name: label for x-axis (e.g., "SST st anom" or "o200m st anom")
+  
+  anom_histogram <- function(anom_masked, species_name, exp_name = "", domain = "") {
+    
+    ## Pull raster values
+    vals <- if (inherits(anom_masked, "SpatRaster")) {
+      terra::values(anom_masked, mat = FALSE)
+    } else {
+      raster::values(anom_masked)
+    }
+    vals <- vals[is.finite(vals)]
+    
+    ## Set breaks at 0.25 increments spanning the masked data and use same colors as HMS
+    breaks <- seq(floor(min(vals)), ceiling(max(vals)), by = 0.25)
+    my_colors <- rep("red", length(breaks))
+    my_colors[breaks >= -0.5 & breaks <=  0.5] <- "green"
+    my_colors[breaks <  -0.5 & breaks >= -1.5] <- "yellow"
+    my_colors[breaks >   0.5 & breaks <=  1.5] <- "yellow"
+    my_colors[breaks <  -1.5 & breaks >= -2.0] <- "orange"
+    my_colors[breaks >   1.5 & breaks <=  2.0] <- "orange"
+    
+    ## Make the histogram (freq=FALSE so y-axis is proportion/density)
+    h <- hist(vals,
+              breaks = breaks,
+              freq   = FALSE,
+              col    = my_colors,
+              xlab   = paste(exp_name, "anomalies"),
+              ylab   = "Percent",
+              main   = paste0(exp_name, " | ", species_name, " | ", domain))
+  }
+  
+  par(mfrow=c(1,2))
+  anom_histogram(anom_masked, species_name, exp_name = "0200", domain = "Entire range")  
+  anom_histogram(anom_masked_carib, species_name, exp_name = "0200", domain = "Caribbean")  
+  par(mfrow=c(1,1))
+  
+  p1 <- plot_overlap_range  + theme(legend.position = "none")
+  p2 <- plot_overlap_carib
+  p3 <- as.ggplot(~ anom_histogram(anom_masked,       species_name, exp_name = "O200", domain = "Entire range"))
+  p4 <- as.ggplot(~ anom_histogram(anom_masked_carib, species_name, exp_name = "O200", domain = "Caribbean"))
+  
+  cowplot::plot_grid(
+    cowplot::plot_grid(p1, p2, ncol = 2, labels = c("", "")),
+    cowplot::plot_grid(p3, p4, ncol = 2, labels = c("", "")),
+    ncol = 1,
+    rel_heights = c(1, 1)
+  )
   
     
     
