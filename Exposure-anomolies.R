@@ -28,16 +28,17 @@ out_dir     <- "./outputs/"
 
 ## Caribbean Sea
 xlim_carib <- c(-92, -57)
-ylim_carib <- c(  6,  27.8)
+ylim_carib <- c(  6,  28)
 carib_ext  <- c(xlim_carib, ylim_carib)
 
-## Caribbean Extent
-xlim_uscar <- c(-68.5, -63.0)
-ylim_uscar <- c(15.5, 20.0)
+## U.S. Caribbean Extent
+xlim_uscar <- c(-69, -63.0)
+ylim_uscar <- c(16, 20.0)
+uscar_ext  <- c(xlim_uscar, ylim_uscar)
 
 ## W. Atlantic Ocean
-xlim_nwa <- c(-99, 40)
-ylim_nwa <- c(-40, 72)
+xlim_nwa <- c(-99, -40) # W Atlantic: 99°W to 40°W
+ylim_nwa <- c(-5, 72)
 
 ## -----------------------------------------------------------------------------
 ## Utility functions 
@@ -104,8 +105,6 @@ anom <- rast(f, sub = "anomaly") ## one layer
 anom[anom > 1e19] <- NA ## Fix fill values
 anom  <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
 
-
-
 ## Crop to ranges: Entire W. Atlantic range, Caribbean Sea, and U.S. Caribbean
 anom_range <- crop(anom, extent(c(lims$xlim, lims$ylim)))
 anom_carib <- crop(anom, ext(xlim_carib, ylim_carib)) ## Crop to Caribbean bb
@@ -166,28 +165,28 @@ par(mfrow = c(1,1)) ## Reset plotting layout
   anom_masked <- mask(anom_range, mask_cover)
   
   ## Mask cover Caribbean
-  #mask_cover_carib  <- rasterize(spv, anom_carib, field = 1, background = NA, cover = TRUE)
-  #carib_poly <- as.polygons(carib_ext)     # SpatVector polygon from bbox
-  #anom_masked_carib <- mask(anom_carib, carib_poly)
   anom_masked_carib <- crop(anom_masked, carib_ext)
+  anom_masked_uscar <- crop(anom_masked, uscar_ext)
   
   ## Make dataframe for masked values
   ## anom_masked is a SpatRaster/Raster* (masked by species footprint). Convert it to df for ggplot. 
-  df_mask <- as.data.frame(anom_masked, xy = TRUE, na.rm = TRUE)
-  names(df_mask)[3] <- "anom"   ## third column is the anomolies values
-  
+  df_mask       <- as.data.frame(anom_masked, xy = TRUE, na.rm = TRUE)
   df_mask_carib <- as.data.frame(anom_masked_carib, xy = TRUE, na.rm = TRUE)
-  names(df_mask_carib)[3] <- "anom"   # third column is the values
+  df_mask_uscar <- as.data.frame(anom_masked_uscar, xy = TRUE, na.rm = TRUE)
+
+  ## Compute global min/max
+  min_anom_val  <- min(df_mask$anomaly, na.rm = TRUE)
+  max_anom_val  <- max(df_mask$anomaly, na.rm = TRUE)
+  fill_limits   <- c(min_anom_val, max_anom_val)
   
   ## ---------------------------------------------------------------------------
   ## Overlap map plot
-  #world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") ## Pull worldmap 
-  
-  ## Plot overlap -- Entire species range
-  overlap_range <- function(df, species_name, exp_name, domain,
+
+  overlap_range <- function(df, species_name, exp_name, domain, anom,
                             xlim, ylim, main_title = "all", 
                             legend_title = NULL, world = NULL, 
-                            world_scale = "medium", base_size = 12) {
+                            world_scale = "medium", base_size = 12, 
+                            fill_limits = NULL) {
     if (is.null(world)) {
       world <- rnaturalearth::ne_countries(scale = world_scale, returnclass = "sf")
     }
@@ -203,9 +202,11 @@ par(mfrow = c(1,1)) ## Reset plotting layout
     }
     
     ggplot() +
-      geom_tile(data = df, aes(x = x, y = y, fill = anom)) +
+      geom_tile(data = df, aes(x = x, y = y, fill = anomaly)) +
       geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
-      scale_fill_gradientn(colors = turbo(100), name = legend_title) +
+      scale_fill_gradientn(colors = turbo(100), 
+                           name = legend_title,
+                           limits = fill_limits) +
       coord_sf(xlim = xlim, ylim = ylim, expand = FALSE) +
       labs(title = main_title,
            x = "", y = "") +
@@ -217,6 +218,16 @@ par(mfrow = c(1,1)) ## Reset plotting layout
       )
   }
   
+  ## Make plots
+  p_overlap_range <- overlap_range(
+    df           = df_mask,
+    species_name = species_name,
+    exp_name     = exp_name,
+    domain       = "W. Atlantic range",
+    xlim         = lims$xlim,
+    ylim         = lims$ylim,
+  ); p_overlap_range
+  
   p_overlap_carib <- overlap_range(
     df           = df_mask_carib,
     species_name = species_name,
@@ -224,21 +235,23 @@ par(mfrow = c(1,1)) ## Reset plotting layout
     domain       = "Caribbean",
     xlim         = xlim_carib,
     ylim         = ylim_carib,
+    fill_limits  = fill_limits
   ); p_overlap_carib
   
-  p_overlap_range <- overlap_range(
-    df           = df_mask,
+  p_overlap_uscar <- overlap_range(
+    df           = df_mask_uscar,
     species_name = species_name,
     exp_name     = exp_name,
-    domain       = "Entire range",
-    xlim         = lims$xlim,
-    ylim         = lims$ylim,
-    main_title   = "domain"
-  ); p_overlap_range
-    
+    domain       = "U.S. Caribbean",
+    xlim         = xlim_uscar,
+    ylim         = ylim_uscar,
+    main_title   = "domain", 
+    fill_limits  = fill_limits
+  ); p_overlap_uscar
+
   ## -----------------------------------------------------------------------------
   ## Make histogram of anomalies 
-  anom_histogram_gg <- function(r, species_name, exp_name, domain) {
+  anom_histogram_gg <- function(r, fill_limits = NULL) {
     vals <- terra::values(r)
     vals <- vals[is.finite(vals)]
     df <- data.frame(anom = vals)
@@ -246,29 +259,34 @@ par(mfrow = c(1,1)) ## Reset plotting layout
     
     ggplot(df, aes(x = anom, fill = ..x..)) +
       geom_histogram(bins = bin_num, color = "gray25") +
-      scale_fill_gradientn(colors = turbo(bin_num), name = "Standardized \nanomaly") +
-      scale_y_continuous(expand = c(0,0)) +   # Removes gap between x-axis
-      labs(
-        title = paste0(species_name, " | ", exp_name, " | ", domain),
-        x = "",
-        y = "Count"
+      scale_fill_gradientn(
+        colors = turbo(bin_num), 
+        name   = "Standardized \nanomaly",
+        limits = fill_limits           # keep legend consistent
       ) +
+      scale_x_continuous(
+        limits = fill_limits,          # <-- unify x-axis across plots
+        expand = c(0,0)
+      ) +
+      scale_y_continuous(expand = c(0,0)) +
+      labs(x = "Standardized anomaly", y = "Count") +
       geom_vline(xintercept = 0, color = "black", linetype = "dashed") +
       theme_minimal(base_size = 12) + 
       theme(
         axis.text   = element_text(color = "black"),
         axis.title  = element_text(color = "black"),
         axis.ticks  = element_line(color = "black"),
-        axis.line.x = element_line(color = "black"),   # black x-axis
-        axis.line.y = element_line(color = "black"),   # add y-axis for balance
-        legend.position = c(0.95, 0.95),
-        legend.justification = c("right","top")
+        axis.line.x = element_line(color = "black"),
+        axis.line.y = element_line(color = "black"),
+        legend.position       = c(0.95, 0.95),
+        legend.justification  = c("right","top")
       )
   }
   
   ## Make plots
-  p_hist_range <- anom_histogram_gg(anom_masked, species_name, "O200", "Entire range"); p_hist_range
-  p_hist_carib <- anom_histogram_gg(anom_masked_carib, species_name, "O200", "Caribbean"); p_hist_carib
+  p_hist_range <- anom_histogram_gg(anom_masked, fill_limits); p_hist_range
+  p_hist_carib <- anom_histogram_gg(anom_masked_carib, fill_limits); p_hist_carib
+  p_hist_uscar <- anom_histogram_gg(anom_masked_uscar, fill_limits = fill_limits); p_hist_uscar
   
   ## -----------------------------------------------------------------------------
   ## Make summary of anomalies 
@@ -324,6 +342,8 @@ par(mfrow = c(1,1)) ## Reset plotting layout
   
   p_summary_range <- anom_summary_bars(anom_masked, species_name, "O200", "Entire range"); p_summary_range
   p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, "O200", "Caribbean"); p_summary_carib
+  p_summary_uscar <- anom_summary_bars(anom_masked_uscar, species_name, "O200", "U.S. Caribbean"); p_summary_uscar
+  
   
   ## ---------------------------------------------------------------------------
   ## Combine plots
@@ -333,14 +353,14 @@ par(mfrow = c(1,1)) ## Reset plotting layout
   leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
   
   ## Remove legends from the others
-  a <- p_overlap_range  + theme(legend.position = "none")                 # Range map (RIGHT)
-  b <- p_overlap_carib  + theme(legend.position = "none")                 # Caribbean map (LEFT)
+  a <- p_overlap_range  + theme(legend.position = "none")                 
+  b <- p_overlap_carib  + theme(legend.position = "none")                 
   c <- p_hist_range     + theme(legend.position = "none",
-                                plot.title = element_blank())             # Range hist (RIGHT)
+                                plot.title = element_blank())             
   d <- p_hist_carib     + theme(legend.position = "none",
-                                plot.title = element_blank())             # Caribbean hist (LEFT)
-  e <- p_summary_range  + theme(plot.title = element_blank())             # Range summary (RIGHT)
-  f <- p_summary_carib  + theme(plot.title = element_blank())             # Caribbean summary (LEFT)
+                                plot.title = element_blank())             
+  e <- p_summary_range  + theme(plot.title = element_blank())             
+  f <- p_summary_carib  + theme(plot.title = element_blank())           
   
   
   ## Rows (Caribbean left, Range right), with labels
