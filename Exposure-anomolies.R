@@ -24,57 +24,23 @@ spp_dir     <- "./data/species-distribution-shapefiles/"
 out_dir     <- "./outputs/"
 
 ## -----------------------------------------------------------------------------
-## Set geographic extent (bounding box)
+## Set geographic extents (bounding box)
+
+## Caribbean Sea
 xlim_carib <- c(-92, -57)
 ylim_carib <- c(  6,  27.8)
+carib_ext  <- c(xlim_carib, ylim_carib)
 
-## -----------------------------------------------------------------------------
-## Read in exposure anomoly map
-f <- file.path(exp_dir, "o200_1985-2014_2020-2049.nc") ## set path
-anom    <- rast(f, sub = "anomaly") ## one layer
-anom[anom > 1e19] <- NA ## Fix fill values
-anom        <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
-anom_carib <- crop(anom, ext(xlim_carib, ylim_carib)) ## Crop to Caribbean extent
+## Caribbean Extent
+xlim_uscar <- c(-68.5, -63.0)
+ylim_uscar <- c(15.5, 20.0)
 
-exp_name <- "o200"
-
-## Plotcheck -------------------------------------------------------------------
-## Define HMS extent (note: western longitudes are negative)
+## W. Atlantic Ocean
 xlim_nwa <- c(-99, 40)
-ylim_nwa <- c(-20, 72)
-anom_nwa <- crop(anom, extent(c(xlim_nwa, ylim_nwa)))
+ylim_nwa <- c(-40, 72)
 
 ## -----------------------------------------------------------------------------
-## Plotcheck regions
-par(mfrow = c(2,2))
-
-# A) Global anomalies
-plot(anom,
-     main = "A) CMIP anomalies",
-     xlab = "", ylab = "",
-     col = turbo(100))
-maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
-rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
-
-# C) HMS domain crop
-plot(anom_nwa,
-     main = "C) W. Atlantic",
-     xlab = "", ylab = "",
-     col = turbo(100))
-maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
-rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
-
-# B) Caribbean crop
-plot(anom_carib,
-     main = "C) Caribbean",
-     xlab = "", ylab = "",
-     col = turbo(100))
-maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
-rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
-par(mfrow = c(1,1)) ## Reset plotting layout
-
-## -----------------------------------------------------------------------------
-## Functions 
+## Utility functions 
 name_from_shp <- function(path) { # Base path -> "Nice Name"
   base <- tools::file_path_sans_ext(basename(path))  # insert space between lower->Upper (CamelCase), e.g., "AtlanticHerring" -> "Atlantic Herring"
   base <- gsub("(?<=[a-z])(?=[A-Z])", " ", base, perl = TRUE)  # replace _, -, . with spaces
@@ -98,32 +64,96 @@ bbox_with_pad <- function(sf_obj, pad = 0.05){
        ylim = c(bb["ymin"] - pad*dy, bb["ymax"] + pad*dy))
 }
 
-## -----------------------------------------------------------------------------
-## Map overlap
 
 ## -----------------------------------------------------------------------------
-## Set geographic extent (bounding box)
-xlim_carib <- c(-92, -57)
-ylim_carib <- c(  6,  27.8)
-carib_ext  <- c(xlim_carib, ylim_carib)
-
+## Read in shape files
 shp_files <- list.files(spp_dir, pattern = "\\.shp$", full.names = TRUE, recursive = FALSE)
 if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
+
 
 ## Run loop
 #for (i in 1:length(shp_files)){
 # for (i in 1:1){ ## Use for testing
-  i = 1
-  
-  ## Set species
-  sp_file <- shp_files[i]
-  species_name <- name_from_shp(sp_file)
-  print(paste("Processsing", species_name))
-  
-  ## Read in and vectorize species
-  sp      <- st_read(sp_file, quiet = TRUE) |> st_make_valid()
-  lims <- bbox_with_pad(sp, pad = 0.05)   ## Crop exposure anomolies to species range
-  anom_range <- crop(anom, extent(c(lims$xlim, lims$ylim)))
+i = 2
+
+## Read in species distribution
+sp_file <- shp_files[i]
+species_name <- name_from_shp(sp_file)
+print(paste("Processsing", species_name))
+sp  <- st_read(sp_file, quiet = TRUE) |> st_make_valid()
+
+## Conditionally clip lims to the NWA box if it extends beyond it
+lims    <- bbox_with_pad(sp, pad = 0.05)   ## Crop exposure anomolies to species range
+needs_clip_x <- lims$xlim[1] < xlim_nwa[1] || lims$xlim[2] > xlim_nwa[2]
+needs_clip_y <- lims$ylim[1] < ylim_nwa[1] || lims$ylim[2] > ylim_nwa[2]
+if (needs_clip_x || needs_clip_y) {
+  lims$xlim <- c(max(lims$xlim[1], xlim_nwa[1]),
+                 min(lims$xlim[2], xlim_nwa[2]))
+  lims$ylim <- c(max(lims$ylim[1], ylim_nwa[1]),
+                 min(lims$ylim[2], ylim_nwa[2]))
+}
+
+## -----------------------------------------------------------------------------
+## Read in exposure anomoly map
+
+exp_nc_file_name <- "o200_1985-2014_2020-2049.nc"
+exp_name <- sub("_.*", "", exp_nc_file_name)
+
+f <- file.path(exp_dir, exp_nc_file_name) ## set path
+anom <- rast(f, sub = "anomaly") ## one layer
+anom[anom > 1e19] <- NA ## Fix fill values
+anom  <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
+
+
+
+## Crop to ranges: Entire W. Atlantic range, Caribbean Sea, and U.S. Caribbean
+anom_range <- crop(anom, extent(c(lims$xlim, lims$ylim)))
+anom_carib <- crop(anom, ext(xlim_carib, ylim_carib)) ## Crop to Caribbean bb
+anom_uscar <- crop(anom, ext(xlim_uscar, ylim_uscar)) ## Crop to U.S. Carib
+
+
+## -----------------------------------------------------------------------------
+## Plotcheck regions
+par(mfrow = c(2,2))
+
+# A) Global anomalies
+plot(anom,
+     main = "A) CMIP anomalies",
+     xlab = "", ylab = "",
+     col = turbo(100))
+maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
+rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
+
+# B) W. Atlantic
+plot(anom_range,
+     main = "C) W. Atlantic",
+     xlab = "", ylab = "",
+     col = turbo(100))
+maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
+rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
+
+# C) Caribbean crop
+plot(anom_carib,
+     main = "C) Caribbean",
+     xlab = "", ylab = "",
+     col = turbo(100))
+maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
+rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
+
+## D) US Caribbean
+plot(anom_uscar,
+     main = "D) U.S. Caribbean",
+     xlab = "", ylab = "",
+     col = turbo(100))
+maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
+
+par(mfrow = c(1,1)) ## Reset plotting layout
+
+
+  ## -----------------------------------------------------------------------------
+  ## Map overlap
+
+  ## Vectorize species
   sp      <- st_transform(sp, crs(anom_range))  ## match raster CRS
   spv     <- vect(sp)
 
@@ -151,27 +181,33 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
   
   ## ---------------------------------------------------------------------------
   ## Overlap map plot
-  world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") ## Pull worldmap 
+  #world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") ## Pull worldmap 
   
   ## Plot overlap -- Entire species range
-  ## df must have columns: x, y, anom  (like your df_mask / df_mask_carib)
   overlap_range <- function(df, species_name, exp_name, domain,
-                            xlim, ylim, legend_title = NULL, world = NULL, 
-                            base_size = 12) {
+                            xlim, ylim, main_title = "all", 
+                            legend_title = NULL, world = NULL, 
+                            world_scale = "medium", base_size = 12) {
     if (is.null(world)) {
-      world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+      world <- rnaturalearth::ne_countries(scale = world_scale, returnclass = "sf")
     }
     if (is.null(legend_title)) {
       legend_title <- paste0("Standardized \nanomaly\n", exp_name)
     }
-    main_title <- paste0(species_name, " | ", exp_name, " | ", domain, " | ", nrow(df), "cells")
+    if (main_title == "all"){
+      main_title <- paste0(    "Spe: ", species_name, 
+                             "\nExp: ", exp_name, 
+                           "\n\n"     , domain, ", ", nrow(df),  " cells")
+    } else if (main_title == "domain"){
+      main_title <- paste0(domain, ", ", nrow(df),  " cells")
+    }
     
     ggplot() +
       geom_tile(data = df, aes(x = x, y = y, fill = anom)) +
       geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
       scale_fill_gradientn(colors = turbo(100), name = legend_title) +
       coord_sf(xlim = xlim, ylim = ylim, expand = FALSE) +
-      labs(title = paste0(exp_name, " | ", species_name, " | ", domain, " | ", nrow(df), "cells"),
+      labs(title = main_title,
            x = "", y = "") +
       theme_minimal(base_size = base_size) +
       theme(
@@ -181,15 +217,6 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
       )
   }
   
-  p_overlap_range <- overlap_range(
-    df           = df_mask,
-    species_name = species_name,
-    exp_name     = exp_name,
-    domain       = "W. Atlantic Range",
-    xlim         = lims$xlim,
-    ylim         = lims$ylim,
-  ); p_overlap_range
-    
   p_overlap_carib <- overlap_range(
     df           = df_mask_carib,
     species_name = species_name,
@@ -199,31 +226,18 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
     ylim         = ylim_carib,
   ); p_overlap_carib
   
-  
-  ## Plot overlap -- Caribbean Only
-  
-  domain <-  "Caribbean"
-  p_overlap_carib <- ggplot() +
-    geom_tile(data = df_mask_carib, aes(x = x, y = y, fill = anom)) +
-    geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
-    scale_fill_gradientn(colors = turbo(100), name = paste0("Standardized \nanomaly\n", exp_name)) +
-    coord_sf(xlim = xlim_carib, ylim = ylim_carib, expand = FALSE) +
-    labs(title = paste0(species_name, " | ", exp_name, " | ", domain, " | ", nrow(df_mask_carib), " cells"), x = "", y = "") +
-    theme_minimal(base_size = 12) +
-    theme(                               
-      axis.text  = element_text(color = "black"),   ## axis tick labels black
-      axis.title = element_text(color = "black"),   ## axis title black (if not blank)
-      axis.ticks   = element_line(color = "gray90") ## show axis ticks (theme_minimal hides them by default)
-    ); p_overlap_carib
-  
-  ## Plot together
-  p1 <- p_overlap_range  + theme(legend.position = "none")
-  p2 <- p_overlap_carib  # keep legend here
-  comb_overlaps_plots <- cowplot::plot_grid(p1, p2, ncol = 2, labels = c("", "")); comb_overlaps_plots
-  
+  p_overlap_range <- overlap_range(
+    df           = df_mask,
+    species_name = species_name,
+    exp_name     = exp_name,
+    domain       = "Entire range",
+    xlim         = lims$xlim,
+    ylim         = lims$ylim,
+    main_title   = "domain"
+  ); p_overlap_range
+    
   ## -----------------------------------------------------------------------------
   ## Make histogram of anomalies 
-  
   anom_histogram_gg <- function(r, species_name, exp_name, domain) {
     vals <- terra::values(r)
     vals <- vals[is.finite(vals)]
@@ -233,8 +247,7 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
     ggplot(df, aes(x = anom, fill = ..x..)) +
       geom_histogram(bins = bin_num, color = "gray25") +
       scale_fill_gradientn(colors = turbo(bin_num), name = "Standardized \nanomaly") +
-      scale_x_continuous(expand = c(0,0)) +   # no padding on x-axis
-      scale_y_continuous(expand = c(0,0)) +   # optional: also removes gap at y=0
+      scale_y_continuous(expand = c(0,0)) +   # Removes gap between x-axis
       labs(
         title = paste0(species_name, " | ", exp_name, " | ", domain),
         x = "",
@@ -259,7 +272,6 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
   
   ## -----------------------------------------------------------------------------
   ## Make summary of anomalies 
-  
   anom_summary_bars <- function(r, species_name, exp_name, domain) {
     ## First get raster values
     vals <- terra::values(r)
@@ -300,7 +312,8 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
       labs(title = paste0(species_name, " | ", exp_name, " | ", domain),
            x = "Anomaly category", y = "Count") +
       theme_minimal(base_size = 12) +
-      theme(axis.text=element_text(color="black"),
+      theme(axis.text = element_text(color="black"),
+            axis.text.x = element_text(color = "black", angle = 25, vjust = 0.5, hjust = 0.5),  # rotate labels
             axis.title=element_text(color="black"),
             axis.ticks=element_line(color="black"),
             axis.line.x=element_line(color="black"),
@@ -312,33 +325,53 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
   p_summary_range <- anom_summary_bars(anom_masked, species_name, "O200", "Entire range"); p_summary_range
   p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, "O200", "Caribbean"); p_summary_carib
   
-  ## -----------------------------------------------------------------------------
+  ## ---------------------------------------------------------------------------
+  ## Combine plots
   ## Plot overlap map, histogram, and summary bar chart together
   
   ## Keep one legend (from the Caribbean map, say)
   leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
   
   ## Remove legends from the others
-  a <- p_overlap_range + theme(legend.position = "none")
-  b <- p_overlap_carib + theme(legend.position = "none")
-  c <- p_hist_range   + theme(legend.position = "none")
-  d <- p_hist_carib   + theme(legend.position = "none")
-  e <- p_summary_range
-  f <- p_summary_carib
+  a <- p_overlap_range  + theme(legend.position = "none")                 # Range map (RIGHT)
+  b <- p_overlap_carib  + theme(legend.position = "none")                 # Caribbean map (LEFT)
+  c <- p_hist_range     + theme(legend.position = "none",
+                                plot.title = element_blank())             # Range hist (RIGHT)
+  d <- p_hist_carib     + theme(legend.position = "none",
+                                plot.title = element_blank())             # Caribbean hist (LEFT)
+  e <- p_summary_range  + theme(plot.title = element_blank())             # Range summary (RIGHT)
+  f <- p_summary_carib  + theme(plot.title = element_blank())             # Caribbean summary (LEFT)
   
-  row1 <- cowplot::plot_grid(a, b, ncol = 2, align = "hv", axis = "tblr") ## Row 1: overlap maps
-  row2 <- cowplot::plot_grid(c, d, ncol = 2, align = "hv", axis = "tblr") ## Row 2: histograms
-  row3 <- cowplot::plot_grid(e, f, ncol = 2, align = "hv", axis = "tblr") ## Row 3: summarized bars
+  
+  ## Rows (Caribbean left, Range right), with labels
+  row1 <- cowplot::plot_grid(b, a, ncol = 2, labels = c("A","B"),
+                             label_size = 12, label_fontface = "bold")
+  row2 <- cowplot::plot_grid(d, c, ncol = 2, labels = c("C","D"),
+                             label_size = 12, label_fontface = "bold")
+  row3 <- cowplot::plot_grid(f, e, ncol = 2, labels = c("E","F"),
+                             label_size = 12, label_fontface = "bold")
+  
   main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
-                             rel_heights = c(1, 1, 1), align = "v") ## Stack the three rows
-  
-  ## Add the legend column on the right
+                             rel_heights = c(2, 1, 1), align = "hv")
   final_6panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
+  
+  
+  ## Add the legend on the right
+  final_6panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.15))
   final_6panel
-
+  
   ## Save plot
-  # ggsave(file.path(out_dir, paste0(species_name, "_6panel.png")),
-  #        final_6panel, width = 10, height = 10, dpi = 300)
+  out_name <- paste0(out_dir, species_name, "_", exp_name, "_6panel.png")
+  ggsave(file.path(out_name), final_6panel, 
+         width = 8.5, height = 11, dpi = 500, bg = "white")
+  
+
+  
+  
+  
+  
+  
+  
   
   
   
