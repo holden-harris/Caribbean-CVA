@@ -5,6 +5,10 @@
 ## Code:    Exposure analyses
 ##------------------------------------------------------------------------------
 
+################################################################################
+##
+## Setup
+
 ##------------------------------------------------------------------------------
 ## Clear environment and load packages
 rm(list = ls()); gc()
@@ -24,10 +28,20 @@ library(patchwork)
 ## Set directory paths
 exp_dir     <- "./data/cmip6/"
 spp_dir     <- "./data/species-distribution-shapefiles/"
-out_dir     <- "./outputs/"
+out_dir     <- "./outputs/exposure-overlap/"
+
+## Species shape files
+shp_files <- list.files(spp_dir, pattern = "\\.shp$", full.names = TRUE, recursive = FALSE)
+if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
+print(shp_files)
+
+## CMIP exposure files
+nc_files  <- list.files(exp_dir, pattern = "\\.nc$",  full.names = TRUE, recursive = FALSE)
+if (length(nc_files) == 0L) stop("No .nc files found in: ", exp_dir)
+print(nc_files)
 
 ## -----------------------------------------------------------------------------
-## Set geographic extents (bounding box)
+## Set geographic extents (bounding boxes)
 
 ## Caribbean Sea
 xlim_carib <- c(-92, -57)
@@ -43,15 +57,26 @@ uscar_ext  <- c(xlim_uscar, ylim_uscar)
 xlim_nwa <- c(-99, -40) # W Atlantic: 99°W to 40°W
 ylim_nwa <- c(-5, 72)
 
+
+################################################################################
+##
+## Functions
+
 ## -----------------------------------------------------------------------------
 ## Utility functions 
 
+## Extract species name from shp filename
 name_from_shp <- function(path) { # Base path -> "Nice Name"
   base <- tools::file_path_sans_ext(basename(path))  # insert space between lower->Upper (CamelCase), e.g., "AtlanticHerring" -> "Atlantic Herring"
   base <- gsub("(?<=[a-z])(?=[A-Z])", " ", base, perl = TRUE)  # replace _, -, . with spaces
   base <- gsub("[_\\.\\-]+", " ", base)  # squeeze multiple spaces, trim
   base <- gsub("\\s+", " ", trimws(base))   # Title Case (keeps Genus species looking right)
   base
+}
+
+## Extract exposure factor (exp_name) from nc filename, e.g., "o200_1985-2014_2020-2049.nc" -> "o200"
+exp_name_from_nc <- function(path) {
+  sub("_.*$", "", basename(path))
 }
 
 slugify <- function(name) { ## "Nice Name" -> "nice-name" (for filenames/ids)
@@ -120,7 +145,6 @@ plot_anomalies <- function (anom, extent = "", carib_box = 'y', mar = c(2,2,2,2)
          border = "purple", lwd = 2)
   }
 }
-
 
 ## -----------------------------------------------------------------------------
 ## Plot anomalies with GG-Plots
@@ -196,13 +220,13 @@ plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n
       main_title <- paste0(domain, ", ", nrow(df), " cells")
     }
     
-    # major ticks (rounded) then drop endpoints
+    ## Major ticks (rounded) then drop endpoints
     bx_raw <- scales::breaks_pretty(n = tick_n)(range(xlim))
     by_raw <- scales::breaks_pretty(n = tick_n)(range(ylim))
     bx <- .clip_interior(unique(round(bx_raw)), xlim)
     by <- .clip_interior(unique(round(by_raw)), ylim)
     
-    # minor graticule
+    ## Minor graticule
     lon_minor <- seq(floor(min(xlim)), ceiling(max(xlim)), by = minor_by)
     lat_minor <- seq(floor(min(ylim)), ceiling(max(ylim)), by = minor_by)
     
@@ -322,35 +346,204 @@ plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n
             plot.margin = margin(5, 10, 5, 10))
   }
   
+
+################################################################################
+##
+## Run loops
+  
+## -----------------------------------------------------------------------------
+## Outer loop: Species shape files
+ 
+#for (i in seq_along(shp_files)) {
+for (i in 1:2) {
+  sp_file <- shp_files[i]
+  sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid() ## Read in species distribution map
+  species_name <- name_from_shp(sp_file)
+  
+  ## Loop printout
+  cat("\n------------------------------------------------------------\n")
+  cat(sprintf("Processing species (%d/%d): %s\n", i, length(shp_files), species_name))
+  
+  ## Make species-specific folder inside out_dir
+  species_dir <- paste0(out_dir, species_name,"/")
+  if (!dir.exists(species_dir)) dir.create(species_dir, recursive = TRUE)
+  
+  ## Conditionally clip lims to the NWA box if it extends beyond it
+  lims    <- bbox_with_pad(sp, pad = 0.05)   ## Crop exposure anomolies to species range
+  needs_clip_x <- lims$xlim[1] < xlim_nwa[1] || lims$xlim[2] > xlim_nwa[2]
+  needs_clip_y <- lims$ylim[1] < ylim_nwa[1] || lims$ylim[2] > ylim_nwa[2]
+  if (needs_clip_x || needs_clip_y) {
+    lims$xlim <- c(max(lims$xlim[1], xlim_nwa[1]),
+                   min(lims$xlim[2], xlim_nwa[2]))
+    lims$ylim <- c(max(lims$ylim[1], ylim_nwa[1]),
+                   min(lims$ylim[2], ylim_nwa[2]))
+  }
+  
+  ## ---------------------------------------------------------------------------
+  ## Inner loop: exposure factors ----------------------------------------------
+  #for (j in seq_along(nc_files)) {
+  for (j in 1:2) {
+    
+    ## Set file path and pull exposure factor name
+    nc_path  <- nc_files[j]
+    exp_name <- exp_name_from_nc(nc_path)
+    cat(sprintf("  - Exposure (%d/%d): %s\n", j, length(nc_files), exp_name)) ## Loop printout
+    
+    ## Read in anomoly map
+    anom <- rast(nc_path, sub = "anomaly") ## one layer
+    anom[anom > 1e19] <- NA ## Fix fill values
+    anom  <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
+    
+    ## Crop to ranges: Entire W. Atlantic range, Caribbean Sea, and U.S. Caribbean
+    anom_range <- crop(anom, extent(c(lims$xlim, lims$ylim)))
+    anom_carib <- crop(anom, ext(xlim_carib, ylim_carib)) ## Crop to Caribbean bb
+    anom_uscar <- crop(anom, ext(xlim_uscar, ylim_uscar)) ## Crop to U.S. Carib
+    
+    ## -----------------------------------------------------------------------------
+    ## Figure I: Make distribution maps
+    
+    p1 <- plot_distribution(sp, lims$xlim, lims$ylim, title = species_name) +
+      theme(plot.title = element_text(size = 16))
+    p2 <- plot_distribution(sp, xlim_carib, ylim_carib)
+    p3 <- plot_anomalies_gg(anom,       extent = "Global",      carib_box = 'y', uscar_box = 'y')
+    p4 <- plot_anomalies_gg(anom_range, extent = "W. Atlantic", carib_box = 'y', uscar_box = 'y')
+    p5 <- plot_anomalies_gg(anom_carib, extent = "Caribbean Sea", uscar_box = 'y')
+    p6 <- plot_anomalies_gg(anom_uscar, extent = "U.S. Caribbean")
+    
+    ## Arrange into 2 columns × 3 rows
+    six_panel <- (
+      (p1 | p2) / (p3 | p4) / (p5 | p6)
+    ) + 
+      plot_layout(heights = c(1.5, 1, 1)) + ## First row 1.5× larger
+      plot_annotation(tag_levels = 'A') 
+    #six_panel
+    
+    ## Save plot
+    out_name_dist_plot <- paste0(species_dir, 
+                                 species_name, "_", exp_name, "_Distribution-Anomalies.png"); out_name_overlap_plot
+    ggsave(file.path(out_name_dist_plot), six_panel, 
+           width = 10, height = 10, dpi = 300, bg = "white")
+    
+    
+    ## -----------------------------------------------------------------------------
+    ## Figure II II: Make masks and map overlaps
+    
+    ## Vectorize species
+    sp      <- st_transform(sp, crs(anom_range))  ## match raster CRS
+    spv     <- vect(sp)
+    
+    ## Mask cover species range (or W. Atlantic)
+    mask_cover  <- rasterize(spv, anom_range, field = 1, background = NA, cover = TRUE)
+    anom_masked <- mask(anom_range, mask_cover)
+    
+    ## Mask cover Caribbean
+    anom_masked_carib <- crop(anom_masked, carib_ext)
+    anom_masked_uscar <- crop(anom_masked, uscar_ext)
+    
+    ## Make dataframe for masked values
+    ## anom_masked is a SpatRaster/Raster* (masked by species footprint). Convert it to df for ggplot. 
+    df_mask       <- as.data.frame(anom_masked, xy = TRUE, na.rm = TRUE)
+    df_mask_carib <- as.data.frame(anom_masked_carib, xy = TRUE, na.rm = TRUE)
+    df_mask_uscar <- as.data.frame(anom_masked_uscar, xy = TRUE, na.rm = TRUE)
+    
+    ## Compute global min/max to use for all the plots
+    min_anom_val  <- min(df_mask$anomaly, na.rm = TRUE)
+    max_anom_val  <- max(df_mask$anomaly, na.rm = TRUE)
+    fill_limits   <- c(min_anom_val, max_anom_val)
+    
+    ## ---------------------------------------------------------------------------
+    ## Call plot functions to make plots
+    
+    ## Make overlap plots
+    p_overlap_range <- overlap_range(df_mask, species_name, exp_name,
+                                     domain       = "W. Atlantic range",
+                                     xlim         = lims$xlim,
+                                     ylim         = lims$ylim,
+                                     main_title   = "domain", 
+    )
+    p_overlap_carib <- overlap_range(df_mask_carib, species_name, exp_name,
+                                     domain       = "Caribbean Sea",
+                                     xlim         = xlim_carib,
+                                     ylim         = ylim_carib,
+                                     main_title   = "domain", 
+                                     fill_limits  = fill_limits
+    )
+    
+    p_overlap_uscar <- overlap_range(df_mask_uscar, species_name, exp_name,
+                                     domain       = "U.S. Caribbean",
+                                     xlim         = xlim_uscar,
+                                     ylim         = ylim_uscar,
+                                     #   main_title   = "domain", 
+                                     fill_limits  = fill_limits
+    )
+    
+    ## Make histogram plots
+    p_hist_range <- anom_histogram_gg(anom_masked, fill_limits)
+    p_hist_carib <- anom_histogram_gg(anom_masked_carib, fill_limits)
+    p_hist_uscar <- anom_histogram_gg(anom_masked_uscar, fill_limits = fill_limits)
+    
+    ## Make summary plots
+    p_summary_range <- anom_summary_bars(anom_masked, species_name, exp_name, "Entire range")
+    p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, exp_name, "Caribbean")
+    p_summary_uscar <- anom_summary_bars(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
+    
+    ## ---------------------------------------------------------------------------
+    ## Combine overlap plots
+    ## Plot overlap map, histogram, and summary bar chart together
+    
+    ## Keep one legend (from the Caribbean map, say)
+    leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
+    
+    ## Remove legends from the others
+    a <- p_overlap_range  + theme(legend.position = "none")                 
+    b <- p_overlap_carib  + theme(legend.position = "none")
+    c <- p_overlap_uscar  + theme(legend.position = "none")
+    d <- p_hist_range     + theme(legend.position = "none", plot.title = element_blank())             
+    e <- p_hist_carib     + theme(legend.position = "none", plot.title = element_blank()) 
+    f <- p_hist_uscar     + theme(legend.position = "none", plot.title = element_blank()) 
+    g <- p_summary_range  + theme(plot.title = element_blank())             
+    h <- p_summary_carib  + theme(plot.title = element_blank())           
+    i <- p_summary_uscar  + theme(plot.title = element_blank())           
+    
+    ## Make rows and add labels
+    row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
+                               label_size = 12, label_fontface = "bold")
+    row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
+                               label_size = 12, label_fontface = "bold")
+    row3 <- cowplot::plot_grid(g, h, i, ncol = 3, labels = c("G","H","I"),
+                               label_size = 12, label_fontface = "bold")
+    main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
+                               rel_heights = c(1, 1, 1), align = "hv")
+    final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
+    
+    
+    ## Add the legend on the right
+    final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
+    final_9panel
+    
+    ## Save plot
+    out_name_overlap_plot <- paste0(species_dir, 
+                                    species_name, "_", exp_name, "_Exposure-Overlap.png"); out_name_overlap_plot
+    ggsave(file.path(out_name_overlap_plot), final_9panel, 
+           width = 11, height = 11, dpi = 400, bg = "white")
+  }
+}
+  
+  
+  
+  
+  
+  
+  
+  
   
 
-## -----------------------------------------------------------------------------
-## Read in shape files
-shp_files <- list.files(spp_dir, pattern = "\\.shp$", full.names = TRUE, recursive = FALSE)
-if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
 
 
 ## Run loop
 #for (i in 1:length(shp_files)){
 # for (i in 1:1){ ## Use for testing
 i = 2
-
-## Read in species distribution ------------------------------------------------
-sp_file <- shp_files[i]
-species_name <- name_from_shp(sp_file)
-print(paste("Processsing", species_name))
-sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
-
-## Conditionally clip lims to the NWA box if it extends beyond it
-lims    <- bbox_with_pad(sp, pad = 0.05)   ## Crop exposure anomolies to species range
-needs_clip_x <- lims$xlim[1] < xlim_nwa[1] || lims$xlim[2] > xlim_nwa[2]
-needs_clip_y <- lims$ylim[1] < ylim_nwa[1] || lims$ylim[2] > ylim_nwa[2]
-if (needs_clip_x || needs_clip_y) {
-  lims$xlim <- c(max(lims$xlim[1], xlim_nwa[1]),
-                 min(lims$xlim[2], xlim_nwa[2]))
-  lims$ylim <- c(max(lims$ylim[1], ylim_nwa[1]),
-                 min(lims$ylim[2], ylim_nwa[2]))
-}
 
 
 
@@ -360,252 +553,3 @@ if (needs_clip_x || needs_clip_y) {
 exp_nc_file_name <- "o200_1985-2014_2020-2049.nc"
 exp_name <- sub("_.*", "", exp_nc_file_name)
 
-f <- file.path(exp_dir, exp_nc_file_name) ## set path
-anom <- rast(f, sub = "anomaly") ## one layer
-anom[anom > 1e19] <- NA ## Fix fill values
-anom  <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
-
-## Crop to ranges: Entire W. Atlantic range, Caribbean Sea, and U.S. Caribbean
-anom_range <- crop(anom, extent(c(lims$xlim, lims$ylim)))
-anom_carib <- crop(anom, ext(xlim_carib, ylim_carib)) ## Crop to Caribbean bb
-anom_uscar <- crop(anom, ext(xlim_uscar, ylim_uscar)) ## Crop to U.S. Carib
-
-
-  
-
-## -----------------------------------------------------------------------------
-## Plot distribution and exposure factors
-
-
-# Make the six plots
-p1 <- plot_distribution(sp, lims$xlim, lims$ylim, title = species_name) +
-  theme(plot.title = element_text(size = 16))
-p2 <- plot_distribution(sp, xlim_carib, ylim_carib)
-p3 <- plot_anomalies_gg(anom,       extent = "Global",      carib_box = 'y', uscar_box = 'y')
-p4 <- plot_anomalies_gg(anom_range, extent = "W. Atlantic", carib_box = 'y', uscar_box = 'y')
-p5 <- plot_anomalies_gg(anom_carib, extent = "Caribbean Sea", uscar_box = 'y')
-p6 <- plot_anomalies_gg(anom_uscar, extent = "U.S. Caribbean")
-
-## Arrange into 2 columns × 3 rows
-six_panel <- (
-  (p1 | p2) / (p3 | p4) / (p5 | p6)
-  ) + 
-  plot_layout(heights = c(1.5, 1, 1)) + ## First row 1.5× larger
-  plot_annotation(tag_levels = 'A') 
-six_panel
-
-  ## -----------------------------------------------------------------------------
-  ## Map overlap
-
-  ## Vectorize species
-  sp      <- st_transform(sp, crs(anom_range))  ## match raster CRS
-  spv     <- vect(sp)
-
-  ## Make and apply cover mask
-  ## Rasterize polygon to the anomaly grid (include partial cells)
-  ## Note that cover=TRUE returns fraction of each cell covered by the polygon
-  
-  ## Mask cover species range (or W. Atlantic)
-  mask_cover  <- rasterize(spv, anom_range, field = 1, background = NA, cover = TRUE)
-  anom_masked <- mask(anom_range, mask_cover)
-  
-  ## Mask cover Caribbean
-  anom_masked_carib <- crop(anom_masked, carib_ext)
-  anom_masked_uscar <- crop(anom_masked, uscar_ext)
-  
-  ## Make dataframe for masked values
-  ## anom_masked is a SpatRaster/Raster* (masked by species footprint). Convert it to df for ggplot. 
-  df_mask       <- as.data.frame(anom_masked, xy = TRUE, na.rm = TRUE)
-  df_mask_carib <- as.data.frame(anom_masked_carib, xy = TRUE, na.rm = TRUE)
-  df_mask_uscar <- as.data.frame(anom_masked_uscar, xy = TRUE, na.rm = TRUE)
-
-  ## Compute global min/max
-  min_anom_val  <- min(df_mask$anomaly, na.rm = TRUE)
-  max_anom_val  <- max(df_mask$anomaly, na.rm = TRUE)
-  fill_limits   <- c(min_anom_val, max_anom_val)
-  
-  ## Make plots ----------------------------------------------------------------
-  ## Make overlap plots
-  p_overlap_range <- overlap_range(df_mask, species_name, exp_name,
-    domain       = "W. Atlantic range",
-    xlim         = lims$xlim,
-    ylim         = lims$ylim,
-    main_title   = "domain", 
-  ); p_overlap_range
-  
-  p_overlap_carib <- overlap_range(df_mask_carib, species_name, exp_name,
-    domain       = "Caribbean Sea",
-    xlim         = xlim_carib,
-    ylim         = ylim_carib,
-    main_title   = "domain", 
-    fill_limits  = fill_limits
-  ); p_overlap_carib
-  
-  p_overlap_uscar <- overlap_range(df_mask_uscar, species_name, exp_name,
-    domain       = "U.S. Caribbean",
-    xlim         = xlim_uscar,
-    ylim         = ylim_uscar,
- #   main_title   = "domain", 
-    fill_limits  = fill_limits
-  ); p_overlap_uscar
-  
-  ## Make histogram plots
-  p_hist_range <- anom_histogram_gg(anom_masked, fill_limits); p_hist_range
-  p_hist_carib <- anom_histogram_gg(anom_masked_carib, fill_limits); p_hist_carib
-  p_hist_uscar <- anom_histogram_gg(anom_masked_uscar, fill_limits = fill_limits); p_hist_uscar
-  
-  ## Make summary plots
-  p_summary_range <- anom_summary_bars(anom_masked, species_name, exp_name, "Entire range"); p_summary_range
-  p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, exp_name, "Caribbean"); p_summary_carib
-  p_summary_uscar <- anom_summary_bars(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean"); p_summary_uscar
-  
-  ## ---------------------------------------------------------------------------
-  ## Combine overlap plots
-  ## Plot overlap map, histogram, and summary bar chart together
-  
-  ## Keep one legend (from the Caribbean map, say)
-  leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
-  
-  ## Remove legends from the others
-  a <- p_overlap_range  + theme(legend.position = "none")                 
-  b <- p_overlap_carib  + theme(legend.position = "none")
-  c <- p_overlap_uscar  + theme(legend.position = "none")
-    
-  d <- p_hist_range     + theme(legend.position = "none", plot.title = element_blank())             
-  e <- p_hist_carib     + theme(legend.position = "none", plot.title = element_blank()) 
-  f <- p_hist_uscar     + theme(legend.position = "none", plot.title = element_blank()) 
-
-  g <- p_summary_range  + theme(plot.title = element_blank())             
-  h <- p_summary_carib  + theme(plot.title = element_blank())           
-  i <- p_summary_uscar  + theme(plot.title = element_blank())           
-  
-  ## Rows (Caribbean left, Range right), with labels
-  row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
-                             label_size = 12, label_fontface = "bold")
-  row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
-                             label_size = 12, label_fontface = "bold")
-  row3 <- cowplot::plot_grid(g, h, i, ncol = 3, labels = c("G","H","I"),
-                             label_size = 12, label_fontface = "bold")
-  
-  main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
-                             rel_heights = c(1, 1, 1), align = "hv")
-  final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
-  
-  
-  ## Add the legend on the right
-  final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
-  final_9panel
-  
-  ## Save plot
-  out_name <- paste0(out_dir, species_name, "_", exp_name, "_9panel.png")
-  ggsave(file.path(out_name), final_9panel, 
-         width = 11, height = 11, dpi = 500, bg = "white")
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  ## -----------------------------------------------------------------------------
-  ## Grid cell count histogram and barplot
-  
-  ## ---- HMS-style histogram of anomalies (panel D) ------------------------------
-  ## anom_masked: SpatRaster/Raster* of anomalies already masked to species range
-  ## species_name: string for title
-  ## exp_name: label for x-axis (e.g., "SST st anom" or "o200m st anom")
-  
-  anom_histogram <- function(anom_masked, species_name, exp_name = "", domain = "") {
-    
-    ## Pull raster values
-    vals <- if (inherits(anom_masked, "SpatRaster")) {
-      terra::values(anom_masked, mat = FALSE)
-    } else {
-      raster::values(anom_masked)
-    }
-    vals <- vals[is.finite(vals)]
-    
-    ## Set breaks at 0.25 increments spanning the masked data and use same colors as HMS
-    breaks <- seq(floor(min(vals)), ceiling(max(vals)), by = 0.25)
-    my_colors <- rep("red", length(breaks))
-    my_colors[breaks >= -0.5 & breaks <=  0.5] <- "green"
-    my_colors[breaks <  -0.5 & breaks >= -1.5] <- "yellow"
-    my_colors[breaks >   0.5 & breaks <=  1.5] <- "yellow"
-    my_colors[breaks <  -1.5 & breaks >= -2.0] <- "orange"
-    my_colors[breaks >   1.5 & breaks <=  2.0] <- "orange"
-    
-    ## Make the histogram (freq=FALSE so y-axis is proportion/density)
-    h <- hist(vals,
-              breaks = breaks,
-              freq   = FALSE,
-              col    = my_colors,
-              xlab   = paste(exp_name, "anomalies"),
-              ylab   = "Percent",
-              main   = paste0(exp_name, " | ", species_name, " | ", domain))
-  }
-  
-  par(mfrow=c(1,2))
-  anom_histogram(anom_masked, species_name, exp_name = "0200", domain = "Entire range")  
-  anom_histogram(anom_masked_carib, species_name, exp_name = "0200", domain = "Caribbean")  
-  par(mfrow=c(1,1))
-  
-  p1 <- plot_overlap_range  + theme(legend.position = "none")
-  p2 <- plot_overlap_carib
-  p3 <- as.ggplot(~ anom_histogram(anom_masked,       species_name, exp_name = "O200", domain = "Entire range"))
-  p4 <- as.ggplot(~ anom_histogram(anom_masked_carib, species_name, exp_name = "O200", domain = "Caribbean"))
-  
-  cowplot::plot_grid(
-    cowplot::plot_grid(p1, p2, ncol = 2, labels = c("", "")),
-    cowplot::plot_grid(p3, p4, ncol = 2, labels = c("", "")),
-    ncol = 1,
-    rel_heights = c(1, 1)
-  )
-  
-    
-    
-    # summarized barplot (L/M/H/V) + mean score text
-    
-    # 5) L/M/H/V counts & percents (same logic as HMS)
-    L <- sum(h$counts[h$breaks >= -0.5 & h$breaks <=  0.5], na.rm = TRUE)
-    1M <- sum(h$counts[(h$breaks < -0.5 & h$breaks >= -1.5) |
-                        (h$breaks >  0.5 & h$breaks <=  1.5)], na.rm = TRUE)
-    H <- sum(h$counts[(h$breaks < -1.5 & h$breaks >= -2.0) |
-                        (h$breaks >  1.5 & h$breaks <=  2.0)], na.rm = TRUE)
-    V <- sum(h$counts[h$breaks < -2.0 | h$breaks > 2.0], na.rm = TRUE)
-    
-    tot <- sum(h$counts)
-    Lp <- L / tot; Mp <- M / tot; Hp <- H / tot; Vp <- V / tot
-    
-    # 6) weighted mean exposure score (1,2,3,4 for L,M,H,V)
-    exp_fact_mean <- ((L*1) + (M*2) + (H*3) + (V*4)) / (L + M + H + V)
-    
-    invisible(list(
-      hist_object   = h,
-      breaks        = breaks,
-      Lp = Lp, Mp = Mp, Hp = Hp, Vp = Vp,
-      exp_fact_mean = exp_fact_mean
-    ))
-  }
-  
-  barplot(height = c(res_D$Lp, res_D$Mp, res_D$Hp, res_D$Vp),
-          names.arg = c("L","M","H","V"),
-          col = c("green","yellow","orange","red"),
-          ylab = "Percent", ylim = c(0,1))
-  abline(h = 0)
-  text(x = 1, y = 0.85, labels = round(res_D$exp_fact_mean, 1))
-  
