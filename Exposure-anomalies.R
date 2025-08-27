@@ -16,6 +16,7 @@ library(sf)
 library(viridisLite) 
 library(ggplot2)
 library(rnaturalearth)
+library(scales)
 
 ##------------------------------------------------------------------------------
 ## Set directory paths
@@ -77,11 +78,11 @@ if (length(shp_files) == 0L) stop("No .shp files found in: ", spp_dir)
 # for (i in 1:1){ ## Use for testing
 i = 2
 
-## Read in species distribution
+## Read in species distribution ------------------------------------------------
 sp_file <- shp_files[i]
 species_name <- name_from_shp(sp_file)
 print(paste("Processsing", species_name))
-sp  <- st_read(sp_file, quiet = TRUE) |> st_make_valid()
+sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
 
 ## Conditionally clip lims to the NWA box if it extends beyond it
 lims    <- bbox_with_pad(sp, pad = 0.05)   ## Crop exposure anomolies to species range
@@ -92,6 +93,38 @@ if (needs_clip_x || needs_clip_y) {
                  min(lims$xlim[2], xlim_nwa[2]))
   lims$ylim <- c(max(lims$ylim[1], ylim_nwa[1]),
                  min(lims$ylim[2], ylim_nwa[2]))
+}
+
+
+## Make maps for species distribution ----------------------------------------
+
+plot_distribution <- function (sp, xlim, ylim, domain = NULL) {
+  world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") ## Pullworldmap
+  p_distribution <- ggplot() +  
+    geom_sf(        ## draw land polygons for geographic context
+      data = world,
+      fill = "gray80",  ## fill color for land
+      color = "gray30", ## separates countries
+      linewidth = 0.5
+    ) +
+    geom_sf(        ## draw the species distribution polygon
+      data = sp,
+      fill = "black", color = "black",  ## solid black fill  
+      alpha = 0.5                       ## but semi-transparent so bathy/coastlines show through
+    ) +
+    coord_sf(       ## set the map window (crop) using Caribbean bbox
+      xlim = xlim, ylim = ylim, expand = FALSE  ## no padding around the bbox
+    ) +
+    labs(           ## titles and axis labels
+      title = paste(species_name),
+    ) +
+    theme_minimal() + ## clean base theme
+    theme(                               
+      axis.text  = element_text(color = "black"),   ## axis tick labels black
+      axis.title = element_text(color = "black"),   ## axis title black (if not blank)
+      axis.ticks   = element_line(color = "gray90") ## show axis ticks (theme_minimal hides them by default)
+    )
+  p_distribution
 }
 
 ## -----------------------------------------------------------------------------
@@ -112,39 +145,28 @@ anom_uscar <- crop(anom, ext(xlim_uscar, ylim_uscar)) ## Crop to U.S. Carib
 
 
 ## -----------------------------------------------------------------------------
-## Plotcheck regions
-par(mfrow = c(2,2))
+## Plot disribution and exposure factors
 
-# A) Global anomalies
-plot(anom,
-     main = "A) CMIP anomalies",
-     xlab = "", ylab = "",
-     col = turbo(100))
-maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
-rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
+plot_distribution(sp, lims$xlim, lims$ylim)
+plot_distribution(sp, xlim_carib, ylim_carib)
 
-# B) W. Atlantic
-plot(anom_range,
-     main = "C) W. Atlantic",
-     xlab = "", ylab = "",
-     col = turbo(100))
-maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
-rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
+plot_anomalies <- function (anom, extent = "", carib_box = 'y'){
+  plot(anom,
+       main = paste0 (exp_name, " anomalies: ", extent),
+       xlab = "", ylab = "",
+       col = turbo(100))
+  maps::map("world", add = TRUE, col = "grey20", lwd = 0.6) ## Add countries
+  if (carib_box == 'y'){
+    rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
+  }
+}
 
-# C) Caribbean crop
-plot(anom_carib,
-     main = "C) Caribbean",
-     xlab = "", ylab = "",
-     col = turbo(100))
-maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
-rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
+plot_anomalies(anom,       extent =  "Global", carib_box = 'y')
+plot_anomalies(anom_range, extent =  "W. Atlantic", carib_box = 'y')
+plot_anomalies(anom_carib, extent =  "Caribbean Sea", carib_box = 'y')
+plot_anomalies(anom_uscar, extent =  "U.S. Caribbean", carib_box = 'n')
 
-## D) US Caribbean
-plot(anom_uscar,
-     main = "D) U.S. Caribbean",
-     xlab = "", ylab = "",
-     col = turbo(100))
-maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
+
 
 par(mfrow = c(1,1)) ## Reset plotting layout
 
@@ -179,43 +201,63 @@ par(mfrow = c(1,1)) ## Reset plotting layout
   max_anom_val  <- max(df_mask$anomaly, na.rm = TRUE)
   fill_limits   <- c(min_anom_val, max_anom_val)
   
-  ## ---------------------------------------------------------------------------
-  ## Overlap map plot
-
+  # helper: keep only interior breaks, excluding the min/max limits
+  .clip_interior <- function(b, lims, eps = 1e-8) {
+    b[b > (min(lims) + eps) & b < (max(lims) - eps)]
+  }
+  
   overlap_range <- function(df, species_name, exp_name, domain, anom,
                             xlim, ylim, main_title = "all", 
                             legend_title = NULL, world = NULL, 
                             world_scale = "medium", base_size = 12, 
-                            fill_limits = NULL) {
+                            fill_limits = NULL, tick_n = 4,
+                            minor_by = 1) {
+    
     if (is.null(world)) {
       world <- rnaturalearth::ne_countries(scale = world_scale, returnclass = "sf")
     }
-    if (is.null(legend_title)) {
-      legend_title <- paste0("Standardized \nanomaly\n", exp_name)
-    }
+    if (is.null(legend_title)) legend_title <- paste0("Standardized \nanomaly\n", exp_name)
     if (main_title == "all"){
-      main_title <- paste0(    "Spe: ", species_name, 
-                             "\nExp: ", exp_name, 
-                           "\n\n"     , domain, ", ", nrow(df),  " cells")
+      main_title <- paste0("Spe: ", species_name, "\nExp: ", exp_name,
+                           "\n\n", domain, ", ", nrow(df), " cells")
     } else if (main_title == "domain"){
-      main_title <- paste0(domain, ", ", nrow(df),  " cells")
+      main_title <- paste0(domain, ", ", nrow(df), " cells")
     }
+    
+    # major ticks (rounded) then drop endpoints
+    bx_raw <- scales::breaks_pretty(n = tick_n)(range(xlim))
+    by_raw <- scales::breaks_pretty(n = tick_n)(range(ylim))
+    bx <- .clip_interior(unique(round(bx_raw)), xlim)
+    by <- .clip_interior(unique(round(by_raw)), ylim)
+    
+    # minor graticule
+    lon_minor <- seq(floor(min(xlim)), ceiling(max(xlim)), by = minor_by)
+    lat_minor <- seq(floor(min(ylim)), ceiling(max(ylim)), by = minor_by)
+    
+    lab_lon <- function(x) sprintf("%g°%s", abs(x), ifelse(x < 0, "W", "E"))
+    lab_lat <- function(y) sprintf("%g°%s", abs(y), ifelse(y < 0, "S", "N"))
+    
+    grat_minor <- try(sf::st_graticule(lon = lon_minor, lat = lat_minor, crs = 4326), silent = TRUE)
+    grat_major <- try(sf::st_graticule(lon = bx,        lat = by,        crs = 4326), silent = TRUE)
     
     ggplot() +
       geom_tile(data = df, aes(x = x, y = y, fill = anomaly)) +
+      { if (!inherits(grat_minor, "try-error")) 
+        geom_sf(data = grat_minor, color = "gray90", linewidth = 0.05, alpha = 0.75, inherit.aes = FALSE) } +
+      { if (!inherits(grat_major, "try-error")) 
+        geom_sf(data = grat_major, color = "gray90", linewidth = 0.05, alpha = 0.75, inherit.aes = FALSE) } +
       geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
-      scale_fill_gradientn(colors = turbo(100), 
-                           name = legend_title,
-                           limits = fill_limits) +
-      coord_sf(xlim = xlim, ylim = ylim, expand = FALSE) +
-      labs(title = main_title,
-           x = "", y = "") +
+      scale_fill_gradientn(colors = turbo(100), name = legend_title, limits = fill_limits) +
+      coord_sf(xlim = xlim, ylim = ylim, expand = FALSE, default_crs = sf::st_crs(4326)) +
+      scale_x_continuous(breaks = bx, labels = lab_lon, guide = guide_axis(check.overlap = TRUE)) +
+      scale_y_continuous(breaks = by, labels = lab_lat, guide = guide_axis(check.overlap = TRUE)) +
+      labs(title = main_title, x = "", y = "") +
       theme_minimal(base_size = base_size) +
-      theme(
-        axis.text   = element_text(color = "black"),
-        axis.title  = element_text(color = "black"),
-        axis.ticks  = element_line(color = "gray90")
-      )
+      theme(panel.grid.major = element_blank(),
+            panel.grid.minor = element_blank(),
+            axis.text  = element_text(color = "black"),
+            axis.title = element_text(color = "black"),
+            axis.ticks = element_line(color = "gray90"))
   }
   
   ## Make plots
@@ -232,9 +274,10 @@ par(mfrow = c(1,1)) ## Reset plotting layout
     df           = df_mask_carib,
     species_name = species_name,
     exp_name     = exp_name,
-    domain       = "Caribbean",
+    domain       = "Caribbean Sea",
     xlim         = xlim_carib,
     ylim         = ylim_carib,
+    main_title   = "domain", 
     fill_limits  = fill_limits
   ); p_overlap_carib
   
@@ -354,36 +397,38 @@ par(mfrow = c(1,1)) ## Reset plotting layout
   
   ## Remove legends from the others
   a <- p_overlap_range  + theme(legend.position = "none")                 
-  b <- p_overlap_carib  + theme(legend.position = "none")                 
-  c <- p_hist_range     + theme(legend.position = "none",
-                                plot.title = element_blank())             
-  d <- p_hist_carib     + theme(legend.position = "none",
-                                plot.title = element_blank())             
-  e <- p_summary_range  + theme(plot.title = element_blank())             
-  f <- p_summary_carib  + theme(plot.title = element_blank())           
-  
+  b <- p_overlap_carib  + theme(legend.position = "none")
+  c <- p_overlap_uscar  + theme(legend.position = "none")
+    
+  d <- p_hist_range     + theme(legend.position = "none", plot.title = element_blank())             
+  e <- p_hist_carib     + theme(legend.position = "none", plot.title = element_blank()) 
+  f <- p_hist_uscar     + theme(legend.position = "none", plot.title = element_blank()) 
+
+  g <- p_summary_range  + theme(plot.title = element_blank())             
+  h <- p_summary_carib  + theme(plot.title = element_blank())           
+  i <- p_summary_uscar  + theme(plot.title = element_blank())           
   
   ## Rows (Caribbean left, Range right), with labels
-  row1 <- cowplot::plot_grid(b, a, ncol = 2, labels = c("A","B"),
+  row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
                              label_size = 12, label_fontface = "bold")
-  row2 <- cowplot::plot_grid(d, c, ncol = 2, labels = c("C","D"),
+  row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
                              label_size = 12, label_fontface = "bold")
-  row3 <- cowplot::plot_grid(f, e, ncol = 2, labels = c("E","F"),
+  row3 <- cowplot::plot_grid(g, h, i, ncol = 3, labels = c("G","H","I"),
                              label_size = 12, label_fontface = "bold")
   
   main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
-                             rel_heights = c(2, 1, 1), align = "hv")
-  final_6panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
+                             rel_heights = c(1, 1, 1), align = "hv")
+  final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
   
   
   ## Add the legend on the right
-  final_6panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.15))
-  final_6panel
+  final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
+  final_9panel
   
   ## Save plot
-  out_name <- paste0(out_dir, species_name, "_", exp_name, "_6panel.png")
-  ggsave(file.path(out_name), final_6panel, 
-         width = 8.5, height = 11, dpi = 500, bg = "white")
+  out_name <- paste0(out_dir, species_name, "_", exp_name, "_9panel.png")
+  ggsave(file.path(out_name), final_9panel, 
+         width = 11, height = 11, dpi = 500, bg = "white")
   
 
   
