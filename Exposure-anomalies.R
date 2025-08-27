@@ -164,11 +164,11 @@ plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n
     geom_raster(data = df, aes(x = x, y = y, fill = anom)) +
     geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
     scale_fill_gradientn(colors = turbo(100), 
-                         name =  paste0(exp_name)) +
+                         name =  paste0("Stnd.\nanom\n", exp_name)) +
     coord_sf(xlim = xlim_in, ylim = ylim_in, expand = FALSE, default_crs = sf::st_crs(4326), clip = "on") +
     scale_x_continuous(labels = lab_lon, guide = guide_axis(check.overlap = TRUE)) +
     scale_y_continuous(labels = lab_lat, guide = guide_axis(check.overlap = TRUE)) +
-    labs(title = paste0("Anomalies: ", extent), x = "", y = "") +
+    labs(title = paste0(extent, ": ", exp_name), x = "", y = "") +
     theme_minimal() +
     theme(axis.text = element_text(color = "black"),
           axis.title = element_text(color = "black"),
@@ -212,7 +212,7 @@ plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n
     if (is.null(world)) {
       world <- rnaturalearth::ne_countries(scale = world_scale, returnclass = "sf")
     }
-    if (is.null(legend_title)) legend_title <- paste0("Standardized \nanomaly\n", exp_name)
+    if (is.null(legend_title)) legend_title <- paste0("Standardized\nanomaly\n", exp_name)
     if (main_title == "all"){
       main_title <- paste0("Spe: ", species_name, "\nExp: ", exp_name,
                            "\n\n", domain, ", ", nrow(df), " cells")
@@ -354,8 +354,8 @@ plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n
 ## -----------------------------------------------------------------------------
 ## Outer loop: Species shape files
  
-#for (i in seq_along(shp_files)) {
-for (i in 1:2) {
+for (i in seq_along(shp_files)) {
+#for (i in 1:2) {
   sp_file <- shp_files[i]
   sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid() ## Read in species distribution map
   species_name <- name_from_shp(sp_file)
@@ -365,7 +365,8 @@ for (i in 1:2) {
   cat(sprintf("Processing species (%d/%d): %s\n", i, length(shp_files), species_name))
   
   ## Make species-specific folder inside out_dir
-  species_dir <- paste0(out_dir, species_name,"/")
+  species_name_clean <- gsub(" ", "-", species_name)
+  species_dir <- paste0(out_dir, species_name_clean,"/")
   if (!dir.exists(species_dir)) dir.create(species_dir, recursive = TRUE)
   
   ## Conditionally clip lims to the NWA box if it extends beyond it
@@ -379,17 +380,27 @@ for (i in 1:2) {
                    min(lims$ylim[2], ylim_nwa[2]))
   }
   
+  ## ---- open two PDF devices (onefile=TRUE makes a multi-page PDF) --------
+  dist_pdf_path <- paste0(species_dir, species_name_clean, "_Distribution-Anomalies.pdf")
+  over_pdf_path <- paste0(species_dir, species_name_clean, "_Exposure-Overlap.pdf")
+  
+  grDevices::cairo_pdf(dist_pdf_path, width = 11, height = 11, onefile = TRUE)
+  dev_dist <- grDevices::dev.cur()             # remember device id
+  
+  grDevices::cairo_pdf(over_pdf_path, width = 11, height = 11, onefile = TRUE)
+  dev_over <- grDevices::dev.cur()             # remember device id
+  
   ## ---------------------------------------------------------------------------
   ## Inner loop: exposure factors ----------------------------------------------
-  #for (j in seq_along(nc_files)) {
-  for (j in 1:2) {
+  for (j in seq_along(nc_files)) {
+#  for (j in 1:2) {
     
     ## Set file path and pull exposure factor name
     nc_path  <- nc_files[j]
     exp_name <- exp_name_from_nc(nc_path)
     cat(sprintf("  - Exposure (%d/%d): %s\n", j, length(nc_files), exp_name)) ## Loop printout
     
-    ## Read in anomoly map
+    ## Read in anomaly map
     anom <- rast(nc_path, sub = "anomaly") ## one layer
     anom[anom > 1e19] <- NA ## Fix fill values
     anom  <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
@@ -419,10 +430,10 @@ for (i in 1:2) {
     #six_panel
     
     ## Save plot
-    out_name_dist_plot <- paste0(species_dir, 
-                                 species_name, "_", exp_name, "_Distribution-Anomalies.png"); out_name_overlap_plot
-    ggsave(file.path(out_name_dist_plot), six_panel, 
-           width = 10, height = 10, dpi = 300, bg = "white")
+#    out_name_dist_plot <- paste0(species_dir, 
+#                                 species_name_clean, "_Distribution-Anomalies_", exp_name, ".png"); out_name_overlap_plot
+#    ggsave(file.path(out_name_dist_plot), six_panel, 
+#           width = 10, height = 10, dpi = 300, bg = "white")
     
     
     ## -----------------------------------------------------------------------------
@@ -522,34 +533,17 @@ for (i in 1:2) {
     final_9panel
     
     ## Save plot
-    out_name_overlap_plot <- paste0(species_dir, 
-                                    species_name, "_", exp_name, "_Exposure-Overlap.png"); out_name_overlap_plot
-    ggsave(file.path(out_name_overlap_plot), final_9panel, 
-           width = 11, height = 11, dpi = 400, bg = "white")
+#    out_name_overlap_plot <- paste0(species_dir, 
+#                                    species_name_clean, "_Exposure-Overlap_", exp_name, ".png"); out_name_overlap_plot
+#    ggsave(file.path(out_name_overlap_plot), final_9panel, 
+#           width = 11, height = 11, dpi = 400, bg = "white")
+    
+    ## ---- write one page to each PDF ---------------------------------------
+    grDevices::dev.set(dev_over); print(final_9panel)  # page appended to Exposure-Overlap.pdf
+    grDevices::dev.set(dev_dist); print(six_panel)     # page appended to Distribution-Anomalies.pdf
   }
+  ## ---- close PDFs for this species ----------------------------------------
+  grDevices::dev.set(dev_over); grDevices::dev.off()
+  grDevices::dev.set(dev_dist); grDevices::dev.off()
 }
   
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-## Run loop
-#for (i in 1:length(shp_files)){
-# for (i in 1:1){ ## Use for testing
-i = 2
-
-
-
-## -----------------------------------------------------------------------------
-## Read in exposure anomoly map
-
-exp_nc_file_name <- "o200_1985-2014_2020-2049.nc"
-exp_name <- sub("_.*", "", exp_nc_file_name)
-
