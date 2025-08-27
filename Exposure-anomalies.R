@@ -17,6 +17,8 @@ library(viridisLite)
 library(ggplot2)
 library(rnaturalearth)
 library(scales)
+library(ggplotify) 
+library(patchwork) 
 
 ##------------------------------------------------------------------------------
 ## Set directory paths
@@ -43,6 +45,7 @@ ylim_nwa <- c(-5, 72)
 
 ## -----------------------------------------------------------------------------
 ## Utility functions 
+
 name_from_shp <- function(path) { # Base path -> "Nice Name"
   base <- tools::file_path_sans_ext(basename(path))  # insert space between lower->Upper (CamelCase), e.g., "AtlanticHerring" -> "Atlantic Herring"
   base <- gsub("(?<=[a-z])(?=[A-Z])", " ", base, perl = TRUE)  # replace _, -, . with spaces
@@ -98,7 +101,7 @@ if (needs_clip_x || needs_clip_y) {
 
 ## Make maps for species distribution ----------------------------------------
 
-plot_distribution <- function (sp, xlim, ylim, domain = NULL) {
+plot_distribution <- function (sp, xlim, ylim, title = NULL, domain = NULL) {
   world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") ## Pullworldmap
   p_distribution <- ggplot() +  
     geom_sf(        ## draw land polygons for geographic context
@@ -116,12 +119,12 @@ plot_distribution <- function (sp, xlim, ylim, domain = NULL) {
       xlim = xlim, ylim = ylim, expand = FALSE  ## no padding around the bbox
     ) +
     labs(           ## titles and axis labels
-      title = paste(species_name),
+      title = paste(title),
     ) +
     theme_minimal() + ## clean base theme
     theme(                               
       axis.text  = element_text(color = "black"),   ## axis tick labels black
-      axis.title = element_text(color = "black"),   ## axis title black (if not blank)
+      axis.title = element_text(color = "black", size = 16),   ## axis title black (if not blank)
       axis.ticks   = element_line(color = "gray90") ## show axis ticks (theme_minimal hides them by default)
     )
   p_distribution
@@ -145,31 +148,90 @@ anom_uscar <- crop(anom, ext(xlim_uscar, ylim_uscar)) ## Crop to U.S. Carib
 
 
 ## -----------------------------------------------------------------------------
-## Plot disribution and exposure factors
+## Plot anomalies
 
-plot_distribution(sp, lims$xlim, lims$ylim)
-plot_distribution(sp, xlim_carib, ylim_carib)
-
-plot_anomalies <- function (anom, extent = "", carib_box = 'y'){
+plot_anomalies <- function (anom, extent = "", carib_box = 'y', mar = c(2,2,2,2)){
+  op <- par(no.readonly = TRUE); on.exit(par(op))
+  par(mar = mar)
   plot(anom,
        main = paste0 (exp_name, " anomalies: ", extent),
        xlab = "", ylab = "",
        col = turbo(100))
-  maps::map("world", add = TRUE, col = "grey20", lwd = 0.6) ## Add countries
+  maps::map("world", add = TRUE, col = "grey20", lwd = 0.6)
   if (carib_box == 'y'){
-    rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2], border = "purple", lwd = 2) ## Box Caribbean
+    rect(xlim_carib[1], ylim_carib[1], xlim_carib[2], ylim_carib[2],
+         border = "purple", lwd = 2)
   }
 }
 
-plot_anomalies(anom,       extent =  "Global", carib_box = 'y')
-plot_anomalies(anom_range, extent =  "W. Atlantic", carib_box = 'y')
-plot_anomalies(anom_carib, extent =  "Caribbean Sea", carib_box = 'y')
-plot_anomalies(anom_uscar, extent =  "U.S. Caribbean", carib_box = 'n')
+
+## -----------------------------------------------------------------------------
+## Plot anomalies
+
+plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n') {
+  df <- as.data.frame(anom, xy = TRUE, na.rm = TRUE)
+  names(df)[3] <- "anom"
+  
+  world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+  xlim_in <- range(df$x); ylim_in <- range(df$y)
+  
+  lab_lon <- function(x) sprintf("%g°%s", abs(x), ifelse(x < 0, "W", "E"))
+  lab_lat <- function(y) sprintf("%g°%s", abs(y), ifelse(y < 0, "S", "N"))
+  
+  p <- ggplot() +
+    geom_raster(data = df, aes(x = x, y = y, fill = anom)) +
+    geom_sf(data = world, fill = "gray80", color = "gray30", linewidth = 0.5) +
+    scale_fill_gradientn(colors = turbo(100), 
+                         name =  paste0(exp_name)) +
+    coord_sf(xlim = xlim_in, ylim = ylim_in, expand = FALSE, default_crs = sf::st_crs(4326), clip = "on") +
+    scale_x_continuous(labels = lab_lon, guide = guide_axis(check.overlap = TRUE)) +
+    scale_y_continuous(labels = lab_lat, guide = guide_axis(check.overlap = TRUE)) +
+    labs(title = paste0("Anomalies: ", extent), x = "", y = "") +
+    theme_minimal() +
+    theme(axis.text = element_text(color = "black"),
+          axis.title = element_text(color = "black"),
+          axis.ticks = element_line(color = "gray90"))
+  
+  ## Option: Add rectangle for Caribbean Sea
+  if (carib_box == 'y') {
+    p <- p + annotate("rect",
+                      xmin = xlim_carib[1], xmax = xlim_carib[2],
+                      ymin = ylim_carib[1], ymax = ylim_carib[2],
+                      fill = NA, color = "purple", linewidth = 1
+    )
+  }
+  
+  ## Option: Add rectangle for U.S. Caribbean
+  if (uscar_box == 'y') {
+    p <- p + annotate("rect",
+                      xmin = xlim_uscar[1], xmax = xlim_uscar[2],
+                      ymin = ylim_uscar[1], ymax = ylim_uscar[2],
+                      fill = NA, color = "magenta", linewidth = 1
+    )
+  }
+  p
+}
+
+## -----------------------------------------------------------------------------
+## Plot distribution and exposure factors
 
 
+# Make the six plots
+p1 <- plot_distribution(sp, lims$xlim, lims$ylim, title = species_name) +
+  theme(plot.title = element_text(size = 16))
+p2 <- plot_distribution(sp, xlim_carib, ylim_carib)
+p3 <- plot_anomalies_gg(anom,       extent = "Global",      carib_box = 'y', uscar_box = 'y')
+p4 <- plot_anomalies_gg(anom_range, extent = "W. Atlantic", carib_box = 'y', uscar_box = 'y')
+p5 <- plot_anomalies_gg(anom_carib, extent = "Caribbean Sea", uscar_box = 'y')
+p6 <- plot_anomalies_gg(anom_uscar, extent = "U.S. Caribbean")
 
-par(mfrow = c(1,1)) ## Reset plotting layout
-
+## Arrange into 2 columns × 3 rows
+six_panel <- (
+  (p1 | p2) / (p3 | p4) / (p5 | p6)
+  ) + 
+  plot_layout(heights = c(1.5, 1, 1)) + ## First row 1.5× larger
+  plot_annotation(tag_levels = 'A') 
+six_panel
 
   ## -----------------------------------------------------------------------------
   ## Map overlap
