@@ -367,213 +367,234 @@ plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n
 ##
 ## Run loops
   
+  
+## Clean graphics devices (optional, but helps if devices leaked earlier)
+while (!is.null(grDevices::dev.list())) grDevices::dev.off()
+  
 ## -----------------------------------------------------------------------------
-## Outer loop: Species shape files
- 
-for (i in seq_along(shp_files)) {
-#for (i in 1:2) {
-  sp_file <- shp_files[i]
-  sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid() ## Read in species distribution map
-  species_name <- name_from_shp(sp_file)
-  
-  ## Loop printout
-  cat("\n------------------------------------------------------------\n")
-  cat(sprintf("Processing species (%d/%d): %s\n", i, length(shp_files), species_name))
-  
-  ## Make species-specific folder inside out_dir
-  species_name_clean <- gsub(" ", "-", species_name)
-  species_dir <- paste0(out_dir, species_name_clean,"/")
-  if (!dir.exists(species_dir)) dir.create(species_dir, recursive = TRUE)
-  
-  ## Conditionally clip lims to the NWA box if it extends beyond it
-  lims    <- bbox_with_pad(sp, pad = 0.05)   ## Crop exposure anomolies to species range
-  needs_clip_x <- lims$xlim[1] < xlim_nwa[1] || lims$xlim[2] > xlim_nwa[2]
-  needs_clip_y <- lims$ylim[1] < ylim_nwa[1] || lims$ylim[2] > ylim_nwa[2]
-  if (needs_clip_x || needs_clip_y) {
-    lims$xlim <- c(max(lims$xlim[1], xlim_nwa[1]),
-                   min(lims$xlim[2], xlim_nwa[2]))
-    lims$ylim <- c(max(lims$ylim[1], ylim_nwa[1]),
-                   min(lims$ylim[2], ylim_nwa[2]))
+## Process species shape files
+
+  ## Open PDF graphics maker ---------------------------------------------------
+  safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
+    has_cairo <- tryCatch(isTRUE(base::capabilities("cairo")), error = function(e) FALSE)
+    if (has_cairo) {
+      ok <- tryCatch({
+        grDevices::cairo_pdf(path, width = width, height = height, onefile = onefile)
+        TRUE
+      }, error = function(e) FALSE)
+      if (ok) return(invisible(NULL))
+    }
+    grDevices::pdf(path, width = width, height = height, onefile = onefile, useDingbats = FALSE)
   }
   
-  ## ---- open two PDF devices (onefile=TRUE makes a multi-page PDF) --------
+  species_name_clean <- function(x) gsub(" ", "-", x)
   
-  ## Set PDF file paths
-  dist_pdf_path <- paste0(species_dir, species_name_clean, "_Distribution-Anomalies.pdf")
-  over_pdf_path <- paste0(species_dir, species_name_clean, "_Exposure-Overlap.pdf")
+
+## -----------------------------------------------------------------------------
+## Core function: Process species shape files and make maps
   
-  ## open both PDFs
-  safe_open_pdf(dist_pdf_path, width = 11, height = 11, onefile = TRUE)
-  dev_dist <- grDevices::dev.cur()
-  on.exit({ if (!is.null(grDevices::dev.list()) && dev_dist %in% grDevices::dev.list()) {
-    grDevices::dev.set(dev_dist); grDevices::dev.off()
-  } }, add = TRUE)
-  
-  safe_open_pdf(over_pdf_path, width = 11, height = 11, onefile = TRUE)
-  dev_over <- grDevices::dev.cur()
-  on.exit({ if (!is.null(grDevices::dev.list()) && dev_over %in% grDevices::dev.list()) {
-    grDevices::dev.set(dev_over); grDevices::dev.off()
-  } }, add = TRUE)
-  
-  
-  ## ---------------------------------------------------------------------------
-  ## Inner loop: exposure factors ----------------------------------------------
-  for (j in seq_along(nc_files)) {
-#  for (j in 1:2) {
+process_species <- function(sp_file) {
+    ## ---- setup species -------------------------------------------------------
+    sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
+    species_name <- name_from_shp(sp_file)
+    sname <- species_name_clean(species_name)
     
-    ## Set file path and pull exposure factor name
-    nc_path  <- nc_files[j]
-    exp_name <- exp_name_from_nc(nc_path)
-    cat(sprintf("  - Exposure (%d/%d): %s\n", j, length(nc_files), exp_name)) ## Loop printout
+    species_dir <- file.path(out_dir, sname)
+    if (!dir.exists(species_dir)) dir.create(species_dir, recursive = TRUE)
     
-    ## Read in anomaly map
-    anom <- rast(nc_path, sub = "anomaly") ## one layer
-    anom[anom > 1e19] <- NA ## Fix fill values
-    anom  <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
+    cat("\n------------------------------------------------------------\n")
+    cat(sprintf("Processing species: %s\n", species_name))
     
-    ## Crop to ranges: Entire W. Atlantic range, Caribbean Sea, and U.S. Caribbean
-    anom_range <- crop(anom, extent(c(lims$xlim, lims$ylim)))
-    anom_carib <- crop(anom, ext(xlim_carib, ylim_carib)) ## Crop to Caribbean bb
-    anom_uscar <- crop(anom, ext(xlim_uscar, ylim_uscar)) ## Crop to U.S. Carib
+    ## bbox/clip using your existing code ...
+    lims    <- bbox_with_pad(sp, pad = 0.05)
+    needs_clip_x <- lims$xlim[1] < xlim_nwa[1] || lims$xlim[2] > xlim_nwa[2]
+    needs_clip_y <- lims$ylim[1] < ylim_nwa[1] || lims$ylim[2] > ylim_nwa[2]
+    if (needs_clip_x || needs_clip_y) {
+      lims$xlim <- c(max(lims$xlim[1], xlim_nwa[1]), min(lims$xlim[2], xlim_nwa[2]))
+      lims$ylim <- c(max(lims$ylim[1], ylim_nwa[1]), min(lims$ylim[2], ylim_nwa[2]))
+    }
+    
+    ## ---- open two PDF devices -----------------------------------------------
+    dist_pdf_path <- file.path(species_dir, paste0(sname, "_Distribution-Anomalies.pdf"))
+    over_pdf_path <- file.path(species_dir, paste0(sname, "_Exposure-Overlap.pdf"))
+    
+    safe_open_pdf(dist_pdf_path, width = 11, height = 11, onefile = TRUE)
+    dev_dist <- grDevices::dev.cur()
+    on.exit({
+      if (!is.null(grDevices::dev.list()) && dev_dist %in% unlist(grDevices::dev.list())) {
+        grDevices::dev.set(dev_dist); grDevices::dev.off()
+      }
+    }, add = TRUE)
+    
+    safe_open_pdf(over_pdf_path, width = 11, height = 11, onefile = TRUE)
+    dev_over <- grDevices::dev.cur()
+    on.exit({
+      if (!is.null(grDevices::dev.list()) && dev_over %in% unlist(grDevices::dev.list())) {
+        grDevices::dev.set(dev_over); grDevices::dev.off()
+      }
+    }, add = TRUE)
     
     ## -----------------------------------------------------------------------------
-    ## Figure I: Make distribution maps
+    ## Inner loop over exposures ------------------------------------------
+    for (j in seq_along(nc_files)) {
+      #  for (j in 1:2) {
+      
+      ## Set file path and pull exposure factor name
+      nc_path  <- nc_files[j]
+      exp_name <- exp_name_from_nc(nc_path)
+      cat(sprintf("  - Exposure (%d/%d): %s\n", j, length(nc_files), exp_name)) ## Loop printout
+      
+      ## Read in anomaly map
+      anom <- rast(nc_path, sub = "anomaly") ## one layer
+      anom[anom > 1e19] <- NA ## Fix fill values
+      anom  <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
+      
+      ## Crop to ranges: Entire W. Atlantic range, Caribbean Sea, and U.S. Caribbean
+      anom_range <- crop(anom, extent(c(lims$xlim, lims$ylim)))
+      anom_carib <- crop(anom, ext(xlim_carib, ylim_carib)) ## Crop to Caribbean bb
+      anom_uscar <- crop(anom, ext(xlim_uscar, ylim_uscar)) ## Crop to U.S. Carib
+      
+      ## -----------------------------------------------------------------------------
+      ## Figure I: Make distribution maps
+      
+      p1 <- plot_distribution(sp, lims$xlim, lims$ylim, title = species_name) +
+        theme(plot.title = element_text(size = 16))
+      p2 <- plot_distribution(sp, xlim_carib, ylim_carib)
+      p3 <- plot_anomalies_gg(anom,       extent = "Global",      carib_box = 'y', uscar_box = 'y')
+      p4 <- plot_anomalies_gg(anom_range, extent = "W. Atlantic", carib_box = 'y', uscar_box = 'y')
+      p5 <- plot_anomalies_gg(anom_carib, extent = "Caribbean Sea", uscar_box = 'y')
+      p6 <- plot_anomalies_gg(anom_uscar, extent = "U.S. Caribbean")
+      
+      ## Arrange into 2 columns × 3 rows
+      six_panel <- (
+        (p1 | p2) / (p3 | p4) / (p5 | p6)
+      ) + 
+        plot_layout(heights = c(1.5, 1, 1)) + ## First row 1.5× larger
+        plot_annotation(tag_levels = 'A') 
+      #six_panel
+      
+      ## Save plot
+      #    out_name_dist_plot <- paste0(species_dir, 
+      #                                 species_name_clean, "_Distribution-Anomalies_", exp_name, ".png"); out_name_overlap_plot
+      #    ggsave(file.path(out_name_dist_plot), six_panel, 
+      #           width = 10, height = 10, dpi = 300, bg = "white")
+      
+      
+      ## -----------------------------------------------------------------------------
+      ## Figure II II: Make masks and map overlaps
+      
+      ## Vectorize species
+      sp      <- st_transform(sp, crs(anom_range))  ## match raster CRS
+      spv     <- vect(sp)
+      
+      ## Mask cover species range (or W. Atlantic)
+      mask_cover  <- rasterize(spv, anom_range, field = 1, background = NA, cover = TRUE)
+      anom_masked <- mask(anom_range, mask_cover)
+      
+      ## Mask cover Caribbean
+      anom_masked_carib <- crop(anom_masked, carib_ext)
+      anom_masked_uscar <- crop(anom_masked, uscar_ext)
+      
+      ## Make dataframe for masked values
+      ## anom_masked is a SpatRaster/Raster* (masked by species footprint). Convert it to df for ggplot. 
+      df_mask       <- as.data.frame(anom_masked, xy = TRUE, na.rm = TRUE)
+      df_mask_carib <- as.data.frame(anom_masked_carib, xy = TRUE, na.rm = TRUE)
+      df_mask_uscar <- as.data.frame(anom_masked_uscar, xy = TRUE, na.rm = TRUE)
+      
+      ## Compute global min/max to use for all the plots
+      min_anom_val  <- min(df_mask$anomaly, na.rm = TRUE)
+      max_anom_val  <- max(df_mask$anomaly, na.rm = TRUE)
+      fill_limits   <- c(min_anom_val, max_anom_val)
+      
+      ## ---------------------------------------------------------------------------
+      ## Call plot functions to make plots
+      
+      ## Make overlap plots
+      p_overlap_range <- overlap_range(df_mask, species_name, exp_name,
+                                       domain       = "W. Atlantic range",
+                                       xlim         = lims$xlim,
+                                       ylim         = lims$ylim,
+                                       main_title   = "domain", 
+      )
+      p_overlap_carib <- overlap_range(df_mask_carib, species_name, exp_name,
+                                       domain       = "Caribbean Sea",
+                                       xlim         = xlim_carib,
+                                       ylim         = ylim_carib,
+                                       main_title   = "domain", 
+                                       fill_limits  = fill_limits
+      )
+      
+      p_overlap_uscar <- overlap_range(df_mask_uscar, species_name, exp_name,
+                                       domain       = "U.S. Caribbean",
+                                       xlim         = xlim_uscar,
+                                       ylim         = ylim_uscar,
+                                       #   main_title   = "domain", 
+                                       fill_limits  = fill_limits
+      )
+      
+      ## Make histogram plots
+      p_hist_range <- anom_histogram_gg(anom_masked, fill_limits)
+      p_hist_carib <- anom_histogram_gg(anom_masked_carib, fill_limits)
+      p_hist_uscar <- anom_histogram_gg(anom_masked_uscar, fill_limits = fill_limits)
+      
+      ## Make summary plots
+      p_summary_range <- anom_summary_bars(anom_masked, species_name, exp_name, "Entire range")
+      p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, exp_name, "Caribbean")
+      p_summary_uscar <- anom_summary_bars(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
+      
+      ## ---------------------------------------------------------------------------
+      ## Combine overlap plots
+      ## Plot overlap map, histogram, and summary bar chart together
+      
+      ## Keep one legend (from the Caribbean map, say)
+      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
+      
+      ## Remove legends from the others
+      a <- p_overlap_range  + theme(legend.position = "none")                 
+      b <- p_overlap_carib  + theme(legend.position = "none")
+      c <- p_overlap_uscar  + theme(legend.position = "none")
+      d <- p_hist_range     + theme(legend.position = "none", plot.title = element_blank())             
+      e <- p_hist_carib     + theme(legend.position = "none", plot.title = element_blank()) 
+      f <- p_hist_uscar     + theme(legend.position = "none", plot.title = element_blank()) 
+      g <- p_summary_range  + theme(plot.title = element_blank())             
+      h <- p_summary_carib  + theme(plot.title = element_blank())           
+      i <- p_summary_uscar  + theme(plot.title = element_blank())           
+      
+      ## Make rows and add labels
+      row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
+                                 label_size = 12, label_fontface = "bold")
+      row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
+                                 label_size = 12, label_fontface = "bold")
+      row3 <- cowplot::plot_grid(g, h, i, ncol = 3, labels = c("G","H","I"),
+                                 label_size = 12, label_fontface = "bold")
+      main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
+                                 rel_heights = c(1, 1, 1), align = "hv")
+      final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
+      
+      
+      ## Add the legend on the right
+      final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
+      final_9panel
+      
+      ## Save plot
+      #    out_name_overlap_plot <- paste0(species_dir, 
+      #                                    species_name_clean, "_Exposure-Overlap_", exp_name, ".png"); out_name_overlap_plot
+      #    ggsave(file.path(out_name_overlap_plot), final_9panel, 
+      #           width = 11, height = 11, dpi = 400, bg = "white")
+      
+      ## ---- write one page to each PDF ---------------------------------------
+      grDevices::dev.set(dev_over); print(final_9panel)  # page appended to Exposure-Overlap.pdf
+      grDevices::dev.set(dev_dist); print(six_panel)     # page appended to Distribution-Anomalies.pdf
+    }
     
-    p1 <- plot_distribution(sp, lims$xlim, lims$ylim, title = species_name) +
-      theme(plot.title = element_text(size = 16))
-    p2 <- plot_distribution(sp, xlim_carib, ylim_carib)
-    p3 <- plot_anomalies_gg(anom,       extent = "Global",      carib_box = 'y', uscar_box = 'y')
-    p4 <- plot_anomalies_gg(anom_range, extent = "W. Atlantic", carib_box = 'y', uscar_box = 'y')
-    p5 <- plot_anomalies_gg(anom_carib, extent = "Caribbean Sea", uscar_box = 'y')
-    p6 <- plot_anomalies_gg(anom_uscar, extent = "U.S. Caribbean")
-    
-    ## Arrange into 2 columns × 3 rows
-    six_panel <- (
-      (p1 | p2) / (p3 | p4) / (p5 | p6)
-    ) + 
-      plot_layout(heights = c(1.5, 1, 1)) + ## First row 1.5× larger
-      plot_annotation(tag_levels = 'A') 
-    #six_panel
-    
-    ## Save plot
-#    out_name_dist_plot <- paste0(species_dir, 
-#                                 species_name_clean, "_Distribution-Anomalies_", exp_name, ".png"); out_name_overlap_plot
-#    ggsave(file.path(out_name_dist_plot), six_panel, 
-#           width = 10, height = 10, dpi = 300, bg = "white")
-    
-    
-    ## -----------------------------------------------------------------------------
-    ## Figure II II: Make masks and map overlaps
-    
-    ## Vectorize species
-    sp      <- st_transform(sp, crs(anom_range))  ## match raster CRS
-    spv     <- vect(sp)
-    
-    ## Mask cover species range (or W. Atlantic)
-    mask_cover  <- rasterize(spv, anom_range, field = 1, background = NA, cover = TRUE)
-    anom_masked <- mask(anom_range, mask_cover)
-    
-    ## Mask cover Caribbean
-    anom_masked_carib <- crop(anom_masked, carib_ext)
-    anom_masked_uscar <- crop(anom_masked, uscar_ext)
-    
-    ## Make dataframe for masked values
-    ## anom_masked is a SpatRaster/Raster* (masked by species footprint). Convert it to df for ggplot. 
-    df_mask       <- as.data.frame(anom_masked, xy = TRUE, na.rm = TRUE)
-    df_mask_carib <- as.data.frame(anom_masked_carib, xy = TRUE, na.rm = TRUE)
-    df_mask_uscar <- as.data.frame(anom_masked_uscar, xy = TRUE, na.rm = TRUE)
-    
-    ## Compute global min/max to use for all the plots
-    min_anom_val  <- min(df_mask$anomaly, na.rm = TRUE)
-    max_anom_val  <- max(df_mask$anomaly, na.rm = TRUE)
-    fill_limits   <- c(min_anom_val, max_anom_val)
-    
-    ## ---------------------------------------------------------------------------
-    ## Call plot functions to make plots
-    
-    ## Make overlap plots
-    p_overlap_range <- overlap_range(df_mask, species_name, exp_name,
-                                     domain       = "W. Atlantic range",
-                                     xlim         = lims$xlim,
-                                     ylim         = lims$ylim,
-                                     main_title   = "domain", 
-    )
-    p_overlap_carib <- overlap_range(df_mask_carib, species_name, exp_name,
-                                     domain       = "Caribbean Sea",
-                                     xlim         = xlim_carib,
-                                     ylim         = ylim_carib,
-                                     main_title   = "domain", 
-                                     fill_limits  = fill_limits
-    )
-    
-    p_overlap_uscar <- overlap_range(df_mask_uscar, species_name, exp_name,
-                                     domain       = "U.S. Caribbean",
-                                     xlim         = xlim_uscar,
-                                     ylim         = ylim_uscar,
-                                     #   main_title   = "domain", 
-                                     fill_limits  = fill_limits
-    )
-    
-    ## Make histogram plots
-    p_hist_range <- anom_histogram_gg(anom_masked, fill_limits)
-    p_hist_carib <- anom_histogram_gg(anom_masked_carib, fill_limits)
-    p_hist_uscar <- anom_histogram_gg(anom_masked_uscar, fill_limits = fill_limits)
-    
-    ## Make summary plots
-    p_summary_range <- anom_summary_bars(anom_masked, species_name, exp_name, "Entire range")
-    p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, exp_name, "Caribbean")
-    p_summary_uscar <- anom_summary_bars(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
-    
-    ## ---------------------------------------------------------------------------
-    ## Combine overlap plots
-    ## Plot overlap map, histogram, and summary bar chart together
-    
-    ## Keep one legend (from the Caribbean map, say)
-    leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
-    
-    ## Remove legends from the others
-    a <- p_overlap_range  + theme(legend.position = "none")                 
-    b <- p_overlap_carib  + theme(legend.position = "none")
-    c <- p_overlap_uscar  + theme(legend.position = "none")
-    d <- p_hist_range     + theme(legend.position = "none", plot.title = element_blank())             
-    e <- p_hist_carib     + theme(legend.position = "none", plot.title = element_blank()) 
-    f <- p_hist_uscar     + theme(legend.position = "none", plot.title = element_blank()) 
-    g <- p_summary_range  + theme(plot.title = element_blank())             
-    h <- p_summary_carib  + theme(plot.title = element_blank())           
-    i <- p_summary_uscar  + theme(plot.title = element_blank())           
-    
-    ## Make rows and add labels
-    row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
-                               label_size = 12, label_fontface = "bold")
-    row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
-                               label_size = 12, label_fontface = "bold")
-    row3 <- cowplot::plot_grid(g, h, i, ncol = 3, labels = c("G","H","I"),
-                               label_size = 12, label_fontface = "bold")
-    main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
-                               rel_heights = c(1, 1, 1), align = "hv")
-    final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
-    
-    
-    ## Add the legend on the right
-    final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
-    final_9panel
-    
-    ## Save plot
-#    out_name_overlap_plot <- paste0(species_dir, 
-#                                    species_name_clean, "_Exposure-Overlap_", exp_name, ".png"); out_name_overlap_plot
-#    ggsave(file.path(out_name_overlap_plot), final_9panel, 
-#           width = 11, height = 11, dpi = 400, bg = "white")
-    
-    ## ---- write one page to each PDF ---------------------------------------
-    grDevices::dev.set(dev_over); print(final_9panel)  # page appended to Exposure-Overlap.pdf
-    grDevices::dev.set(dev_dist); print(six_panel)     # page appended to Distribution-Anomalies.pdf
+    ## Optional: force a GC to release file handles on Windows immediately
+    invisible(gc())
   }
-  ## ---- close PDFs for this species ----------------------------------------
-  if (!is.null(dev_over) && dev_over %in% unlist(grDevices::dev.list())) {
-    grDevices::dev.set(dev_over); print(final_9panel)
-  }
-  if (!is.null(dev_dist) && dev_dist %in% unlist(grDevices::dev.list())) {
-    grDevices::dev.set(dev_dist); print(six_panel)
-  }
-}
   
+## Run loop for all species, with error isolation per species -----------------
+  for (i in seq_along(shp_files)) {
+    try(process_species(shp_files[i]), silent = TRUE)
+  }
+  
+## Final graphics cleanup: close any straggling devices
+while (!is.null(grDevices::dev.list())) grDevices::dev.off()
