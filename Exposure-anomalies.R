@@ -79,12 +79,6 @@ exp_name_from_nc <- function(path) {
   sub("_.*$", "", basename(path))
 }
 
-slugify <- function(name) { ## "Nice Name" -> "nice-name" (for filenames/ids)
-  out <- tolower(name)
-  out <- gsub("[^a-z0-9]+", "-", out)
-  gsub("(^-|-$)", "", out)
-}
-
 ## Function to get bounding box from spatial distribution
 bbox_with_pad <- function(sf_obj, pad = 0.05){
   bb <- st_bbox(sf_obj)
@@ -94,19 +88,18 @@ bbox_with_pad <- function(sf_obj, pad = 0.05){
        ylim = c(bb["ymin"] - pad*dy, bb["ymax"] + pad*dy))
 }
 
-## Open pdf reader
-#safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
-#  has_cairo <- tryCatch(isTRUE(base::capabilities("cairo")), error = function(e) FALSE)
-#  if (has_cairo) {
-#    ok <- tryCatch({
-#      grDevices::cairo_pdf(path, width = width, height = height, onefile = onefile)
-#      TRUE
-#    }, error = function(e) FALSE)
-#    if (ok) return(invisible())
-#    # fall through to base pdf() if cairo_pdf() failed
-#  }
-#  grDevices::pdf(path, width = width, height = height, onefile = onefile, useDingbats = FALSE)
-#}
+## Open PDF graphics maker ---------------------------------------------------
+safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
+  has_cairo <- tryCatch(isTRUE(base::capabilities("cairo")), error = function(e) FALSE)
+  if (has_cairo) {
+    ok <- tryCatch({
+      grDevices::cairo_pdf(path, width = width, height = height, onefile = onefile)
+      TRUE
+    }, error = function(e) FALSE)
+    if (ok) return(invisible(NULL))
+  }
+  grDevices::pdf(path, width = width, height = height, onefile = onefile, useDingbats = FALSE)
+}
 
 ## Make clean species name (e.g., Atlantic Herring to Atlantic-Herring)  
 species_name_clean <- function(x) gsub(" ", "-", x)
@@ -166,7 +159,7 @@ plot_anomalies <- function (anom, exp_name, extent = "", carib_box = 'y', mar = 
 
 ## -----------------------------------------------------------------------------
 ## Plot anomalies with GG-Plots
-## Makes compiling with distribution maps easioer
+## Makes compiling with distribution maps easier
 
 plot_anomalies_gg <- function(anom, exp_name, extent = "", carib_box = 'n', uscar_box = 'n') {
   df <- as.data.frame(anom, xy = TRUE, na.rm = TRUE)
@@ -375,20 +368,6 @@ while (!is.null(grDevices::dev.list())) grDevices::dev.off()
   
 ## -----------------------------------------------------------------------------
 ## Process species shape files
-
-## Open PDF graphics maker ---------------------------------------------------
-  safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
-    has_cairo <- tryCatch(isTRUE(base::capabilities("cairo")), error = function(e) FALSE)
-    if (has_cairo) {
-      ok <- tryCatch({
-        grDevices::cairo_pdf(path, width = width, height = height, onefile = onefile)
-        TRUE
-      }, error = function(e) FALSE)
-      if (ok) return(invisible(NULL))
-    }
-    grDevices::pdf(path, width = width, height = height, onefile = onefile, useDingbats = FALSE)
-  }
-
 
 ## -----------------------------------------------------------------------------
 ## Core function: Process species shape files and make maps
