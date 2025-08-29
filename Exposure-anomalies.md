@@ -1,8 +1,61 @@
-# Caribbean CVA: Exposure Analyses
-This script creates figures to evaluate climate exposures for federally managed and ecologically important species in the U.S. Caribbean.
+# Caribbean CVA: Exposure Factor Analyses
+This script synthesizes spatial biological and oceanographic information to help evaluate climate exposures for federally managed and ecologically important species in the U.S. Caribbean. The first set of maps produced shows a species' distribution at two scales and exposure factors at four scales. These provide context for the **exposure overlap figures**, which display the spatial overlap between the species distribution and the anomalies, along with a histogram of this data and a categorical bar summary. For the Caribbean CVA, the workflow to produce these maps involves looping over 25 species and 13 exposure factors, resulting in a total of 650 pages and 9,750 plots. These are grouped into PDFs by species and exposure factor for review by the CVA experts. 
+
+## Final products
+**A. Distribution + Anomaly Panel (2 × 3 grid)**  
+For each species–exposure combination, a six-panel figure is created that shows:
+1. **Species distribution (W. Atlantic bbox)** — clean polygon map with coastline context.  
+2. **Species distribution (Caribbean bbox)** — zoomed map for regional context.  
+3. **Global anomaly map** for the selected exposure factor.  
+4. **W. Atlantic anomaly map** (subset of global).  
+5. **Caribbean Sea anomaly map** (subset of global; U.S. Caribbean box optionally shown).  
+6. **U.S. Caribbean anomaly map**.  
+
+This panel is assembled with **patchwork** and saved to:
+- A **multi-page PDF** (one page per exposure factor) named `"<species>_Distribution-Anomalies.pdf"`.
+- A **PNG** per exposure factor under `.../Distribution-Anomalies/`.
+
+**B. Exposure–Overlap Panel (3 × 3 grid; tagged A–I)**  
+For the **W. Atlantic range**, **Caribbean Sea**, and **U.S. Caribbean** domains, the code builds:
+1. **Overlap map** (anomaly tiles within the species footprint).  
+2. **Histogram** of standardized anomalies (mask-consistent and scale-aligned).  
+3. **Categorical bar summary** of anomalies (counts + % in five bins).  
+
+The nine panels are combined into a figure with a **single shared legend**, then saved to:
+- A **multi-page PDF** (one page per exposure factor) named `"<species>_Exposure-Overlap.pdf"`.
+- A **PNG** per exposure factor under `.../Exposure-Overlap/`.
+
+---
+
+### Spatial domains (extents)
+All figures are rendered for three consistent spatial windows:
+- **Northwest Atlantic (W. Atlantic) range** — a padded species-derived bbox clipped to a project-wide W. Atlantic frame.  
+- **Caribbean Sea** — fixed `xlim_carib`, `ylim_carib`.  
+- **U.S. Caribbean** — fixed `xlim_uscar`, `ylim_uscar`.
+
+This ensures comparability across species and exposures, while keeping maps performant and focused.
 
 ---
 ## Setup
+
+### Geographic extent 
+Define spatial domains used in plotting and analysis. 
+Bounding box: W, E, S, N
+
+```r
+## Caribbean Sea
+xlim_carib <- c(-92, -57)
+ylim_carib <- c(  6,  28)
+
+## U.S. Caribbean
+xlim_uscar <- c(-69, -63.0)
+ylim_uscar <- c( 16,  20.0)
+
+## W. Atlantic Ocean
+xlim_nwa <- c(-99, -40)  # W Atlantic: 99°W to 40°W
+ylim_nwa <- c( -5,  72)
+```
+
 ### Packages needed
 ```r
 library(dplyr)        # Data wrangling
@@ -29,23 +82,83 @@ project/
    └─ exposure-overlap/                   # PDFs & PNGs will be written here
 ```
 
-### Set geographic extent 
-Define spatial domains used in plotting and analysis. 
-Bounding box: W, E, S, N
-
+Output directory structure:
 ```r
-## Caribbean Sea
-xlim_carib <- c(-92, -57)
-ylim_carib <- c(  6,  28)
-
-## U.S. Caribbean
-xlim_uscar <- c(-69, -63.0)
-ylim_uscar <- c( 16,  20.0)
-
-## W. Atlantic Ocean
-xlim_nwa <- c(-99, -40)  # W Atlantic: 99°W to 40°W
-ylim_nwa <- c( -5,  72)
+project/
+└─ outputs/
+└─ exposure-overlap/
+└─ <species-slug>/
+├─ <species>_Distribution-Anomalies.pdf # 1 page per exposure factor
+├─ <species>_Exposure-Overlap.pdf # 1 page per exposure factor
+├─ Distribution-Anomalies/
+│ └─ <species>Distribution-Anomalies<exp>.png
+└─ Exposure-Overlap/
+└─ <species>Exposure-Overlap<exp>.png
 ```
+
+---
+
+# Workflow and functions
+
+#### 1) Outer loop: per species shapefile
+**Function:** `process_species(sp_file)`
+
+**What it does**
+- **Read + validate geometry:** `sf::st_read()` then `st_make_valid()`.
+- **Standardize names:** Get a display name with `name_from_shp()` and a file-safe slug via `species_name_clean()`.
+- **Compute plotting bbox:** `bbox_with_pad(sp, pad = 0.05)`; clip to the W. Atlantic project window if needed.
+- **Prepare outputs:** Create `.../<species-slug>/` and open two multi-page PDFs using `safe_open_pdf()`:
+  - `.../<species>_Distribution-Anomalies.pdf`
+  - `.../<species>_Exposure-Overlap.pdf`
+- **Hold devices open** for the inner loop to append one page per exposure factor.
+
+
+---
+
+#### 2) Inner loop: per exposure factor (NetCDF anomaly file)
+**Driver:** a `for` loop over `nc_files` inside `process_species()`.
+
+**Steps (per exposure)**
+1. **Identify exposure:** `exp_name <- exp_name_from_nc(nc_path)`.  
+2. **Load anomaly raster:**  
+   - `anom <- terra::rast(nc_path, sub = "anomaly")`  
+   - Replace fill values with `NA`, `rotate()` from 0–360° to −180–180°.  
+3. **Crop by domains:**  
+   - `anom_range` (species bbox, W. Atlantic), `anom_carib`, `anom_uscar`.  
+4. **Build Figure A (2 × 3):**  
+   - Species maps: `plot_distribution()` (W. Atlantic & Caribbean).  
+   - Anomaly maps: `plot_anomalies_gg()` for Global, W. Atlantic, Caribbean, U.S. Caribbean.  
+   - Assemble with `patchwork`, enlarge first row, add panel tags A–F.  
+5. **Mask by species footprint:**  
+   - Reproject species to raster CRS; `rasterize(..., cover=TRUE)` to include edge cells.  
+   - `anom_masked` for W. Atlantic; then crop to Caribbean and U.S. Caribbean.  
+6. **Shared color limits:**  
+   - Compute `fill_limits` from masked W. Atlantic values to align legends and x-axes across panels.  
+7. **Build Figure B (3 × 3):**  
+   - Overlap maps: `overlap_range()` (W. Atlantic, Caribbean, U.S. Caribbean).  
+   - Histograms: `anom_histogram_gg()` (all three domains).  
+   - Categorical summaries: `anom_summary_bars()` (all three domains).  
+   - Remove duplicate legends; extract a single legend with **cowplot**; assemble A–I.  
+8. **Write outputs:**  
+   - Append **one page** to each open PDF device (A → Distribution–Anomalies; B → Exposure–Overlap).  
+   - Save **PNGs** for both figures under the species directory.
+
+### Key plotting functions
+- **`plot_distribution(sp, xlim, ylim, title)`** — species range maps with coastlines.  
+- **`plot_anomalies_gg(anom, exp_name, extent, carib_box, uscar_box)`** — tidy anomaly maps (global & subdomains).  
+- **`overlap_range(df, species_name, exp_name, domain, xlim, ylim, ...)`** — anomaly tiles within species mask + graticules.  
+- **`anom_histogram_gg(r, fill_limits)`** — distribution of masked anomaly values (bin-colored, 0-line).  
+- **`anom_summary_bars(r, species_name, exp_name, domain)`** — 5-bin categorical summary with counts and % labels.
+
+### Reproducibility and comparability tips
+- **Color limits fixed per exposure:** Use `fill_limits` so all panels for a given exposure share the same scale (improves cross-domain comparison). Consider project-wide fixed limits if you plan to compare across species, too.  
+- **Validate CRS early:** Ensure species polygons and rasters align (`st_transform()` to `crs(anom)` before rasterize/mask).  
+- **Clip early:** Cropping to domains before masking keeps rasters small and speeds up plotting.  
+
+---
+
+# Code description
+
 ## Utility Functions
 Helper functions used throughout the exposure–overlap analysis. They make it easier to extract clean names, handle bounding boxes, and safely open PDF devices.
 
@@ -282,6 +395,14 @@ Documents the plotting utilities used to visualize species ranges, climate anoma
     - `species_dir/Distribution-Anomalies/<slug>_Distribution-Anomalies_<exp>.png` (≈10×10 in, 200 dpi).  
     - `species_dir/Exposure-Overlap/<slug>_Exposure-Overlap_<exp>.png` (≈11×11 in, 300 dpi).
       
+# References
+Code and methods adapted in part from Loughren et al. HMS CVA:
 
+Loughran, C. E., Hazen, E. L., Brodie, S., Jacox, M. G., Whitney, F. A., Payne, M. R., et al. (2025). A climate vulnerability assessment of highly migratory species in the Northwest Atlantic Ocean. *PLOS Climate*, 4(8), e0000530. https://doi.org/10.1371/journal.pclm.0000530  
 
-## References
+### Additional references
+- Crozier, L. G., Siegel, J., & Finnegan, W. B., et al. (2019). Climate vulnerability assessment for Pacific salmon and steelhead in the California Current. *PLOS ONE*, 14(7), e0217711. https://doi.org/10.1371/journal.pone.0217711  
+- Frawley, T., Provost, M., Bellquist, L., Ben-Aderet, N., Blondin, H., Brodie, S., et al. (2025). A collaborative climate vulnerability assessment of California marine fishery species. *PLOS Climate*, 4(2), e0000574. https://doi.org/10.1371/journal.pclm.0000574  
+- Hare, J. A., Morrison, W. E., Nelson, M. W., Stachura, M. M., Teeters, E. J., Griffis, R. B., et al. (2016). A vulnerability assessment of fish and invertebrates to climate change on the Northeast U.S. Continental Shelf. *PLOS ONE*, 11(2), e0146756. https://doi.org/10.1371/journal.pone.0146756  
+- McClure, M. M., Haltuch, M. A., Berger, A. M., Berger, C., Branch, T. A., Brodziak, J., et al. (2023). Climate vulnerability assessment of species in the California Current Large Marine Ecosystem. *Frontiers in Marine Science*, 10, 1111111. https://doi.org/10.3389/fmars.2023.1111111  
+- Morrison, W. E., Nelson, M. W., Howard, J. F., Teeters, E. J., Hare, J. A., Griffis, R. B., & Pugliese, R. (2015). Methodology for assessing the vulnerability of marine fish and shellfish species to a changing climate. *NOAA Technical Memorandum NMFS-OSF-3*. U.S. Department of Commerce. https://doi.org/10.7289/V5TM782J  
