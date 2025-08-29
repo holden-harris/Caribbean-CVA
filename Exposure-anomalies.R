@@ -95,19 +95,21 @@ bbox_with_pad <- function(sf_obj, pad = 0.05){
 }
 
 ## Open pdf reader
-safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
-  has_cairo <- tryCatch(isTRUE(base::capabilities("cairo")), error = function(e) FALSE)
-  if (has_cairo) {
-    ok <- tryCatch({
-      grDevices::cairo_pdf(path, width = width, height = height, onefile = onefile)
-      TRUE
-    }, error = function(e) FALSE)
-    if (ok) return(invisible())
-    # fall through to base pdf() if cairo_pdf() failed
-  }
-  grDevices::pdf(path, width = width, height = height, onefile = onefile, useDingbats = FALSE)
-}
+#safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
+#  has_cairo <- tryCatch(isTRUE(base::capabilities("cairo")), error = function(e) FALSE)
+#  if (has_cairo) {
+#    ok <- tryCatch({
+#      grDevices::cairo_pdf(path, width = width, height = height, onefile = onefile)
+#      TRUE
+#    }, error = function(e) FALSE)
+#    if (ok) return(invisible())
+#    # fall through to base pdf() if cairo_pdf() failed
+#  }
+#  grDevices::pdf(path, width = width, height = height, onefile = onefile, useDingbats = FALSE)
+#}
 
+## Make clean species name (e.g., Atlantic Herring to Atlantic-Herring)  
+species_name_clean <- function(x) gsub(" ", "-", x)
 
 
 ## -----------------------------------------------------------------------------
@@ -148,7 +150,7 @@ plot_distribution <- function (sp, xlim, ylim, title = NULL, domain = NULL) {
 ## -----------------------------------------------------------------------------
 ## Plot anomalies (base R)
 
-plot_anomalies <- function (anom, extent = "", carib_box = 'y', mar = c(2,2,2,2)){
+plot_anomalies <- function (anom, exp_name, extent = "", carib_box = 'y', mar = c(2,2,2,2)){
   op <- par(no.readonly = TRUE); on.exit(par(op))
   par(mar = mar)
   plot(anom,
@@ -166,7 +168,7 @@ plot_anomalies <- function (anom, extent = "", carib_box = 'y', mar = c(2,2,2,2)
 ## Plot anomalies with GG-Plots
 ## Makes compiling with distribution maps easioer
 
-plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n') {
+plot_anomalies_gg <- function(anom, exp_name, extent = "", carib_box = 'n', uscar_box = 'n') {
   df <- as.data.frame(anom, xy = TRUE, na.rm = TRUE)
   names(df)[3] <- "anom"
   
@@ -209,7 +211,7 @@ plot_anomalies_gg <- function(anom, extent = "", carib_box = 'n', uscar_box = 'n
   p
 }
 
-  ## -----------------------------------------------------------------------------
+  ## ---------------------------------------------------------------------------
   ## Overlap plot 1
   ## Map overlap of spatial range and anomalies
 
@@ -374,7 +376,7 @@ while (!is.null(grDevices::dev.list())) grDevices::dev.off()
 ## -----------------------------------------------------------------------------
 ## Process species shape files
 
-  ## Open PDF graphics maker ---------------------------------------------------
+## Open PDF graphics maker ---------------------------------------------------
   safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
     has_cairo <- tryCatch(isTRUE(base::capabilities("cairo")), error = function(e) FALSE)
     if (has_cairo) {
@@ -386,15 +388,13 @@ while (!is.null(grDevices::dev.list())) grDevices::dev.off()
     }
     grDevices::pdf(path, width = width, height = height, onefile = onefile, useDingbats = FALSE)
   }
-  
-  species_name_clean <- function(x) gsub(" ", "-", x)
-  
+
 
 ## -----------------------------------------------------------------------------
 ## Core function: Process species shape files and make maps
   
 process_species <- function(sp_file) {
-    ## ---- setup species -------------------------------------------------------
+    ## Setup species
     sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
     species_name <- name_from_shp(sp_file)
     sname <- species_name_clean(species_name)
@@ -405,7 +405,7 @@ process_species <- function(sp_file) {
     cat("\n------------------------------------------------------------\n")
     cat(sprintf("Processing species: %s\n", species_name))
     
-    ## bbox/clip using your existing code ...
+    ## BBox/clip to NWA. This speeds up processing if the dataset is global. 
     lims    <- bbox_with_pad(sp, pad = 0.05)
     needs_clip_x <- lims$xlim[1] < xlim_nwa[1] || lims$xlim[2] > xlim_nwa[2]
     needs_clip_y <- lims$ylim[1] < ylim_nwa[1] || lims$ylim[2] > ylim_nwa[2]
@@ -414,10 +414,12 @@ process_species <- function(sp_file) {
       lims$ylim <- c(max(lims$ylim[1], ylim_nwa[1]), min(lims$ylim[2], ylim_nwa[2]))
     }
     
-    ## ---- open two PDF devices -----------------------------------------------
+    ## Open two PDF devices ---------------------------------------------------
+    ## Set directory paths
     dist_pdf_path <- file.path(species_dir, paste0(sname, "_Distribution-Anomalies.pdf"))
     over_pdf_path <- file.path(species_dir, paste0(sname, "_Exposure-Overlap.pdf"))
     
+    ## Safe-open PDF graphics device
     safe_open_pdf(dist_pdf_path, width = 11, height = 11, onefile = TRUE)
     dev_dist <- grDevices::dev.cur()
     on.exit({
@@ -434,8 +436,8 @@ process_species <- function(sp_file) {
       }
     }, add = TRUE)
     
-    ## -----------------------------------------------------------------------------
-    ## Inner loop over exposures ------------------------------------------
+    ## -------------------------------------------------------------------------
+    ## Inner loop over exposures 
     for (j in seq_along(nc_files)) {
       #  for (j in 1:2) {
       
@@ -460,10 +462,10 @@ process_species <- function(sp_file) {
       p1 <- plot_distribution(sp, lims$xlim, lims$ylim, title = species_name) +
         theme(plot.title = element_text(size = 16))
       p2 <- plot_distribution(sp, xlim_carib, ylim_carib)
-      p3 <- plot_anomalies_gg(anom,       extent = "Global",      carib_box = 'y', uscar_box = 'y')
-      p4 <- plot_anomalies_gg(anom_range, extent = "W. Atlantic", carib_box = 'y', uscar_box = 'y')
-      p5 <- plot_anomalies_gg(anom_carib, extent = "Caribbean Sea", uscar_box = 'y')
-      p6 <- plot_anomalies_gg(anom_uscar, extent = "U.S. Caribbean")
+      p3 <- plot_anomalies_gg(anom,       exp_name, extent = "Global",      carib_box = 'y', uscar_box = 'y')
+      p4 <- plot_anomalies_gg(anom_range, exp_name, extent = "W. Atlantic", carib_box = 'y', uscar_box = 'y')
+      p5 <- plot_anomalies_gg(anom_carib, exp_name, extent = "Caribbean Sea", uscar_box = 'y')
+      p6 <- plot_anomalies_gg(anom_uscar, exp_name, extent = "U.S. Caribbean")
       
       ## Arrange into 2 columns × 3 rows
       six_panel <- (
@@ -471,17 +473,9 @@ process_species <- function(sp_file) {
       ) + 
         plot_layout(heights = c(1.5, 1, 1)) + ## First row 1.5× larger
         plot_annotation(tag_levels = 'A') 
-      #six_panel
-      
-      ## Save plot
-      #    out_name_dist_plot <- paste0(species_dir, 
-      #                                 species_name_clean, "_Distribution-Anomalies_", exp_name, ".png"); out_name_overlap_plot
-      #    ggsave(file.path(out_name_dist_plot), six_panel, 
-      #           width = 10, height = 10, dpi = 300, bg = "white")
-      
-      
+
       ## -----------------------------------------------------------------------------
-      ## Figure II II: Make masks and map overlaps
+      ## Figure II: Make masks and map overlaps
       
       ## Vectorize species
       sp      <- st_transform(sp, crs(anom_range))  ## match raster CRS
@@ -576,25 +570,52 @@ process_species <- function(sp_file) {
       final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
       final_9panel
       
-      ## Save plot
-      #    out_name_overlap_plot <- paste0(species_dir, 
-      #                                    species_name_clean, "_Exposure-Overlap_", exp_name, ".png"); out_name_overlap_plot
-      #    ggsave(file.path(out_name_overlap_plot), final_9panel, 
-      #           width = 11, height = 11, dpi = 400, bg = "white")
-      
       ## ---- write one page to each PDF ---------------------------------------
       grDevices::dev.set(dev_over); print(final_9panel)  # page appended to Exposure-Overlap.pdf
       grDevices::dev.set(dev_dist); print(six_panel)     # page appended to Distribution-Anomalies.pdf
+      
+      ## ---------------------------------------------------------------------------
+      ## Also save individual PNG plots
+      
+      ## Distribution and anomalies maps
+      out_dist_dir <- file.path(species_dir, "Distribution-Anomalies")
+      if (!dir.exists(out_dist_dir)) dir.create(out_dist_dir, recursive = TRUE)
+      out_name_dist_plot <- file.path(out_dist_dir,
+        paste0(sname, "_Distribution-Anomalies_", exp_name, ".png"))
+      ggsave(
+        filename = out_name_dist_plot,
+        plot     = six_panel,
+        width    = 10, height = 10, dpi = 200, bg = "white"
+      )
+      
+      ## Exposure factor overlap maps
+      out_exp_dir <- file.path(species_dir, "Exposure-Overlap")
+      if (!dir.exists(out_exp_dir)) dir.create(out_exp_dir, recursive = TRUE)
+      out_name_overlap_plot <- file.path(out_exp_dir,
+        paste0(sname, "_Exposure-Overlap_", exp_name, ".png"))
+      ggsave(
+        filename = out_name_overlap_plot,
+        plot     = final_9panel,
+        width    = 11, height = 11, dpi = 300, bg = "white"
+      )
     }
     
     ## Optional: force a GC to release file handles on Windows immediately
     invisible(gc())
   }
   
-## Run loop for all species, with error isolation per species -----------------
+## Run loop for all species, with error isolation per species ------------------
+## Include visible errors per species 
   for (i in seq_along(shp_files)) {
-    try(process_species(shp_files[i]), silent = TRUE)
+    tryCatch(
+      process_species(shp_files[i]),
+      error = function(e) {
+        message("[ERROR] process_species failed for: ", shp_files[i])
+        message("        ", conditionMessage(e))
+      }
+    )
   }
   
 ## Final graphics cleanup: close any straggling devices
 while (!is.null(grDevices::dev.list())) grDevices::dev.off()
+  
