@@ -1,5 +1,5 @@
 # Caribbean CVA: Exposure Factor Analyses
-This script synthesizes spatial biological and oceanographic information to help evaluate climate exposures for federally managed and ecologically important species in the U.S. Caribbean. The first set of maps produced shows a species' distribution at two scales and exposure factors at four scales. These provide context for the **exposure overlap figures**, which display the spatial overlap between the species distribution and the anomalies, along with a histogram of this data and a categorical bar summary. For the Caribbean CVA, the workflow to produce these maps involves looping over 25 species and 13 exposure factors, resulting in a total of 650 pages and 9,750 plots. These are grouped into PDFs by species and exposure factor for review by the CVA experts. 
+This script synthesizes spatial biological and oceanographic information to help evaluate climate exposures for federally managed and ecologically important species in the U.S. Caribbean. The first set of maps produced shows a species' distribution at two scales and exposure factors at four scales. These provide context for the **exposure overlap figures**, which display the spatial overlap between the species distribution and the anomalies, along with a histogram of this data and a categorical bar summary. For the Caribbean CVA, the workflow to produce these maps involves looping over 25 species and 13 exposure factors, resulting in a total of 650 pages and 4,875 panels. These are grouped into PDFs by species and exposure factor for review by the CVA experts. 
 
 ## Final products
 **A. Distribution + Anomaly Panel (2 × 3 grid)**  
@@ -72,7 +72,7 @@ library(patchwork)    # Combine plots
 ```
 
 ### Set directory paths
-The directory structure for this project is organized as follows:
+Input directory structure:
 ```r
 project/
 ├─ data/
@@ -88,12 +88,12 @@ project/
 └─ outputs/
 └─ exposure-overlap/
 └─ <species-slug>/
-├─ <species>_Distribution-Anomalies.pdf # 1 page per exposure factor
-├─ <species>_Exposure-Overlap.pdf # 1 page per exposure factor
+├─ <species-slug>_Distribution-Anomalies.pdf # 1 page per exposure factor
+├─ <species-slug>_Exposure-Overlap.pdf # 1 page per exposure factor
 ├─ Distribution-Anomalies/
-│ └─ <species>Distribution-Anomalies<exp>.png
+│ └─ <species-slug>_Distribution-Anomalies<exp>.png
 └─ Exposure-Overlap/
-└─ <species>Exposure-Overlap<exp>.png
+└─ <species-slug>_Exposure-Overlap<exp>.png
 ```
 
 ---
@@ -108,8 +108,8 @@ project/
 - **Standardize names:** Get a display name with `name_from_shp()` and a file-safe slug via `species_name_clean()`.
 - **Compute plotting bbox:** `bbox_with_pad(sp, pad = 0.05)`; clip to the W. Atlantic project window if needed.
 - **Prepare outputs:** Create `.../<species-slug>/` and open two multi-page PDFs using `safe_open_pdf()`:
-  - `.../<species>_Distribution-Anomalies.pdf`
-  - `.../<species>_Exposure-Overlap.pdf`
+  - `.../<species-slug>_Distribution-Anomalies.pdf`
+  - `.../<species-slug>_Exposure-Overlap.pdf`
 - **Hold devices open** for the inner loop to append one page per exposure factor.
 
 
@@ -143,14 +143,16 @@ project/
    - Append **one page** to each open PDF device (A → Distribution–Anomalies; B → Exposure–Overlap).  
    - Save **PNGs** for both figures under the species directory.
 
-### Key plotting functions
+### These use five plotting functions
+#### Distribution and anomalies maps:
 - **`plot_distribution(sp, xlim, ylim, title)`** — species range maps with coastlines.  
-- **`plot_anomalies_gg(anom, exp_name, extent, carib_box, uscar_box)`** — tidy anomaly maps (global & subdomains).  
+- **`plot_anomalies_gg(anom, exp_name, extent, carib_box, uscar_box)`** — tidy anomaly maps (global & subdomains).
+#### Exposure overlap plots:
 - **`overlap_range(df, species_name, exp_name, domain, xlim, ylim, ...)`** — anomaly tiles within species mask + graticules.  
 - **`anom_histogram_gg(r, fill_limits)`** — distribution of masked anomaly values (bin-colored, 0-line).  
 - **`anom_summary_bars(r, species_name, exp_name, domain)`** — 5-bin categorical summary with counts and % labels.
 
-### Reproducibility and comparability tips
+### Reproducibility and comparability notes
 - **Color limits fixed per exposure:** Use `fill_limits` so all panels for a given exposure share the same scale (improves cross-domain comparison). Consider project-wide fixed limits if you plan to compare across species, too.  
 - **Validate CRS early:** Ensure species polygons and rasters align (`st_transform()` to `crs(anom)` before rasterize/mask).  
 - **Clip early:** Cropping to domains before masking keeps rasters small and speeds up plotting.  
@@ -405,4 +407,5 @@ Loughran, C. E., Hazen, E. L., Brodie, S., Jacox, M. G., Whitney, F. A., Payne, 
 - Frawley, T., Provost, M., Bellquist, L., Ben-Aderet, N., Blondin, H., Brodie, S., et al. (2025). A collaborative climate vulnerability assessment of California marine fishery species. *PLOS Climate*, 4(2), e0000574. https://doi.org/10.1371/journal.pclm.0000574  
 - Hare, J. A., Morrison, W. E., Nelson, M. W., Stachura, M. M., Teeters, E. J., Griffis, R. B., et al. (2016). A vulnerability assessment of fish and invertebrates to climate change on the Northeast U.S. Continental Shelf. *PLOS ONE*, 11(2), e0146756. https://doi.org/10.1371/journal.pone.0146756  
 - McClure, M. M., Haltuch, M. A., Berger, A. M., Berger, C., Branch, T. A., Brodziak, J., et al. (2023). Climate vulnerability assessment of species in the California Current Large Marine Ecosystem. *Frontiers in Marine Science*, 10, 1111111. https://doi.org/10.3389/fmars.2023.1111111  
-- Morrison, W. E., Nelson, M. W., Howard, J. F., Teeters, E. J., Hare, J. A., Griffis, R. B., & Pugliese, R. (2015). Methodology for assessing the vulnerability of marine fish and shellfish species to a changing climate. *NOAA Technical Memorandum NMFS-OSF-3*. U.S. Department of Commerce. https://doi.org/10.7289/V5TM782J  
+- Morrison, W. E., Nelson, M. W., Howard, J. F., Teeters, E. J., Hare, J. A., Griffis, R. B., & Pugliese, R. (2015). Methodology for assessing the vulnerability of marine fish and shellfish species to a changing climate. *NOAA Technical Memorandum NMFS-OSF-3*. U.S. Department of Commerce. https://doi.org/10.7289/V5TM782J
+- Craig, J. K., et al. (2025). A climate vulnerability assessment for the U.S. South Atlantic.   
