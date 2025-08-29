@@ -94,6 +94,22 @@ bbox_with_pad <- function(sf_obj, pad = 0.05){
        ylim = c(bb["ymin"] - pad*dy, bb["ymax"] + pad*dy))
 }
 
+## Open pdf reader
+safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
+  has_cairo <- tryCatch(isTRUE(base::capabilities("cairo")), error = function(e) FALSE)
+  if (has_cairo) {
+    ok <- tryCatch({
+      grDevices::cairo_pdf(path, width = width, height = height, onefile = onefile)
+      TRUE
+    }, error = function(e) FALSE)
+    if (ok) return(invisible())
+    # fall through to base pdf() if cairo_pdf() failed
+  }
+  grDevices::pdf(path, width = width, height = height, onefile = onefile, useDingbats = FALSE)
+}
+
+
+
 ## -----------------------------------------------------------------------------
 ## 
 ## Plotting Functions
@@ -381,14 +397,24 @@ for (i in seq_along(shp_files)) {
   }
   
   ## ---- open two PDF devices (onefile=TRUE makes a multi-page PDF) --------
+  
+  ## Set PDF file paths
   dist_pdf_path <- paste0(species_dir, species_name_clean, "_Distribution-Anomalies.pdf")
   over_pdf_path <- paste0(species_dir, species_name_clean, "_Exposure-Overlap.pdf")
   
-  grDevices::cairo_pdf(dist_pdf_path, width = 11, height = 11, onefile = TRUE)
-  dev_dist <- grDevices::dev.cur()             # remember device id
+  ## open both PDFs
+  safe_open_pdf(dist_pdf_path, width = 11, height = 11, onefile = TRUE)
+  dev_dist <- grDevices::dev.cur()
+  on.exit({ if (!is.null(grDevices::dev.list()) && dev_dist %in% grDevices::dev.list()) {
+    grDevices::dev.set(dev_dist); grDevices::dev.off()
+  } }, add = TRUE)
   
-  grDevices::cairo_pdf(over_pdf_path, width = 11, height = 11, onefile = TRUE)
-  dev_over <- grDevices::dev.cur()             # remember device id
+  safe_open_pdf(over_pdf_path, width = 11, height = 11, onefile = TRUE)
+  dev_over <- grDevices::dev.cur()
+  on.exit({ if (!is.null(grDevices::dev.list()) && dev_over %in% grDevices::dev.list()) {
+    grDevices::dev.set(dev_over); grDevices::dev.off()
+  } }, add = TRUE)
+  
   
   ## ---------------------------------------------------------------------------
   ## Inner loop: exposure factors ----------------------------------------------
@@ -543,7 +569,11 @@ for (i in seq_along(shp_files)) {
     grDevices::dev.set(dev_dist); print(six_panel)     # page appended to Distribution-Anomalies.pdf
   }
   ## ---- close PDFs for this species ----------------------------------------
-  grDevices::dev.set(dev_over); grDevices::dev.off()
-  grDevices::dev.set(dev_dist); grDevices::dev.off()
+  if (!is.null(dev_over) && dev_over %in% unlist(grDevices::dev.list())) {
+    grDevices::dev.set(dev_over); print(final_9panel)
+  }
+  if (!is.null(dev_dist) && dev_dist %in% unlist(grDevices::dev.list())) {
+    grDevices::dev.set(dev_dist); print(six_panel)
+  }
 }
   
