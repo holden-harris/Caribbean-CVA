@@ -49,27 +49,26 @@ ylim_nwa <- c( -5,  72)
 ## Utility Functions
 Helper functions used throughout the exposure–overlap analysis. They make it easier to extract clean names, handle bounding boxes, and safely open PDF devices.
 
-### name_from_shp
+### `name_from_shp`
 Extracts a **clean species name** from a shapefile path.  
 - Removes file extensions (`.shp`)  
 - Inserts spaces between CamelCase (e.g., `AtlanticHerring` → `Atlantic Herring`)  
 - Replaces underscores, dashes, and dots with spaces. Trims and normalizes spacing  
 
-### exp_name_from_nc
-- Extracts the exposure factor code from a NetCDF filename. Everything before the first underscore (_) is returned.
+### `exp_name_from_nc()`
+Extracts the exposure factor code from a NetCDF filename. Everything before the first underscore (_) is returned.
 
-### bbox_with_pad
-- Calculates a bounding box (xlim, ylim) for an sf object (species polygon).
-- Adds a proportional padding (default = 5%) so plots have margins around the species range
+### `bbox_with_pad()`
+Calculates a bounding box (xlim, ylim) for an sf object (species polygon). Adds a proportional padding (default = 5%) so that plots have margins around the species range
 
-### safe_open_pdf
+### `safe_open_pdf()`
 Opens a PDF graphics device safely.
 - Uses cairo_pdf if available (better text rendering, avoids font issues).
 - Falls back to base pdf() if Cairo is unavailable.
 - Needed for writing multi-page PDFs of figures.
 
-### species_name_clean
-- Formats species names for filenames by replacing spaces with hyphens.
+### `species_name_clean()`
+Formats species names for filenames by replacing spaces with hyphens.
 
 ---
 
@@ -224,8 +223,65 @@ Documents the plotting utilities used to visualize species ranges, climate anoma
   - Creates folders and opens two PDF devices (left open for the inner loop to append pages).
   - Note that page generation happens in the inner loop and invisibly returns nothing; its primary purpose is setup and device lifecycle management.
 
+---
+
 ## Inner loop: Process Exposure Factor
+**Description:** Iterates over CMIP6 NetCDF anomaly files for a single species, deriving per-exposure figures. For each exposure factor, it: (1) reads and prepares the anomaly raster, (2) crops to multiple domains, (3) builds a 2×3 distribution/anomaly map panel, (4) computes species-footprint masks and overlap products for three domains, (5) assembles a 3×3 overlap panel with a single shared legend, and (6) appends one page to each open PDF while also exporting standalone PNGs.
+
+**Notes about performance & reproducibility**
+  - Cropping early (`crop()`) keeps rasters small; masking with `cover=TRUE` ensures partial cells are included along polygon edges.
+  - Fixing `fill_limits` per exposure allows a **like-for-like** comparison across domains.
+  - Ensures `sf` geometries are valid upstream (`st_make_valid`) and that CRS mismatches are resolved before masking.
+
+**Exposure metadata & anomaly read**
+  - Derives exposure factor code from filename via `exp_name_from_nc(nc_path)`.
+  - Reads the **anomaly** layer with `terra::rast(nc_path, sub = "anomaly")`.
+  - Replaces large fill values (`> 1e19`) with `NA` and calls `rotate()` to convert 0–360° longitudes to −180–180° for consistent cropping.
+
+**Domain cropping (three views)**
+  - **W. Atlantic species range:** `anom_range <- crop(anom, extent(c(lims$xlim, lims$ylim)))`
+  - **Caribbean Sea:** `anom_carib <- crop(anom, ext(xlim_carib, ylim_carib))`
+  - **U.S. Caribbean:** `anom_uscar <- crop(anom, ext(xlim_uscar, ylim_uscar))`
+
+---
+
+### **Distribution + anomaly maps (2×3)**
+  - `p1, p2`: Species polygons over **world land** via `plot_distribution()` for the species bbox and the Caribbean bbox (larger title on `p1`).
+  - `p3–p6`: Anomaly maps via `plot_anomalies_gg()` for Global, W. Atlantic, Caribbean, and U.S. Caribbean; optional domain boxes drawn.
+  - Arrange as `(p1|p2)/(p3|p4)/(p5|p6)` with **`patchwork`**; first row height boosted (`plot_layout(heights = c(1.5, 1, 1))`) and panel tags `A–F`.
+  
+**Vectorization & masking (species overlap)**
+  - Align CRS: `sp <- st_transform(sp, crs(anom_range))`, then `spv <- terra::vect(sp)`.
+  - Build **cover** mask with `rasterize(spv, anom_range, field = 1, background = NA, cover = TRUE)`.
+  - Apply mask: `anom_masked <- mask(anom_range, mask_cover)`.
+  - Crop masked raster to subdomains: `anom_masked_carib <- crop(..., carib_ext)`, `anom_masked_uscar <- crop(..., uscar_ext)`.
+
+**Shared color limits**
+  - Convert masked range to data frame and compute global min/max:
+    - `df_mask <- as.data.frame(anom_masked, xy = TRUE, na.rm = TRUE)`
+    - `fill_limits <- c(min(df_mask$anomaly), max(df_mask$anomaly))`
+  - Reuse `fill_limits` across maps/histograms to keep palettes and x-axes consistent.
+
+---
+
+### Overlap maps (3×3 with shared legend)
+  - **Maps:** `overlap_range()` for W. Atlantic, Caribbean, and U.S. Caribbean (`main_title = "domain"`).
+  - **Histograms:** `anom_histogram_gg()` for masked range and subdomains using `fill_limits`.
+  - **Categorical summaries:** `anom_summary_bars()` for the same three domains.
+  - Remove legends on all but one, extract a single legend via `cowplot::get_legend()`.
+  - Assemble rows A–I with `cowplot::plot_grid()` and combine with the legend (ncol = 2, narrow legend column).
+
+---
 
 ### Write out plots
+- **Outputs (per exposure)**
+  - **Append PDF pages:**  
+    - `dev_over` ← print the 3×3 overlap panel.  
+    - `dev_dist` ← print the 2×3 distribution/anomaly panel.
+  - **Export PNGs:**  
+    - `species_dir/Distribution-Anomalies/<slug>_Distribution-Anomalies_<exp>.png` (≈10×10 in, 200 dpi).  
+    - `species_dir/Exposure-Overlap/<slug>_Exposure-Overlap_<exp>.png` (≈11×11 in, 300 dpi).
+      
+
 
 ## References
