@@ -54,7 +54,7 @@ ylim_uscar <- c(16, 20.0)
 uscar_ext  <- c(xlim_uscar, ylim_uscar)
 
 ## W. Atlantic Ocean
-xlim_nwa <- c(-99, -40) # W Atlantic: 99°W to 40°W
+xlim_nwa <- c(-99, -40) ## W Atlantic: 99°W to 40°W
 ylim_nwa <- c(-5, 72)
 
 
@@ -103,7 +103,6 @@ safe_open_pdf <- function(path, width = 11, height = 11, onefile = TRUE) {
 
 ## Make clean species name (e.g., Atlantic Herring to Atlantic-Herring)  
 species_name_clean <- function(x) gsub(" ", "-", x)
-
 
 ## -----------------------------------------------------------------------------
 ## 
@@ -358,10 +357,89 @@ plot_anomalies_gg <- function(anom, exp_name, extent = "", carib_box = 'n', usca
   }
   
 
+  ## -----------------------------------------------------------------------------
+  ## HMS-style LMHV histogram (base graphics), wrapped for cowplot/patchwork use
+  ## Returns both a plot expression and the LMHV summary you can reuse.
+  
+  lmhv_histogram_base <- function(anom_masked, species_name, exp_name = "", domain = "") {
+    # pull values
+    vals <- if (inherits(anom_masked, "SpatRaster")) {
+      terra::values(anom_masked, mat = FALSE)
+    } else {
+      raster::values(anom_masked)
+    }
+    vals <- vals[is.finite(vals)]
+    if (!length(vals)) stop("No finite values in masked anomalies for: ", domain)
+    
+    # breaks & HMS colors
+    breaks <- seq(floor(min(vals)), ceiling(max(vals)), by = 0.25)
+    cols   <- rep("red", length(breaks))
+    cols[breaks >= -0.5 & breaks <=  0.5] <- "green"
+    cols[breaks <  -0.5 & breaks >= -1.5] <- "yellow"
+    cols[breaks >   0.5 & breaks <=  1.5] <- "yellow"
+    cols[breaks <  -1.5 & breaks >= -2.0] <- "orange"
+    cols[breaks >   1.5 & breaks <=  2.0] <- "orange"
+    
+    # make the histogram (freq=FALSE → density on y; we label as Percent for continuity with HMS)
+    h <- hist(vals, breaks = breaks, freq = FALSE, col = cols,
+              xlab = paste(exp_name, "anomalies"),
+              ylab = "Percent", main = paste0(exp_name, " | ", species_name, " | ", domain))
+    
+    # LMHV bins using HMS cut points
+    # counts are computed from histogram bins; then percents + mean exposure score
+    mids <- h$mids
+    cnts <- h$counts
+    
+    L <- sum(cnts[mids >= -0.5 & mids <=  0.5], na.rm = TRUE)
+    M <- sum(cnts[(mids < -0.5 & mids >= -1.5) | (mids > 0.5 & mids <= 1.5)], na.rm = TRUE)
+    H <- sum(cnts[(mids < -1.5 & mids >= -2.0) | (mids > 1.5 & mids <= 2.0)], na.rm = TRUE)
+    V <- sum(cnts[mids < -2.0 | mids > 2.0], na.rm = TRUE)
+    
+    tot <- L + M + H + V
+    out <- list(
+      hist_object = h, breaks = breaks,
+      Lp = if (tot > 0) L/tot else 0,
+      Mp = if (tot > 0) M/tot else 0,
+      Hp = if (tot > 0) H/tot else 0,
+      Vp = if (tot > 0) V/tot else 0,
+      exp_mean = if (tot > 0) ((L*1) + (M*2) + (H*3) + (V*4)) / tot else NA_real_
+    )
+    class(out) <- c("lmhv_hist_summary","list")
+    out
+  }
+  
+  ## Simple base-graphics LMHV barplot using the summary above
+  lmhv_barplot_base <- function(lmhv_summary) {
+    stopifnot(inherits(lmhv_summary, "lmhv_hist_summary"))
+    pcts <- c(lmhv_summary$Lp, lmhv_summary$Mp, lmhv_summary$Hp, lmhv_summary$Vp)
+    op <- par(no.readonly = TRUE); on.exit(par(op), add = TRUE)
+    par(mar = c(3.5, 3.5, 2, 1) + 0.1)
+    barplot(height = pcts,
+            names.arg = c("L","M","H","V"),
+            col = c("green","yellow","orange","red"),
+            ylim = c(0, 1),
+            ylab = "Percent",
+            main = "LMHV categories")
+    abline(h = 0)
+    if (is.finite(lmhv_summary$exp_mean)) {
+      text(x = 0.7, y = 0.92, labels = round(lmhv_summary$exp_mean, 1), xpd = NA)
+    }
+  }
+  
+  ## Convenience wrappers that return ggplot-like objects for cowplot/patchwork
+  lmhv_histogram_as_gg <- function(anom_masked, species_name, exp_name, domain) {
+    ggplotify::as.ggplot(function() {
+      invisible(lmhv_histogram_base(anom_masked, species_name, exp_name, domain))
+    })
+  }
+  lmhv_barplot_as_gg <- function(lmhv_summary) {
+    ggplotify::as.ggplot(function() lmhv_barplot_base(lmhv_summary))
+  }
+  
+
 ################################################################################
 ##
 ## Run loops
-  
   
 ## Clean graphics devices (optional, but helps if devices leaked earlier)
 while (!is.null(grDevices::dev.list())) grDevices::dev.off()
@@ -371,7 +449,13 @@ while (!is.null(grDevices::dev.list())) grDevices::dev.off()
 
 ## -----------------------------------------------------------------------------
 ## Core function: Process species shape files and make maps
-  
+
+## For testing
+i = 1
+sp_file = shp_files[i]
+sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
+
+    
 process_species <- function(sp_file) {
     ## Setup species
     sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
@@ -426,6 +510,11 @@ process_species <- function(sp_file) {
       cat(sprintf("  - Exposure (%d/%d): %s\n", j, length(nc_files), exp_name)) ## Loop printout
       
       ## Read in anomaly map
+      ## Assumptions:
+      # - NetCDF contains a layer named "anomaly" (standardized anomalies)
+      # - Longitudes may be 0..360 and require rotate()
+      # - Fill values may be > 1e19 and should be set to NA
+      
       anom <- rast(nc_path, sub = "anomaly") ## one layer
       anom[anom > 1e19] <- NA ## Fix fill values
       anom  <- rotate(anom) ## NetCDF longitudes are 0–360 so need to rotate to match our extent, which is -180-180
@@ -515,12 +604,25 @@ process_species <- function(sp_file) {
       p_summary_carib <- anom_summary_bars(anom_masked_carib, species_name, exp_name, "Caribbean")
       p_summary_uscar <- anom_summary_bars(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
       
+      ## Compute HMS-style LMHV hist summaries + plots for each domain ----
+      sum_range <- lmhv_histogram_base(anom_masked,       species_name, exp_name, "Entire range")
+      sum_carib <- lmhv_histogram_base(anom_masked_carib, species_name, exp_name, "Caribbean")
+      sum_uscar <- lmhv_histogram_base(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
+      
+      j <- lmhv_histogram_as_gg(anom_masked,       species_name, exp_name, "Entire range")
+      k <- lmhv_histogram_as_gg(anom_masked_carib, species_name, exp_name, "Caribbean")
+      l <- lmhv_histogram_as_gg(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
+      
+      m <- lmhv_barplot_as_gg(sum_range)
+      n <- lmhv_barplot_as_gg(sum_carib)
+      o <- lmhv_barplot_as_gg(sum_uscar)
+      
       ## ---------------------------------------------------------------------------
       ## Combine overlap plots
       ## Plot overlap map, histogram, and summary bar chart together
       
       ## Keep one legend (from the Caribbean map, say)
-      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
+#      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
       
       ## Remove legends from the others
       a <- p_overlap_range  + theme(legend.position = "none")                 
@@ -534,23 +636,46 @@ process_species <- function(sp_file) {
       i <- p_summary_uscar  + theme(plot.title = element_blank())           
       
       ## Make rows and add labels
-      row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
+#      row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
+#                                 label_size = 12, label_fontface = "bold")
+#      row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
+#                                 label_size = 12, label_fontface = "bold")
+#      row3 <- cowplot::plot_grid(g, h, i, ncol = 3, labels = c("G","H","I"),
+#                                 label_size = 12, label_fontface = "bold")
+#      main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
+#                                 rel_heights = c(1, 1, 1), align = "hv")
+#      final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
+      
+      
+      ## Add the legend on the right
+#      final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
+#      final_9panel
+
+      
+      ## ---- Build 3x5 grid (A..O) and keep one legend from the Caribbean map ----
+      row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"),
                                  label_size = 12, label_fontface = "bold")
       row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
                                  label_size = 12, label_fontface = "bold")
       row3 <- cowplot::plot_grid(g, h, i, ncol = 3, labels = c("G","H","I"),
                                  label_size = 12, label_fontface = "bold")
-      main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
-                                 rel_heights = c(1, 1, 1), align = "hv")
-      final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
+      row4 <- cowplot::plot_grid(j, k, l, ncol = 3, labels = c("J","K","L"),
+                                 label_size = 12, label_fontface = "bold")
+      row5 <- cowplot::plot_grid(m, n, o, ncol = 3, labels = c("M","N","O"),
+                                 label_size = 12, label_fontface = "bold")
       
+      main_15 <- cowplot::plot_grid(row1, row2, row3, row4, row5, ncol = 1,
+                                    rel_heights = c(1,1,1,1,1), align = "hv")
       
-      ## Add the legend on the right
-      final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
-      final_9panel
+      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
+      final_15panel <- cowplot::plot_grid(main_15, leg, ncol = 2, rel_widths = c(1, 0.10))
       
+      ## ---- Write the 3x5 page to the Exposure-Overlap.pdf (replaces final_9panel) ----
+      grDevices::dev.set(dev_over); print(final_15panel)
+      
+    
       ## ---- write one page to each PDF ---------------------------------------
-      grDevices::dev.set(dev_over); print(final_9panel)  # page appended to Exposure-Overlap.pdf
+#      grDevices::dev.set(dev_over); print(final_9panel)  # page appended to Exposure-Overlap.pdf
       grDevices::dev.set(dev_dist); print(six_panel)     # page appended to Distribution-Anomalies.pdf
       
       ## ---------------------------------------------------------------------------
