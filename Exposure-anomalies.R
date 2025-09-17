@@ -28,7 +28,7 @@ library(patchwork)
 ## Set directory paths
 exp_dir     <- "./data/cmip6/"
 spp_dir     <- "./data/species-distribution-shapefiles/"
-out_dir     <- "./outputs/exposure-overlap/"
+out_dir     <- "./outputs/exposure-overlap-12panel/"
 
 ## Species shape files
 shp_files <- list.files(spp_dir, pattern = "\\.shp$", full.names = TRUE, recursive = FALSE)
@@ -371,14 +371,15 @@ plot_anomalies_gg <- function(anom, exp_name, extent = "", carib_box = 'n', usca
   lmhv_histogram_base <- function(anom_masked, species_name, exp_name = "", domain = "",
                                   mar = .lmhv_mar, mgp = .lmhv_mgp,
                                   cex_axis = .lmhv_axis_cex, cex_lab = .lmhv_lab_cex,
-                                  cex_main = .lmhv_main_cex) {
+                                  cex_main = .lmhv_main_cex,
+                                  do_plot = TRUE) {   # new flag
     # values
     vals <- if (inherits(anom_masked, "SpatRaster")) terra::values(anom_masked, mat = FALSE)
     else raster::values(anom_masked)
     vals <- vals[is.finite(vals)]
     if (!length(vals)) stop("No finite values in masked anomalies for: ", domain)
     
-    # bins & colors (same as before)
+    # bins & colors
     breaks <- seq(floor(min(vals)), ceiling(max(vals)), by = 0.25)
     cols   <- rep("red", length(breaks))
     cols[breaks >= -0.5 & breaks <=  0.5] <- "green"
@@ -387,14 +388,20 @@ plot_anomalies_gg <- function(anom, exp_name, extent = "", carib_box = 'n', usca
     cols[breaks <  -1.5 & breaks >= -2.0] <- "orange"
     cols[breaks >   1.5 & breaks <=  2.0] <- "orange"
     
-    op <- par(no.readonly = TRUE); on.exit(par(op), add = TRUE)
-    par(mar = mar, mgp = mgp, tcl = -0.25, las = 1, xaxs = "i", yaxs = "i",
-        xpd = NA, cex.axis = cex_axis, cex.lab = cex_lab, cex.main = cex_main)
-    
-    h <- hist(vals, breaks = breaks, freq = FALSE, col = cols,
-              xlab = "Standardized anomalies",
-              ylab = "Percent",
-              main = "")
+    h <- NULL
+    if (do_plot) {
+      op <- par(no.readonly = TRUE); on.exit(par(op), add = TRUE)
+      par(mar = mar, mgp = mgp, tcl = -0.25, las = 1, xaxs = "i", yaxs = "i",
+          xpd = NA, cex.axis = cex_axis, cex.lab = cex_lab, cex.main = cex_main)
+      
+      h <- hist(vals, breaks = breaks, freq = FALSE, col = cols,
+                xlab = "Standardized anomaly",
+                ylab = "Percent",
+                main = "")
+    } else {
+      # still compute histogram counts invisibly
+      h <- hist(vals, breaks = breaks, plot = FALSE)
+    }
     
     mids <- h$mids; cnts <- h$counts
     L <- sum(cnts[mids >= -0.5 & mids <=  0.5], na.rm = TRUE)
@@ -413,12 +420,108 @@ plot_anomalies_gg <- function(anom, exp_name, extent = "", carib_box = 'n', usca
     out
   }
   
+  
   lmhv_barplot_base <- function(lmhv_summary,
                                 mar = .lmhv_mar, mgp = .lmhv_mgp,
                                 cex_axis = .lmhv_axis_cex, cex_lab = .lmhv_lab_cex,
-                                cex_main = .lmhv_main_cex) {
+                                cex_main = .lmhv_main_cex,
+                                do_plot = TRUE) {
     stopifnot(inherits(lmhv_summary, "lmhv_hist_summary"))
     pcts <- c(lmhv_summary$Lp, lmhv_summary$Mp, lmhv_summary$Hp, lmhv_summary$Vp)
+    
+    if (do_plot) {
+      op <- par(no.readonly = TRUE); on.exit(par(op), add = TRUE)
+      par(mar = mar, mgp = mgp, tcl = -0.25, las = 1, xaxs = "i", yaxs = "i",
+          xpd = NA, cex.axis = cex_axis, cex.lab = cex_lab, cex.main = cex_main)
+      
+      bp <- barplot(height = pcts,
+                    names.arg = c("L","M","H","V"),
+                    col = c("green","yellow","orange","red"),
+                    ylim = c(0, 1),
+                    xlab = "Anomaly category",
+                    ylab = "Percent",
+                    main = "")
+      abline(h = 0)
+      if (is.finite(lmhv_summary$exp_mean)) {
+        text(x = bp[1], y = 0.92, labels = round(lmhv_summary$exp_mean, 1), xpd = NA)
+      }
+    }
+    
+    invisible(lmhv_summary)  # return the summary regardless, don’t auto-plot if do_plot=FALSE
+  }
+  
+  
+  ## slightly larger inner margins for the base plots
+  .lmhv_mar <- c(7.2, 6.6, 1.2, 2.0) + 0.1   # bottom, left, top, right
+  .lmhv_mgp <- c(2.8, 0.7, 0)
+  
+  ## wrappers that add an outer padding via ggdraw/draw_plot
+  lmhv_histogram_as_gg <- function(x, species_name = NULL, exp_name = NULL, domain = NULL,
+                                   mar = .lmhv_mar, mgp = .lmhv_mgp,
+                                   cex_axis = .lmhv_axis_cex, cex_lab = .lmhv_lab_cex,
+                                   cex_main = .lmhv_main_cex) {
+    # compute summary if needed
+    summary <- if (inherits(x, "lmhv_hist_summary")) {
+      x
+    } else {
+      lmhv_histogram_base(x, species_name, exp_name, domain,
+                          mar = mar, mgp = mgp,
+                          cex_axis = cex_axis, cex_lab = cex_lab, cex_main = cex_main,
+                          do_plot = FALSE)
+    }
+    
+    # build a ggplot-like grob by DRAWING from the summary
+    base_gg <- ggplotify::as.ggplot(function() lmhv_hist_draw_base(summary, mar, mgp, cex_axis, cex_lab, cex_main))
+    
+    # for older cowplot: set clip at ggdraw, not draw_plot
+    cowplot::ggdraw(clip = "off") +
+      cowplot::draw_plot(base_gg, x = 0.06, y = 0.14, width = 0.90, height = 0.86)
+  }
+  
+  lmhv_barplot_as_gg <- function(x,
+                                 mar = .lmhv_mar, mgp = .lmhv_mgp,
+                                 cex_axis = .lmhv_axis_cex, cex_lab = .lmhv_lab_cex,
+                                 cex_main = .lmhv_main_cex) {
+    # Require a summary; if user passed a raster by mistake, fail clearly
+    stopifnot("lmhv_hist_summary" %in% class(x))
+    summary <- x
+    
+    base_gg <- ggplotify::as.ggplot(function() lmhv_bar_draw_base(summary, mar, mgp, cex_axis, cex_lab, cex_main))
+    cowplot::ggdraw(clip = "off") +
+      cowplot::draw_plot(base_gg, x = 0.06, y = 0.14, width = 0.90, height = 0.86)
+  }
+  
+  ## ---------- helpers that actually draw from a summary (no auto-plot side effects)
+  lmhv_hist_draw_base <- function(summary,
+                                  mar = .lmhv_mar, mgp = .lmhv_mgp,
+                                  cex_axis = .lmhv_axis_cex, cex_lab = .lmhv_lab_cex,
+                                  cex_main = .lmhv_main_cex) {
+    stopifnot(inherits(summary, "lmhv_hist_summary"))
+    h <- summary$hist_object
+    
+    # colors by bin midpoints
+    mids <- h$mids
+    cols <- rep("red", length(mids))
+    cols[mids >= -0.5 & mids <=  0.5] <- "green"
+    cols[(mids < -0.5 & mids >= -1.5) | (mids > 0.5 & mids <= 1.5)] <- "yellow"
+    cols[(mids < -1.5 & mids >= -2.0) | (mids > 1.5 & mids <= 2.0)] <- "orange"
+    
+    op <- par(no.readonly = TRUE); on.exit(par(op), add = TRUE)
+    par(mar = mar, mgp = mgp, tcl = -0.25, las = 1, xaxs = "i", yaxs = "i",
+        xpd = NA, cex.axis = cex_axis, cex.lab = cex_lab, cex.main = cex_main)
+    
+    plot(h, freq = FALSE, col = cols,
+         xlab = "Standardized anomaly",
+         ylab = "Percent",
+         main = "")
+  }
+  
+  lmhv_bar_draw_base <- function(summary,
+                                 mar = .lmhv_mar, mgp = .lmhv_mgp,
+                                 cex_axis = .lmhv_axis_cex, cex_lab = .lmhv_lab_cex,
+                                 cex_main = .lmhv_main_cex) {
+    stopifnot(inherits(summary, "lmhv_hist_summary"))
+    pcts <- c(summary$Lp, summary$Mp, summary$Hp, summary$Vp)
     
     op <- par(no.readonly = TRUE); on.exit(par(op), add = TRUE)
     par(mar = mar, mgp = mgp, tcl = -0.25, las = 1, xaxs = "i", yaxs = "i",
@@ -428,33 +531,14 @@ plot_anomalies_gg <- function(anom, exp_name, extent = "", carib_box = 'n', usca
                   names.arg = c("L","M","H","V"),
                   col = c("green","yellow","orange","red"),
                   ylim = c(0, 1),
-                  ylab = "Percent", 
                   xlab = "Anomaly category",
+                  ylab = "Percent",
                   main = "")
     abline(h = 0)
-    if (is.finite(lmhv_summary$exp_mean)) {
-      text(x = bp[1], y = 0.92, labels = round(lmhv_summary$exp_mean, 1), xpd = NA)
+    if (is.finite(summary$exp_mean)) {
+      text(x = bp[1], y = 0.92, labels = round(summary$exp_mean, 1), xpd = NA)
     }
   }
-  
-  ## slightly larger inner margins for the base plots
-  .lmhv_mar <- c(7.2, 6.6, 1.2, 2.0) + 0.1   # bottom, left, top, right
-  .lmhv_mgp <- c(2.8, 0.7, 0)
-  
-  ## wrappers that add an outer padding via ggdraw/draw_plot
-  lmhv_histogram_as_gg <- function(anom_masked, species_name, exp_name, domain, ...) {
-    base_gg <- ggplotify::as.ggplot(function() invisible(
-      lmhv_histogram_base(anom_masked, species_name, exp_name, domain, ...)))
-    cowplot::ggdraw() +
-      cowplot::draw_plot(base_gg, x = 0.06, y = 0.14, width = 0.90, height = 0.86) ## <-- more left/bottom space
-  }
-  
-  lmhv_barplot_as_gg <- function(lmhv_summary, ...) {
-    base_gg <- ggplotify::as.ggplot(function() lmhv_barplot_base(lmhv_summary, ...))
-    cowplot::ggdraw() +
-      cowplot::draw_plot(base_gg, x = 0.06, y = 0.14, width = 0.90, height = 0.86)
-  }
-  
 
 ################################################################################
 ##
@@ -470,11 +554,8 @@ while (!is.null(grDevices::dev.list())) grDevices::dev.off()
 ## Core function: Process species shape files and make maps
 
 ## For testing
-i = 1
-sp_file = shp_files[i]
-sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
+#i = 1; sp_file = shp_files[i]; sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
 
-    
 process_species <- function(sp_file) {
     ## Setup species
     sp  <- sf::st_read(sp_file, quiet = TRUE) |> st_make_valid()
@@ -499,8 +580,7 @@ process_species <- function(sp_file) {
     ## Open two PDF devices ---------------------------------------------------
     ## Set directory paths
     dist_pdf_path <- file.path(species_dir, paste0(sname, "_Distribution-Anomalies.pdf"))
-    over_pdf_path <- file.path(species_dir, paste0(sname, "_Exposure-Overlap.pdf"))
-    
+    over_pdf_path <- file.path(species_dir, paste0(sname, "_Exposure-Overlap-12panel.pdf"))
     
     ## Safe-open PDF graphics device
     safe_open_pdf(dist_pdf_path, width = 11, height = 11, onefile = TRUE)
@@ -511,7 +591,7 @@ process_species <- function(sp_file) {
       }
     }, add = TRUE)
     
-    safe_open_pdf(over_pdf_path, width = 11, height = 11, onefile = TRUE)
+    safe_open_pdf(over_pdf_path, width = 13, height = 17, onefile = TRUE)
     dev_over <- grDevices::dev.cur()
     on.exit({
       if (!is.null(grDevices::dev.list()) && dev_over %in% unlist(grDevices::dev.list())) {
@@ -521,19 +601,19 @@ process_species <- function(sp_file) {
     
     ## -------------------------------------------------------------------------
     ## Inner loop over exposures 
-    for (j in seq_along(nc_files)) {
-      #  for (j in 1:2) {
+    for (seq in seq_along(nc_files)) {
+    #for (seq in 1:2) { ## Use for testing first two exposure factors
       
       ## Set file path and pull exposure factor name
-      nc_path  <- nc_files[j]
+      nc_path  <- nc_files[seq]
       exp_name <- exp_name_from_nc(nc_path)
-      cat(sprintf("  - Exposure (%d/%d): %s\n", j, length(nc_files), exp_name)) ## Loop printout
+      cat(sprintf("  - Exposure (%d/%d): %s\n", seq, length(nc_files), exp_name)) ## Loop printout
       
       ## Read in anomaly map
       ## Assumptions:
-      # - NetCDF contains a layer named "anomaly" (standardized anomalies)
-      # - Longitudes may be 0..360 and require rotate()
-      # - Fill values may be > 1e19 and should be set to NA
+      ## - NetCDF contains a layer named "anomaly" (standardized anomalies)
+      ## - Longitudes may be 0..360 and require rotate()
+      ## - Fill values may be > 1e19 and should be set to NA
       
       anom <- rast(nc_path, sub = "anomaly") ## one layer
       anom[anom > 1e19] <- NA ## Fix fill values
@@ -610,11 +690,10 @@ process_species <- function(sp_file) {
                                        domain       = "U.S. Caribbean",
                                        xlim         = xlim_uscar,
                                        ylim         = ylim_uscar,
-                                       #   main_title   = "domain", 
                                        fill_limits  = fill_limits
       )
       
-      ## Make histogram plots
+      ## Make histogram plots (now not used for 3x4 plots)
       p_hist_range <- anom_histogram_gg(anom_masked, fill_limits)
       p_hist_carib <- anom_histogram_gg(anom_masked_carib, fill_limits)
       p_hist_uscar <- anom_histogram_gg(anom_masked_uscar, fill_limits = fill_limits)
@@ -625,61 +704,35 @@ process_species <- function(sp_file) {
       p_summary_uscar <- anom_summary_bars(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
       
       ## Compute HMS-style LMHV hist summaries + plots for each domain ----
-      sum_range <- lmhv_histogram_base(anom_masked,       species_name, exp_name, "Entire range")
-      sum_carib <- lmhv_histogram_base(anom_masked_carib, species_name, exp_name, "Caribbean")
-      sum_uscar <- lmhv_histogram_base(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
+      sum_range <- lmhv_histogram_base(anom_masked,       species_name, exp_name, "Entire range", do_plot = FALSE)
+      sum_carib <- lmhv_histogram_base(anom_masked_carib, species_name, exp_name, "Caribbean", do_plot = FALSE)
+      sum_uscar <- lmhv_histogram_base(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean", do_plot = FALSE)
       
       ## ---------------------------------------------------------------------------
       ## Combine overlap plots
       ## Plot overlap map, histogram, and summary bar chart together
       
-      ## Keep one legend (from the Caribbean map, say)
-#      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
-      
-      ## Remove legends from the others
+      ## Make panels for 3x4 exposure overlap figure
       a <- p_overlap_range  + theme(legend.position = "none")                 
       b <- p_overlap_carib  + theme(legend.position = "none")
       c <- p_overlap_uscar  + theme(legend.position = "none")
-      #d <- p_hist_range     + theme(legend.position = "none", plot.title = element_blank())             
-      #e <- p_hist_carib     + theme(legend.position = "none", plot.title = element_blank()) 
-      #f <- p_hist_uscar     + theme(legend.position = "none", plot.title = element_blank()) 
-      
       d <- p_summary_range  + theme(plot.title = element_blank())             
       e <- p_summary_carib  + theme(plot.title = element_blank())           
       f <- p_summary_uscar  + theme(plot.title = element_blank())           
-      
-      g <- lmhv_histogram_as_gg(anom_masked,       species_name, exp_name, "Entire range")
-      h <- lmhv_histogram_as_gg(anom_masked_carib, species_name, exp_name, "Caribbean")
-      i <- lmhv_histogram_as_gg(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
-      
+      g <- lmhv_histogram_as_gg(sum_range)
+      h <- lmhv_histogram_as_gg(sum_carib)
+      i <- lmhv_histogram_as_gg(sum_uscar)
       j <- lmhv_barplot_as_gg(sum_range)
       k <- lmhv_barplot_as_gg(sum_carib)
       l <- lmhv_barplot_as_gg(sum_uscar)
   
-      ## Make rows and add labels
-#      row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
-#                                 label_size = 12, label_fontface = "bold")
-#      row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
-#                                 label_size = 12, label_fontface = "bold")
-#      row3 <- cowplot::plot_grid(g, h, i, ncol = 3, labels = c("G","H","I"),
-#                                 label_size = 12, label_fontface = "bold")
-#      main <- cowplot::plot_grid(row1, row2, row3, ncol = 1,
-#                                 rel_heights = c(1, 1, 1), align = "hv")
-#      final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.08))
-      
-      
-      ## Add the legend on the right
-#      final_9panel <- cowplot::plot_grid(main, leg, ncol = 2, rel_widths = c(1, 0.12))
-#      final_9panel
-
       pad <- ggplot2::theme(plot.margin = ggplot2::margin(6, 6, 6, 6))
       a <- a + pad; b <- b + pad; c <- c + pad
       d <- d + pad; e <- e + pad; f <- f + pad
       g <- g + pad; h <- h + pad; i <- i + pad
       j <- j + pad; k <- k + pad; l <- l + pad
-#      m <- m + pad; n <- n + pad; o <- o + pad
-      
-      ## ---- Build 3x5 grid (A..O) and keep one legend from the Caribbean map ----
+
+      ## Compile plots into rows (A-L) 
       row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"),
                                  label_size = 12, label_fontface = "bold")
       row2 <- cowplot::plot_grid(d, e, f, ncol = 3, labels = c("D","E","F"),
@@ -688,37 +741,23 @@ process_species <- function(sp_file) {
                                  label_size = 12, label_fontface = "bold")
       row4 <- cowplot::plot_grid(j, k, l, ncol = 3, labels = c("J","K","L"),
                                  label_size = 12, label_fontface = "bold")
-#      row5 <- cowplot::plot_grid(m, n, o, ncol = 3, labels = c("M","N","O"),
-#                                 label_size = 12, label_fontface = "bold")
-
-      main_12 <- cowplot::plot_grid(row1, row2, row3, row4, ncol = 1,
+      
+      main_12 <- cowplot::plot_grid(row1, row2, row3, row4, ncol = 1, ## Put plots together
                                     rel_heights = c(1.4,0.85,1.2,1.2), align = "hv")
+      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right", legend.justification = "top")) ## Extract legend from one of the plots
       
-      # extract legend from one of the plots
-      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right", legend.justification = "top"))
-      
-      # overlay legend on top-right of the main grid
-      final_12panel <- cowplot::ggdraw() + 
-        cowplot::draw_plot(main_12, 0, 0, 1, 1) + ## Fil the canvas
+      final_12panel <- cowplot::ggdraw() + ## Overlay legend on top-right of the main grid
+        cowplot::draw_plot(main_12, 0, 0, 1, 1) + ## Fill the canvas
         cowplot::draw_plot(leg, 0.21, 0.73, 0.25, 0.25) ## x,y,width,height in [0,1]
-      final_12panel
       
-      ## ---- Write the 3x5 page to the Exposure-Overlap.pdf (replaces final_9panel) ----
-  #    grDevices::dev.set(dev_over); print(final_15panel)
+      ## Test --> Make single PDF (Don't use in loop)
+      grDevices::cairo_pdf(file.path(species_dir, "test_3x4.pdf"), width = 13, height = 17);  print(final_12panel); dev.off()
       
-      
-      ## Test --> Make single PDF
-      grDevices::cairo_pdf(file.path(species_dir, "test_3x4.pdf"),
-                           width = 13, height = 17)   # or 17 for more space
-      print(final_12panel)
-      dev.off()
-      
-    
-      ## ---- write one page to each PDF ---------------------------------------
-#      grDevices::dev.set(dev_over); print(final_9panel)  # page appended to Exposure-Overlap.pdf
+      ## Write one page to each PDF --------------------------------------------
+      grDevices::dev.set(dev_over); print(final_12panel)  # page appended to Exposure-Overlap.pdf
       grDevices::dev.set(dev_dist); print(six_panel)     # page appended to Distribution-Anomalies.pdf
       
-      ## ---------------------------------------------------------------------------
+      ## -----------------------------------------------------------------------
       ## Also save individual PNG plots
       
       ## Distribution and anomalies maps
@@ -729,24 +768,28 @@ process_species <- function(sp_file) {
       ggsave(
         filename = out_name_dist_plot,
         plot     = six_panel,
-        width    = 10, height = 10, dpi = 200, bg = "white"
+        width    = 10, height = 10, dpi = 150, bg = "white"
       )
       
       ## Exposure factor overlap maps
-      out_exp_dir <- file.path(species_dir, "Exposure-Overlap")
+      out_exp_dir <- file.path(species_dir, "Exposure-Overlap-12panel")
       if (!dir.exists(out_exp_dir)) dir.create(out_exp_dir, recursive = TRUE)
       out_name_overlap_plot <- file.path(out_exp_dir,
         paste0(sname, "_Exposure-Overlap_", exp_name, ".png"))
       ggsave(
         filename = out_name_overlap_plot,
-        plot     = final_9panel,
-        width    = 11, height = 11, dpi = 300, bg = "white"
+        plot     = final_12panel,
+        width    = 13, height = 17, dpi = 250, bg = "white"
       )
     }
     
     ## Optional: force a GC to release file handles on Windows immediately
     invisible(gc())
   }
+
+
+## Test single species
+i = 1;  process_species(shp_files[i])
   
 ## Run loop for all species, with error isolation per species ------------------
 ## Include visible errors per species 
@@ -761,5 +804,6 @@ process_species <- function(sp_file) {
   }
   
 ## Final graphics cleanup: close any straggling devices
-while (!is.null(grDevices::dev.list())) grDevices::dev.off()
+while (!is.null(grDevices::dev.list())) grDevices::dev.off()  
+
   
