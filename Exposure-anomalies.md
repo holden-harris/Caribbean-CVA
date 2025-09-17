@@ -1,29 +1,30 @@
 # Caribbean CVA: Exposure Factor Analyses
-This script synthesizes spatial biological and oceanographic information to help evaluate climate exposures for federally managed and ecologically important species in the U.S. Caribbean. The first set of maps produced shows a species' distribution at two scales and exposure factors at four scales. These provide context for the **exposure overlap figures**, which display the spatial overlap between the species distribution and the anomalies, along with a histogram of this data and a categorical bar summary. For the Caribbean CVA, the workflow to produce these maps involves looping over 25 species and 13 exposure factors, resulting in a total of 650 pages and 4,875 panels. These are grouped into PDFs by species and exposure factor for review by the CVA experts. 
+The overall goal of the exposure factor analyses is to compare projected future ocean conditions against their past. To do so, we utilize spatially explicit ocean model projections (both historical and future ocean projections) to create a standardized anomaly map (i.e., a static comparison) and provide accompanying analyses. The values of the standardized anomalies are expressed in standard deviation units, which allows the result to be comparable across variables. For each exposure factor anomaly, we mapped the gridded cells of the standardized exposure anomaly and overlapped a given species distribution. Values from the overlapped cells were then compiled into frequency distributions (histograms) and categorized (bar plots). 
+
+This script synthesizes spatial biological and oceanographic information to help evaluate climate exposures for federally managed and ecologically important species in the U.S. Caribbean. The first set of maps produced shows a species' distribution at two scales and exposure factors at four scales. These provide context for the **exposure overlap figures**, which display the spatial overlap between the species distribution and the anomalies, along with a histogram of this data and a categorical bar summary. For the Caribbean CVA, the workflow to produce these maps involves looping over 25 species and 13 exposure factors, resulting in a total of 650 pages. These are grouped into PDFs by species and exposure factor for review by the CVA experts. 
+
+The exposure overlap analyses below are presented within three geographic scopes: a given species distribution within the Western Atlantic Ocean (5°S–72°N, 99°W–40°W), the wider Caribbean region (6°N–28°N, 92°W–57°W), and the U.S Caribbean (16°N–20°N, 69°W–63°W). 
 
 ## Final products
+**A. Exposure–Overlap Panel (3 × 4 grid; panels A–L)**  
+For the **W. Atlantic range**, **Caribbean Sea**, and **U.S. Caribbean** domains, the code builds:
+1. **Overlap map** (anomaly tiles within the species footprint).
+2. **Categorical bar summary** of anomalies (<-1.5, -1.5 to -0.5, -0.5 to +0.5, 0.5 to 1.5, > 1.5)
+3. **Histogram** of standardized anomalies (mask-consistent and scale-aligned) grouped into 0.25 standard deviation bins.
+4. **LMHV summary** of absolute values for anomalies. The histogram and summary plots are coded as follows: Low (|σ| < 0.5), Moderate (0.5 ≤ |σ| < 1.5), High (1.5 ≤ |σ| < 2.0), Very High (|σ| ≥ 2.0)
+
+The panels are combined into a figure with a **single shared legend**, then saved to:
+- A **multi-page PDF** (one page per exposure factor) named `"<species>_Exposure-Overlap.pdf"`.
+- A **PNG** per exposure factor under `.../Exposure-Overlap/`.
+
 **A. Distribution + Anomaly Panel (2 × 3 grid)**  
-For each species–exposure combination, a six-panel figure is created that shows:
+These provide reference plots for the exposure-overlap analyses. For each species–exposure combination, a six-panel figure is created that shows:
 1. **Species distribution (W. Atlantic bbox)** — clean polygon map with coastline context.  
 2. **Species distribution (Caribbean bbox)** — zoomed map for regional context.  
 3. **Global anomaly map** for the selected exposure factor.  
 4. **W. Atlantic anomaly map** (subset of global).  
 5. **Caribbean Sea anomaly map** (subset of global; U.S. Caribbean box optionally shown).  
 6. **U.S. Caribbean anomaly map**.  
-
-This panel is assembled with **patchwork** and saved to:
-- A **multi-page PDF** (one page per exposure factor) named `"<species>_Distribution-Anomalies.pdf"`.
-- A **PNG** per exposure factor under `.../Distribution-Anomalies/`.
-
-**B. Exposure–Overlap Panel (3 × 3 grid; tagged A–I)**  
-For the **W. Atlantic range**, **Caribbean Sea**, and **U.S. Caribbean** domains, the code builds:
-1. **Overlap map** (anomaly tiles within the species footprint).  
-2. **Histogram** of standardized anomalies (mask-consistent and scale-aligned).  
-3. **Categorical bar summary** of anomalies (counts + % in five bins).  
-
-The nine panels are combined into a figure with a **single shared legend**, then saved to:
-- A **multi-page PDF** (one page per exposure factor) named `"<species>_Exposure-Overlap.pdf"`.
-- A **PNG** per exposure factor under `.../Exposure-Overlap/`.
 
 ---
 
@@ -201,7 +202,7 @@ Formats species names for filenames by replacing spaces with hyphens.
 ---
 
 ## Plotting Functions
-Documents the plotting utilities used to visualize species ranges, climate anomalies, and their overlap. Each function is designed to be composable so figures can be combined with **patchwork** or embedded into multi-panel PDFs.
+Documents the plotting utilities used to visualize species ranges, climate anomalies, and their overlap. Each function is designed to be composable, so figures can be combined with **patchwork** or embedded into multi-panel PDFs.
 
 ### `plot_distribution()`
 **Description:** Draws a clean species distribution map for a given spatial domain.
@@ -315,6 +316,67 @@ Documents the plotting utilities used to visualize species ranges, climate anoma
 - Title combines species, exposure code, and domain as:  
   `"<species_name> | <exp_name> | <domain>"`.  
 - Styled with **`theme_minimal()`** and dark axis text/lines for publication-ready legibility.  
+
+---
+
+### `lmhv_histogram_base()`
+**Description:**  Computes and (optionally) draws an HMS-style histogram of standardized anomalies.  
+Classifies values into Low (L), Moderate (M), High (H), and Very High (V) categories and returns a summary object that can be reused for categorical bar plots or ggplot wrappers.  
+
+#### Arguments:
+- **anom_masked** *(SpatRaster or Raster\**)*: Species-masked anomaly raster for a given domain.  
+- **species_name, exp_name, domain** *(character, optional)*: Labels used for external tracking; not added to the base plot.  
+- **mar, mgp** *(numeric vectors)*: Graphical parameters for margins and axis spacing.  
+- **cex_axis, cex_lab, cex_main** *(numeric)*: Text expansion for axes, labels, and titles.  
+- **do_plot** *(logical)*: If `TRUE`, produces a histogram plot; if `FALSE`, only computes and returns summary statistics.  
+
+#### Notes:
+- Breaks are set at **0.25 σ intervals** from min to max.  
+- Colors: green (L), yellow (M), orange (H), red (V).  
+- Returns an object of class `"lmhv_hist_summary"`, containing proportions (`Lp`, `Mp`, `Hp`, `Vp`) and a weighted exposure mean (1–4 scale).  
+- Stops with an error if no finite values are found in the raster.  
+
+---
+
+### `lmhv_barplot_base()`
+**Description:**  Draws a categorical LMHV bar plot (L, M, H, V) from a histogram summary, showing relative proportions and annotating the mean exposure score when available.  
+
+#### Arguments:
+- **lmhv_summary** *(lmhv_hist_summary)*: Object returned by `lmhv_histogram_base()`.  
+- **mar, mgp** *(numeric vectors)*: Plot margins and axis spacing.  
+- **cex_axis, cex_lab, cex_main** *(numeric)*: Text expansion factors.  
+- **do_plot** *(logical)*: If `TRUE`, produces the barplot; otherwise returns the summary invisibly.  
+
+#### Notes:
+- Fixed bar colors: green (L), yellow (M), orange (H), red (V).  
+- Bars are scaled to 0–1 (proportional).  
+- If `exp_mean` is finite, it is shown as a numeric label near the top left.  
+
+---
+
+### `lmhv_histogram_as_gg()` and `lmhv_barplot_as_gg()`
+**Description:**  Wrapper functions that produce a ggplot-compatible grob of the LMHV histogram or LMHV barplot for composition with **cowplot** or **patchwork**.  
+
+#### Arguments:
+- **x** *(lmhv_hist_summary or Raster\**)*: Either a precomputed summary or a masked raster (in which case the summary is generated internally).  
+- **species_name, exp_name, domain** *(character, optional)*: Metadata used only if a raster is supplied.  
+- **mar, mgp, cex_axis, cex_lab, cex_main** *(numeric)*: Aesthetic controls, as above.  
+
+#### Notes:
+- Converts the base histogram into a ggplot object via **`ggplotify::as.ggplot()`**.  
+- Adds outer padding to prevent clipping of axis labels in patchwork layouts.  
+- Best practice: precompute with `lmhv_histogram_base(do_plot = FALSE)` and pass the summary.  
+
+---
+
+### `lmhv_hist_draw_base()` and `lmhv_bar_draw_base()`
+**Description:**  Low-level helpers that directly draw histograms and barplots from an `lmhv_hist_summary` without recomputation or side effects.  
+#### Arguments:
+- **summary** *(lmhv_hist_summary)*: Input summary object.  
+- **mar, mgp, cex_axis, cex_lab, cex_main** *(numeric)*: Plot aesthetics.  
+#### Notes:
+- These functions are used internally by the `*_as_gg()` wrappers.  
+- You would rarely call them directly, unless embedding base plots manually in a graphics device.  
 
 ---
 
