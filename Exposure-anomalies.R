@@ -629,14 +629,6 @@ process_species <- function(sp_file) {
       sum_carib <- lmhv_histogram_base(anom_masked_carib, species_name, exp_name, "Caribbean")
       sum_uscar <- lmhv_histogram_base(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
       
-      j <- lmhv_histogram_as_gg(anom_masked,       species_name, exp_name, "Entire range")
-      k <- lmhv_histogram_as_gg(anom_masked_carib, species_name, exp_name, "Caribbean")
-      l <- lmhv_histogram_as_gg(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
-      
-      m <- lmhv_barplot_as_gg(sum_range)
-      n <- lmhv_barplot_as_gg(sum_carib)
-      o <- lmhv_barplot_as_gg(sum_uscar)
-      
       ## ---------------------------------------------------------------------------
       ## Combine overlap plots
       ## Plot overlap map, histogram, and summary bar chart together
@@ -648,13 +640,22 @@ process_species <- function(sp_file) {
       a <- p_overlap_range  + theme(legend.position = "none")                 
       b <- p_overlap_carib  + theme(legend.position = "none")
       c <- p_overlap_uscar  + theme(legend.position = "none")
-      d <- p_hist_range     + theme(legend.position = "none", plot.title = element_blank())             
-      e <- p_hist_carib     + theme(legend.position = "none", plot.title = element_blank()) 
-      f <- p_hist_uscar     + theme(legend.position = "none", plot.title = element_blank()) 
-      g <- p_summary_range  + theme(plot.title = element_blank())             
-      h <- p_summary_carib  + theme(plot.title = element_blank())           
-      i <- p_summary_uscar  + theme(plot.title = element_blank())           
+      #d <- p_hist_range     + theme(legend.position = "none", plot.title = element_blank())             
+      #e <- p_hist_carib     + theme(legend.position = "none", plot.title = element_blank()) 
+      #f <- p_hist_uscar     + theme(legend.position = "none", plot.title = element_blank()) 
       
+      d <- p_summary_range  + theme(plot.title = element_blank())             
+      e <- p_summary_carib  + theme(plot.title = element_blank())           
+      f <- p_summary_uscar  + theme(plot.title = element_blank())           
+      
+      g <- lmhv_histogram_as_gg(anom_masked,       species_name, exp_name, "Entire range")
+      h <- lmhv_histogram_as_gg(anom_masked_carib, species_name, exp_name, "Caribbean")
+      i <- lmhv_histogram_as_gg(anom_masked_uscar, species_name, exp_name, "U.S. Caribbean")
+      
+      j <- lmhv_barplot_as_gg(sum_range)
+      k <- lmhv_barplot_as_gg(sum_carib)
+      l <- lmhv_barplot_as_gg(sum_uscar)
+  
       ## Make rows and add labels
 #      row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"), 
 #                                 label_size = 12, label_fontface = "bold")
@@ -676,7 +677,7 @@ process_species <- function(sp_file) {
       d <- d + pad; e <- e + pad; f <- f + pad
       g <- g + pad; h <- h + pad; i <- i + pad
       j <- j + pad; k <- k + pad; l <- l + pad
-      m <- m + pad; n <- n + pad; o <- o + pad
+#      m <- m + pad; n <- n + pad; o <- o + pad
       
       ## ---- Build 3x5 grid (A..O) and keep one legend from the Caribbean map ----
       row1 <- cowplot::plot_grid(a, b, c, ncol = 3, labels = c("A","B","C"),
@@ -687,24 +688,29 @@ process_species <- function(sp_file) {
                                  label_size = 12, label_fontface = "bold")
       row4 <- cowplot::plot_grid(j, k, l, ncol = 3, labels = c("J","K","L"),
                                  label_size = 12, label_fontface = "bold")
-      row5 <- cowplot::plot_grid(m, n, o, ncol = 3, labels = c("M","N","O"),
-                                 label_size = 12, label_fontface = "bold")
+#      row5 <- cowplot::plot_grid(m, n, o, ncol = 3, labels = c("M","N","O"),
+#                                 label_size = 12, label_fontface = "bold")
+
+      main_12 <- cowplot::plot_grid(row1, row2, row3, row4, ncol = 1,
+                                    rel_heights = c(1.4,0.85,1.2,1.2), align = "hv")
       
-      main_15 <- cowplot::plot_grid(row1, row2, row3, row4, row5, ncol = 1,
-                                    rel_heights = c(1,1,1,1,1), align = "hv")
+      # extract legend from one of the plots
+      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right", legend.justification = "top"))
       
-      leg <- cowplot::get_legend(p_overlap_carib + theme(legend.position = "right"))
-      final_15panel <- cowplot::plot_grid(row1, row2, row3, row4, row5, ncol = 1,
-                                          rel_heights = c(1.7, 1, 1, 1, 1), align = "hv")
+      # overlay legend on top-right of the main grid
+      final_12panel <- cowplot::ggdraw() + 
+        cowplot::draw_plot(main_12, 0, 0, 1, 1) + ## Fil the canvas
+        cowplot::draw_plot(leg, 0.21, 0.73, 0.25, 0.25) ## x,y,width,height in [0,1]
+      final_12panel
       
       ## ---- Write the 3x5 page to the Exposure-Overlap.pdf (replaces final_9panel) ----
   #    grDevices::dev.set(dev_over); print(final_15panel)
       
       
       ## Test --> Make single PDF
-      grDevices::cairo_pdf(file.path(species_dir, "test_3x5.pdf"),
-                           width = 17, height = 22)   # or 17 for more space
-      print(final_15panel)
+      grDevices::cairo_pdf(file.path(species_dir, "test_3x4.pdf"),
+                           width = 13, height = 17)   # or 17 for more space
+      print(final_12panel)
       dev.off()
       
     
