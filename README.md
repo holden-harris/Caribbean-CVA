@@ -156,3 +156,10 @@ For each species under CVA review, exposure analyses were conducted for the foll
 | **sss**      | Sea Surface Salinity                  | Surface salt concentration, reflecting freshwater input, evaporation, and circulation.                                                  |
 | **sst**      | Sea Surface Temperature               | Temperature of the upper ocean, widely used as a climate indicator and driver of species distributions.                                 |
 | **swsm**     | Surface Wind Speed Magnitude          | Intensity of winds at the ocean surface, a driver of mixing, upwelling, and surface currents.                                           |
+
+---
+
+## Acknowledgements
+Analyses were conducted by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/). These were built on the efforts from past CVAs. 
+All code and materials are available under an open-access license, as per Creative Commons CC0 1.0.
+We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work. 
