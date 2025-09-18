@@ -1,7 +1,7 @@
 # Caribbean-CVA
 
 ## Overview
-The general methods for the Caribbean CVA exposure factor analyses were adapted from Loughran et al. (2025) for their CVA of U.S. highly migratory species, which adapted and used methods from over a decade of conducting CVAs by NOAA (e.g., Morrison et al. 2015, Hare et al. 2016, Craig et al. 2025). 
+The general methods for the Caribbean CVA exposure factor analyses were adapted from [Loughran et al. (2025)](https://doi.org/10.1371/journal.pclm.0000530) for their CVA of U.S. highly migratory species, which adapted and used methods from over a decade of conducting CVAs by NOAA (e.g., [Morrison et al. 2015](https://doi.org/10.7289/V5TM782J), [Hare et al. 2016](https://doi.org/10.1371/journal.pone.0146756), [Craig et al. 2025](https://doi.org/10.1371/journal.pclm.0000543)). 
 
 The overall goal of the exposure factor analyses is to compare projected future ocean conditions against their past. To do so, we utilize spatially explicit ocean model projections (both historical and future ocean projections) to create a standardized anomaly map (i.e., a static comparison) and provide accompanying analyses. The values of the standardized anomalies are expressed in standard deviation units, which allows the result to be comparable across variables. For each exposure factor anomaly, we mapped the gridded cells of the standardized exposure anomaly and overlapped a given species distribution. Values from the overlapped cells were then compiled into frequency distributions (histograms) and categorized (bar plots). 
 
@@ -30,7 +30,7 @@ The exposure factor analyses (example below) were then calculated as the overlap
 
 A weighted average was calculated consistent with past NOAA CVAs. For a given species or stock and exposure factor, standardized anomalies from the gridded overlapped area were grouped into 0.25 standard deviation bins. These bins were then coded by their absolute value in the following categories (LMHV): Low (|σ| < 0.5), Moderate (0.5 ≤ |σ| < 1.5), High (1.5 ≤ |σ| < 2.0), Very High (|σ| ≥ 2.0). For each exposure factor and geographic extent, a weighted average score of absolute values was calculated with the following:
 
-Weighted Average = (1L + 2M +3H + 4V)(L + M + H + V) 
+Weighted Average = (1L + 2M +3H + 4V) / (L + M + H + V) 
 
 where L, M, H, and V are the sum number values in each category (low, moderate, high, or very high, respectively) with corresponding multipliers of Lx1, Mx2, Hx3, or Vx4 used to calculate the weighted value. This weighted average score ranges from a minimum of 1 to a maximum of 4. For example, if all of the σ values were within -0.5 to +0.5, the calculated weighted average score would be 1.0; if 100% of the σ values were less than -2 or greater than +2, its weighted average score would be 4.0. 
 
