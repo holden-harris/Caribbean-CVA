@@ -42,6 +42,7 @@ where L, M, H, and V are the sum number values in each category (low, moderate, 
        alt="King Mackerel – Exposure Overlap (o200)" 
        width="700"/>
 </p>
+
 #### Figure 1: Example of exposure overlap analysis for King Mackerel (Scomberomorus cavalla) and dissolved oxygen at 200 m (o200).
 
 The exposure overlap analysis figure is a 3 × 4 panel grid organized in two dimensions. The three columns represent the three nested geographic extents.  
@@ -50,21 +51,21 @@ The exposure overlap analysis figure is a 3 × 4 panel grid organized in two dim
 - Right column (C, F, I) further crops the map and only includes grid cells in the U.S. federally-managed waters offshore Puerto Rico and the USVI. 
 
 The four rows represent overlap analyses for a given standardized exposure factor anomaly (σ).
-- Row 1 (A–C): Spatial overlap maps. 
+- **Row 1 (A–C): Spatial overlap maps.** 
   - Gridded maps of the standardized CMIP6 exposure factor anomaly grid cells (1°×1° cells)  that overlap with a given species’ distribution.
   - Standardized anomalies are expressed in σ-units (change relative to the detrended interannual variability of the 1985–2014 baseline).
   - The legend coloring is consistent across the three plots and determined by the range in values for the W. Atlantic species range (panel A).
-- Row 2 (D–F): Categorical summations.
+- **Row 2 (D–F): Categorical summations.**
   - These panels show the total count (y-axis) of standardized exposure factor anomaly values within the following categories: less than -1.5σ, -1.5σ to -0.5σ, –0.5σ to +0.5σ, +0.5 to +1.5, greater than +1.5σ. The top of each bar indicates the proportion of each category, which sums to 100%.
   - Unlike the categorical summary plots in row 4, the sign of the anomaly is unchanged and so represents both magnitude and direction. For example, a positive sign for SST would indicate warming, and a negative sign would indicate cooling. 
-- Row 3 (G–I): Frequency distributions.
+- **Row 3 (G–I): Frequency distributions.**
   - Frequency histograms (y-axis = percentage) of standardized anomalies from the gridded overlapped 0.25σ bins ranging from the minimum and maximum standardized anomalies. 
   - These are color-coded at four exposure levels based on their absolute value and correspond to the ‘LMHV’ categorical plots in Row 4:  
      - L: Low (|σ| < 0.5)
      - M: Moderate (0.5 ≤ |σ| < 1.5)
      - H: High (1.5 ≤ |σ| < 2.0)
      - V: Very High (|σ| ≥ 2.0)
-- Row 4 (J–L): LMHV summary and weighted averages.
+- **Row 4 (J–L): LMHV summary and weighted averages.**
   - The categorical bins are collapsed into proportions of Low, Moderate, High, and Very High anomalies (LMHV), which are congruent with past CVAs.
   - The LMHV categories represent the absolute magnitude of the standardized anomalies |σ| and removes directionality. For example, values less than –2σ and greater than +2σ anomalies both contribute to “Very High.”
   - The weighted average score is indicated in the top-left corner. 
@@ -89,9 +90,9 @@ Plots for the species distribution and exposure factor, which were used to creat
 
 #### Figure 2: Example of species distribution and standardized exposure anomaly for King Mackerel (Scomberomorus cavalla) and dissolved oxygen at 200 m (o200).
 
-The first row, panels A–B, shows the species’ distribution: including (A) their entire distribution within the Western Atlantic and (B) Caribbean extents. 
+The **first row, panels A–B**, shows the species’ distribution: including (A) their entire distribution within the Western Atlantic and (B) Caribbean extents. 
 
-Rows 2 and 3 (panels C–F) show the CMIP6 ensemble standardized anomaly for o200 (future minus baseline, divided by baseline interannual SD) at four nested domains: (C) global, (D) Western Atlantic, (E) Caribbean Sea, and (F) U.S. Caribbean. Warm colors denote higher o200 relative to the baseline; cool colors denote lower o200. 
+**Rows 2 and 3 (panels C–F)** show the CMIP6 ensemble standardized anomaly for o200 (future minus baseline, divided by baseline interannual SD) at four nested domains: (C) global, (D) Western Atlantic, (E) Caribbean Sea, and (F) U.S. Caribbean. Warm colors denote higher o200 relative to the baseline; cool colors denote lower o200. 
 
 ---
 
