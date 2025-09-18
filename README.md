@@ -1,6 +1,48 @@
 # Caribbean-CVA
 
-## Overview
+## Workflow Modules
+This repository contains the following three scripts. 
+
+#### 1. Query attributes from FishBase  
+- **Code:** [Query-species-attributes-from-FishBase.R](https://github.com/holden-harris/Caribbean-CVA/blob/main/Query-species-attributes-from-FishBase.R)  
+- **Docs:** [Query-species-attributes.md](https://github.com/holden-harris/Caribbean-CVA/blob/main/Query-species-attributes.md)  
+- **Overview:** This script automates the extraction of species-level traits and environmental attributes from [FishBase](https://www.fishbase.org) using the [`rfishbase`](https://github.com/ropensci/rfishbase) R package. 
+
+#### 2. Make distribution maps  
+- **Code:** [Make-species-distribution-maps.R](https://github.com/holden-harris/Caribbean-CVA/blob/main/Make-species-distribution-maps.R)  
+- **Docs:** [Make-species-distribution-maps.md](https://github.com/holden-harris/Caribbean-CVA/blob/main/Make-species-distribution-maps..md)  
+- **Overview:** This script loops through all species distribution shapefiles in `./data/species-distribution-shapefiles/` and produces standardized PNG maps showing each species' range within a Caribbean bounding box. The loop automates map creation for any number of shapefiles in the directory.
+
+#### 3. Conduct exposure overlap analyses  
+- **Code:** [Exposure-anomalies.R](https://github.com/holden-harris/Caribbean-CVA/blob/main/Exposure-anomalies.R)  
+- **Docs:** [Exposure-anomalies.md](https://github.com/holden-harris/Caribbean-CVA/blob/main/Exposure-anomalies.md)  
+- **Overview:** This script synthesizes spatial biological and oceanographic information to help evaluate climate exposures for federally managed and ecologically important species in the U.S. Caribbean. The first set of maps produced shows a species' distribution at two scales and exposure factors at four scales. These provide context for the **exposure overlap figures**, which display the spatial overlap between the species distribution and the anomalies, along with a histogram of this data and a categorical bar summary. For the Caribbean CVA, the workflow to produce these maps involves looping over 25 species and 13 exposure factors, resulting in a total of 650 pages. These are grouped into PDFs by species and exposure factor for review by the CVA experts. 
+
+### Directory Structure
+```
+Caribbean-CVA/
+├─ data/
+│  ├─ cmip6/                             # NetCDF exposure files (*.nc)
+│  └─ species-distribution-shapefiles/   # Species polygons (*.shp + sidecars)
+│
+├─ scripts/                              # R scripts for workflow modules
+│  ├─ Query-species-attributes-from-FishBase.R     # Query biological traits from FishBase
+│  ├─ Make-species-distribution-maps.R            # Build species distribution maps
+│  └─ Exposure-anomalies.R                        # Conduct exposure overlap analyses
+│
+├─ outputs/                              # Figures and PDFs are written here
+│   └─ exposure-overlap-12panel/
+│       └─ <species-slug>/
+│           ├─ <species-slug>_Distribution-Anomalies.pdf       # 1 page per exposure factor
+│           ├─ <species-slug>_Exposure-Overlap-12panel.pdf     # 1 page per exposure factor
+│           ├─ Distribution-Anomalies/
+│           │   └─ <species-slug>_Distribution-Anomalies_<exp>.png
+│           └─ Exposure-Overlap-12panel/
+│               └─ <species-slug>_Exposure-Overlap_<exp>.png
+```
+---
+
+## Goals and Scope 
 The general methods for the Caribbean CVA exposure factor analyses were adapted from [Loughran et al. (2025)](https://doi.org/10.1371/journal.pclm.0000530) for their CVA of U.S. highly migratory species, which adapted and used methods from over a decade of conducting CVAs by NOAA (e.g., [Morrison et al. 2015](https://doi.org/10.7289/V5TM782J), [Hare et al. 2016](https://doi.org/10.1371/journal.pone.0146756), [Craig et al. 2025](https://doi.org/10.1371/journal.pclm.0000543)). 
 
 The overall goal of the exposure factor analyses is to compare projected future ocean conditions against their past. To do so, we utilize spatially explicit ocean model projections (both historical and future ocean projections) to create a standardized anomaly map (i.e., a static comparison) and provide accompanying analyses. The values of the standardized anomalies are expressed in standard deviation units, which allows the result to be comparable across variables. For each exposure factor anomaly, we mapped the gridded cells of the standardized exposure anomaly and overlapped a given species distribution. Values from the overlapped cells were then compiled into frequency distributions (histograms) and categorized (bar plots). 
@@ -46,9 +88,9 @@ where L, M, H, and V are the sum number values in each category (low, moderate, 
 #### Figure 1: Example of exposure overlap analysis for King Mackerel (Scomberomorus cavalla) and dissolved oxygen at 200 m (o200).
 
 The exposure overlap analysis figure is a 3 × 4 panel grid organized in two dimensions. The three columns represent the three nested geographic extents.  
-- Left column (A, D, G) represents the species’ range within the Western Atlantic for stock-wide context. 
-- Middle column (B, E, H) crops the map for the wider Caribbean (center) and panels in this column only show values for grid cells within this region. 
-- Right column (C, F, I) further crops the map and only includes grid cells in the U.S. federally-managed waters offshore Puerto Rico and the USVI. 
+- **Left column (A, D, G)** represents the species’ range within the Western Atlantic for stock-wide context. 
+- **Middle column (B, E, H)** crops the map for the wider Caribbean (center) and panels in this column only show values for grid cells within this region. 
+- **Right column (C, F, I)** further crops the map and only includes grid cells in the U.S. federally-managed waters offshore Puerto Rico and the USVI. 
 
 The four rows represent overlap analyses for a given standardized exposure factor anomaly (σ).
 - **Row 1 (A–C): Spatial overlap maps.** 
