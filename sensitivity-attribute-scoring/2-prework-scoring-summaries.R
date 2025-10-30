@@ -1,10 +1,5 @@
 ##------------------------------------------------------------------------------
 ## Caribbean CVA – Preliminary Sensitivity Attribute SD plots (HMS-style)
-## Inputs:
-##   - score_table_all: tidy table built from the 16 reviewer workbooks with cols:
-##       SourceFile, Scorer, stock_name, row_idx,
-##       Attribute_name, Attribute_type,
-##       Data_quality, Scoring_rank_1..4
 
 rm(list = ls()); gc()
 suppressPackageStartupMessages({
@@ -18,11 +13,16 @@ suppressPackageStartupMessages({
   library(purrr)
 })
 
-##------------------------------------------------------------------------------
-## Read the compiled scoring table
-
 out_dir <- "./outputs/prework"
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+
+##------------------------------------------------------------------------------
+## Read the compiled scoring table
+## Inputs:
+##   - score_table_all: tidy table built from the 16 reviewer workbooks with cols:
+##       SourceFile, Scorer, stock_name, row_idx,
+##       Attribute_name, Attribute_type,
+##       Data_quality, Scoring_rank_1..4
 
 score_table_all <- readr::read_csv("./sensitivity-attribute-scoring/score_table_all.csv", show_col_types = FALSE)
 
@@ -60,22 +60,6 @@ score_table_all <- score_table_all %>%
     Attribute_short = recode(Attribute_name, !!!short_map, .default = Attribute_name)
   )
 
-## Optional: enforce attribute display order (edit as desired)
-#att_order <- c(
-#  "Adult Mobility","Habitat Specificity","Mobility_Dispersal of ELS",
-#  "Other Stressors","Pop Growth Rate","Prey Specificity","Reproductive Cycle",
-#  "Repro Strat Sensitivity","Sensitivity to OA","Sensitivity to Temp",
-#  "Site Fidelity","Specificity EL Hist REQs","Stock Size_Status",
-#  "Species Range","Genetic Diversity","Pred & Comp Dynamics"
-#)
-#score_table_all <- score_table_all |>
-#  mutate(Attribute_short = factor(Attribute_short, levels = att_order))
-
-##------------------------------------------------------------------------------
-##  Prepare long format for plotting and HMS calculations
-##   - one row per Scorer × Species × Attribute × Category (L/M/H/V)
-##   - num_experts = number of scorers who picked any category for that attribute
-
 ## Tallies long-form: one row per Scorer × Species × Attribute × category, val ∈ [0..5]
 lmhv_long <- score_table_all %>%
   dplyr::select(Scorer, stock_name, Attribute_name, Attribute_short,
@@ -106,7 +90,8 @@ experts_per_attr <- lmhv_long %>%
 ##   - L,M,H,V = sums across scorers
 ##   - Weighted mean (HMS): ((L*1 + M*2 + H*3 + V*4) / (num_experts * 5))
 ##   - SD: sd(rep(1,L), rep(2,M), rep(3,H), rep(4,V))
-
+##
+## Write out data table
 
 ## Per-stock × attribute Data Quality mean/sd across scorers
 dq_stats <- score_table_all %>%
@@ -314,7 +299,6 @@ make_species_plot <- function(plot_stock) {
       axis.text.y = element_text(size = 9, color = "black"),
       plot.title  = element_text(size = 14, face = "bold")
     )
-  p
 }
 
 ## Test 
@@ -323,10 +307,16 @@ print(first_species)
 p <- make_species_plot(first_species)
 print(p)
 
+## Save a PNG of the single-page test plot
+test_png <- file.path(out_dir, paste0("test_plot_", gsub("[^A-Za-z0-9]+","_", first_species), ".png"))
+ggplot2::ggsave( filename = test_png,
+  plot     = p, width = 8.5, height   = 11,     # letter page height
+  units    = "in", dpi      = 300
+)
 
 ##------------------------------------------------------------------------------
-## Identify scorers and colors
-
+##
+## Identify scorers and colors for workshop
 
 ## stock_name × Scorer × color (hex)
 stock_scorer_colors <- score_table_all %>%
@@ -354,10 +344,10 @@ stock_scorer_color_list <- stock_scorer_colors %>%
 write_csv(stock_scorer_list, file.path(out_dir, "stock_scorer_list.csv"))
 write_csv(stock_scorer_color_list,       file.path(out_dir, "stock_scorer_color_list.csv"))
 
-
-## ------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ##
-## Compile plots into a (multi-page) PDF
+## Make PDF
+## - compile plots into a (multi-page) PDF
 
 dir.create(dirname(out_dir), showWarnings = FALSE, recursive = TRUE) ## Make directory if it doesnt exist
 out_pdf <- file.path(out_dir, "prework_all_species.pdf")
