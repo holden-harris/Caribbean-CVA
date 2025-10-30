@@ -5,10 +5,6 @@
 ##       SourceFile, Scorer, stock_name, row_idx,
 ##       Attribute_name, Attribute_type,
 ##       Data_quality, Scoring_rank_1..4
-## Output:
-##   - ./outputs/prework/plots/<species>.pdf     (stacked LMHV bars by attribute)
-##   - ./outputs/prework/scorer_colors.csv       (Scorer → color key; legend hidden in plots)
-##   - ./outputs/prework/preliminary_sd.csv      (per-species mean SD across attributes)
 
 rm(list = ls()); gc()
 suppressPackageStartupMessages({
@@ -25,14 +21,12 @@ suppressPackageStartupMessages({
 ##------------------------------------------------------------------------------
 ## Read the compiled scoring table
 
-in_csv  <- "./data/preliminary-scores/score_table_all.csv"   
 out_dir <- "./outputs/prework"
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
-dir.create(file.path(out_dir, "plots"), showWarnings = FALSE, recursive = TRUE)
 
-score_table_all <- readr::read_csv(in_csv, show_col_types = FALSE)
+score_table_all <- readr::read_csv("./sensitivity-attribute-scoring/score_table_all.csv", show_col_types = FALSE)
 
-## Sanity
+## Check key columns
 stopifnot(all(c("Scorer","stock_name","Attribute_name",
                 "Scoring_rank_1","Scoring_rank_2","Scoring_rank_3","Scoring_rank_4") %in% names(score_table_all)))
 
@@ -216,7 +210,10 @@ p_key <- ggplot(scorer_colors_plot, aes(x = col, y = -row)) +
     plot.title = element_text(size = 16, face = "bold"),
     plot.subtitle = element_text(size = 11)
   )
+
+png(file.path(out_dir, "scorer_color_key.png"))
 p_key
+dev.off()
 
 ##------------------------------------------------------------------------------
 ## Plot (into make per-species panel 
@@ -351,20 +348,3 @@ dev.off()
 message("Wrote PDF: ", out_pdf)
 
 
-
-
-
-##------------------------------------------------------------------------------
-##Export per-species preliminary S 
-prelim_sd <- lmhv_sums %>%
-  group_by(stock_name) %>%
-  summarise(
-    prelim_sd = round(mean(HMS_sd, na.rm = TRUE), 2),
-    n_attributes = sum(!is.na(HMS_sd)),
-    .groups = "drop"
-  ) %>%
-  arrange(stock_name)
-
-readr::write_csv(prelim_sd, file.path(out_dir, "preliminary_sd.csv"))
-message("Wrote: ", file.path(out_dir, "preliminary_sd.csv"))
-message("Wrote: ", file.path(out_dir, "scorer_colors.csv"))
