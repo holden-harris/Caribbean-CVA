@@ -112,7 +112,7 @@ From each stock tab, the script reads:
 - `./outputs/prework/stock_scorer_list.csv` — one row per stock: number of scorers and list of scorer IDs
 - `./outputs/prework/stock_scorer_color_list.csv` — one row per stock: scorer IDs and hex colors
 
-![Pre-work test plot][(./outputs/prework/test_plot_Atlantic_thread_herring.png)
+![Pre-work test plot](./outputs/prework/test_plot_Atlantic_thread_herring.png)
 
 ---
 
