@@ -327,49 +327,6 @@ print(p)
 ##------------------------------------------------------------------------------
 ## Identify scorers and colors
 
-## Simple, dependency-free approximator: hex -> "descriptor hue"
-approx_color_label <- function(hex) {
-  to_lab <- function(h) {
-    if (is.na(h)) return(NA_character_)
-    if (h < 15 | h >= 345) "red"
-    else if (h < 30)  "orange"
-    else if (h < 50)  "yellow"
-    else if (h < 80)  "lime"
-    else if (h < 150) "green"
-    else if (h < 190) "teal"
-    else if (h < 210) "cyan"
-    else if (h < 235) "sky blue"
-    else if (h < 260) "blue"
-    else if (h < 285) "indigo"
-    else if (h < 315) "purple"
-    else              "magenta"
-  }
-  
-  lab_vec <- character(length(hex))
-  for (i in seq_along(hex)) {
-    h <- tryCatch({
-      rgb <- grDevices::col2rgb(hex[i]) / 255
-      hsv <- grDevices::rgb2hsv(rgb[1], rgb[2], rgb[3])
-      list(h = as.numeric(hsv["h", ]) * 360,
-           s = as.numeric(hsv["s", ]),
-           v = as.numeric(hsv["v", ]))
-    }, error = function(e) list(h = NA_real_, s = NA_real_, v = NA_real_))
-    
-    if (is.na(h$h)) { lab_vec[i] <- NA_character_; next }
-    
-    hue   <- to_lab(h$h)
-    # brightness / vividness adjectives
-    tone  <- if (h$v < 0.25) "very dark"
-    else if (h$v < 0.45) "dark"
-    else if (h$v > 0.9 && h$s > 0.6) "neon"
-    else if (h$v > 0.8) "bright"
-    else ""
-    
-    lab_vec[i] <- trimws(paste(tone, hue))
-  }
-  lab_vec
-}
-
 
 ## stock_name × Scorer × color (hex)
 stock_scorer_colors <- score_table_all %>%
@@ -377,107 +334,25 @@ stock_scorer_colors <- score_table_all %>%
   dplyr::left_join(scorer_colors, by = "Scorer") %>%
   dplyr::arrange(stock_name, Scorer); stock_scorer_colors
 
-stock_scorer_colors_named <- stock_scorer_colors %>%
-  dplyr::mutate(approx_color = approx_color_label(color)) %>%
-  dplyr::relocate(approx_color, .after = color); stock_scorer_colors_named
-
-
-
-## e.g., "AAcosta (#A1B2C3), BSmith (#D4E5F6), ..."
+## Make into list (one row per stock)
 stock_scorer_list <- stock_scorer_colors %>%
+  dplyr::group_by(stock_name) %>%
+  dplyr::summarise(
+    n_scorers = dplyr::n_distinct(Scorer),
+    scorers   = paste(sort(unique(Scorer)), collapse = ", "),
+    .groups   = "drop"
+  ) %>%
+  dplyr::arrange(stock_name); stock_scorer_list
+
+stock_scorer_color_list <- stock_scorer_colors %>%
   dplyr::mutate(scorer_str = paste0(Scorer, " (", color, ")")) %>%
+  dplyr::mutate(scorer_str = paste0(Scorer)) %>%
   dplyr::group_by(stock_name) %>%
   dplyr::summarise(scorers = paste(scorer_str, collapse = ", "), .groups = "drop") %>%
-  dplyr::arrange(stock_name)
+  dplyr::arrange(stock_name); stock_scorer_list
 
-## Add a simple swatch character; many viewers render the colored block nicely
-stock_scorer_colors_vis <- stock_scorer_colors %>%
-  dplyr::mutate(swatch = "■") %>%                 # Unicode square
-  dplyr::select(stock_name, Scorer, swatch, color)
-
-
-## 1) Build a lookup of base R named colors in CIELAB space
-base_names <- colors()                              # ~657 names
-base_hex   <- grDevices::col2rgb(base_names)        # 3 x N matrix (0–255)
-base_hex   <- apply(base_hex, 2, function(v) rgb(v[1], v[2], v[3], maxColorValue = 255))
-base_lab   <- farver::convert_colour(base_hex, from = "rgb", to = "lab")
-
-base_color_ref <- tibble::tibble(
-  base_name = base_names,
-  base_hex  = base_hex,
-  L = base_lab[, "l"], A = base_lab[, "a"], B = base_lab[, "b"]
-)
-
-## 2) Helper: given a hex vector, return nearest base color name + a human label
-nearest_color_name <- function(hex_vec) {
-  # guard empty/NA
-  hex_vec <- ifelse(is.na(hex_vec) | hex_vec == "", NA_character_, hex_vec)
-  
-  # Convert to LAB
-  lab <- farver::convert_colour(hex_vec, from = "rgb", to = "lab")
-  
-  # Compute nearest neighbor by Euclidean distance in LAB
-  idx <- apply(lab, 1, function(row_lab) {
-    if (any(is.na(row_lab))) return(NA_integer_)
-    d <- (base_color_ref$L - row_lab[1])^2 +
-      (base_color_ref$A - row_lab[2])^2 +
-      (base_color_ref$B - row_lab[3])^2
-    which.min(d)
-  })
-  
-  est_name <- ifelse(is.na(idx), NA_character_, base_color_ref$base_name[idx])
-  
-  # Humanize the base color name into "Title Case" with spaces:
-  # e.g., "darkred" -> "Dark red", "lightsteelblue3" -> "Light steel blue"
-  # strip trailing digits (like 2,3,4) which often denote intensity variants
-  est_label <- est_name %>%
-    # split letters/numbers, then collapse
-    str_replace_all("(\\d+)$", "") %>%        # drop trailing digits
-    str_replace_all("\\.", " ") %>%           # dots to spaces (rare)
-    str_replace_all("grey", "gray") %>%       # unify spelling (optional)
-    # insert space between color-word boundaries, e.g., "steelblue" -> "steel blue"
-    # do a light pass: separate core known compounds
-    (\(x) str_replace_all(x,
-                          c("steelblue"="steel blue","royalblue"="royal blue","slateblue"="slate blue",
-                            "dodgerblue"="dodger blue","deepskyblue"="deep sky blue","skyblue"="sky blue",
-                            "lightgoldenrod"="light goldenrod","goldenrod"="golden rod",
-                            "firebrick"="fire brick","blueviolet"="blue violet","chartreuse"="chartreuse",
-                            "darkolivegreen"="dark olive green","olivedrab"="olive drab")))() %>%
-    # insert space between generic runs like "darkred" -> "dark red"
-    str_replace_all("([a-z])([A-Z])", "\\1 \\2") %>%
-    # normalize whitespace and Title Case
-    str_squish() %>%
-    tools::toTitleCase()
-  
-  tibble::tibble(
-    color_name  = est_name,
-    color_label = est_label
-  )
-}
-
-## 3) Apply to your scorer palette
-# scorer_colors: tibble(Scorer, color) from earlier steps (e.g., pals::glasbey)
-scorer_colors_named <- scorer_colors %>%
-  bind_cols(nearest_color_name(scorer_colors$color))
-
-scorer_colors_named
-# A tibble with columns: Scorer, color (hex), color_name (base R), color_label (human-friendly)
-
-## 4) Build the per-stock table with human-readable color labels
-stock_scorer_colors <- score_table_all %>%
-  distinct(stock_name, Scorer) %>%
-  left_join(scorer_colors_named, by = "Scorer") %>%
-  arrange(stock_name, Scorer)
-
-# Optional: a compact “one line per stock” view like “AAcosta (Dark Red), …”
-stock_scorer_list <- stock_scorer_colors %>%
-  mutate(scorer_str = paste0(Scorer, " (", color_label, ")")) %>%
-  group_by(stock_name) %>%
-  summarise(scorers = paste(scorer_str, collapse = ", "), .groups = "drop")
-
-
-stock_scorer_list
-readr::write_csv(stock_scorer_list, file.path(out_dir, "stock_scorer_list.csv"))
+write_csv(stock_scorer_list, file.path(out_dir, "stock_scorer_list.csv"))
+write_csv(stock_scorer_color_list,       file.path(out_dir, "stock_scorer_color_list.csv"))
 
 
 ## ------------------------------------------------------------
