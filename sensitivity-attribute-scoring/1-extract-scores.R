@@ -1,7 +1,8 @@
 ##------------------------------------------------------------------------------
 ## Caribbean CVA – Compile reviewer scoring workbooks into one table
 ## Builds: score_table_all  (rows from rows 21–35, skipping 29; B/E/F–I)
-##------------------------------------------------------------------------------
+##
+## !!!NOTE!!! Sheets being read in cannot be open in Excel or they will fail to read in the code loop
 
 rm(list = ls()); gc()
 suppressPackageStartupMessages({
@@ -15,7 +16,6 @@ suppressPackageStartupMessages({
 
 ##------------------------------------------------------------------------------
 ## CONFIG
-##------------------------------------------------------------------------------
 in_dir      <- "./data/preliminary-scores"    ## folder containing the 16 Excel files
 ignore_tabs <- c("Instructions","Data Quality","Example")
 
@@ -42,39 +42,31 @@ rigid_attrs <- c(
 
 ##------------------------------------------------------------------------------
 ## HELPERS
-##------------------------------------------------------------------------------
 
-## Parse Scorer from filename: last '_' token before extension
+## Parse Scorer from filename
 parse_scorer <- function(path){
   fn <- basename(path)
   fn_noext <- sub("\\.[^.]+$", "", fn)
   parts <- strsplit(fn_noext, "_")[[1]]
   scorer <- parts[length(parts)]
-  scorer <- str_squish(scorer)
+  scorer <- stringr::str_squish(scorer)
   ifelse(nchar(scorer) > 0, scorer, "Unknown Scorer")
 }
 
-## Get visible (not hidden/veryHidden) sheet names by reading xl/workbook.xml
-visible_sheet_names <- function(xlsx_path){
-  tmp_dir <- tempfile("xlsx_unzip_"); dir.create(tmp_dir)
-  unzip(xlsx_path, exdir = tmp_dir)
-  wb_xml <- file.path(tmp_dir, "xl", "workbook.xml")
-  if (!file.exists(wb_xml)) {
-    ## Fall back to readxl if not a standard .xlsx (e.g., old .xls)
-    return(readxl::excel_sheets(xlsx_path))
+## Get visible sheet names WITHOUT unzipping
+safe_visible_sheet_names <- function(xlsx_path) {
+  if (requireNamespace("openxlsx", quietly = TRUE)) {
+    sn  <- openxlsx::getSheetNames(xlsx_path)
+    vis <- tryCatch(openxlsx::getSheetVisibility(xlsx_path),
+                    error = function(e) rep("visible", length(sn)))
+    keep <- is.na(vis) | tolower(vis) == "visible"
+    return(trimws(sn[keep]))
   }
-  doc <- xml2::read_xml(wb_xml)
-  ns  <- xml2::xml_ns(doc)
-  nodes <- xml2::xml_find_all(doc, ".//d:sheets/d:sheet", ns = c(d = ns[[1]]))
-  nm   <- xml2::xml_attr(nodes, "name")
-  st   <- xml2::xml_attr(nodes, "state")     ## NA = visible; "hidden"/"veryHidden" otherwise
-  vis  <- nm[is.na(st)]
-  trimws(vis)
+  readxl::excel_sheets(xlsx_path)
 }
 
-## Extract the 21–35 rows (skip 29) from B..I for a single stock tab
+## Extract rows 21–35 (skip 29) from B..I for one tab
 extract_tab_rows <- function(xlsx_path, tab, Scorer){
-  ## Read B21:I35 as text
   rng <- readxl::read_excel(
     path      = xlsx_path,
     sheet     = tab,
@@ -82,79 +74,141 @@ extract_tab_rows <- function(xlsx_path, tab, Scorer){
     col_names = FALSE,
     col_types = "text"
   )
-  
-  if (ncol(rng) < 8) return(tibble())  ## must have B..I
+  if (ncol(rng) < 8) return(tibble::tibble())
   
   rng <- rng |>
-    mutate(row_idx = 21:35) |>
-    filter(row_idx != 29)
+    dplyr::mutate(row_idx = 21:35) |>
+    dplyr::filter(row_idx != 29)
   
   out <- rng |>
-    transmute(
+    dplyr::transmute(
       SourceFile      = basename(xlsx_path),
       Scorer          = Scorer,
       stock_name      = tab,
       row_idx         = row_idx,
-      Attribute_name  = str_squish(as.character(`...1`)),
+      Attribute_name  = stringr::str_squish(as.character(`...1`)),
       Data_quality    = suppressWarnings(as.numeric(`...4`)),
       Scoring_rank_1  = suppressWarnings(as.numeric(`...5`)),
       Scoring_rank_2  = suppressWarnings(as.numeric(`...6`)),
       Scoring_rank_3  = suppressWarnings(as.numeric(`...7`)),
       Scoring_rank_4  = suppressWarnings(as.numeric(`...8`))
     ) |>
-    ## Tag attribute type
-    mutate(
-      Attribute_type = case_when(
+    dplyr::mutate(
+      Attribute_type = dplyr::case_when(
         Attribute_name %in% sens_attrs  ~ "Sensitivity",
         Attribute_name %in% rigid_attrs ~ "Rigidity",
         TRUE                            ~ NA_character_
       )
     ) |>
-    ## drop rows that are completely empty
-    filter(!(is.na(Attribute_name) & if_all(starts_with("Scoring_rank_"), ~is.na(.x))))
-  
+    dplyr::filter(!(is.na(Attribute_name) &
+                      dplyr::if_all(dplyr::starts_with("Scoring_rank_"), ~is.na(.x))))
   out
 }
 
-## Process a single workbook → one tibble like your rows_21_35_all
+## Safe loader: copy to temp (breaks OneDrive/Excel locks), no unzip, resilient
 build_score_table_for_workbook <- function(xlsx_path){
-  Scorer <- parse_scorer(xlsx_path)
-  
-  ## visible sheets minus admin tabs
-  all_tabs_vis <- visible_sheet_names(xlsx_path)
-  all_tabs_rd  <- readxl::excel_sheets(xlsx_path)
-  stock_tabs   <- setdiff(intersect(all_tabs_vis, all_tabs_rd), ignore_tabs)
-  
-  if (!length(stock_tabs)) return(tibble())
-  
-  bind_rows(lapply(stock_tabs, function(tab){
-    extract_tab_rows(xlsx_path, tab, Scorer)
-  }))
+  tryCatch({
+    tmp <- tempfile(fileext = ".xlsx")
+    ok  <- file.copy(xlsx_path, tmp, overwrite = TRUE)
+    if (!ok) {
+      message("⚠️  Could not copy (locked?): ", basename(xlsx_path))
+      return(tibble::tibble())
+    }
+    
+    Scorer <- parse_scorer(xlsx_path)
+    tabs   <- safe_visible_sheet_names(tmp)
+    stock_tabs <- setdiff(tabs, ignore_tabs)
+    if (!length(stock_tabs)) {
+      message("ℹ️  No stock tabs in: ", basename(xlsx_path))
+      return(tibble::tibble())
+    }
+    
+    dplyr::bind_rows(lapply(stock_tabs, function(tab){
+      extract_tab_rows(tmp, tab, Scorer)
+    }))
+  }, error = function(e){
+    message("❌ Error in ", basename(xlsx_path), ": ", conditionMessage(e))
+    tibble::tibble()
+  })
 }
+
+## ---------- COMPILE (with simple logging) ----------
+
+xlsx_files <- list.files(
+  in_dir,
+  pattern = "(?i)\\.xl[a-z]+$",   # xlsx/xls/xlsm…
+  full.names = TRUE
+)
+
+message("Found files: ", length(xlsx_files))
+per_file <- lapply(xlsx_files, function(f){
+  message("→ Reading: ", basename(f))
+  out <- build_score_table_for_workbook(f)
+  message("  rows: ", nrow(out), "  (scorer: ", parse_scorer(f), ")")
+  out
+})
+
+score_table_all <- dplyr::bind_rows(per_file) |>
+  dplyr::arrange(Scorer, stock_name, row_idx)
+
+message("Total rows: ", nrow(score_table_all),
+        " | scorers: ", dplyr::n_distinct(score_table_all$Scorer),
+        " | stocks: ",  dplyr::n_distinct(score_table_all$stock_name))
 
 ##------------------------------------------------------------------------------
 ## RUN: loop all files in folder and compile into score_table_all
-##------------------------------------------------------------------------------
+
 xlsx_files <- list.files(
   in_dir,
   pattern = "(?i)\\.xl[a-z]+$",     ## xl* (xlsx, xls, xlsm, xlx typos)
   full.names = TRUE
-)
+); length(xlsx_files)  ## should be 16
 
-length(xlsx_files)  ## should be 16
-
-score_table_all <- bind_rows(lapply(xlsx_files, build_score_table_for_workbook)) |>
+## --- Build master table ---
+score_table_all <- bind_rows(lapply(xlsx_files, 
+                                    build_score_table_for_workbook)) |>
   arrange(Scorer, stock_name, row_idx)
 
-## Quick QA
-nrow(score_table_all)
-dplyr::count(score_table_all, Scorer, stock_name) |> print(n = 50)
+## Scorers × number of stocks they scored
+scorer_stock_counts <- 
+  score_table_all %>%
+  distinct(Scorer, stock_name) %>%
+  count(Scorer, name = "n_stocks"); scorer_stock_counts
 
-## Flag unknown attribute names
-unknown_attrs <- setdiff(unique(score_table_all$Attribute_name), c(sens_attrs, rigid_attrs))
-if (length(unknown_attrs)) {
-  message("Unrecognized Attribute_name values:\n- ", paste(unknown_attrs, collapse = "\n- "))
-}
+## Note this includes hidden sheets, so includes stocks not scored by the reviewer
+## Next, we'll remove these rows where all 5 fields (data_quality, scoring_rank1..4 are NA)
+
+## Remove rows where ALL five fields are NA
+score_table_all <- score_table_all %>%
+  dplyr::filter(
+    !dplyr::if_all(
+      dplyr::all_of(c("Data_quality","Scoring_rank_1","Scoring_rank_2","Scoring_rank_3","Scoring_rank_4")),
+      ~ is.na(.x)
+    )
+  )
+
+## Check again
+scorer_stock_counts <- 
+  score_table_all %>%
+  distinct(Scorer, stock_name) %>%
+  count(Scorer, name = "n_stocks"); scorer_stock_counts
+
+##------------------------------------------------------------------------------
+## Additinal QA/QC
+n_scorers <- score_table_all %>% distinct(Scorer) %>% nrow() 
+n_stocks <- score_table_all %>% distinct(stock_name) %>% nrow() 
+n_attrs  <- score_table_all %>% distinct(Attribute_name) %>% nrow() ## How many unique attributes?
+n_scorers; n_stocks; n_attrs ## --> Should be 16 scorers, 25 stocks, 14 attributes
+
+## Per stock: how many scorers, how many attributes populated
+stock_qa <- score_table_all %>%
+  group_by(stock_name) %>%
+  summarise(
+    n_scorers = n_distinct(Scorer),
+    n_attrs   = n_distinct(Attribute_name),
+    .groups = "drop"
+  ) %>%
+  arrange(stock_name) %>% as.data.frame(); stock_qa
 
 ## Write to CSV for downstream steps
 write.csv(score_table_all, file = file.path(in_dir, "score_table_all.csv"), row.names = FALSE)
