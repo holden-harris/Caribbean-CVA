@@ -23,7 +23,7 @@ suppressPackageStartupMessages({
 })
 
 ##------------------------------------------------------------------------------
-## 1) Read the compiled scoring table
+## Read the compiled scoring table
 
 in_csv  <- "./data/preliminary-scores/score_table_all.csv"   
 out_dir <- "./outputs/prework"
@@ -37,28 +37,34 @@ stopifnot(all(c("Scorer","stock_name","Attribute_name",
                 "Scoring_rank_1","Scoring_rank_2","Scoring_rank_3","Scoring_rank_4") %in% names(score_table_all)))
 
 ##------------------------------------------------------------------------------
-## 2) Shorten/standardize attribute names (match HMS figure labels)
+## Shorten/standardize attribute names (match HMS figure labels)
 
+## Short label map (add the "or" variant)
 short_map <- c(
   "Adult mobility"                                   = "Adult Mobility",
   "Habitat specificity"                              = "Habitat Specificity",
-  "Mobility and dispersal of early life stages"      = "Mobility_Dispersal of ELS",
+  "Mobility and dispersal of early life stages"      = "Mobility Dispersal of ELS",
+  "Mobility and dispersal or early life stages"      = "Mobility Dispersal of ELS",
   "Predation and competition dynamics"               = "Pred & Comp Dynamics",
   "Prey specificity"                                 = "Prey Specificity",
   "Complexity in reproductive strategy"              = "Repro Strat Sensitivity",
   "Spawning characteristics"                         = "Reproductive Cycle",
   "Specificity in early life history requirements"   = "Specificity EL Hist REQs",
-  "Stock size/status"                                = "Stock Size_Status",
+  "Stock size/status"                                = "Stock Size Status",
   "Tolerance to ocean acidification"                 = "Sensitivity to OA",
   "Population growth rate"                           = "Pop Growth Rate",
+  "Sensitivity to temperature"                       = "Sensitivity to Temp",
   "Species range"                                    = "Species Range",
   "Other stressors"                                  = "Other Stressors",
   "Genetic diversity"                                = "Genetic Diversity"
 )
 
-score_table_all <- score_table_all |>
-  mutate(Attribute_name = str_squish(Attribute_name)) |>
-  mutate(Attribute_short = dplyr::recode(Attribute_name, !!!short_map, .default = Attribute_name))
+## Create short labels from Attribute_name
+score_table_all <- score_table_all %>%
+  mutate(
+    Attribute_name  = str_squish(Attribute_name),
+    Attribute_short = recode(Attribute_name, !!!short_map, .default = Attribute_name)
+  )
 
 ## Optional: enforce attribute display order (edit as desired)
 att_order <- c(
@@ -72,17 +78,7 @@ score_table_all <- score_table_all |>
   mutate(Attribute_short = factor(Attribute_short, levels = att_order))
 
 ##------------------------------------------------------------------------------
-## 3) Build Scorer → color key (saved to CSV). Legend stays hidden in plots.
-
-scorers <- score_table_all %>% distinct(Scorer) %>% arrange(Scorer) %>% pull(Scorer)
-
-## Use a large qualitative palette; recycle if needed
-pal <- scales::hue_pal()(max(length(scorers), 3))
-scorer_colors <- tibble(Scorer = scorers, color = pal[seq_along(scorers)])
-readr::write_csv(scorer_colors, file.path(out_dir, "scorer_colors.csv"))
-
-##------------------------------------------------------------------------------
-## 4) Prepare long format for plotting and HMS calculations
+##  Prepare long format for plotting and HMS calculations
 ##   - one row per Scorer × Species × Attribute × Category (L/M/H/V)
 
 ## Tallies long-form: one row per Scorer × Species × Attribute × category, val ∈ [0..5]
@@ -102,9 +98,17 @@ lmhv_long <- score_table_all %>%
   tidyr::replace_na(list(val = 0)) %>%
   dplyr::mutate(category = factor(category, levels = c("L","M","H","V")))
 
+## --- Build df_counts (species subset) and give it Attribute_short
+df_counts <- lmhv_long %>%
+  filter(stock_name == stock_name) %>%
+  mutate(
+    Attribute_short = recode(Attribute_name, !!!short_map, .default = Attribute_name),
+    Attribute_short = forcats::fct_inorder(Attribute_short),
+    category        = factor(category, levels = c("L","M","H","V"))
+  )
 
 ##------------------------------------------------------------------------------
-## 5) Compute per-species × attribute HMS mean and SD
+## Compute per-species × attribute HMS mean and SD
 ##   - L,M,H,V = sums across scorers
 ##   - num_experts = number of scorers who picked any category for that attribute
 ##   - Weighted mean (HMS): ((L*1 + M*2 + H*3 + V*4) / (num_experts * 5))
@@ -137,88 +141,122 @@ lmhv_sums <- lmhv_long %>%
   ) %>%
   dplyr::ungroup()
 
+## --- Make df_annot for THIS species only; no Attribute_short here, just label text
+df_annot <- lmhv_sums %>%
+  filter(stock_name == stock_name) %>%
+  mutate(lab = sprintf("m= %.1f  sd= %.2f", round(HMS_mean, 1), round(HMS_sd, 2))) %>%
+  distinct(stock_name, Attribute_name, .keep_all = TRUE) %>%  # 1 row per attribute
+  select(stock_name, Attribute_name, lab)
+
+## --- Join back on BOTH keys; Attribute_short remains from df_counts
+df_counts <- df_counts %>%
+  left_join(df_annot, by = c("stock_name","Attribute_name"))
+
 
 ##------------------------------------------------------------------------------
-## 6) Plot function (internal) to make per-species panel 
+## Build Scorer → color key (saved to CSV). Legend stays hidden in plots.
+
+scorers <- score_table_all %>% distinct(Scorer) %>% arrange(Scorer) %>% pull(Scorer)
+
+## Use a large qualitative palette; recycle if needed
+pal <- scales::hue_pal()(max(length(scorers), 3))
+scorer_colors <- tibble(Scorer = scorers, color = pal[seq_along(scorers)])
+readr::write_csv(scorer_colors, file.path(out_dir, "scorer_colors.csv"))
+
+
+
+##------------------------------------------------------------------------------
+## Plot function (into make per-species panel 
 ##   - stacked bars L/M/H/V by scorer (colors), one facet per attribute
 ##   - annotate facet labels with m= and sd= (rounded to 2)
 ##   - legend hidden; separate scorer_colors.csv is saved already
 
-make_species_plot <- function(species_name) {
+make_species_plot <- function(plot_stock) {
   
-  ## counts only for selected tallies
-  df_counts <- lmhv_long %>%
-    filter(stock_name == stock_name, val == 1) %>%
-    mutate(category = factor(category, levels = c("L","M","H","V")))
+  #plot_stock <- "Atlantic thread herring" ## for testing
   
-  if (nrow(df_counts) == 0) {
-    message("No data for: ", species_name)
-    return(NULL)
-  }
-  
-  ## m/sd annotations per attribute
-  df_annot <- lmhv_sums %>%
-    filter(stock_name == stock_name) %>%
-    mutate(m_txt  = sprintf("m= %.1f", round(HMS_mean, 1)),
-           sd_txt = sprintf("sd= %.2f", round(HMS_sd, 2)),
-           lab    = paste0(m_txt, "  ", sd_txt)) %>%
-    select(Attribute_name, Attribute_short, lab)
-  
-  df_counts <- df_counts %>%
-    left_join(df_annot, by = "Attribute_name") %>%
-    mutate(Attribute_short = fct_inorder(Attribute_short))
-  
-  ## y pos for labels inside facets (max stacked + margin)
-  lab_pos <- df_counts %>%
-    count(Attribute_short, category, name = "n") %>%
-    group_by(Attribute_short) %>%
-    summarise(ymax = max(n, na.rm = TRUE), .groups = "drop") %>%
-    left_join(distinct(df_counts, Attribute_short, lab), by = "Attribute_short") %>%
-    mutate(x = 2.5, y = ymax + 0.5)
-  
-  ## colors per scorer
+  ## Filter to one stock + enforce L-M-H-V order
+  df_counts_plot <- df_counts %>%
+    dplyr::filter(stock_name == plot_stock) %>%
+    dplyr::mutate(category = factor(category, levels = c("L","M","H","V")))
+  stopifnot(length(unique(df_counts_plot$stock_name)) == 1)
+
+  ## Label positions per facet (max stacked tallies + margin) — use *filtered* data
+  lab_pos <- df_counts_plot %>%
+    dplyr::group_by(Attribute_short, category) %>%
+    dplyr::summarise(n = sum(val, na.rm = TRUE), .groups = "drop") %>%
+    dplyr::group_by(Attribute_short) %>%
+    dplyr::summarise(ymax = max(n, na.rm = TRUE), .groups = "drop") %>%
+    dplyr::left_join(df_counts_plot %>% dplyr::distinct(Attribute_short, lab),
+                     by = "Attribute_short") %>%
+    dplyr::mutate(x = 2.5, y = ymax + 0.5)
+
+  ## Colors per scorer (universal)
   cols <- scorer_colors$color
   names(cols) <- scorer_colors$Scorer
+
+  ## Facet strip labels: "<Attribute>\n<m and sd>"
+  strip_labs <- df_counts_plot %>%
+    dplyr::distinct(Attribute_short, lab) %>%
+    dplyr::mutate(strip = paste0(as.character(Attribute_short), "\n", lab))
+  lab_map <- setNames(strip_labs$strip, strip_labs$Attribute_short)
+
+  ## Aggregate to one row per Scorer × category × facet (clean borders)
+  df_counts_agg <- df_counts_plot %>%
+    dplyr::group_by(stock_name, Attribute_short, Scorer, category, lab) %>%
+    dplyr::summarise(val = sum(val, na.rm = TRUE), .groups = "drop")
+
+  ## Compute a single, universal y-limit across all facets for this stock
+  y_max <- df_counts_plot %>%
+    dplyr::group_by(Attribute_short, category) %>%
+    dplyr::summarise(n = sum(val, na.rm = TRUE), .groups = "drop") %>%
+    dplyr::summarise(max_n = max(n, na.rm = TRUE)) %>%
+    dplyr::pull(max_n)
+  y_max <- ifelse(is.finite(y_max), y_max, 0)
   
-  ggplot(df_counts, aes(x = category, fill = Scorer)) +
-    geom_bar(width = 0.85, position = "stack") +
-    facet_wrap(~ Attribute_short, ncol = 3) +
-    labs(title = species_name, x = NULL, y = NULL) +
+  ## Make page title
+  n_scorers <- length(unique(df_counts_plot$Scorer))
+  page_title <- paste0(plot_stock, " (", n_scorers, " scorers)")
+  
+  ##  --- Plot ---
+  p <- ggplot(df_counts_agg, aes(x = category, y = val, fill = Scorer)) +
+    geom_col(width = 0.85, position = "stack", color = "black", linewidth = 0.3) +
+    facet_wrap(~ Attribute_short, ncol = 3, labeller = as_labeller(lab_map)) +
+    labs(title = page_title, x = NULL, y = NULL) +
     scale_x_discrete(limits = c("L","M","H","V")) +
     scale_fill_manual(values = cols, guide = "none") +
-    scale_y_continuous(expand = expansion(mult = c(0, 0.12))) +
+    
+    ## Universal y-axis + whole-number ticks + small headroom
+    scale_y_continuous(
+      limits = c(0, y_max),
+      expand = expansion(mult = c(0, 0.06)),
+      breaks = scales::breaks_pretty(n = 6),
+      labels = scales::number_format(accuracy = 1)  ## labels shown as whole numbers
+    ) +
     theme_bw(base_size = 11) +
     theme(
-      strip.text = element_text(size = 10, face = "bold"),
+      strip.text.x = element_text(size = 10, face = "bold", lineheight = 0.95),
       panel.grid.minor = element_blank(),
       panel.grid.major.x = element_blank(),
-      axis.text.x = element_text(size = 9),
-      axis.text.y = element_text(size = 9),
+      axis.text.x = element_text(size = 9, color = "black"),
+      axis.text.y = element_text(size = 9, color = "black"),
       plot.title  = element_text(size = 14, face = "bold")
-    ) +
-    geom_text(data = lab_pos, aes(x = x, y = y, label = lab),
-              inherit.aes = FALSE, size = 3)
+    )
+  p
 }
 
 ## Test 
-first_species <- lmhv_long %>%
-  distinct(stock_name) %>%
-  arrange(stock_name) %>%
-  slice(1) %>%
-  pull(stock_name)
-
-message("First species: ", first_species)
-make_species_plot(first_species)
-
-
+first_species <- lmhv_long %>% dplyr::distinct(stock_name) %>% dplyr::arrange(stock_name) %>% dplyr::pull(stock_name) %>% .[1]
+print(first_species)
+p <- make_species_plot(first_species)
+print(p)
 
 
 ## ------------------------------------------------------------
-## (2) Compile plots into a (multi-page) PDF
+## Compile plots into a (multi-page) PDF
 
-write_species_plots_pdf <- function(species_vec, outfile, width = 8.5, height = 11) {
-  dir.create(dirname(outfile), showWarnings = FALSE, recursive = TRUE)
-  grDevices::pdf(outfile, width = width, height = height)
+dir.create(dirname(outdir), showWarnings = FALSE, recursive = TRUE)
+grDevices::pdf(outfile, width = width, height = height)
   on.exit(grDevices::dev.off(), add = TRUE)
   
   for (sp in species_vec) {
