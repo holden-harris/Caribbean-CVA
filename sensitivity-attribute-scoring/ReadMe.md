@@ -1,6 +1,4 @@
-# 1-extract-scores.R 
-
-## Builds the master scoring table for the Caribbean CVA pre-work
+# 1-extract-scores.R —— Builds the master scoring table for the Caribbean CVA pre-work
 
 **Purpose.** This script reads each reviewer’s Excel workbook and compiles the sensitivity/rigidity attribute tallies into a single, machine-readable table (`score_table_all`). Reviewers score each **stock** (species) on 14 attributes by allocating 5 tallies across four bins (L/M/H/V). We pull the per-stock, per-attribute tallies from rows **21–35** (skipping row **29**) and columns **B, E–I** on each stock tab.
 
@@ -16,7 +14,7 @@
   - **Sensitivity (8):** *Habitat specificity, Prey specificity, Tolerance to ocean acidification, Complexity in reproductive strategy, Species range, Specificity in early life history requirements, Stock size/status, Other stressors.*
   - **Rigidity (6):** *Population growth rate, Mobility and dispersal or early life stages, Adult mobility, Spawning characteristics, Predation and competition dynamics, Genetic diversity.*
 
-> ⚠️ **Important:** On Windows/OneDrive, **do not** keep a workbook open in Excel while running this script. Excel can lock the file, causing read failures.
+> ⚠️ **Important:** On Windows **do not** keep a workbook open in Excel while running this script. Excel can lock the file, causing read failures.
 
 ---
 
@@ -82,58 +80,49 @@ From each stock tab, the script reads:
 
 ---
 
-# 2-prework-scoring-summaries.R — Compute HMS-style summaries and make reviewer plots
+# 2-prework-scoring-summaries.R —— Compute prework scoring summaries and plots
 
 **Purpose.** This script ingests the compiled scoring table (`score_table_all.csv`) built in **1-extract-scores.R**, computes *per stock × attribute* summary statistics in the **HMS** style (weighted mean and SD from LMHV tallies), generates **per-species panel plots** (stacked LMHV bars by scorer with m/sd on facet labels), and writes a **multi-page PDF** plus helper tables for workshop logistics (which scorers contributed to which stocks, with a fixed color for each scorer).
 
----
-
-## Inputs
-
-- `./sensitivity-attribute-scoring/score_table_all.csv`  
-  From Script #1; columns used here:
-  - `Scorer, stock_name, row_idx`
-  - `Attribute_name, Attribute_type`
-  - `Data_quality`
-  - `Scoring_rank_1 .. Scoring_rank_4` (tallies in L/M/H/V)
+**Inputs:** `./sensitivity-attribute-scoring/score_table_all.csv`  (from script #1 above)
 
 ---
 
 ## Outputs
 
-- `./outputs/prework/sp-x-att_score_summaries.csv` — per stock × attribute:
+### Data summaries
+`./outputs/prework/sp-x-att_score_summaries.csv` — per stock × attribute:
   - `L, M, H, V` (sums across scorers)
-  - `num_experts` (distinct scorers with any tally on the attribute)
+  - `num_experts` (distinct scorers)
   - `lmhv_mean` = \[(L·1 + M·2 + H·3 + V·4) / (num_experts · 5)\]
   - `lmhv_sd` = sd(c(rep(1,L), rep(2,M), rep(3,H), rep(4,V)))
-  - `dq_mean, dq_sd` (mean/SD of Data Quality across scorers)
-- `./outputs/prework/scorer_color_key.png` — fixed palette key (scorer → color)
-- `./outputs/prework/prework_all_species.pdf` — multi-page PDF (one page per stock)
-- `./outputs/prework/stock_scorer_list.csv` — one row per stock: number of scorers and list of scorer IDs
-- `./outputs/prework/stock_scorer_color_list.csv` — one row per stock: scorer IDs and hex colors
+  - `dq_mean, dq_sd` (mean and SD of Data Quality across scorers)
+ 
+### Scorer color coes and summaries
+`./outputs/prework/scorer_color_key.png` — fixed palette key (scorer → color)
+`./outputs/prework/stock_scorer_list.csv` — one row per stock: number of scorers and list of scorer IDs
+`./outputs/prework/stock_scorer_color_list.csv` — one row per stock: scorer IDs and hex colors
 
-![Pre-work test plot](./outputs/prework/test_plot_Atlantic_thread_herring.png)
+### Plot scores by stock x attribute
+`./outputs/prework/prework_all_species.pdf` — multi-page PDF (one page per stock)
+
+#### Example page
+![Pre-work test plot](../outputs/prework/test_plot_Atlantic_thread_herring.png)
 
 ---
 
-## Workflow overview
+## Workflow
 
-1. **Load libraries and set `out_dir`.**  
-   Uses `dplyr/tidyr/ggplot2/forcats/purrr/scales/readr`.
+1. **Standardize attribute labels.**  
+   Build `Attribute_short` using a fixed `short_map` so facet strip labels match HMS/Vuln-assess figure conventions        (e.g., *“Mobility and dispersal of early life stages”* → *“Mobility Dispersal of ELS”*).
 
-2. **Read the master table (`score_table_all.csv`).**  
-   Assert presence of key columns.
-
-3. **Standardize attribute labels.**  
-   Build `Attribute_short` using a fixed `short_map` so facet strip labels match HMS/Vuln-assess figure conventions (e.g., *“Mobility and dispersal of early life stages”* → *“Mobility Dispersal of ELS”*).
-
-4. **Reshape LMHV tallies to long form.**  
+2. **Reshape LMHV tallies to long form.**  
    Create `lmhv_long` with one row per **Scorer × stock × attribute × category (L/M/H/V)** and `val ∈ [0..5]`.
 
-5. **Count participating experts per attribute.**  
+3. **Count participating experts per attribute.**  
    `num_experts` = number of distinct scorers who placed **any** tally on that attribute for that stock.
 
-6. **Compute HMS statistics per stock × attribute.**  
+4. **Compute HMS statistics per stock × attribute.**  
    - Sum LMHV across scorers → `L, M, H, V`.
    - **Weighted mean** (`lmhv_mean`) = \[(1·L + 2·M + 3·H + 4·V) / (num_experts × 5)\].  
      (Each scorer has 5 tallies to allocate; denominator scales by `num_experts`.)
@@ -168,10 +157,8 @@ From each stock tab, the script reads:
 
 ---
 
-## Notes & guardrails
+## Acknowledgement
+Code and methods adapted in part from Loughren et al. HMS CVA:
 
-- **Data Quality numeric conversion** is enforced once before summarizing.  
-- The **color legend is intentionally suppressed** on species pages (reduces clutter); use the **color key image** and the per-stock tables to interpret colors.  
-
----
+Loughran, C. E., Hazen, E. L., Brodie, S., Jacox, M. G., Whitney, F. A., Payne, M. R., et al. (2025). A climate vulnerability assessment of highly migratory species in the Northwest Atlantic Ocean. *PLOS Climate*, 4(8), e0000530. https://doi.org/10.1371/journal.pclm.0000530  
 
