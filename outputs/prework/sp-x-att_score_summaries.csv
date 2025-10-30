@@ -1,0 +1,351 @@
+"stock_name","Attribute_name","Attribute_short","L","M","H","V","num_experts","lmhv_mean","lmhv_sd","dq_mean","dq_sd"
+"Atlantic thread herring","Adult mobility","Adult Mobility",13,7,0,0,4,1.35,0.489360484929593,2.25,0.5
+"Atlantic thread herring","Complexity in reproductive strategy","Repro Strat Sensitivity",12,8,0,0,4,1.4,0.502624689950035,1.75,0.5
+"Atlantic thread herring","Genetic diversity","Genetic Diversity",13,2,0,0,3,1.13333333333333,0.351865775274498,1,1
+"Atlantic thread herring","Habitat specificity","Habitat Specificity",12,4,4,0,4,1.6,0.820782681668123,2,0.816496580927726
+"Atlantic thread herring","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",9,7,4,0,4,1.75,0.786397515657049,1.5,0.577350269189626
+"Atlantic thread herring","Other stressors","Other Stressors",8,6,6,0,4,1.9,0.85224162622679,1.25,0.5
+"Atlantic thread herring","Population growth rate","Pop Growth Rate",18,2,0,0,4,1.1,0.307793505625546,2.75,0.5
+"Atlantic thread herring","Predation and competition dynamics","Pred & Comp Dynamics",5,7,3,0,3,1.86666666666667,0.743223352957207,1,1
+"Atlantic thread herring","Prey specificity","Prey Specificity",9,6,5,0,4,1.8,0.833508753466491,2.25,0.5
+"Atlantic thread herring","Spawning characteristics","Reproductive Cycle",7,12,1,0,4,1.7,0.571240570577479,2.75,0.5
+"Atlantic thread herring","Species range","Species Range",8,4,8,0,4,2,0.917662935482247,2.75,0.5
+"Atlantic thread herring","Specificity in early life history requirements","Specificity EL Hist REQs",3,7,5,0,3,2.13333333333333,0.743223352957207,1,1
+"Atlantic thread herring","Stock size/status","Stock Size Status",5,6,4,0,3,1.93333333333333,0.79880863671798,1,1
+"Atlantic thread herring","Tolerance to ocean acidification","Sensitivity to OA",9,3,3,0,3,1.6,0.828078671210825,1.33333333333333,0.577350269189626
+"Ballyhoo","Adult mobility","Adult Mobility",9,11,0,0,4,1.55,0.51041778553404,2,0.816496580927726
+"Ballyhoo","Complexity in reproductive strategy","Repro Strat Sensitivity",5,11,4,0,4,1.95,0.68633274115326,1.25,0.957427107756338
+"Ballyhoo","Genetic diversity","Genetic Diversity",14,1,0,0,3,1.06666666666667,0.258198889747161,1.33333333333333,0.577350269189626
+"Ballyhoo","Habitat specificity","Habitat Specificity",16,4,0,0,4,1.2,0.410391340834062,2,0.816496580927726
+"Ballyhoo","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",2,6,7,0,3,2.33333333333333,0.723746864455746,1.66666666666667,0.577350269189626
+"Ballyhoo","Other stressors","Other Stressors",5,6,4,0,3,1.93333333333333,0.79880863671798,1,1
+"Ballyhoo","Population growth rate","Pop Growth Rate",13,2,0,0,3,1.13333333333333,0.351865775274498,2.66666666666667,0.577350269189626
+"Ballyhoo","Predation and competition dynamics","Pred & Comp Dynamics",2,14,4,0,4,2.1,0.552506251453083,1,0.816496580927726
+"Ballyhoo","Prey specificity","Prey Specificity",8,4,3,0,3,1.66666666666667,0.816496580927726,2,0
+"Ballyhoo","Spawning characteristics","Reproductive Cycle",5,7,8,0,4,2.15,0.812727700887249,3,0
+"Ballyhoo","Species range","Species Range",7,10,3,0,4,1.8,0.695852373938459,2.5,0.577350269189626
+"Ballyhoo","Specificity in early life history requirements","Specificity EL Hist REQs",1,7,6,1,3,2.46666666666667,0.743223352957207,0.666666666666667,1.15470053837925
+"Ballyhoo","Stock size/status","Stock Size Status",2,8,5,0,3,2.2,0.676123403782813,0.666666666666667,1.15470053837925
+"Ballyhoo","Tolerance to ocean acidification","Sensitivity to OA",14,1,0,0,3,1.06666666666667,0.258198889747161,1.33333333333333,0.577350269189626
+"Blue runner","Adult mobility","Adult Mobility",16,8,1,0,5,1.4,0.577350269189626,2,1
+"Blue runner","Complexity in reproductive strategy","Repro Strat Sensitivity",21,4,0,0,5,1.16,0.374165738677394,1.4,0.547722557505166
+"Blue runner","Genetic diversity","Genetic Diversity",22,3,0,0,5,1.12,0.33166247903554,1.2,0.447213595499958
+"Blue runner","Habitat specificity","Habitat Specificity",17,8,0,0,5,1.32,0.476095228569523,1.8,0.836660026534076
+"Blue runner","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",13,12,0,0,5,1.48,0.509901951359279,1.4,0.547722557505166
+"Blue runner","Other stressors","Other Stressors",15,7,3,0,5,1.52,0.714142842854285,1,0
+"Blue runner","Population growth rate","Pop Growth Rate",17,8,0,0,5,1.32,0.476095228569523,2,1
+"Blue runner","Predation and competition dynamics","Pred & Comp Dynamics",5,10,5,0,4,2,0.725476250110012,0.75,0.5
+"Blue runner","Prey specificity","Prey Specificity",12,10,3,0,5,1.64,0.7,1.8,0.836660026534076
+"Blue runner","Spawning characteristics","Reproductive Cycle",12,9,4,0,5,1.68,0.748331477354788,2,1
+"Blue runner","Species range","Species Range",11,7,6,1,5,1.88,0.92736184954957,2.4,0.894427190999916
+"Blue runner","Specificity in early life history requirements","Specificity EL Hist REQs",11,7,6,1,5,1.88,0.92736184954957,1.6,0.894427190999916
+"Blue runner","Stock size/status","Stock Size Status",12,10,3,0,5,1.64,0.7,1,0
+"Blue runner","Tolerance to ocean acidification","Sensitivity to OA",18,6,1,0,5,1.32,0.556776436283002,1,0
+"Dolphinfish","Adult mobility","Adult Mobility",15,5,0,0,4,1.25,0.444261658319319,2.75,0.5
+"Dolphinfish","Complexity in reproductive strategy","Repro Strat Sensitivity",13,5,2,0,4,1.45,0.68633274115326,3,0
+"Dolphinfish","Genetic diversity","Genetic Diversity",19,1,0,0,4,1.05,0.223606797749979,2.25,0.957427107756338
+"Dolphinfish","Habitat specificity","Habitat Specificity",11,6,3,0,4,1.6,0.753937034925052,2.25,0.957427107756338
+"Dolphinfish","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",9,9,2,0,4,1.65,0.670820393249937,1.5,0.577350269189626
+"Dolphinfish","Other stressors","Other Stressors",10,4,4,2,4,1.9,1.0711528467276,1.33333333333333,0.577350269189626
+"Dolphinfish","Population growth rate","Pop Growth Rate",18,2,0,0,4,1.1,0.307793505625546,2.75,0.5
+"Dolphinfish","Predation and competition dynamics","Pred & Comp Dynamics",4,10,6,0,4,2.1,0.718184846459608,2,0.816496580927726
+"Dolphinfish","Prey specificity","Prey Specificity",14,3,3,0,4,1.45,0.759154654516248,3,0
+"Dolphinfish","Spawning characteristics","Reproductive Cycle",15,5,0,0,4,1.25,0.444261658319319,2.25,0.5
+"Dolphinfish","Species range","Species Range",15,5,0,0,4,1.25,0.444261658319319,3,0
+"Dolphinfish","Specificity in early life history requirements","Specificity EL Hist REQs",11,8,1,0,4,1.5,0.606976978666884,1.75,1.5
+"Dolphinfish","Stock size/status","Stock Size Status",11,7,2,0,4,1.55,0.68633274115326,2,1.15470053837925
+"Dolphinfish","Tolerance to ocean acidification","Sensitivity to OA",19,1,0,0,4,1.05,0.223606797749979,2,1.15470053837925
+"Gray angelfish","Adult mobility","Adult Mobility",0,3,7,0,2,2.7,0.483045891539648,2,0
+"Gray angelfish","Complexity in reproductive strategy","Repro Strat Sensitivity",10,0,0,0,2,1,0,2.5,0.707106781186548
+"Gray angelfish","Genetic diversity","Genetic Diversity",5,5,0,0,2,1.5,0.52704627669473,0,0
+"Gray angelfish","Habitat specificity","Habitat Specificity",2,5,3,0,2,2.1,0.737864787372622,2.5,0.707106781186548
+"Gray angelfish","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",4,2,4,0,2,2,0.942809041582063,1,1.4142135623731
+"Gray angelfish","Other stressors","Other Stressors",6,3,1,0,2,1.5,0.707106781186548,1.5,0.707106781186548
+"Gray angelfish","Population growth rate","Pop Growth Rate",4,2,4,0,2,2,0.942809041582063,2,0
+"Gray angelfish","Predation and competition dynamics","Pred & Comp Dynamics",9,1,0,0,2,1.1,0.316227766016838,1,1.4142135623731
+"Gray angelfish","Prey specificity","Prey Specificity",5,5,0,0,2,1.5,0.52704627669473,2.5,0.707106781186548
+"Gray angelfish","Spawning characteristics","Reproductive Cycle",0,5,5,0,2,2.5,0.52704627669473,2,0
+"Gray angelfish","Species range","Species Range",0,8,2,0,2,2.2,0.421637021355784,2.5,0.707106781186548
+"Gray angelfish","Specificity in early life history requirements","Specificity EL Hist REQs",0,10,0,0,2,2,0,0.5,0.707106781186548
+"Gray angelfish","Stock size/status","Stock Size Status",9,1,0,0,2,1.1,0.316227766016838,0,0
+"Gray angelfish","Tolerance to ocean acidification","Sensitivity to OA",3,7,0,0,2,1.7,0.483045891539648,2.5,0.707106781186548
+"Hogfish","Adult mobility","Adult Mobility",1,4,9,1,3,2.66666666666667,0.723746864455746,2.66666666666667,0.577350269189626
+"Hogfish","Complexity in reproductive strategy","Repro Strat Sensitivity",6,6,1,2,3,1.93333333333333,1.03279555898864,2.66666666666667,0.577350269189626
+"Hogfish","Genetic diversity","Genetic Diversity",1,7,1,6,3,2.8,1.08232553856433,2,1
+"Hogfish","Habitat specificity","Habitat Specificity",3,9,2,1,3,2.06666666666667,0.79880863671798,2.66666666666667,0.577350269189626
+"Hogfish","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",1,12,1,1,3,2.13333333333333,0.639940473422184,2.33333333333333,1.15470053837925
+"Hogfish","Other stressors","Other Stressors",10,0,0,0,2,1,0,2,0
+"Hogfish","Population growth rate","Pop Growth Rate",2,6,4,3,3,2.53333333333333,0.990430401872025,2,1
+"Hogfish","Predation and competition dynamics","Pred & Comp Dynamics",3,10,1,1,3,2,0.755928946018454,1.66666666666667,0.577350269189626
+"Hogfish","Prey specificity","Prey Specificity",1,12,1,1,3,2.13333333333333,0.639940473422184,2.66666666666667,0.577350269189626
+"Hogfish","Spawning characteristics","Reproductive Cycle",1,11,2,1,3,2.2,0.676123403782813,2.66666666666667,0.577350269189626
+"Hogfish","Species range","Species Range",11,2,1,1,3,1.46666666666667,0.915475416434127,2.66666666666667,0.577350269189626
+"Hogfish","Specificity in early life history requirements","Specificity EL Hist REQs",6,7,1,1,3,1.8,0.861891607371335,1.66666666666667,0.577350269189626
+"Hogfish","Stock size/status","Stock Size Status",10,2,2,1,3,1.6,0.985610760609162,1,1
+"Hogfish","Tolerance to ocean acidification","Sensitivity to OA",4,11,0,0,3,1.73333333333333,0.457737708217063,2.33333333333333,1.15470053837925
+"King mackerel","Adult mobility","Adult Mobility",11,11,3,0,5,1.68,0.690410505906933,1.8,0.836660026534076
+"King mackerel","Complexity in reproductive strategy","Repro Strat Sensitivity",19,4,2,0,5,1.32,0.627162924074226,1.4,0.894427190999916
+"King mackerel","Genetic diversity","Genetic Diversity",16,7,2,0,5,1.44,0.650640709864771,1.2,0.836660026534076
+"King mackerel","Habitat specificity","Habitat Specificity",17,5,3,0,5,1.44,0.711805216802087,2,0.707106781186548
+"King mackerel","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",2,8,15,0,5,2.52,0.653197264742181,1.6,0.547722557505166
+"King mackerel","Other stressors","Other Stressors",16,4,3,2,5,1.64,0.99498743710662,1.6,0.547722557505166
+"King mackerel","Population growth rate","Pop Growth Rate",15,7,3,0,5,1.52,0.714142842854285,2,0.707106781186548
+"King mackerel","Predation and competition dynamics","Pred & Comp Dynamics",10,13,2,0,5,1.68,0.627162924074226,1.4,0.547722557505166
+"King mackerel","Prey specificity","Prey Specificity",10,8,5,2,5,1.96,0.978093383408081,1.8,0.447213595499958
+"King mackerel","Spawning characteristics","Reproductive Cycle",5,6,10,4,5,2.52,1.00498756211209,1.8,0.447213595499958
+"King mackerel","Species range","Species Range",0,11,10,4,5,2.72,0.737111479583199,1.4,0.547722557505166
+"King mackerel","Specificity in early life history requirements","Specificity EL Hist REQs",0,8,14,3,5,2.8,0.645497224367903,1.4,0.894427190999916
+"King mackerel","Stock size/status","Stock Size Status",8,11,6,0,5,1.92,0.759385716659635,1,0
+"King mackerel","Tolerance to ocean acidification","Sensitivity to OA",9,11,5,0,5,1.84,0.746100976186646,0.8,0.447213595499958
+"Lane snapper","Adult mobility","Adult Mobility",0,13,1,1,3,2.2,0.560611910581388,2.33333333333333,1.15470053837925
+"Lane snapper","Complexity in reproductive strategy","Repro Strat Sensitivity",1,6,3,5,3,2.8,1.01418510567422,2.66666666666667,0.577350269189626
+"Lane snapper","Genetic diversity","Genetic Diversity",6,3,6,0,3,2,0.925820099772551,1.66666666666667,1.52752523165195
+"Lane snapper","Habitat specificity","Habitat Specificity",7,5,3,0,3,1.73333333333333,0.79880863671798,2.66666666666667,0.577350269189626
+"Lane snapper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",9,6,0,0,3,1.4,0.50709255283711,2,1
+"Lane snapper","Other stressors","Other Stressors",0,6,4,5,3,2.93333333333333,0.883715101688537,1.33333333333333,0.577350269189626
+"Lane snapper","Population growth rate","Pop Growth Rate",0,6,8,1,3,2.66666666666667,0.617213399848368,2,1
+"Lane snapper","Predation and competition dynamics","Pred & Comp Dynamics",1,9,5,0,3,2.26666666666667,0.593616839704664,2,1
+"Lane snapper","Prey specificity","Prey Specificity",4,10,1,0,3,1.8,0.560611910581388,3,0
+"Lane snapper","Spawning characteristics","Reproductive Cycle",4,1,10,0,3,2.4,0.9102589898328,2.66666666666667,0.577350269189626
+"Lane snapper","Species range","Species Range",5,5,1,4,3,2.26666666666667,1.22279928657082,3,0
+"Lane snapper","Specificity in early life history requirements","Specificity EL Hist REQs",0,6,4,5,3,2.93333333333333,0.883715101688537,2,1
+"Lane snapper","Stock size/status","Stock Size Status",1,8,6,0,3,2.33333333333333,0.617213399848368,1.33333333333333,0.577350269189626
+"Lane snapper","Tolerance to ocean acidification","Sensitivity to OA",0,4,11,0,3,2.73333333333333,0.457737708217063,2.33333333333333,0.577350269189626
+"Long-spined sea urchin","Adult mobility","Adult Mobility",0,7,9,4,4,2.85,0.745159820370595,2.75,0.5
+"Long-spined sea urchin","Complexity in reproductive strategy","Repro Strat Sensitivity",1,4,8,7,4,3.05,0.887041208323017,2.5,0.577350269189626
+"Long-spined sea urchin","Genetic diversity","Genetic Diversity",3,3,6,8,4,2.95,1.09904264559757,2.25,0.5
+"Long-spined sea urchin","Habitat specificity","Habitat Specificity",8,4,3,5,4,2.25,1.25131509768092,2.75,0.5
+"Long-spined sea urchin","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",8,7,2,3,4,2,1.07605517369794,2,0.816496580927726
+"Long-spined sea urchin","Other stressors","Other Stressors",2,3,4,11,4,3.2,1.05630936457281,2.25,0.957427107756338
+"Long-spined sea urchin","Population growth rate","Pop Growth Rate",9,7,3,1,4,1.8,0.894427190999916,1.25,0.5
+"Long-spined sea urchin","Predation and competition dynamics","Pred & Comp Dynamics",4,4,7,5,4,2.65,1.08942283125661,1.5,0.577350269189626
+"Long-spined sea urchin","Prey specificity","Prey Specificity",14,5,1,0,4,1.35,0.5871429486124,2.75,0.5
+"Long-spined sea urchin","Spawning characteristics","Reproductive Cycle",7,9,3,1,4,1.9,0.85224162622679,2,0.816496580927726
+"Long-spined sea urchin","Species range","Species Range",14,5,1,0,4,1.35,0.5871429486124,3,0
+"Long-spined sea urchin","Specificity in early life history requirements","Specificity EL Hist REQs",2,6,6,6,4,2.8,1.00524937990007,2,0.816496580927726
+"Long-spined sea urchin","Stock size/status","Stock Size Status",10,5,4,1,4,1.8,0.951453182187509,2,0.816496580927726
+"Long-spined sea urchin","Tolerance to ocean acidification","Sensitivity to OA",0,1,6,13,4,3.6,0.598243041616119,2.25,0.5
+"Misty grouper","Adult mobility","Adult Mobility",1,4,8,2,3,2.73333333333333,0.79880863671798,1.66666666666667,0.577350269189626
+"Misty grouper","Complexity in reproductive strategy","Repro Strat Sensitivity",1,1,2,11,3,3.53333333333333,0.915475416434127,1.66666666666667,0.577350269189626
+"Misty grouper","Genetic diversity","Genetic Diversity",1,1,5,8,3,3.33333333333333,0.899735410842437,1.66666666666667,0.577350269189626
+"Misty grouper","Habitat specificity","Habitat Specificity",0,3,7,5,3,3.13333333333333,0.743223352957207,1.66666666666667,0.577350269189626
+"Misty grouper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",1,2,8,4,3,3,0.845154254728517,1.66666666666667,0.577350269189626
+"Misty grouper","Other stressors","Other Stressors",0,3,7,0,2,2.7,0.483045891539648,2,0
+"Misty grouper","Population growth rate","Pop Growth Rate",1,1,2,11,3,3.53333333333333,0.915475416434127,1.66666666666667,0.577350269189626
+"Misty grouper","Predation and competition dynamics","Pred & Comp Dynamics",1,6,7,1,3,2.53333333333333,0.743223352957207,1.66666666666667,0.577350269189626
+"Misty grouper","Prey specificity","Prey Specificity",2,7,5,1,3,2.33333333333333,0.816496580927726,2,1
+"Misty grouper","Spawning characteristics","Reproductive Cycle",1,1,4,9,3,3.4,0.9102589898328,1.66666666666667,0.577350269189626
+"Misty grouper","Species range","Species Range",1,2,11,1,3,2.8,0.676123403782813,3,0
+"Misty grouper","Specificity in early life history requirements","Specificity EL Hist REQs",1,4,7,3,3,2.8,0.861891607371335,1.66666666666667,0.577350269189626
+"Misty grouper","Stock size/status","Stock Size Status",1,1,4,9,3,3.4,0.9102589898328,1.66666666666667,0.577350269189626
+"Misty grouper","Tolerance to ocean acidification","Sensitivity to OA",4,4,5,2,3,2.33333333333333,1.04653623694457,1.66666666666667,0.577350269189626
+"Mutton snapper","Adult mobility","Adult Mobility",0,10,10,0,4,2.5,0.512989176042577,2.5,1
+"Mutton snapper","Complexity in reproductive strategy","Repro Strat Sensitivity",0,0,11,9,4,3.45,0.51041778553404,2.5,1
+"Mutton snapper","Genetic diversity","Genetic Diversity",5,5,7,3,4,2.4,1.04629672756119,1.25,0.5
+"Mutton snapper","Habitat specificity","Habitat Specificity",0,6,10,4,4,2.9,0.718184846459608,2.25,0.957427107756338
+"Mutton snapper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",6,6,7,1,4,2.15,0.93330200448673,2,0.816496580927726
+"Mutton snapper","Other stressors","Other Stressors",0,11,3,6,4,2.75,0.910465468000326,1.5,0.577350269189626
+"Mutton snapper","Population growth rate","Pop Growth Rate",0,14,4,2,4,2.4,0.680557047378721,2,0.816496580927726
+"Mutton snapper","Predation and competition dynamics","Pred & Comp Dynamics",1,12,6,1,4,2.35,0.670820393249937,1.25,0.5
+"Mutton snapper","Prey specificity","Prey Specificity",0,8,8,4,4,2.8,0.767771895949914,2.25,0.957427107756338
+"Mutton snapper","Spawning characteristics","Reproductive Cycle",0,2,11,7,4,3.25,0.638666373658505,2.5,1
+"Mutton snapper","Species range","Species Range",5,4,6,5,4,2.55,1.14593101656986,2.25,0.957427107756338
+"Mutton snapper","Specificity in early life history requirements","Specificity EL Hist REQs",0,2,12,6,4,3.2,0.615587011251092,1.5,0.577350269189626
+"Mutton snapper","Stock size/status","Stock Size Status",0,13,6,1,4,2.4,0.598243041616119,1.75,0.957427107756338
+"Mutton snapper","Tolerance to ocean acidification","Sensitivity to OA",0,3,14,3,4,3,0.561951486949016,2,0.816496580927726
+"Nassau grouper","Adult mobility","Adult Mobility",2,10,7,1,4,2.35,0.745159820370595,2.75,0.5
+"Nassau grouper","Complexity in reproductive strategy","Repro Strat Sensitivity",1,1,6,12,4,3.45,0.825577947481897,3,0
+"Nassau grouper","Genetic diversity","Genetic Diversity",2,8,4,6,4,2.7,1.03109548284184,2,0.816496580927726
+"Nassau grouper","Habitat specificity","Habitat Specificity",2,10,8,0,4,2.3,0.656946685331786,2.5,0.577350269189626
+"Nassau grouper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",4,7,6,3,4,2.4,0.99472291830968,2.5,0.577350269189626
+"Nassau grouper","Other stressors","Other Stressors",1,9,4,1,3,2.33333333333333,0.723746864455746,1.66666666666667,0.577350269189626
+"Nassau grouper","Population growth rate","Pop Growth Rate",0,4,11,5,4,3.05,0.68633274115326,2.25,0.5
+"Nassau grouper","Predation and competition dynamics","Pred & Comp Dynamics",5,11,4,0,4,1.95,0.68633274115326,1.5,0.577350269189626
+"Nassau grouper","Prey specificity","Prey Specificity",4,7,9,0,4,2.25,0.786397515657049,2.5,0.577350269189626
+"Nassau grouper","Spawning characteristics","Reproductive Cycle",0,0,13,7,4,3.35,0.489360484929593,3,0
+"Nassau grouper","Species range","Species Range",0,9,10,1,4,2.6,0.598243041616119,3,0
+"Nassau grouper","Specificity in early life history requirements","Specificity EL Hist REQs",1,5,12,2,4,2.75,0.716350399411379,2,0.816496580927726
+"Nassau grouper","Stock size/status","Stock Size Status",2,2,6,10,4,3.2,1.00524937990007,2,0.816496580927726
+"Nassau grouper","Tolerance to ocean acidification","Sensitivity to OA",5,10,5,0,4,2,0.725476250110012,1.5,1.29099444873581
+"Queen conch","Adult mobility","Adult Mobility",0,2,13,5,4,3.15,0.5871429486124,2.75,0.5
+"Queen conch","Complexity in reproductive strategy","Repro Strat Sensitivity",8,2,3,7,4,2.45,1.356271980176,2.75,0.5
+"Queen conch","Genetic diversity","Genetic Diversity",8,5,2,5,4,2.2,1.23969435961577,2.5,1
+"Queen conch","Habitat specificity","Habitat Specificity",12,8,0,0,4,1.4,0.502624689950035,3,0
+"Queen conch","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",2,12,1,5,4,2.45,0.998683343734455,2.75,0.5
+"Queen conch","Other stressors","Other Stressors",10,5,4,1,4,1.8,0.951453182187509,1.75,0.5
+"Queen conch","Population growth rate","Pop Growth Rate",4,6,3,7,4,2.65,1.18210338847862,2.5,0.577350269189626
+"Queen conch","Predation and competition dynamics","Pred & Comp Dynamics",8,3,3,6,4,2.35,1.30887657735053,2.75,0.5
+"Queen conch","Prey specificity","Prey Specificity",13,2,5,0,4,1.6,0.882579950158088,3,0
+"Queen conch","Spawning characteristics","Reproductive Cycle",4,8,3,5,4,2.45,1.09904264559757,3,0
+"Queen conch","Species range","Species Range",5,4,6,5,4,2.55,1.14593101656986,2.75,0.5
+"Queen conch","Specificity in early life history requirements","Specificity EL Hist REQs",6,6,2,6,4,2.4,1.23117402250218,2.75,0.5
+"Queen conch","Stock size/status","Stock Size Status",3,7,7,3,4,2.5,0.945905302926917,2.25,0.5
+"Queen conch","Tolerance to ocean acidification","Sensitivity to OA",5,0,1,14,4,3.2,1.32188063797479,2.25,0.957427107756338
+"Queen snapper","Adult mobility","Adult Mobility",6,9,5,0,4,1.95,0.759154654516248,1.5,0.577350269189626
+"Queen snapper","Complexity in reproductive strategy","Repro Strat Sensitivity",1,6,8,5,4,2.85,0.875093979915421,1,0
+"Queen snapper","Genetic diversity","Genetic Diversity",3,3,10,4,4,2.75,0.966545666958261,1,0
+"Queen snapper","Habitat specificity","Habitat Specificity",0,4,9,7,4,3.15,0.745159820370595,2.25,0.957427107756338
+"Queen snapper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",5,9,6,0,4,2.05,0.759154654516248,1.5,0.577350269189626
+"Queen snapper","Other stressors","Other Stressors",3,7,6,4,4,2.55,0.998683343734455,1.25,0.5
+"Queen snapper","Population growth rate","Pop Growth Rate",9,5,2,4,4,2.05,1.19097483291276,2,0.816496580927726
+"Queen snapper","Predation and competition dynamics","Pred & Comp Dynamics",2,10,7,1,4,2.35,0.745159820370595,1,0
+"Queen snapper","Prey specificity","Prey Specificity",6,7,4,3,4,2.2,1.05630936457281,1.75,0.5
+"Queen snapper","Spawning characteristics","Reproductive Cycle",3,9,8,0,4,2.25,0.716350399411379,1.25,0.5
+"Queen snapper","Species range","Species Range",5,6,5,4,4,2.4,1.09544511501033,2,0.816496580927726
+"Queen snapper","Specificity in early life history requirements","Specificity EL Hist REQs",2,5,8,5,4,2.8,0.951453182187509,1.25,0.5
+"Queen snapper","Stock size/status","Stock Size Status",0,12,6,2,4,2.5,0.688247201611685,1.25,0.5
+"Queen snapper","Tolerance to ocean acidification","Sensitivity to OA",3,5,7,5,4,2.7,1.03109548284184,1,0
+"Queen triggerfish","Adult mobility","Adult Mobility",1,4,5,0,2,2.4,0.699205898780101,3,0
+"Queen triggerfish","Complexity in reproductive strategy","Repro Strat Sensitivity",7,2,1,0,2,1.4,0.699205898780101,2,0
+"Queen triggerfish","Genetic diversity","Genetic Diversity",6,3,1,0,2,1.5,0.707106781186548,1.5,0.707106781186548
+"Queen triggerfish","Habitat specificity","Habitat Specificity",3,3,3,1,2,2.2,1.03279555898864,2,0
+"Queen triggerfish","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",1,2,4,3,2,2.9,0.994428926011753,2.5,0.707106781186548
+"Queen triggerfish","Other stressors","Other Stressors",2,6,2,0,2,2,0.666666666666667,1,1.4142135623731
+"Queen triggerfish","Population growth rate","Pop Growth Rate",1,3,5,1,2,2.6,0.843274042711568,2.5,0.707106781186548
+"Queen triggerfish","Predation and competition dynamics","Pred & Comp Dynamics",1,8,1,0,2,2,0.471404520791032,2.5,0.707106781186548
+"Queen triggerfish","Prey specificity","Prey Specificity",6,2,2,0,2,1.6,0.843274042711568,2.5,0.707106781186548
+"Queen triggerfish","Spawning characteristics","Reproductive Cycle",2,7,1,0,2,1.9,0.567646212197547,2.5,0.707106781186548
+"Queen triggerfish","Species range","Species Range",1,4,5,0,2,2.4,0.699205898780101,2.5,0.707106781186548
+"Queen triggerfish","Specificity in early life history requirements","Specificity EL Hist REQs",2,7,1,0,2,1.9,0.567646212197547,1,0
+"Queen triggerfish","Stock size/status","Stock Size Status",6,2,2,0,2,1.6,0.843274042711568,0,0
+"Queen triggerfish","Tolerance to ocean acidification","Sensitivity to OA",5,3,2,0,2,1.7,0.823272602348565,2,1.4142135623731
+"Rainbow parrotfish","Adult mobility","Adult Mobility",1,6,5,3,3,2.66666666666667,0.899735410842437,2.66666666666667,0.577350269189626
+"Rainbow parrotfish","Complexity in reproductive strategy","Repro Strat Sensitivity",5,6,4,0,3,1.93333333333333,0.79880863671798,2.66666666666667,0.577350269189626
+"Rainbow parrotfish","Genetic diversity","Genetic Diversity",1,7,2,5,3,2.73333333333333,1.03279555898864,0.666666666666667,1.15470053837925
+"Rainbow parrotfish","Habitat specificity","Habitat Specificity",0,5,5,5,3,3,0.845154254728517,2.66666666666667,0.577350269189626
+"Rainbow parrotfish","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",1,7,3,4,3,2.66666666666667,0.975900072948533,1.33333333333333,0.577350269189626
+"Rainbow parrotfish","Other stressors","Other Stressors",5,1,3,6,3,2.66666666666667,1.3451854182691,1.66666666666667,1.15470053837925
+"Rainbow parrotfish","Population growth rate","Pop Growth Rate",0,7,7,1,3,2.6,0.632455532033676,0.666666666666667,1.15470053837925
+"Rainbow parrotfish","Predation and competition dynamics","Pred & Comp Dynamics",6,4,4,1,3,2,1,1.33333333333333,1.15470053837925
+"Rainbow parrotfish","Prey specificity","Prey Specificity",0,0,9,6,3,3.4,0.50709255283711,2.66666666666667,0.577350269189626
+"Rainbow parrotfish","Spawning characteristics","Reproductive Cycle",2,8,5,0,3,2.2,0.676123403782813,2.66666666666667,0.577350269189626
+"Rainbow parrotfish","Species range","Species Range",0,5,7,3,3,2.86666666666667,0.743223352957207,3,0
+"Rainbow parrotfish","Specificity in early life history requirements","Specificity EL Hist REQs",5,1,5,4,3,2.53333333333333,1.24594580635795,1.33333333333333,1.52752523165195
+"Rainbow parrotfish","Stock size/status","Stock Size Status",5,6,3,1,3,2,0.925820099772551,0,0
+"Rainbow parrotfish","Tolerance to ocean acidification","Sensitivity to OA",0,5,2,8,3,3.2,0.94112394811432,2.66666666666667,0.577350269189626
+"Red grouper","Adult mobility","Adult Mobility",5,8,7,0,4,2.1,0.788068925652412,2,0.816496580927726
+"Red grouper","Complexity in reproductive strategy","Repro Strat Sensitivity",2,5,6,7,4,2.9,1.02083557106808,1.75,0.5
+"Red grouper","Genetic diversity","Genetic Diversity",7,6,5,2,4,2.1,1.02083557106808,1.25,0.5
+"Red grouper","Habitat specificity","Habitat Specificity",6,5,9,0,4,2.15,0.875093979915421,2.25,0.957427107756338
+"Red grouper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",4,10,5,1,4,2.15,0.812727700887249,1.75,0.5
+"Red grouper","Other stressors","Other Stressors",6,4,5,0,3,1.93333333333333,0.883715101688537,1.66666666666667,0.577350269189626
+"Red grouper","Population growth rate","Pop Growth Rate",1,2,4,13,4,3.45,0.887041208323017,2,0.816496580927726
+"Red grouper","Predation and competition dynamics","Pred & Comp Dynamics",6,11,3,0,4,1.85,0.670820393249937,1.25,0.5
+"Red grouper","Prey specificity","Prey Specificity",8,7,5,0,4,1.85,0.812727700887249,2.25,0.957427107756338
+"Red grouper","Spawning characteristics","Reproductive Cycle",4,4,6,6,4,2.7,1.12857618729367,2.25,0.5
+"Red grouper","Species range","Species Range",6,8,6,0,4,2,0.794719414239026,2.75,0.5
+"Red grouper","Specificity in early life history requirements","Specificity EL Hist REQs",4,6,9,1,4,2.35,0.875093979915421,1.25,0.5
+"Red grouper","Stock size/status","Stock Size Status",2,6,8,4,4,2.7,0.923380516876639,1.5,0.577350269189626
+"Red grouper","Tolerance to ocean acidification","Sensitivity to OA",4,5,6,5,4,2.6,1.09544511501033,1.75,0.957427107756338
+"Red hind","Adult mobility","Adult Mobility",3,15,2,0,4,1.95,0.51041778553404,2.5,0.577350269189626
+"Red hind","Complexity in reproductive strategy","Repro Strat Sensitivity",1,1,7,11,4,3.4,0.820782681668123,3,0
+"Red hind","Genetic diversity","Genetic Diversity",4,8,6,2,4,2.3,0.923380516876639,1.5,1.29099444873581
+"Red hind","Habitat specificity","Habitat Specificity",5,10,5,0,4,2,0.725476250110012,2.75,0.5
+"Red hind","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",2,10,7,1,4,2.35,0.745159820370595,2.25,0.5
+"Red hind","Other stressors","Other Stressors",1,4,5,0,2,2.4,0.699205898780101,2,1
+"Red hind","Population growth rate","Pop Growth Rate",1,8,8,3,4,2.65,0.812727700887249,2.5,0.577350269189626
+"Red hind","Predation and competition dynamics","Pred & Comp Dynamics",4,7,8,1,4,2.3,0.864504725870618,2,0.816496580927726
+"Red hind","Prey specificity","Prey Specificity",7,7,6,0,4,1.95,0.825577947481897,2.5,0.577350269189626
+"Red hind","Spawning characteristics","Reproductive Cycle",0,0,18,2,4,3.1,0.307793505625546,3,0
+"Red hind","Species range","Species Range",7,5,7,1,4,2.1,0.967906041546987,3,0
+"Red hind","Specificity in early life history requirements","Specificity EL Hist REQs",3,9,8,0,4,2.25,0.716350399411379,1.75,0.957427107756338
+"Red hind","Stock size/status","Stock Size Status",5,5,7,3,4,2.4,1.04629672756119,2,0.816496580927726
+"Red hind","Tolerance to ocean acidification","Sensitivity to OA",7,4,7,2,4,2.2,1.05630936457281,1.5,1.29099444873581
+"Sea cucumbers","Adult mobility","Adult Mobility",0,2,17,1,4,2.95,0.394034462826206,1.5,1
+"Sea cucumbers","Complexity in reproductive strategy","Repro Strat Sensitivity",0,11,7,2,4,2.55,0.68633274115326,1.5,0.577350269189626
+"Sea cucumbers","Genetic diversity","Genetic Diversity",3,7,4,6,4,2.65,1.08942283125661,0.5,0.577350269189626
+"Sea cucumbers","Habitat specificity","Habitat Specificity",7,6,7,0,4,2,0.858395075278952,2,0
+"Sea cucumbers","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",1,13,5,1,4,2.3,0.656946685331786,1.75,0.5
+"Sea cucumbers","Other stressors","Other Stressors",9,7,2,2,4,1.85,0.988086934168084,0.75,0.5
+"Sea cucumbers","Population growth rate","Pop Growth Rate",6,8,5,1,4,2.05,0.887041208323017,1,0.816496580927726
+"Sea cucumbers","Predation and competition dynamics","Pred & Comp Dynamics",6,5,6,3,4,2.3,1.08093526754916,0.75,0.957427107756338
+"Sea cucumbers","Prey specificity","Prey Specificity",20,0,0,0,4,1,0,2,0.816496580927726
+"Sea cucumbers","Spawning characteristics","Reproductive Cycle",0,4,13,3,4,2.95,0.604805318829299,1.75,0.5
+"Sea cucumbers","Species range","Species Range",10,7,3,0,4,1.65,0.745159820370595,1.5,0.577350269189626
+"Sea cucumbers","Specificity in early life history requirements","Specificity EL Hist REQs",4,10,4,2,4,2.2,0.894427190999916,1,0.816496580927726
+"Sea cucumbers","Stock size/status","Stock Size Status",2,6,7,5,4,2.75,0.966545666958261,1.25,0.957427107756338
+"Sea cucumbers","Tolerance to ocean acidification","Sensitivity to OA",4,2,6,8,4,2.9,1.16528740525336,1.25,0.5
+"Silk snapper","Adult mobility","Adult Mobility",11,8,1,0,4,1.5,0.606976978666884,1.25,0.957427107756338
+"Silk snapper","Complexity in reproductive strategy","Repro Strat Sensitivity",10,5,5,0,4,1.75,0.850696309223401,2,0
+"Silk snapper","Genetic diversity","Genetic Diversity",4,3,13,0,4,2.45,0.825577947481897,1.5,1
+"Silk snapper","Habitat specificity","Habitat Specificity",13,7,0,0,4,1.35,0.489360484929593,2.5,0.577350269189626
+"Silk snapper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",11,7,2,0,4,1.55,0.68633274115326,0.75,0.957427107756338
+"Silk snapper","Other stressors","Other Stressors",10,4,1,5,4,2.05,1.27630222456166,1,0.816496580927726
+"Silk snapper","Population growth rate","Pop Growth Rate",2,2,7,4,3,2.86666666666667,0.990430401872025,2.33333333333333,0.577350269189626
+"Silk snapper","Predation and competition dynamics","Pred & Comp Dynamics",9,5,1,0,3,1.46666666666667,0.639940473422184,1,0.816496580927726
+"Silk snapper","Prey specificity","Prey Specificity",14,6,0,0,4,1.3,0.470162345981627,2.5,0.577350269189626
+"Silk snapper","Spawning characteristics","Reproductive Cycle",6,10,4,0,4,1.9,0.718184846459608,2.5,0.577350269189626
+"Silk snapper","Species range","Species Range",12,7,1,0,4,1.45,0.604805318829299,2.75,0.5
+"Silk snapper","Specificity in early life history requirements","Specificity EL Hist REQs",9,7,4,0,4,1.75,0.786397515657049,1,0.816496580927726
+"Silk snapper","Stock size/status","Stock Size Status",0,5,15,0,4,2.75,0.444261658319319,2.25,0.5
+"Silk snapper","Tolerance to ocean acidification","Sensitivity to OA",7,12,1,0,4,1.7,0.571240570577479,2.25,0.957427107756338
+"Spiny lobster","Adult mobility","Adult Mobility",5,8,2,5,4,2.35,1.13670808176853,2.75,0.5
+"Spiny lobster","Complexity in reproductive strategy","Repro Strat Sensitivity",5,5,5,5,4,2.5,1.14707866935281,2.75,0.5
+"Spiny lobster","Genetic diversity","Genetic Diversity",6,3,6,5,4,2.5,1.19207912135854,2.75,0.5
+"Spiny lobster","Habitat specificity","Habitat Specificity",6,6,3,5,4,2.35,1.18210338847862,3,0
+"Spiny lobster","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",14,1,0,5,4,1.8,1.32188063797479,2.5,0.577350269189626
+"Spiny lobster","Other stressors","Other Stressors",2,8,4,6,4,2.7,1.03109548284184,2.25,0.5
+"Spiny lobster","Population growth rate","Pop Growth Rate",4,11,0,5,4,2.3,1.08093526754916,2.5,0.577350269189626
+"Spiny lobster","Predation and competition dynamics","Pred & Comp Dynamics",4,8,3,5,4,2.45,1.09904264559757,2.5,0.577350269189626
+"Spiny lobster","Prey specificity","Prey Specificity",14,1,0,5,4,1.8,1.32188063797479,2.75,0.5
+"Spiny lobster","Spawning characteristics","Reproductive Cycle",6,6,3,5,4,2.35,1.18210338847862,2.75,0.5
+"Spiny lobster","Species range","Species Range",10,1,3,6,4,2.25,1.37170658209707,3,0
+"Spiny lobster","Specificity in early life history requirements","Specificity EL Hist REQs",3,3,3,11,4,3.1,1.16528740525336,2.75,0.5
+"Spiny lobster","Stock size/status","Stock Size Status",7,5,3,5,4,2.3,1.21828179265546,2.5,0.577350269189626
+"Spiny lobster","Tolerance to ocean acidification","Sensitivity to OA",0,8,3,9,4,3.05,0.944513241388333,2.25,0.5
+"Stoplight parrotfish","Adult mobility","Adult Mobility",5,5,3,2,3,2.13333333333333,1.06009882737862,2.66666666666667,0.577350269189626
+"Stoplight parrotfish","Complexity in reproductive strategy","Repro Strat Sensitivity",6,5,4,0,3,1.86666666666667,0.833809387832792,2.66666666666667,0.577350269189626
+"Stoplight parrotfish","Genetic diversity","Genetic Diversity",7,8,0,0,3,1.53333333333333,0.516397779494322,1,1.73205080756888
+"Stoplight parrotfish","Habitat specificity","Habitat Specificity",0,7,5,3,3,2.73333333333333,0.79880863671798,2.66666666666667,0.577350269189626
+"Stoplight parrotfish","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",1,10,4,0,3,2.2,0.560611910581388,1.66666666666667,0.577350269189626
+"Stoplight parrotfish","Other stressors","Other Stressors",5,4,1,5,3,2.4,1.2983506020002,1,0
+"Stoplight parrotfish","Population growth rate","Pop Growth Rate",2,9,4,0,3,2.13333333333333,0.639940473422184,0.666666666666667,1.15470053837925
+"Stoplight parrotfish","Predation and competition dynamics","Pred & Comp Dynamics",7,6,2,0,3,1.66666666666667,0.723746864455746,1.33333333333333,1.15470053837925
+"Stoplight parrotfish","Prey specificity","Prey Specificity",2,3,8,2,3,2.66666666666667,0.899735410842437,2.66666666666667,0.577350269189626
+"Stoplight parrotfish","Spawning characteristics","Reproductive Cycle",8,7,0,0,3,1.46666666666667,0.516397779494322,2.66666666666667,0.577350269189626
+"Stoplight parrotfish","Species range","Species Range",2,6,7,0,3,2.33333333333333,0.723746864455746,2.66666666666667,0.577350269189626
+"Stoplight parrotfish","Specificity in early life history requirements","Specificity EL Hist REQs",6,3,4,2,3,2.13333333333333,1.12546286774228,1.66666666666667,1.52752523165195
+"Stoplight parrotfish","Stock size/status","Stock Size Status",6,8,1,0,3,1.66666666666667,0.617213399848368,0,0
+"Stoplight parrotfish","Tolerance to ocean acidification","Sensitivity to OA",1,8,2,4,3,2.6,0.985610760609162,2,1.73205080756888
+"White mullet","Adult mobility","Adult Mobility",6,11,3,0,4,1.85,0.670820393249937,1.75,1.5
+"White mullet","Complexity in reproductive strategy","Repro Strat Sensitivity",2,8,10,0,4,2.4,0.680557047378721,1.25,0.5
+"White mullet","Genetic diversity","Genetic Diversity",8,11,1,0,4,1.65,0.5871429486124,1.5,0.577350269189626
+"White mullet","Habitat specificity","Habitat Specificity",1,10,5,4,4,2.6,0.882579950158088,2.25,0.957427107756338
+"White mullet","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",2,8,9,1,4,2.45,0.759154654516248,1.5,1
+"White mullet","Other stressors","Other Stressors",2,9,9,0,4,2.35,0.670820393249937,1,0.816496580927726
+"White mullet","Population growth rate","Pop Growth Rate",8,8,3,1,4,1.85,0.875093979915421,2.25,0.957427107756338
+"White mullet","Predation and competition dynamics","Pred & Comp Dynamics",4,9,7,0,4,2.15,0.745159820370595,0.5,0.577350269189626
+"White mullet","Prey specificity","Prey Specificity",13,4,3,0,4,1.5,0.760885910252682,2.25,0.957427107756338
+"White mullet","Spawning characteristics","Reproductive Cycle",8,10,2,0,4,1.7,0.656946685331786,2.5,1
+"White mullet","Species range","Species Range",10,4,6,0,4,1.8,0.894427190999916,2.5,1
+"White mullet","Specificity in early life history requirements","Specificity EL Hist REQs",3,10,7,0,4,2.2,0.695852373938459,1.25,0.957427107756338
+"White mullet","Stock size/status","Stock Size Status",6,7,7,0,4,2.05,0.825577947481897,0.75,0.957427107756338
+"White mullet","Tolerance to ocean acidification","Sensitivity to OA",19,1,0,0,4,1.05,0.223606797749979,1.25,0.5
+"Yellowfin grouper","Adult mobility","Adult Mobility",3,12,4,1,4,2.15,0.745159820370595,2,0.816496580927726
+"Yellowfin grouper","Complexity in reproductive strategy","Repro Strat Sensitivity",1,7,5,7,4,2.9,0.967906041546987,2.25,0.5
+"Yellowfin grouper","Genetic diversity","Genetic Diversity",2,7,5,6,4,2.75,1.01954582251634,1,0.816496580927726
+"Yellowfin grouper","Habitat specificity","Habitat Specificity",1,8,10,1,4,2.55,0.68633274115326,1.5,1
+"Yellowfin grouper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",2,8,8,2,4,2.5,0.827170191868511,1.5,0.577350269189626
+"Yellowfin grouper","Other stressors","Other Stressors",1,9,5,0,3,2.26666666666667,0.593616839704664,0.666666666666667,0.577350269189626
+"Yellowfin grouper","Population growth rate","Pop Growth Rate",1,2,8,9,4,3.25,0.850696309223401,1.75,0.5
+"Yellowfin grouper","Predation and competition dynamics","Pred & Comp Dynamics",1,9,8,2,4,2.55,0.759154654516248,1,0
+"Yellowfin grouper","Prey specificity","Prey Specificity",1,12,7,0,4,2.3,0.571240570577479,1.75,0.957427107756338
+"Yellowfin grouper","Spawning characteristics","Reproductive Cycle",0,1,12,7,4,3.3,0.571240570577479,2.25,0.5
+"Yellowfin grouper","Species range","Species Range",2,8,8,2,4,2.5,0.827170191868511,2.5,0.577350269189626
+"Yellowfin grouper","Specificity in early life history requirements","Specificity EL Hist REQs",4,7,8,1,4,2.3,0.864504725870618,1.25,0.5
+"Yellowfin grouper","Stock size/status","Stock Size Status",2,4,11,3,4,2.75,0.850696309223401,1.75,0.5
+"Yellowfin grouper","Tolerance to ocean acidification","Sensitivity to OA",5,8,6,1,4,2.15,0.875093979915421,1,0.816496580927726
+"Yellowtail snapper","Adult mobility","Adult Mobility",4,10,1,0,3,1.8,0.560611910581388,2.66666666666667,0.577350269189626
+"Yellowtail snapper","Complexity in reproductive strategy","Repro Strat Sensitivity",0,9,6,0,3,2.4,0.50709255283711,2.66666666666667,0.577350269189626
+"Yellowtail snapper","Genetic diversity","Genetic Diversity",9,3,3,0,3,1.6,0.828078671210825,2,1
+"Yellowtail snapper","Habitat specificity","Habitat Specificity",2,8,5,0,3,2.2,0.676123403782813,3,0
+"Yellowtail snapper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",11,4,0,0,3,1.26666666666667,0.457737708217063,2.33333333333333,0.577350269189626
+"Yellowtail snapper","Other stressors","Other Stressors",1,10,4,0,3,2.2,0.560611910581388,1.66666666666667,1.15470053837925
+"Yellowtail snapper","Population growth rate","Pop Growth Rate",2,7,5,1,3,2.33333333333333,0.816496580927726,2.66666666666667,0.577350269189626
+"Yellowtail snapper","Predation and competition dynamics","Pred & Comp Dynamics",4,8,3,0,3,1.93333333333333,0.703731550548997,2,1
+"Yellowtail snapper","Prey specificity","Prey Specificity",3,9,3,0,3,2,0.654653670707977,2.66666666666667,0.577350269189626
+"Yellowtail snapper","Spawning characteristics","Reproductive Cycle",1,11,3,0,3,2.13333333333333,0.516397779494322,3,0
+"Yellowtail snapper","Species range","Species Range",7,6,1,1,3,1.73333333333333,0.883715101688537,3,0
+"Yellowtail snapper","Specificity in early life history requirements","Specificity EL Hist REQs",1,6,8,0,3,2.46666666666667,0.639940473422184,2,1
+"Yellowtail snapper","Stock size/status","Stock Size Status",4,8,3,0,3,1.93333333333333,0.703731550548997,2.33333333333333,0.577350269189626
+"Yellowtail snapper","Tolerance to ocean acidification","Sensitivity to OA",1,5,9,0,3,2.53333333333333,0.639940473422184,2.66666666666667,0.577350269189626
