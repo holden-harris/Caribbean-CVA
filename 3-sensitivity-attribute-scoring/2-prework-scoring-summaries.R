@@ -1,7 +1,7 @@
 ##------------------------------------------------------------------------------
-## Caribbean CVA – Preliminary Sensitivity Attribute SD plots (HMS-style)
+## Caribbean CVA – Preliminary Sensitivity Attribute SD plots 
 
-rm(list = ls()); gc()
+#rm(list = ls()); gc()
 suppressPackageStartupMessages({
   library(dplyr)
   library(tidyr)
@@ -24,11 +24,25 @@ dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 ##       Attribute_name, Attribute_type,
 ##       Data_quality, Scoring_rank_1..4
 
-score_table_all <- readr::read_csv("./sensitivity-attribute-scoring/score_table_all.csv", show_col_types = FALSE)
+score_table_all <- read_csv("./data/preliminary-scores/score_table_all_clean.csv", show_col_types = FALSE)
 
 ## Check key columns
 stopifnot(all(c("Scorer","stock_name","Attribute_name",
                 "Scoring_rank_1","Scoring_rank_2","Scoring_rank_3","Scoring_rank_4") %in% names(score_table_all)))
+
+## Check
+species_reviews <- score_table_all %>%
+  filter(!is.na(stock_name), !is.na(Scorer)) %>%
+  distinct(stock_name, Scorer) %>%                 # one row per stock × reviewer
+  group_by(stock_name) %>%
+  summarise(
+    n_reviews = n_distinct(Scorer),
+    reviewers = paste(sort(unique(Scorer)), collapse = ", "),
+    .groups   = "drop"
+  ) %>%
+  arrange(desc(n_reviews), stock_name) %>% 
+  as.data.frame(); species_reviews
+
 
 ##------------------------------------------------------------------------------
 ## Shorten/standardize attribute names (match HMS figure labels)
@@ -332,7 +346,8 @@ stock_scorer_list <- stock_scorer_colors %>%
     scorers   = paste(sort(unique(Scorer)), collapse = ", "),
     .groups   = "drop"
   ) %>%
-  dplyr::arrange(stock_name); stock_scorer_list
+  dplyr::arrange(stock_name) %>% 
+  as.data.frame(); stock_scorer_list
 
 stock_scorer_color_list <- stock_scorer_colors %>%
   dplyr::mutate(scorer_str = paste0(Scorer, " (", color, ")")) %>%

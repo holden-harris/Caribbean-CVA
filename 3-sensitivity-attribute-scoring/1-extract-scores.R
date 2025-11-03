@@ -260,6 +260,6 @@ species_reviews_clean <- score_table_all_clean %>%
 
 ## -----------------------------------------------------------------------------
 ## Write to CSV for downstream steps
-#write.csv(score_table_all, file = file.path(in_dir, "score_table_all.csv"), row.names = FALSE)
+write.csv(score_table_all_clean, file = file.path(in_dir, "score_table_all_clean.csv"), row.names = FALSE)
 
 
