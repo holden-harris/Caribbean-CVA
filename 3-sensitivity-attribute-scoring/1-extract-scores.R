@@ -194,7 +194,7 @@ scorer_stock_counts <-
   count(Scorer, name = "n_stocks"); scorer_stock_counts
 
 ##------------------------------------------------------------------------------
-## Additinal QA/QC
+## QA/QC
 n_scorers <- score_table_all %>% distinct(Scorer) %>% nrow() 
 n_stocks <- score_table_all %>% distinct(stock_name) %>% nrow() 
 n_attrs  <- score_table_all %>% distinct(Attribute_name) %>% nrow() ## How many unique attributes?
@@ -210,6 +210,56 @@ stock_qa <- score_table_all %>%
   ) %>%
   arrange(stock_name) %>% as.data.frame(); stock_qa
 
+## Scorers pers stock
+species_reviews <- score_table_all %>%
+  filter(!is.na(stock_name), !is.na(Scorer)) %>%
+  distinct(stock_name, Scorer) %>%                 # one row per stock × reviewer
+  group_by(stock_name) %>%
+  summarise(
+    n_reviews = n_distinct(Scorer),
+    reviewers = paste(sort(unique(Scorer)), collapse = ", "),
+    .groups   = "drop"
+  ) %>%
+  arrange(desc(n_reviews), stock_name) %>% 
+  as.data.frame(); species_reviews
+
+## -----------------------------------------------------------------------------
+## Cleaning: remove extra scores
+to_remove <- tibble::tribble(
+  ~stock_name,     ~Scorer,
+  "Blue runner",   "RGarciaSais",
+  "King mackerel", "AAcosta"
+)
+
+##CHECK: show rows that will be removed (distinct by scorer/species)
+will_remove <- score_table_all %>%
+  dplyr::semi_join(to_remove, by = c("stock_name","Scorer"))
+
+message("Rows to remove: ", nrow(will_remove)); print(will_remove %>% dplyr::count(stock_name, Scorer, name = "n_rows"))
+
+score_table_all_clean <- score_table_all %>%
+  dplyr::anti_join(to_remove, by = c("stock_name","Scorer"))
+
+message("Rows before: ", nrow(score_table_all),
+        " | after: ", nrow(score_table_all_clean),
+        " | removed: ", nrow(score_table_all) - nrow(score_table_all_clean))
+
+## Final check:ccorers pers sotck
+species_reviews_clean <- score_table_all_clean %>%
+  filter(!is.na(stock_name), !is.na(Scorer)) %>%
+  distinct(stock_name, Scorer) %>%                 # one row per stock × reviewer
+  group_by(stock_name) %>%
+  summarise(
+    n_reviews = n_distinct(Scorer),
+    reviewers = paste(sort(unique(Scorer)), collapse = ", "),
+    .groups   = "drop"
+  ) %>%
+  arrange(desc(n_reviews), stock_name) %>% 
+  as.data.frame(); species_reviews_clean
+
+
+## -----------------------------------------------------------------------------
 ## Write to CSV for downstream steps
-write.csv(score_table_all, file = file.path(in_dir, "score_table_all.csv"), row.names = FALSE)
+#write.csv(score_table_all, file = file.path(in_dir, "score_table_all.csv"), row.names = FALSE)
+
 
