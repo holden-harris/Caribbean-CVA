@@ -335,17 +335,17 @@
 "Yellowfin grouper","Specificity in early life history requirements","Specificity EL Hist REQs",4,7,8,1,4,2.3,0.864504725870618,1.25,0.5
 "Yellowfin grouper","Stock size/status","Stock Size Status",2,4,11,3,4,2.75,0.850696309223401,1.75,0.5
 "Yellowfin grouper","Tolerance to ocean acidification","Sensitivity to OA",5,8,6,1,4,2.15,0.875093979915421,1,0.816496580927726
-"Yellowtail snapper","Adult mobility","Adult Mobility",5,14,6,0,5,2.04,0.675771164423776,2.8,0.447213595499958
-"Yellowtail snapper","Complexity in reproductive strategy","Repro Strat Sensitivity",5,14,6,0,5,2.04,0.675771164423776,2.6,0.547722557505166
-"Yellowtail snapper","Genetic diversity","Genetic Diversity",11,10,4,0,5,1.72,0.737111479583199,1.8,0.836660026534076
-"Yellowtail snapper","Habitat specificity","Habitat Specificity",2,10,13,0,5,2.44,0.650640709864771,2.8,0.447213595499958
-"Yellowtail snapper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",13,12,0,0,5,1.48,0.509901951359279,2.4,0.547722557505166
-"Yellowtail snapper","Other stressors","Other Stressors",4,12,4,0,4,2,0.64888568452305,1.75,0.957427107756338
-"Yellowtail snapper","Population growth rate","Pop Growth Rate",3,12,8,2,5,2.36,0.810349718742881,2.6,0.547722557505166
-"Yellowtail snapper","Predation and competition dynamics","Pred & Comp Dynamics",9,12,4,0,5,1.8,0.707106781186548,1.4,1.14017542509914
-"Yellowtail snapper","Prey specificity","Prey Specificity",13,9,3,0,5,1.6,0.707106781186548,2.8,0.447213595499958
-"Yellowtail snapper","Spawning characteristics","Reproductive Cycle",4,16,5,0,5,2.04,0.611010092660779,3,0
-"Yellowtail snapper","Species range","Species Range",12,6,6,1,5,1.84,0.94339811320566,3,0
-"Yellowtail snapper","Specificity in early life history requirements","Specificity EL Hist REQs",1,14,10,0,5,2.36,0.568624070307733,2.2,0.836660026534076
-"Yellowtail snapper","Stock size/status","Stock Size Status",9,8,5,3,5,2.08,1.03762549441823,2.6,0.547722557505166
-"Yellowtail snapper","Tolerance to ocean acidification","Sensitivity to OA",3,12,10,0,5,2.28,0.678232998312527,2.4,0.894427190999916
+"Yellowtail snapper","Adult mobility","Adult Mobility",5,9,6,0,4,2.05,0.759154654516248,2.75,0.5
+"Yellowtail snapper","Complexity in reproductive strategy","Repro Strat Sensitivity",5,11,4,0,4,1.95,0.68633274115326,2.5,0.577350269189626
+"Yellowtail snapper","Genetic diversity","Genetic Diversity",6,10,4,0,4,1.9,0.718184846459608,2,0.816496580927726
+"Yellowtail snapper","Habitat specificity","Habitat Specificity",2,6,12,0,4,2.5,0.688247201611685,2.75,0.5
+"Yellowtail snapper","Mobility and dispersal or early life stages","Mobility Dispersal of ELS",9,11,0,0,4,1.55,0.51041778553404,2.5,0.577350269189626
+"Yellowtail snapper","Other stressors","Other Stressors",3,9,3,0,3,2,0.654653670707977,2,1
+"Yellowtail snapper","Population growth rate","Pop Growth Rate",2,9,7,2,4,2.45,0.825577947481897,2.75,0.5
+"Yellowtail snapper","Predation and competition dynamics","Pred & Comp Dynamics",8,9,3,0,4,1.75,0.716350399411379,1.25,1.25830573921179
+"Yellowtail snapper","Prey specificity","Prey Specificity",13,4,3,0,4,1.5,0.760885910252682,2.75,0.5
+"Yellowtail snapper","Spawning characteristics","Reproductive Cycle",4,12,4,0,4,2,0.64888568452305,3,0
+"Yellowtail snapper","Species range","Species Range",7,6,6,1,4,2.05,0.944513241388333,3,0
+"Yellowtail snapper","Specificity in early life history requirements","Specificity EL Hist REQs",0,12,8,0,4,2.4,0.502624689950035,2.5,0.577350269189626
+"Yellowtail snapper","Stock size/status","Stock Size Status",9,5,3,3,4,2,1.12390297389803,2.75,0.5
+"Yellowtail snapper","Tolerance to ocean acidification","Sensitivity to OA",3,12,5,0,4,2.1,0.640723275517187,2.25,0.957427107756338
