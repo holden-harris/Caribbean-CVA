@@ -226,9 +226,10 @@ species_reviews <- score_table_all %>%
 ## -----------------------------------------------------------------------------
 ## Cleaning: remove extra scores
 to_remove <- tibble::tribble(
-  ~stock_name,     ~Scorer,
-  "Blue runner",   "RGarciaSais",
-  "King mackerel", "AAcosta"
+  ~stock_name,          ~Scorer,
+  "Blue runner",        "RGarciaSais",
+  "King mackerel",      "AAcosta",
+  "Yellowtail snapper", "REsteves"
 )
 
 ##CHECK: show rows that will be removed (distinct by scorer/species)

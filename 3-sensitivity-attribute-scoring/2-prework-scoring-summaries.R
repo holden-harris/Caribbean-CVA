@@ -357,7 +357,6 @@ stock_scorer_color_list <- stock_scorer_colors %>%
   dplyr::arrange(stock_name); stock_scorer_list
 
 write_csv(stock_scorer_list, file.path(out_dir, "stock_scorer_list.csv"))
-write_csv(stock_scorer_color_list,       file.path(out_dir, "stock_scorer_color_list.csv"))
 
 ## -----------------------------------------------------------------------------
 ##
