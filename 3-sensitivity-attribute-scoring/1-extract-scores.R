@@ -318,46 +318,18 @@ uncategorized_attributes <- final_score_table_all %>%
   filter(is.na(Attribute_type)) %>%
   distinct(Attribute_name); uncategorized_attributes
 
-##------------------------------------------------------------------------------
-## Cleaning: remove extra scores
-to_remove <- tibble::tribble(
-  ~stock_name,          ~Scorer,
-  "Blue runner",        "RGarciaSais",
-  "King mackerel",      "AAcosta",
-  "Yellowtail snapper", "REsteves"
+
+## Write out reviewers
+write.csv(
+  species_reviews,
+  file = file.path(in_dir, "n_reviews_final.csv"),
+  row.names = FALSE
 )
-
-## CHECK: show rows that will be removed
-will_remove <- final_score_table_all %>%
-  dplyr::semi_join(to_remove, by = c("stock_name","Scorer"))
-
-message("Rows to remove: ", nrow(will_remove))
-print(will_remove %>% dplyr::count(stock_name, Scorer, name = "n_rows"))
-
-final_score_table_all_clean <- final_score_table_all %>%
-  dplyr::anti_join(to_remove, by = c("stock_name","Scorer"))
-
-message("Rows before: ", nrow(final_score_table_all),
-        " | after: ", nrow(final_score_table_all_clean),
-        " | removed: ", nrow(final_score_table_all) - nrow(final_score_table_all_clean))
-
-## Final check: scorers per stock
-species_reviews_clean <- final_score_table_all_clean %>%
-  filter(!is.na(stock_name), !is.na(Scorer)) %>%
-  distinct(stock_name, Scorer) %>%
-  group_by(stock_name) %>%
-  summarise(
-    n_reviews = n_distinct(Scorer),
-    reviewers = paste(sort(unique(Scorer)), collapse = ", "),
-    .groups   = "drop"
-  ) %>%
-  arrange(desc(n_reviews), stock_name) %>%
-  as.data.frame(); species_reviews_clean
 
 ##------------------------------------------------------------------------------
 ## Write to CSV for downstream steps
 write.csv(
-  final_score_table_all_clean,
-  file = file.path(in_dir, "final_score_table_all_clean.csv"),
+  final_score_table_all,
+  file = file.path(in_dir, "final_score_table_all.csv"),
   row.names = FALSE
 )
