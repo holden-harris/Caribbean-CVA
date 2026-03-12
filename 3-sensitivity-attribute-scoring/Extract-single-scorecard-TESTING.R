@@ -20,6 +20,9 @@ suppressPackageStartupMessages({
 ## CONFIG
 in_dir      <- "./data/final-scores"   ## CHANGED: now points to final score workbooks
 ignore_tabs <- c("Instructions","Data Quality","Example")
+out_dir     <- "./tables/final-scores-compiled"
+dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+
 
 ## Canonical attribute sets (for Attribute_type tagging)
 sens_attrs <- c(
