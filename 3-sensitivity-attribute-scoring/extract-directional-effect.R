@@ -22,6 +22,8 @@ suppressPackageStartupMessages({
 ##------------------------------------------------------------------------------
 ## CONFIG
 in_dir      <- "./data/final-scores"
+out_dir     <- "./outputs/final-scores-compiled/"
+dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 ignore_tabs <- c("Instructions","Data Quality","Example")
 
 ##------------------------------------------------------------------------------
@@ -226,17 +228,21 @@ species_reviews <- directional_effect_table_all %>%
   arrange(desc(n_reviews), stock_name) %>%
   as.data.frame(); species_reviews
 
+
+##------------------------------------------------------------------------------
+## Write out
+
 ## Write out reviewers
 write.csv(
   species_reviews,
-  file = file.path(in_dir, "n_reviews_directional-effect.csv"),
+  file = file.path(out_dir, "n_reviews_directional-effect.csv"),
   row.names = FALSE
 )
 
-##------------------------------------------------------------------------------
-## Write to CSV for downstream steps
+
+## CSV for downstream steps
 write.csv(
   directional_effect_table_all,
-  file = file.path(in_dir, "directional_effect_table_all.csv"),
+  file = file.path(out_dir, "table_directional_effect_scores.csv"),
   row.names = FALSE
 )
