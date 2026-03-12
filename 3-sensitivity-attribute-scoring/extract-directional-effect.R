@@ -240,30 +240,3 @@ write.csv(
   file = file.path(in_dir, "directional_effect_table_all.csv"),
   row.names = FALSE
 )
-
-##------------------------------------------------------------------------------
-## Aggregate directional effect
-
-directional_effect_table_all <- read.csv()
-
-directional_effect_summary <- directional_effect_table_all %>%
-  dplyr::select(Scorer, stock_name, Directional_effect, Directional_score) %>%
-  tidyr::pivot_wider(
-    names_from  = Directional_effect,
-    values_from = Directional_score
-  ) %>%
-  dplyr::mutate(
-    Positive = dplyr::coalesce(Positive, 0),
-    Neutral  = dplyr::coalesce(Neutral, 0),
-    Negative = dplyr::coalesce(Negative, 0)
-  ) %>%
-  dplyr::mutate(
-    overall_directional_effect = dplyr::case_when(
-      Positive >= 2 & Negative < 2                 ~ "positive",
-      Negative >= 2 & Positive < 2                 ~ "negative",
-      Neutral  >= 3 & Positive < 2 & Negative < 2  ~ "neutral",
-      TRUE                                         ~ "mixed"
-    )
-  )
-
-directional_effect_summary
