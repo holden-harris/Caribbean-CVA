@@ -1,18 +1,23 @@
 ##------------------------------------------------------------------------------
 ## User setup
 
+in_dir      <- "./outputs/final-scores-compiled/"
+out_dir     <- "./outputs/final-scores-compiled/"
+
 ## Breakpoints for assessing overall score
 low_cut <- 3
 moderate_cut <- 6
 high_cut <- 9
 
-##------------------------------------------------------------------------------
 ## Load compiled CVA score table
+score_table <- read.csv(file.path(in_dir, "table_final_attribute_scores_all.csv"), stringsAsFactors = FALSE)
 
-score_table <- read.csv(
-  "./data/final-scores/final_score_table_all.csv",
-  stringsAsFactors = FALSE
-)
+## Update attribute names ----------------
+## All "Rigidity" scores are sensitivity
+score_table$Attribute_type[score_table$Attribute_type == "Rigidity"] <- "Sensitivity" 
+## Shorten name for "Exposure"
+score_table$Attribute_type[score_table$Attribute_type == "Qualitative Exposure Factors"] <- "Exposure" 
+
 
 ##------------------------------------------------------------------------------
 ## Calculate mean attribute scores by type
@@ -24,8 +29,7 @@ attribute_type_scores <- score_table %>%
     sd_score = sd(Final_score, na.rm = TRUE),
     n_attributes = n(),
     .groups = "drop"
-  )
-print(attribute_type_scores)
+  ); print(attribute_type_scores, n = 35)
 
 ##------------------------------------------------------------------------------
 ## Convert attribute means to wide format
