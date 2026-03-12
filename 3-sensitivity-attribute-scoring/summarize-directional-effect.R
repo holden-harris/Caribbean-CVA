@@ -3,12 +3,13 @@
 
 library(dplyr)
 
-in_dir      <- "./data/final-scores"
-out_dir     <- "./outputs/final-score-aggregates"
-directional_effect_table <- read.csv(file.path(in_dir, "directional_effect_table_all.csv"))
+in_dir      <- "./outputs/final-scores-compiled/"
+out_dir     <- "./outputs/final-scores-compiled/"
+directional_effect_table <- read.csv(file.path(in_dir, "table_directional_effect_scores.csv"))
 
 ## -----------------------------------------------------------------------------
 ## Aggregate to one overall directional effect per stock_name × scorer
+## using CVA weighted-average method
 
 directional_effect_summary <- directional_effect_table %>%
   dplyr::select(Scorer, stock_name, Directional_effect, Directional_score) %>%
@@ -18,60 +19,108 @@ directional_effect_summary <- directional_effect_table %>%
   ) %>%
   dplyr::mutate(
     Positive = dplyr::coalesce(Positive, 0),
+    Neutral  = dplyr::coalesce(Neutral,  0),
+    Negative = dplyr::coalesce(Negative, 0)
+  ) %>%
+  dplyr::mutate(
+    n_tallies = Positive + Neutral + Negative,
+    
+    wt_avg = dplyr::if_else(
+      n_tallies > 0,
+      ((Negative * -1) + (Neutral * 0) + (Positive * 1)) / n_tallies,
+      NA_real_
+    ),
+    overall = dplyr::case_when(
+      is.na(wt_avg)            ~ NA_character_,
+      wt_avg <= -0.333         ~ "negative",
+      wt_avg >=  0.333         ~ "positive",
+      wt_avg >  -0.333 &
+        wt_avg <  0.333        ~ "neutral"
+    )
+  ); print(directional_effect_summary, n = 30)
+
+## QA checks
+directional_effect_summary %>%
+  dplyr::count(overall)
+
+directional_effect_summary %>%
+  dplyr::select(
+    stock_name, Scorer, Positive, Neutral, Negative,
+    wt_avg, overall
+  ) %>%
+  dplyr::arrange(stock_name, Scorer)
+
+## Write out pivot table
+write.csv(
+  directional_effect_summary,
+  file = file.path(out_dir, "directional_effect_wide_all.csv"),
+  row.names = FALSE
+)
+
+## -----------------------------------------------------------------------------
+## Summarize by stock
+
+## -----------------------------------------------------------------------------
+## Summarize by stock using raw tally totals from all reviewers
+## and HMS weighted-average directional effect method
+
+stock_directional_summary <- directional_effect_table %>%
+  group_by(stock_name, Directional_effect) %>%
+  summarise(
+    total_tallies = sum(Directional_score, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  tidyr::pivot_wider(
+    names_from  = Directional_effect,
+    values_from = total_tallies
+  ) %>%
+  dplyr::mutate(
+    Positive = dplyr::coalesce(Positive, 0),
     Neutral  = dplyr::coalesce(Neutral, 0),
     Negative = dplyr::coalesce(Negative, 0)
   ) %>%
   dplyr::mutate(
-    overall_directional_effect = dplyr::case_when(
-      Positive >= 2 &  Negative < 2                    ~ "positive",
-      Negative >= 2 &  Positive < 2                    ~ "negative",
-      Neutral  >= 3 &  Positive < 2  & Negative  < 2   ~ "neutral",
-      Neutral  == 2 &  Positive == 1 & Negative == 1   ~ "neutral",
-      Neutral  == 2 &  Positive == 2                   ~ "neutral"
-    )
-  )
-
-directional_effect_summary
-
-write.csv(
-  directional_effect_summary,
-  file = file.path(out_dir, "directional_effect_aggregated.csv"),
-  row.names = FALSE
-)
-
-## Count directions per stock
-stock_directional_summary <- directional_effect_summary %>%
-  group_by(stock_name) %>%
-  summarise(
-    n_positive = sum(overall_directional_effect == "positive", na.rm = TRUE),
-    n_neutral  = sum(overall_directional_effect == "neutral",  na.rm = TRUE),
-    n_negative = sum(overall_directional_effect == "negative", na.rm = TRUE),
-    n_reviews  = n(),
-    .groups = "drop"
-  )
-
-print(stock_directional_summary)
-
-## Determine dominent directional effect
-stock_directional_summary <- stock_directional_summary %>%
-  rowwise() %>%
-  mutate(
-    max_val = max(c(n_positive, n_neutral, n_negative)),
-    
-    overall_directional_effect = paste(
-      c(
-        if (n_positive == max_val) "positive",
-        if (n_neutral  == max_val) "neutral",
-        if (n_negative == max_val) "negative"
-      ),
-      collapse = "-"
+    n_tallies = Positive + Neutral + Negative,
+    wt_avg = dplyr::if_else(
+      n_tallies > 0,
+      ((Negative * -1) + (Neutral * 0) + (Positive * 1)) / n_tallies,
+      NA_real_
+    ),
+    overall = dplyr::case_when(
+      is.na(wt_avg)            ~ NA_character_,
+      wt_avg <= -0.333         ~ "negative",
+      wt_avg >=  0.333         ~ "positive",
+      wt_avg >  -0.333 &
+        wt_avg <  0.333        ~ "neutral"
     )
   ) %>%
-  ungroup() %>%
-  select(-max_val)
+  dplyr::rename(
+    n_positive = Positive,
+    n_neutral  = Neutral,
+    n_negative = Negative
+  ) %>%
+  dplyr::left_join(
+    directional_effect_table %>%
+      dplyr::group_by(stock_name) %>%
+      dplyr::summarise(
+        n_reviewers = dplyr::n_distinct(Scorer),
+        .groups = "drop"
+      ),
+    by = "stock_name"
+  ) %>%
+  dplyr::select(
+    stock_name,
+    n_positive,
+    n_neutral,
+    n_negative,
+    n_tallies,
+    n_reviewers,
+    wt_avg,
+    overall
+  ) %>%
+  dplyr::arrange(stock_name); print(stock_directional_summary, n = 26)
 
-print(stock_directional_summary, n = 26)
-
+## Write out species/stock summary
 write.csv(
   stock_directional_summary,
   file = file.path(out_dir, "directional_effect_summary_by-stock.csv"),
