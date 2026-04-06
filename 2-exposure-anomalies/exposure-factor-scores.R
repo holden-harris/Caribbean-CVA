@@ -54,6 +54,11 @@ uscar_ext  <- c(xlim_uscar, ylim_uscar)
 xlim_nwa <- c(-99, -40)
 ylim_nwa <- c(-5, 72)
 
+exposure_factor_key <- c(
+  "bs", "bt", "chl", "mld", "msstg", "o200", 
+  "ph", "pp", "pr", "sso", "sss", "sst", "swsm")
+  
+
 ################################################################################
 ##
 ## Functions
@@ -145,33 +150,6 @@ lmhv_histogram_base <- function(anom_masked,
   out
 }
 
-## -----------------------------------------------------------------------------
-## Recode exposure factor short names to full names
-## IMPORTANT:
-## Update the names on the LEFT to match the actual prefixes in your nc files
-## You can inspect them with: sort(unique(sapply(nc_files, exp_name_from_nc)))
-
-exposure_factor_key <- c(
-  "bs"    = "Bottom salinity",
-  "bt"   = "Bottom temperature",
-  "chl"     = "Chlorophyll-a concentration",
-  "mld"     = "Mixed layer depth",
-  "msstg" = "Mean sea surface temperature gradient",
-  "o200"    = "Oxygen at 200m",
-  "ph"      = "Surface pH",
-  "pp"      = "Primary production",
-  "pr"      = "Precipitation",
-  "sso"      = "Sea surface oxygen",
-  "sss"     = "Sea surface salinity",
-  "sst"     = "Sea surface temperature",
-  "sws"     = "Surface wind speed magnitude"
-)
-
-## -----------------------------------------------------------------------------
-## Helper to convert nc prefix to final exposure factor name
-get_exposure_factor_name <- function(exp_name) {
-  dplyr::recode(exp_name, !!!exposure_factor_key, .default = exp_name)
-}
 
 ################################################################################
 ##
@@ -250,7 +228,7 @@ process_species_scores <- function(sp_file) {
     ## Save long-format output table
     score_list[[i]] <- tibble(
       stock_name = species_name,
-      quantitative_exposure_factor = get_exposure_factor_name(exp_name),
+      quantitative_exposure_factor = exp_name,
       spatial_extent = c("Western Atlantic", "Caribbean Sea", "U.S. Caribbean"),
       attribute_score = c(sum_watl$exp_mean, sum_carib$exp_mean, sum_uscar$exp_mean)
     )
@@ -266,9 +244,9 @@ process_species_scores <- function(sp_file) {
 
 ## -----------------------------------------------------------------------------
 ## Test one species first
-## i <- 1
-## attribute_score_table_test <- process_species_scores(shp_files[i])
-## print(attribute_score_table_test)
+ i <- 1
+ attribute_score_table_test <- process_species_scores(shp_files[i])
+ print(attribute_score_table_test)
 
 ## -----------------------------------------------------------------------------
 ## Run all species with error handling
@@ -290,17 +268,49 @@ for (i in seq_along(shp_files)) {
 attribute_score_table <- bind_rows(attribute_score_list)
 
 ## -----------------------------------------------------------------------------
+## Add full exposure factor names
+exposure_factor_key <- c(
+  "bs"    = "Bottom salinity",
+  "bt"    = "Bottom temperature",
+  "chl"   = "Chlorophyll-a concentration",
+  "mld"   = "Mixed layer depth",
+  "msstg" = "Mean sea surface temperature gradient",
+  "o200"  = "Oxygen at 200m",
+  "ph"    = "Surface pH",
+  "pp"    = "Primary production",
+  "precip"    = "Precipitation",
+  "sso"   = "Sea surface oxygen",
+  "sss"   = "Sea surface salinity",
+  "sst"   = "Sea surface temperature",
+  "swsm"   = "Surface wind speed magnitude"
+)
+
+attribute_score_table <- attribute_score_table %>%
+  mutate(
+    full_names = exposure_factor_key[quantitative_exposure_factor]
+  )
+
+## Reorder
+attribute_score_table <- attribute_score_table %>%
+  select(
+    stock_name,
+    quantitative_exposure_factor,
+    full_names,
+    spatial_extent,
+    attribute_score
+  )
+
+## -----------------------------------------------------------------------------
 ## Optional: round scores
 attribute_score_table <- attribute_score_table %>%
   mutate(attribute_score = round(attribute_score, 3))
 
 ## -----------------------------------------------------------------------------
 ## Inspect final table
-print(attribute_score_table)
+print(attribute_score_table, n = 40)
 
 ## -----------------------------------------------------------------------------
 ## Write output csv
-out_file <- file.path(out_dir, "quantitative-exposure-attribute-scores.csv")
+out_file <- file.path(out_dir, "quantitative-exposure-attribute-scores-all.csv")
 write.csv(attribute_score_table, out_file, row.names = FALSE)
-
 cat("\nDone. Output written to:\n", out_file, "\n")
