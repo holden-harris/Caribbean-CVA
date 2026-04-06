@@ -12,6 +12,9 @@ Directional effect scores characterize whether climate change is expected to hav
 |------|-------------|
 | `table_directional_effect_scores.csv` | Long-format table of all directional effect scores by stock, reviewer, and effect direction |
 | `n_reviews_directional-effect.csv` | Summary of how many reviewers scored each stock, with reviewer names listed |
+| `directional_effect_wide_all.csv` | Reviewer-level wide summary with Positive, Neutral, and Negative tallies, total tallies, weighted average, and overall directional effect |
+| `directional_effect_summary_by-stock.csv` | Stock-level summary combining raw tallies across all reviewers and assigning one final directional effect per stock |
+
 
 ## Setup
 
