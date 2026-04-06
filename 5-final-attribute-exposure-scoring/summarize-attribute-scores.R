@@ -17,10 +17,9 @@ score_table$Attribute_type[score_table$Attribute_type == "Rigidity"] <- "Sensiti
 ## Shorten name for "Exposure"
 score_table$Attribute_type[score_table$Attribute_type == "Qualitative Exposure Factors"] <- "Exposure" 
 
-################################################################################
 ##------------------------------------------------------------------------------
 ## Join Exposure scores
-
+library(dplyr)
 exposure_scores <- read.csv(file.path(in_dir, "quantitative-exposure-attribute-scores-all.csv"))
 
 ## -----------------------------------------------------------------------------
