@@ -1,37 +1,23 @@
 # 4-final-directional-effect-scoring
 
 ## Overview
-This folder contains scripts used to compile and summarize final **Directional Effect** scores from completed Caribbean CVA reviewer workbooks. The workflow extracts reviewer tallies for **Positive**, **Neutral**, and **Negative** directional effects from each species/stock worksheet, combines them into a single long-format table, and then summarizes those tallies at both the **reviewer × stock** level and the **stock-level across all reviewers**.
 
-This folder supports transparency and reproducibility by documenting how final directional-effect tallies were pulled directly from the scoring workbooks and converted into analysis-ready summary tables.
+This folder compiles **directional effect scores** (Positive, Neutral, Negative) from individually scored expert review workbooks as part of the Caribbean Climate Vulnerability Assessment (CVA). Each reviewer independently scored fish stocks using a standardized Excel template, and this code extracts and consolidates those scores into a single, analysis-ready table.
 
-## Final products
-Scripts in this folder produce the following final products:
+Directional effect scores characterize whether climate change is expected to have a positive, neutral, or negative impact on a given fish stock. Each score is read from a fixed cell range (M38:M40) within species-specific tabs of each reviewer's workbook.
 
-- `table_directional_effect_scores.csv`  
-  Long-format compiled table of directional-effect tallies by reviewer and stock.
+## Final Products
 
-- `n_reviews_directional-effect.csv`  
-  Quality-assurance table listing the number of reviewers contributing directional-effect scores for each stock.
+| File | Description |
+|------|-------------|
+| `table_directional_effect_scores.csv` | Long-format table of all directional effect scores by stock, reviewer, and effect direction |
+| `n_reviews_directional-effect.csv` | Summary of how many reviewers scored each stock, with reviewer names listed |
 
-- `directional_effect_wide_all.csv`  
-  Reviewer-level wide summary table showing Positive, Neutral, and Negative tallies and the resulting weighted-average directional effect for each `stock_name × Scorer`.
+## Setup
 
-- `directional_effect_summary_by-stock.csv`  
-  Final stock-level summary table aggregating raw tallies across all reviewers and calculating one overall directional-effect category per stock.
+### Dependencies
 
-## Input directory structure
-The scripts in this folder expect inputs organized approximately as follows:
+- R (≥ 4.0)
+- R packages: `readxl`, `xml2`, `dplyr`, `stringr`, `tidyr`, `tibble`, `openxlsx`
 
-```text
-project/
-├─ data/
-│  └─ final-scores/                    # Final Caribbean CVA reviewer Excel workbooks
-│     ├─ [workbook_1].xlsx
-│     ├─ [workbook_2].xlsx
-│     └─ ...
-├─ 4-final-directional-effect-scoring/
-│  ├─ 1-extract-directional-effect.R
-│  └─ 2-summarize-directional-effect.R
-└─ outputs/
-   └─ final-scores-compiled/           # Compiled tables written by this workflow
+### Input Directory Structure
