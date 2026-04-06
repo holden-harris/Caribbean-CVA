@@ -21,22 +21,29 @@ Directional effect scores characterize whether climate change is expected to hav
 - R packages: `readxl`, `xml2`, `dplyr`, `stringr`, `tidyr`, `tibble`, `openxlsx`
 
 ### Input Directory Structure
-4-final-directional-effect-scoring/
-├── data/
-│   └── final-scores/          # Reviewer workbooks (*.xlsx)
-│                                # Filename convention: ..._ScorerName.xlsx
-├── outputs/
-│   └── final-scores-compiled/  # Created automatically by the script
-├── 1-extract-directional-effect.R
-└── README.md
+```text
+project/
+├─ data/
+│  └─ final-scores/                    # Final Caribbean CVA reviewer Excel workbooks
+│     ├─ [workbook_1].xlsx
+│     ├─ [workbook_2].xlsx
+│     └─ ...
+├─ 4-final-directional-effect-scoring/
+│  ├─ 1-extract-directional-effect.R
+│  └─ 2-summarize-directional-effect.R
+└─ outputs/
+   └─ final-scores-compiled/           # Compiled tables written by this workflow
 
 Each input workbook contains one tab per fish stock. Tabs named `Instructions`, `Data Quality`, and `Example` are excluded automatically. The scorer's name is parsed from the last underscore-delimited segment of the filename (e.g., `Caribbean_CVA_Jones.xlsx` → Scorer = `Jones`).
 
 ### Output Directory Structure
-outputs/
-└── final-scores-compiled/
-├── table_directional_effect_scores.csv
-└── n_reviews_directional-effect.csv
+project/
+└─ outputs/
+   └─ final-scores-compiled/
+      ├─ n_reviews_directional-effect.csv
+      ├─ table_directional_effect_scores.csv
+      ├─ directional_effect_wide_all.csv
+      └─ directional_effect_summary_by-stock.csv
 
 ## Workflow and Code Description
 
