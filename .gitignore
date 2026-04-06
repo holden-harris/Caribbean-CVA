@@ -13,6 +13,10 @@
 #*.cpg
 
 # Ignore entire shapefile folder
-#*`./data/species-distribution-shapefiles/
+./data/species-distribution-shapefiles/
 .**/hoard/
 ./data/preliminary-scores
+./data/final-scores
+./data/master-lists
+
+
