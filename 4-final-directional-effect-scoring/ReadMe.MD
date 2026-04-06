@@ -48,9 +48,9 @@ project/
       └─ directional_effect_summary_by-stock.csv
 ```
 
-## Workflow and Code Description
+# Workflow and Code Description
 
-### `1-extract-directional-effect.R`
+## `1-extract-directional-effect.R`
 
 1. **Discovery** — Scans `./data/final-scores/` for all Excel workbooks and identifies visible, non-template sheet tabs within each file.
 
@@ -66,7 +66,7 @@ Key design choices:
 - Workbooks are copied to a temporary file before reading to avoid conflicts with OneDrive or Excel file locks.
 - Tabs that fail to read are skipped individually so that one problematic tab does not prevent the rest of a workbook from being processed.
 
-### `2-summarize-directional-effect.R`
+## `2-summarize-directional-effect.R`
 
 This script takes the compiled long-format directional effect table produced by `1-extract-directional-effect.R` and summarizes it at two levels:
 
@@ -79,7 +79,7 @@ The script reads:
 
 and writes two additional output files back to the same directory.
 
-#### Reviewer-level summarization
+### Reviewer-level summarization
 
 1. **Reshape to wide format** — The script selects `Scorer`, `stock_name`, `Directional_effect`, and `Directional_score`, then pivots the long table wider so that each `stock_name × Scorer` combination has separate columns for:
 
@@ -117,7 +117,7 @@ and writes two additional output files back to the same directory.
 
    `./outputs/final-scores-compiled/directional_effect_wide_all.csv`
 
-#### Stock-level summarization
+### Stock-level summarization
 
 1. **Aggregate raw tallies across reviewers** — The script groups the long-format table by `stock_name` and `Directional_effect`, then sums `Directional_score` across all reviewers to generate total Positive, Neutral, and Negative tallies for each stock.
 
@@ -143,32 +143,11 @@ and writes two additional output files back to the same directory.
    - `neutral` if `-0.333 < wt_avg < 0.333`
    - `NA` if no tallies are available
 
-5. **Rename tally columns for clarity** — The output columns are renamed to:
-
-   - `n_positive`
-   - `n_neutral`
-   - `n_negative`
-
-6. **Append reviewer coverage** — The script calculates the number of unique reviewers contributing to each stock (`n_reviewers`) and joins that information into the stock-level summary table.
-
-7. **Reorder and sort output** — The final stock-level table includes:
-
-   - `stock_name`
-   - `n_positive`
-   - `n_neutral`
-   - `n_negative`
-   - `n_tallies`
-   - `n_reviewers`
-   - `wt_avg`
-   - `overall`
-
-   The table is then sorted by `stock_name`.
-
-8. **Export stock-level summary** — The final stock-level summary is written to:
+**Export stock-level summary** — The final stock-level summary is written to:
 
    `./outputs/final-scores-compiled/directional_effect_summary_by-stock.csv`
 
-## Interpretation of the weighted-average method
+### Interpretation of the weighted-average method
 
 This script uses a simple directional scoring framework in which:
 
@@ -185,21 +164,14 @@ For example:
 - all Positive tallies produce `wt_avg = 1`
 - mixed tallies produce intermediate values
 
-## Additional output files produced by this folder
-
-| File | Description |
-|------|-------------|
-| `directional_effect_wide_all.csv` | Reviewer-level wide summary with Positive, Neutral, and Negative tallies, total tallies, weighted average, and overall directional effect |
-| `directional_effect_summary_by-stock.csv` | Stock-level summary combining raw tallies across all reviewers and assigning one final directional effect per stock |
-
-## Notes and assumptions
+### Notes and assumptions
 
 - The reviewer-level summary treats missing directional effect categories as zero rather than missing.
 - The stock-level summary is based on **raw tally totals across all reviewers**, not a vote of reviewer-level final categories.
 - The same threshold values are used at both reviewer and stock levels to maintain consistency.
 - This workflow assumes that `table_directional_effect_scores.csv` has already been created by `1-extract-directional-effect.R`.
 
-## Full output directory structure after both scripts are run
+### Full output directory structure after both scripts are run
 
 outputs/
 └── final-scores-compiled/
