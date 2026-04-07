@@ -2,7 +2,7 @@
 
 ## Overview
 
-This folder compiles and summarizes final **attribute scores** from individually scored expert review workbooks for the Caribbean Climate Vulnerability Assessment (CVA). The workflow first extracts final reviewer scores into a single compiled table, then summarizes those scores across attribute types and joins them with calculated quantitative exposure scores for downstream vulnerability scoring.
+This folder compiles and summarizes final attribute scores from individually scored expert review workbooks for the Caribbean Climate Vulnerability Assessment (CVA). The workflow first extracts final reviewer scores into a single compiled table, then summarizes those scores across attribute types and joins them with calculated quantitative exposure scores for downstream vulnerability scoring.
 
 The first script in this folder focuses on extracting and consolidating final reviewer-entered attribute scores from the completed scoring workbooks.
 
@@ -42,7 +42,7 @@ outputs/
 
 ### `1-extract-final-scores-from-all-reviewers.R`
 
-This script compiles final reviewer-entered CVA attribute scores from all completed scoring workbooks into one standardized long-format table for downstream analysis.
+This script compiles final reviewer-entered CVA attribute scores from all completed scoring workbooks into a single standardized, long-format table for downstream analysis.
 
 #### Purpose
 
@@ -64,7 +64,7 @@ and extracts the final attribute scores recorded for each stock and attribute. T
    For each stock tab, the script reads the final reviewer-entered attribute scores from the standardized workbook template and converts them into a consistent tabular format.
 
 4. **Standardization**  
-   Extracted rows are standardized to include key fields such as:
+   Extracted rows are standardized to include the following fields:
    - source workbook
    - reviewer name
    - stock name
@@ -86,15 +86,11 @@ and extracts the final attribute scores recorded for each stock and attribute. T
 
 #### Output table structure
 
-The compiled long-format table is designed to support downstream summarization and generally contains one row per:
+The compiled long-format table is designed to support downstream summarization and contains one row per:
 
 `reviewer × stock × attribute`
 
 with columns describing the reviewer, stock, attribute, attribute type, and final score.
-
-#### Why this script matters
-
-This script is the main bridge between the raw reviewer Excel workbooks and the reproducible scoring workflow in R. Rather than relying on manual copy/paste or ad hoc workbook summaries, it creates a transparent compiled table that can be inspected, version controlled, and reused in downstream analyses.
 
 #### Workflow notes
 
@@ -104,12 +100,8 @@ This script is the main bridge between the raw reviewer Excel workbooks and the 
 - If the workbook template changes, the extraction logic should be reviewed and updated.
 - Any stock tabs with missing or malformed score entries should be flagged during QA/QC before downstream summaries are interpreted.
 
-## Reproducibility Notes
-
 To maintain transparency and reproducibility:
 
 - preserve raw reviewer workbooks in `./data/final-scores/`
-- write compiled outputs to `./outputs/final-scores-compiled/`
 - avoid editing compiled CSV outputs by hand
-- document any workbook template changes that affect extraction
 - rerun the extraction step whenever reviewer workbooks are added or revised
