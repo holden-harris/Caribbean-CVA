@@ -27,6 +27,7 @@ The first script in this folder focuses on extracting and consolidating final re
 ├── 1-extract-final-scores-from-all-reviewers.R
 ├── 2-summarize-attribute-scores.R
 └── README.md
+```
 
 ### Output Directory Structure
 ```
