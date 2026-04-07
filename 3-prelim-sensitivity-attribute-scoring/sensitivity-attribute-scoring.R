@@ -14,12 +14,13 @@ xlsx_path <- "./data/preliminary-scores/Caribbean_CVA_Scoring_Template_2025_AAco
 ##------------------------------------------------------------------------------
 ## Parse Scorer from the filename
 ##   - Take the last underscore-delimited token before the extension
-##   - "Caribbean CVA Scoring Template_2025_AAcosta.xlx" --> "AAcosta"
+##   - "Caribbean CVA Scoring Template_2025_AAcosta.xlx" --> "AA"
 
 fn <- basename(xlsx_path)
 fn_noext <- str_remove(fn, "\\.[Xx][Ll][SsXx]$")   ## strip .xls/.xlsx/.xlx (case-insensitive)
 parts <- str_split(fn_noext, "_", simplify = TRUE)
 Scorer <- parts[, ncol(parts)] |> str_squish()
+Scorer <- substr(Scorer, 1, 2)
 Scorer
 
 ##------------------------------------------------------------------------------
