@@ -27,3 +27,88 @@ The first script in this folder focuses on extracting and consolidating final re
 ├── 1-extract-final-scores-from-all-reviewers.R
 ├── 2-summarize-attribute-scores.R
 └── README.md
+
+### Output Directory Structure
+```
+outputs/
+└── final-scores-compiled/
+    ├── table_final_attribute_scores_all.csv
+    ├── quantitative-exposure-attribute-scores-all.csv
+    └── [additional summary files written by downstream scripts]
+```
+
+## Workflow and Code Description
+
+### `1-extract-final-scores-from-all-reviewers.R`
+
+This script compiles final reviewer-entered CVA attribute scores from all completed scoring workbooks into one standardized long-format table for downstream analysis.
+
+#### Purpose
+
+The script reads the final reviewer workbooks stored in:
+
+`./data/final-scores/`
+
+and extracts the final attribute scores recorded for each stock and attribute. These outputs are combined into a single analysis-ready table used by the downstream summary script.
+
+#### Main workflow
+
+1. **Workbook discovery**  
+   The script scans the input directory for all reviewer scoring workbooks and processes them one at a time.
+
+2. **Sheet identification**  
+   Within each workbook, the script identifies stock-specific worksheets and excludes non-scoring template tabs such as instructions or example sheets.
+
+3. **Final score extraction**  
+   For each stock tab, the script reads the final reviewer-entered attribute scores from the standardized workbook template and converts them into a consistent tabular format.
+
+4. **Standardization**  
+   Extracted rows are standardized to include key fields such as:
+   - source workbook
+   - reviewer name
+   - stock name
+   - attribute name
+   - attribute type
+   - final score
+   - any row or worksheet identifiers needed for QA/QC
+
+5. **Compilation**  
+   All reviewer-stock tables are row-bound into a single long-format dataset containing the full set of final attribute scores across all reviewers.
+
+6. **Quality control**  
+   The script performs basic checks to confirm that workbooks, tabs, and extracted scores were read successfully and that the compiled table contains the expected reviewer and stock coverage.
+
+7. **Export**  
+   The compiled output is written to:
+
+   `./outputs/final-scores-compiled/table_final_attribute_scores_all.csv`
+
+#### Output table structure
+
+The compiled long-format table is designed to support downstream summarization and generally contains one row per:
+
+`reviewer × stock × attribute`
+
+with columns describing the reviewer, stock, attribute, attribute type, and final score.
+
+#### Why this script matters
+
+This script is the main bridge between the raw reviewer Excel workbooks and the reproducible scoring workflow in R. Rather than relying on manual copy/paste or ad hoc workbook summaries, it creates a transparent compiled table that can be inspected, version controlled, and reused in downstream analyses.
+
+#### Workflow notes
+
+- This script should be run before `2-summarize-attribute-scores.R`.
+- Reviewer workbooks should remain unchanged in `./data/final-scores/`.
+- The script assumes a consistent workbook structure across reviewers.
+- If the workbook template changes, the extraction logic should be reviewed and updated.
+- Any stock tabs with missing or malformed score entries should be flagged during QA/QC before downstream summaries are interpreted.
+
+## Reproducibility Notes
+
+To maintain transparency and reproducibility:
+
+- preserve raw reviewer workbooks in `./data/final-scores/`
+- write compiled outputs to `./outputs/final-scores-compiled/`
+- avoid editing compiled CSV outputs by hand
+- document any workbook template changes that affect extraction
+- rerun the extraction step whenever reviewer workbooks are added or revised
