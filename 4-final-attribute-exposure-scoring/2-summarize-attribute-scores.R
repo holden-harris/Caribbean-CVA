@@ -1,8 +1,8 @@
 ##------------------------------------------------------------------------------
 ## User setup
 
-in_dir      <- "./outputs/final-scores-compiled/"
-out_dir     <- "./outputs/final-scores-compiled/"
+in_dir      <- "./outputs/final-scores-compiled/final-attribute-scores"
+out_dir     <- "./outputs/final-scores-compiled/final-attribute-scores"
 
 ## Breakpoints for assessing overall score
 low_cut <- 3
@@ -12,13 +12,18 @@ high_cut <- 9
 ## Load compiled CVA score table
 score_table <- read.csv(file.path(in_dir, "table_final_attribute_scores_all.csv"), stringsAsFactors = FALSE)
 
-## Update attribute names: ## All "Rigidity" scores are sensitivity
-score_table$Attribute_type[score_table$Attribute_type == "Rigidity"] <- "Sensitivity" 
-## Shorten name for "Exposure"
-score_table$Attribute_type[score_table$Attribute_type == "Qualitative Exposure Factors"] <- "Exposure" 
+## Set up score types: "Sensitivity" or "Exposure"
+
+score_table$Attribute_type[score_table$Attribute_type == "Rigidity"] <- "Sensitivity" ## Update attribute names: ## All "Rigidity" scores are sensitivity
+score_table$Attribute_type[score_table$Attribute_type == "Qualitative Exposure Factors"] <- "Exposure" ## Shorten name for "Exposure"
 
 ##------------------------------------------------------------------------------
-## Join Exposure scores
+## Join Exposure scores from the prior exposure analyses
+##
+## More info: https://github.com/holden-harris/Caribbean-CVA/tree/main/2-exposure-anomalies
+## Exposure overlap for all species is available here: 
+## https://github.com/holden-harris/Caribbean-CVA/tree/main/outputs/exposure-overlap-12panel
+
 library(dplyr)
 exposure_scores <- read.csv(file.path(in_dir, "quantitative-exposure-attribute-scores-all.csv"))
 
@@ -112,7 +117,6 @@ print(nrow(exposure_scores_uscar))   ## should be 325 if all 25 stocks x 13 fact
 
 ## -----------------------------------------------------------------------------
 ## Append calculated quantitative exposure scores to full score table
-
 score_table_all <- bind_rows(score_table, exposure_scores_uscar)
 
 ## Inspect
@@ -122,6 +126,13 @@ print(dim(score_table_all))
 
 head(score_table_all)
 tail(score_table_all)
+
+## Write out combined table: "table_final_attribute_exposure_uscar_combined.csv"
+write.csv(
+  score_table_all,
+  file = file.path(out_dir, "table_final_attribute_exposure_uscar_combined.csv"),
+  row.names = FALSE
+)
 
 ################################################################################
 ##------------------------------------------------------------------------------
@@ -155,7 +166,7 @@ attribute_scores_wide <- attribute_type_scores %>%
     Vulnerability = case_when(
       is.na(Exposure) & is.na(Sensitivity) ~ NA_real_,
       is.na(Exposure) | is.na(Sensitivity) ~ NA_real_,
-      TRUE ~ Exposure + Sensitivity
+      TRUE ~ Exposure * Sensitivity
     )
   ) %>%
   ungroup()
@@ -183,188 +194,3 @@ print(attribute_scores_wide, n = 25)
 attribute_scores_wide %>%
   filter(!is.na(Overall_rank)) %>%
   count(Overall_rank, sort = TRUE)
-
-##------------------------------------------------------------------------------
-## QA checks
-
-attribute_scores_wide %>%
-  summarise(
-    n_rows = n(),
-    n_scorers = n_distinct(Scorer),
-    n_stocks = n_distinct(stock_name)
-  )
-
-## Rows missing either Exposure or Sensitivity
-## Expected for Scorer == "Calculated" unless you also create calculated sensitivity
-attribute_scores_wide %>%
-  filter(
-    is.na(Exposure) |
-      is.na(Sensitivity)
-  )
-
-## Optional: specifically inspect calculated rows
-attribute_scores_wide %>%
-  filter(Scorer == "Calculated")
-
-##------------------------------------------------------------------------------
-## Aggregate again by species
-## Only use rows with non-missing Vulnerability
-
-stock_vulnerability_summary <- attribute_scores_wide %>%
-  filter(!is.na(Vulnerability)) %>%
-  group_by(stock_name) %>%
-  summarise(
-    mean_vulnerability = mean(Vulnerability, na.rm = TRUE),
-    sd_vulnerability   = sd(Vulnerability, na.rm = TRUE),
-    count_low          = sum(Overall_rank == "Low", na.rm = TRUE),
-    count_moderate     = sum(Overall_rank == "Moderate", na.rm = TRUE),
-    count_high         = sum(Overall_rank == "High", na.rm = TRUE),
-    count_very_high    = sum(Overall_rank == "Very High", na.rm = TRUE),
-    n_reviewers        = n_distinct(Scorer),
-    .groups = "drop"
-  ) %>%
-  arrange(desc(mean_vulnerability), stock_name)
-
-##------------------------------------------------------------------------------
-## Determine dominant overall rank
-
-stock_vulnerability_summary <- stock_vulnerability_summary %>%
-  rowwise() %>%
-  mutate(
-    max_val = max(c(count_low, count_moderate, count_high, count_very_high), na.rm = TRUE),
-    overall_rank = paste(
-      c(
-        if (count_low == max_val) "Low",
-        if (count_moderate == max_val) "Moderate",
-        if (count_high == max_val) "High",
-        if (count_very_high == max_val) "Very High"
-      ),
-      collapse = "-"
-    )
-  ) %>%
-  ungroup() %>%
-  select(-max_val)
-
-print(stock_vulnerability_summary, n = 25)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-################################################################################
-##------------------------------------------------------------------------------
-## Calculate mean attribute scores by type
-
-attribute_type_scores <- score_table_all %>%
-  group_by(stock_name, Scorer, Attribute_type) %>%
-  summarise(
-    mean_score = mean(Final_score, na.rm = TRUE),
-    sd_score = sd(Final_score, na.rm = TRUE),
-    n_attributes = n(),
-    .groups = "drop"
-  ); print(attribute_type_scores, n = 35)
-
-##------------------------------------------------------------------------------
-## Convert attribute means to wide format
-## Calculate vulnerability score as product of Exposure, Rigidity, and Sensitivity
-
-attribute_scores_wide <- attribute_type_scores %>%
-  select(stock_name, Scorer, Attribute_type, mean_score) %>%
-  pivot_wider(
-    names_from = Attribute_type,
-    values_from = mean_score
-  ) %>%
-  rename(Exposure = `Qualitative Exposure Factors`) %>%
-  rowwise() %>%
-  mutate(
-    Vulnerability = if(all(is.na(c(Exposure, Rigidity, Sensitivity)))) NA_real_
-    else sum(c(Exposure, Rigidity, Sensitivity), na.rm = TRUE)
-  ) %>%
-  ungroup()
-
-## Add overall rank 
-attribute_scores_wide <- attribute_scores_wide %>%
-  mutate(
-    Overall_rank = case_when(
-      is.na(Vulnerability)                                     ~ NA_character_,
-      Vulnerability < low_cut                                  ~ "Low",
-      Vulnerability >= low_cut & Vulnerability < moderate_cut  ~ "Moderate",
-      Vulnerability >= moderate_cut & Vulnerability < high_cut ~ "High",
-      Vulnerability >= high_cut                                ~ "Very High"
-    )
-  )
-
-print(attribute_scores_wide, n = 30)
-
-## Look at overall ranks
-attribute_scores_wide %>%
-  count(Overall_rank, sort = TRUE)
-
-##------------------------------------------------------------------------------
-## QA checks
-
-attribute_scores_wide %>%
-  summarise(
-    n_rows = n(),
-    n_scorers = n_distinct(Scorer),
-    n_stocks = n_distinct(stock_name)
-  )
-
-attribute_scores_wide %>%
-  filter(
-    is.na(Sensitivity) |
-      is.na(Rigidity) |
-      is.na(`Qualitative Exposure Factors`)
-  )
-
-##------------------------------------------------------------------------------
-## Aggregate again by species
-
-stock_vulnerability_summary <- attribute_scores_wide %>%
-  group_by(stock_name) %>%
-  summarise(
-    mean_vulnerability = mean(Vulnerability, na.rm = TRUE),
-    sd_vulnerability   = sd(Vulnerability, na.rm = TRUE),
-    count_low          = sum(Overall_rank == "Low", na.rm = TRUE),
-    count_moderate     = sum(Overall_rank == "Moderate", na.rm = TRUE),
-    count_high         = sum(Overall_rank == "High", na.rm = TRUE),
-    count_very_high    = sum(Overall_rank == "Very High", na.rm = TRUE),
-    n_reviewers        = n_distinct(Scorer),
-    .groups = "drop"
-  ) %>%
-  arrange(desc(mean_vulnerability), stock_name)
-
-## Determine dominant overall rank
-stock_vulnerability_summary <- stock_vulnerability_summary %>%
-  rowwise() %>%
-  mutate(
-    max_val = max(c(count_low, count_moderate, count_high, count_very_high), na.rm = TRUE),
-    
-    overall_rank = paste(
-      c(
-        if (count_low == max_val) "Low",
-        if (count_moderate == max_val) "Moderate",
-        if (count_high == max_val) "High",
-        if (count_very_high == max_val) "Very High"
-      ),
-      collapse = "-"
-    )
-  ) %>%
-  ungroup() %>%
-  select(-max_val)
-
-
-print(stock_vulnerability_summary, n = 25)
