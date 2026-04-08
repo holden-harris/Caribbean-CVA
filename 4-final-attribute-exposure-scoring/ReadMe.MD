@@ -114,16 +114,7 @@ Overall climate vulnerability was calculated using the NOAA Fisheries Climate Vu
 
 For the Caribbean CVA, a compiled scoring table was first assembled for each stock. This table contained both reviewer-derived qualitative scores and calculated quantitative exposure scores. Each row in the compiled table included the stock name, attribute type, score type, attribute name, scorer, score, and region. Attribute type was standardized to either **Sensitivity** or **Exposure**, and score type was standardized to either **Qualitative** or **Calculated**.
 
-## Workflow summary
-
-1. Compile qualitative reviewer scores and calculated exposure scores into a single standardized table.
-2. Calculate one mean score for each stock × attribute combination.
-3. Apply the NOAA FCVA logic model separately to the sensitivity and exposure attribute means.
-4. Convert the resulting component categories to numeric scores.
-5. Multiply the exposure and sensitivity scores to calculate the final vulnerability score.
-6. Assign the final vulnerability rank using the combined-score thresholds.
-
-## Suggested outputs
+## Outputs
 
 The workflow produces three main outputs:
 
@@ -135,11 +126,11 @@ The workflow produces three main outputs:
 
 For each stock, an average score was calculated for every individual sensitivity attribute and exposure factor. In the original NOAA FCVA framework, attribute and factor means are calculated as weighted averages of expert tallies distributed across four ordinal bins: Low = 1, Moderate = 2, High = 3, and Very High = 4. The weighted average is:
 
-\\[
-\\text{Attribute or Factor Mean} =
-\\frac{(L \\times 1) + (M \\times 2) + (H \\times 3) + (VH \\times 4)}
+$$
+\text{Attribute or Factor Mean} =
+\frac{(L \times 1) + (M \times 2) + (H \times 3) + (VH \times 4)}
 {L + M + H + VH}
-\\]
+$$
 
 where *L*, *M*, *H*, and *VH* are the number of tallies assigned to the four scoring bins.
 
