@@ -4,17 +4,17 @@
 
 This folder compiles and summarizes final attribute scores from individually scored expert review workbooks for the Caribbean Climate Vulnerability Assessment (CVA). The workflow first extracts final reviewer scores into a single compiled table, then summarizes those scores across attribute types and joins them with calculated quantitative exposure scores for downstream vulnerability scoring.
 
-The first script in this folder focuses on extracting and consolidating final reviewer-entered attribute scores from the completed scoring workbooks.
+# `1-extract-final-scores-from-all-reviewers.R`
 
-## Final Products
+This script compiles final reviewer-entered CVA attribute scores from all completed scoring workbooks into a single standardized, long-format table for downstream analysis.
 
-| File | Description |
-|------|-------------|
-| `table_final_attribute_scores_all.csv` | Long-format compiled table of final attribute scores from all reviewer workbooks |
-| `quantitative-exposure-attribute-scores-all.csv` | Quantitative exposure attribute scores used downstream in the summary step |
-| Additional summary outputs | Created by `2-summarize-attribute-scores.R` in the same output directory |
+#### Purpose
 
-## Setup
+The script reads the final reviewer workbooks stored in:
+
+`./data/final-scores/`
+
+and extracts the final attribute scores recorded for each stock and attribute. These outputs are combined into a single analysis-ready table used by the downstream summary script.
 
 ### Input Directory Structure
 
@@ -28,29 +28,6 @@ The first script in this folder focuses on extracting and consolidating final re
 ├── 2-summarize-attribute-scores.R
 └── README.md
 ```
-
-### Output Directory Structure
-```
-outputs/
-└── final-scores-compiled/
-    ├── table_final_attribute_scores_all.csv
-    ├── quantitative-exposure-attribute-scores-all.csv
-    └── [additional summary files written by downstream scripts]
-```
-
-## Workflow and Code Description
-
-# `1-extract-final-scores-from-all-reviewers.R`
-
-This script compiles final reviewer-entered CVA attribute scores from all completed scoring workbooks into a single standardized, long-format table for downstream analysis.
-
-#### Purpose
-
-The script reads the final reviewer workbooks stored in:
-
-`./data/final-scores/`
-
-and extracts the final attribute scores recorded for each stock and attribute. These outputs are combined into a single analysis-ready table used by the downstream summary script.
 
 #### Main workflow
 
@@ -106,21 +83,27 @@ To maintain transparency and reproducibility:
 - avoid editing compiled CSV outputs by hand
 - rerun the extraction step whenever reviewer workbooks are added or revised
 
-from pathlib import Path
+## Outputs
+
+| File | Description |
+|------|-------------|
+| `table_final_attribute_scores_all.csv` | Long-format compiled table of final attribute scores from all reviewer workbooks |
+| `quantitative-exposure-attribute-scores-all.csv` | Quantitative exposure attribute scores used downstream in the summary step |
+| Additional summary outputs | Created by `2-summarize-attribute-scores.R` in the same output directory |
+
+```
+outputs/
+└── final-scores-compiled/
+    ├── table_final_attribute_scores_all.csv
+    ├── quantitative-exposure-attribute-scores-all.csv
+    └── [additional summary files written by downstream scripts]
+```
 
 # `2-summarize-attribute-scores.R`
 
 Overall climate vulnerability was calculated using the NOAA Fisheries Climate Vulnerability Assessment (FCVA) framework, in which sensitivity and exposure are first summarized separately and then combined into a final vulnerability score and rank. The original NOAA FCVA methodology uses three steps: (1) calculate mean scores for individual sensitivity attributes and exposure factors, (2) assign an overall sensitivity score and an overall exposure score using a logic model based on the number of attribute or factor means above threshold values, and (3) multiply the two component scores to assign a final vulnerability rank. This framework was established by Morrison et al. and has been retained in more recent regional assessments, including the South Atlantic, California marine fisheries, and highly migratory species CVAs.
 
 For the Caribbean CVA, a compiled scoring table was first assembled for each stock. This table contained both reviewer-derived qualitative scores and calculated quantitative exposure scores. Each row in the compiled table included the stock name, attribute type, score type, attribute name, scorer, score, and region. Attribute type was standardized to either **Sensitivity** or **Exposure**, and score type was standardized to either **Qualitative** or **Calculated**.
-
-## Outputs
-
-The workflow produces three main outputs:
-
-- **Attribute means table**: one row per stock × attribute, containing the mean score, standard deviation, number of non-missing scores, and optional LMHV bin.
-- **Component scores table**: one row per stock × component, containing the number of attributes exceeding each threshold and the resulting exposure or sensitivity score and rank.
-- **Overall vulnerability table**: one row per stock, containing exposure score, sensitivity score, combined vulnerability score, and final vulnerability rank.
 
 ## Step 1. Calculate mean scores for individual attributes and factors
 
@@ -169,3 +152,21 @@ The final climate vulnerability score for each stock was calculated as the produ
 ## Interpretation
 
 Under this framework, a stock must be both sensitive and exposed to receive a high overall vulnerability ranking. Thus, the final vulnerability rank generally reflects the lesser of the two component scores, although the multiplication step preserves the distinction between combinations such as Moderate × Very High and High × High. Morrison et al. note that this framework is intended to identify stocks with multiple, concurrent sources of risk rather than to estimate the absolute magnitude of climate impacts.
+
+### Outputs
+
+The workflow produces three main outputs:
+
+- **Attribute means table**: one row per stock × attribute, containing the mean score, standard deviation, number of non-missing scores, and optional LMHV bin.
+- **Component scores table**: one row per stock × component, containing the number of attributes exceeding each threshold and the resulting exposure or sensitivity score and rank.
+- **Overall vulnerability table**: one row per stock, containing exposure score, sensitivity score, combined vulnerability score, and final vulnerability rank.
+
+```
+outputs/
+└── final-scores-compiled/
+    └── final-attribute-scores/
+        ├── table_final_attribute_scores_compiled.csv
+        ├── attribute_means_uscar.xlsx
+        ├── component_scores_uscar.csv
+        └── overall_vulnerability_scores_uscar.csv
+```
