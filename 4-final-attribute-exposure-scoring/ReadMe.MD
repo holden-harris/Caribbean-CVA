@@ -153,7 +153,9 @@ The final climate vulnerability score for each stock was calculated as the produ
 
 Under this framework, a stock must be both sensitive and exposed to receive a high overall vulnerability ranking. Thus, the final vulnerability rank generally reflects the lesser of the two component scores, although the multiplication step preserves the distinction between combinations such as Moderate × Very High and High × High. Morrison et al. note that this framework is intended to identify stocks with multiple, concurrent sources of risk rather than to estimate the absolute magnitude of climate impacts.
 
-## Code Workflow: Inputs and Outputs
+## Code Workflow
+
+### Inputs and outputs
 
 The workflow produces three main outputs:
 
@@ -161,32 +163,130 @@ The workflow produces three main outputs:
 - **Component scores table**: one row per stock × component, containing the number of attributes exceeding each threshold and the resulting exposure or sensitivity score and rank.
 - **Overall vulnerability table**: one row per stock, containing exposure score, sensitivity score, combined vulnerability score, and final vulnerability rank.
 
-```
-outputs/
-└── final-scores-compiled/
-    └── final-attribute-scores/
-        ├── table_final_attribute_scores_compiled.csv
-        ├── attribute_means_uscar.xlsx
-        ├── component_scores_uscar.csv
-        └── overall_vulnerability_scores_uscar.csv
-```
+### Workflow summary
 
-### Required input files
+This script compiles reviewer-based qualitative CVA scores and calculated quantitative exposure scores into a standardized long-format table, filters the dataset to the U.S. Caribbean, performs quality-assurance checks on score completeness, and then applies the NOAA FCVA logic model to calculate stock-level exposure, sensitivity, and overall vulnerability rankings.
+
+1. **Read and standardize qualitative reviewer scores**
+   - Load the compiled table of final reviewer-entered attribute scores.
+   - Recode `Rigidity` as `Sensitivity`.
+   - Recode `Qualitative Exposure Factors` as `Exposure`.
+   - Standardize fields to a common structure:
+     - `stock_name`
+     - `region`
+     - `attribute_type`
+     - `score_type`
+     - `attribute_name`
+     - `scorer`
+     - `score`
+
+##### Required input files
 | File or folder | Description |
 |----------------|-------------|
 | `data/final-scores/` | Reviewer-completed CVA scoring workbooks containing final qualitative attribute scores |
 | `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` | Quantitative exposure attribute scores generated from the exposure-anomalies workflow and used here as calculated exposure inputs |
 
-### Expected qualitative score fields
-The compiled qualitative score table is expected to contain final reviewer-entered scores and associated metadata, including stock name, attribute name, attribute type, scorer, and final score.
-
-### Input directory structure
 ```text
 data/
 └── final-scores/
     └── [reviewer scoring workbooks]
+```
 
+2. **Read and standardize calculated exposure scores**
+   - Load the quantitative exposure attribute scores generated from the exposure-anomalies workflow.
+   - Harmonize stock names to match the qualitative table.
+   - Assign region labels from the exposure analysis extent:
+     - `U.S. Caribbean`
+     - `Wider Caribbean`
+     - `Western Atlantic`
+   - Standardize fields to the same long-format structure as the qualitative table.
+   - Assign:
+     - `attribute_type = "Exposure"`
+     - `score_type = "Calculated"`
+     - `scorer = "Calculated"`
+
+3. **Combine qualitative and calculated scores**
+   - Append the qualitative and calculated tables into one compiled dataset.
+   - Sort rows by stock, attribute type, score type, region, attribute name, and scorer.
+   - Write the full compiled table to disk.
+
+4. **Filter to the U.S. Caribbean**
+   - Remove rows where `region` is `Wider Caribbean` or `Western Atlantic`.
+   - Retain:
+     - all qualitative scores (`region = NA`)
+     - calculated exposure scores for `U.S. Caribbean`
+   - Write the U.S. Caribbean subset to disk.
+
+5. **Run QA checks on score completeness**
+   - Count the number of rows per `stock_name × attribute_name × score_type`.
+   - Confirm that:
+     - calculated scores have exactly **1** score per stock × attribute
+     - qualitative scores have exactly **4** scores per stock × attribute
+   - Identify any problem rows and list the associated scorers.
+
+6. **Calculate attribute-level mean scores**
+   - For each `stock_name × attribute_type × score_type × attribute_name`, calculate:
+     - `attribute_mean`
+     - `attribute_sd`
+     - `n_scores`
+   - Categorize each `attribute_mean` into an LMHV bin for QA:
+     - `Low`
+     - `Moderate`
+     - `High`
+     - `Very High`
+   - Write the attribute means table to disk.
+
+7. **Apply the NOAA FCVA logic model**
+   - Restrict the logic-model step to:
+     - qualitative `Sensitivity` attributes
+     - calculated `Exposure` attributes
+   - For each `stock_name × attribute_type`, calculate:
+     - `mean_attribute_score`
+     - `sd_attribute_score`
+     - `n_attributes`
+     - number of attribute means ≥ 2.5
+     - number of attribute means ≥ 3.0
+     - number of attribute means ≥ 3.5
+   - Assign the component score and rank using the FCVA logic model:
+     - **Very High (4)** = more than 3 attribute means ≥ 3.5
+     - **High (3)** = more than 2 attribute means ≥ 3.0
+     - **Moderate (2)** = more than 2 attribute means ≥ 2.5
+     - **Low (1)** = all other cases
+   - Write the component scores table to disk.
+
+8. **Calculate overall vulnerability**
+   - Pivot the component scores wider so each stock has one row.
+   - Create stock-level columns for:
+     - `Exp_score`
+     - `Exp_rank`
+     - `Sens_score`
+     - `Sens_rank`
+   - Calculate:
+     - `Vuln_score = Exp_score × Sens_score`
+   - Assign the final vulnerability rank:
+     - `1–3 = Low`
+     - `4–6 = Moderate`
+     - `8–9 = High`
+     - `12–16 = Very High`
+   - Write the final stock-level vulnerability table to disk.
+
+### Final outputs
+
+| File | Description |
+|------|-------------|
+| `table_final_attribute_scores_compiled.csv` | Long-format compiled table combining qualitative reviewer scores and calculated quantitative exposure scores |
+| `final_scores_uscar.csv` | U.S. Caribbean subset used in the final FCVA workflow |
+| `attribute_means_uscar.csv` | Attribute-level mean scores and LMHV bins |
+| `component_scores_uscar.csv` | Exposure and Sensitivity component scores and ranks for each stock |
+| `overall_vulnerability_scores_uscar.csv` | Final stock-level vulnerability scores and ranks |
+
+### Output directory structure
+```text
 outputs/
 └── final-scores-compiled/
-    └── quantitative-exposure-attribute-scores-all.csv
-```
+    └── final-attribute-scores/
+        ├── table_final_attribute_scores_compiled.csv
+        ├── final_scores_uscar.csv
+        ├── attribute_means_uscar.csv
+        ├── component_scores_uscar.csv
+        └── overall_vulnerability_scores_uscar.csv
