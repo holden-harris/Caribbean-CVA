@@ -153,7 +153,7 @@ The final climate vulnerability score for each stock was calculated as the produ
 
 Under this framework, a stock must be both sensitive and exposed to receive a high overall vulnerability ranking. Thus, the final vulnerability rank generally reflects the lesser of the two component scores, although the multiplication step preserves the distinction between combinations such as Moderate × Very High and High × High. Morrison et al. note that this framework is intended to identify stocks with multiple, concurrent sources of risk rather than to estimate the absolute magnitude of climate impacts.
 
-### Outputs
+## Code Workflow: Inputs and Outputs
 
 The workflow produces three main outputs:
 
@@ -169,4 +169,24 @@ outputs/
         ├── attribute_means_uscar.xlsx
         ├── component_scores_uscar.csv
         └── overall_vulnerability_scores_uscar.csv
+```
+
+### Required input files
+| File or folder | Description |
+|----------------|-------------|
+| `data/final-scores/` | Reviewer-completed CVA scoring workbooks containing final qualitative attribute scores |
+| `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` | Quantitative exposure attribute scores generated from the exposure-anomalies workflow and used here as calculated exposure inputs |
+
+### Expected qualitative score fields
+The compiled qualitative score table is expected to contain final reviewer-entered scores and associated metadata, including stock name, attribute name, attribute type, scorer, and final score.
+
+### Input directory structure
+```text
+data/
+└── final-scores/
+    └── [reviewer scoring workbooks]
+
+outputs/
+└── final-scores-compiled/
+    └── quantitative-exposure-attribute-scores-all.csv
 ```
