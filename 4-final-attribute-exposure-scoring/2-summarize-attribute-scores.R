@@ -1,15 +1,16 @@
+rm(list = ls()); gc()
+
 ##------------------------------------------------------------------------------
 ## User setup
 
 in_dir  <- "./outputs/final-scores-compiled/final-attribute-scores"
-out_dir <- "./outputs/final-scores-compiled/overall-vulnerability-rankings"
+out_dir <- "./outputs/final-scores-compiled/final-attribute-scores/overall-vulnerability-rankings/"
 
 library(dplyr)
 library(tidyr)
 
 ##------------------------------------------------------------------------------
 ## Load compiled qualitative CVA scores
-## This is the reviewer-based table exported from the scoring workbooks
 
 score_table <- read.csv(
   file.path(in_dir, "table_final_attribute_scores_all.csv"),
@@ -18,7 +19,6 @@ score_table <- read.csv(
 
 ##------------------------------------------------------------------------------
 ## Load calculated quantitative exposure scores
-## This is the table generated from the exposure-anomalies workflow
 
 exposure_scores <- read.csv(
   file.path(in_dir, "quantitative-exposure-attribute-scores-all.csv"),
@@ -27,7 +27,6 @@ exposure_scores <- read.csv(
 
 ##------------------------------------------------------------------------------
 ## Harmonize quantitative exposure factor names
-## Use this only if the file does not already include a full_names column
 
 exposure_name_key <- c(
   "bs"     = "Bottom salinity",
@@ -76,10 +75,7 @@ stock_name_key <- c(
 ##------------------------------------------------------------------------------
 ## Standardize the qualitative reviewer score table
 ##
-## Goal:
-## - collapse "Rigidity" into "Sensitivity"
-## - collapse "Qualitative Exposure Factors" into "Exposure"
-## - create a common six-column structure
+## region is not applicable to qualitative scores, so set to NA
 
 score_table_qualitative <- score_table %>%
   mutate(
@@ -91,6 +87,7 @@ score_table_qualitative <- score_table %>%
       TRUE ~ Attribute_type
     ),
     score_type     = "Qualitative",
+    region         = NA_character_,
     attribute_name = Attribute_name,
     scorer         = Scorer,
     score          = Final_score
@@ -98,6 +95,7 @@ score_table_qualitative <- score_table %>%
   filter(attribute_type %in% c("Exposure", "Sensitivity")) %>%
   select(
     stock_name,
+    region,
     attribute_type,
     score_type,
     attribute_name,
@@ -108,11 +106,10 @@ score_table_qualitative <- score_table %>%
 ##------------------------------------------------------------------------------
 ## Standardize the calculated exposure table
 ##
-## Steps:
-## 1. keep only U.S. Caribbean exposure scores
-## 2. harmonize stock names
-## 3. use full_names if available; otherwise recode the short factor names
-## 4. assign score_type = "Calculated" and scorer = "Calculated"
+## region is based on spatial_extent:
+## - U.S. Caribbean -> U.S. Caribbean
+## - Caribbean Sea  -> Wider Caribbean
+## - Western Atlantic -> Western Atlantic
 
 if ("full_names" %in% names(exposure_scores)) {
   exposure_scores <- exposure_scores %>%
@@ -129,12 +126,17 @@ if ("full_names" %in% names(exposure_scores)) {
 }
 
 score_table_calculated <- exposure_scores %>%
-  filter(spatial_extent == "U.S. Caribbean") %>%
   mutate(
     stock_name = ifelse(
       stock_name %in% names(stock_name_key),
       stock_name_key[stock_name],
       stock_name
+    ),
+    region = case_when(
+      spatial_extent == "U.S. Caribbean"   ~ "U.S. Caribbean",
+      spatial_extent == "Caribbean Sea"    ~ "Wider Caribbean",
+      spatial_extent == "Western Atlantic" ~ "Western Atlantic",
+      TRUE ~ NA_character_
     ),
     attribute_type = "Exposure",
     score_type     = "Calculated",
@@ -143,6 +145,7 @@ score_table_calculated <- exposure_scores %>%
   ) %>%
   select(
     stock_name,
+    region,
     attribute_type,
     score_type,
     attribute_name,
@@ -156,39 +159,66 @@ score_table_calculated <- exposure_scores %>%
 score_table_all <- bind_rows(
   score_table_qualitative,
   score_table_calculated
-)
-head(score_table_all, n = 50)
+) %>%
+  arrange(stock_name, attribute_type, score_type, region, attribute_name, scorer)
 
 ##------------------------------------------------------------------------------
-## Arrange for readability
+## QA checks
+head(score_table_all, n = 110)
 
-score_table_all <- score_table_all %>%
-  arrange(stock_name, attribute_type, score_type, attribute_name, scorer)
+## Check region values
+unique(score_table_all$region)
 
-head(score_table_all, n = 100)
-
-##------------------------------------------------------------------------------
-## QA: Check for duplicate rows within stock x attribute x scorer
+## Count rows by score type and region
 score_table_all %>%
-  count(stock_name, attribute_type, score_type, attribute_name, scorer) %>%
-  filter(n > 1)
+  count(score_type, region) ## Qualitative rows should all have NA region
 
 
 ##------------------------------------------------------------------------------
 ## Write final compiled table
-
 write.csv(
   score_table_all,
   file.path(out_dir, "final_scores_compiled.csv"),
   row.names = FALSE
 )
 
+##------------------------------------------------------------------------------
+## Make table for U.S. Caribbean Only
+score_table_uscar <- score_table_all %>%
+  filter(!region %in% c("Wider Caribbean", "Western Atlantic"))
+
+head(score_table_uscar, n = 110)
+
+##------------------------------------------------------------------------------
+## Write final compiled table for U.S. Caribbean
+write.csv(
+  score_table_all,
+  file.path(out_dir, "final_scores_uscar.csv"),
+  row.names = FALSE
+)
+
+
+##------------------------------------------------------------------------------
+## QA check: count rows per stock x attribute x score_type
+
+qa_attribute_counts <- score_table_uscar %>%
+  group_by(stock_name, attribute_type, attribute_name, score_type) %>%
+  summarise(
+    n_rows = n(),
+    n_scorers = n_distinct(scorer),
+    .groups = "drop"
+  )
+
+print(qa_attribute_counts, n = 200)
+
+
+
 ################################################################################
 ##------------------------------------------------------------------------------
 ## NOAA FCVA workflow
 ##
-## Step 1. Calculate weighted-average score for each individual attribute/factor
-## Step 2. Apply NOAA FCVA logic model separately to Sensitivity and Exposure
+## Step 1. Calculate average score for each individual attribute/factor
+## Step 2. Apply logic model to score overall Sensitivity and Exposure per species
 ## Step 3. Multiply component numeric scores to get overall vulnerability rank
 ##
 ## Notes:
@@ -196,13 +226,34 @@ write.csv(
 ## - Exposure comes from the appended calculated quantitative exposure scores
 ## - The mean Exposure and mean Sensitivity columns below are descriptive only;
 ##   they are NOT used directly in the final vulnerability product
-################################################################################
+
 
 library(dplyr)
 library(tidyr)
 
+################################################################################
 ##------------------------------------------------------------------------------
-## Helper function: NOAA FCVA logic model for one component
+## Step 1 - Calculate average score for each  attribute
+##
+## These are the cross-reviewer means for each stock x sensitivity attribute.
+## This gives one average score per attribute per stock.
+
+attribute_means <- score_table_uscar %>%
+  group_by(stock_name, attribute_type, score_type, attribute_name) %>%
+  summarise(
+    attribute_mean = mean(score, na.rm = TRUE),
+    attribute_sd   = sd(score, na.rm = TRUE),
+    n_scores       = sum(!is.na(score)),
+    .groups = "drop"
+  ) 
+
+print(attribute_means, n = 60)
+
+## Categorize attribute score LMHV
+
+################################################################################
+##------------------------------------------------------------------------------
+## Step 2 - Apply NOAA FCVA logic model 
 ##
 ## Input:
 ##   x = vector of weighted-average attribute/factor scores for one stock and one
@@ -220,6 +271,7 @@ library(tidyr)
 ##   High      = 2 or more factors with mean >= 3.0
 ##   Moderate  = 2 or more factors with mean >= 2.5
 ##   Low       = all other cases
+
 fcva_logic_model <- function(x) {
   
   x <- x[is.finite(x)]
@@ -282,71 +334,8 @@ fcva_overall_rank <- function(x) {
   )
 }
 
-################################################################################
-##------------------------------------------------------------------------------
-## Calculate weighted-average score for each  attribute
-##
-## These are the cross-reviewer means for each stock x sensitivity attribute.
-## This gives one average score per attribute per stock.
-
-score_table_all %>%
-  group_by(stock_name, attribute_name) %>%
-  summarise(
-    attribute_mean = mean(Final_score, na.rm = TRUE),
-    attribute_sd   = sd(Final_score, na.rm = TRUE),
-    n_scores       = sum(!is.na(Final_score)),
-    .groups = "drop"
-  ) 
 
 
-sensitivity_attribute_means <- score_table_all %>%
-  filter(
-    Attribute_type == "Sensitivity",
-    Scorer != "Calculated"
-  ) %>%
-  group_by(stock_name, Attribute_name) %>%
-  summarise(
-    attribute_mean = mean(Final_score, na.rm = TRUE),
-    attribute_sd   = sd(Final_score, na.rm = TRUE),
-    n_scores       = sum(!is.na(Final_score)),
-    .groups = "drop"
-  ) %>%
-  mutate(Component = "Sensitivity")
-
-print(sensitivity_attribute_means, n = 100)
-
-##------------------------------------------------------------------------------
-## Step 1B. Calculate weighted-average score for each Exposure factor
-##
-## These are the calculated quantitative exposure scores you appended earlier.
-## There should usually be one row per stock x factor, but mean() is used here
-## for robustness.
-
-exposure_attribute_means <- score_table_all %>%
-  filter(
-    Attribute_type == "Exposure",
-    Scorer == "Calculated"
-  ) %>%
-  group_by(stock_name, Attribute_name) %>%
-  summarise(
-    attribute_mean = mean(Final_score, na.rm = TRUE),
-    attribute_sd   = sd(Final_score, na.rm = TRUE),
-    n_scores       = sum(!is.na(Final_score)),
-    .groups = "drop"
-  ) %>%
-  mutate(Component = "Exposure")
-
-print(exposure_attribute_means, n = 100)
-
-##------------------------------------------------------------------------------
-## Combine the attribute-level means for both components
-
-component_attribute_means <- bind_rows(
-  sensitivity_attribute_means,
-  exposure_attribute_means
-)
-
-print(component_attribute_means, n = 200)
 
 ################################################################################
 ##------------------------------------------------------------------------------
