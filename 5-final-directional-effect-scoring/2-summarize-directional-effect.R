@@ -2,13 +2,14 @@
 ## Caribbean CVA – Summarize reviewer Directional Effect scores 
 
 ##------------------------------------------------------------------------------
-## CONFIG
+## Set up
 
+rm(list = ls()); gc()
 library(dplyr)
 
-in_dir      <- "./outputs/final-scores-compiled/"
-out_dir     <- "./outputs/final-scores-compiled/"
-directional_effect_table <- read.csv(file.path(in_dir, "table_directional_effect_scores.csv"))
+in_dir      <- "./outputs/final-scores-compiled/directional-effect"
+out_dir     <- "./outputs/final-scores-compiled/directional-effect"
+directional_effect_table <- read.csv(file.path(in_dir, "table_directional_effect.csv"))
 
 ## -----------------------------------------------------------------------------
 ## Aggregate to one overall directional effect per stock_name × scorer
@@ -122,6 +123,12 @@ stock_directional_summary <- directional_effect_table %>%
     overall
   ) %>%
   dplyr::arrange(stock_name); print(stock_directional_summary, n = 26)
+
+## QA check
+stock_directional_summary %>%
+  mutate(expected_tallies = 4 * n_reviewers,
+         tally_check = n_tallies == expected_tallies) %>% 
+  print(n=25)
 
 ## Write out species/stock summary
 write.csv(
