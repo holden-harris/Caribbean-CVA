@@ -155,68 +155,29 @@ score_table_calculated <- exposure_scores %>%
 
 ##------------------------------------------------------------------------------
 ## Append qualitative and calculated scores into one compiled table
-
 score_table_all <- bind_rows(
   score_table_qualitative,
   score_table_calculated
 ) %>%
   arrange(stock_name, attribute_type, score_type, region, attribute_name, scorer)
 
+## Make table for U.S. Caribbean Only ------------------------------------------
+score_table_uscar <- score_table_all %>%
+  filter(!region %in% c("Wider Caribbean", "Western Atlantic"))
+
+head(score_table_uscar, n = 75)
+
 ##------------------------------------------------------------------------------
 ## QA checks
-head(score_table_all, n = 110)
-
-## Check region values
-unique(score_table_all$region)
+head(score_table_all, n = 100) ## Print out first stock
 
 ## Count rows by score type and region
 score_table_all %>%
   count(score_type, region) ## Qualitative rows should all have NA region
 
-
-##------------------------------------------------------------------------------
-## Write final compiled table
-write.csv(
-  score_table_all,
-  file.path(out_dir, "final_scores_compiled.csv"),
-  row.names = FALSE
-)
-
-##------------------------------------------------------------------------------
-## Make table for U.S. Caribbean Only
-score_table_uscar <- score_table_all %>%
-  filter(!region %in% c("Wider Caribbean", "Western Atlantic"))
-
-head(score_table_uscar, n = 110)
-
-##------------------------------------------------------------------------------
-## Write final compiled table for U.S. Caribbean
-write.csv(
-  score_table_uscar,
-  file.path(out_dir, "final_scores_uscar.csv"),
-  row.names = FALSE
-)
-
-
-##------------------------------------------------------------------------------
-## QA check: count rows per stock x attribute x score_type
-
-qa_attribute_counts <- score_table_uscar %>%
-  group_by(stock_name, attribute_type, attribute_name, score_type) %>%
-  summarise(
-    n_rows = n(),
-    n_scorers = n_distinct(scorer),
-    .groups = "drop"
-  )
-
-print(qa_attribute_counts, n = 200)
-
-
-##------------------------------------------------------------------------------
-## QA check using expected counts by score_type
+## QA check using expected counts by score_type --------------------------------
 ## - Calculated should have 1 score
 ## - Qualitative should have 4 scores
-
 qa_problem_scores <- score_table_uscar %>%
   group_by(stock_name, attribute_type, score_type, attribute_name) %>%
   summarise(
@@ -229,18 +190,34 @@ qa_problem_scores <- score_table_uscar %>%
       (score_type == "Qualitative" & n_scores != 4)
   ) %>%
   arrange(stock_name, attribute_type, attribute_name)
-qa_problem_scores
+print(qa_problem_scores) ## Empty table means success :)
+
+
+## QA check: count rows per stock x attribute x score_type
+qa_attribute_counts <- score_table_uscar %>%
+  group_by(stock_name, attribute_type, attribute_name, score_type) %>%
+  summarise(
+    n_rows = n(),
+    n_scorers = n_distinct(scorer),
+    .groups = "drop"
+  ); print(qa_attribute_counts, n = 200)
+
 
 ##------------------------------------------------------------------------------
-## Pull the underlying rows from score_table_uscar for the problem cases
+## Write final compiled table
+write.csv(
+  score_table_all,
+  file.path(out_dir, "final_scores_compiled.csv"),
+  row.names = FALSE
+)
 
-qa_problem_rows <- score_table_uscar %>%
-  inner_join(
-    qa_problem_scores %>%
-      select(stock_name, attribute_type, score_type, attribute_name),
-    by = c("stock_name", "attribute_type", "score_type", "attribute_name")
-  ) %>%
-  arrange(stock_name, attribute_type, attribute_name, scorer)
+## Write final compiled table for U.S. Caribbean
+write.csv(
+  score_table_uscar,
+  file.path(out_dir, "final_scores_uscar.csv"),
+  row.names = FALSE
+)
+
 
 ################################################################################
 ##------------------------------------------------------------------------------
