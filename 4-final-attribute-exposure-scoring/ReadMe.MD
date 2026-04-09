@@ -120,18 +120,6 @@ The workflow has the following steps:
      - `scorer`
      - `score` (i.e., specific value 1-4)
 
-##### Required input files
-| File or folder | Description |
-|----------------|-------------|
-| `data/final-scores/` | Reviewer-completed CVA scoring workbooks containing final qualitative attribute scores |
-| `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` | Quantitative exposure attribute scores generated from the exposure-anomalies workflow and used here as calculated exposure inputs |
-
-```text
-data/
-└── final-scores/
-    └── [reviewer scoring workbooks]
-```
-
 2. **Read and standardize calculated exposure scores**
    - Load the quantitative exposure attribute scores generated from the exposure-anomalies workflow.
    - Harmonize stock names to match the qualitative table.
@@ -163,7 +151,10 @@ data/
      - qualitative scores have exactly **4** scores per stock × attribute
    - Identify any problem rows and list the associated scorers.
 
-6. **Write the full compiled table to disk.**
+6. **Write the full compiled tables to disk.**
+   - `table_final_attribute_exposure_uscar_all`
+   - `table_final_attribute_exposure_uscar_combined`
+
 
 # 3-calculate-overall-vulnerability-scores.R
 
