@@ -1,6 +1,6 @@
 ##------------------------------------------------------------------------------
 ## Caribbean CVA – Compile reviewer Directional Effect scores into one table
-## Builds: directional_effect_table_all_clean
+## Builds: directional_effect_table
 ##
 ## Reads final directional-effect scores already computed in each workbook:
 ##   M38:M40 = Positive / Neutral / Negative
@@ -20,14 +20,15 @@ suppressPackageStartupMessages({
 })
 
 ##------------------------------------------------------------------------------
-## CONFIG
+## Set up
+
 in_dir      <- "./data/final-scores"
-out_dir     <- "./outputs/final-scores-compiled/"
+out_dir     <- "./outputs/final-scores-compiled/directional-effect"
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 ignore_tabs <- c("Instructions","Data Quality","Example")
 
 ##------------------------------------------------------------------------------
-## HELPERS
+## Helper functions
 
 ## Parse Scorer from filename
 parse_scorer <- function(path){
@@ -236,7 +237,7 @@ species_reviews <- directional_effect_table_all %>%
 ## Write out reviewers
 write.csv(
   species_reviews,
-  file = file.path(out_dir, "n_reviews_directional-effect.csv"),
+  file = file.path(out_dir, "n_reviews_directional_effect.csv"),
   row.names = FALSE
 )
 
@@ -244,6 +245,6 @@ write.csv(
 ## CSV for downstream steps
 write.csv(
   directional_effect_table_all,
-  file = file.path(out_dir, "table_directional_effect_scores.csv"),
+  file = file.path(out_dir, "table_directional_effect.csv"),
   row.names = FALSE
 )
