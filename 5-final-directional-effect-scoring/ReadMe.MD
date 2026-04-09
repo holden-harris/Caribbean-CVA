@@ -10,24 +10,19 @@ Directional effect scores characterize whether climate change is expected to hav
 
 | File | Description |
 |------|-------------|
-| `table_directional_effect_scores.csv` | Long-format table of all directional effect scores by stock, reviewer, and effect direction |
-| `n_reviews_directional-effect.csv` | Summary of how many reviewers scored each stock, with reviewer names listed |
+| `table_directional_effect.csv` | Long-format table of all directional effect scores by stock, reviewer, and effect direction |
+| `n_reviews_directional-effect.csv` | QA summary of how many reviewers scored each stock|
 | `directional_effect_wide_all.csv` | Reviewer-level wide summary with Positive, Neutral, and Negative tallies, total tallies, weighted average, and overall directional effect |
-| `directional_effect_summary_by-stock.csv` | Stock-level summary combining raw tallies across all reviewers and assigning one final directional effect per stock |
+|**`directional_effect_summary_by-stock.csv`** | **Stock-level summary combining raw tallies across all reviewers and assigning one final directional effect per stock** |
 
 
 ## Setup
-
-### Dependencies
-
-- R (≥ 4.0)
-- R packages: `readxl`, `xml2`, `dplyr`, `stringr`, `tidyr`, `tibble`, `openxlsx`
 
 ### Input Directory Structure
 ```text
 project/
 ├─ data/
-│  └─ final-scores/                    # Final Caribbean CVA reviewer Excel workbooks
+│  └─ final-scores/             ## Final Caribbean CVA reviewer Excel workbooks
 │     ├─ [workbook_1].xlsx
 │     ├─ [workbook_2].xlsx
 │     └─ ...
@@ -35,7 +30,8 @@ project/
 │  ├─ 1-extract-directional-effect.R
 │  └─ 2-summarize-directional-effect.R
 └─ outputs/
-   └─ final-scores-compiled/           # Compiled tables written by this workflow
+   └─ final-scores-compiled/           
+      └─ directional-effect/ ## Compiled tables written by this workflow
 ```
 
 Each input workbook contains one tab per fish stock. Tabs named `Instructions`, `Data Quality`, and `Example` are excluded automatically. The scorer's name is parsed from the last underscore-delimited segment of the filename (e.g., `Caribbean_CVA_Jones.xlsx` → Scorer = `Jones`).
