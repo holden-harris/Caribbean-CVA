@@ -2,9 +2,15 @@
 
 ## Overview
 
-This folder compiles **directional effect scores** (Positive, Neutral, Negative) from individually scored expert review workbooks as part of the Caribbean Climate Vulnerability Assessment (CVA). Each reviewer independently scored fish stocks using a standardized Excel template, and this code extracts and consolidates those scores into a single, analysis-ready table.
+Directional effect was used to characterize the anticipated net effect of climate change on each stock as negative, neutral, or positive. Following the framework used by previous CVAs (e.g., Morrison et al., Loughren et al. 2025), reviewers allocated four tallies among three directional-effect categories (Negative, Neutral, Positive) within the final scoring workbooks. In the Caribbean CVA, each stock was scored by four reviewers, yielding an expected total of 16 tallies per stock. Reviewer tallies were extracted from the completed workbooks and summed across reviewers within each stock and directional-effect category. A stock-level directional-effect index was then calculated as:
 
-Directional effect scores characterize whether climate change is expected to have a positive, neutral, or negative impact on a given fish stock. Each score is read from a fixed cell range (M38:M40) within species-specific tabs of each reviewer's workbook.
+$$
+\text{Directional effect} =
+\frac{(-1 \times \text{Negative}) + (0 \times \text{Neutral}) + (1 \times \text{Positive})}
+{\text{Negative} + \text{Neutral} + \text{Positive}}
+$$
+
+where Negative, Neutral, and Positive are the total numbers of tallies assigned to each category across reviewers. Weighted-average values less than or equal to -0.333 were classified as negative, values between -0.333 and 0.333 as neutral, and values greater than or equal to 0.333 as positive. Reviewer-level weighted averages were also calculated as a quality-assurance step prior to stock-level aggregation, but final directional-effect assignments were based on the pooled stock-level tallies. As an additional QA check, total tallies per stock were compared against the expected total of 16 tallies (4 reviewers × 4 tallies).
 
 ## Final Products
 
@@ -49,6 +55,8 @@ project/
 
 # Workflow and Code Description
 
+This workflow compiles **directional effect scores** (Positive, Neutral, Negative) from individually scored expert review workbooks. Each reviewer independently scored fish stocks using a standardized Excel template, and this code extracts and consolidates those scores into a single, analysis-ready table. 
+
 ## `1-extract-directional-effect.R`
 
 1. **Discovery** — Scans `./data/final-scores/` for all Excel workbooks and identifies visible, non-template sheet tabs within each file.
@@ -61,7 +69,7 @@ project/
 
 5. **Export** — Writes the full scores table and the reviewer summary table to `./outputs/final-scores-compiled/`.
 
-Key design choices:
+Notes:
 - Workbooks are copied to a temporary file before reading to avoid conflicts with OneDrive or Excel file locks.
 - Tabs that fail to read are skipped individually so that one problematic tab does not prevent the rest of a workbook from being processed.
 
