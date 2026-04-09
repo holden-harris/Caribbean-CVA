@@ -44,7 +44,7 @@ outputs/
 4. **Standardization**  
    Extracted rows are standardized to include the following fields:
    - source workbook
-   - reviewer name
+   - scorer  
    - stock name
    - attribute name
    - attribute type
@@ -152,9 +152,13 @@ The workflow has the following steps:
    - Identify any problem rows and list the associated scorers.
 
 6. **Write the full compiled tables to disk.**
-   - `table_final_attribute_exposure_uscar_all`
-   - `table_final_attribute_exposure_uscar_combined`
+   - `table_final_attribute_exposure_uscar_all.csv`
+   - `table_final_attribute_exposure_uscar_call.csv`
 
+| File | Description |
+|------|-------------|
+| `final_scores_all.csv` | Long-format compiled table combining qualitative reviewer scores and calculated quantitative exposure scores |
+| `final_scores_uscar.csv` | U.S. Caribbean subset used in the final FCVA workflow, i.e., subset without exposure factors calculated for Wider Caribbean or Western Atlantic |
 
 # 3-calculate-overall-vulnerability-scores.R
 
@@ -268,8 +272,6 @@ The workflow produces three main outputs:
 
 | File | Description |
 |------|-------------|
-| `table_final_attribute_scores_compiled.csv` | Long-format compiled table combining qualitative reviewer scores and calculated quantitative exposure scores |
-| `final_scores_uscar.csv` | U.S. Caribbean subset used in the final FCVA workflow |
 | `attribute_means_uscar.csv` | Attribute-level mean scores and LMHV bins |
 | `component_scores_uscar.csv` | Exposure and Sensitivity component scores and ranks for each stock |
 | `overall_vulnerability_scores_uscar.csv` | Final stock-level vulnerability scores and ranks |
