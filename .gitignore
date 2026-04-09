@@ -2,22 +2,18 @@
 .Rhistory
 .RData
 .Ruserdata
-
 *.nc
-
 # Ignore shapefiles
 #*.shp
 #*.shx
 #*.dbf
 #*.prj
 #*.cpg
-
 # Ignore entire shapefile folder
 ./data/species-distribution-shapefiles/
 .**/hoard/
 ./data/preliminary-scores
 ./data/final-scores
 ./data/master-lists
-./Code-hoard.R
-
-
+Code-hoard.R
+resources/*
