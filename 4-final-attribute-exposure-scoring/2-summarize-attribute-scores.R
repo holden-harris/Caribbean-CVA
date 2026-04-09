@@ -1,7 +1,7 @@
 rm(list = ls()); gc()
 
 ##------------------------------------------------------------------------------
-## User setup
+## Setup
 
 in_dir  <- "./outputs/final-scores-compiled/final-attribute-scores"
 out_dir <- "./outputs/final-scores-compiled/overall-vulnerability-rankings/"
@@ -9,17 +9,13 @@ out_dir <- "./outputs/final-scores-compiled/overall-vulnerability-rankings/"
 library(dplyr)
 library(tidyr)
 
-##------------------------------------------------------------------------------
 ## Load compiled qualitative CVA scores
-
 score_table <- read.csv(
   file.path(in_dir, "table_final_attribute_scores_all.csv"),
   stringsAsFactors = FALSE
 )
 
-##------------------------------------------------------------------------------
 ## Load calculated quantitative exposure scores
-
 exposure_scores <- read.csv(
   file.path(in_dir, "quantitative-exposure-attribute-scores-all.csv"),
   stringsAsFactors = FALSE
@@ -217,184 +213,3 @@ write.csv(
   file.path(out_dir, "final_scores_uscar.csv"),
   row.names = FALSE
 )
-
-
-################################################################################
-##------------------------------------------------------------------------------
-## NOAA FCVA workflow
-##
-## Step 1. Calculate average score for each individual attribute/factor
-## Step 2. Apply logic model to score overall Sensitivity and Exposure per species
-## Step 3. Multiply component numeric scores to get overall vulnerability rank
-##
-## Notes:
-## - Sensitivity comes from reviewer-entered final attribute scores
-## - Exposure comes from the appended calculated quantitative exposure scores
-## - The mean Exposure and mean Sensitivity columns below are descriptive only;
-##   they are NOT used directly in the final vulnerability product
-
-
-library(dplyr)
-library(tidyr)
-
-################################################################################
-##------------------------------------------------------------------------------
-## Step 1 - Calculate average score for each  attribute
-##
-## These are the cross-reviewer means for each stock x sensitivity attribute.
-## This gives one average score per attribute per stock.
-##
-## Step 1B - Categorize each attribute mean into LMHV bins
-## component_numeric_score:
-##     4 = Very High
-##     3 = High
-##     2 = Moderate
-##     1 = Low
-##
-## This is mainly for inspection / QA.
-## The actual FCVA logic model below uses threshold counts directly.
-
-
-attribute_means_uscar <- score_table_uscar %>%
-  group_by(stock_name, attribute_type, score_type, attribute_name) %>%
-  summarise(
-    attribute_mean = mean(score, na.rm = TRUE),
-    attribute_sd   = sd(score, na.rm = TRUE),
-    n_scores       = sum(!is.na(score)),
-    .groups = "drop"
-  ) %>%
-  mutate(
-    attribute_mean_lmhv = case_when(
-      is.na(attribute_mean) ~ NA_character_,
-      attribute_mean < 2 ~ "Low",
-      attribute_mean >= 2 & attribute_mean < 3.0 ~ "Moderate",
-      attribute_mean >= 3.0 & attribute_mean < 3.5 ~ "High",
-      attribute_mean >= 3.5 ~ "Very High"
-    )
-  )
-
-attribute_means_uscar$attribute_mean <-  round(attribute_means_uscar$attribute_mean, 2)
-attribute_means_uscar$attribute_sd <-  round(attribute_means_uscar$attribute_sd, 2)
-print(attribute_means_uscar, n = 60)
-
-##------------------------------------------------------------------------------
-## Write attribute means table for U.S. Caribbean
-write.csv(
-  attribute_means_uscar,
-  file.path(out_dir, "attribute_means_uscar.csv"),
-  row.names = FALSE
-)
-
-##------------------------------------------------------------------------------
-## Step 2 - Apply the FCVA logic model to determine overall component score
-## per species for Sensitivity and Exposure
-##
-## Table-based rule used in prior FCVAs:
-## - Very High = more than 3 attribute means >= 3.5
-## - High      = more than 2 attribute means >= 3.0
-## - Moderate  = more than 2 attribute means >= 2.5
-## - Low       = all other cases
-##
-## Notes:
-## - Sensitivity should come from qualitative scores
-## - Exposure should come from calculated scores
-
-component_scores <- attribute_means_uscar %>%
-  filter(
-    (attribute_type == "Sensitivity" & score_type == "Qualitative") |
-      (attribute_type == "Exposure"    & score_type == "Calculated")
-  ) %>%
-  group_by(stock_name, attribute_type) %>%
-  summarise(
-    ## Descriptive summary of the attribute means within each component
-    mean_attribute_score = mean(attribute_mean, na.rm = TRUE),
-    sd_attribute_score   = sd(attribute_mean, na.rm = TRUE),
-    n_attributes         = n(),
-    
-    ## Count how many attribute means meet each FCVA threshold
-    n_ge_2_5 = sum(attribute_mean >= 2.5, na.rm = TRUE),
-    n_ge_3_0 = sum(attribute_mean >= 3.0, na.rm = TRUE),
-    n_ge_3_5 = sum(attribute_mean >= 3.5, na.rm = TRUE),
-    
-    ## Apply the FCVA logic model to assign a numeric component score
-    component_score = case_when(
-      n_ge_3_5 > 3 ~ 4,
-      n_ge_3_0 > 2 ~ 3,
-      n_ge_2_5 > 2 ~ 2,
-      TRUE         ~ 1
-    ),
-    
-    ## Assign the matching component rank
-    component_rank = case_when(
-      n_ge_3_5 > 3 ~ "Very High",
-      n_ge_3_0 > 2 ~ "High",
-      n_ge_2_5 > 2 ~ "Moderate",
-      TRUE         ~ "Low"
-    ),
-    
-    .groups = "drop"
-  ); print(component_scores)
-
-##------------------------------------------------------------------------------
-## QA: each stock should have one Sensitivity row and one Exposure row
-
-component_scores %>%
-  count(stock_name, attribute_type) 
-
-## Review the threshold counts that drove each component score
-component_scores %>%
-  arrange(attribute_type, desc(component_numeric_score), stock_name) %>%
-  print(n = 50)
-
-##------------------------------------------------------------------------------
-## Write component scores table for U.S. Caribbean
-write.csv(
-  component_scores,
-  file.path(out_dir, "component_scores_uscar.csv"),
-  row.names = FALSE
-)
-
-################################################################################
-##------------------------------------------------------------------------------
-## Step 3 - Convert Sensitivity and Exposure component scores to one row per stock
-## and calculate final overall vulnerability as the product of the two component
-## numeric scores
-
-stock_vulnerability <- component_scores %>%
-  select(
-    stock_name,
-    attribute_type,
-    component_score,
-    component_rank
-  ) %>%
-  pivot_wider(
-    names_from  = attribute_type,
-    values_from = c(component_score, component_rank)
-  ) %>%
-  rename(
-    Exp_score       = component_score_Exposure,
-    Exp_rank    = component_rank_Exposure,
-    Sens_score    = component_score_Sensitivity,
-    Sens_rank = component_rank_Sensitivity
-  ) %>%
-  mutate(
-    Vuln_score = Exp_score * Sens_score,
-    Vuln_rank = case_when(
-      Vuln_score <= 3 ~ "Low",
-      Vuln_score >= 4  & Vuln_score <= 6  ~ "Moderate",
-      Vuln_score >= 8  & Vuln_score <= 9  ~ "High",
-      Vuln_score >= 12 & Vuln_score <= 16 ~ "Very High",
-      TRUE ~ NA_character_
-    )
-  ); print(stock_vulnerability, n = 25)
-
-##------------------------------------------------------------------------------
-## Write component scores table for U.S. Caribbean
-write.csv(
-  stock_vulnerability,
-  file.path(out_dir, "overall_vulnerability_scores_uscar.csv"),
-  row.names = FALSE
-)
-
-
-
