@@ -78,10 +78,9 @@ with columns describing the reviewer, stock, attribute, attribute type, and fina
 - Any stock tabs with missing or malformed score entries should be flagged during QA/QC before downstream summaries are interpreted.
 
 To maintain transparency and reproducibility:
-
-- preserve raw reviewer workbooks in `./data/final-scores/`
-- avoid editing compiled CSV outputs by hand
-- rerun the extraction step whenever reviewer workbooks are added or revised
+- Preserve raw reviewer workbooks in `./data/final-scores/`
+- Avoid editing compiled CSV outputs by hand
+- Rerun the extraction step whenever reviewer workbooks are added or revised
 
 ## Outputs
 
@@ -155,17 +154,17 @@ Under this framework, a stock must be both sensitive and exposed to receive a hi
 
 ## Code Workflow
 
-### Inputs and outputs
-
 The workflow produces three main outputs:
 
 - **Attribute means table**: one row per stock × attribute, containing the mean score, standard deviation, number of non-missing scores, and optional LMHV bin.
 - **Component scores table**: one row per stock × component, containing the number of attributes exceeding each threshold and the resulting exposure or sensitivity score and rank.
 - **Overall vulnerability table**: one row per stock, containing exposure score, sensitivity score, combined vulnerability score, and final vulnerability rank.
 
-### Workflow summary
+### Coding Workflow 
 
-This script compiles reviewer-based qualitative CVA scores and calculated quantitative exposure scores into a standardized long-format table, filters the dataset to the U.S. Caribbean, performs quality-assurance checks on score completeness, and then applies the NOAA FCVA logic model to calculate stock-level exposure, sensitivity, and overall vulnerability rankings.
+This script compiles reviewer-based qualitative CVA scores and calculates quantitative exposure scores into a standardized long-format table, filters the dataset to the U.S. Caribbean, performs quality-assurance checks on score completeness, and then applies the NOAA FCVA logic model to calculate stock-level exposure, sensitivity, and overall vulnerability rankings.
+
+The workflow has the following steps:
 
 1. **Read and standardize qualitative reviewer scores**
    - Load the compiled table of final reviewer-entered attribute scores.
@@ -173,12 +172,12 @@ This script compiles reviewer-based qualitative CVA scores and calculated quanti
    - Recode `Qualitative Exposure Factors` as `Exposure`.
    - Standardize fields to a common structure:
      - `stock_name`
-     - `region`
-     - `attribute_type`
-     - `score_type`
+     - `region` (i.e., U.S. Caribbean, Wider Caribbean, and Western Atlantic)
+     - `attribute_type` (i.e., exposure factor or biological sensitivity attribute)
+     - `score_type` (i.e., qualitative or calculated)
      - `attribute_name`
      - `scorer`
-     - `score`
+     - `score` (i.e., specific value 1-4)
 
 ##### Required input files
 | File or folder | Description |
