@@ -1,8 +1,8 @@
-# 4-final-directional-effect-scoring
+# final-directional-effect-scoring
 
 ## Overview
 
-Directional effect was used to characterize the anticipated net effect of climate change on each stock as negative, neutral, or positive. Following the framework used by previous CVAs (e.g., Morrison et al., Loughren et al. 2025), reviewers allocated four tallies among three directional-effect categories (Negative, Neutral, Positive) within the final scoring workbooks. In the Caribbean CVA, each stock was scored by four reviewers, yielding an expected total of 16 tallies per stock. Reviewer tallies were extracted from the completed workbooks and summed across reviewers within each stock and directional-effect category. A stock-level directional-effect index was then calculated as:
+Directional effect scoring was used to characterize the anticipated net effect of climate change on each stock as negative, neutral, or positive. For example, a species anticipated to be negatively affected by climate change may lose suitable habitat, a species that is neutrally affected may be able to shift its distribution in response to unfavorable conditions, and a species that is positively affected may experience range expansion. Relevant life-history characteristics and information gathered during the sensitivity analysis were considered when scoring the directional effect on a species or stock. Following the framework used by previous CVAs (e.g., Morrison et al., Loughren et al., 2025), reviewers allocated four tallies across three directional-effect categories (Negative, Neutral, Positive) in the final scoring workbooks. In the Caribbean CVA, each stock was scored by four reviewers, yielding an expected total of 16 tallies per stock. Reviewer tallies were extracted from the completed workbooks and summed across reviewers within each stock and directional-effect category. A stock-level directional-effect index was then calculated as:
 
 $$
 \text{Directional effect} =
