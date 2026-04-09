@@ -21,7 +21,8 @@ suppressPackageStartupMessages({
 })
 
 ##------------------------------------------------------------------------------
-## CONFIG
+## Set up
+
 in_dir      <- "./data/final-scores"   
 out_dir     <- "./outputs/final-scores-compiled/final-attribute-scores"
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
