@@ -94,9 +94,9 @@ To maintain transparency and reproducibility:
 ```
 outputs/
 └── final-scores-compiled/
-    ├── table_final_attribute_scores_all.csv
-    ├── quantitative-exposure-attribute-scores-all.csv
-    └── [additional summary files written by downstream scripts]
+    └── final-attribute-scores/ 
+        ├── table_final_attribute_scores_all.csv
+        └── quantitative-exposure-attribute-scores-all.csv
 ```
 
 # `2-summarize-attribute-scores.R`
