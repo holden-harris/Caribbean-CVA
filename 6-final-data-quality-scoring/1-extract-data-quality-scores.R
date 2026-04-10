@@ -4,6 +4,7 @@
 ## Target cells:
 ## - L17:L18
 ## - L21:L28
+## - L30:L35
 ##
 ## Workflow:
 ## 1. Read each workbook
@@ -41,7 +42,7 @@ dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
 ignore_tabs <- c("Instructions", "Data Quality", "Example")
 
-dq_rows <- c(17:18, 21:28)
+dq_rows <- c(17:18, 21:28, 30:35)
 
 ##------------------------------------------------------------------------------
 ## Helper functions
@@ -93,22 +94,15 @@ safe_read_range <- function(path, sheet, range){
 }
 
 ##------------------------------------------------------------------------------
-## Read data-quality score cells from column L
+## Read data-quality score cells
 ##
 ## Reads final data-quality scores already entered in each workbook:
-##   L17:L18 and L21:L28
-##
-## This follows the same robust pattern as the directional-effect extractor:
-## - safely copies workbook to temp
-## - reads only visible sheets
-## - skips empty/problem tabs
-## - returns one long table with one row per stock x scorer x attribute score
+##   L17:L18, L21:L28, L30:L35
 ##
 ## Notes:
-## - Attribute labels are pulled from column B in the same rows
+## - Attribute labels are pulled from columns C/B in the same rows
 ## - If a label cell is blank, a fallback label is used
 ## - Scores are expected to be 0, 1, 2, or 3
-
 
 read_data_quality_scores <- function(xlsx_path, tab){
   
@@ -124,17 +118,26 @@ read_data_quality_scores <- function(xlsx_path, tab){
     range = "L21:L28"
   )
   
+  x3 <- safe_read_range(
+    path  = xlsx_path,
+    sheet = tab,
+    range = "L30:L35"
+  )
+  
   vals1 <- if (ncol(x1) >= 1) suppressWarnings(as.numeric(x1[[1]])) else numeric(0)
   vals2 <- if (ncol(x2) >= 1) suppressWarnings(as.numeric(x2[[1]])) else numeric(0)
+  vals3 <- if (ncol(x3) >= 1) suppressWarnings(as.numeric(x3[[1]])) else numeric(0)
   
   if (length(vals1) < 2) vals1 <- c(vals1, rep(NA_real_, 2 - length(vals1)))
   if (length(vals2) < 8) vals2 <- c(vals2, rep(NA_real_, 8 - length(vals2)))
+  if (length(vals3) < 6) vals3 <- c(vals3, rep(NA_real_, 6 - length(vals3)))
   
-  vals <- c(vals1[1:2], vals2[1:8])
+  vals <- c(vals1[1:2], vals2[1:8], vals3[1:6])
   vals
 }
 
-## Read matching row labels from column B
+##------------------------------------------------------------------------------
+## Read matching row labels
 read_data_quality_labels <- function(xlsx_path, tab){
   
   x1 <- safe_read_range(
@@ -149,13 +152,21 @@ read_data_quality_labels <- function(xlsx_path, tab){
     range = "B21:B28"
   )
   
+  x3 <- safe_read_range(
+    path  = xlsx_path,
+    sheet = tab,
+    range = "B30:B35"
+  )
+  
   lab1 <- if (ncol(x1) >= 1) as.character(x1[[1]]) else character(0)
   lab2 <- if (ncol(x2) >= 1) as.character(x2[[1]]) else character(0)
+  lab3 <- if (ncol(x3) >= 1) as.character(x3[[1]]) else character(0)
   
   if (length(lab1) < 2) lab1 <- c(lab1, rep(NA_character_, 2 - length(lab1)))
   if (length(lab2) < 8) lab2 <- c(lab2, rep(NA_character_, 8 - length(lab2)))
+  if (length(lab3) < 6) lab3 <- c(lab3, rep(NA_character_, 6 - length(lab3)))
   
-  labs <- c(lab1[1:2], lab2[1:8])
+  labs <- c(lab1[1:2], lab2[1:8], lab3[1:6])
   labs <- stringr::str_squish(labs)
   
   fallback <- paste0("Row_", dq_rows)
@@ -176,7 +187,7 @@ extract_data_quality_rows <- function(xlsx_path, tab, Scorer){
     Scorer              = Scorer,
     stock_name          = tab,
     row_idx             = dq_rows,
-    Attribute_type      = c(rep("Exposure", 2), rep("Sensitivity", 8)),
+    Attribute_type      = c(rep("Exposure", 2), rep("Sensitivity", 14)),
     Attribute_name      = labs,
     Data_quality_score  = vals
   ) |>
