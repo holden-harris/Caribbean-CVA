@@ -1,19 +1,31 @@
-.Rproj.user
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+
 *.nc
-# Ignore shapefiles
-#*.shp
-#*.shx
-#*.dbf
-#*.prj
-#*.cpg
-# Ignore entire shapefile folder
-./data/species-distribution-shapefiles/
-.**/hoard/
-./data/preliminary-scores
-./data/final-scores
-./data/master-lists
+
+## Ignore shapefiles if needed
+# *.shp
+# *.shx
+# *.dbf
+# *.prj
+# *.cpg
+
+## Ignore entire shapefile folder
+data/species-distribution-shapefiles/
+
+## Ignore hoard folders anywhere
+**/hoard/
+
+## Ignore workbook/data folders
+data/preliminary-scores/
+data/final-scores/
+data/master-lists/
+
+## Ignore specific files
 Code-hoard.R
-resources/*
+bfg.jar
+
+## Ignore resource folder contents
+resources/
