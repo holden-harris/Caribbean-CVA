@@ -65,11 +65,7 @@ f_attr_means <- file.path(in_dir,
                           "overall-vulnerability-rankings",
                           "attribute_means_uscar.csv")
 
-f_components <- file.path(in_dir,
-                          "overall-vulnerability-rankings",
-                          "component_scores_uscar.csv")
-
-f_vuln       <- file.path(in_dir,
+f_vuln <- file.path(in_dir,
                           "overall-vulnerability-rankings",
                           "overall_vulnerability_scores_uscar.csv")
 
@@ -305,19 +301,19 @@ run_loo_exposure_one_stock <- function(stock_name_i,
 reviewer_scores_raw <- readr::read_csv(f_reviewer_scores, show_col_types = FALSE)
 
 ## Attribute means (Sensitivity + Exposure combined; split below)
-attr_means_raw <- readr::read_csv(f_attr_means,  show_col_types = FALSE)
+attr_means_raw <- readr::read_csv(f_attr_means, show_col_types = FALSE)
 
-## Baseline component and vulnerability scores
-components_raw <- readr::read_csv(f_components,  show_col_types = FALSE)
-vuln_raw       <- readr::read_csv(f_vuln,        show_col_types = FALSE)
+## Baseline vulnerability scores
+vuln_raw <- readr::read_csv(f_vuln, show_col_types = FALSE)
 
 ##------------------------------------------------------------------------------
 ## Step 1A - Standardize and split inputs
 
-## Individual reviewer Sensitivity scores
-## Filter to Sensitivity attributes (row_idx 21–28)
+## Individual reviewer Sensitivity + Rigidity scores
+## Both attribute types feed into the Sensitivity component in attribute_means_uscar
+## (rows 21–28 = Sensitivity, rows 30–35 = Rigidity, both labeled "Sensitivity" there)
 sens_scores_std <- reviewer_scores_raw %>%
-  dplyr::filter(Attribute_type == "Sensitivity") %>%
+  dplyr::filter(Attribute_type %in% c("Sensitivity", "Rigidity")) %>%
   dplyr::transmute(
     stock_name     = stock_name,
     reviewer_id    = Scorer,
@@ -506,9 +502,14 @@ readr::write_csv(
 )
 
 mismatches <- baseline_compare %>%
-  dplyr::filter(!sens_rank_match | !sens_num_match |
-                !exp_rank_match  | !exp_num_match  |
-                !vuln_rank_match | !vuln_num_match)
+  dplyr::filter(
+    is.na(sens_rank_match) | !sens_rank_match |
+    is.na(sens_num_match)  | !sens_num_match  |
+    is.na(exp_rank_match)  | !exp_rank_match  |
+    is.na(exp_num_match)   | !exp_num_match   |
+    is.na(vuln_rank_match) | !vuln_rank_match |
+    is.na(vuln_num_match)  | !vuln_num_match
+  )
 
 if (nrow(mismatches) > 0) {
   message("Mismatched stocks:")
