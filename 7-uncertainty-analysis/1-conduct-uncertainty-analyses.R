@@ -153,23 +153,164 @@ f_plot_exp <- file.path(final_dir,
 f_plot_sens <- file.path(final_dir,
                          "table_sensitivity_attribute_scores_for_plot.csv")
 
-
 ##------------------------------------------------------------------------------
 ## Helper functions
 ##
-## These are script skeleton placeholders. Fill these in with final logic once
-## the workflow and object names are locked.
+## These helper functions support:
+## - name standardization
+## - FCVA logic model scoring
+## - rank assignment and comparison
+## - one-attribute bootstrap resampling
+## - one-stock bootstrap uncertainty analysis
+## - one-stock leave-one-out analysis for Sensitivity and Exposure
 
 standardize_stock_names <- function(x) {
-  x
+  ## Purpose:
+  ## - Apply light-touch name standardization without changing intended labels
+  ## - Preserve capitalization and wording as much as possible
+  ##
+  ## Workflow:
+  ## - Coerce to character
+  ## - Replace curly quotes/apostrophes with plain text
+  ## - Replace en/em dashes with hyphens
+  ## - Replace underscores with spaces
+  ## - Trim leading/trailing whitespace
+  ## - Squish repeated internal whitespace
+  ##
+  ## Notes:
+  ## - Add project-specific recodes below if needed
+  ## - Keep this conservative unless a known stock-name mismatch exists
+  
+  x_std <- x %>%
+    as.character() %>%
+    str_replace_all("[\u2018\u2019]", "'") %>%
+    str_replace_all("[\u201C\u201D]", "\"") %>%
+    str_replace_all("[\u2013\u2014]", "-") %>%
+    str_replace_all("_", " ") %>%
+    str_squish()
+  
+  ## Optional project-specific recodes
+  ## Example:
+  ## x_std <- case_when(
+  ##   x_std == "Old stock name" ~ "New stock name",
+  ##   TRUE ~ x_std
+  ## )
+  
+  x_std
 }
 
 standardize_attribute_names <- function(x) {
-  x
+  ## Purpose:
+  ## - Standardize Sensitivity attribute names
+  ##
+  ## Workflow:
+  ## - Coerce to character
+  ## - Normalize punctuation and spacing
+  ## - Apply any known project-specific recodes
+  ##
+  ## Notes:
+  ## - This is the place to resolve minor label inconsistencies such as
+  ##   "Stock Size/Status" vs "Stock Size Status", if needed
+  
+  x_std <- x %>%
+    as.character() %>%
+    str_replace_all("[\u2018\u2019]", "'") %>%
+    str_replace_all("[\u201C\u201D]", "\"") %>%
+    str_replace_all("[\u2013\u2014]", "-") %>%
+    str_replace_all("_", " ") %>%
+    str_squish()
+  
+  ## Optional project-specific recodes
+  x_std <- case_when(
+    x_std == "Stock Size/Status" ~ "Stock Size Status",
+    TRUE ~ x_std
+  )
+  
+  x_std
 }
 
 standardize_factor_names <- function(x) {
-  x
+  ## Purpose:
+  ## - Standardize Exposure factor names
+  ##
+  ## Workflow:
+  ## - Coerce to character
+  ## - Normalize punctuation and spacing
+  ## - Apply any known project-specific recodes
+  
+  x_std <- x %>%
+    as.character() %>%
+    str_replace_all("[\u2018\u2019]", "'") %>%
+    str_replace_all("[\u201C\u201D]", "\"") %>%
+    str_replace_all("[\u2013\u2014]", "-") %>%
+    str_replace_all("_", " ") %>%
+    str_squish()
+  
+  ## Optional project-specific recodes
+  x_std <- case_when(
+    TRUE ~ x_std
+  )
+  
+  x_std
+}
+
+component_numeric_to_rank <- function(score_numeric) {
+  ## Purpose:
+  ## - Convert NOAA FCVA component numeric scores to rank labels
+  ##
+  ## Mapping:
+  ## - 1 = Low
+  ## - 2 = Moderate
+  ## - 3 = High
+  ## - 4 = Very High
+  
+  case_when(
+    score_numeric == 1 ~ "Low",
+    score_numeric == 2 ~ "Moderate",
+    score_numeric == 3 ~ "High",
+    score_numeric == 4 ~ "Very High",
+    TRUE               ~ NA_character_
+  )
+}
+
+rank_to_index <- function(rank_chr) {
+  ## Purpose:
+  ## - Convert ordered rank labels to a comparable numeric scale
+  ##
+  ## Mapping:
+  ## - Low       = 1
+  ## - Moderate  = 2
+  ## - High      = 3
+  ## - Very High = 4
+  
+  case_when(
+    rank_chr == "Low"       ~ 1,
+    rank_chr == "Moderate"  ~ 2,
+    rank_chr == "High"      ~ 3,
+    rank_chr == "Very High" ~ 4,
+    TRUE                    ~ NA_real_
+  )
+}
+
+compare_rank_direction <- function(baseline_rank, new_rank) {
+  ## Purpose:
+  ## - Describe the direction of rank change relative to the baseline
+  ##
+  ## Returns:
+  ## - "No Change"
+  ## - "Lower"
+  ## - "Higher"
+  
+  base_i <- rank_to_index(baseline_rank)
+  new_i  <- rank_to_index(new_rank)
+  
+  case_when(
+    is.na(base_i) | is.na(new_i) ~ NA_character_,
+    new_i == base_i              ~ "No Change",
+    new_i < base_i               ~ "Lower",
+    new_i > base_i               ~ "Higher",
+    TRUE                         ~ NA_character_
+  )
 }
 
 fcva_logic_model <- function(mean_scores) {
@@ -182,6 +323,20 @@ fcva_logic_model <- function(mean_scores) {
   ## Returns:
   ## - component_rank
   ## - component_score_numeric
+  ##
+  ## Notes:
+  ## - Input should be a numeric vector of mean scores for one component
+  ## - Missing values are ignored
+  ## - If all values are missing, NA is returned
+  
+  if(length(mean_scores) == 0 || all(is.na(mean_scores))) {
+    return(
+      tibble(
+        component_rank = NA_character_,
+        component_score_numeric = NA_real_
+      )
+    )
+  }
   
   n_ge_35 <- sum(mean_scores >= 3.5, na.rm = TRUE)
   n_ge_30 <- sum(mean_scores >= 3.0, na.rm = TRUE)
@@ -198,7 +353,8 @@ fcva_logic_model <- function(mean_scores) {
     component_rank == "Low"       ~ 1,
     component_rank == "Moderate"  ~ 2,
     component_rank == "High"      ~ 3,
-    component_rank == "Very High" ~ 4
+    component_rank == "Very High" ~ 4,
+    TRUE                          ~ NA_real_
   )
   
   tibble(component_rank, component_score_numeric)
@@ -212,49 +368,121 @@ assign_vulnerability_rank <- function(vulnerability_score_numeric) {
   ## - 4 to 6   = Moderate
   ## - 8 to 9   = High
   ## - 12 to 16 = Very High
+  ##
+  ## Notes:
+  ## - Values like 7, 10, or 11 are not legal under the standard 1:4 x 1:4
+  ##   NOAA FCVA component-score product and therefore return NA
   
   case_when(
-    vulnerability_score_numeric <= 3                        ~ "Low",
+    is.na(vulnerability_score_numeric)                          ~ NA_character_,
+    vulnerability_score_numeric <= 3                            ~ "Low",
     vulnerability_score_numeric >= 4 &
-      vulnerability_score_numeric <= 6                      ~ "Moderate",
+      vulnerability_score_numeric <= 6                          ~ "Moderate",
     vulnerability_score_numeric >= 8 &
-      vulnerability_score_numeric <= 9                      ~ "High",
+      vulnerability_score_numeric <= 9                          ~ "High",
     vulnerability_score_numeric >= 12 &
-      vulnerability_score_numeric <= 16                     ~ "Very High",
-    TRUE                                                    ~ NA_character_
+      vulnerability_score_numeric <= 16                         ~ "Very High",
+    TRUE                                                        ~ NA_character_
   )
 }
 
 check_required_columns <- function(dat, required_cols, object_name) {
+  ## Purpose:
+  ## - Stop the script early if a required input table is missing columns
+  
   missing_cols <- setdiff(required_cols, names(dat))
   
   if(length(missing_cols) > 0) {
-    stop(paste0("Missing required columns in ", object_name, ": ",
-                paste(missing_cols, collapse = ", ")))
+    stop(
+      paste0(
+        "Missing required columns in ", object_name, ": ",
+        paste(missing_cols, collapse = ", ")
+      )
+    )
   }
 }
 
+calc_weighted_mean_from_tallies <- function(tally_low,
+                                            tally_moderate,
+                                            tally_high,
+                                            tally_very_high) {
+  ## Purpose:
+  ## - Calculate a weighted mean score from four tally bins
+  ##
+  ## Scoring:
+  ## - Low       = 1
+  ## - Moderate  = 2
+  ## - High      = 3
+  ## - Very High = 4
+  
+  total_tallies <- tally_low + tally_moderate + tally_high + tally_very_high
+  
+  if(is.na(total_tallies) || total_tallies == 0) {
+    return(NA_real_)
+  }
+  
+  ((tally_low * 1) +
+      (tally_moderate * 2) +
+      (tally_high * 3) +
+      (tally_very_high * 4)) / total_tallies
+}
+
 bootstrap_one_attribute <- function(dat_att) {
-  ## dat_att should contain one stock x one attribute pooled across reviewers
+  ## Purpose:
+  ## - Resample one stock x one Sensitivity attribute from pooled reviewer
+  ##   tallies and return one bootstrap weighted mean score
   ##
   ## Workflow:
-  ## - Sum tallies across reviewers for bins 1:4
-  ## - Create draw pile
-  ## - Sample with replacement using observed reviewers * 5 tallies
-  ## - Return bootstrap weighted mean score
+  ## - Determine observed number of reviewers
+  ## - Sum pooled tallies across reviewers for bins 1:4
+  ## - Create a draw pile of scored tallies
+  ## - Sample with replacement using observed reviewers x 5 tallies
+  ## - Return the mean sampled score
+  ##
+  ## Notes:
+  ## - This function assumes one row per reviewer for a single attribute
+  ## - Pre-analysis checks should already have verified that each reviewer
+  ##   contributed 5 tallies
+  
+  check_required_columns(
+    dat = dat_att,
+    required_cols = c("reviewer_id", "tally_low", "tally_moderate",
+                      "tally_high", "tally_very_high"),
+    object_name = "dat_att"
+  )
   
   n_reviewers <- n_distinct(dat_att$reviewer_id)
-  
-  draw_size <- n_reviewers * 5
+  draw_size   <- n_reviewers * 5
   
   n1 <- sum(dat_att$tally_low,       na.rm = TRUE)
   n2 <- sum(dat_att$tally_moderate,  na.rm = TRUE)
   n3 <- sum(dat_att$tally_high,      na.rm = TRUE)
   n4 <- sum(dat_att$tally_very_high, na.rm = TRUE)
   
-  draw_pile <- c(rep(1, n1), rep(2, n2), rep(3, n3), rep(4, n4))
+  total_pooled_tallies <- n1 + n2 + n3 + n4
   
-  samp <- sample(x = draw_pile, size = draw_size, replace = TRUE)
+  if(total_pooled_tallies == 0) {
+    return(NA_real_)
+  }
+  
+  if(total_pooled_tallies != draw_size) {
+    stop(
+      paste0(
+        "Bootstrap tally mismatch detected for one stock x attribute. ",
+        "Expected pooled tallies = ", draw_size,
+        ", observed pooled tallies = ", total_pooled_tallies, "."
+      )
+    )
+  }
+  
+  draw_pile <- c(rep(1, n1),
+                 rep(2, n2),
+                 rep(3, n3),
+                 rep(4, n4))
+  
+  samp <- sample(x = draw_pile,
+                 size = draw_size,
+                 replace = TRUE)
   
   mean(samp, na.rm = TRUE)
 }
@@ -264,17 +492,250 @@ bootstrap_one_stock <- function(stock_name_i,
                                 baseline_exp_score_num,
                                 n_boot = 10000,
                                 borderline_threshold = 0.25) {
+  ## Purpose:
+  ## - Run the bootstrap uncertainty analysis for a single stock
+  ##
   ## Workflow:
-  ## - Filter one stock
+  ## - Filter one stock from the standardized Sensitivity tally table
+  ## - Calculate baseline attribute means directly from pooled tallies
+  ## - Apply the FCVA logic model to determine baseline Sensitivity score
+  ## - Hold baseline Exposure numeric score fixed
   ## - For each bootstrap iteration:
-  ##   - Resample each Sensitivity attribute from pooled tallies
-  ##   - Recalculate Sensitivity component score
-  ##   - Hold Exposure fixed at baseline numeric score
+  ##   - Resample each attribute
+  ##   - Recalculate bootstrap Sensitivity score
   ##   - Recalculate overall vulnerability score and rank
-  ## - Summarize proportions by vulnerability rank
-  ## - Flag borderline cases
+  ## - Summarize proportions across vulnerability bins
+  ## - Flag borderline cases when an adjacent non-baseline rank occurs with
+  ##   probability >= borderline_threshold
+  ##
+  ## Returns:
+  ## - list(stock_summary, sens_summary, iter_long)
   
-  NULL
+  dat_stock <- sens_tallies_std %>%
+    filter(stock_name == stock_name_i)
+  
+  if(nrow(dat_stock) == 0) {
+    stop(paste0("No Sensitivity tally data found for stock: ", stock_name_i))
+  }
+  
+  ##--------------------------------------------------------------------------
+  ## Derive stock-specific metadata from the tally table
+  
+  n_reviewers_observed <- n_distinct(dat_stock$reviewer_id)
+  
+  attribute_list <- dat_stock %>%
+    distinct(attribute_name) %>%
+    arrange(attribute_name) %>%
+    pull(attribute_name)
+  
+  ##--------------------------------------------------------------------------
+  ## Calculate baseline attribute means from pooled tallies
+  ##
+  ## This provides a tally-based baseline that can be compared with the
+  ## finalized baseline outputs elsewhere in the script.
+  
+  baseline_attribute_means <- dat_stock %>%
+    group_by(attribute_name) %>%
+    summarise(
+      tally_low       = sum(tally_low, na.rm = TRUE),
+      tally_moderate  = sum(tally_moderate, na.rm = TRUE),
+      tally_high      = sum(tally_high, na.rm = TRUE),
+      tally_very_high = sum(tally_very_high, na.rm = TRUE),
+      baseline_mean_score = calc_weighted_mean_from_tallies(
+        tally_low       = tally_low,
+        tally_moderate  = tally_moderate,
+        tally_high      = tally_high,
+        tally_very_high = tally_very_high
+      ),
+      .groups = "drop"
+    ) %>%
+    arrange(attribute_name)
+  
+  baseline_sens_logic <- fcva_logic_model(
+    mean_scores = baseline_attribute_means$baseline_mean_score
+  )
+  
+  baseline_sens_rank      <- baseline_sens_logic$component_rank
+  baseline_sens_score_num <- baseline_sens_logic$component_score_numeric
+  
+  baseline_exp_rank <- component_numeric_to_rank(baseline_exp_score_num)
+  
+  baseline_vuln_score_num <- baseline_sens_score_num * baseline_exp_score_num
+  baseline_vuln_rank      <- assign_vulnerability_rank(baseline_vuln_score_num)
+  
+  ##--------------------------------------------------------------------------
+  ## Run bootstrap iterations
+  ##
+  ## Preallocate vectors for speed and reproducibility
+  
+  sens_score_num_boot <- rep(NA_real_, n_boot)
+  sens_rank_boot      <- rep(NA_character_, n_boot)
+  vuln_score_num_boot <- rep(NA_real_, n_boot)
+  vuln_rank_boot      <- rep(NA_character_, n_boot)
+  
+  for(i in seq_len(n_boot)) {
+    
+    boot_mean_scores_i <- map_dbl(
+      attribute_list,
+      function(att_i) {
+        dat_att_i <- dat_stock %>%
+          filter(attribute_name == att_i)
+        
+        bootstrap_one_attribute(dat_att = dat_att_i)
+      }
+    )
+    
+    sens_logic_i <- fcva_logic_model(mean_scores = boot_mean_scores_i)
+    
+    sens_score_num_boot[i] <- sens_logic_i$component_score_numeric
+    sens_rank_boot[i]      <- sens_logic_i$component_rank
+    
+    vuln_score_num_boot[i] <- sens_score_num_boot[i] * baseline_exp_score_num
+    vuln_rank_boot[i]      <- assign_vulnerability_rank(vuln_score_num_boot[i])
+  }
+  
+  ##--------------------------------------------------------------------------
+  ## Summarize bootstrap vulnerability rank probabilities
+  
+  vuln_rank_levels <- c("Low", "Moderate", "High", "Very High")
+  
+  vuln_rank_table <- tibble(vulnerability_rank_boot = vuln_rank_boot) %>%
+    mutate(vulnerability_rank_boot = factor(vulnerability_rank_boot,
+                                            levels = vuln_rank_levels)) %>%
+    count(vulnerability_rank_boot, name = "n_iter") %>%
+    complete(vulnerability_rank_boot = factor(vuln_rank_levels,
+                                              levels = vuln_rank_levels),
+             fill = list(n_iter = 0)) %>%
+    mutate(prob = n_iter / n_boot)
+  
+  p_low       <- vuln_rank_table %>% filter(vulnerability_rank_boot == "Low")       %>% pull(prob)
+  p_moderate  <- vuln_rank_table %>% filter(vulnerability_rank_boot == "Moderate")  %>% pull(prob)
+  p_high      <- vuln_rank_table %>% filter(vulnerability_rank_boot == "High")      %>% pull(prob)
+  p_very_high <- vuln_rank_table %>% filter(vulnerability_rank_boot == "Very High") %>% pull(prob)
+  
+  ##--------------------------------------------------------------------------
+  ## Summarize bootstrap Sensitivity rank probabilities
+  
+  sens_rank_table <- tibble(sensitivity_rank_boot = sens_rank_boot) %>%
+    mutate(sensitivity_rank_boot = factor(sensitivity_rank_boot,
+                                          levels = vuln_rank_levels)) %>%
+    count(sensitivity_rank_boot, name = "n_iter") %>%
+    complete(sensitivity_rank_boot = factor(vuln_rank_levels,
+                                            levels = vuln_rank_levels),
+             fill = list(n_iter = 0)) %>%
+    mutate(prob = n_iter / n_boot)
+  
+  p_sens_low       <- sens_rank_table %>% filter(sensitivity_rank_boot == "Low")       %>% pull(prob)
+  p_sens_moderate  <- sens_rank_table %>% filter(sensitivity_rank_boot == "Moderate")  %>% pull(prob)
+  p_sens_high      <- sens_rank_table %>% filter(sensitivity_rank_boot == "High")      %>% pull(prob)
+  p_sens_very_high <- sens_rank_table %>% filter(sensitivity_rank_boot == "Very High") %>% pull(prob)
+  
+  ##--------------------------------------------------------------------------
+  ## Derive certainty and borderline metrics
+  ##
+  ## Certainty is defined here as the proportion of bootstrap iterations that
+  ## match the baseline rank for that stock.
+  
+  certainty_baseline_rank <- case_when(
+    baseline_vuln_rank == "Low"       ~ p_low,
+    baseline_vuln_rank == "Moderate"  ~ p_moderate,
+    baseline_vuln_rank == "High"      ~ p_high,
+    baseline_vuln_rank == "Very High" ~ p_very_high,
+    TRUE                              ~ NA_real_
+  )
+  
+  certainty_baseline_sensitivity_rank <- case_when(
+    baseline_sens_rank == "Low"       ~ p_sens_low,
+    baseline_sens_rank == "Moderate"  ~ p_sens_moderate,
+    baseline_sens_rank == "High"      ~ p_sens_high,
+    baseline_sens_rank == "Very High" ~ p_sens_very_high,
+    TRUE                              ~ NA_real_
+  )
+  
+  rank_prob_tbl <- tibble(
+    rank = vuln_rank_levels,
+    prob = c(p_low, p_moderate, p_high, p_very_high)
+  ) %>%
+    arrange(desc(prob), rank)
+  
+  modal_boot_rank <- rank_prob_tbl$rank[1]
+  secondary_rank  <- rank_prob_tbl$rank[2]
+  secondary_rank_probability <- rank_prob_tbl$prob[2]
+  
+  baseline_rank_index  <- rank_to_index(baseline_vuln_rank)
+  secondary_rank_index <- rank_to_index(secondary_rank)
+  
+  is_borderline <- !is.na(baseline_rank_index) &&
+    !is.na(secondary_rank_index) &&
+    abs(secondary_rank_index - baseline_rank_index) == 1 &&
+    secondary_rank_probability >= borderline_threshold
+  
+  ##--------------------------------------------------------------------------
+  ## Create stock-level summary table
+  
+  stock_summary <- tibble(
+    stock_name = stock_name_i,
+    n_boot = n_boot,
+    n_reviewers_observed = n_reviewers_observed,
+    baseline_exposure_rank = baseline_exp_rank,
+    baseline_exposure_score_numeric = baseline_exp_score_num,
+    baseline_sensitivity_rank = baseline_sens_rank,
+    baseline_sensitivity_score_numeric = baseline_sens_score_num,
+    baseline_vulnerability_rank = baseline_vuln_rank,
+    baseline_vulnerability_score_numeric = baseline_vuln_score_num,
+    p_low = p_low,
+    p_moderate = p_moderate,
+    p_high = p_high,
+    p_very_high = p_very_high,
+    modal_boot_rank = modal_boot_rank,
+    certainty_baseline_rank = certainty_baseline_rank,
+    secondary_rank = secondary_rank,
+    secondary_rank_probability = secondary_rank_probability,
+    is_borderline = is_borderline,
+    borderline_definition =
+      paste0("Adjacent non-baseline rank probability >= ",
+             borderline_threshold)
+  )
+  
+  ##--------------------------------------------------------------------------
+  ## Create Sensitivity-component summary table
+  
+  sens_summary <- tibble(
+    stock_name = stock_name_i,
+    n_boot = n_boot,
+    baseline_sensitivity_rank = baseline_sens_rank,
+    baseline_sensitivity_score_numeric = baseline_sens_score_num,
+    p_sens_low = p_sens_low,
+    p_sens_moderate = p_sens_moderate,
+    p_sens_high = p_sens_high,
+    p_sens_very_high = p_sens_very_high,
+    modal_sensitivity_rank =
+      sens_rank_table %>%
+      arrange(desc(prob), sensitivity_rank_boot) %>%
+      slice(1) %>%
+      pull(sensitivity_rank_boot) %>%
+      as.character(),
+    certainty_baseline_sensitivity_rank =
+      certainty_baseline_sensitivity_rank
+  )
+  
+  ##--------------------------------------------------------------------------
+  ## Create optional iteration-level output table
+  
+  iter_long <- tibble(
+    stock_name = stock_name_i,
+    boot_iter = seq_len(n_boot),
+    sensitivity_score_numeric_boot = sens_score_num_boot,
+    sensitivity_rank_boot = sens_rank_boot,
+    vulnerability_score_numeric_boot = vuln_score_num_boot,
+    vulnerability_rank_boot = vuln_rank_boot
+  )
+  
+  list(
+    stock_summary = stock_summary,
+    sens_summary  = sens_summary,
+    iter_long     = iter_long
+  )
 }
 
 run_loo_sensitivity_one_stock <- function(stock_name_i,
@@ -283,14 +744,78 @@ run_loo_sensitivity_one_stock <- function(stock_name_i,
                                           baseline_sens_rank,
                                           baseline_vuln_rank,
                                           baseline_vuln_score_num) {
+  ## Purpose:
+  ## - Run the deterministic Sensitivity leave-one-out analysis for one stock
+  ##
   ## Workflow:
-  ## - For each Sensitivity attribute:
-  ##   - Omit one attribute
-  ##   - Recompute Sensitivity component score
-  ##   - Hold Exposure fixed
-  ##   - Recompute overall vulnerability score and rank
+  ## - Filter one stock from the standardized Sensitivity mean-score table
+  ## - Recalculate the baseline Sensitivity score from all attributes
+  ## - Omit one Sensitivity attribute at a time
+  ## - Recompute Sensitivity component score
+  ## - Hold Exposure numeric score fixed
+  ## - Recompute overall vulnerability score and rank
+  ##
+  ## Returns:
+  ## - One long-format tibble with one row per omitted attribute
   
-  NULL
+  dat_stock <- sens_means_std %>%
+    filter(stock_name == stock_name_i)
+  
+  if(nrow(dat_stock) == 0) {
+    stop(paste0("No Sensitivity mean-score data found for stock: ", stock_name_i))
+  }
+  
+  attribute_list <- dat_stock %>%
+    distinct(attribute_name) %>%
+    arrange(attribute_name) %>%
+    pull(attribute_name)
+  
+  baseline_sens_logic <- fcva_logic_model(dat_stock$mean_score)
+  
+  baseline_sens_score_num <- baseline_sens_logic$component_score_numeric
+  
+  loo_out <- map_dfr(
+    attribute_list,
+    function(att_i) {
+      
+      dat_omit_i <- dat_stock %>%
+        filter(attribute_name != att_i)
+      
+      loo_sens_logic_i <- fcva_logic_model(dat_omit_i$mean_score)
+      
+      loo_sens_rank_i      <- loo_sens_logic_i$component_rank
+      loo_sens_score_num_i <- loo_sens_logic_i$component_score_numeric
+      
+      loo_vuln_score_num_i <- loo_sens_score_num_i * baseline_exp_score_num
+      loo_vuln_rank_i      <- assign_vulnerability_rank(loo_vuln_score_num_i)
+      
+      tibble(
+        stock_name = stock_name_i,
+        attribute_name = att_i,
+        baseline_sensitivity_rank = baseline_sens_rank,
+        baseline_sensitivity_score_numeric = baseline_sens_score_num,
+        baseline_exposure_score_numeric = baseline_exp_score_num,
+        baseline_vulnerability_rank = baseline_vuln_rank,
+        baseline_vulnerability_score_numeric = baseline_vuln_score_num,
+        loo_sensitivity_rank = loo_sens_rank_i,
+        loo_sensitivity_score_numeric = loo_sens_score_num_i,
+        loo_vulnerability_rank = loo_vuln_rank_i,
+        loo_vulnerability_score_numeric = loo_vuln_score_num_i,
+        rank_changed = loo_vuln_rank_i != baseline_vuln_rank,
+        rank_change_direction =
+          compare_rank_direction(
+            baseline_rank = baseline_vuln_rank,
+            new_rank      = loo_vuln_rank_i
+          ),
+        delta_sensitivity_score_numeric =
+          loo_sens_score_num_i - baseline_sens_score_num,
+        delta_vulnerability_score_numeric =
+          loo_vuln_score_num_i - baseline_vuln_score_num
+      )
+    }
+  )
+  
+  loo_out
 }
 
 run_loo_exposure_one_stock <- function(stock_name_i,
@@ -299,15 +824,87 @@ run_loo_exposure_one_stock <- function(stock_name_i,
                                        baseline_exp_rank,
                                        baseline_vuln_rank,
                                        baseline_vuln_score_num) {
+  ## Purpose:
+  ## - Run the deterministic Exposure leave-one-out analysis for one stock
+  ##
   ## Workflow:
-  ## - For each Exposure factor:
-  ##   - Omit one factor
-  ##   - Recompute Exposure component score
-  ##   - Hold Sensitivity fixed
-  ##   - Recompute overall vulnerability score and rank
+  ## - Filter one stock from the standardized Exposure mean-score table
+  ## - Recalculate the baseline Exposure score from all factors
+  ## - Omit one Exposure factor at a time
+  ## - Recompute Exposure component score
+  ## - Hold Sensitivity numeric score fixed
+  ## - Recompute overall vulnerability score and rank
+  ##
+  ## Returns:
+  ## - One long-format tibble with one row per omitted factor
   
-  NULL
+  dat_stock <- exp_means_std %>%
+    filter(stock_name == stock_name_i)
+  
+  if(nrow(dat_stock) == 0) {
+    stop(paste0("No Exposure mean-score data found for stock: ", stock_name_i))
+  }
+  
+  factor_list <- dat_stock %>%
+    distinct(exposure_factor) %>%
+    arrange(exposure_factor) %>%
+    pull(exposure_factor)
+  
+  baseline_exp_logic <- fcva_logic_model(dat_stock$mean_score)
+  
+  baseline_exp_score_num <- baseline_exp_logic$component_score_numeric
+  
+  loo_out <- map_dfr(
+    factor_list,
+    function(fac_i) {
+      
+      dat_omit_i <- dat_stock %>%
+        filter(exposure_factor != fac_i)
+      
+      loo_exp_logic_i <- fcva_logic_model(dat_omit_i$mean_score)
+      
+      loo_exp_rank_i      <- loo_exp_logic_i$component_rank
+      loo_exp_score_num_i <- loo_exp_logic_i$component_score_numeric
+      
+      loo_vuln_score_num_i <- baseline_sens_score_num * loo_exp_score_num_i
+      loo_vuln_rank_i      <- assign_vulnerability_rank(loo_vuln_score_num_i)
+      
+      tibble(
+        stock_name = stock_name_i,
+        exposure_factor = fac_i,
+        baseline_exposure_rank = baseline_exp_rank,
+        baseline_exposure_score_numeric = baseline_exp_score_num,
+        baseline_sensitivity_score_numeric = baseline_sens_score_num,
+        baseline_vulnerability_rank = baseline_vuln_rank,
+        baseline_vulnerability_score_numeric = baseline_vuln_score_num,
+        loo_exposure_rank = loo_exp_rank_i,
+        loo_exposure_score_numeric = loo_exp_score_num_i,
+        loo_vulnerability_rank = loo_vuln_rank_i,
+        loo_vulnerability_score_numeric = loo_vuln_score_num_i,
+        rank_changed = loo_vuln_rank_i != baseline_vuln_rank,
+        rank_change_direction =
+          compare_rank_direction(
+            baseline_rank = baseline_vuln_rank,
+            new_rank      = loo_vuln_rank_i
+          ),
+        delta_exposure_score_numeric =
+          loo_exp_score_num_i - baseline_exp_score_num,
+        delta_vulnerability_score_numeric =
+          loo_vuln_score_num_i - baseline_vuln_score_num
+      )
+    }
+  )
+  
+  loo_out
 }
+
+
+
+
+
+
+
+
 
 ##------------------------------------------------------------------------------
 ## Step 1 - Read compiled score inputs
@@ -576,21 +1173,20 @@ stock_list <- sort(unique(vuln_std$stock_name))
 boot_results <- map(
   stock_list,
   ~ bootstrap_one_stock(
-    stock_name_i          = .x,
-    sens_tallies_std      = sens_tallies_std,
+    stock_name_i           = .x,
+    sens_tallies_std       = sens_tallies_std,
     baseline_exp_score_num =
       vuln_std %>%
       filter(stock_name == .x) %>%
       pull(exposure_score_numeric),
-    n_boot                = n_boot,
-    borderline_threshold  = borderline_threshold
+    n_boot                 = n_boot,
+    borderline_threshold   = borderline_threshold
   )
 )
 
-## Placeholder expected objects from bootstrap function
-boot_stock_summary <- tibble()
-boot_sens_summary  <- tibble()
-boot_iter_long     <- tibble()
+boot_stock_summary <- bind_rows(map(boot_results, "stock_summary"))
+boot_sens_summary  <- bind_rows(map(boot_results, "sens_summary"))
+boot_iter_long     <- bind_rows(map(boot_results, "iter_long"))
 
 write_csv(boot_stock_summary, f_boot_stock)
 write_csv(boot_sens_summary,  f_boot_sens)
@@ -599,9 +1195,7 @@ if(save_iteration_table) {
   write_csv(boot_iter_long, f_boot_iter)
 }
 
-##------------------------------------------------------------------------------
-## Step 5 - Leave-one-out influence analysis
-##
+###------------------------------------------------------------------------------
 ## Step 5A. Sensitivity leave-one-out
 ##
 ## Workflow:
@@ -634,7 +1228,7 @@ loo_sens_results <- map(
   )
 )
 
-loo_sens_long <- tibble()
+loo_sens_long <- bind_rows(loo_sens_results)
 
 loo_sens_summary <- loo_sens_long %>%
   group_by(attribute_name) %>%
@@ -683,7 +1277,7 @@ loo_exp_results <- map(
   )
 )
 
-loo_exp_long <- tibble()
+loo_exp_long <- bind_rows(loo_exp_results)
 
 loo_exp_summary <- loo_exp_long %>%
   group_by(exposure_factor) %>%
