@@ -59,9 +59,9 @@ proj_dir <- "."
 in_dir   <- file.path(proj_dir, "outputs", "final-scores-compiled")
 out_dir  <- file.path(proj_dir, "outputs", "analyses")
 
-input_dir        <- file.path(out_dir, "inputs")
-intermediate_dir <- file.path(out_dir, "intermediate")
-final_dir        <- file.path(out_dir, "final-tables")
+input_dir        <- file.path(out_dir, "1-inputs")
+intermediate_dir <- file.path(out_dir, "2-intermediate")
+final_dir        <- file.path(out_dir, "3-final-tables")
 
 dir.create(out_dir,          recursive = TRUE, showWarnings = FALSE)
 dir.create(input_dir,        recursive = TRUE, showWarnings = FALSE)
