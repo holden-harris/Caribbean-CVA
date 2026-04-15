@@ -415,6 +415,7 @@ message("Directional effect tally rows: ", nrow(directional_effect_tallies_long)
 ##
 ## Workflow:
 ## - Remove rows with missing attribute names
+## - Remove fully empty rows (all data columns NA and n_tallies == 0)
 ## - Arrange consistently
 ## - Remove stock x reviewer combinations where all tallies are zero
 ##   (reviewer sheet was read but no scores were entered for that stock)
@@ -422,14 +423,21 @@ message("Directional effect tally rows: ", nrow(directional_effect_tallies_long)
 
 qualitative_exposure_tallies_long <- qualitative_exposure_tallies_long %>%
   filter(!is.na(attribute_name), attribute_name != "") %>%
+  filter(!(if_all(c(final_score, data_quality_index,
+                    tally_L, tally_M, tally_H, tally_VH),
+                  is.na) & n_tallies == 0)) %>%
   arrange(stock_name, reviewer_id, row_num)
 
 sensitivity_tallies_long <- sensitivity_tallies_long %>%
   filter(!is.na(attribute_name), attribute_name != "") %>%
+  filter(!(if_all(c(final_score, data_quality_index,
+                    tally_L, tally_M, tally_H, tally_VH),
+                  is.na) & n_tallies == 0)) %>%
   arrange(stock_name, reviewer_id, row_num)
 
 directional_effect_tallies_long <- directional_effect_tallies_long %>%
   filter(!is.na(effect_category), effect_category != "") %>%
+  filter(!is.na(tally)) %>%
   arrange(stock_name, reviewer_id, row_num)
 
 ##------------------------------------------------------------------------------
@@ -470,6 +478,34 @@ qualitative_exposure_tallies_long <- qualitative_exposure_tallies_long %>%
 
 directional_effect_tallies_long <- directional_effect_tallies_long %>%
   anti_join(unscored_dir, by = c("stock_name", "reviewer_id"))
+
+##------------------------------------------------------------------------------
+## Step 2C - Drop redundant columns and shorten reviewer_id to initials
+##
+## - sheet_name is identical to stock_name; drop it
+## - source_file is redundant with reviewer_id; drop it
+## - reviewer_id is the full workbook filename stem; shorten to initials only
+##   e.g. "Caribbean CVA Scoring Template_2025_AAcosta" -> "AA"
+##   Extracts everything after the last underscore, then keeps the leading
+##   uppercase letters (the reviewer's initials)
+
+shorten_reviewer_id <- function(x) {
+  x %>%
+    str_extract("[^_]+$") %>%   ## everything after the last underscore
+    str_extract("^[A-Z]+")      ## leading uppercase letters only
+}
+
+sensitivity_tallies_long <- sensitivity_tallies_long %>%
+  mutate(reviewer_id = shorten_reviewer_id(reviewer_id)) %>%
+  select(-sheet_name, -source_file)
+
+qualitative_exposure_tallies_long <- qualitative_exposure_tallies_long %>%
+  mutate(reviewer_id = shorten_reviewer_id(reviewer_id)) %>%
+  select(-sheet_name, -source_file)
+
+directional_effect_tallies_long <- directional_effect_tallies_long %>%
+  mutate(reviewer_id = shorten_reviewer_id(reviewer_id)) %>%
+  select(-sheet_name, -source_file)
 
 all_qualitative_tallies_long <- bind_rows(
   qualitative_exposure_tallies_long,
@@ -522,7 +558,7 @@ message("Row-level QA: ", n_bad_tally_sum, " rows with n_tallies != 5")
 message("Row-level QA: ", n_na_tally,      " rows with NA tally values")
 message("Row-level QA: ", n_duplicates,    " duplicate stock x reviewer x attribute rows")
 
-#write_csv(qa_row_checks %>% filter(any_row_issue), f_qa_row_checks)
+write_csv(qa_row_checks %>% filter(any_row_issue), f_qa_row_checks)
 
 ##------------------------------------------------------------------------------
 ## Step 3B - Reviewer x stock coverage matrix
@@ -544,7 +580,7 @@ reviewer_stock_wide <- reviewer_stock_coverage %>%
   ) %>%
   arrange(stock_name); print(reviewer_stock_wide)
 
-#write_csv(reviewer_stock_wide, f_qa_coverage)
+write_csv(reviewer_stock_wide, f_qa_coverage)
 
 ##------------------------------------------------------------------------------
 ## Step 3C - Attribute-level pooled tally summary
@@ -577,14 +613,12 @@ write_csv(qa_attr_summary, f_qa_attr_summary)
 ## Step 3D - Directional effect summary
 
 qa_dir_summary <- directional_effect_tallies_long %>%
-  group_by(stock_name, effect_category) %>%
+  group_by(stock_name) %>%
   summarise(
     n_reviewers = n_distinct(reviewer_id),
     total_tally = sum(tally, na.rm = TRUE),
     .groups = "drop"
-  ) %>%
-  arrange(stock_name, effect_category)
-print(qa_dir_summary, n = 75)
+  ); print(qa_dir_summary, n = 75)
 
 write_csv(qa_dir_summary, f_qa_dir_summary)
 
@@ -595,5 +629,3 @@ write_csv(sensitivity_tallies_long,           f_sens_tallies)
 write_csv(qualitative_exposure_tallies_long,  f_qexp_tallies)
 write_csv(directional_effect_tallies_long,    f_dir_tallies)
 write_csv(all_qualitative_tallies_long,       f_all_tallies)
-
-
