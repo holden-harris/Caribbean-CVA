@@ -404,12 +404,20 @@ for(file_i in workbook_files) {
   }
 }
 
+message("Extraction complete.")
+message("Sensitivity tally rows: ", nrow(sensitivity_tallies_long))
+message("Qualitative exposure tally rows: ", nrow(qualitative_exposure_tallies_long))
+message("Directional effect tally rows: ", nrow(directional_effect_tallies_long))
+
+
 ##------------------------------------------------------------------------------
 ## Step 2 - Cleanup
 ##
 ## Workflow:
-## - Remove rows with missing attribute names if any
+## - Remove rows with missing attribute names
 ## - Arrange consistently
+## - Remove stock x reviewer combinations where all tallies are zero
+##   (reviewer sheet was read but no scores were entered for that stock)
 ## - Create combined qualitative tally table
 
 qualitative_exposure_tallies_long <- qualitative_exposure_tallies_long %>%
@@ -424,68 +432,87 @@ directional_effect_tallies_long <- directional_effect_tallies_long %>%
   filter(!is.na(effect_category), effect_category != "") %>%
   arrange(stock_name, reviewer_id, row_num)
 
+##------------------------------------------------------------------------------
+## Step 2B - Remove unscored stock x reviewer combinations
+##
+## The loop reads every sheet in every workbook, producing rows for reviewer x
+## stock combinations where the reviewer did not enter any scores. These appear
+## as rows where every tally bin is NA and n_tallies == 0. Identify those
+## combinations and remove them from all tables before writing output.
+
+unscored_sens <- sensitivity_tallies_long %>%
+  group_by(stock_name, reviewer_id) %>%
+  summarise(total_tallies = sum(n_tallies, na.rm = TRUE), .groups = "drop") %>%
+  filter(total_tallies == 0)
+
+unscored_qexp <- qualitative_exposure_tallies_long %>%
+  group_by(stock_name, reviewer_id) %>%
+  summarise(total_tallies = sum(n_tallies, na.rm = TRUE), .groups = "drop") %>%
+  filter(total_tallies == 0)
+
+unscored_dir <- directional_effect_tallies_long %>%
+  group_by(stock_name, reviewer_id) %>%
+  summarise(total_tallies = sum(tally, na.rm = TRUE), .groups = "drop") %>%
+  filter(total_tallies == 0)
+
+message("Removing ", nrow(unscored_sens),
+        " unscored stock x reviewer combinations from sensitivity tallies")
+message("Removing ", nrow(unscored_qexp),
+        " unscored stock x reviewer combinations from qualitative exposure tallies")
+message("Removing ", nrow(unscored_dir),
+        " unscored stock x reviewer combinations from directional effect tallies")
+
+sensitivity_tallies_long <- sensitivity_tallies_long %>%
+  anti_join(unscored_sens, by = c("stock_name", "reviewer_id"))
+
+qualitative_exposure_tallies_long <- qualitative_exposure_tallies_long %>%
+  anti_join(unscored_qexp, by = c("stock_name", "reviewer_id"))
+
+directional_effect_tallies_long <- directional_effect_tallies_long %>%
+  anti_join(unscored_dir, by = c("stock_name", "reviewer_id"))
+
 all_qualitative_tallies_long <- bind_rows(
   qualitative_exposure_tallies_long,
   sensitivity_tallies_long
 ) %>%
   arrange(stock_name, reviewer_id, attribute_type, row_num)
-View(all_qualitative_tallies_long)
+
+print(all_qualitative_tallies_long)
 
 ##------------------------------------------------------------------------------
-## Step 3 - Basic extraction QA summaries
-##
-## Notes:
-## - These are quick console checks only
-## - Full pre-analysis QA would happen later in Script 1
-
-message("Extraction complete.")
-message("Sensitivity tally rows: ", nrow(sensitivity_tallies_long))
-message("Qualitative exposure tally rows: ", nrow(qualitative_exposure_tallies_long))
-message("Directional effect tally rows: ", nrow(directional_effect_tallies_long))
-
-
-##------------------------------------------------------------------------------
-## Step 4 - Write output tables
-
-write_csv(sensitivity_tallies_long,           f_sens_tallies)
-write_csv(qualitative_exposure_tallies_long,  f_qexp_tallies)
-write_csv(directional_effect_tallies_long,    f_dir_tallies)
-write_csv(all_qualitative_tallies_long,       f_all_tallies)
-
-##------------------------------------------------------------------------------
-## Step 5 - QA tables
+## Step 3 - QA
 ##
 ## Workflow:
-## Step 5A. Row-level tally checks
+## Row-level tally checks
 ##   - Flag rows where n_tallies != 5 (each reviewer x attribute must use
 ##     exactly 5 tallies under the NOAA FCVA scoring rules)
 ##   - Flag rows with any NA tally bins
 ##   - Flag duplicate stock x reviewer x attribute rows
-## Step 5B. Reviewer x stock coverage matrix
+## Reviewer x stock coverage matrix
 ##   - Count distinct attributes scored per reviewer x stock combination
 ##   - A reviewer absent from a stock shows as 0 in the wide output
-## Step 5C. Attribute-level pooled tally summary
+## Attribute-level pooled tally summary
 ##   - Pool tallies across all reviewers for each stock x attribute
 ##   - Calculate pooled weighted mean score
 ##   - Flag combinations where pooled sum != n_reviewers x 5
 ##   - This is the key diagnostic for the bootstrap analysis in Script 2
-## Step 5D. Directional effect summary
+## Directional effect summary
 ##   - Summarize total tally counts per stock x effect category
 
 ##------------------------------------------------------------------------------
-## Step 5A - Row-level tally checks
+## Step 3A - Row-level tally checks
 
 qa_row_checks <- all_qualitative_tallies_long %>%
   mutate(
     n_tallies_ok  = n_tallies == 5,
-    has_na_tally  = is.na(tally_low) | is.na(tally_moderate) |
-                    is.na(tally_high) | is.na(tally_very_high),
+    has_na_tally  = is.na(tally_L) | is.na(tally_M) |
+      is.na(tally_H) | is.na(tally_VH),
     any_row_issue = !n_tallies_ok | has_na_tally
-  )
+  ); print(qa_row_checks)
 
 qa_duplicates <- all_qualitative_tallies_long %>%
   count(stock_name, reviewer_id, attribute_name, name = "n_rows") %>%
-  filter(n_rows > 1)
+  filter(n_rows > 1); print(qa_duplicates)
 
 n_bad_tally_sum <- sum(!qa_row_checks$n_tallies_ok, na.rm = TRUE)
 n_na_tally      <- sum(qa_row_checks$has_na_tally,  na.rm = TRUE)
@@ -495,10 +522,10 @@ message("Row-level QA: ", n_bad_tally_sum, " rows with n_tallies != 5")
 message("Row-level QA: ", n_na_tally,      " rows with NA tally values")
 message("Row-level QA: ", n_duplicates,    " duplicate stock x reviewer x attribute rows")
 
-write_csv(qa_row_checks %>% filter(any_row_issue), f_qa_row_checks)
+#write_csv(qa_row_checks %>% filter(any_row_issue), f_qa_row_checks)
 
 ##------------------------------------------------------------------------------
-## Step 5B - Reviewer x stock coverage matrix
+## Step 3B - Reviewer x stock coverage matrix
 
 reviewer_stock_coverage <- all_qualitative_tallies_long %>%
   group_by(reviewer_id, stock_name) %>%
@@ -506,7 +533,7 @@ reviewer_stock_coverage <- all_qualitative_tallies_long %>%
     n_attributes_scored = n_distinct(attribute_name),
     n_rows              = n(),
     .groups = "drop"
-  )
+  ); print(reviewer_stock_coverage, n = 100)
 
 reviewer_stock_wide <- reviewer_stock_coverage %>%
   pivot_wider(
@@ -515,29 +542,30 @@ reviewer_stock_wide <- reviewer_stock_coverage %>%
     values_from = n_attributes_scored,
     values_fill = 0L
   ) %>%
-  arrange(stock_name)
+  arrange(stock_name); print(reviewer_stock_wide)
 
-write_csv(reviewer_stock_wide, f_qa_coverage)
+#write_csv(reviewer_stock_wide, f_qa_coverage)
 
 ##------------------------------------------------------------------------------
-## Step 5C - Attribute-level pooled tally summary
+## Step 3C - Attribute-level pooled tally summary
 
 qa_attr_summary <- all_qualitative_tallies_long %>%
   group_by(stock_name, attribute_type, attribute_name) %>%
   summarise(
     n_reviewers        = n_distinct(reviewer_id),
-    tally_low          = sum(tally_low,       na.rm = TRUE),
-    tally_moderate     = sum(tally_moderate,  na.rm = TRUE),
-    tally_high         = sum(tally_high,      na.rm = TRUE),
-    tally_very_high    = sum(tally_very_high, na.rm = TRUE),
-    pooled_tally_sum   = tally_low + tally_moderate + tally_high + tally_very_high,
+    tally_L            = sum(tally_L,       na.rm = TRUE),
+    tally_M            = sum(tally_M,  na.rm = TRUE),
+    tally_H            = sum(tally_H,      na.rm = TRUE),
+    tally_VH            = sum(tally_VH, na.rm = TRUE),
+    pooled_tally_sum   = tally_L + tally_M + tally_H + tally_VH,
     expected_tally_sum = n_reviewers * 5L,
     tally_sum_ok       = pooled_tally_sum == expected_tally_sum,
-    pooled_mean_score  = (tally_low * 1 + tally_moderate * 2 +
-                          tally_high * 3 + tally_very_high * 4) / pooled_tally_sum,
+    pooled_mean_score  = (tally_L * 1 + tally_M * 2 +
+                            tally_H * 3 + tally_VH * 4) / pooled_tally_sum,
     .groups = "drop"
   ) %>%
   arrange(stock_name, attribute_type, attribute_name)
+print(qa_attr_summary, n = 50)
 
 n_tally_sum_issues <- sum(!qa_attr_summary$tally_sum_ok, na.rm = TRUE)
 message("Attribute QA: ", n_tally_sum_issues,
@@ -546,7 +574,7 @@ message("Attribute QA: ", n_tally_sum_issues,
 write_csv(qa_attr_summary, f_qa_attr_summary)
 
 ##------------------------------------------------------------------------------
-## Step 5D - Directional effect summary
+## Step 3D - Directional effect summary
 
 qa_dir_summary <- directional_effect_tallies_long %>%
   group_by(stock_name, effect_category) %>%
@@ -556,192 +584,16 @@ qa_dir_summary <- directional_effect_tallies_long %>%
     .groups = "drop"
   ) %>%
   arrange(stock_name, effect_category)
+print(qa_dir_summary, n = 75)
 
 write_csv(qa_dir_summary, f_qa_dir_summary)
 
 ##------------------------------------------------------------------------------
-## Step 6 - Figures
-##
-## Figure 1. Reviewer x stock coverage heatmap
-##   - Each tile = number of attributes scored by that reviewer for that stock
-##   - Red = missing or incomplete; blue = fully scored
-##   - Quickly shows which reviewer x stock combinations have gaps
-##
-## Figure 2. Sensitivity tally distributions by attribute
-##   - Pooled tallies across all reviewers and stocks
-##   - Horizontal stacked bar: proportion Low / Moderate / High / Very High
-##   - Ordered by pooled mean score ascending (lowest at bottom)
-##
-## Figure 3. Directional effect summary by stock
-##   - Horizontal stacked bar: proportion positive / neutral / negative
-##   - Ordered by proportion positive ascending
+## Step 4 - Write output tables
 
-##------------------------------------------------------------------------------
-## Figure 1 - Reviewer x stock coverage heatmap
+write_csv(sensitivity_tallies_long,           f_sens_tallies)
+write_csv(qualitative_exposure_tallies_long,  f_qexp_tallies)
+write_csv(directional_effect_tallies_long,    f_dir_tallies)
+write_csv(all_qualitative_tallies_long,       f_all_tallies)
 
-n_attributes_expected <- n_distinct(all_qualitative_tallies_long$attribute_name)
-
-p_coverage <- ggplot(
-  reviewer_stock_coverage,
-  aes(
-    x    = fct_rev(fct_inorder(reviewer_id)),
-    y    = fct_rev(fct_inorder(stock_name)),
-    fill = n_attributes_scored
-  )
-) +
-  geom_tile(color = "white", linewidth = 0.4) +
-  geom_text(aes(label = n_attributes_scored), size = 2.8, color = "white") +
-  scale_fill_gradient(
-    low  = "#d9534f",
-    high = "#2c7bb6",
-    name = "Attributes\nscored"
-  ) +
-  labs(
-    x        = "Reviewer",
-    y        = "Stock",
-    title    = "Reviewer x stock coverage",
-    subtitle = paste0("Cell value = attributes scored (max = ",
-                      n_attributes_expected, ")")
-  ) +
-  theme_bw(base_size = 10) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),
-    panel.grid  = element_blank()
-  )
-
-ggsave(f_fig_coverage, p_coverage,
-       width  = 10,
-       height = max(5, 0.3 * n_distinct(reviewer_stock_coverage$stock_name)),
-       dpi    = 300)
-
-##------------------------------------------------------------------------------
-## Figure 2 - Sensitivity tally distributions by attribute
-
-sens_pooled <- sensitivity_tallies_long %>%
-  group_by(attribute_name) %>%
-  summarise(
-    tally_low       = sum(tally_low,       na.rm = TRUE),
-    tally_moderate  = sum(tally_moderate,  na.rm = TRUE),
-    tally_high      = sum(tally_high,      na.rm = TRUE),
-    tally_very_high = sum(tally_very_high, na.rm = TRUE),
-    pooled_sum      = tally_low + tally_moderate + tally_high + tally_very_high,
-    .groups = "drop"
-  ) %>%
-  filter(pooled_sum > 0) %>%
-  mutate(
-    p_low       = tally_low       / pooled_sum,
-    p_moderate  = tally_moderate  / pooled_sum,
-    p_high      = tally_high      / pooled_sum,
-    p_very_high = tally_very_high / pooled_sum,
-    mean_score  = (tally_low * 1 + tally_moderate * 2 +
-                   tally_high * 3 + tally_very_high * 4) / pooled_sum
-  )
-
-rank_levels <- c("Low", "Moderate", "High", "Very High")
-rank_colors <- c(
-  "Low"       = "#2c7bb6",
-  "Moderate"  = "#abd9e9",
-  "High"      = "#fdae61",
-  "Very High" = "#d7191c"
-)
-
-sens_pooled_long <- sens_pooled %>%
-  select(attribute_name, mean_score,
-         p_low, p_moderate, p_high, p_very_high) %>%
-  pivot_longer(
-    cols      = starts_with("p_"),
-    names_to  = "rank",
-    values_to = "proportion"
-  ) %>%
-  mutate(
-    rank = case_when(
-      rank == "p_low"       ~ "Low",
-      rank == "p_moderate"  ~ "Moderate",
-      rank == "p_high"      ~ "High",
-      rank == "p_very_high" ~ "Very High"
-    ),
-    rank = factor(rank, levels = rank_levels)
-  )
-
-attr_order <- sens_pooled %>%
-  arrange(mean_score) %>%
-  pull(attribute_name)
-
-p_tallies <- ggplot(
-  sens_pooled_long,
-  aes(
-    x    = proportion,
-    y    = factor(attribute_name, levels = attr_order),
-    fill = rank
-  )
-) +
-  geom_col(width = 0.75) +
-  scale_fill_manual(values = rank_colors, name = "Rank") +
-  scale_x_continuous(labels = percent_format(accuracy = 1),
-                     expand  = c(0, 0)) +
-  labs(
-    x        = "Proportion of tallies",
-    y        = NULL,
-    title    = "Sensitivity attribute tally distributions",
-    subtitle = "Pooled across all stocks and reviewers; ordered by mean score"
-  ) +
-  theme_bw(base_size = 10) +
-  theme(legend.position = "bottom")
-
-ggsave(f_fig_tallies, p_tallies,
-       width  = 8,
-       height = max(4, 0.35 * n_distinct(sensitivity_tallies_long$attribute_name)),
-       dpi    = 300)
-
-##------------------------------------------------------------------------------
-## Figure 3 - Directional effect summary by stock
-
-dir_prop <- qa_dir_summary %>%
-  group_by(stock_name) %>%
-  mutate(prop = total_tally / sum(total_tally)) %>%
-  ungroup() %>%
-  mutate(
-    effect_category = factor(effect_category,
-                             levels = c("Positive", "Neutral", "Negative"))
-  )
-
-dir_colors <- c(
-  "Positive" = "#2c7bb6",
-  "Neutral"  = "#ffffbf",
-  "Negative" = "#d7191c"
-)
-
-stock_order_dir <- dir_prop %>%
-  filter(effect_category == "Positive") %>%
-  arrange(prop) %>%
-  pull(stock_name)
-
-p_dir <- ggplot(
-  dir_prop,
-  aes(
-    x    = prop,
-    y    = factor(stock_name, levels = stock_order_dir),
-    fill = effect_category
-  )
-) +
-  geom_col(width = 0.75) +
-  scale_fill_manual(values = dir_colors, name = "Effect") +
-  scale_x_continuous(labels = percent_format(accuracy = 1),
-                     expand  = c(0, 0)) +
-  labs(
-    x        = "Proportion of tallies",
-    y        = NULL,
-    title    = "Directional effect by stock",
-    subtitle = "Proportion of reviewer tallies: positive / neutral / negative"
-  ) +
-  theme_bw(base_size = 10) +
-  theme(legend.position = "bottom")
-
-ggsave(f_fig_dir, p_dir,
-       width  = 7,
-       height = max(4, 0.3 * n_distinct(dir_prop$stock_name)),
-       dpi    = 300)
-
-message("QA tables written to:  ", qa_dir)
-message("Figures written to:    ", fig_dir)
 
