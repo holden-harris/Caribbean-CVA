@@ -85,20 +85,16 @@ dir.create(final_dir,        recursive = TRUE, showWarnings = FALSE)
 f_sens_tallies <- file.path(input_dir,
                             "table_sensitivity_tallies_long.csv")
 
-f_sens_means   <- file.path(in_dir,
-                            "final-attribute-scores",
+f_attr_means   <- file.path(in_dir,
+                            "overall-vulnerability-rankings",
                             "attribute_means_uscar.csv")
 
-f_exp_means    <- file.path(in_dir,
-                            "final-attribute-scores",
-                            "exposure_factor_means_uscar.csv")
-
 f_components   <- file.path(in_dir,
-                            "final-attribute-scores",
+                            "overall-vulnerability-rankings",
                             "component_scores_uscar.csv")
 
 f_vuln         <- file.path(in_dir,
-                            "final-attribute-scores",
+                            "overall-vulnerability-rankings",
                             "overall_vulnerability_scores_uscar.csv")
 
 f_metadata     <- file.path(input_dir,
@@ -109,10 +105,30 @@ f_metadata     <- file.path(input_dir,
 ## Step 1 - Read compiled score inputs
 
 sens_tallies_raw <- read_csv(f_sens_tallies, show_col_types = FALSE)
-sens_means_raw   <- read_csv(f_sens_means,   show_col_types = FALSE)
-exp_means_raw    <- read_csv(f_exp_means,    show_col_types = FALSE)
+
+## Read unified attribute means table and split into Sensitivity and Exposure
+attr_means_raw   <- read_csv(f_attr_means, show_col_types = FALSE)
+
+sens_means_raw <- attr_means_raw %>%
+  filter(attribute_type == "Sensitivity") %>%
+  rename(mean_score = attribute_mean)
+
+exp_means_raw <- attr_means_raw %>%
+  filter(attribute_type == "Exposure", score_type == "Calculated") %>%
+  rename(mean_score = attribute_mean, exposure_factor = attribute_name)
+
 components_raw   <- read_csv(f_components,   show_col_types = FALSE)
-vuln_raw         <- read_csv(f_vuln,         show_col_types = FALSE)
+
+## Read vulnerability table and rename abbreviated columns to full names
+vuln_raw <- read_csv(f_vuln, show_col_types = FALSE) %>%
+  rename(
+    exposure_score_numeric      = Exp_score,
+    exposure_rank               = Exp_rank,
+    sensitivity_score_numeric   = Sens_score,
+    sensitivity_rank            = Sens_rank,
+    vulnerability_score_numeric = Vuln_score,
+    vulnerability_rank          = Vuln_rank
+  )
 
 metadata_raw <- if(file.exists(f_metadata)) {
   read_csv(f_metadata, show_col_types = FALSE)
@@ -299,6 +315,7 @@ standardize_attribute_names <- function(x) {
   ## Optional project-specific recodes
   x_std <- case_when(
     x_std == "Stock Size/Status" ~ "Stock Size Status",
+    x_std == "Stock size/status" ~ "Stock Size Status",
     TRUE ~ x_std
   )
   
