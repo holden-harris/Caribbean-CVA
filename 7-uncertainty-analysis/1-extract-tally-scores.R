@@ -34,9 +34,7 @@ library(purrr)
 library(readr)
 library(stringr)
 library(tibble)
-library(ggplot2)
-library(forcats)
-library(scales)
+
 
 ##------------------------------------------------------------------------------
 ## Directories
