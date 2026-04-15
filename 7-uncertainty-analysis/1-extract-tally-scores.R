@@ -23,7 +23,7 @@
 ##   vulnerability uncertainty analyses
 
 ##------------------------------------------------------------------------------
-## User setup
+## Libraries
 
 rm(list = ls()); gc()
 
@@ -36,7 +36,7 @@ library(stringr)
 library(tibble)
 
 ##------------------------------------------------------------------------------
-## User setup - directories
+## Directories
 
 proj_dir <- "."
 in_dir   <- file.path(proj_dir, "data", "final-scores")
@@ -45,7 +45,7 @@ out_dir  <- file.path(proj_dir, "outputs", "analyses", "1-inputs")
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 ##------------------------------------------------------------------------------
-## User setup - output files
+## Output files
 
 f_sens_tallies <- file.path(out_dir,
                             "table_sensitivity_tallies_long.csv")
@@ -60,7 +60,7 @@ f_all_tallies  <- file.path(out_dir,
                             "table_all_qualitative_tallies_long.csv")
 
 ##------------------------------------------------------------------------------
-## User setup - workbook files
+## Workbook files
 ##
 ## Assumption:
 ## - One workbook per scorer/reviewer
@@ -79,7 +79,7 @@ if(length(workbook_files) == 0) {
 }
 
 ##------------------------------------------------------------------------------
-## Helper functions
+## Functions
 
 standardize_stock_names <- function(x) {
   x %>%
@@ -92,26 +92,28 @@ standardize_stock_names <- function(x) {
 }
 
 standardize_attribute_names <- function(x) {
-  x %>%
+  x_std <- x %>%
     as.character() %>%
     str_replace_all("[\u2018\u2019]", "'") %>%
     str_replace_all("[\u201C\u201D]", "\"") %>%
     str_replace_all("[\u2013\u2014]", "-") %>%
     str_replace_all("_", " ") %>%
-    str_squish() %>%
-    dplyr::case_when(
-      . == "Stock Size/Status" ~ "Stock Size Status",
-      TRUE ~ .
-    )
+    str_squish()
+
+  dplyr::case_when(
+    x_std == "Stock Size/Status" ~ "Stock Size Status",
+    x_std == "Stock size/status" ~ "Stock Size Status",
+    TRUE ~ x_std
+  )
 }
 
-parse_scorer_id <- function(file_path) {
+parse_reviewer_id <- function(file_path) {
   ## Purpose:
-  ## - Create a scorer/reviewer ID from the workbook filename
+  ## - Create a reviewer ID from the workbook filename
   ##
   ## Notes:
   ## - Replace this if your file-naming convention supports a better parser
-  
+
   basename(file_path) %>%
     tools::file_path_sans_ext() %>%
     str_squish()
@@ -130,16 +132,67 @@ get_stock_sheets <- function(wb) {
 safe_numeric <- function(x) {
   ## Purpose:
   ## - Convert blank strings and NULL-like values to NA, otherwise numeric
-  
+
   if(is.null(x)) return(NA_real_)
-  
+
   x_chr <- as.character(x)
-  
+
   if(length(x_chr) == 0 || is.na(x_chr) || str_squish(x_chr) == "") {
     return(NA_real_)
   }
-  
+
   suppressWarnings(as.numeric(x_chr))
+}
+
+safe_read_cell <- function(wb, sheet_name, row, col) {
+  ## Purpose:
+  ## - Read a single cell from a workbook and return its value as a character
+  ## - Returns NA_character_ when readWorkbook finds no data in the range
+  ##
+  ## Notes:
+  ## - readWorkbook returns NULL (not an empty data frame) for fully empty rows,
+  ##   which causes as.matrix() to call array(data = NULL, ...) and crash.
+  ##   This wrapper catches that case before it reaches as.matrix().
+
+  result <- suppressWarnings(
+    readWorkbook(wb, sheet = sheet_name, rows = row, cols = col,
+                 colNames = FALSE)
+  )
+
+  if(is.null(result) || nrow(result) == 0 || ncol(result) == 0) {
+    return(NA_character_)
+  }
+
+  val <- result[[1]][[1]]
+
+  if(is.null(val) || length(val) == 0) return(NA_character_)
+
+  as.character(val)
+}
+
+safe_read_tally_row <- function(wb, sheet_name, row, cols) {
+  ## Purpose:
+  ## - Read a row of tally cells and return a named list of numeric values
+  ## - Returns NA for each column when readWorkbook finds no data
+  ##
+  ## Notes:
+  ## - Same NULL-return problem as safe_read_cell applies here
+
+  result <- suppressWarnings(
+    readWorkbook(wb, sheet = sheet_name, rows = row, cols = cols,
+                 colNames = FALSE)
+  )
+
+  n_cols <- length(cols)
+
+  if(is.null(result) || nrow(result) == 0) {
+    return(rep(list(NA_real_), n_cols))
+  }
+
+  lapply(seq_len(n_cols), function(i) {
+    if(i > ncol(result)) return(NA_real_)
+    safe_numeric(result[[i]])
+  })
 }
 
 extract_rank_tally_block <- function(wb,
@@ -147,7 +200,7 @@ extract_rank_tally_block <- function(wb,
                                      rows,
                                      attribute_col,
                                      attribute_type,
-                                     scorer_id,
+                                     reviewer_id,
                                      source_file) {
   ## Purpose:
   ## - Extract one block of FINAL SCORE rank tallies where rows correspond to
@@ -164,56 +217,21 @@ extract_rank_tally_block <- function(wb,
   out <- map_dfr(
     rows,
     function(r) {
-      
-      attribute_name <- readWorkbook(
-        wb,
-        sheet = sheet_name,
-        rows = r,
-        cols = attribute_col,
-        colNames = FALSE
-      ) %>%
-        as.matrix() %>%
-        as.vector() %>%
-        .[1]
-      
-      final_score <- readWorkbook(
-        wb,
-        sheet = sheet_name,
-        rows = r,
-        cols = 11,
-        colNames = FALSE
-      ) %>%
-        as.matrix() %>%
-        as.vector() %>%
-        .[1]
-      
-      data_quality_index <- readWorkbook(
-        wb,
-        sheet = sheet_name,
-        rows = r,
-        cols = 12,
-        colNames = FALSE
-      ) %>%
-        as.matrix() %>%
-        as.vector() %>%
-        .[1]
-      
-      tallies <- readWorkbook(
-        wb,
-        sheet = sheet_name,
-        rows = r,
-        cols = 13:16,
-        colNames = FALSE
-      )
-      
-      tally_low       <- safe_numeric(tallies[[1]])
-      tally_moderate  <- safe_numeric(tallies[[2]])
-      tally_high      <- safe_numeric(tallies[[3]])
-      tally_very_high <- safe_numeric(tallies[[4]])
+
+      attribute_name     <- safe_read_cell(wb, sheet_name, r, attribute_col)
+      final_score        <- safe_read_cell(wb, sheet_name, r, 11)
+      data_quality_index <- safe_read_cell(wb, sheet_name, r, 12)
+
+      tallies <- safe_read_tally_row(wb, sheet_name, r, 13:16)
+
+      tally_low       <- tallies[[1]]
+      tally_moderate  <- tallies[[2]]
+      tally_high      <- tallies[[3]]
+      tally_very_high <- tallies[[4]]
       
       tibble(
         source_file = basename(source_file),
-        scorer_id = scorer_id,
+        reviewer_id = reviewer_id,
         stock_name = standardize_stock_names(sheet_name),
         sheet_name = sheet_name,
         attribute_type = attribute_type,
@@ -238,7 +256,7 @@ extract_rank_tally_block <- function(wb,
 
 extract_directional_effect_block <- function(wb,
                                              sheet_name,
-                                             scorer_id,
+                                             reviewer_id,
                                              source_file) {
   ## Purpose:
   ## - Extract final directional effect tallies from rows 38:40
@@ -258,31 +276,12 @@ extract_directional_effect_block <- function(wb,
     rows,
     function(r) {
       
-      effect_category <- readWorkbook(
-        wb,
-        sheet = sheet_name,
-        rows = r,
-        cols = 2,
-        colNames = FALSE
-      ) %>%
-        as.matrix() %>%
-        as.vector() %>%
-        .[1]
-      
-      tally_val <- readWorkbook(
-        wb,
-        sheet = sheet_name,
-        rows = r,
-        cols = 13,
-        colNames = FALSE
-      ) %>%
-        as.matrix() %>%
-        as.vector() %>%
-        .[1]
+      effect_category <- safe_read_cell(wb, sheet_name, r, 2)
+      tally_val       <- safe_read_cell(wb, sheet_name, r, 13)
       
       tibble(
         source_file = basename(source_file),
-        scorer_id = scorer_id,
+        reviewer_id = reviewer_id,
         stock_name = standardize_stock_names(sheet_name),
         sheet_name = sheet_name,
         effect_category = str_squish(as.character(effect_category)),
@@ -307,7 +306,7 @@ for(file_i in workbook_files) {
   
   message("Reading workbook: ", basename(file_i))
   
-  scorer_id_i <- parse_scorer_id(file_i)
+  reviewer_id_i <- parse_reviewer_id(file_i)
   wb_i <- loadWorkbook(file_i)
   
   stock_sheets_i <- get_stock_sheets(wb_i)
@@ -329,27 +328,27 @@ for(file_i in workbook_files) {
       rows = 17:19,
       attribute_col = 3,
       attribute_type = "Qualitative Exposure",
-      scorer_id = scorer_id_i,
+      reviewer_id = reviewer_id_i,
       source_file = file_i
     )
-    
+
     ##--------------------------------------------------------------------------
     ## Sensitivity Attributes
     ##
     ## Rows 21:28
     ## Attribute names in column B
     ## Final rank tallies in M:P
-    
+
     sens_i <- extract_rank_tally_block(
       wb = wb_i,
       sheet_name = sheet_i,
       rows = 21:28,
       attribute_col = 2,
       attribute_type = "Sensitivity",
-      scorer_id = scorer_id_i,
+      reviewer_id = reviewer_id_i,
       source_file = file_i
     )
-    
+
     ##--------------------------------------------------------------------------
     ## Rigidity Attributes
     ##
@@ -361,28 +360,28 @@ for(file_i in workbook_files) {
     ## - To align with the current Caribbean workflow, we relabel these as
     ##   Sensitivity because they are part of the overall qualitative
     ##   sensitivity-side component used in vulnerability scoring
-    
+
     rigidity_i <- extract_rank_tally_block(
       wb = wb_i,
       sheet_name = sheet_i,
       rows = 30:35,
       attribute_col = 2,
       attribute_type = "Sensitivity",
-      scorer_id = scorer_id_i,
+      reviewer_id = reviewer_id_i,
       source_file = file_i
     )
-    
+
     ##--------------------------------------------------------------------------
     ## Directional Effect
     ##
     ## Rows 38:40
     ## Labels in column B
     ## Final tallies in column M
-    
+
     directional_i <- extract_directional_effect_block(
       wb = wb_i,
       sheet_name = sheet_i,
-      scorer_id = scorer_id_i,
+      reviewer_id = reviewer_id_i,
       source_file = file_i
     )
     
@@ -417,21 +416,21 @@ for(file_i in workbook_files) {
 
 qualitative_exposure_tallies_long <- qualitative_exposure_tallies_long %>%
   filter(!is.na(attribute_name), attribute_name != "") %>%
-  arrange(stock_name, scorer_id, row_num)
+  arrange(stock_name, reviewer_id, row_num)
 
 sensitivity_tallies_long <- sensitivity_tallies_long %>%
   filter(!is.na(attribute_name), attribute_name != "") %>%
-  arrange(stock_name, scorer_id, row_num)
+  arrange(stock_name, reviewer_id, row_num)
 
 directional_effect_tallies_long <- directional_effect_tallies_long %>%
   filter(!is.na(effect_category), effect_category != "") %>%
-  arrange(stock_name, scorer_id, row_num)
+  arrange(stock_name, reviewer_id, row_num)
 
 all_qualitative_tallies_long <- bind_rows(
   qualitative_exposure_tallies_long,
   sensitivity_tallies_long
 ) %>%
-  arrange(stock_name, scorer_id, attribute_type, row_num)
+  arrange(stock_name, reviewer_id, attribute_type, row_num)
 
 ##------------------------------------------------------------------------------
 ## Step 3 - Write output tables
