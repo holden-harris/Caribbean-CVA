@@ -1,0 +1,976 @@
+stock_name,quantitative_exposure_factor,full_names,spatial_extent,attribute_score
+Atlantic Herring,bs,Bottom salinity,Western Atlantic,3.102
+Atlantic Herring,bs,Bottom salinity,Caribbean Sea,3.361
+Atlantic Herring,bs,Bottom salinity,U.S. Caribbean,2.238
+Atlantic Herring,bt,Bottom temperature,Western Atlantic,3.865
+Atlantic Herring,bt,Bottom temperature,Caribbean Sea,3.853
+Atlantic Herring,bt,Bottom temperature,U.S. Caribbean,3.571
+Atlantic Herring,chl,Chlorophyll-a concentration,Western Atlantic,1.366
+Atlantic Herring,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Atlantic Herring,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Atlantic Herring,mld,Mixed layer depth,Western Atlantic,1.078
+Atlantic Herring,mld,Mixed layer depth,Caribbean Sea,1.02
+Atlantic Herring,mld,Mixed layer depth,U.S. Caribbean,1
+Atlantic Herring,msstg,Mean sea surface temperature gradient,Western Atlantic,1.538
+Atlantic Herring,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Atlantic Herring,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Atlantic Herring,o200,Oxygen at 200m,Western Atlantic,1.711
+Atlantic Herring,o200,Oxygen at 200m,Caribbean Sea,1.865
+Atlantic Herring,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Atlantic Herring,ph,Surface pH,Western Atlantic,3.981
+Atlantic Herring,ph,Surface pH,Caribbean Sea,3.992
+Atlantic Herring,ph,Surface pH,U.S. Caribbean,4
+Atlantic Herring,pp,Primary production,Western Atlantic,1.175
+Atlantic Herring,pp,Primary production,Caribbean Sea,1.142
+Atlantic Herring,pp,Primary production,U.S. Caribbean,1
+Atlantic Herring,precip,Precipitation,Western Atlantic,1.129
+Atlantic Herring,precip,Precipitation,Caribbean Sea,1.125
+Atlantic Herring,precip,Precipitation,U.S. Caribbean,1
+Atlantic Herring,sso,Sea surface oxygen,Western Atlantic,3.847
+Atlantic Herring,sso,Sea surface oxygen,Caribbean Sea,3.943
+Atlantic Herring,sso,Sea surface oxygen,U.S. Caribbean,4
+Atlantic Herring,sss,Sea surface salinity,Western Atlantic,3.074
+Atlantic Herring,sss,Sea surface salinity,Caribbean Sea,3.541
+Atlantic Herring,sss,Sea surface salinity,U.S. Caribbean,3.143
+Atlantic Herring,sst,Sea surface temperature,Western Atlantic,3.986
+Atlantic Herring,sst,Sea surface temperature,Caribbean Sea,3.997
+Atlantic Herring,sst,Sea surface temperature,U.S. Caribbean,4
+Atlantic Herring,swsm,Surface wind speed magnitude,Western Atlantic,1.169
+Atlantic Herring,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Atlantic Herring,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Ballyhoo,bs,Bottom salinity,Western Atlantic,3.178
+Ballyhoo,bs,Bottom salinity,Caribbean Sea,3.304
+Ballyhoo,bs,Bottom salinity,U.S. Caribbean,2.208
+Ballyhoo,bt,Bottom temperature,Western Atlantic,3.857
+Ballyhoo,bt,Bottom temperature,Caribbean Sea,3.829
+Ballyhoo,bt,Bottom temperature,U.S. Caribbean,3.5
+Ballyhoo,chl,Chlorophyll-a concentration,Western Atlantic,1.313
+Ballyhoo,chl,Chlorophyll-a concentration,Caribbean Sea,1.332
+Ballyhoo,chl,Chlorophyll-a concentration,U.S. Caribbean,1.042
+Ballyhoo,mld,Mixed layer depth,Western Atlantic,1.044
+Ballyhoo,mld,Mixed layer depth,Caribbean Sea,1.016
+Ballyhoo,mld,Mixed layer depth,U.S. Caribbean,1
+Ballyhoo,msstg,Mean sea surface temperature gradient,Western Atlantic,1.474
+Ballyhoo,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.444
+Ballyhoo,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.792
+Ballyhoo,o200,Oxygen at 200m,Western Atlantic,1.691
+Ballyhoo,o200,Oxygen at 200m,Caribbean Sea,1.824
+Ballyhoo,o200,Oxygen at 200m,U.S. Caribbean,2.917
+Ballyhoo,ph,Surface pH,Western Atlantic,3.984
+Ballyhoo,ph,Surface pH,Caribbean Sea,3.993
+Ballyhoo,ph,Surface pH,U.S. Caribbean,4
+Ballyhoo,pp,Primary production,Western Atlantic,1.141
+Ballyhoo,pp,Primary production,Caribbean Sea,1.111
+Ballyhoo,pp,Primary production,U.S. Caribbean,1
+Ballyhoo,precip,Precipitation,Western Atlantic,1.122
+Ballyhoo,precip,Precipitation,Caribbean Sea,1.118
+Ballyhoo,precip,Precipitation,U.S. Caribbean,1
+Ballyhoo,sso,Sea surface oxygen,Western Atlantic,3.891
+Ballyhoo,sso,Sea surface oxygen,Caribbean Sea,3.955
+Ballyhoo,sso,Sea surface oxygen,U.S. Caribbean,4
+Ballyhoo,sss,Sea surface salinity,Western Atlantic,3.245
+Ballyhoo,sss,Sea surface salinity,Caribbean Sea,3.539
+Ballyhoo,sss,Sea surface salinity,U.S. Caribbean,3.125
+Ballyhoo,sst,Sea surface temperature,Western Atlantic,3.996
+Ballyhoo,sst,Sea surface temperature,Caribbean Sea,3.998
+Ballyhoo,sst,Sea surface temperature,U.S. Caribbean,4
+Ballyhoo,swsm,Surface wind speed magnitude,Western Atlantic,1.142
+Ballyhoo,swsm,Surface wind speed magnitude,Caribbean Sea,1.183
+Ballyhoo,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Blue Runner,bs,Bottom salinity,Western Atlantic,3.035
+Blue Runner,bs,Bottom salinity,Caribbean Sea,3.361
+Blue Runner,bs,Bottom salinity,U.S. Caribbean,2.238
+Blue Runner,bt,Bottom temperature,Western Atlantic,3.847
+Blue Runner,bt,Bottom temperature,Caribbean Sea,3.853
+Blue Runner,bt,Bottom temperature,U.S. Caribbean,3.571
+Blue Runner,chl,Chlorophyll-a concentration,Western Atlantic,1.386
+Blue Runner,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Blue Runner,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Blue Runner,mld,Mixed layer depth,Western Atlantic,1.095
+Blue Runner,mld,Mixed layer depth,Caribbean Sea,1.02
+Blue Runner,mld,Mixed layer depth,U.S. Caribbean,1
+Blue Runner,msstg,Mean sea surface temperature gradient,Western Atlantic,1.566
+Blue Runner,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Blue Runner,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Blue Runner,o200,Oxygen at 200m,Western Atlantic,1.718
+Blue Runner,o200,Oxygen at 200m,Caribbean Sea,1.865
+Blue Runner,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Blue Runner,ph,Surface pH,Western Atlantic,3.981
+Blue Runner,ph,Surface pH,Caribbean Sea,3.992
+Blue Runner,ph,Surface pH,U.S. Caribbean,4
+Blue Runner,pp,Primary production,Western Atlantic,1.182
+Blue Runner,pp,Primary production,Caribbean Sea,1.142
+Blue Runner,pp,Primary production,U.S. Caribbean,1
+Blue Runner,precip,Precipitation,Western Atlantic,1.132
+Blue Runner,precip,Precipitation,Caribbean Sea,1.125
+Blue Runner,precip,Precipitation,U.S. Caribbean,1
+Blue Runner,sso,Sea surface oxygen,Western Atlantic,3.833
+Blue Runner,sso,Sea surface oxygen,Caribbean Sea,3.943
+Blue Runner,sso,Sea surface oxygen,U.S. Caribbean,4
+Blue Runner,sss,Sea surface salinity,Western Atlantic,3.012
+Blue Runner,sss,Sea surface salinity,Caribbean Sea,3.541
+Blue Runner,sss,Sea surface salinity,U.S. Caribbean,3.143
+Blue Runner,sst,Sea surface temperature,Western Atlantic,3.978
+Blue Runner,sst,Sea surface temperature,Caribbean Sea,3.997
+Blue Runner,sst,Sea surface temperature,U.S. Caribbean,4
+Blue Runner,swsm,Surface wind speed magnitude,Western Atlantic,1.166
+Blue Runner,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Blue Runner,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Diadema,bs,Bottom salinity,Western Atlantic,3.149
+Diadema,bs,Bottom salinity,Caribbean Sea,3.359
+Diadema,bs,Bottom salinity,U.S. Caribbean,2.238
+Diadema,bt,Bottom temperature,Western Atlantic,3.866
+Diadema,bt,Bottom temperature,Caribbean Sea,3.854
+Diadema,bt,Bottom temperature,U.S. Caribbean,3.571
+Diadema,chl,Chlorophyll-a concentration,Western Atlantic,1.399
+Diadema,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Diadema,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Diadema,mld,Mixed layer depth,Western Atlantic,1.04
+Diadema,mld,Mixed layer depth,Caribbean Sea,1.025
+Diadema,mld,Mixed layer depth,U.S. Caribbean,1
+Diadema,msstg,Mean sea surface temperature gradient,Western Atlantic,1.491
+Diadema,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Diadema,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Diadema,o200,Oxygen at 200m,Western Atlantic,1.739
+Diadema,o200,Oxygen at 200m,Caribbean Sea,1.865
+Diadema,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Diadema,ph,Surface pH,Western Atlantic,3.978
+Diadema,ph,Surface pH,Caribbean Sea,3.992
+Diadema,ph,Surface pH,U.S. Caribbean,4
+Diadema,pp,Primary production,Western Atlantic,1.176
+Diadema,pp,Primary production,Caribbean Sea,1.146
+Diadema,pp,Primary production,U.S. Caribbean,1
+Diadema,precip,Precipitation,Western Atlantic,1.149
+Diadema,precip,Precipitation,Caribbean Sea,1.124
+Diadema,precip,Precipitation,U.S. Caribbean,1
+Diadema,sso,Sea surface oxygen,Western Atlantic,3.874
+Diadema,sso,Sea surface oxygen,Caribbean Sea,3.944
+Diadema,sso,Sea surface oxygen,U.S. Caribbean,4
+Diadema,sss,Sea surface salinity,Western Atlantic,3.146
+Diadema,sss,Sea surface salinity,Caribbean Sea,3.535
+Diadema,sss,Sea surface salinity,U.S. Caribbean,3.143
+Diadema,sst,Sea surface temperature,Western Atlantic,3.998
+Diadema,sst,Sea surface temperature,Caribbean Sea,3.997
+Diadema,sst,Sea surface temperature,U.S. Caribbean,4
+Diadema,swsm,Surface wind speed magnitude,Western Atlantic,1.179
+Diadema,swsm,Surface wind speed magnitude,Caribbean Sea,1.214
+Diadema,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Dolphinfish,bs,Bottom salinity,Western Atlantic,3.178
+Dolphinfish,bs,Bottom salinity,Caribbean Sea,3.213
+Dolphinfish,bs,Bottom salinity,U.S. Caribbean,2.208
+Dolphinfish,bt,Bottom temperature,Western Atlantic,3.428
+Dolphinfish,bt,Bottom temperature,Caribbean Sea,3.617
+Dolphinfish,bt,Bottom temperature,U.S. Caribbean,3.5
+Dolphinfish,chl,Chlorophyll-a concentration,Western Atlantic,1.388
+Dolphinfish,chl,Chlorophyll-a concentration,Caribbean Sea,1.418
+Dolphinfish,chl,Chlorophyll-a concentration,U.S. Caribbean,1.042
+Dolphinfish,mld,Mixed layer depth,Western Atlantic,1.237
+Dolphinfish,mld,Mixed layer depth,Caribbean Sea,1.013
+Dolphinfish,mld,Mixed layer depth,U.S. Caribbean,1
+Dolphinfish,msstg,Mean sea surface temperature gradient,Western Atlantic,1.465
+Dolphinfish,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.455
+Dolphinfish,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.792
+Dolphinfish,o200,Oxygen at 200m,Western Atlantic,2.028
+Dolphinfish,o200,Oxygen at 200m,Caribbean Sea,2.125
+Dolphinfish,o200,Oxygen at 200m,U.S. Caribbean,2.917
+Dolphinfish,ph,Surface pH,Western Atlantic,3.995
+Dolphinfish,ph,Surface pH,Caribbean Sea,3.996
+Dolphinfish,ph,Surface pH,U.S. Caribbean,4
+Dolphinfish,pp,Primary production,Western Atlantic,1.123
+Dolphinfish,pp,Primary production,Caribbean Sea,1.102
+Dolphinfish,pp,Primary production,U.S. Caribbean,1
+Dolphinfish,precip,Precipitation,Western Atlantic,1.16
+Dolphinfish,precip,Precipitation,Caribbean Sea,1.089
+Dolphinfish,precip,Precipitation,U.S. Caribbean,1
+Dolphinfish,sso,Sea surface oxygen,Western Atlantic,3.717
+Dolphinfish,sso,Sea surface oxygen,Caribbean Sea,3.864
+Dolphinfish,sso,Sea surface oxygen,U.S. Caribbean,4
+Dolphinfish,sss,Sea surface salinity,Western Atlantic,2.898
+Dolphinfish,sss,Sea surface salinity,Caribbean Sea,3.241
+Dolphinfish,sss,Sea surface salinity,U.S. Caribbean,3.125
+Dolphinfish,sst,Sea surface temperature,Western Atlantic,3.86
+Dolphinfish,sst,Sea surface temperature,Caribbean Sea,3.994
+Dolphinfish,sst,Sea surface temperature,U.S. Caribbean,4
+Dolphinfish,swsm,Surface wind speed magnitude,Western Atlantic,1.193
+Dolphinfish,swsm,Surface wind speed magnitude,Caribbean Sea,1.157
+Dolphinfish,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Gray Angelfish,bs,Bottom salinity,Western Atlantic,3.18
+Gray Angelfish,bs,Bottom salinity,Caribbean Sea,3.361
+Gray Angelfish,bs,Bottom salinity,U.S. Caribbean,2.238
+Gray Angelfish,bt,Bottom temperature,Western Atlantic,3.87
+Gray Angelfish,bt,Bottom temperature,Caribbean Sea,3.853
+Gray Angelfish,bt,Bottom temperature,U.S. Caribbean,3.571
+Gray Angelfish,chl,Chlorophyll-a concentration,Western Atlantic,1.385
+Gray Angelfish,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Gray Angelfish,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Gray Angelfish,mld,Mixed layer depth,Western Atlantic,1.045
+Gray Angelfish,mld,Mixed layer depth,Caribbean Sea,1.02
+Gray Angelfish,mld,Mixed layer depth,U.S. Caribbean,1
+Gray Angelfish,msstg,Mean sea surface temperature gradient,Western Atlantic,1.496
+Gray Angelfish,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Gray Angelfish,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Gray Angelfish,o200,Oxygen at 200m,Western Atlantic,1.738
+Gray Angelfish,o200,Oxygen at 200m,Caribbean Sea,1.865
+Gray Angelfish,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Gray Angelfish,ph,Surface pH,Western Atlantic,3.979
+Gray Angelfish,ph,Surface pH,Caribbean Sea,3.992
+Gray Angelfish,ph,Surface pH,U.S. Caribbean,4
+Gray Angelfish,pp,Primary production,Western Atlantic,1.177
+Gray Angelfish,pp,Primary production,Caribbean Sea,1.142
+Gray Angelfish,pp,Primary production,U.S. Caribbean,1
+Gray Angelfish,precip,Precipitation,Western Atlantic,1.145
+Gray Angelfish,precip,Precipitation,Caribbean Sea,1.125
+Gray Angelfish,precip,Precipitation,U.S. Caribbean,1
+Gray Angelfish,sso,Sea surface oxygen,Western Atlantic,3.878
+Gray Angelfish,sso,Sea surface oxygen,Caribbean Sea,3.943
+Gray Angelfish,sso,Sea surface oxygen,U.S. Caribbean,4
+Gray Angelfish,sss,Sea surface salinity,Western Atlantic,3.178
+Gray Angelfish,sss,Sea surface salinity,Caribbean Sea,3.541
+Gray Angelfish,sss,Sea surface salinity,U.S. Caribbean,3.143
+Gray Angelfish,sst,Sea surface temperature,Western Atlantic,3.998
+Gray Angelfish,sst,Sea surface temperature,Caribbean Sea,3.997
+Gray Angelfish,sst,Sea surface temperature,U.S. Caribbean,4
+Gray Angelfish,swsm,Surface wind speed magnitude,Western Atlantic,1.173
+Gray Angelfish,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Gray Angelfish,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Hogfish,bs,Bottom salinity,Western Atlantic,3.221
+Hogfish,bs,Bottom salinity,Caribbean Sea,3.363
+Hogfish,bs,Bottom salinity,U.S. Caribbean,2.238
+Hogfish,bt,Bottom temperature,Western Atlantic,3.866
+Hogfish,bt,Bottom temperature,Caribbean Sea,3.85
+Hogfish,bt,Bottom temperature,U.S. Caribbean,3.571
+Hogfish,chl,Chlorophyll-a concentration,Western Atlantic,1.367
+Hogfish,chl,Chlorophyll-a concentration,Caribbean Sea,1.384
+Hogfish,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Hogfish,mld,Mixed layer depth,Western Atlantic,1.038
+Hogfish,mld,Mixed layer depth,Caribbean Sea,1.023
+Hogfish,mld,Mixed layer depth,U.S. Caribbean,1
+Hogfish,msstg,Mean sea surface temperature gradient,Western Atlantic,1.503
+Hogfish,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Hogfish,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Hogfish,o200,Oxygen at 200m,Western Atlantic,1.758
+Hogfish,o200,Oxygen at 200m,Caribbean Sea,1.865
+Hogfish,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Hogfish,ph,Surface pH,Western Atlantic,3.978
+Hogfish,ph,Surface pH,Caribbean Sea,3.992
+Hogfish,ph,Surface pH,U.S. Caribbean,4
+Hogfish,pp,Primary production,Western Atlantic,1.173
+Hogfish,pp,Primary production,Caribbean Sea,1.141
+Hogfish,pp,Primary production,U.S. Caribbean,1
+Hogfish,precip,Precipitation,Western Atlantic,1.15
+Hogfish,precip,Precipitation,Caribbean Sea,1.127
+Hogfish,precip,Precipitation,U.S. Caribbean,1
+Hogfish,sso,Sea surface oxygen,Western Atlantic,3.871
+Hogfish,sso,Sea surface oxygen,Caribbean Sea,3.938
+Hogfish,sso,Sea surface oxygen,U.S. Caribbean,4
+Hogfish,sss,Sea surface salinity,Western Atlantic,3.239
+Hogfish,sss,Sea surface salinity,Caribbean Sea,3.537
+Hogfish,sss,Sea surface salinity,U.S. Caribbean,3.143
+Hogfish,sst,Sea surface temperature,Western Atlantic,3.998
+Hogfish,sst,Sea surface temperature,Caribbean Sea,3.997
+Hogfish,sst,Sea surface temperature,U.S. Caribbean,4
+Hogfish,swsm,Surface wind speed magnitude,Western Atlantic,1.178
+Hogfish,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Hogfish,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+King Mackerel,bs,Bottom salinity,Western Atlantic,3.136
+King Mackerel,bs,Bottom salinity,Caribbean Sea,3.211
+King Mackerel,bs,Bottom salinity,U.S. Caribbean,2.208
+King Mackerel,bt,Bottom temperature,Western Atlantic,3.828
+King Mackerel,bt,Bottom temperature,Caribbean Sea,3.786
+King Mackerel,bt,Bottom temperature,U.S. Caribbean,3.5
+King Mackerel,chl,Chlorophyll-a concentration,Western Atlantic,1.287
+King Mackerel,chl,Chlorophyll-a concentration,Caribbean Sea,1.301
+King Mackerel,chl,Chlorophyll-a concentration,U.S. Caribbean,1.042
+King Mackerel,mld,Mixed layer depth,Western Atlantic,1.058
+King Mackerel,mld,Mixed layer depth,Caribbean Sea,1.023
+King Mackerel,mld,Mixed layer depth,U.S. Caribbean,1
+King Mackerel,msstg,Mean sea surface temperature gradient,Western Atlantic,1.531
+King Mackerel,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.505
+King Mackerel,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.792
+King Mackerel,o200,Oxygen at 200m,Western Atlantic,1.824
+King Mackerel,o200,Oxygen at 200m,Caribbean Sea,2.07
+King Mackerel,o200,Oxygen at 200m,U.S. Caribbean,2.917
+King Mackerel,ph,Surface pH,Western Atlantic,4
+King Mackerel,ph,Surface pH,Caribbean Sea,4
+King Mackerel,ph,Surface pH,U.S. Caribbean,4
+King Mackerel,pp,Primary production,Western Atlantic,1.159
+King Mackerel,pp,Primary production,Caribbean Sea,1.15
+King Mackerel,pp,Primary production,U.S. Caribbean,1
+King Mackerel,precip,Precipitation,Western Atlantic,1.152
+King Mackerel,precip,Precipitation,Caribbean Sea,1.152
+King Mackerel,precip,Precipitation,U.S. Caribbean,1
+King Mackerel,sso,Sea surface oxygen,Western Atlantic,3.922
+King Mackerel,sso,Sea surface oxygen,Caribbean Sea,3.979
+King Mackerel,sso,Sea surface oxygen,U.S. Caribbean,4
+King Mackerel,sss,Sea surface salinity,Western Atlantic,3.181
+King Mackerel,sss,Sea surface salinity,Caribbean Sea,3.487
+King Mackerel,sss,Sea surface salinity,U.S. Caribbean,3.125
+King Mackerel,sst,Sea surface temperature,Western Atlantic,3.993
+King Mackerel,sst,Sea surface temperature,Caribbean Sea,4
+King Mackerel,sst,Sea surface temperature,U.S. Caribbean,4
+King Mackerel,swsm,Surface wind speed magnitude,Western Atlantic,1.121
+King Mackerel,swsm,Surface wind speed magnitude,Caribbean Sea,1.161
+King Mackerel,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Lane Snapper,bs,Bottom salinity,Western Atlantic,3.187
+Lane Snapper,bs,Bottom salinity,Caribbean Sea,3.361
+Lane Snapper,bs,Bottom salinity,U.S. Caribbean,2.238
+Lane Snapper,bt,Bottom temperature,Western Atlantic,3.871
+Lane Snapper,bt,Bottom temperature,Caribbean Sea,3.853
+Lane Snapper,bt,Bottom temperature,U.S. Caribbean,3.571
+Lane Snapper,chl,Chlorophyll-a concentration,Western Atlantic,1.382
+Lane Snapper,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Lane Snapper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Lane Snapper,mld,Mixed layer depth,Western Atlantic,1.046
+Lane Snapper,mld,Mixed layer depth,Caribbean Sea,1.02
+Lane Snapper,mld,Mixed layer depth,U.S. Caribbean,1
+Lane Snapper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.5
+Lane Snapper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Lane Snapper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Lane Snapper,o200,Oxygen at 200m,Western Atlantic,1.733
+Lane Snapper,o200,Oxygen at 200m,Caribbean Sea,1.865
+Lane Snapper,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Lane Snapper,ph,Surface pH,Western Atlantic,3.979
+Lane Snapper,ph,Surface pH,Caribbean Sea,3.992
+Lane Snapper,ph,Surface pH,U.S. Caribbean,4
+Lane Snapper,pp,Primary production,Western Atlantic,1.175
+Lane Snapper,pp,Primary production,Caribbean Sea,1.142
+Lane Snapper,pp,Primary production,U.S. Caribbean,1
+Lane Snapper,precip,Precipitation,Western Atlantic,1.143
+Lane Snapper,precip,Precipitation,Caribbean Sea,1.125
+Lane Snapper,precip,Precipitation,U.S. Caribbean,1
+Lane Snapper,sso,Sea surface oxygen,Western Atlantic,3.879
+Lane Snapper,sso,Sea surface oxygen,Caribbean Sea,3.943
+Lane Snapper,sso,Sea surface oxygen,U.S. Caribbean,4
+Lane Snapper,sss,Sea surface salinity,Western Atlantic,3.184
+Lane Snapper,sss,Sea surface salinity,Caribbean Sea,3.541
+Lane Snapper,sss,Sea surface salinity,U.S. Caribbean,3.143
+Lane Snapper,sst,Sea surface temperature,Western Atlantic,3.998
+Lane Snapper,sst,Sea surface temperature,Caribbean Sea,3.997
+Lane Snapper,sst,Sea surface temperature,U.S. Caribbean,4
+Lane Snapper,swsm,Surface wind speed magnitude,Western Atlantic,1.172
+Lane Snapper,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Lane Snapper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Misty Grouper,bs,Bottom salinity,Western Atlantic,3.261
+Misty Grouper,bs,Bottom salinity,Caribbean Sea,3.493
+Misty Grouper,bs,Bottom salinity,U.S. Caribbean,2.25
+Misty Grouper,bt,Bottom temperature,Western Atlantic,3.708
+Misty Grouper,bt,Bottom temperature,Caribbean Sea,3.951
+Misty Grouper,bt,Bottom temperature,U.S. Caribbean,3.65
+Misty Grouper,chl,Chlorophyll-a concentration,Western Atlantic,1.369
+Misty Grouper,chl,Chlorophyll-a concentration,Caribbean Sea,1.356
+Misty Grouper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.05
+Misty Grouper,mld,Mixed layer depth,Western Atlantic,1.097
+Misty Grouper,mld,Mixed layer depth,Caribbean Sea,1
+Misty Grouper,mld,Mixed layer depth,U.S. Caribbean,1
+Misty Grouper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.493
+Misty Grouper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.466
+Misty Grouper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.85
+Misty Grouper,o200,Oxygen at 200m,Western Atlantic,1.812
+Misty Grouper,o200,Oxygen at 200m,Caribbean Sea,2.124
+Misty Grouper,o200,Oxygen at 200m,U.S. Caribbean,3
+Misty Grouper,ph,Surface pH,Western Atlantic,3.979
+Misty Grouper,ph,Surface pH,Caribbean Sea,4
+Misty Grouper,ph,Surface pH,U.S. Caribbean,4
+Misty Grouper,pp,Primary production,Western Atlantic,1.16
+Misty Grouper,pp,Primary production,Caribbean Sea,1.124
+Misty Grouper,pp,Primary production,U.S. Caribbean,1
+Misty Grouper,precip,Precipitation,Western Atlantic,1.205
+Misty Grouper,precip,Precipitation,Caribbean Sea,1.044
+Misty Grouper,precip,Precipitation,U.S. Caribbean,1
+Misty Grouper,sso,Sea surface oxygen,Western Atlantic,3.751
+Misty Grouper,sso,Sea surface oxygen,Caribbean Sea,3.973
+Misty Grouper,sso,Sea surface oxygen,U.S. Caribbean,4
+Misty Grouper,sss,Sea surface salinity,Western Atlantic,3.102
+Misty Grouper,sss,Sea surface salinity,Caribbean Sea,3.796
+Misty Grouper,sss,Sea surface salinity,U.S. Caribbean,3.2
+Misty Grouper,sst,Sea surface temperature,Western Atlantic,3.886
+Misty Grouper,sst,Sea surface temperature,Caribbean Sea,3.996
+Misty Grouper,sst,Sea surface temperature,U.S. Caribbean,4
+Misty Grouper,swsm,Surface wind speed magnitude,Western Atlantic,1.215
+Misty Grouper,swsm,Surface wind speed magnitude,Caribbean Sea,1.293
+Misty Grouper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Mutton Snapper,bs,Bottom salinity,Western Atlantic,3.233
+Mutton Snapper,bs,Bottom salinity,Caribbean Sea,3.353
+Mutton Snapper,bs,Bottom salinity,U.S. Caribbean,2.238
+Mutton Snapper,bt,Bottom temperature,Western Atlantic,3.867
+Mutton Snapper,bt,Bottom temperature,Caribbean Sea,3.851
+Mutton Snapper,bt,Bottom temperature,U.S. Caribbean,3.571
+Mutton Snapper,chl,Chlorophyll-a concentration,Western Atlantic,1.387
+Mutton Snapper,chl,Chlorophyll-a concentration,Caribbean Sea,1.384
+Mutton Snapper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Mutton Snapper,mld,Mixed layer depth,Western Atlantic,1.049
+Mutton Snapper,mld,Mixed layer depth,Caribbean Sea,1.02
+Mutton Snapper,mld,Mixed layer depth,U.S. Caribbean,1
+Mutton Snapper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.507
+Mutton Snapper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.487
+Mutton Snapper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Mutton Snapper,o200,Oxygen at 200m,Western Atlantic,1.753
+Mutton Snapper,o200,Oxygen at 200m,Caribbean Sea,1.869
+Mutton Snapper,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Mutton Snapper,ph,Surface pH,Western Atlantic,3.978
+Mutton Snapper,ph,Surface pH,Caribbean Sea,3.991
+Mutton Snapper,ph,Surface pH,U.S. Caribbean,4
+Mutton Snapper,pp,Primary production,Western Atlantic,1.174
+Mutton Snapper,pp,Primary production,Caribbean Sea,1.143
+Mutton Snapper,pp,Primary production,U.S. Caribbean,1
+Mutton Snapper,precip,Precipitation,Western Atlantic,1.151
+Mutton Snapper,precip,Precipitation,Caribbean Sea,1.126
+Mutton Snapper,precip,Precipitation,U.S. Caribbean,1
+Mutton Snapper,sso,Sea surface oxygen,Western Atlantic,3.874
+Mutton Snapper,sso,Sea surface oxygen,Caribbean Sea,3.943
+Mutton Snapper,sso,Sea surface oxygen,U.S. Caribbean,4
+Mutton Snapper,sss,Sea surface salinity,Western Atlantic,3.24
+Mutton Snapper,sss,Sea surface salinity,Caribbean Sea,3.542
+Mutton Snapper,sss,Sea surface salinity,U.S. Caribbean,3.143
+Mutton Snapper,sst,Sea surface temperature,Western Atlantic,3.998
+Mutton Snapper,sst,Sea surface temperature,Caribbean Sea,3.997
+Mutton Snapper,sst,Sea surface temperature,U.S. Caribbean,4
+Mutton Snapper,swsm,Surface wind speed magnitude,Western Atlantic,1.167
+Mutton Snapper,swsm,Surface wind speed magnitude,Caribbean Sea,1.218
+Mutton Snapper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Nassau Grouper,bs,Bottom salinity,Western Atlantic,3.423
+Nassau Grouper,bs,Bottom salinity,Caribbean Sea,3.376
+Nassau Grouper,bs,Bottom salinity,U.S. Caribbean,2.238
+Nassau Grouper,bt,Bottom temperature,Western Atlantic,3.865
+Nassau Grouper,bt,Bottom temperature,Caribbean Sea,3.844
+Nassau Grouper,bt,Bottom temperature,U.S. Caribbean,3.571
+Nassau Grouper,chl,Chlorophyll-a concentration,Western Atlantic,1.355
+Nassau Grouper,chl,Chlorophyll-a concentration,Caribbean Sea,1.398
+Nassau Grouper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Nassau Grouper,mld,Mixed layer depth,Western Atlantic,1.038
+Nassau Grouper,mld,Mixed layer depth,Caribbean Sea,1.024
+Nassau Grouper,mld,Mixed layer depth,U.S. Caribbean,1
+Nassau Grouper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.483
+Nassau Grouper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.489
+Nassau Grouper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Nassau Grouper,o200,Oxygen at 200m,Western Atlantic,1.806
+Nassau Grouper,o200,Oxygen at 200m,Caribbean Sea,1.876
+Nassau Grouper,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Nassau Grouper,ph,Surface pH,Western Atlantic,3.992
+Nassau Grouper,ph,Surface pH,Caribbean Sea,3.991
+Nassau Grouper,ph,Surface pH,U.S. Caribbean,4
+Nassau Grouper,pp,Primary production,Western Atlantic,1.143
+Nassau Grouper,pp,Primary production,Caribbean Sea,1.145
+Nassau Grouper,pp,Primary production,U.S. Caribbean,1
+Nassau Grouper,precip,Precipitation,Western Atlantic,1.097
+Nassau Grouper,precip,Precipitation,Caribbean Sea,1.112
+Nassau Grouper,precip,Precipitation,U.S. Caribbean,1
+Nassau Grouper,sso,Sea surface oxygen,Western Atlantic,3.939
+Nassau Grouper,sso,Sea surface oxygen,Caribbean Sea,3.929
+Nassau Grouper,sso,Sea surface oxygen,U.S. Caribbean,4
+Nassau Grouper,sss,Sea surface salinity,Western Atlantic,3.594
+Nassau Grouper,sss,Sea surface salinity,Caribbean Sea,3.563
+Nassau Grouper,sss,Sea surface salinity,U.S. Caribbean,3.143
+Nassau Grouper,sst,Sea surface temperature,Western Atlantic,3.997
+Nassau Grouper,sst,Sea surface temperature,Caribbean Sea,3.997
+Nassau Grouper,sst,Sea surface temperature,U.S. Caribbean,4
+Nassau Grouper,swsm,Surface wind speed magnitude,Western Atlantic,1.199
+Nassau Grouper,swsm,Surface wind speed magnitude,Caribbean Sea,1.227
+Nassau Grouper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Queen Conch,bs,Bottom salinity,Western Atlantic,3.402
+Queen Conch,bs,Bottom salinity,Caribbean Sea,3.38
+Queen Conch,bs,Bottom salinity,U.S. Caribbean,2.238
+Queen Conch,bt,Bottom temperature,Western Atlantic,3.854
+Queen Conch,bt,Bottom temperature,Caribbean Sea,3.841
+Queen Conch,bt,Bottom temperature,U.S. Caribbean,3.571
+Queen Conch,chl,Chlorophyll-a concentration,Western Atlantic,1.382
+Queen Conch,chl,Chlorophyll-a concentration,Caribbean Sea,1.404
+Queen Conch,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Queen Conch,mld,Mixed layer depth,Western Atlantic,1.017
+Queen Conch,mld,Mixed layer depth,Caribbean Sea,1.018
+Queen Conch,mld,Mixed layer depth,U.S. Caribbean,1
+Queen Conch,msstg,Mean sea surface temperature gradient,Western Atlantic,1.458
+Queen Conch,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.486
+Queen Conch,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Queen Conch,o200,Oxygen at 200m,Western Atlantic,1.837
+Queen Conch,o200,Oxygen at 200m,Caribbean Sea,1.891
+Queen Conch,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Queen Conch,ph,Surface pH,Western Atlantic,3.992
+Queen Conch,ph,Surface pH,Caribbean Sea,3.991
+Queen Conch,ph,Surface pH,U.S. Caribbean,4
+Queen Conch,pp,Primary production,Western Atlantic,1.138
+Queen Conch,pp,Primary production,Caribbean Sea,1.15
+Queen Conch,pp,Primary production,U.S. Caribbean,1
+Queen Conch,precip,Precipitation,Western Atlantic,1.079
+Queen Conch,precip,Precipitation,Caribbean Sea,1.086
+Queen Conch,precip,Precipitation,U.S. Caribbean,1
+Queen Conch,sso,Sea surface oxygen,Western Atlantic,3.947
+Queen Conch,sso,Sea surface oxygen,Caribbean Sea,3.942
+Queen Conch,sso,Sea surface oxygen,U.S. Caribbean,4
+Queen Conch,sss,Sea surface salinity,Western Atlantic,3.626
+Queen Conch,sss,Sea surface salinity,Caribbean Sea,3.609
+Queen Conch,sss,Sea surface salinity,U.S. Caribbean,3.143
+Queen Conch,sst,Sea surface temperature,Western Atlantic,3.997
+Queen Conch,sst,Sea surface temperature,Caribbean Sea,3.997
+Queen Conch,sst,Sea surface temperature,U.S. Caribbean,4
+Queen Conch,swsm,Surface wind speed magnitude,Western Atlantic,1.219
+Queen Conch,swsm,Surface wind speed magnitude,Caribbean Sea,1.235
+Queen Conch,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Queen Snapper,bs,Bottom salinity,Western Atlantic,3.184
+Queen Snapper,bs,Bottom salinity,Caribbean Sea,3.361
+Queen Snapper,bs,Bottom salinity,U.S. Caribbean,2.238
+Queen Snapper,bt,Bottom temperature,Western Atlantic,3.871
+Queen Snapper,bt,Bottom temperature,Caribbean Sea,3.853
+Queen Snapper,bt,Bottom temperature,U.S. Caribbean,3.571
+Queen Snapper,chl,Chlorophyll-a concentration,Western Atlantic,1.384
+Queen Snapper,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Queen Snapper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Queen Snapper,mld,Mixed layer depth,Western Atlantic,1.046
+Queen Snapper,mld,Mixed layer depth,Caribbean Sea,1.02
+Queen Snapper,mld,Mixed layer depth,U.S. Caribbean,1
+Queen Snapper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.498
+Queen Snapper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Queen Snapper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Queen Snapper,o200,Oxygen at 200m,Western Atlantic,1.737
+Queen Snapper,o200,Oxygen at 200m,Caribbean Sea,1.865
+Queen Snapper,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Queen Snapper,ph,Surface pH,Western Atlantic,3.979
+Queen Snapper,ph,Surface pH,Caribbean Sea,3.992
+Queen Snapper,ph,Surface pH,U.S. Caribbean,4
+Queen Snapper,pp,Primary production,Western Atlantic,1.176
+Queen Snapper,pp,Primary production,Caribbean Sea,1.142
+Queen Snapper,pp,Primary production,U.S. Caribbean,1
+Queen Snapper,precip,Precipitation,Western Atlantic,1.144
+Queen Snapper,precip,Precipitation,Caribbean Sea,1.125
+Queen Snapper,precip,Precipitation,U.S. Caribbean,1
+Queen Snapper,sso,Sea surface oxygen,Western Atlantic,3.878
+Queen Snapper,sso,Sea surface oxygen,Caribbean Sea,3.943
+Queen Snapper,sso,Sea surface oxygen,U.S. Caribbean,4
+Queen Snapper,sss,Sea surface salinity,Western Atlantic,3.181
+Queen Snapper,sss,Sea surface salinity,Caribbean Sea,3.541
+Queen Snapper,sss,Sea surface salinity,U.S. Caribbean,3.143
+Queen Snapper,sst,Sea surface temperature,Western Atlantic,3.998
+Queen Snapper,sst,Sea surface temperature,Caribbean Sea,3.997
+Queen Snapper,sst,Sea surface temperature,U.S. Caribbean,4
+Queen Snapper,swsm,Surface wind speed magnitude,Western Atlantic,1.173
+Queen Snapper,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Queen Snapper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Queen Triggerfish,bs,Bottom salinity,Western Atlantic,2.882
+Queen Triggerfish,bs,Bottom salinity,Caribbean Sea,3.361
+Queen Triggerfish,bs,Bottom salinity,U.S. Caribbean,2.238
+Queen Triggerfish,bt,Bottom temperature,Western Atlantic,3.766
+Queen Triggerfish,bt,Bottom temperature,Caribbean Sea,3.853
+Queen Triggerfish,bt,Bottom temperature,U.S. Caribbean,3.571
+Queen Triggerfish,chl,Chlorophyll-a concentration,Western Atlantic,1.537
+Queen Triggerfish,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Queen Triggerfish,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Queen Triggerfish,mld,Mixed layer depth,Western Atlantic,1.199
+Queen Triggerfish,mld,Mixed layer depth,Caribbean Sea,1.02
+Queen Triggerfish,mld,Mixed layer depth,U.S. Caribbean,1
+Queen Triggerfish,msstg,Mean sea surface temperature gradient,Western Atlantic,1.595
+Queen Triggerfish,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Queen Triggerfish,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Queen Triggerfish,o200,Oxygen at 200m,Western Atlantic,1.942
+Queen Triggerfish,o200,Oxygen at 200m,Caribbean Sea,1.865
+Queen Triggerfish,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Queen Triggerfish,ph,Surface pH,Western Atlantic,3.984
+Queen Triggerfish,ph,Surface pH,Caribbean Sea,3.992
+Queen Triggerfish,ph,Surface pH,U.S. Caribbean,4
+Queen Triggerfish,pp,Primary production,Western Atlantic,1.248
+Queen Triggerfish,pp,Primary production,Caribbean Sea,1.142
+Queen Triggerfish,pp,Primary production,U.S. Caribbean,1
+Queen Triggerfish,precip,Precipitation,Western Atlantic,1.152
+Queen Triggerfish,precip,Precipitation,Caribbean Sea,1.125
+Queen Triggerfish,precip,Precipitation,U.S. Caribbean,1
+Queen Triggerfish,sso,Sea surface oxygen,Western Atlantic,3.835
+Queen Triggerfish,sso,Sea surface oxygen,Caribbean Sea,3.943
+Queen Triggerfish,sso,Sea surface oxygen,U.S. Caribbean,4
+Queen Triggerfish,sss,Sea surface salinity,Western Atlantic,3.015
+Queen Triggerfish,sss,Sea surface salinity,Caribbean Sea,3.541
+Queen Triggerfish,sss,Sea surface salinity,U.S. Caribbean,3.143
+Queen Triggerfish,sst,Sea surface temperature,Western Atlantic,3.903
+Queen Triggerfish,sst,Sea surface temperature,Caribbean Sea,3.997
+Queen Triggerfish,sst,Sea surface temperature,U.S. Caribbean,4
+Queen Triggerfish,swsm,Surface wind speed magnitude,Western Atlantic,1.143
+Queen Triggerfish,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Queen Triggerfish,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Rainbow Parrotfish,bs,Bottom salinity,Western Atlantic,3.366
+Rainbow Parrotfish,bs,Bottom salinity,Caribbean Sea,3.344
+Rainbow Parrotfish,bs,Bottom salinity,U.S. Caribbean,2.238
+Rainbow Parrotfish,bt,Bottom temperature,Western Atlantic,3.842
+Rainbow Parrotfish,bt,Bottom temperature,Caribbean Sea,3.836
+Rainbow Parrotfish,bt,Bottom temperature,U.S. Caribbean,3.571
+Rainbow Parrotfish,chl,Chlorophyll-a concentration,Western Atlantic,1.382
+Rainbow Parrotfish,chl,Chlorophyll-a concentration,Caribbean Sea,1.389
+Rainbow Parrotfish,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Rainbow Parrotfish,mld,Mixed layer depth,Western Atlantic,1.027
+Rainbow Parrotfish,mld,Mixed layer depth,Caribbean Sea,1.025
+Rainbow Parrotfish,mld,Mixed layer depth,U.S. Caribbean,1
+Rainbow Parrotfish,msstg,Mean sea surface temperature gradient,Western Atlantic,1.472
+Rainbow Parrotfish,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.469
+Rainbow Parrotfish,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Rainbow Parrotfish,o200,Oxygen at 200m,Western Atlantic,1.913
+Rainbow Parrotfish,o200,Oxygen at 200m,Caribbean Sea,1.91
+Rainbow Parrotfish,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Rainbow Parrotfish,ph,Surface pH,Western Atlantic,3.991
+Rainbow Parrotfish,ph,Surface pH,Caribbean Sea,3.991
+Rainbow Parrotfish,ph,Surface pH,U.S. Caribbean,4
+Rainbow Parrotfish,pp,Primary production,Western Atlantic,1.152
+Rainbow Parrotfish,pp,Primary production,Caribbean Sea,1.157
+Rainbow Parrotfish,pp,Primary production,U.S. Caribbean,1
+Rainbow Parrotfish,precip,Precipitation,Western Atlantic,1.103
+Rainbow Parrotfish,precip,Precipitation,Caribbean Sea,1.107
+Rainbow Parrotfish,precip,Precipitation,U.S. Caribbean,1
+Rainbow Parrotfish,sso,Sea surface oxygen,Western Atlantic,3.945
+Rainbow Parrotfish,sso,Sea surface oxygen,Caribbean Sea,3.943
+Rainbow Parrotfish,sso,Sea surface oxygen,U.S. Caribbean,4
+Rainbow Parrotfish,sss,Sea surface salinity,Western Atlantic,3.571
+Rainbow Parrotfish,sss,Sea surface salinity,Caribbean Sea,3.557
+Rainbow Parrotfish,sss,Sea surface salinity,U.S. Caribbean,3.143
+Rainbow Parrotfish,sst,Sea surface temperature,Western Atlantic,3.997
+Rainbow Parrotfish,sst,Sea surface temperature,Caribbean Sea,3.997
+Rainbow Parrotfish,sst,Sea surface temperature,U.S. Caribbean,4
+Rainbow Parrotfish,swsm,Surface wind speed magnitude,Western Atlantic,1.222
+Rainbow Parrotfish,swsm,Surface wind speed magnitude,Caribbean Sea,1.23
+Rainbow Parrotfish,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Red Grouper,bs,Bottom salinity,Western Atlantic,3.231
+Red Grouper,bs,Bottom salinity,Caribbean Sea,3.308
+Red Grouper,bs,Bottom salinity,U.S. Caribbean,2.238
+Red Grouper,bt,Bottom temperature,Western Atlantic,3.865
+Red Grouper,bt,Bottom temperature,Caribbean Sea,3.84
+Red Grouper,bt,Bottom temperature,U.S. Caribbean,3.571
+Red Grouper,chl,Chlorophyll-a concentration,Western Atlantic,1.381
+Red Grouper,chl,Chlorophyll-a concentration,Caribbean Sea,1.383
+Red Grouper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Red Grouper,mld,Mixed layer depth,Western Atlantic,1.05
+Red Grouper,mld,Mixed layer depth,Caribbean Sea,1.021
+Red Grouper,mld,Mixed layer depth,U.S. Caribbean,1
+Red Grouper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.507
+Red Grouper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Red Grouper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Red Grouper,o200,Oxygen at 200m,Western Atlantic,1.735
+Red Grouper,o200,Oxygen at 200m,Caribbean Sea,1.838
+Red Grouper,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Red Grouper,ph,Surface pH,Western Atlantic,3.993
+Red Grouper,ph,Surface pH,Caribbean Sea,3.991
+Red Grouper,ph,Surface pH,U.S. Caribbean,4
+Red Grouper,pp,Primary production,Western Atlantic,1.137
+Red Grouper,pp,Primary production,Caribbean Sea,1.117
+Red Grouper,pp,Primary production,U.S. Caribbean,1
+Red Grouper,precip,Precipitation,Western Atlantic,1.153
+Red Grouper,precip,Precipitation,Caribbean Sea,1.135
+Red Grouper,precip,Precipitation,U.S. Caribbean,1
+Red Grouper,sso,Sea surface oxygen,Western Atlantic,3.927
+Red Grouper,sso,Sea surface oxygen,Caribbean Sea,3.939
+Red Grouper,sso,Sea surface oxygen,U.S. Caribbean,4
+Red Grouper,sss,Sea surface salinity,Western Atlantic,3.268
+Red Grouper,sss,Sea surface salinity,Caribbean Sea,3.506
+Red Grouper,sss,Sea surface salinity,U.S. Caribbean,3.143
+Red Grouper,sst,Sea surface temperature,Western Atlantic,3.998
+Red Grouper,sst,Sea surface temperature,Caribbean Sea,3.997
+Red Grouper,sst,Sea surface temperature,U.S. Caribbean,4
+Red Grouper,swsm,Surface wind speed magnitude,Western Atlantic,1.183
+Red Grouper,swsm,Surface wind speed magnitude,Caribbean Sea,1.233
+Red Grouper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Redhind,bs,Bottom salinity,Western Atlantic,3.351
+Redhind,bs,Bottom salinity,Caribbean Sea,3.372
+Redhind,bs,Bottom salinity,U.S. Caribbean,2.238
+Redhind,bt,Bottom temperature,Western Atlantic,3.88
+Redhind,bt,Bottom temperature,Caribbean Sea,3.849
+Redhind,bt,Bottom temperature,U.S. Caribbean,3.571
+Redhind,chl,Chlorophyll-a concentration,Western Atlantic,1.329
+Redhind,chl,Chlorophyll-a concentration,Caribbean Sea,1.391
+Redhind,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Redhind,mld,Mixed layer depth,Western Atlantic,1.031
+Redhind,mld,Mixed layer depth,Caribbean Sea,1.017
+Redhind,mld,Mixed layer depth,U.S. Caribbean,1
+Redhind,msstg,Mean sea surface temperature gradient,Western Atlantic,1.482
+Redhind,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.489
+Redhind,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Redhind,o200,Oxygen at 200m,Western Atlantic,1.76
+Redhind,o200,Oxygen at 200m,Caribbean Sea,1.872
+Redhind,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Redhind,ph,Surface pH,Western Atlantic,3.993
+Redhind,ph,Surface pH,Caribbean Sea,3.991
+Redhind,ph,Surface pH,U.S. Caribbean,4
+Redhind,pp,Primary production,Western Atlantic,1.142
+Redhind,pp,Primary production,Caribbean Sea,1.142
+Redhind,pp,Primary production,U.S. Caribbean,1
+Redhind,precip,Precipitation,Western Atlantic,1.076
+Redhind,precip,Precipitation,Caribbean Sea,1.099
+Redhind,precip,Precipitation,U.S. Caribbean,1
+Redhind,sso,Sea surface oxygen,Western Atlantic,3.92
+Redhind,sso,Sea surface oxygen,Caribbean Sea,3.942
+Redhind,sso,Sea surface oxygen,U.S. Caribbean,4
+Redhind,sss,Sea surface salinity,Western Atlantic,3.5
+Redhind,sss,Sea surface salinity,Caribbean Sea,3.583
+Redhind,sss,Sea surface salinity,U.S. Caribbean,3.143
+Redhind,sst,Sea surface temperature,Western Atlantic,3.998
+Redhind,sst,Sea surface temperature,Caribbean Sea,3.997
+Redhind,sst,Sea surface temperature,U.S. Caribbean,4
+Redhind,swsm,Surface wind speed magnitude,Western Atlantic,1.189
+Redhind,swsm,Surface wind speed magnitude,Caribbean Sea,1.223
+Redhind,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Sea Cucumber,bs,Bottom salinity,Western Atlantic,3.32
+Sea Cucumber,bs,Bottom salinity,Caribbean Sea,3.381
+Sea Cucumber,bs,Bottom salinity,U.S. Caribbean,2.238
+Sea Cucumber,bt,Bottom temperature,Western Atlantic,3.871
+Sea Cucumber,bt,Bottom temperature,Caribbean Sea,3.846
+Sea Cucumber,bt,Bottom temperature,U.S. Caribbean,3.571
+Sea Cucumber,chl,Chlorophyll-a concentration,Western Atlantic,1.352
+Sea Cucumber,chl,Chlorophyll-a concentration,Caribbean Sea,1.398
+Sea Cucumber,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Sea Cucumber,mld,Mixed layer depth,Western Atlantic,1.019
+Sea Cucumber,mld,Mixed layer depth,Caribbean Sea,1.018
+Sea Cucumber,mld,Mixed layer depth,U.S. Caribbean,1
+Sea Cucumber,msstg,Mean sea surface temperature gradient,Western Atlantic,1.47
+Sea Cucumber,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.485
+Sea Cucumber,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Sea Cucumber,o200,Oxygen at 200m,Western Atlantic,1.78
+Sea Cucumber,o200,Oxygen at 200m,Caribbean Sea,1.888
+Sea Cucumber,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Sea Cucumber,ph,Surface pH,Western Atlantic,3.993
+Sea Cucumber,ph,Surface pH,Caribbean Sea,3.991
+Sea Cucumber,ph,Surface pH,U.S. Caribbean,4
+Sea Cucumber,pp,Primary production,Western Atlantic,1.144
+Sea Cucumber,pp,Primary production,Caribbean Sea,1.145
+Sea Cucumber,pp,Primary production,U.S. Caribbean,1
+Sea Cucumber,precip,Precipitation,Western Atlantic,1.067
+Sea Cucumber,precip,Precipitation,Caribbean Sea,1.083
+Sea Cucumber,precip,Precipitation,U.S. Caribbean,1
+Sea Cucumber,sso,Sea surface oxygen,Western Atlantic,3.921
+Sea Cucumber,sso,Sea surface oxygen,Caribbean Sea,3.95
+Sea Cucumber,sso,Sea surface oxygen,U.S. Caribbean,4
+Sea Cucumber,sss,Sea surface salinity,Western Atlantic,3.495
+Sea Cucumber,sss,Sea surface salinity,Caribbean Sea,3.614
+Sea Cucumber,sss,Sea surface salinity,U.S. Caribbean,3.143
+Sea Cucumber,sst,Sea surface temperature,Western Atlantic,3.998
+Sea Cucumber,sst,Sea surface temperature,Caribbean Sea,3.997
+Sea Cucumber,sst,Sea surface temperature,U.S. Caribbean,4
+Sea Cucumber,swsm,Surface wind speed magnitude,Western Atlantic,1.201
+Sea Cucumber,swsm,Surface wind speed magnitude,Caribbean Sea,1.226
+Sea Cucumber,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Silk Snapper,bs,Bottom salinity,Western Atlantic,3.19
+Silk Snapper,bs,Bottom salinity,Caribbean Sea,3.361
+Silk Snapper,bs,Bottom salinity,U.S. Caribbean,2.238
+Silk Snapper,bt,Bottom temperature,Western Atlantic,3.865
+Silk Snapper,bt,Bottom temperature,Caribbean Sea,3.853
+Silk Snapper,bt,Bottom temperature,U.S. Caribbean,3.571
+Silk Snapper,chl,Chlorophyll-a concentration,Western Atlantic,1.398
+Silk Snapper,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Silk Snapper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Silk Snapper,mld,Mixed layer depth,Western Atlantic,1.048
+Silk Snapper,mld,Mixed layer depth,Caribbean Sea,1.02
+Silk Snapper,mld,Mixed layer depth,U.S. Caribbean,1
+Silk Snapper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.513
+Silk Snapper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Silk Snapper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Silk Snapper,o200,Oxygen at 200m,Western Atlantic,1.765
+Silk Snapper,o200,Oxygen at 200m,Caribbean Sea,1.865
+Silk Snapper,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Silk Snapper,ph,Surface pH,Western Atlantic,3.978
+Silk Snapper,ph,Surface pH,Caribbean Sea,3.992
+Silk Snapper,ph,Surface pH,U.S. Caribbean,4
+Silk Snapper,pp,Primary production,Western Atlantic,1.182
+Silk Snapper,pp,Primary production,Caribbean Sea,1.142
+Silk Snapper,pp,Primary production,U.S. Caribbean,1
+Silk Snapper,precip,Precipitation,Western Atlantic,1.151
+Silk Snapper,precip,Precipitation,Caribbean Sea,1.125
+Silk Snapper,precip,Precipitation,U.S. Caribbean,1
+Silk Snapper,sso,Sea surface oxygen,Western Atlantic,3.872
+Silk Snapper,sso,Sea surface oxygen,Caribbean Sea,3.943
+Silk Snapper,sso,Sea surface oxygen,U.S. Caribbean,4
+Silk Snapper,sss,Sea surface salinity,Western Atlantic,3.169
+Silk Snapper,sss,Sea surface salinity,Caribbean Sea,3.541
+Silk Snapper,sss,Sea surface salinity,U.S. Caribbean,3.143
+Silk Snapper,sst,Sea surface temperature,Western Atlantic,3.998
+Silk Snapper,sst,Sea surface temperature,Caribbean Sea,3.997
+Silk Snapper,sst,Sea surface temperature,U.S. Caribbean,4
+Silk Snapper,swsm,Surface wind speed magnitude,Western Atlantic,1.177
+Silk Snapper,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Silk Snapper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Spiny Lobster,bs,Bottom salinity,Western Atlantic,3.142
+Spiny Lobster,bs,Bottom salinity,Caribbean Sea,3.354
+Spiny Lobster,bs,Bottom salinity,U.S. Caribbean,2.238
+Spiny Lobster,bt,Bottom temperature,Western Atlantic,3.863
+Spiny Lobster,bt,Bottom temperature,Caribbean Sea,3.85
+Spiny Lobster,bt,Bottom temperature,U.S. Caribbean,3.571
+Spiny Lobster,chl,Chlorophyll-a concentration,Western Atlantic,1.358
+Spiny Lobster,chl,Chlorophyll-a concentration,Caribbean Sea,1.38
+Spiny Lobster,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Spiny Lobster,mld,Mixed layer depth,Western Atlantic,1.058
+Spiny Lobster,mld,Mixed layer depth,Caribbean Sea,1.025
+Spiny Lobster,mld,Mixed layer depth,U.S. Caribbean,1
+Spiny Lobster,msstg,Mean sea surface temperature gradient,Western Atlantic,1.523
+Spiny Lobster,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.485
+Spiny Lobster,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Spiny Lobster,o200,Oxygen at 200m,Western Atlantic,1.724
+Spiny Lobster,o200,Oxygen at 200m,Caribbean Sea,1.864
+Spiny Lobster,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Spiny Lobster,ph,Surface pH,Western Atlantic,3.981
+Spiny Lobster,ph,Surface pH,Caribbean Sea,3.992
+Spiny Lobster,ph,Surface pH,U.S. Caribbean,4
+Spiny Lobster,pp,Primary production,Western Atlantic,1.174
+Spiny Lobster,pp,Primary production,Caribbean Sea,1.144
+Spiny Lobster,pp,Primary production,U.S. Caribbean,1
+Spiny Lobster,precip,Precipitation,Western Atlantic,1.131
+Spiny Lobster,precip,Precipitation,Caribbean Sea,1.122
+Spiny Lobster,precip,Precipitation,U.S. Caribbean,1
+Spiny Lobster,sso,Sea surface oxygen,Western Atlantic,3.863
+Spiny Lobster,sso,Sea surface oxygen,Caribbean Sea,3.944
+Spiny Lobster,sso,Sea surface oxygen,U.S. Caribbean,4
+Spiny Lobster,sss,Sea surface salinity,Western Atlantic,3.132
+Spiny Lobster,sss,Sea surface salinity,Caribbean Sea,3.536
+Spiny Lobster,sss,Sea surface salinity,U.S. Caribbean,3.143
+Spiny Lobster,sst,Sea surface temperature,Western Atlantic,3.993
+Spiny Lobster,sst,Sea surface temperature,Caribbean Sea,3.997
+Spiny Lobster,sst,Sea surface temperature,U.S. Caribbean,4
+Spiny Lobster,swsm,Surface wind speed magnitude,Western Atlantic,1.161
+Spiny Lobster,swsm,Surface wind speed magnitude,Caribbean Sea,1.211
+Spiny Lobster,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Stoplight Parrotfish,bs,Bottom salinity,Western Atlantic,3.41
+Stoplight Parrotfish,bs,Bottom salinity,Caribbean Sea,3.375
+Stoplight Parrotfish,bs,Bottom salinity,U.S. Caribbean,2.238
+Stoplight Parrotfish,bt,Bottom temperature,Western Atlantic,3.857
+Stoplight Parrotfish,bt,Bottom temperature,Caribbean Sea,3.843
+Stoplight Parrotfish,bt,Bottom temperature,U.S. Caribbean,3.571
+Stoplight Parrotfish,chl,Chlorophyll-a concentration,Western Atlantic,1.377
+Stoplight Parrotfish,chl,Chlorophyll-a concentration,Caribbean Sea,1.401
+Stoplight Parrotfish,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Stoplight Parrotfish,mld,Mixed layer depth,Western Atlantic,1.019
+Stoplight Parrotfish,mld,Mixed layer depth,Caribbean Sea,1.018
+Stoplight Parrotfish,mld,Mixed layer depth,U.S. Caribbean,1
+Stoplight Parrotfish,msstg,Mean sea surface temperature gradient,Western Atlantic,1.467
+Stoplight Parrotfish,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.483
+Stoplight Parrotfish,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Stoplight Parrotfish,o200,Oxygen at 200m,Western Atlantic,1.846
+Stoplight Parrotfish,o200,Oxygen at 200m,Caribbean Sea,1.883
+Stoplight Parrotfish,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Stoplight Parrotfish,ph,Surface pH,Western Atlantic,3.992
+Stoplight Parrotfish,ph,Surface pH,Caribbean Sea,3.991
+Stoplight Parrotfish,ph,Surface pH,U.S. Caribbean,4
+Stoplight Parrotfish,pp,Primary production,Western Atlantic,1.135
+Stoplight Parrotfish,pp,Primary production,Caribbean Sea,1.148
+Stoplight Parrotfish,pp,Primary production,U.S. Caribbean,1
+Stoplight Parrotfish,precip,Precipitation,Western Atlantic,1.088
+Stoplight Parrotfish,precip,Precipitation,Caribbean Sea,1.096
+Stoplight Parrotfish,precip,Precipitation,U.S. Caribbean,1
+Stoplight Parrotfish,sso,Sea surface oxygen,Western Atlantic,3.945
+Stoplight Parrotfish,sso,Sea surface oxygen,Caribbean Sea,3.94
+Stoplight Parrotfish,sso,Sea surface oxygen,U.S. Caribbean,4
+Stoplight Parrotfish,sss,Sea surface salinity,Western Atlantic,3.612
+Stoplight Parrotfish,sss,Sea surface salinity,Caribbean Sea,3.59
+Stoplight Parrotfish,sss,Sea surface salinity,U.S. Caribbean,3.143
+Stoplight Parrotfish,sst,Sea surface temperature,Western Atlantic,3.997
+Stoplight Parrotfish,sst,Sea surface temperature,Caribbean Sea,3.997
+Stoplight Parrotfish,sst,Sea surface temperature,U.S. Caribbean,4
+Stoplight Parrotfish,swsm,Surface wind speed magnitude,Western Atlantic,1.215
+Stoplight Parrotfish,swsm,Surface wind speed magnitude,Caribbean Sea,1.232
+Stoplight Parrotfish,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+White Mullet,bs,Bottom salinity,Western Atlantic,2.994
+White Mullet,bs,Bottom salinity,Caribbean Sea,3.196
+White Mullet,bs,Bottom salinity,U.S. Caribbean,2.238
+White Mullet,bt,Bottom temperature,Western Atlantic,3.642
+White Mullet,bt,Bottom temperature,Caribbean Sea,3.695
+White Mullet,bt,Bottom temperature,U.S. Caribbean,3.571
+White Mullet,chl,Chlorophyll-a concentration,Western Atlantic,1.414
+White Mullet,chl,Chlorophyll-a concentration,Caribbean Sea,1.45
+White Mullet,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+White Mullet,mld,Mixed layer depth,Western Atlantic,1.079
+White Mullet,mld,Mixed layer depth,Caribbean Sea,1.031
+White Mullet,mld,Mixed layer depth,U.S. Caribbean,1
+White Mullet,msstg,Mean sea surface temperature gradient,Western Atlantic,1.515
+White Mullet,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.487
+White Mullet,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+White Mullet,o200,Oxygen at 200m,Western Atlantic,1.704
+White Mullet,o200,Oxygen at 200m,Caribbean Sea,1.826
+White Mullet,o200,Oxygen at 200m,U.S. Caribbean,2.952
+White Mullet,ph,Surface pH,Western Atlantic,3.98
+White Mullet,ph,Surface pH,Caribbean Sea,3.993
+White Mullet,ph,Surface pH,U.S. Caribbean,4
+White Mullet,pp,Primary production,Western Atlantic,1.187
+White Mullet,pp,Primary production,Caribbean Sea,1.154
+White Mullet,pp,Primary production,U.S. Caribbean,1
+White Mullet,precip,Precipitation,Western Atlantic,1.132
+White Mullet,precip,Precipitation,Caribbean Sea,1.11
+White Mullet,precip,Precipitation,U.S. Caribbean,1
+White Mullet,sso,Sea surface oxygen,Western Atlantic,3.671
+White Mullet,sso,Sea surface oxygen,Caribbean Sea,3.805
+White Mullet,sso,Sea surface oxygen,U.S. Caribbean,4
+White Mullet,sss,Sea surface salinity,Western Atlantic,2.865
+White Mullet,sss,Sea surface salinity,Caribbean Sea,3.302
+White Mullet,sss,Sea surface salinity,U.S. Caribbean,3.143
+White Mullet,sst,Sea surface temperature,Western Atlantic,3.954
+White Mullet,sst,Sea surface temperature,Caribbean Sea,3.993
+White Mullet,sst,Sea surface temperature,U.S. Caribbean,4
+White Mullet,swsm,Surface wind speed magnitude,Western Atlantic,1.199
+White Mullet,swsm,Surface wind speed magnitude,Caribbean Sea,1.228
+White Mullet,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Yellowfin Grouper,bs,Bottom salinity,Western Atlantic,3.308
+Yellowfin Grouper,bs,Bottom salinity,Caribbean Sea,3.359
+Yellowfin Grouper,bs,Bottom salinity,U.S. Caribbean,2.238
+Yellowfin Grouper,bt,Bottom temperature,Western Atlantic,3.876
+Yellowfin Grouper,bt,Bottom temperature,Caribbean Sea,3.852
+Yellowfin Grouper,bt,Bottom temperature,U.S. Caribbean,3.571
+Yellowfin Grouper,chl,Chlorophyll-a concentration,Western Atlantic,1.36
+Yellowfin Grouper,chl,Chlorophyll-a concentration,Caribbean Sea,1.384
+Yellowfin Grouper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Yellowfin Grouper,mld,Mixed layer depth,Western Atlantic,1.046
+Yellowfin Grouper,mld,Mixed layer depth,Caribbean Sea,1.02
+Yellowfin Grouper,mld,Mixed layer depth,U.S. Caribbean,1
+Yellowfin Grouper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.499
+Yellowfin Grouper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.488
+Yellowfin Grouper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Yellowfin Grouper,o200,Oxygen at 200m,Western Atlantic,1.755
+Yellowfin Grouper,o200,Oxygen at 200m,Caribbean Sea,1.868
+Yellowfin Grouper,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Yellowfin Grouper,ph,Surface pH,Western Atlantic,3.993
+Yellowfin Grouper,ph,Surface pH,Caribbean Sea,3.991
+Yellowfin Grouper,ph,Surface pH,U.S. Caribbean,4
+Yellowfin Grouper,pp,Primary production,Western Atlantic,1.142
+Yellowfin Grouper,pp,Primary production,Caribbean Sea,1.142
+Yellowfin Grouper,pp,Primary production,U.S. Caribbean,1
+Yellowfin Grouper,precip,Precipitation,Western Atlantic,1.124
+Yellowfin Grouper,precip,Precipitation,Caribbean Sea,1.125
+Yellowfin Grouper,precip,Precipitation,U.S. Caribbean,1
+Yellowfin Grouper,sso,Sea surface oxygen,Western Atlantic,3.935
+Yellowfin Grouper,sso,Sea surface oxygen,Caribbean Sea,3.943
+Yellowfin Grouper,sso,Sea surface oxygen,U.S. Caribbean,4
+Yellowfin Grouper,sss,Sea surface salinity,Western Atlantic,3.373
+Yellowfin Grouper,sss,Sea surface salinity,Caribbean Sea,3.543
+Yellowfin Grouper,sss,Sea surface salinity,U.S. Caribbean,3.143
+Yellowfin Grouper,sst,Sea surface temperature,Western Atlantic,3.998
+Yellowfin Grouper,sst,Sea surface temperature,Caribbean Sea,3.997
+Yellowfin Grouper,sst,Sea surface temperature,U.S. Caribbean,4
+Yellowfin Grouper,swsm,Surface wind speed magnitude,Western Atlantic,1.17
+Yellowfin Grouper,swsm,Surface wind speed magnitude,Caribbean Sea,1.216
+Yellowfin Grouper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
+Yellowtail Snapper,bs,Bottom salinity,Western Atlantic,3.146
+Yellowtail Snapper,bs,Bottom salinity,Caribbean Sea,3.361
+Yellowtail Snapper,bs,Bottom salinity,U.S. Caribbean,2.238
+Yellowtail Snapper,bt,Bottom temperature,Western Atlantic,3.865
+Yellowtail Snapper,bt,Bottom temperature,Caribbean Sea,3.853
+Yellowtail Snapper,bt,Bottom temperature,U.S. Caribbean,3.571
+Yellowtail Snapper,chl,Chlorophyll-a concentration,Western Atlantic,1.359
+Yellowtail Snapper,chl,Chlorophyll-a concentration,Caribbean Sea,1.382
+Yellowtail Snapper,chl,Chlorophyll-a concentration,U.S. Caribbean,1.048
+Yellowtail Snapper,mld,Mixed layer depth,Western Atlantic,1.055
+Yellowtail Snapper,mld,Mixed layer depth,Caribbean Sea,1.02
+Yellowtail Snapper,mld,Mixed layer depth,U.S. Caribbean,1
+Yellowtail Snapper,msstg,Mean sea surface temperature gradient,Western Atlantic,1.524
+Yellowtail Snapper,msstg,Mean sea surface temperature gradient,Caribbean Sea,1.49
+Yellowtail Snapper,msstg,Mean sea surface temperature gradient,U.S. Caribbean,1.857
+Yellowtail Snapper,o200,Oxygen at 200m,Western Atlantic,1.724
+Yellowtail Snapper,o200,Oxygen at 200m,Caribbean Sea,1.865
+Yellowtail Snapper,o200,Oxygen at 200m,U.S. Caribbean,2.952
+Yellowtail Snapper,ph,Surface pH,Western Atlantic,3.98
+Yellowtail Snapper,ph,Surface pH,Caribbean Sea,3.992
+Yellowtail Snapper,ph,Surface pH,U.S. Caribbean,4
+Yellowtail Snapper,pp,Primary production,Western Atlantic,1.174
+Yellowtail Snapper,pp,Primary production,Caribbean Sea,1.142
+Yellowtail Snapper,pp,Primary production,U.S. Caribbean,1
+Yellowtail Snapper,precip,Precipitation,Western Atlantic,1.133
+Yellowtail Snapper,precip,Precipitation,Caribbean Sea,1.125
+Yellowtail Snapper,precip,Precipitation,U.S. Caribbean,1
+Yellowtail Snapper,sso,Sea surface oxygen,Western Atlantic,3.862
+Yellowtail Snapper,sso,Sea surface oxygen,Caribbean Sea,3.943
+Yellowtail Snapper,sso,Sea surface oxygen,U.S. Caribbean,4
+Yellowtail Snapper,sss,Sea surface salinity,Western Atlantic,3.135
+Yellowtail Snapper,sss,Sea surface salinity,Caribbean Sea,3.541
+Yellowtail Snapper,sss,Sea surface salinity,U.S. Caribbean,3.143
+Yellowtail Snapper,sst,Sea surface temperature,Western Atlantic,3.993
+Yellowtail Snapper,sst,Sea surface temperature,Caribbean Sea,3.997
+Yellowtail Snapper,sst,Sea surface temperature,U.S. Caribbean,4
+Yellowtail Snapper,swsm,Surface wind speed magnitude,Western Atlantic,1.163
+Yellowtail Snapper,swsm,Surface wind speed magnitude,Caribbean Sea,1.215
+Yellowtail Snapper,swsm,Surface wind speed magnitude,U.S. Caribbean,1
