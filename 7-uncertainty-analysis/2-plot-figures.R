@@ -6,11 +6,14 @@
 ## Figure 2 - Sensitivity tally distributions by attribute (by stock)
 ## Figure 3 - Directional effect summary by stock
 ## Figure 4 - Sensitivity attribute score distributions
+## Figure 5 - Exposure tally distributions by attribute (by stock)
+## Figure 6 - Exposure attribute score distributions
 
 ## Set up ----------------------------------------------------------------------
 
 ## Libraries -------------------------------------------------------------------
 rm(list = ls()); gc()
+windows()
 library(dplyr)
 library(tidyr)
 library(readr)
@@ -25,19 +28,23 @@ dir_compiled <- "./outputs/final-scores-compiled/overall-vulnerability-rankings"
 
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
-
 ## Output file paths
 f_fig_coverage  <- file.path(dir_out, "fig_reviewer_stock_coverage.png")
 f_fig_tallies   <- file.path(dir_out, "fig_sensitivity_tally_distributions.png")
 f_fig_tallies_stock   <- file.path(dir_out, "fig_sensitivity_tally_distributions_by_stock.png")
 f_fig_dir       <- file.path(dir_out, "fig_directional_effect_summary.png")
-f_fig_sens_box  <- file.path(dir_out, "fig_sensitivity_attribute_score_boxplot.png")
+f_fig_sens_box         <- file.path(dir_out, "fig_sensitivity_attribute_score_boxplot.png")
+f_fig_exp_tallies_stock <- file.path(dir_out, "fig_exposure_tally_distributions_by_stock.png")
+f_fig_exp_box          <- file.path(dir_out, "fig_exposure_attribute_score_boxplot.png")
 
 ## Input data
 all_qualitative_tallies_long    <- read.csv(file.path(dir_in, "table_all_qualitative_tallies_long.csv"))
 sensitivity_tallies_long        <- read.csv(file.path(dir_in, "table_sensitivity_tallies_long.csv"))
 directional_effect_tallies_long <- read.csv(file.path(dir_in, "table_directional_effect_tallies_long.csv"))
 attr_means                      <- read.csv(file.path(dir_compiled, "attribute_means_uscar.csv"))
+qualitative_exposure_tallies_long <- read.csv(file.path(dir_in, "table_qualitative_exposure_tallies_long.csv"))
+quantitative_exposure_scores      <- read.csv(
+  "./outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv")
 
 ##------------------------------------------------------------------------------
 ## Data prep
@@ -53,6 +60,55 @@ n_attributes_expected <- n_distinct(all_qualitative_tallies_long$attribute_name)
 qa_dir_summary <- directional_effect_tallies_long %>%
   group_by(stock_name, effect_category) %>%
   summarise(total_tally = sum(tally, na.rm = TRUE), .groups = "drop")
+
+##------------------------------------------------------------------------------
+## Conform and row-bind exposure tally tables 
+qual_exp_conform <- qualitative_exposure_tallies_long %>%
+  mutate(stock_name = recode(stock_name,
+    "Atlantic thread herring" = "Atlantic Herring",
+    "Long-spined sea urchin"  = "Diadema",
+    "Red hind"                = "Redhind",
+    "Sea cucumbers"           = "Sea Cucumber",
+    "Ballyhoo"                = "Ballyhoo",
+    "Blue runner"             = "Blue Runner",
+    "Dolphinfish"             = "Dolphinfish",
+    "Gray angelfish"          = "Gray Angelfish",
+    "Hogfish"                 = "Hogfish",
+    "King mackerel"           = "King Mackerel",
+    "Lane snapper"            = "Lane Snapper",
+    "Misty grouper"           = "Misty Grouper",
+    "Mutton snapper"          = "Mutton Snapper",
+    "Nassau grouper"          = "Nassau Grouper",
+    "Queen conch"             = "Queen Conch",
+    "Queen triggerfish"       = "Queen Triggerfish",
+    "Rainbow parrotfish"      = "Rainbow Parrotfish",
+    "Red grouper"             = "Red Grouper",
+    "Spiny lobster"           = "Spiny Lobster",
+    "Stoplight parrotfish"    = "Stoplight Parrotfish",
+    "White mullet"            = "White Mullet",
+    "Yellowfin grouper"       = "Yellowfin Grouper",
+    "Yellowtail snapper"      = "Yellowtail Snapper"
+  )) %>%
+  group_by(stock_name, attribute_type, attribute_name) %>%
+  summarise(
+    tally_L  = sum(tally_L,  na.rm = TRUE),
+    tally_M  = sum(tally_M,  na.rm = TRUE),
+    tally_H  = sum(tally_H,  na.rm = TRUE),
+    tally_VH = sum(tally_VH, na.rm = TRUE),
+    .groups  = "drop"
+  ) %>%
+  mutate(n_tallies = tally_L + tally_M + tally_H + tally_VH)
+
+quant_exp_conform <- quantitative_exposure_scores %>%
+  filter(spatial_extent == "U.S. Caribbean") %>%
+  mutate(attribute_type = "Quantitative Exposure",
+         attribute_name  = full_names,
+         n_tallies = tally_L + tally_M + tally_H + tally_VH) %>%
+  select(stock_name, attribute_type, attribute_name,
+         tally_L, tally_M, tally_H, tally_VH, n_tallies) 
+
+exposure_tallies_long <- bind_rows(qual_exp_conform, quant_exp_conform) %>% 
+  arrange(stock_name, attribute_type)
 
 ##------------------------------------------------------------------------------
 ## Figure 1 - Reviewer x stock coverage heatmap
@@ -346,5 +402,183 @@ ggsave(f_fig_sens_box, p_sens_box,
        width  = 7,
        height = max(4, 0.35 * n_distinct(sens_scores$attribute_name)),
        dpi    = 1200)
+
+##------------------------------------------------------------------------------
+## Figure 4B - Exposure attribute score distributions
+##   - Horizontal boxplot per exposure attribute (qualitative + quantitative)
+##   - x = mean score (1-4) per stock; y = attribute ordered by median ascending
+
+exp_scores <- attr_means %>%
+  filter(attribute_type %in% c("Qualitative Exposure", "Quantitative Exposure")) %>%
+  filter(!is.na(attribute_mean))
+
+exp_box_order <- exp_scores %>%
+  group_by(attribute_name) %>%
+  summarise(med = median(attribute_mean, na.rm = TRUE), .groups = "drop") %>%
+  arrange(med) %>%
+  pull(attribute_name)
+
+p_exp_box <- ggplot(
+  exp_scores,
+  aes(
+    x = attribute_mean,
+    y = factor(attribute_name, levels = exp_box_order)
+  )
+) +
+  geom_boxplot(
+    fill          = "gray80",
+    color         = "black",
+    outlier.shape = 1,
+    outlier.size  = 2
+  ) +
+  scale_x_continuous(
+    breaks = 1:4,
+    labels = c("1\nLow", "2\nModerate", "3\nHigh", "4\nVery High"),
+    limits = c(0.5, 4.5)
+  ) +
+  labs(
+    x     = "Score",
+    y     = NULL,
+    title = "Exposure attribute score distributions"
+  ) +
+  theme_bw(base_size = 11) +
+  theme(
+    text      = element_text(color = "black"),
+    axis.text = element_text(color = "black")
+  ); p_exp_box
+
+ggsave(f_fig_exp_box, p_exp_box,
+       width  = 7,
+       height = max(4, 0.35 * n_distinct(exp_scores$attribute_name)),
+       dpi    = 1200)
+
 message("Figures written to: ", dir_out)
+
+
+
+
+
+##------------------------------------------------------------------------------
+## Figure 5 - Exposure tally distributions by attribute (by stock)
+##   - Combined qualitative + quantitative exposure factors
+##   - Faceted 5x5 by stock; horizontal stacked bar per attribute
+##   - Ordered by pooled mean score ascending (lowest at bottom)
+
+exp_pooled <- exposure_tallies_long %>%
+  group_by(attribute_name) %>%
+  summarise(
+    tally_L    = sum(tally_L,  na.rm = TRUE),
+    tally_M    = sum(tally_M,  na.rm = TRUE),
+    tally_H    = sum(tally_H,  na.rm = TRUE),
+    tally_VH   = sum(tally_VH, na.rm = TRUE),
+    pooled_sum = tally_L + tally_M + tally_H + tally_VH,
+    .groups = "drop"
+  ) %>%
+  filter(pooled_sum > 0) %>%
+  mutate(mean_score = (tally_L * 1 + tally_M * 2 + tally_H * 3 + tally_VH * 4) / pooled_sum)
+
+exp_attr_order <- exp_pooled %>% arrange(mean_score) %>% pull(attribute_name)
+
+exp_attr_short_names <- c(
+  "Bottom salinity"                       = "Bottom salinity",
+  "Bottom temperature"                    = "Bottom temp.",
+  "Chlorophyll-a concentration"           = "Chlorophyll-a",
+  "Mean sea surface temperature gradient" = "SST gradient",
+  "Mixed layer depth"                     = "Mixed layer depth",
+  "Oxygen at 200m"                        = "Oxygen at 200m",
+  "Precipitation"                         = "Precipitation",
+  "Primary production"                    = "Primary prod.",
+  "Sea surface oxygen"                    = "SS oxygen",
+  "Sea surface salinity"                  = "SS salinity",
+  "Sea surface temperature"               = "SS temperature",
+  "Surface pH"                            = "Surface pH",
+  "Surface wind speed magnitude"          = "Wind speed",
+  "Coral cover"                           = "Coral cover",
+  "Sargassum influx"                      = "Sargassum influx",
+  "Thermocline depth"                     = "Thermocline depth"
+)
+
+exp_attr_order_short <- ifelse(exp_attr_order %in% names(exp_attr_short_names),
+                               exp_attr_short_names[exp_attr_order], exp_attr_order)
+
+exp_pooled_stock <- exposure_tallies_long %>%
+  group_by(stock_name, attribute_name) %>%
+  summarise(
+    tally_L    = sum(tally_L,  na.rm = TRUE),
+    tally_M    = sum(tally_M,  na.rm = TRUE),
+    tally_H    = sum(tally_H,  na.rm = TRUE),
+    tally_VH   = sum(tally_VH, na.rm = TRUE),
+    pooled_sum = tally_L + tally_M + tally_H + tally_VH,
+    .groups = "drop"
+  ) %>%
+  filter(pooled_sum > 0) %>%
+  mutate(
+    p_low       = tally_L  / pooled_sum,
+    p_moderate  = tally_M  / pooled_sum,
+    p_high      = tally_H  / pooled_sum,
+    p_very_high = tally_VH / pooled_sum
+  )
+
+exp_pooled_stock_long <- exp_pooled_stock %>%
+  select(stock_name, attribute_name,
+         p_low, p_moderate, p_high, p_very_high) %>%
+  pivot_longer(
+    cols      = starts_with("p_"),
+    names_to  = "rank",
+    values_to = "proportion"
+  ) %>%
+  mutate(
+    rank = case_when(
+      rank == "p_low"       ~ "Low",
+      rank == "p_moderate"  ~ "Moderate",
+      rank == "p_high"      ~ "High",
+      rank == "p_very_high" ~ "Very High"
+    ),
+    rank = factor(rank, levels = rank_levels),
+    attribute_name_short = factor(
+      ifelse(attribute_name %in% names(exp_attr_short_names),
+             exp_attr_short_names[attribute_name], attribute_name),
+      levels = exp_attr_order_short
+    )
+  )
+
+p_exp_tallies <- ggplot(
+  exp_pooled_stock_long,
+  aes(
+    x    = proportion,
+    y    = attribute_name_short,
+    fill = rank
+  )
+) +
+  geom_col(width = 0.77, position = position_stack(reverse = TRUE),
+           color = "black", linewidth = 0.2) +
+  scale_fill_manual(values = rank_colors, name = "Vulnerability rank:",
+                    breaks = rank_levels) +
+  scale_x_continuous(breaks = c(0.25, 0.50, 0.75, 1.00),
+                     labels = percent_format(accuracy = 1),
+                     expand  = c(0, 0, 0, 0.02)) +
+  facet_wrap(~ stock_name, ncol = 5, axes = "margins") +
+  labs(
+    x = "Proportion of Tallies (Exposure Factors)",
+    y = NULL
+  ) +
+  theme(
+    panel.background  = element_rect(fill = "white"),
+    strip.background  = element_rect(fill = "grey80", color = "black"),
+    strip.text        = element_text(size = 9,   color = "black"),
+    text              = element_text(size = 10,  color = "black"),
+    axis.text.y       = element_text(size = 8.5, color = "black"),
+    axis.text.x       = element_text(size = 10,  color = "black", angle = 0),
+    axis.line         = element_line(color = "black"),
+    axis.title.x      = element_text(size = 12,  color = "black"),
+    legend.title      = element_text(size = 11,  color = "black"),
+    legend.text       = element_text(size = 11,  color = "black"),
+    legend.position   = "bottom",
+    panel.spacing     = unit(0.2, "lines")
+  ); p_exp_tallies
+
+ggsave(f_fig_exp_tallies_stock, p_exp_tallies,
+       width  = 12,
+       height = 14,
+       dpi    = 1200)
 
