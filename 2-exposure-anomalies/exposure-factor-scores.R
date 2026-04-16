@@ -110,11 +110,10 @@ lmhv_histogram_base <- function(anom_masked,
   ## Return NA summary if no valid cells are present
   if (!length(vals)) {
     out <- list(
-      Lp = NA_real_,
-      Mp = NA_real_,
-      Hp = NA_real_,
-      Vp = NA_real_,
-      exp_mean = NA_real_
+      Lp = NA_real_, Mp = NA_real_, Hp = NA_real_, Vp = NA_real_,
+      exp_mean = NA_real_,
+      tally_L = NA_integer_, tally_M = NA_integer_,
+      tally_H = NA_integer_, tally_VH = NA_integer_
     )
     class(out) <- c("lmhv_hist_summary", "list")
     return(out)
@@ -139,11 +138,15 @@ lmhv_histogram_base <- function(anom_masked,
   tot <- L + M + H + V
   
   out <- list(
-    Lp = if (tot > 0) L / tot else NA_real_,
-    Mp = if (tot > 0) M / tot else NA_real_,
-    Hp = if (tot > 0) H / tot else NA_real_,
-    Vp = if (tot > 0) V / tot else NA_real_,
-    exp_mean = if (tot > 0) ((L * 1) + (M * 2) + (H * 3) + (V * 4)) / tot else NA_real_
+    Lp       = if (tot > 0) L / tot else NA_real_,
+    Mp       = if (tot > 0) M / tot else NA_real_,
+    Hp       = if (tot > 0) H / tot else NA_real_,
+    Vp       = if (tot > 0) V / tot else NA_real_,
+    exp_mean = if (tot > 0) ((L * 1) + (M * 2) + (H * 3) + (V * 4)) / tot else NA_real_,
+    tally_L  = L,
+    tally_M  = M,
+    tally_H  = H,
+    tally_VH = V
   )
   
   class(out) <- c("lmhv_hist_summary", "list")
@@ -227,10 +230,14 @@ process_species_scores <- function(sp_file) {
     
     ## Save long-format output table
     score_list[[i]] <- tibble(
-      stock_name = species_name,
+      stock_name                   = species_name,
       quantitative_exposure_factor = exp_name,
-      spatial_extent = c("Western Atlantic", "Caribbean Sea", "U.S. Caribbean"),
-      attribute_score = c(sum_watl$exp_mean, sum_carib$exp_mean, sum_uscar$exp_mean)
+      spatial_extent  = c("Western Atlantic", "Caribbean Sea", "U.S. Caribbean"),
+      attribute_score = c(sum_watl$exp_mean,  sum_carib$exp_mean,  sum_uscar$exp_mean),
+      tally_L  = c(sum_watl$tally_L,  sum_carib$tally_L,  sum_uscar$tally_L),
+      tally_M  = c(sum_watl$tally_M,  sum_carib$tally_M,  sum_uscar$tally_M),
+      tally_H  = c(sum_watl$tally_H,  sum_carib$tally_H,  sum_uscar$tally_H),
+      tally_VH = c(sum_watl$tally_VH, sum_carib$tally_VH, sum_uscar$tally_VH)
     )
   }
   
@@ -297,7 +304,8 @@ attribute_score_table <- attribute_score_table %>%
     quantitative_exposure_factor,
     full_names,
     spatial_extent,
-    attribute_score
+    attribute_score,
+    tally_L, tally_M, tally_H, tally_VH
   )
 
 ## -----------------------------------------------------------------------------
