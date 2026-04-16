@@ -2,12 +2,17 @@
 ##------------------------------------------------------------------------------
 ## `2-plot-figures.R`
 ##
-## Figure 1 - Reviewer x stock coverage heatmap
-## Figure 2 - Sensitivity tally distributions by attribute (by stock)
-## Figure 3 - Directional effect summary by stock
-## Figure 4 - Sensitivity attribute score distributions
-## Figure 5 - Exposure tally distributions by attribute (by stock)
-## Figure 6 - Exposure attribute score distributions
+## Figure 1 - Bar and whisker plots: Score distributions
+##       1A - Sensitivity attribute distributions
+##       BA - Exposure factor distributions
+## 
+## Figure 2 - Filled bar plot: Directional effect summary by stock
+##
+## Figure 3 - Filled bar plot: Exposure tally distributions by attribute (by stock)
+##       1A - Sensitivity attribute distributions
+##       BA - Exposure factor distributions
+##
+## Figure QA - Reviewer x stock coverage heatmap
 
 ## Set up ----------------------------------------------------------------------
 
@@ -37,11 +42,46 @@ f_fig_sens_box         <- file.path(dir_out, "fig_sensitivity_attribute_score_bo
 f_fig_exp_tallies_stock <- file.path(dir_out, "fig_exposure_tally_distributions_by_stock.png")
 f_fig_exp_box          <- file.path(dir_out, "fig_exposure_attribute_score_boxplot.png")
 
+## Canonical stock name lookup (applied to all tables on read)
+stock_name_recode <- c(
+  "Atlantic thread herring" = "Atlantic Herring",
+  "Long-spined sea urchin"  = "Diadema",
+  "Red hind"                = "Redhind",
+  "Sea cucumbers"           = "Sea Cucumber",
+  "Ballyhoo"                = "Ballyhoo",
+  "Blue runner"             = "Blue Runner",
+  "Dolphinfish"             = "Dolphinfish",
+  "Gray angelfish"          = "Gray Angelfish",
+  "Hogfish"                 = "Hogfish",
+  "King mackerel"           = "King Mackerel",
+  "Lane snapper"            = "Lane Snapper",
+  "Misty grouper"           = "Misty Grouper",
+  "Mutton snapper"          = "Mutton Snapper",
+  "Nassau grouper"          = "Nassau Grouper",
+  "Queen conch"             = "Queen Conch",
+  "Queen triggerfish"       = "Queen Triggerfish",
+  "Rainbow parrotfish"      = "Rainbow Parrotfish",
+  "Red grouper"             = "Red Grouper",
+  "Redhind"                 = "Red Hind",
+  "Sea cucumber"            = "Sea Cucumber",
+  "Silk snapper"            = "Silk Snapper",
+  "Spiny lobster"           = "Spiny Lobster",
+  "Stoplight parrotfish"    = "Stoplight Parrotfish",
+  "White mullet"            = "White Mullet",
+  "Yellowfin grouper"       = "Yellowfin Grouper",
+  "Yellowtail snapper"      = "Yellowtail Snapper"
+)
+
 ## Input data
-all_qualitative_tallies_long    <- read.csv(file.path(dir_in, "table_all_qualitative_tallies_long.csv"))
-sensitivity_tallies_long        <- read.csv(file.path(dir_in, "table_sensitivity_tallies_long.csv"))
-directional_effect_tallies_long <- read.csv(file.path(dir_in, "table_directional_effect_tallies_long.csv"))
-attr_means                      <- read.csv(file.path(dir_compiled, "attribute_means_uscar.csv"))
+all_qualitative_tallies_long    <- read.csv(file.path(dir_in, "table_all_qualitative_tallies_long.csv")) %>%
+  filter(attribute_name != "Coral cover") %>%
+  mutate(stock_name = recode(stock_name, !!!stock_name_recode))
+sensitivity_tallies_long        <- read.csv(file.path(dir_in, "table_sensitivity_tallies_long.csv")) %>%
+  mutate(stock_name = recode(stock_name, !!!stock_name_recode))
+directional_effect_tallies_long <- read.csv(file.path(dir_in, "table_directional_effect_tallies_long.csv")) %>%
+  mutate(stock_name = recode(stock_name, !!!stock_name_recode))
+attr_means                      <- read.csv(file.path(dir_compiled, "attribute_means_uscar.csv")) %>%
+  mutate(stock_name = recode(stock_name, !!!stock_name_recode))
 qualitative_exposure_tallies_long <- read.csv(file.path(dir_in, "table_qualitative_exposure_tallies_long.csv"))
 quantitative_exposure_scores      <- read.csv(
   "./outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv")
@@ -64,31 +104,8 @@ qa_dir_summary <- directional_effect_tallies_long %>%
 ##------------------------------------------------------------------------------
 ## Conform and row-bind exposure tally tables 
 qual_exp_conform <- qualitative_exposure_tallies_long %>%
-  mutate(stock_name = recode(stock_name,
-    "Atlantic thread herring" = "Atlantic Herring",
-    "Long-spined sea urchin"  = "Diadema",
-    "Red hind"                = "Redhind",
-    "Sea cucumbers"           = "Sea Cucumber",
-    "Ballyhoo"                = "Ballyhoo",
-    "Blue runner"             = "Blue Runner",
-    "Dolphinfish"             = "Dolphinfish",
-    "Gray angelfish"          = "Gray Angelfish",
-    "Hogfish"                 = "Hogfish",
-    "King mackerel"           = "King Mackerel",
-    "Lane snapper"            = "Lane Snapper",
-    "Misty grouper"           = "Misty Grouper",
-    "Mutton snapper"          = "Mutton Snapper",
-    "Nassau grouper"          = "Nassau Grouper",
-    "Queen conch"             = "Queen Conch",
-    "Queen triggerfish"       = "Queen Triggerfish",
-    "Rainbow parrotfish"      = "Rainbow Parrotfish",
-    "Red grouper"             = "Red Grouper",
-    "Spiny lobster"           = "Spiny Lobster",
-    "Stoplight parrotfish"    = "Stoplight Parrotfish",
-    "White mullet"            = "White Mullet",
-    "Yellowfin grouper"       = "Yellowfin Grouper",
-    "Yellowtail snapper"      = "Yellowtail Snapper"
-  )) %>%
+  filter(attribute_name != "Coral cover") %>%
+  mutate(stock_name = recode(stock_name, !!!stock_name_recode)) %>%
   group_by(stock_name, attribute_type, attribute_name) %>%
   summarise(
     tally_L  = sum(tally_L,  na.rm = TRUE),
@@ -139,13 +156,12 @@ exp_attr_short_names <- c(
   "Oxygen at 200m"                        = "O2 at 200m",
   "Precipitation"                         = "Precip.",
   "Primary production"                    = "Primary prod.",
-  "Sea surface oxygen"                    = "SS 02",
-  "Sea surface salinity"                  = "SS sal.",
-  "Sea surface temperature"               = "SS tempe.",
-  "Surface pH"                            = "SS pH",
+  "Sea surface oxygen"                    = "Surf. 02",
+  "Sea surface salinity"                  = "Surf. sal.",
+  "Sea surface temperature"               = "Surf. temp.",
+  "Surface pH"                            = "Surf. pH",
   "Surface wind speed magnitude"          = "Wind speed",
-  "Coral cover"                           = "Coral cover",
-  "Sargassum influx"                      = "Sargassum ",
+  "Sargassum influx"                      = "Sargassum",
   "Thermocline depth"                     = "Thermocl. depth"
 )
 
@@ -357,12 +373,14 @@ ggsave(f_fig_dir, p_dir,
 message("Figures written to: ", f_fig_dir)
 
 
-
 ##------------------------------------------------------------------------------
-## Figure 2 - Sensitivity tally distributions by attribute 
+## Figure 3 - Tally distributions by attribute 
 ##   - Pooled tallies across all reviewers and stocks
 ##   - Horizontal stacked bar: proportion Low / Moderate / High / Very High
 ##   - Ordered by pooled mean score ascending (lowest at bottom)
+
+##------------------------------------------------------------------------------
+## Figure 2 - Sensitivity tally distributions by attribute 
 
 sens_pooled <- sensitivity_tallies_long %>%
   group_by(attribute_name) %>%
@@ -442,6 +460,7 @@ sens_pooled_stock_long <- sens_pooled_stock %>%
     )
   )
 
+## Make plot
 p_tallies <- ggplot(
   sens_pooled_stock_long,
   aes(
@@ -478,20 +497,9 @@ p_tallies <- ggplot(
     panel.spacing    = unit(0.2, "lines")
   ); p_tallies
 
-ggsave(f_fig_tallies_stock, p_tallies,
-       width  = 12,
-       height = 12,
-       dpi    = 1200)
-
-
-
-
 
 ##------------------------------------------------------------------------------
-## Figure 5 - Exposure tally distributions by attribute (by stock)
-##   - Combined qualitative + quantitative exposure factors
-##   - Faceted 5x5 by stock; horizontal stacked bar per attribute
-##   - Ordered by pooled mean score ascending (lowest at bottom)
+## Figure 3B - Exposure tally distributions by attribute (by stock)
 
 exp_pooled <- exposure_tallies_long %>%
   group_by(attribute_name) %>%
@@ -587,14 +595,20 @@ p_exp_tallies <- ggplot(
     panel.spacing     = unit(0.2, "lines")
   ); p_exp_tallies
 
+##------------------------------------------------------------------------------
+## Write out tally distribution plots
+
+## Sensitivity attributes
+ggsave(f_fig_tallies_stock, p_tallies,
+       width  = 8.5,
+       height = 11,
+       dpi    = 900)
+
+## Exposure factors
 ggsave(f_fig_exp_tallies_stock, p_exp_tallies,
-       width  = 12,
-       height = 14,
-       dpi    = 1200)
-
-
-
-
+       width  = 8.5,
+       height = 11,
+       dpi    = 900)
 
 
 ##------------------------------------------------------------------------------
