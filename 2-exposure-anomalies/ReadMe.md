@@ -315,8 +315,11 @@ Classifies values into Low (L), Moderate (M), High (H), and Very High (V) catego
 #### Notes:
 - Breaks are set at **0.25 σ intervals** from min to max.  
 - Colors: green (L), yellow (M), orange (H), red (V).  
-- Returns an object of class `"lmhv_hist_summary"`, containing proportions (`Lp`, `Mp`, `Hp`, `Vp`) and a weighted exposure mean (1–4 scale).  
-- Stops with an error if no finite values are found in the raster.  
+- Returns an object of class `"lmhv_hist_summary"` containing:
+  - Proportions: `Lp`, `Mp`, `Hp`, `Vp` (fraction of valid grid cells in each category).
+  - Weighted exposure mean: `exp_mean` (1–4 ordinal scale; see attribute score table section below).
+  - **Raw grid-cell counts**: `tally_L`, `tally_M`, `tally_H`, `tally_VH` — the number of valid grid cells binned into each LMHV category. These are included so that the same tally-distribution analyses and figures used for biological sensitivity attributes can be applied to quantitative exposure factors.
+- If no finite values are found, all fields return `NA` (the function no longer stops with an error in this case).
 
 ---
 
@@ -454,6 +457,67 @@ Classifies values into Low (L), Moderate (M), High (H), and Very High (V) catego
     - `species_dir/Distribution-Anomalies/<slug>_Distribution-Anomalies_<exp>.png` (≈10×10 in, 200 dpi).  
     - `species_dir/Exposure-Overlap/<slug>_Exposure-Overlap_<exp>.png` (≈11×11 in, 300 dpi).
       
+---
+
+## Attribute Score Table (`exposure-factor-scores.R`)
+
+### Purpose
+`exposure-factor-scores.R` loops over all species shapefiles and all 13 CMIP6 NetCDF anomaly files, applies `lmhv_histogram_base()` for each stock × exposure factor × spatial extent combination, and assembles the results into a single long-format table that is written to:
+
+```
+outputs/final-scores-compiled/final-attribute-scores/quantitative-exposure-attribute-scores-all.csv
+```
+
+### How grid cells become tallies
+
+For each stock × exposure factor × spatial extent combination, the anomaly raster is masked to the species polygon footprint within the target domain. The finite values of the masked raster (one value per model grid cell) are then binned into histogram bins of width 0.25 σ. The bin midpoints are used to assign each count to one of four LMHV categories based on the absolute magnitude of the standardized anomaly:
+
+| Category | Symbol | Bin midpoint range | Interpretation |
+|---|---|---|---|
+| Low | L | \|σ\| ≤ 0.5 | Near-average conditions |
+| Moderate | M | 0.5 < \|σ\| ≤ 1.5 | Mild departure from baseline |
+| High | H | 1.5 < \|σ\| ≤ 2.0 | Substantial departure |
+| Very High | V | \|σ\| > 2.0 | Extreme departure |
+
+The **tally** for each category is the sum of histogram bin counts whose midpoints fall within that range:
+
+```r
+L  <- sum(cnts[mids >= -0.5 & mids <=  0.5])
+M  <- sum(cnts[(mids < -0.5 & mids >= -1.5) | (mids > 0.5 & mids <= 1.5)])
+H  <- sum(cnts[(mids < -1.5 & mids >= -2.0) | (mids > 1.5 & mids <= 2.0)])
+V  <- sum(cnts[mids < -2.0 | mids > 2.0])
+```
+
+Each tally is therefore a **count of valid grid cells** whose anomaly magnitude falls within that severity category. Note that the binning uses absolute magnitude (both positive and negative anomalies of the same magnitude map to the same category), so the tallies reflect the overall intensity of projected change rather than its direction.
+
+### Attribute score formula
+
+The final `attribute_score` is the tallies-weighted ordinal mean on a 1–4 scale:
+
+```
+attribute_score = (L × 1 + M × 2 + H × 3 + V × 4) / (L + M + H + V)
+```
+
+A score near 1 indicates nearly all grid cells show low anomalies (minimal projected change); a score near 4 indicates predominantly very high anomalies (large projected change across the species range).
+
+### Output table columns
+
+| Column | Type | Description |
+|---|---|---|
+| `stock_name` | character | Species / stock name |
+| `quantitative_exposure_factor` | character | Short factor code (e.g., `"sst"`, `"bt"`) |
+| `full_names` | character | Full factor name (e.g., `"Sea surface temperature"`) |
+| `spatial_extent` | character | One of: `"Western Atlantic"`, `"Caribbean Sea"`, `"U.S. Caribbean"` |
+| `attribute_score` | numeric | Tallies-weighted mean score (1–4 scale), rounded to 3 decimal places |
+| `tally_L` | integer | Grid cells with \|anomaly\| ≤ 0.5 (Low) |
+| `tally_M` | integer | Grid cells with 0.5 < \|anomaly\| ≤ 1.5 (Moderate) |
+| `tally_H` | integer | Grid cells with 1.5 < \|anomaly\| ≤ 2.0 (High) |
+| `tally_VH` | integer | Grid cells with \|anomaly\| > 2.0 (Very High) |
+
+Each row represents one unique stock × exposure factor × spatial extent combination. The four tally columns and `attribute_score` are consistent: `attribute_score = (tally_L × 1 + tally_M × 2 + tally_H × 3 + tally_VH × 4) / (tally_L + tally_M + tally_H + tally_VH)`.
+
+---
+
 # References
 Code and methods adapted in part from Loughren et al. HMS CVA:
 
