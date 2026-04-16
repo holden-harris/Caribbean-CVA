@@ -1,0 +1,143 @@
+reviewer_id,stock_name,attribute_type,attribute_name,row_num,final_score,data_quality_index,tally_L,tally_M,tally_H,tally_VH,n_tallies
+AA,Atlantic thread herring,Qualitative Exposure,Sargassum influx,17,2.4,3,NA,3,2,NA,5
+BG,Atlantic thread herring,Qualitative Exposure,Sargassum influx,17,3.2,1,NA,NA,4,1,5
+DB,Atlantic thread herring,Qualitative Exposure,Sargassum influx,17,2.6,2,NA,2,3,NA,5
+RG,Atlantic thread herring,Qualitative Exposure,Sargassum influx,17,2.4,3,NA,3,2,NA,5
+AA,Ballyhoo,Qualitative Exposure,Sargassum influx,17,3.4,3,NA,NA,3,2,5
+BG,Ballyhoo,Qualitative Exposure,Sargassum influx,17,2.6,1,NA,2,3,NA,5
+JP,Ballyhoo,Qualitative Exposure,Sargassum influx,17,2.4,1,NA,3,2,NA,5
+RG,Ballyhoo,Qualitative Exposure,Sargassum influx,17,3.2,3,NA,NA,4,1,5
+BG,Blue runner,Qualitative Exposure,Sargassum influx,17,1.8,1,1,4,NA,NA,5
+BG,Blue runner,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+DB,Blue runner,Qualitative Exposure,Sargassum influx,17,2.4,2,NA,3,2,NA,5
+DB,Blue runner,Qualitative Exposure,Thermocline depth,18,1.8,2,2,2,1,NA,5
+RA,Blue runner,Qualitative Exposure,Sargassum influx,17,1.6,1,2,3,NA,NA,5
+RA,Blue runner,Qualitative Exposure,Thermocline depth,18,1.4,1,3,2,NA,NA,5
+WM,Blue runner,Qualitative Exposure,Sargassum influx,17,1.4,2,3,2,NA,NA,5
+WM,Blue runner,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+AA,Dolphinfish,Qualitative Exposure,Sargassum influx,17,3.6,2,NA,NA,2,3,5
+AA,Dolphinfish,Qualitative Exposure,Thermocline depth,18,3.6,2,NA,NA,2,3,5
+DB,Dolphinfish,Qualitative Exposure,Sargassum influx,17,2.4,2,NA,3,2,NA,5
+DB,Dolphinfish,Qualitative Exposure,Thermocline depth,18,1.8,2,2,2,1,NA,5
+RG,Dolphinfish,Qualitative Exposure,Sargassum influx,17,3.4,3,NA,NA,3,2,5
+RG,Dolphinfish,Qualitative Exposure,Thermocline depth,18,3.4,3,NA,NA,3,2,5
+WM,Dolphinfish,Qualitative Exposure,Sargassum influx,17,1.4,2,3,2,NA,NA,5
+WM,Dolphinfish,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+AK,Gray angelfish,Qualitative Exposure,Sargassum influx,17,2.6,2,NA,2,3,NA,5
+AK,Gray angelfish,Qualitative Exposure,Thermocline depth,18,2.6,0,NA,2,3,NA,5
+ET,Gray angelfish,Qualitative Exposure,Sargassum influx,17,3.4,3,NA,NA,3,2,5
+ET,Gray angelfish,Qualitative Exposure,Thermocline depth,18,2,1,1,3,1,NA,5
+GR,Gray angelfish,Qualitative Exposure,Sargassum influx,17,3.6,1,NA,NA,2,3,5
+GR,Gray angelfish,Qualitative Exposure,Thermocline depth,18,3.6,1,NA,NA,2,3,5
+RL,Gray angelfish,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+RL,Gray angelfish,Qualitative Exposure,Thermocline depth,18,1.6,3,2,3,NA,NA,5
+AK,Hogfish,Qualitative Exposure,Sargassum influx,17,3.4,2,NA,NA,3,2,5
+AK,Hogfish,Qualitative Exposure,Thermocline depth,18,1.2,2,4,1,NA,NA,5
+GR,Hogfish,Qualitative Exposure,Sargassum influx,17,2.8,1,NA,1,4,NA,5
+GR,Hogfish,Qualitative Exposure,Thermocline depth,18,1.6,2,2,3,NA,NA,5
+MS,Hogfish,Qualitative Exposure,Sargassum influx,17,2.4,1,NA,3,2,NA,5
+MS,Hogfish,Qualitative Exposure,Thermocline depth,18,1.4,1,3,2,NA,NA,5
+RL,Hogfish,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+RL,Hogfish,Qualitative Exposure,Thermocline depth,18,1.6,3,2,3,NA,NA,5
+BG,King mackerel,Qualitative Exposure,Sargassum influx,17,2,2,NA,5,NA,NA,5
+BG,King mackerel,Qualitative Exposure,Thermocline depth,18,2,2,NA,5,NA,NA,5
+RA,King mackerel,Qualitative Exposure,Sargassum influx,17,1.6,1,2,3,NA,NA,5
+RA,King mackerel,Qualitative Exposure,Thermocline depth,18,1.4,1,3,2,NA,NA,5
+RG,King mackerel,Qualitative Exposure,Sargassum influx,17,3,3,NA,1,3,1,5
+RG,King mackerel,Qualitative Exposure,Thermocline depth,18,2.6,3,NA,2,3,NA,5
+WM,King mackerel,Qualitative Exposure,Sargassum influx,17,1.4,2,3,2,NA,NA,5
+WM,King mackerel,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+AA,Lane snapper,Qualitative Exposure,Sargassum influx,17,2.6,3,NA,2,3,NA,5
+ET,Lane snapper,Qualitative Exposure,Sargassum influx,17,4,1,NA,NA,NA,5,5
+KO,Lane snapper,Qualitative Exposure,Sargassum influx,17,2,1,NA,5,NA,NA,5
+RE,Lane snapper,Qualitative Exposure,Sargassum influx,17,3,1,NA,1,3,1,5
+DB,Long-spined sea urchin,Qualitative Exposure,Sargassum influx,17,2.2,1,1,2,2,NA,5
+JP,Long-spined sea urchin,Qualitative Exposure,Sargassum influx,17,1.6,1,2,3,NA,NA,5
+OT,Long-spined sea urchin,Qualitative Exposure,Sargassum influx,17,1.6,2,2,3,NA,NA,5
+SW,Long-spined sea urchin,Qualitative Exposure,Sargassum influx,17,3.8,1,NA,NA,1,4,5
+AA,Misty grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+ET,Misty grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+MS,Misty grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+SK,Misty grouper,Qualitative Exposure,Sargassum influx,17,1.4,2,3,2,NA,NA,5
+KO,Mutton snapper,Qualitative Exposure,Sargassum influx,17,2,1,NA,5,NA,NA,5
+RE,Mutton snapper,Qualitative Exposure,Sargassum influx,17,3,1,NA,1,3,1,5
+SK,Mutton snapper,Qualitative Exposure,Sargassum influx,17,1.8,2,1,4,NA,NA,5
+WM,Mutton snapper,Qualitative Exposure,Sargassum influx,17,2.8,2,NA,2,2,1,5
+CZ,Nassau grouper,Qualitative Exposure,Sargassum influx,17,3.6,0,NA,NA,2,3,5
+CZ,Nassau grouper,Qualitative Exposure,Thermocline depth,18,2.6,2,NA,2,3,NA,5
+MS,Nassau grouper,Qualitative Exposure,Sargassum influx,17,1.2,1,4,1,NA,NA,5
+MS,Nassau grouper,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+OT,Nassau grouper,Qualitative Exposure,Sargassum influx,17,2,1,1,3,1,NA,5
+OT,Nassau grouper,Qualitative Exposure,Thermocline depth,18,2.4,2,1,1,3,NA,5
+SK,Nassau grouper,Qualitative Exposure,Sargassum influx,17,2.2,2,1,2,2,NA,5
+SK,Nassau grouper,Qualitative Exposure,Thermocline depth,18,1.6,2,2,3,NA,NA,5
+AK,Queen conch,Qualitative Exposure,Sargassum influx,17,2,2,NA,5,NA,NA,5
+BG,Queen conch,Qualitative Exposure,Sargassum influx,17,3.4,1,NA,NA,3,2,5
+OT,Queen conch,Qualitative Exposure,Sargassum influx,17,3.4,1,NA,NA,3,2,5
+RA,Queen conch,Qualitative Exposure,Sargassum influx,17,1.2,1,4,1,NA,NA,5
+CZ,Queen triggerfish,Qualitative Exposure,Sargassum influx,17,3.2,0,NA,1,2,2,5
+CZ,Queen triggerfish,Qualitative Exposure,Thermocline depth,18,2.6,NA,NA,2,3,NA,5
+ET,Queen triggerfish,Qualitative Exposure,Sargassum influx,17,1.2,2,4,1,NA,NA,5
+ET,Queen triggerfish,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+GR,Queen triggerfish,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+GR,Queen triggerfish,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+RL,Queen triggerfish,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+RL,Queen triggerfish,Qualitative Exposure,Thermocline depth,18,1.6,3,2,3,NA,NA,5
+CZ,Rainbow parrotfish,Qualitative Exposure,Sargassum influx,17,3.4,0,NA,0,3,2,5
+CZ,Rainbow parrotfish,Qualitative Exposure,Thermocline depth,18,2.6,NA,NA,2,3,NA,5
+CZ,Rainbow parrotfish,Qualitative Exposure,Coral cover,19,3.6,4,NA,NA,2,3,5
+GR,Rainbow parrotfish,Qualitative Exposure,Sargassum influx,17,2.8,1,NA,3,NA,2,5
+GR,Rainbow parrotfish,Qualitative Exposure,Thermocline depth,18,2.6,1,NA,2,3,NA,5
+RE,Rainbow parrotfish,Qualitative Exposure,Sargassum influx,17,4,2,NA,NA,NA,5,5
+RE,Rainbow parrotfish,Qualitative Exposure,Thermocline depth,18,2,1,NA,5,NA,NA,5
+RL,Rainbow parrotfish,Qualitative Exposure,Sargassum influx,17,2,1,1,3,1,NA,5
+RL,Rainbow parrotfish,Qualitative Exposure,Thermocline depth,18,2,3,1,3,1,NA,5
+MS,Red grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+MS,Red grouper,Qualitative Exposure,Thermocline depth,18,1.2,1,4,1,NA,NA,5
+OT,Red grouper,Qualitative Exposure,Sargassum influx,17,3,2,NA,1,3,1,5
+OT,Red grouper,Qualitative Exposure,Thermocline depth,18,3,2,NA,1,3,1,5
+RA,Red grouper,Qualitative Exposure,Sargassum influx,17,1.6,1,2,3,NA,NA,5
+RA,Red grouper,Qualitative Exposure,Thermocline depth,18,1.2,1,4,1,NA,NA,5
+SK,Red grouper,Qualitative Exposure,Sargassum influx,17,2,2,1,3,1,NA,5
+SK,Red grouper,Qualitative Exposure,Thermocline depth,18,2,2,3,2,NA,NA,5
+CZ,Red hind,Qualitative Exposure,Sargassum influx,17,3.6,0,NA,NA,2,3,5
+CZ,Red hind,Qualitative Exposure,Thermocline depth,18,2.6,2,NA,2,3,NA,5
+MS,Red hind,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+MS,Red hind,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+OT,Red hind,Qualitative Exposure,Sargassum influx,17,1.2,2,4,1,NA,NA,5
+OT,Red hind,Qualitative Exposure,Thermocline depth,18,2.8,3,NA,1,4,NA,5
+SK,Red hind,Qualitative Exposure,Sargassum influx,17,2.4,2,1,1,3,NA,5
+SK,Red hind,Qualitative Exposure,Thermocline depth,18,1.8,2,2,2,1,NA,5
+JP,Sea cucumbers,Qualitative Exposure,Sargassum influx,17,3.2,1,NA,1,2,2,5
+OT,Sea cucumbers,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+RA,Sea cucumbers,Qualitative Exposure,Sargassum influx,17,1.8,1,1,4,NA,NA,5
+SW,Sea cucumbers,Qualitative Exposure,Sargassum influx,17,3.4,1,NA,NA,3,2,5
+AK,Spiny lobster,Qualitative Exposure,Sargassum influx,17,2.6,0,NA,2,3,NA,5
+BG,Spiny lobster,Qualitative Exposure,Sargassum influx,17,4,1,NA,NA,NA,5,5
+DB,Spiny lobster,Qualitative Exposure,Sargassum influx,17,1.2,1,4,1,NA,NA,5
+SW,Spiny lobster,Qualitative Exposure,Sargassum influx,17,3.2,1,NA,1,2,2,5
+CZ,Stoplight parrotfish,Qualitative Exposure,Sargassum influx,17,3.2,0,NA,1,2,2,5
+CZ,Stoplight parrotfish,Qualitative Exposure,Thermocline depth,18,2.6,NA,NA,2,3,NA,5
+CZ,Stoplight parrotfish,Qualitative Exposure,Coral cover,19,3.6,2,NA,NA,2,3,5
+GR,Stoplight parrotfish,Qualitative Exposure,Sargassum influx,17,2.4,1,NA,3,2,NA,5
+GR,Stoplight parrotfish,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+RE,Stoplight parrotfish,Qualitative Exposure,Sargassum influx,17,4,2,NA,NA,NA,5,5
+RE,Stoplight parrotfish,Qualitative Exposure,Thermocline depth,18,2,1,NA,5,NA,NA,5
+RL,Stoplight parrotfish,Qualitative Exposure,Sargassum influx,17,2,1,1,3,1,NA,5
+RL,Stoplight parrotfish,Qualitative Exposure,Thermocline depth,18,2,3,1,3,1,NA,5
+DB,White mullet,Qualitative Exposure,Sargassum influx,17,2.6,2,NA,2,3,NA,5
+JP,White mullet,Qualitative Exposure,Sargassum influx,17,2.2,0,1,2,2,NA,5
+RG,White mullet,Qualitative Exposure,Sargassum influx,17,3.2,3,NA,NA,4,1,5
+WM,White mullet,Qualitative Exposure,Sargassum influx,17,3.6,2,NA,NA,2,3,5
+CZ,Yellowfin grouper,Qualitative Exposure,Sargassum influx,17,3.2,0,NA,1,2,2,5
+CZ,Yellowfin grouper,Qualitative Exposure,Thermocline depth,18,3.6,1,NA,NA,2,3,5
+MS,Yellowfin grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+MS,Yellowfin grouper,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+RA,Yellowfin grouper,Qualitative Exposure,Sargassum influx,17,2,1,1,3,1,NA,5
+RA,Yellowfin grouper,Qualitative Exposure,Thermocline depth,18,1.4,1,3,2,NA,NA,5
+SK,Yellowfin grouper,Qualitative Exposure,Sargassum influx,17,1.8,2,2,2,1,NA,5
+SK,Yellowfin grouper,Qualitative Exposure,Thermocline depth,18,1.6,2,2,3,NA,NA,5
+AA,Yellowtail snapper,Qualitative Exposure,Sargassum influx,17,3,2,NA,1,3,1,5
+ET,Yellowtail snapper,Qualitative Exposure,Sargassum influx,17,4,2,NA,NA,NA,5,5
+KO,Yellowtail snapper,Qualitative Exposure,Sargassum influx,17,2,1,NA,5,NA,NA,5
+RE,Yellowtail snapper,Qualitative Exposure,Sargassum influx,17,3,1,NA,1,3,1,5

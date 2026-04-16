@@ -1,0 +1,207 @@
+reviewer_id,stock_name,effect_category,row_num,tally,n_tallies
+AA,Atlantic thread herring,Positive,38,1,4
+AA,Atlantic thread herring,Neutral,39,3,4
+BG,Atlantic thread herring,Positive,38,2,4
+BG,Atlantic thread herring,Negative,40,2,4
+DB,Atlantic thread herring,Positive,38,1,4
+DB,Atlantic thread herring,Neutral,39,2,4
+DB,Atlantic thread herring,Negative,40,1,4
+RG,Atlantic thread herring,Neutral,39,2,4
+RG,Atlantic thread herring,Negative,40,2,4
+AA,Ballyhoo,Neutral,39,4,4
+BG,Ballyhoo,Neutral,39,3,4
+BG,Ballyhoo,Negative,40,1,4
+JP,Ballyhoo,Neutral,39,4,4
+RG,Ballyhoo,Neutral,39,2,4
+RG,Ballyhoo,Negative,40,2,4
+BG,Blue runner,Neutral,39,4,4
+DB,Blue runner,Positive,38,2,4
+DB,Blue runner,Neutral,39,1,4
+DB,Blue runner,Negative,40,1,4
+RA,Blue runner,Neutral,39,1,4
+RA,Blue runner,Negative,40,3,4
+WM,Blue runner,Positive,38,2,4
+WM,Blue runner,Neutral,39,2,4
+AA,Dolphinfish,Positive,38,1,4
+AA,Dolphinfish,Neutral,39,3,4
+DB,Dolphinfish,Positive,38,2,4
+DB,Dolphinfish,Neutral,39,2,4
+RG,Dolphinfish,Neutral,39,3,4
+RG,Dolphinfish,Negative,40,1,4
+WM,Dolphinfish,Positive,38,2,4
+WM,Dolphinfish,Neutral,39,2,4
+AK,Gray angelfish,Positive,38,1,4
+AK,Gray angelfish,Neutral,39,2,4
+AK,Gray angelfish,Negative,40,1,4
+ET,Gray angelfish,Neutral,39,2,4
+ET,Gray angelfish,Negative,40,2,4
+GR,Gray angelfish,Neutral,39,1,4
+GR,Gray angelfish,Negative,40,3,4
+RL,Gray angelfish,Positive,38,0,4
+RL,Gray angelfish,Neutral,39,2,4
+RL,Gray angelfish,Negative,40,2,4
+AK,Hogfish,Neutral,39,2,4
+AK,Hogfish,Negative,40,2,4
+GR,Hogfish,Neutral,39,1,4
+GR,Hogfish,Negative,40,3,4
+MS,Hogfish,Positive,38,1,4
+MS,Hogfish,Neutral,39,2,4
+MS,Hogfish,Negative,40,1,4
+RL,Hogfish,Positive,38,0,4
+RL,Hogfish,Neutral,39,2,4
+RL,Hogfish,Negative,40,2,4
+BG,King mackerel,Neutral,39,1,4
+BG,King mackerel,Negative,40,3,4
+RA,King mackerel,Negative,40,4,4
+RG,King mackerel,Neutral,39,3,4
+RG,King mackerel,Negative,40,1,4
+WM,King mackerel,Positive,38,1,4
+WM,King mackerel,Neutral,39,2,4
+WM,King mackerel,Negative,40,1,4
+AA,Lane snapper,Neutral,39,2,4
+AA,Lane snapper,Negative,40,2,4
+ET,Lane snapper,Neutral,39,1,4
+ET,Lane snapper,Negative,40,3,4
+KO,Lane snapper,Neutral,39,3,4
+KO,Lane snapper,Negative,40,1,4
+RE,Lane snapper,Neutral,39,1,4
+RE,Lane snapper,Negative,40,3,4
+DB,Long-spined sea urchin,Positive,38,1,4
+DB,Long-spined sea urchin,Neutral,39,2,4
+DB,Long-spined sea urchin,Negative,40,1,4
+JP,Long-spined sea urchin,Neutral,39,2,4
+JP,Long-spined sea urchin,Negative,40,2,4
+OT,Long-spined sea urchin,Positive,38,1,4
+OT,Long-spined sea urchin,Neutral,39,2,4
+OT,Long-spined sea urchin,Negative,40,1,4
+SW,Long-spined sea urchin,Neutral,39,1,4
+SW,Long-spined sea urchin,Negative,40,3,4
+AA,Misty grouper,Neutral,39,2,4
+AA,Misty grouper,Negative,40,2,4
+ET,Misty grouper,Neutral,39,2,4
+ET,Misty grouper,Negative,40,2,4
+MS,Misty grouper,Neutral,39,2,4
+MS,Misty grouper,Negative,40,2,4
+SK,Misty grouper,Neutral,39,1,4
+SK,Misty grouper,Negative,40,3,4
+KO,Mutton snapper,Neutral,39,2,4
+KO,Mutton snapper,Negative,40,2,4
+RE,Mutton snapper,Neutral,39,2,4
+RE,Mutton snapper,Negative,40,2,4
+SK,Mutton snapper,Neutral,39,1,4
+SK,Mutton snapper,Negative,40,3,4
+WM,Mutton snapper,Neutral,39,2,4
+WM,Mutton snapper,Negative,40,2,4
+CZ,Nassau grouper,Neutral,39,1,4
+CZ,Nassau grouper,Negative,40,3,4
+MS,Nassau grouper,Neutral,39,2,4
+MS,Nassau grouper,Negative,40,2,4
+OT,Nassau grouper,Neutral,39,2,4
+OT,Nassau grouper,Negative,40,2,4
+SK,Nassau grouper,Neutral,39,1,4
+SK,Nassau grouper,Negative,40,3,4
+AK,Queen conch,Neutral,39,3,4
+AK,Queen conch,Negative,40,1,4
+BG,Queen conch,Negative,40,4,4
+OT,Queen conch,Neutral,39,2,4
+OT,Queen conch,Negative,40,2,4
+RA,Queen conch,Negative,40,4,4
+KO,Queen snapper,Neutral,39,4,4
+RG,Queen snapper,Neutral,39,3,4
+RG,Queen snapper,Negative,40,1,4
+SW,Queen snapper,Neutral,39,2,4
+SW,Queen snapper,Negative,40,2,4
+WM,Queen snapper,Positive,38,1,4
+WM,Queen snapper,Neutral,39,3,4
+CZ,Queen triggerfish,Neutral,39,2,4
+CZ,Queen triggerfish,Negative,40,2,4
+ET,Queen triggerfish,Neutral,39,1,4
+ET,Queen triggerfish,Negative,40,3,4
+GR,Queen triggerfish,Neutral,39,1,4
+GR,Queen triggerfish,Negative,40,3,4
+RL,Queen triggerfish,Positive,38,0,4
+RL,Queen triggerfish,Neutral,39,1,4
+RL,Queen triggerfish,Negative,40,3,4
+CZ,Rainbow parrotfish,Neutral,39,1,4
+CZ,Rainbow parrotfish,Negative,40,3,4
+GR,Rainbow parrotfish,Neutral,39,1,4
+GR,Rainbow parrotfish,Negative,40,3,4
+RE,Rainbow parrotfish,Neutral,39,1,4
+RE,Rainbow parrotfish,Negative,40,3,4
+RL,Rainbow parrotfish,Positive,38,0,4
+RL,Rainbow parrotfish,Neutral,39,1,4
+RL,Rainbow parrotfish,Negative,40,3,4
+MS,Red grouper,Positive,38,1,4
+MS,Red grouper,Neutral,39,2,4
+MS,Red grouper,Negative,40,1,4
+OT,Red grouper,Neutral,39,2,4
+OT,Red grouper,Negative,40,2,4
+RA,Red grouper,Negative,40,4,4
+SK,Red grouper,Neutral,39,1,4
+SK,Red grouper,Negative,40,3,4
+CZ,Red hind,Neutral,39,3,4
+CZ,Red hind,Negative,40,1,4
+MS,Red hind,Neutral,39,2,4
+MS,Red hind,Negative,40,2,4
+OT,Red hind,Neutral,39,3,4
+OT,Red hind,Negative,40,1,4
+SK,Red hind,Neutral,39,1,4
+SK,Red hind,Negative,40,3,4
+JP,Sea cucumbers,Positive,38,1,4
+JP,Sea cucumbers,Neutral,39,2,4
+JP,Sea cucumbers,Negative,40,1,4
+OT,Sea cucumbers,Neutral,39,3,4
+OT,Sea cucumbers,Negative,40,1,4
+RA,Sea cucumbers,Neutral,39,2,4
+RA,Sea cucumbers,Negative,40,2,4
+SW,Sea cucumbers,Neutral,39,1,4
+SW,Sea cucumbers,Negative,40,3,4
+AK,Silk snapper,Neutral,39,4,4
+KO,Silk snapper,Neutral,39,3,4
+KO,Silk snapper,Negative,40,1,4
+RE,Silk snapper,Neutral,39,3,4
+RE,Silk snapper,Negative,40,1,4
+RL,Silk snapper,Positive,38,0,4
+RL,Silk snapper,Neutral,39,4,4
+RL,Silk snapper,Negative,40,0,4
+AK,Spiny lobster,Neutral,39,4,4
+BG,Spiny lobster,Positive,38,1,4
+BG,Spiny lobster,Negative,40,3,4
+DB,Spiny lobster,Positive,38,1,4
+DB,Spiny lobster,Neutral,39,2,4
+DB,Spiny lobster,Negative,40,1,4
+SW,Spiny lobster,Neutral,39,2,4
+SW,Spiny lobster,Negative,40,2,4
+CZ,Stoplight parrotfish,Neutral,39,3,4
+CZ,Stoplight parrotfish,Negative,40,1,4
+GR,Stoplight parrotfish,Neutral,39,1,4
+GR,Stoplight parrotfish,Negative,40,3,4
+RE,Stoplight parrotfish,Neutral,39,1,4
+RE,Stoplight parrotfish,Negative,40,3,4
+RL,Stoplight parrotfish,Positive,38,0,4
+RL,Stoplight parrotfish,Neutral,39,1,4
+RL,Stoplight parrotfish,Negative,40,3,4
+DB,White mullet,Neutral,39,2,4
+DB,White mullet,Negative,40,2,4
+JP,White mullet,Positive,38,1,4
+JP,White mullet,Neutral,39,2,4
+JP,White mullet,Negative,40,1,4
+RG,White mullet,Neutral,39,2,4
+RG,White mullet,Negative,40,2,4
+WM,White mullet,Neutral,39,2,4
+WM,White mullet,Negative,40,2,4
+CZ,Yellowfin grouper,Neutral,39,1,4
+CZ,Yellowfin grouper,Negative,40,3,4
+MS,Yellowfin grouper,Neutral,39,2,4
+MS,Yellowfin grouper,Negative,40,2,4
+RA,Yellowfin grouper,Negative,40,4,4
+SK,Yellowfin grouper,Neutral,39,1,4
+SK,Yellowfin grouper,Negative,40,3,4
+AA,Yellowtail snapper,Positive,38,2,4
+AA,Yellowtail snapper,Neutral,39,2,4
+ET,Yellowtail snapper,Neutral,39,2,4
+ET,Yellowtail snapper,Negative,40,2,4
+KO,Yellowtail snapper,Neutral,39,3,4
+KO,Yellowtail snapper,Negative,40,1,4
+RE,Yellowtail snapper,Neutral,39,3,4
+RE,Yellowtail snapper,Negative,40,1,4

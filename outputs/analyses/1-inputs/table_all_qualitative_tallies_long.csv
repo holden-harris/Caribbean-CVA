@@ -1,0 +1,1543 @@
+reviewer_id,stock_name,attribute_type,attribute_name,row_num,final_score,data_quality_index,tally_L,tally_M,tally_H,tally_VH,n_tallies
+AA,Atlantic thread herring,Qualitative Exposure,Sargassum influx,17,2.4,3,NA,3,2,NA,5
+AA,Atlantic thread herring,Sensitivity,Habitat specificity,21,1.2,2,4,1,NA,NA,5
+AA,Atlantic thread herring,Sensitivity,Prey specificity,22,2.2,2,NA,4,1,NA,5
+AA,Atlantic thread herring,Sensitivity,Tolerance to ocean acidification,23,1,1,5,NA,NA,NA,5
+AA,Atlantic thread herring,Sensitivity,Complexity in reproductive strategy,24,1.8,2,1,4,NA,NA,5
+AA,Atlantic thread herring,Sensitivity,Species range,25,1.4,2,3,2,NA,NA,5
+AA,Atlantic thread herring,Sensitivity,Specificity in early life history requirements,26,2.4,2,NA,3,2,NA,5
+AA,Atlantic thread herring,Sensitivity,Stock Size Status,27,2,1,1,3,1,NA,5
+AA,Atlantic thread herring,Sensitivity,Other stressors,28,1.4,1,3,2,NA,NA,5
+AA,Atlantic thread herring,Sensitivity,Population growth rate,30,1.2,2,4,1,NA,NA,5
+AA,Atlantic thread herring,Sensitivity,Mobility and dispersal or early life stages,31,2.4,1,NA,3,2,NA,5
+AA,Atlantic thread herring,Sensitivity,Adult mobility,32,1.8,2,1,4,NA,NA,5
+AA,Atlantic thread herring,Sensitivity,Spawning characteristics,33,2.2,3,NA,4,1,NA,5
+AA,Atlantic thread herring,Sensitivity,Predation and competition dynamics,34,2,1,1,3,1,NA,5
+AA,Atlantic thread herring,Sensitivity,Genetic diversity,35,1,1,5,NA,NA,NA,5
+BG,Atlantic thread herring,Qualitative Exposure,Sargassum influx,17,3.2,1,NA,NA,4,1,5
+BG,Atlantic thread herring,Sensitivity,Habitat specificity,21,1.2,1,4,1,NA,NA,5
+BG,Atlantic thread herring,Sensitivity,Prey specificity,22,2.4,2,NA,3,2,NA,5
+BG,Atlantic thread herring,Sensitivity,Tolerance to ocean acidification,23,1,1,5,NA,NA,NA,5
+BG,Atlantic thread herring,Sensitivity,Complexity in reproductive strategy,24,1.2,2,4,1,NA,NA,5
+BG,Atlantic thread herring,Sensitivity,Species range,25,3,3,NA,NA,5,NA,5
+BG,Atlantic thread herring,Sensitivity,Specificity in early life history requirements,26,1,1,5,NA,NA,NA,5
+BG,Atlantic thread herring,Sensitivity,Stock Size Status,27,1,1,5,NA,NA,NA,5
+BG,Atlantic thread herring,Sensitivity,Other stressors,28,2.6,1,NA,2,3,NA,5
+BG,Atlantic thread herring,Sensitivity,Population growth rate,30,1,3,5,NA,NA,NA,5
+BG,Atlantic thread herring,Sensitivity,Mobility and dispersal or early life stages,31,2.2,2,1,2,2,NA,5
+BG,Atlantic thread herring,Sensitivity,Adult mobility,32,1.8,2,2,2,1,NA,5
+BG,Atlantic thread herring,Sensitivity,Spawning characteristics,33,2.4,2,NA,3,2,NA,5
+BG,Atlantic thread herring,Sensitivity,Predation and competition dynamics,34,2.2,1,1,2,2,NA,5
+BG,Atlantic thread herring,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+DB,Atlantic thread herring,Qualitative Exposure,Sargassum influx,17,2.6,2,NA,2,3,NA,5
+DB,Atlantic thread herring,Sensitivity,Habitat specificity,21,2.8,2,NA,1,4,NA,5
+DB,Atlantic thread herring,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Tolerance to ocean acidification,23,1.2,1,4,1,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Complexity in reproductive strategy,24,1.2,2,4,1,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Specificity in early life history requirements,26,2.4,1,NA,3,2,NA,5
+DB,Atlantic thread herring,Sensitivity,Stock Size Status,27,1.2,1,4,1,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Other stressors,28,1,1,5,NA,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Population growth rate,30,1,3,5,NA,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Mobility and dispersal or early life stages,31,1.2,1,4,1,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Adult mobility,32,1,2,5,NA,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Spawning characteristics,33,2,3,NA,5,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Predation and competition dynamics,34,1.2,1,4,1,NA,NA,5
+DB,Atlantic thread herring,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+RG,Atlantic thread herring,Qualitative Exposure,Sargassum influx,17,2.4,3,NA,3,2,NA,5
+RG,Atlantic thread herring,Sensitivity,Habitat specificity,21,1.6,3,2,3,NA,NA,5
+RG,Atlantic thread herring,Sensitivity,Prey specificity,22,2.6,2,NA,2,3,NA,5
+RG,Atlantic thread herring,Sensitivity,Tolerance to ocean acidification,23,2.6,1,NA,2,3,NA,5
+RG,Atlantic thread herring,Sensitivity,Complexity in reproductive strategy,24,1.4,1,3,2,NA,NA,5
+RG,Atlantic thread herring,Sensitivity,Species range,25,1.6,2,2,3,NA,NA,5
+RG,Atlantic thread herring,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+RG,Atlantic thread herring,Sensitivity,Stock Size Status,27,2.6,1,NA,2,3,NA,5
+RG,Atlantic thread herring,Sensitivity,Other stressors,28,2.6,1,NA,2,3,NA,5
+RG,Atlantic thread herring,Sensitivity,Population growth rate,30,1.4,2,3,2,NA,NA,5
+RG,Atlantic thread herring,Sensitivity,Mobility and dispersal or early life stages,31,2.4,1,NA,3,2,NA,5
+RG,Atlantic thread herring,Sensitivity,Adult mobility,32,1.6,3,2,3,NA,NA,5
+RG,Atlantic thread herring,Sensitivity,Spawning characteristics,33,1.6,3,2,3,NA,NA,5
+RG,Atlantic thread herring,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+RG,Atlantic thread herring,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+AA,Ballyhoo,Qualitative Exposure,Sargassum influx,17,3.4,3,NA,NA,3,2,5
+AA,Ballyhoo,Sensitivity,Habitat specificity,21,1.4,2,3,2,NA,NA,5
+AA,Ballyhoo,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+AA,Ballyhoo,Sensitivity,Tolerance to ocean acidification,23,1,1,5,NA,NA,NA,5
+AA,Ballyhoo,Sensitivity,Complexity in reproductive strategy,24,1.2,2,4,1,NA,NA,5
+AA,Ballyhoo,Sensitivity,Species range,25,1.4,2,3,2,NA,NA,5
+AA,Ballyhoo,Sensitivity,Specificity in early life history requirements,26,2.4,2,NA,3,2,NA,5
+AA,Ballyhoo,Sensitivity,Stock Size Status,27,2.6,2,NA,2,3,NA,5
+AA,Ballyhoo,Sensitivity,Other stressors,28,2.4,1,NA,3,2,NA,5
+AA,Ballyhoo,Sensitivity,Population growth rate,30,1.2,2,4,1,NA,NA,5
+AA,Ballyhoo,Sensitivity,Mobility and dispersal or early life stages,31,2.6,1,NA,2,3,NA,5
+AA,Ballyhoo,Sensitivity,Adult mobility,32,1.8,2,1,4,NA,NA,5
+AA,Ballyhoo,Sensitivity,Spawning characteristics,33,1.4,3,3,2,NA,NA,5
+AA,Ballyhoo,Sensitivity,Predation and competition dynamics,34,2.4,2,NA,3,2,NA,5
+AA,Ballyhoo,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+BG,Ballyhoo,Qualitative Exposure,Sargassum influx,17,2.6,1,NA,2,3,NA,5
+BG,Ballyhoo,Sensitivity,Habitat specificity,21,1,1,5,NA,NA,NA,5
+BG,Ballyhoo,Sensitivity,Prey specificity,22,1.4,1,3,2,NA,NA,5
+BG,Ballyhoo,Sensitivity,Tolerance to ocean acidification,23,1,1,5,NA,NA,NA,5
+BG,Ballyhoo,Sensitivity,Complexity in reproductive strategy,24,2,2,NA,5,NA,NA,5
+BG,Ballyhoo,Sensitivity,Species range,25,2,3,NA,5,NA,NA,5
+BG,Ballyhoo,Sensitivity,Specificity in early life history requirements,26,2.2,1,1,2,2,NA,5
+BG,Ballyhoo,Sensitivity,Stock Size Status,27,2.2,1,1,2,2,NA,5
+BG,Ballyhoo,Sensitivity,Other stressors,28,1.6,1,2,3,NA,NA,5
+BG,Ballyhoo,Sensitivity,Population growth rate,30,1,1,5,NA,NA,NA,5
+BG,Ballyhoo,Sensitivity,Mobility and dispersal or early life stages,31,1.2,1,4,1,NA,NA,5
+BG,Ballyhoo,Sensitivity,Adult mobility,32,1.8,2,1,4,NA,NA,5
+BG,Ballyhoo,Sensitivity,Spawning characteristics,33,3,3,NA,NA,5,NA,5
+BG,Ballyhoo,Sensitivity,Predation and competition dynamics,34,2,1,NA,5,NA,NA,5
+BG,Ballyhoo,Sensitivity,Genetic diversity,35,1,1,5,NA,NA,NA,5
+JP,Ballyhoo,Qualitative Exposure,Sargassum influx,17,2.4,1,NA,3,2,NA,5
+JP,Ballyhoo,Sensitivity,Habitat specificity,21,1,2,5,NA,NA,NA,5
+JP,Ballyhoo,Sensitivity,Prey specificity,22,1,2,5,NA,NA,NA,5
+JP,Ballyhoo,Sensitivity,Tolerance to ocean acidification,23,1,1,5,NA,NA,NA,5
+JP,Ballyhoo,Sensitivity,Complexity in reproductive strategy,24,2.2,0,1,2,2,NA,5
+JP,Ballyhoo,Sensitivity,Species range,25,1.2,2,4,1,NA,NA,5
+JP,Ballyhoo,Sensitivity,Specificity in early life history requirements,26,2.4,0,1,2,1,1,5
+JP,Ballyhoo,Sensitivity,Stock Size Status,27,2,0,1,3,1,NA,5
+JP,Ballyhoo,Sensitivity,Other stressors,28,1.8,0,2,2,1,NA,5
+JP,Ballyhoo,Sensitivity,Population growth rate,30,1,3,5,NA,NA,NA,5
+JP,Ballyhoo,Sensitivity,Mobility and dispersal or early life stages,31,2.8,2,NA,1,4,NA,5
+JP,Ballyhoo,Sensitivity,Adult mobility,32,1,1,5,NA,NA,NA,5
+JP,Ballyhoo,Sensitivity,Spawning characteristics,33,1.4,3,3,2,NA,NA,5
+JP,Ballyhoo,Sensitivity,Predation and competition dynamics,34,2,1,1,3,1,NA,5
+JP,Ballyhoo,Sensitivity,Genetic diversity,35,1,1,5,NA,NA,NA,5
+RG,Ballyhoo,Qualitative Exposure,Sargassum influx,17,3.2,3,NA,NA,4,1,5
+RG,Ballyhoo,Sensitivity,Habitat specificity,21,1.4,3,3,2,NA,NA,5
+RG,Ballyhoo,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+RG,Ballyhoo,Sensitivity,Tolerance to ocean acidification,23,1.2,1,4,1,NA,NA,5
+RG,Ballyhoo,Sensitivity,Complexity in reproductive strategy,24,1.2,1,4,1,NA,NA,5
+RG,Ballyhoo,Sensitivity,Species range,25,2.6,3,NA,2,3,NA,5
+RG,Ballyhoo,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+RG,Ballyhoo,Sensitivity,Stock Size Status,27,2.6,1,NA,2,3,NA,5
+RG,Ballyhoo,Sensitivity,Other stressors,28,2.6,1,NA,2,3,NA,5
+RG,Ballyhoo,Sensitivity,Population growth rate,30,1.4,2,3,2,NA,NA,5
+RG,Ballyhoo,Sensitivity,Mobility and dispersal or early life stages,31,1.6,1,2,3,NA,NA,5
+RG,Ballyhoo,Sensitivity,Adult mobility,32,1.6,3,2,3,NA,NA,5
+RG,Ballyhoo,Sensitivity,Spawning characteristics,33,1.6,3,2,3,NA,NA,5
+RG,Ballyhoo,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+RG,Ballyhoo,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+BG,Blue runner,Qualitative Exposure,Sargassum influx,17,1.8,1,1,4,NA,NA,5
+BG,Blue runner,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+BG,Blue runner,Sensitivity,Habitat specificity,21,1,1,5,NA,NA,NA,5
+BG,Blue runner,Sensitivity,Prey specificity,22,1.6,1,2,3,NA,NA,5
+BG,Blue runner,Sensitivity,Tolerance to ocean acidification,23,1.2,1,4,1,NA,NA,5
+BG,Blue runner,Sensitivity,Complexity in reproductive strategy,24,1,1,5,NA,NA,NA,5
+BG,Blue runner,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+BG,Blue runner,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+BG,Blue runner,Sensitivity,Stock Size Status,27,1,1,5,NA,NA,NA,5
+BG,Blue runner,Sensitivity,Other stressors,28,1.2,3,4,1,NA,NA,5
+BG,Blue runner,Sensitivity,Population growth rate,30,2,1,1,3,1,NA,5
+BG,Blue runner,Sensitivity,Mobility and dispersal or early life stages,31,1,2,5,NA,NA,NA,5
+BG,Blue runner,Sensitivity,Adult mobility,32,1,3,5,NA,NA,NA,5
+BG,Blue runner,Sensitivity,Spawning characteristics,33,1.2,2,4,1,NA,NA,5
+BG,Blue runner,Sensitivity,Predation and competition dynamics,34,1.6,1,2,3,NA,NA,5
+BG,Blue runner,Sensitivity,Genetic diversity,35,1,1,5,NA,NA,NA,5
+DB,Blue runner,Qualitative Exposure,Sargassum influx,17,2.4,2,NA,3,2,NA,5
+DB,Blue runner,Qualitative Exposure,Thermocline depth,18,1.8,2,2,2,1,NA,5
+DB,Blue runner,Sensitivity,Habitat specificity,21,1,2,5,NA,NA,NA,5
+DB,Blue runner,Sensitivity,Prey specificity,22,1.4,3,3,2,NA,NA,5
+DB,Blue runner,Sensitivity,Tolerance to ocean acidification,23,1.2,1,4,1,NA,NA,5
+DB,Blue runner,Sensitivity,Complexity in reproductive strategy,24,1.4,2,3,2,NA,NA,5
+DB,Blue runner,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+DB,Blue runner,Sensitivity,Specificity in early life history requirements,26,1,3,5,NA,NA,NA,5
+DB,Blue runner,Sensitivity,Stock Size Status,27,1.4,1,3,2,NA,NA,5
+DB,Blue runner,Sensitivity,Other stressors,28,1.4,1,3,2,NA,NA,5
+DB,Blue runner,Sensitivity,Population growth rate,30,1.4,3,3,2,NA,NA,5
+DB,Blue runner,Sensitivity,Mobility and dispersal or early life stages,31,1.4,2,3,2,NA,NA,5
+DB,Blue runner,Sensitivity,Adult mobility,32,1,2,5,NA,NA,NA,5
+DB,Blue runner,Sensitivity,Spawning characteristics,33,1.2,3,4,1,NA,NA,5
+DB,Blue runner,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+DB,Blue runner,Sensitivity,Genetic diversity,35,1,2,5,NA,NA,NA,5
+RA,Blue runner,Qualitative Exposure,Sargassum influx,17,1.6,1,2,3,NA,NA,5
+RA,Blue runner,Qualitative Exposure,Thermocline depth,18,1.4,1,3,2,NA,NA,5
+RA,Blue runner,Sensitivity,Habitat specificity,21,1.6,2,2,3,NA,NA,5
+RA,Blue runner,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+RA,Blue runner,Sensitivity,Tolerance to ocean acidification,23,2,1,1,3,1,NA,5
+RA,Blue runner,Sensitivity,Complexity in reproductive strategy,24,1,2,5,NA,NA,NA,5
+RA,Blue runner,Sensitivity,Species range,25,3,2,NA,1,3,1,5
+RA,Blue runner,Sensitivity,Specificity in early life history requirements,26,3,1,NA,1,3,1,5
+RA,Blue runner,Sensitivity,Stock Size Status,27,1.4,1,3,2,NA,NA,5
+RA,Blue runner,Sensitivity,Other stressors,28,1.2,1,4,1,NA,NA,5
+RA,Blue runner,Sensitivity,Population growth rate,30,1.8,2,1,4,NA,NA,5
+RA,Blue runner,Sensitivity,Mobility and dispersal or early life stages,31,2,1,NA,5,NA,NA,5
+RA,Blue runner,Sensitivity,Adult mobility,32,2,1,1,3,1,NA,5
+RA,Blue runner,Sensitivity,Spawning characteristics,33,2.6,NA,NA,2,3,NA,5
+RA,Blue runner,Sensitivity,Predation and competition dynamics,34,1.6,NA,2,3,NA,NA,5
+RA,Blue runner,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+WM,Blue runner,Qualitative Exposure,Sargassum influx,17,1.4,2,3,2,NA,NA,5
+WM,Blue runner,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+WM,Blue runner,Sensitivity,Habitat specificity,21,1.4,2,3,2,NA,NA,5
+WM,Blue runner,Sensitivity,Prey specificity,22,1.8,2,1,4,NA,NA,5
+WM,Blue runner,Sensitivity,Tolerance to ocean acidification,23,1,2,5,NA,NA,NA,5
+WM,Blue runner,Sensitivity,Complexity in reproductive strategy,24,1.2,2,4,1,NA,NA,5
+WM,Blue runner,Sensitivity,Species range,25,1.8,2,1,4,NA,NA,5
+WM,Blue runner,Sensitivity,Specificity in early life history requirements,26,1.8,2,1,4,NA,NA,5
+WM,Blue runner,Sensitivity,Stock Size Status,27,1.8,2,1,4,NA,NA,5
+WM,Blue runner,Sensitivity,Other stressors,28,1.2,2,4,1,NA,NA,5
+WM,Blue runner,Sensitivity,Population growth rate,30,1,2,5,NA,NA,NA,5
+WM,Blue runner,Sensitivity,Mobility and dispersal or early life stages,31,1.4,2,3,2,NA,NA,5
+WM,Blue runner,Sensitivity,Adult mobility,32,1.4,2,3,2,NA,NA,5
+WM,Blue runner,Sensitivity,Spawning characteristics,33,1.8,2,2,2,1,NA,5
+WM,Blue runner,Sensitivity,Predation and competition dynamics,34,2.4,2,NA,3,2,NA,5
+WM,Blue runner,Sensitivity,Genetic diversity,35,1,2,5,NA,NA,NA,5
+AA,Dolphinfish,Qualitative Exposure,Sargassum influx,17,3.6,2,NA,NA,2,3,5
+AA,Dolphinfish,Qualitative Exposure,Thermocline depth,18,3.6,2,NA,NA,2,3,5
+AA,Dolphinfish,Sensitivity,Habitat specificity,21,2.2,3,NA,4,1,NA,5
+AA,Dolphinfish,Sensitivity,Prey specificity,22,1.2,3,4,1,NA,NA,5
+AA,Dolphinfish,Sensitivity,Tolerance to ocean acidification,23,1,1,5,NA,NA,NA,5
+AA,Dolphinfish,Sensitivity,Complexity in reproductive strategy,24,2.4,3,NA,3,2,NA,5
+AA,Dolphinfish,Sensitivity,Species range,25,2.4,3,NA,3,2,NA,5
+AA,Dolphinfish,Sensitivity,Specificity in early life history requirements,26,1.4,3,3,2,NA,NA,5
+AA,Dolphinfish,Sensitivity,Stock Size Status,27,1.4,2,3,2,NA,NA,5
+AA,Dolphinfish,Sensitivity,Other stressors,28,1.4,2,3,2,NA,NA,5
+AA,Dolphinfish,Sensitivity,Population growth rate,30,1,2,5,NA,NA,NA,5
+AA,Dolphinfish,Sensitivity,Mobility and dispersal or early life stages,31,1.6,2,2,3,NA,NA,5
+AA,Dolphinfish,Sensitivity,Adult mobility,32,1.2,2,4,1,NA,NA,5
+AA,Dolphinfish,Sensitivity,Spawning characteristics,33,1.2,2,4,1,NA,NA,5
+AA,Dolphinfish,Sensitivity,Predation and competition dynamics,34,1.8,2,2,2,1,NA,5
+AA,Dolphinfish,Sensitivity,Genetic diversity,35,1,2,5,NA,NA,NA,5
+DB,Dolphinfish,Qualitative Exposure,Sargassum influx,17,2.4,2,NA,3,2,NA,5
+DB,Dolphinfish,Qualitative Exposure,Thermocline depth,18,1.8,2,2,2,1,NA,5
+DB,Dolphinfish,Sensitivity,Habitat specificity,21,1.2,2,4,1,NA,NA,5
+DB,Dolphinfish,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+DB,Dolphinfish,Sensitivity,Tolerance to ocean acidification,23,1,3,5,NA,NA,NA,5
+DB,Dolphinfish,Sensitivity,Complexity in reproductive strategy,24,1,3,5,NA,NA,NA,5
+DB,Dolphinfish,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+DB,Dolphinfish,Sensitivity,Specificity in early life history requirements,26,1.4,1,3,2,NA,NA,5
+DB,Dolphinfish,Sensitivity,Stock Size Status,27,1,3,5,NA,NA,NA,5
+DB,Dolphinfish,Sensitivity,Other stressors,28,1.4,1,3,2,NA,NA,5
+DB,Dolphinfish,Sensitivity,Population growth rate,30,1,3,5,NA,NA,NA,5
+DB,Dolphinfish,Sensitivity,Mobility and dispersal or early life stages,31,1.2,1,4,1,NA,NA,5
+DB,Dolphinfish,Sensitivity,Adult mobility,32,1,3,5,NA,NA,NA,5
+DB,Dolphinfish,Sensitivity,Spawning characteristics,33,1,3,5,NA,NA,NA,5
+DB,Dolphinfish,Sensitivity,Predation and competition dynamics,34,2.4,3,NA,3,2,NA,5
+DB,Dolphinfish,Sensitivity,Genetic diversity,35,1,3,5,NA,NA,NA,5
+RG,Dolphinfish,Qualitative Exposure,Sargassum influx,17,3.4,3,NA,NA,3,2,5
+RG,Dolphinfish,Qualitative Exposure,Thermocline depth,18,3.4,3,NA,NA,3,2,5
+RG,Dolphinfish,Sensitivity,Habitat specificity,21,2.6,1,NA,2,3,NA,5
+RG,Dolphinfish,Sensitivity,Prey specificity,22,1.4,3,3,2,NA,NA,5
+RG,Dolphinfish,Sensitivity,Tolerance to ocean acidification,23,1,1,5,NA,NA,NA,5
+RG,Dolphinfish,Sensitivity,Complexity in reproductive strategy,24,2.4,2,NA,3,2,NA,5
+RG,Dolphinfish,Sensitivity,Species range,25,3.6,3,NA,NA,2,3,5
+RG,Dolphinfish,Sensitivity,Specificity in early life history requirements,26,1.6,1,2,3,NA,NA,5
+RG,Dolphinfish,Sensitivity,Stock Size Status,27,1.6,3,2,3,NA,NA,5
+RG,Dolphinfish,Sensitivity,Other stressors,28,1.2,1,4,1,NA,NA,5
+RG,Dolphinfish,Sensitivity,Population growth rate,30,1.4,3,3,2,NA,NA,5
+RG,Dolphinfish,Sensitivity,Mobility and dispersal or early life stages,31,2.4,1,NA,3,2,NA,5
+RG,Dolphinfish,Sensitivity,Adult mobility,32,1.4,3,3,2,NA,NA,5
+RG,Dolphinfish,Sensitivity,Spawning characteristics,33,1.4,2,3,2,NA,NA,5
+RG,Dolphinfish,Sensitivity,Predation and competition dynamics,34,1.6,1,2,3,NA,NA,5
+RG,Dolphinfish,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+WM,Dolphinfish,Qualitative Exposure,Sargassum influx,17,1.4,2,3,2,NA,NA,5
+WM,Dolphinfish,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+WM,Dolphinfish,Sensitivity,Habitat specificity,21,1.4,3,3,2,NA,NA,5
+WM,Dolphinfish,Sensitivity,Prey specificity,22,1.2,3,4,1,NA,NA,5
+WM,Dolphinfish,Sensitivity,Tolerance to ocean acidification,23,1,2,5,NA,NA,NA,5
+WM,Dolphinfish,Sensitivity,Complexity in reproductive strategy,24,1.2,3,4,1,NA,NA,5
+WM,Dolphinfish,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+WM,Dolphinfish,Sensitivity,Specificity in early life history requirements,26,1.4,3,3,2,NA,NA,5
+WM,Dolphinfish,Sensitivity,Stock Size Status,27,2,2,1,3,1,NA,5
+WM,Dolphinfish,Sensitivity,Other stressors,28,1.2,2,4,1,NA,NA,5
+WM,Dolphinfish,Sensitivity,Population growth rate,30,1,3,5,NA,NA,NA,5
+WM,Dolphinfish,Sensitivity,Mobility and dispersal or early life stages,31,1.4,2,3,2,NA,NA,5
+WM,Dolphinfish,Sensitivity,Adult mobility,32,1.4,3,3,2,NA,NA,5
+WM,Dolphinfish,Sensitivity,Spawning characteristics,33,1.4,2,3,2,NA,NA,5
+WM,Dolphinfish,Sensitivity,Predation and competition dynamics,34,2.6,2,NA,2,3,NA,5
+WM,Dolphinfish,Sensitivity,Genetic diversity,35,1,3,5,NA,NA,NA,5
+AK,Gray angelfish,Qualitative Exposure,Sargassum influx,17,2.6,2,NA,2,3,NA,5
+AK,Gray angelfish,Qualitative Exposure,Thermocline depth,18,2.6,0,NA,2,3,NA,5
+AK,Gray angelfish,Sensitivity,Habitat specificity,21,2.4,2,1,1,3,NA,5
+AK,Gray angelfish,Sensitivity,Prey specificity,22,1,2,5,NA,NA,NA,5
+AK,Gray angelfish,Sensitivity,Tolerance to ocean acidification,23,1.4,2,3,2,NA,NA,5
+AK,Gray angelfish,Sensitivity,Complexity in reproductive strategy,24,1,2,5,NA,NA,NA,5
+AK,Gray angelfish,Sensitivity,Species range,25,2.4,2,NA,3,2,NA,5
+AK,Gray angelfish,Sensitivity,Specificity in early life history requirements,26,2,0,NA,5,NA,NA,5
+AK,Gray angelfish,Sensitivity,Stock Size Status,27,1.2,0,4,1,NA,NA,5
+AK,Gray angelfish,Sensitivity,Other stressors,28,2,1,1,3,1,NA,5
+AK,Gray angelfish,Sensitivity,Population growth rate,30,2,2,2,1,2,NA,5
+AK,Gray angelfish,Sensitivity,Mobility and dispersal or early life stages,31,1.2,0,4,1,NA,NA,5
+AK,Gray angelfish,Sensitivity,Adult mobility,32,2.4,2,NA,3,2,NA,5
+AK,Gray angelfish,Sensitivity,Spawning characteristics,33,3,2,NA,NA,5,NA,5
+AK,Gray angelfish,Sensitivity,Predation and competition dynamics,34,1.2,2,4,1,NA,NA,5
+AK,Gray angelfish,Sensitivity,Genetic diversity,35,2,0,NA,5,NA,NA,5
+ET,Gray angelfish,Qualitative Exposure,Sargassum influx,17,3.4,3,NA,NA,3,2,5
+ET,Gray angelfish,Qualitative Exposure,Thermocline depth,18,2,1,1,3,1,NA,5
+ET,Gray angelfish,Sensitivity,Habitat specificity,21,3,3,NA,NA,5,NA,5
+ET,Gray angelfish,Sensitivity,Prey specificity,22,1.6,3,2,3,NA,NA,5
+ET,Gray angelfish,Sensitivity,Tolerance to ocean acidification,23,2.2,3,NA,4,1,NA,5
+ET,Gray angelfish,Sensitivity,Complexity in reproductive strategy,24,1,3,5,NA,NA,NA,5
+ET,Gray angelfish,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+ET,Gray angelfish,Sensitivity,Specificity in early life history requirements,26,2,1,1,3,1,NA,5
+ET,Gray angelfish,Sensitivity,Stock Size Status,27,1,1,5,NA,NA,NA,5
+ET,Gray angelfish,Sensitivity,Other stressors,28,2,2,1,3,1,NA,5
+ET,Gray angelfish,Sensitivity,Population growth rate,30,3,2,NA,2,1,2,5
+ET,Gray angelfish,Sensitivity,Mobility and dispersal or early life stages,31,2,2,NA,5,NA,NA,5
+ET,Gray angelfish,Sensitivity,Adult mobility,32,3,1,NA,NA,5,NA,5
+ET,Gray angelfish,Sensitivity,Spawning characteristics,33,2,2,NA,5,NA,NA,5
+ET,Gray angelfish,Sensitivity,Predation and competition dynamics,34,1,1,5,NA,NA,NA,5
+ET,Gray angelfish,Sensitivity,Genetic diversity,35,1.6,0,2,3,NA,NA,5
+GR,Gray angelfish,Qualitative Exposure,Sargassum influx,17,3.6,1,NA,NA,2,3,5
+GR,Gray angelfish,Qualitative Exposure,Thermocline depth,18,3.6,1,NA,NA,2,3,5
+GR,Gray angelfish,Sensitivity,Habitat specificity,21,2.8,3,NA,1,4,NA,5
+GR,Gray angelfish,Sensitivity,Prey specificity,22,2.6,3,NA,2,3,NA,5
+GR,Gray angelfish,Sensitivity,Tolerance to ocean acidification,23,1.6,3,2,3,NA,NA,5
+GR,Gray angelfish,Sensitivity,Complexity in reproductive strategy,24,2.6,3,NA,2,3,NA,5
+GR,Gray angelfish,Sensitivity,Species range,25,3,3,NA,1,3,1,5
+GR,Gray angelfish,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+GR,Gray angelfish,Sensitivity,Stock Size Status,27,2.4,1,NA,3,2,NA,5
+GR,Gray angelfish,Sensitivity,Other stressors,28,1.6,1,2,3,NA,NA,5
+GR,Gray angelfish,Sensitivity,Population growth rate,30,2.6,3,NA,2,3,NA,5
+GR,Gray angelfish,Sensitivity,Mobility and dispersal or early life stages,31,2.4,2,NA,3,2,NA,5
+GR,Gray angelfish,Sensitivity,Adult mobility,32,4,3,NA,NA,NA,5,5
+GR,Gray angelfish,Sensitivity,Spawning characteristics,33,3.8,3,NA,NA,1,4,5
+GR,Gray angelfish,Sensitivity,Predation and competition dynamics,34,2.6,1,NA,2,3,NA,5
+GR,Gray angelfish,Sensitivity,Genetic diversity,35,2.4,1,NA,3,2,NA,5
+RL,Gray angelfish,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+RL,Gray angelfish,Qualitative Exposure,Thermocline depth,18,1.6,3,2,3,NA,NA,5
+RL,Gray angelfish,Sensitivity,Habitat specificity,21,3.6,3,NA,NA,2,3,5
+RL,Gray angelfish,Sensitivity,Prey specificity,22,2.8,3,NA,2,2,1,5
+RL,Gray angelfish,Sensitivity,Tolerance to ocean acidification,23,2,1,1,3,1,NA,5
+RL,Gray angelfish,Sensitivity,Complexity in reproductive strategy,24,3.2,2,NA,1,2,2,5
+RL,Gray angelfish,Sensitivity,Species range,25,1.4,3,3,2,NA,NA,5
+RL,Gray angelfish,Sensitivity,Specificity in early life history requirements,26,3,3,NA,1,3,1,5
+RL,Gray angelfish,Sensitivity,Stock Size Status,27,2.8,2,NA,2,2,1,5
+RL,Gray angelfish,Sensitivity,Other stressors,28,3.4,2,NA,1,1,3,5
+RL,Gray angelfish,Sensitivity,Population growth rate,30,2,2,1,3,1,NA,5
+RL,Gray angelfish,Sensitivity,Mobility and dispersal or early life stages,31,2.8,1,NA,2,2,1,5
+RL,Gray angelfish,Sensitivity,Adult mobility,32,3.4,2,NA,NA,3,2,5
+RL,Gray angelfish,Sensitivity,Spawning characteristics,33,3.2,2,NA,1,2,2,5
+RL,Gray angelfish,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+RL,Gray angelfish,Sensitivity,Genetic diversity,35,2,2,1,3,1,NA,5
+AK,Hogfish,Qualitative Exposure,Sargassum influx,17,3.4,2,NA,NA,3,2,5
+AK,Hogfish,Qualitative Exposure,Thermocline depth,18,1.2,2,4,1,NA,NA,5
+AK,Hogfish,Sensitivity,Habitat specificity,21,1.8,3,1,4,NA,NA,5
+AK,Hogfish,Sensitivity,Prey specificity,22,2,3,NA,5,NA,NA,5
+AK,Hogfish,Sensitivity,Tolerance to ocean acidification,23,2,3,NA,5,NA,NA,5
+AK,Hogfish,Sensitivity,Complexity in reproductive strategy,24,1,3,5,NA,NA,NA,5
+AK,Hogfish,Sensitivity,Species range,25,1,2,5,NA,NA,NA,5
+AK,Hogfish,Sensitivity,Specificity in early life history requirements,26,2,2,NA,5,NA,NA,5
+AK,Hogfish,Sensitivity,Stock Size Status,27,1.2,2,4,1,NA,NA,5
+AK,Hogfish,Sensitivity,Other stressors,28,1,2,5,NA,NA,NA,5
+AK,Hogfish,Sensitivity,Population growth rate,30,2.8,2,NA,3,NA,2,5
+AK,Hogfish,Sensitivity,Mobility and dispersal or early life stages,31,2,3,NA,5,NA,NA,5
+AK,Hogfish,Sensitivity,Adult mobility,32,2.4,3,NA,3,2,NA,5
+AK,Hogfish,Sensitivity,Spawning characteristics,33,2.2,3,NA,4,1,NA,5
+AK,Hogfish,Sensitivity,Predation and competition dynamics,34,1.8,2,1,4,NA,NA,5
+AK,Hogfish,Sensitivity,Genetic diversity,35,4,3,NA,NA,NA,5,5
+GR,Hogfish,Qualitative Exposure,Sargassum influx,17,2.8,1,NA,1,4,NA,5
+GR,Hogfish,Qualitative Exposure,Thermocline depth,18,1.6,2,2,3,NA,NA,5
+GR,Hogfish,Sensitivity,Habitat specificity,21,3.6,3,NA,NA,2,3,5
+GR,Hogfish,Sensitivity,Prey specificity,22,4,3,NA,NA,NA,5,5
+GR,Hogfish,Sensitivity,Tolerance to ocean acidification,23,2.6,2,NA,2,3,NA,5
+GR,Hogfish,Sensitivity,Complexity in reproductive strategy,24,1.2,3,4,1,NA,NA,5
+GR,Hogfish,Sensitivity,Species range,25,3.2,3,NA,NA,4,1,5
+GR,Hogfish,Sensitivity,Specificity in early life history requirements,26,2.8,3,NA,1,4,NA,5
+GR,Hogfish,Sensitivity,Stock Size Status,27,1.8,1,1,4,NA,NA,5
+GR,Hogfish,Sensitivity,Other stressors,28,1.2,1,4,1,NA,NA,5
+GR,Hogfish,Sensitivity,Population growth rate,30,2.2,2,1,2,2,NA,5
+GR,Hogfish,Sensitivity,Mobility and dispersal or early life stages,31,2.8,3,NA,1,4,NA,5
+GR,Hogfish,Sensitivity,Adult mobility,32,4,3,NA,NA,NA,5,5
+GR,Hogfish,Sensitivity,Spawning characteristics,33,3,3,NA,NA,5,NA,5
+GR,Hogfish,Sensitivity,Predation and competition dynamics,34,2.2,2,NA,4,1,NA,5
+GR,Hogfish,Sensitivity,Genetic diversity,35,1.6,2,2,3,NA,NA,5
+MS,Hogfish,Qualitative Exposure,Sargassum influx,17,2.4,1,NA,3,2,NA,5
+MS,Hogfish,Qualitative Exposure,Thermocline depth,18,1.4,1,3,2,NA,NA,5
+MS,Hogfish,Sensitivity,Habitat specificity,21,1.4,2,3,2,NA,NA,5
+MS,Hogfish,Sensitivity,Prey specificity,22,1.6,2,2,3,NA,NA,5
+MS,Hogfish,Sensitivity,Tolerance to ocean acidification,23,1.8,1,2,2,1,NA,5
+MS,Hogfish,Sensitivity,Complexity in reproductive strategy,24,1.2,2,4,1,NA,NA,5
+MS,Hogfish,Sensitivity,Species range,25,1.2,3,4,1,NA,NA,5
+MS,Hogfish,Sensitivity,Specificity in early life history requirements,26,1.6,1,2,3,NA,NA,5
+MS,Hogfish,Sensitivity,Stock Size Status,27,1.4,1,3,2,NA,NA,5
+MS,Hogfish,Sensitivity,Other stressors,28,2.2,1,1,2,2,NA,5
+MS,Hogfish,Sensitivity,Population growth rate,30,2.8,1,NA,1,4,NA,5
+MS,Hogfish,Sensitivity,Mobility and dispersal or early life stages,31,2,1,NA,5,NA,NA,5
+MS,Hogfish,Sensitivity,Adult mobility,32,2.2,2,NA,4,1,NA,5
+MS,Hogfish,Sensitivity,Spawning characteristics,33,2,2,1,3,1,NA,5
+MS,Hogfish,Sensitivity,Predation and competition dynamics,34,1.6,1,2,3,NA,NA,5
+MS,Hogfish,Sensitivity,Genetic diversity,35,3,1,NA,NA,5,NA,5
+RL,Hogfish,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+RL,Hogfish,Qualitative Exposure,Thermocline depth,18,1.6,3,2,3,NA,NA,5
+RL,Hogfish,Sensitivity,Habitat specificity,21,3.4,3,NA,NA,3,2,5
+RL,Hogfish,Sensitivity,Prey specificity,22,2.8,3,NA,2,2,1,5
+RL,Hogfish,Sensitivity,Tolerance to ocean acidification,23,2.8,1,NA,2,2,1,5
+RL,Hogfish,Sensitivity,Complexity in reproductive strategy,24,3.4,2,NA,1,1,3,5
+RL,Hogfish,Sensitivity,Species range,25,1.8,3,2,2,1,NA,5
+RL,Hogfish,Sensitivity,Specificity in early life history requirements,26,3.2,2,NA,1,2,2,5
+RL,Hogfish,Sensitivity,Stock Size Status,27,3.2,2,NA,1,2,2,5
+RL,Hogfish,Sensitivity,Other stressors,28,2.4,2,NA,3,2,NA,5
+RL,Hogfish,Sensitivity,Population growth rate,30,2,2,1,3,1,NA,5
+RL,Hogfish,Sensitivity,Mobility and dispersal or early life stages,31,3,1,NA,1,3,1,5
+RL,Hogfish,Sensitivity,Adult mobility,32,3.8,3,NA,NA,1,4,5
+RL,Hogfish,Sensitivity,Spawning characteristics,33,3.2,2,NA,1,2,2,5
+RL,Hogfish,Sensitivity,Predation and competition dynamics,34,2.6,3,NA,2,3,NA,5
+RL,Hogfish,Sensitivity,Genetic diversity,35,3.6,1,NA,NA,2,3,5
+BG,King mackerel,Qualitative Exposure,Sargassum influx,17,2,2,NA,5,NA,NA,5
+BG,King mackerel,Qualitative Exposure,Thermocline depth,18,2,2,NA,5,NA,NA,5
+BG,King mackerel,Sensitivity,Habitat specificity,21,1,2,5,NA,NA,NA,5
+BG,King mackerel,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+BG,King mackerel,Sensitivity,Tolerance to ocean acidification,23,1.8,1,2,2,1,NA,5
+BG,King mackerel,Sensitivity,Complexity in reproductive strategy,24,1,2,5,NA,NA,NA,5
+BG,King mackerel,Sensitivity,Species range,25,3.6,2,NA,NA,2,3,5
+BG,King mackerel,Sensitivity,Specificity in early life history requirements,26,3,2,NA,1,3,1,5
+BG,King mackerel,Sensitivity,Stock Size Status,27,1.8,1,2,2,1,NA,5
+BG,King mackerel,Sensitivity,Other stressors,28,1.2,2,4,1,NA,NA,5
+BG,King mackerel,Sensitivity,Population growth rate,30,1.8,2,2,2,1,NA,5
+BG,King mackerel,Sensitivity,Mobility and dispersal or early life stages,31,2.8,2,NA,1,4,NA,5
+BG,King mackerel,Sensitivity,Adult mobility,32,1.4,2,3,2,NA,NA,5
+BG,King mackerel,Sensitivity,Spawning characteristics,33,2,2,NA,2,3,NA,5
+BG,King mackerel,Sensitivity,Predation and competition dynamics,34,1.4,2,3,2,NA,NA,5
+BG,King mackerel,Sensitivity,Genetic diversity,35,1.2,2,4,1,NA,NA,5
+RA,King mackerel,Qualitative Exposure,Sargassum influx,17,1.6,1,2,3,NA,NA,5
+RA,King mackerel,Qualitative Exposure,Thermocline depth,18,1.4,1,3,2,NA,NA,5
+RA,King mackerel,Sensitivity,Habitat specificity,21,1,2,5,NA,NA,NA,5
+RA,King mackerel,Sensitivity,Prey specificity,22,1.2,2,4,1,NA,NA,5
+RA,King mackerel,Sensitivity,Tolerance to ocean acidification,23,2,1,1,3,1,NA,5
+RA,King mackerel,Sensitivity,Complexity in reproductive strategy,24,1,2,5,NA,NA,NA,5
+RA,King mackerel,Sensitivity,Species range,25,2.8,1,NA,2,2,1,5
+RA,King mackerel,Sensitivity,Specificity in early life history requirements,26,3,2,NA,1,3,1,5
+RA,King mackerel,Sensitivity,Stock Size Status,27,1.4,1,3,2,NA,NA,5
+RA,King mackerel,Sensitivity,Other stressors,28,1.2,1,4,1,NA,NA,5
+RA,King mackerel,Sensitivity,Population growth rate,30,1.6,2,3,1,1,NA,5
+RA,King mackerel,Sensitivity,Mobility and dispersal or early life stages,31,3,2,NA,NA,5,NA,5
+RA,King mackerel,Sensitivity,Adult mobility,32,2,1,1,3,1,NA,5
+RA,King mackerel,Sensitivity,Spawning characteristics,33,2.6,2,NA,2,3,NA,5
+RA,King mackerel,Sensitivity,Predation and competition dynamics,34,1.6,1,2,3,NA,NA,5
+RA,King mackerel,Sensitivity,Genetic diversity,35,1.2,0,4,1,NA,NA,5
+RG,King mackerel,Qualitative Exposure,Sargassum influx,17,3,3,NA,1,3,1,5
+RG,King mackerel,Qualitative Exposure,Thermocline depth,18,2.6,3,NA,2,3,NA,5
+RG,King mackerel,Sensitivity,Habitat specificity,21,1.6,3,2,3,NA,NA,5
+RG,King mackerel,Sensitivity,Prey specificity,22,1.6,2,2,3,NA,NA,5
+RG,King mackerel,Sensitivity,Tolerance to ocean acidification,23,1.2,1,4,1,NA,NA,5
+RG,King mackerel,Sensitivity,Complexity in reproductive strategy,24,1.2,1,4,1,NA,NA,5
+RG,King mackerel,Sensitivity,Species range,25,3.2,3,NA,NA,4,1,5
+RG,King mackerel,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+RG,King mackerel,Sensitivity,Stock Size Status,27,2.6,1,NA,2,3,NA,5
+RG,King mackerel,Sensitivity,Other stressors,28,2.6,1,NA,2,3,NA,5
+RG,King mackerel,Sensitivity,Population growth rate,30,1.4,3,3,2,NA,NA,5
+RG,King mackerel,Sensitivity,Mobility and dispersal or early life stages,31,1.6,1,2,3,NA,NA,5
+RG,King mackerel,Sensitivity,Adult mobility,32,1.2,3,4,1,NA,NA,5
+RG,King mackerel,Sensitivity,Spawning characteristics,33,2.6,2,NA,2,3,NA,5
+RG,King mackerel,Sensitivity,Predation and competition dynamics,34,1.6,1,2,3,NA,NA,5
+RG,King mackerel,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+WM,King mackerel,Qualitative Exposure,Sargassum influx,17,1.4,2,3,2,NA,NA,5
+WM,King mackerel,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+WM,King mackerel,Sensitivity,Habitat specificity,21,2.6,2,NA,2,3,NA,5
+WM,King mackerel,Sensitivity,Prey specificity,22,2.4,2,NA,3,2,NA,5
+WM,King mackerel,Sensitivity,Tolerance to ocean acidification,23,2.4,2,NA,3,2,NA,5
+WM,King mackerel,Sensitivity,Complexity in reproductive strategy,24,2.4,2,NA,3,2,NA,5
+WM,King mackerel,Sensitivity,Species range,25,2,2,NA,5,NA,NA,5
+WM,King mackerel,Sensitivity,Specificity in early life history requirements,26,2.4,2,NA,3,2,NA,5
+WM,King mackerel,Sensitivity,Stock Size Status,27,2,2,1,3,1,NA,5
+WM,King mackerel,Sensitivity,Other stressors,28,1.2,2,4,1,NA,NA,5
+WM,King mackerel,Sensitivity,Population growth rate,30,1,2,5,NA,NA,NA,5
+WM,King mackerel,Sensitivity,Mobility and dispersal or early life stages,31,2.4,2,NA,3,2,NA,5
+WM,King mackerel,Sensitivity,Adult mobility,32,2.4,2,NA,3,2,NA,5
+WM,King mackerel,Sensitivity,Spawning characteristics,33,1.8,2,2,2,1,NA,5
+WM,King mackerel,Sensitivity,Predation and competition dynamics,34,2.4,2,NA,3,2,NA,5
+WM,King mackerel,Sensitivity,Genetic diversity,35,2.4,2,NA,3,2,NA,5
+AA,Lane snapper,Qualitative Exposure,Sargassum influx,17,2.6,3,NA,2,3,NA,5
+AA,Lane snapper,Sensitivity,Habitat specificity,21,1.4,3,3,2,NA,NA,5
+AA,Lane snapper,Sensitivity,Prey specificity,22,1.4,3,3,2,NA,NA,5
+AA,Lane snapper,Sensitivity,Tolerance to ocean acidification,23,2.6,2,NA,2,3,NA,5
+AA,Lane snapper,Sensitivity,Complexity in reproductive strategy,24,2.4,3,NA,3,2,NA,5
+AA,Lane snapper,Sensitivity,Species range,25,1.8,3,1,4,NA,NA,5
+AA,Lane snapper,Sensitivity,Specificity in early life history requirements,26,3,2,NA,1,3,1,5
+AA,Lane snapper,Sensitivity,Stock Size Status,27,2.4,2,NA,3,2,NA,5
+AA,Lane snapper,Sensitivity,Other stressors,28,2.6,2,NA,2,3,NA,5
+AA,Lane snapper,Sensitivity,Population growth rate,30,2.6,3,NA,2,3,NA,5
+AA,Lane snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.4,3,3,2,NA,NA,5
+AA,Lane snapper,Sensitivity,Adult mobility,32,2.2,3,NA,4,1,NA,5
+AA,Lane snapper,Sensitivity,Spawning characteristics,33,3,3,NA,NA,5,NA,5
+AA,Lane snapper,Sensitivity,Predation and competition dynamics,34,2.4,3,NA,3,2,NA,5
+AA,Lane snapper,Sensitivity,Genetic diversity,35,2.6,2,NA,2,3,NA,5
+ET,Lane snapper,Qualitative Exposure,Sargassum influx,17,4,1,NA,NA,NA,5,5
+ET,Lane snapper,Sensitivity,Habitat specificity,21,2.8,3,NA,2,2,1,5
+ET,Lane snapper,Sensitivity,Prey specificity,22,1.2,3,4,1,NA,NA,5
+ET,Lane snapper,Sensitivity,Tolerance to ocean acidification,23,3.4,3,NA,NA,3,2,5
+ET,Lane snapper,Sensitivity,Complexity in reproductive strategy,24,2.4,2,NA,3,2,NA,5
+ET,Lane snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+ET,Lane snapper,Sensitivity,Specificity in early life history requirements,26,2.4,1,NA,3,2,NA,5
+ET,Lane snapper,Sensitivity,Stock Size Status,27,2.2,0,1,2,2,NA,5
+ET,Lane snapper,Sensitivity,Other stressors,28,2.4,1,NA,3,2,NA,5
+ET,Lane snapper,Sensitivity,Population growth rate,30,2.8,3,NA,1,4,NA,5
+ET,Lane snapper,Sensitivity,Mobility and dispersal or early life stages,31,2,3,NA,5,NA,NA,5
+ET,Lane snapper,Sensitivity,Adult mobility,32,2,1,NA,5,NA,NA,5
+ET,Lane snapper,Sensitivity,Spawning characteristics,33,1.2,3,4,1,NA,NA,5
+ET,Lane snapper,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+ET,Lane snapper,Sensitivity,Genetic diversity,35,2,2,NA,5,NA,NA,5
+KO,Lane snapper,Qualitative Exposure,Sargassum influx,17,2,1,NA,5,NA,NA,5
+KO,Lane snapper,Sensitivity,Habitat specificity,21,3,2,NA,1,3,1,5
+KO,Lane snapper,Sensitivity,Prey specificity,22,2,3,1,3,1,NA,5
+KO,Lane snapper,Sensitivity,Tolerance to ocean acidification,23,2.6,2,NA,2,3,NA,5
+KO,Lane snapper,Sensitivity,Complexity in reproductive strategy,24,2,2,1,3,1,NA,5
+KO,Lane snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+KO,Lane snapper,Sensitivity,Specificity in early life history requirements,26,2.2,2,NA,4,1,NA,5
+KO,Lane snapper,Sensitivity,Stock Size Status,27,2.2,1,1,2,2,NA,5
+KO,Lane snapper,Sensitivity,Other stressors,28,2.2,1,NA,4,1,NA,5
+KO,Lane snapper,Sensitivity,Population growth rate,30,2.4,2,NA,3,2,NA,5
+KO,Lane snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.6,2,2,3,NA,NA,5
+KO,Lane snapper,Sensitivity,Adult mobility,32,2,1,NA,5,NA,NA,5
+KO,Lane snapper,Sensitivity,Spawning characteristics,33,1.2,2,4,1,NA,NA,5
+KO,Lane snapper,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+KO,Lane snapper,Sensitivity,Genetic diversity,35,2.4,2,1,1,3,NA,5
+RE,Lane snapper,Qualitative Exposure,Sargassum influx,17,3,1,NA,1,3,1,5
+RE,Lane snapper,Sensitivity,Habitat specificity,21,1.8,3,1,4,NA,NA,5
+RE,Lane snapper,Sensitivity,Prey specificity,22,2,3,NA,5,NA,NA,5
+RE,Lane snapper,Sensitivity,Tolerance to ocean acidification,23,3,3,NA,NA,5,NA,5
+RE,Lane snapper,Sensitivity,Complexity in reproductive strategy,24,4,3,NA,NA,NA,5,5
+RE,Lane snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+RE,Lane snapper,Sensitivity,Specificity in early life history requirements,26,2.2,1,NA,4,1,NA,5
+RE,Lane snapper,Sensitivity,Stock Size Status,27,2.4,1,NA,3,2,NA,5
+RE,Lane snapper,Sensitivity,Other stressors,28,4,1,NA,NA,NA,5,5
+RE,Lane snapper,Sensitivity,Population growth rate,30,3,1,NA,1,3,1,5
+RE,Lane snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.2,1,4,1,NA,NA,5
+RE,Lane snapper,Sensitivity,Adult mobility,32,2,3,NA,5,NA,NA,5
+RE,Lane snapper,Sensitivity,Spawning characteristics,33,3,3,NA,NA,5,NA,5
+RE,Lane snapper,Sensitivity,Predation and competition dynamics,34,2,2,1,3,1,NA,5
+RE,Lane snapper,Sensitivity,Genetic diversity,35,1,0,5,NA,NA,NA,5
+DB,Long-spined sea urchin,Qualitative Exposure,Sargassum influx,17,2.2,1,1,2,2,NA,5
+DB,Long-spined sea urchin,Sensitivity,Habitat specificity,21,1.4,3,3,2,NA,NA,5
+DB,Long-spined sea urchin,Sensitivity,Prey specificity,22,1.4,3,3,2,NA,NA,5
+DB,Long-spined sea urchin,Sensitivity,Tolerance to ocean acidification,23,3,2,NA,1,3,1,5
+DB,Long-spined sea urchin,Sensitivity,Complexity in reproductive strategy,24,2.8,2,NA,2,2,1,5
+DB,Long-spined sea urchin,Sensitivity,Species range,25,1.2,3,4,1,NA,NA,5
+DB,Long-spined sea urchin,Sensitivity,Specificity in early life history requirements,26,2.4,2,NA,3,2,NA,5
+DB,Long-spined sea urchin,Sensitivity,Stock Size Status,27,1.4,2,3,2,NA,NA,5
+DB,Long-spined sea urchin,Sensitivity,Other stressors,28,1.8,1,2,2,1,NA,5
+DB,Long-spined sea urchin,Sensitivity,Population growth rate,30,1.4,1,3,2,NA,NA,5
+DB,Long-spined sea urchin,Sensitivity,Mobility and dispersal or early life stages,31,1.2,2,4,1,NA,NA,5
+DB,Long-spined sea urchin,Sensitivity,Adult mobility,32,2.8,3,NA,1,4,NA,5
+DB,Long-spined sea urchin,Sensitivity,Spawning characteristics,33,2,3,NA,5,NA,NA,5
+DB,Long-spined sea urchin,Sensitivity,Predation and competition dynamics,34,1.6,1,2,3,NA,NA,5
+DB,Long-spined sea urchin,Sensitivity,Genetic diversity,35,2.6,2,NA,2,3,NA,5
+JP,Long-spined sea urchin,Qualitative Exposure,Sargassum influx,17,1.6,1,2,3,NA,NA,5
+JP,Long-spined sea urchin,Sensitivity,Habitat specificity,21,3.4,3,NA,1,1,3,5
+JP,Long-spined sea urchin,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+JP,Long-spined sea urchin,Sensitivity,Tolerance to ocean acidification,23,3.6,2,NA,NA,2,3,5
+JP,Long-spined sea urchin,Sensitivity,Complexity in reproductive strategy,24,3.2,3,NA,1,2,2,5
+JP,Long-spined sea urchin,Sensitivity,Species range,25,2.2,3,NA,4,1,NA,5
+JP,Long-spined sea urchin,Sensitivity,Specificity in early life history requirements,26,4,3,NA,NA,NA,5,5
+JP,Long-spined sea urchin,Sensitivity,Stock Size Status,27,1,3,5,NA,NA,NA,5
+JP,Long-spined sea urchin,Sensitivity,Other stressors,28,4,3,NA,NA,NA,5,5
+JP,Long-spined sea urchin,Sensitivity,Population growth rate,30,1.8,1,2,2,1,NA,5
+JP,Long-spined sea urchin,Sensitivity,Mobility and dispersal or early life stages,31,1.2,3,4,1,NA,NA,5
+JP,Long-spined sea urchin,Sensitivity,Adult mobility,32,2.6,3,NA,2,3,NA,5
+JP,Long-spined sea urchin,Sensitivity,Spawning characteristics,33,1,2,5,NA,NA,NA,5
+JP,Long-spined sea urchin,Sensitivity,Predation and competition dynamics,34,3,2,NA,NA,5,NA,5
+JP,Long-spined sea urchin,Sensitivity,Genetic diversity,35,3.4,2,NA,NA,3,2,5
+OT,Long-spined sea urchin,Qualitative Exposure,Sargassum influx,17,1.6,2,2,3,NA,NA,5
+OT,Long-spined sea urchin,Sensitivity,Habitat specificity,21,2.8,3,NA,2,2,1,5
+OT,Long-spined sea urchin,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+OT,Long-spined sea urchin,Sensitivity,Tolerance to ocean acidification,23,4,3,NA,NA,NA,5,5
+OT,Long-spined sea urchin,Sensitivity,Complexity in reproductive strategy,24,2.6,2,1,1,2,1,5
+OT,Long-spined sea urchin,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+OT,Long-spined sea urchin,Sensitivity,Specificity in early life history requirements,26,2.2,1,2,1,1,1,5
+OT,Long-spined sea urchin,Sensitivity,Stock Size Status,27,2.6,1,1,1,2,1,5
+OT,Long-spined sea urchin,Sensitivity,Other stressors,28,3,2,NA,1,3,1,5
+OT,Long-spined sea urchin,Sensitivity,Population growth rate,30,2.2,1,2,1,1,1,5
+OT,Long-spined sea urchin,Sensitivity,Mobility and dispersal or early life stages,31,1.6,1,2,3,NA,NA,5
+OT,Long-spined sea urchin,Sensitivity,Adult mobility,32,2.6,3,NA,2,3,NA,5
+OT,Long-spined sea urchin,Sensitivity,Spawning characteristics,33,2.2,1,2,1,1,1,5
+OT,Long-spined sea urchin,Sensitivity,Predation and competition dynamics,34,2.2,1,2,1,1,1,5
+OT,Long-spined sea urchin,Sensitivity,Genetic diversity,35,3,2,NA,1,3,1,5
+SW,Long-spined sea urchin,Qualitative Exposure,Sargassum influx,17,3.8,1,NA,NA,1,4,5
+SW,Long-spined sea urchin,Sensitivity,Habitat specificity,21,1.2,2,4,1,NA,NA,5
+SW,Long-spined sea urchin,Sensitivity,Prey specificity,22,2,2,1,3,1,NA,5
+SW,Long-spined sea urchin,Sensitivity,Tolerance to ocean acidification,23,3.8,2,NA,NA,1,4,5
+SW,Long-spined sea urchin,Sensitivity,Complexity in reproductive strategy,24,3.6,3,NA,NA,2,3,5
+SW,Long-spined sea urchin,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+SW,Long-spined sea urchin,Sensitivity,Specificity in early life history requirements,26,2.6,2,NA,2,3,NA,5
+SW,Long-spined sea urchin,Sensitivity,Stock Size Status,27,2.2,2,1,2,2,NA,5
+SW,Long-spined sea urchin,Sensitivity,Other stressors,28,4,3,NA,NA,NA,5,5
+SW,Long-spined sea urchin,Sensitivity,Population growth rate,30,1.8,2,2,2,1,NA,5
+SW,Long-spined sea urchin,Sensitivity,Mobility and dispersal or early life stages,31,2,2,NA,5,NA,NA,5
+SW,Long-spined sea urchin,Sensitivity,Adult mobility,32,2.2,2,NA,4,1,NA,5
+SW,Long-spined sea urchin,Sensitivity,Spawning characteristics,33,2.4,2,NA,3,2,NA,5
+SW,Long-spined sea urchin,Sensitivity,Predation and competition dynamics,34,3.8,2,NA,NA,1,4,5
+SW,Long-spined sea urchin,Sensitivity,Genetic diversity,35,4,3,NA,NA,NA,5,5
+AA,Misty grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+AA,Misty grouper,Sensitivity,Habitat specificity,21,3.6,2,NA,NA,2,3,5
+AA,Misty grouper,Sensitivity,Prey specificity,22,2.2,2,1,2,2,NA,5
+AA,Misty grouper,Sensitivity,Tolerance to ocean acidification,23,2.2,2,1,2,2,NA,5
+AA,Misty grouper,Sensitivity,Complexity in reproductive strategy,24,4,2,NA,NA,NA,5,5
+AA,Misty grouper,Sensitivity,Species range,25,2.8,3,NA,1,4,NA,5
+AA,Misty grouper,Sensitivity,Specificity in early life history requirements,26,3.4,2,NA,NA,3,2,5
+AA,Misty grouper,Sensitivity,Stock Size Status,27,3.8,2,NA,NA,1,4,5
+AA,Misty grouper,Sensitivity,Other stressors,28,2.6,2,NA,2,3,NA,5
+AA,Misty grouper,Sensitivity,Population growth rate,30,3.8,2,NA,NA,1,4,5
+AA,Misty grouper,Sensitivity,Mobility and dispersal or early life stages,31,3,2,NA,1,3,1,5
+AA,Misty grouper,Sensitivity,Adult mobility,32,3.2,2,NA,NA,4,1,5
+AA,Misty grouper,Sensitivity,Spawning characteristics,33,3.6,2,NA,NA,2,3,5
+AA,Misty grouper,Sensitivity,Predation and competition dynamics,34,2.6,2,NA,2,3,NA,5
+AA,Misty grouper,Sensitivity,Genetic diversity,35,3.6,2,NA,NA,2,3,5
+ET,Misty grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+ET,Misty grouper,Sensitivity,Habitat specificity,21,2.4,2,NA,3,2,NA,5
+ET,Misty grouper,Sensitivity,Prey specificity,22,2,2,NA,5,NA,NA,5
+ET,Misty grouper,Sensitivity,Tolerance to ocean acidification,23,2.4,3,NA,3,2,NA,5
+ET,Misty grouper,Sensitivity,Complexity in reproductive strategy,24,2.4,1,NA,3,2,NA,5
+ET,Misty grouper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+ET,Misty grouper,Sensitivity,Specificity in early life history requirements,26,1.8,1,2,2,1,NA,5
+ET,Misty grouper,Sensitivity,Stock Size Status,27,2.6,1,NA,2,3,NA,5
+ET,Misty grouper,Sensitivity,Other stressors,28,1.4,1,3,2,NA,NA,5
+ET,Misty grouper,Sensitivity,Population growth rate,30,3.8,2,NA,NA,1,4,5
+ET,Misty grouper,Sensitivity,Mobility and dispersal or early life stages,31,2,1,NA,5,NA,NA,5
+ET,Misty grouper,Sensitivity,Adult mobility,32,2,2,NA,5,NA,NA,5
+ET,Misty grouper,Sensitivity,Spawning characteristics,33,3,1,NA,NA,5,NA,5
+ET,Misty grouper,Sensitivity,Predation and competition dynamics,34,2.4,0,NA,3,2,NA,5
+ET,Misty grouper,Sensitivity,Genetic diversity,35,3,1,NA,NA,5,NA,5
+MS,Misty grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+MS,Misty grouper,Sensitivity,Habitat specificity,21,2,1,1,3,1,NA,5
+MS,Misty grouper,Sensitivity,Prey specificity,22,2.6,1,NA,2,3,NA,5
+MS,Misty grouper,Sensitivity,Tolerance to ocean acidification,23,2.2,1,1,2,2,NA,5
+MS,Misty grouper,Sensitivity,Complexity in reproductive strategy,24,3.2,1,NA,1,2,2,5
+MS,Misty grouper,Sensitivity,Species range,25,2.2,1,1,2,2,NA,5
+MS,Misty grouper,Sensitivity,Specificity in early life history requirements,26,2.2,1,NA,4,1,NA,5
+MS,Misty grouper,Sensitivity,Stock Size Status,27,4,1,NA,NA,NA,5,5
+MS,Misty grouper,Sensitivity,Other stressors,28,2.4,1,NA,3,2,NA,5
+MS,Misty grouper,Sensitivity,Population growth rate,30,3.2,1,NA,NA,4,1,5
+MS,Misty grouper,Sensitivity,Mobility and dispersal or early life stages,31,2,1,NA,5,NA,NA,5
+MS,Misty grouper,Sensitivity,Adult mobility,32,2.8,1,NA,1,4,NA,5
+MS,Misty grouper,Sensitivity,Spawning characteristics,33,3.2,1,NA,NA,4,1,5
+MS,Misty grouper,Sensitivity,Predation and competition dynamics,34,1.2,1,4,1,NA,NA,5
+MS,Misty grouper,Sensitivity,Genetic diversity,35,2.4,1,NA,3,2,NA,5
+SK,Misty grouper,Qualitative Exposure,Sargassum influx,17,1.4,2,3,2,NA,NA,5
+SK,Misty grouper,Sensitivity,Habitat specificity,21,2.6,2,NA,2,3,NA,5
+SK,Misty grouper,Sensitivity,Prey specificity,22,2.4,2,NA,3,2,NA,5
+SK,Misty grouper,Sensitivity,Tolerance to ocean acidification,23,2.4,2,NA,3,2,NA,5
+SK,Misty grouper,Sensitivity,Complexity in reproductive strategy,24,3.4,2,NA,NA,3,2,5
+SK,Misty grouper,Sensitivity,Species range,25,3.2,2,NA,NA,4,1,5
+SK,Misty grouper,Sensitivity,Specificity in early life history requirements,26,3.2,2,NA,1,2,2,5
+SK,Misty grouper,Sensitivity,Stock Size Status,27,3.8,2,NA,NA,1,4,5
+SK,Misty grouper,Sensitivity,Other stressors,28,2.8,2,NA,1,4,NA,5
+SK,Misty grouper,Sensitivity,Population growth rate,30,3.8,2,NA,NA,1,4,5
+SK,Misty grouper,Sensitivity,Mobility and dispersal or early life stages,31,3.4,2,NA,NA,3,2,5
+SK,Misty grouper,Sensitivity,Adult mobility,32,2.8,2,NA,2,2,1,5
+SK,Misty grouper,Sensitivity,Spawning characteristics,33,3.6,2,NA,NA,2,3,5
+SK,Misty grouper,Sensitivity,Predation and competition dynamics,34,2.8,2,NA,2,2,1,5
+SK,Misty grouper,Sensitivity,Genetic diversity,35,2.4,2,NA,3,2,NA,5
+KO,Mutton snapper,Qualitative Exposure,Sargassum influx,17,2,1,NA,5,NA,NA,5
+KO,Mutton snapper,Sensitivity,Habitat specificity,21,3,2,NA,1,3,1,5
+KO,Mutton snapper,Sensitivity,Prey specificity,22,3,2,NA,1,3,1,5
+KO,Mutton snapper,Sensitivity,Tolerance to ocean acidification,23,2.6,2,NA,2,3,NA,5
+KO,Mutton snapper,Sensitivity,Complexity in reproductive strategy,24,3.2,3,NA,NA,4,1,5
+KO,Mutton snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+KO,Mutton snapper,Sensitivity,Specificity in early life history requirements,26,3.2,2,NA,NA,4,1,5
+KO,Mutton snapper,Sensitivity,Stock Size Status,27,2.4,1,NA,3,2,NA,5
+KO,Mutton snapper,Sensitivity,Other stressors,28,2.2,2,NA,4,1,NA,5
+KO,Mutton snapper,Sensitivity,Population growth rate,30,2.6,2,NA,3,1,1,5
+KO,Mutton snapper,Sensitivity,Mobility and dispersal or early life stages,31,2,2,1,3,1,NA,5
+KO,Mutton snapper,Sensitivity,Adult mobility,32,2.8,3,NA,1,4,NA,5
+KO,Mutton snapper,Sensitivity,Spawning characteristics,33,3.2,3,NA,NA,4,1,5
+KO,Mutton snapper,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+KO,Mutton snapper,Sensitivity,Genetic diversity,35,2.8,2,NA,1,4,NA,5
+RE,Mutton snapper,Qualitative Exposure,Sargassum influx,17,3,1,NA,1,3,1,5
+RE,Mutton snapper,Sensitivity,Habitat specificity,21,2.2,3,NA,4,1,NA,5
+RE,Mutton snapper,Sensitivity,Prey specificity,22,2,3,NA,5,NA,NA,5
+RE,Mutton snapper,Sensitivity,Tolerance to ocean acidification,23,3,3,NA,NA,5,NA,5
+RE,Mutton snapper,Sensitivity,Complexity in reproductive strategy,24,4,3,NA,NA,NA,5,5
+RE,Mutton snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+RE,Mutton snapper,Sensitivity,Specificity in early life history requirements,26,2.8,1,NA,2,2,1,5
+RE,Mutton snapper,Sensitivity,Stock Size Status,27,2.4,2,NA,3,2,NA,5
+RE,Mutton snapper,Sensitivity,Other stressors,28,2,1,NA,5,NA,NA,5
+RE,Mutton snapper,Sensitivity,Population growth rate,30,3,2,NA,1,3,1,5
+RE,Mutton snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.2,2,4,1,NA,NA,5
+RE,Mutton snapper,Sensitivity,Adult mobility,32,2,3,NA,5,NA,NA,5
+RE,Mutton snapper,Sensitivity,Spawning characteristics,33,4,3,NA,NA,NA,5,5
+RE,Mutton snapper,Sensitivity,Predation and competition dynamics,34,2,2,1,3,1,NA,5
+RE,Mutton snapper,Sensitivity,Genetic diversity,35,2,1,NA,5,NA,NA,5
+SK,Mutton snapper,Qualitative Exposure,Sargassum influx,17,1.8,2,1,4,NA,NA,5
+SK,Mutton snapper,Sensitivity,Habitat specificity,21,2.4,3,NA,3,2,NA,5
+SK,Mutton snapper,Sensitivity,Prey specificity,22,2,3,NA,5,NA,NA,5
+SK,Mutton snapper,Sensitivity,Tolerance to ocean acidification,23,2,NA,NA,3,2,NA,5
+SK,Mutton snapper,Sensitivity,Complexity in reproductive strategy,24,3,3,NA,NA,5,NA,5
+SK,Mutton snapper,Sensitivity,Species range,25,2.2,3,1,2,2,NA,5
+SK,Mutton snapper,Sensitivity,Specificity in early life history requirements,26,2.4,2,NA,3,2,NA,5
+SK,Mutton snapper,Sensitivity,Stock Size Status,27,2,3,1,3,1,NA,5
+SK,Mutton snapper,Sensitivity,Other stressors,28,2.2,2,NA,4,1,NA,5
+SK,Mutton snapper,Sensitivity,Population growth rate,30,2,3,1,3,1,NA,5
+SK,Mutton snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.6,3,2,3,NA,NA,5
+SK,Mutton snapper,Sensitivity,Adult mobility,32,1.6,3,2,3,NA,NA,5
+SK,Mutton snapper,Sensitivity,Spawning characteristics,33,3.2,3,NA,NA,4,1,5
+SK,Mutton snapper,Sensitivity,Predation and competition dynamics,34,2.4,2,NA,3,2,NA,5
+SK,Mutton snapper,Sensitivity,Genetic diversity,35,1.6,2,2,3,NA,NA,5
+WM,Mutton snapper,Qualitative Exposure,Sargassum influx,17,2.8,2,NA,2,2,1,5
+WM,Mutton snapper,Sensitivity,Habitat specificity,21,3.6,2,NA,NA,2,3,5
+WM,Mutton snapper,Sensitivity,Prey specificity,22,3.6,2,NA,NA,2,3,5
+WM,Mutton snapper,Sensitivity,Tolerance to ocean acidification,23,3.6,2,NA,NA,2,3,5
+WM,Mutton snapper,Sensitivity,Complexity in reproductive strategy,24,3.6,2,NA,NA,2,3,5
+WM,Mutton snapper,Sensitivity,Species range,25,3.8,2,NA,NA,1,4,5
+WM,Mutton snapper,Sensitivity,Specificity in early life history requirements,26,3.8,2,NA,NA,1,4,5
+WM,Mutton snapper,Sensitivity,Stock Size Status,27,2.6,2,NA,3,1,1,5
+WM,Mutton snapper,Sensitivity,Other stressors,28,2.8,2,NA,2,2,1,5
+WM,Mutton snapper,Sensitivity,Population growth rate,30,2,2,NA,5,NA,NA,5
+WM,Mutton snapper,Sensitivity,Mobility and dispersal or early life stages,31,2.2,2,1,2,2,NA,5
+WM,Mutton snapper,Sensitivity,Adult mobility,32,2.4,2,NA,3,2,NA,5
+WM,Mutton snapper,Sensitivity,Spawning characteristics,33,2.8,2,NA,2,2,1,5
+WM,Mutton snapper,Sensitivity,Predation and competition dynamics,34,2.8,2,NA,2,2,1,5
+WM,Mutton snapper,Sensitivity,Genetic diversity,35,3.6,2,NA,NA,2,3,5
+CZ,Nassau grouper,Qualitative Exposure,Sargassum influx,17,3.6,0,NA,NA,2,3,5
+CZ,Nassau grouper,Qualitative Exposure,Thermocline depth,18,2.6,2,NA,2,3,NA,5
+CZ,Nassau grouper,Sensitivity,Habitat specificity,21,2.8,2,NA,1,4,NA,5
+CZ,Nassau grouper,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+CZ,Nassau grouper,Sensitivity,Tolerance to ocean acidification,23,1.4,1,3,2,NA,NA,5
+CZ,Nassau grouper,Sensitivity,Complexity in reproductive strategy,24,3.8,3,NA,NA,1,4,5
+CZ,Nassau grouper,Sensitivity,Species range,25,2.6,3,NA,2,3,NA,5
+CZ,Nassau grouper,Sensitivity,Specificity in early life history requirements,26,2.6,2,NA,2,3,NA,5
+CZ,Nassau grouper,Sensitivity,Stock Size Status,27,3.2,2,NA,NA,4,1,5
+CZ,Nassau grouper,Sensitivity,Other stressors,28,2,2,NA,5,NA,NA,5
+CZ,Nassau grouper,Sensitivity,Population growth rate,30,3.2,2,NA,NA,4,1,5
+CZ,Nassau grouper,Sensitivity,Mobility and dispersal or early life stages,31,2.4,3,1,1,3,NA,5
+CZ,Nassau grouper,Sensitivity,Adult mobility,32,1.6,3,2,3,NA,NA,5
+CZ,Nassau grouper,Sensitivity,Spawning characteristics,33,3.2,3,NA,NA,4,1,5
+CZ,Nassau grouper,Sensitivity,Predation and competition dynamics,34,1.6,2,2,3,NA,NA,5
+CZ,Nassau grouper,Sensitivity,Genetic diversity,35,1.6,2,2,3,NA,NA,5
+MS,Nassau grouper,Qualitative Exposure,Sargassum influx,17,1.2,1,4,1,NA,NA,5
+MS,Nassau grouper,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+MS,Nassau grouper,Sensitivity,Habitat specificity,21,2,2,NA,5,NA,NA,5
+MS,Nassau grouper,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+MS,Nassau grouper,Sensitivity,Tolerance to ocean acidification,23,1.4,1,3,2,NA,NA,5
+MS,Nassau grouper,Sensitivity,Complexity in reproductive strategy,24,3.2,3,NA,NA,4,1,5
+MS,Nassau grouper,Sensitivity,Species range,25,3,3,NA,NA,5,NA,5
+MS,Nassau grouper,Sensitivity,Specificity in early life history requirements,26,3,1,NA,NA,5,NA,5
+MS,Nassau grouper,Sensitivity,Stock Size Status,27,4,1,NA,NA,NA,5,5
+MS,Nassau grouper,Sensitivity,Other stressors,28,2.8,1,NA,1,4,NA,5
+MS,Nassau grouper,Sensitivity,Population growth rate,30,3.2,2,NA,NA,4,1,5
+MS,Nassau grouper,Sensitivity,Mobility and dispersal or early life stages,31,2,2,NA,5,NA,NA,5
+MS,Nassau grouper,Sensitivity,Adult mobility,32,2.8,2,NA,1,4,NA,5
+MS,Nassau grouper,Sensitivity,Spawning characteristics,33,3.2,3,NA,NA,4,1,5
+MS,Nassau grouper,Sensitivity,Predation and competition dynamics,34,1.2,1,4,1,NA,NA,5
+MS,Nassau grouper,Sensitivity,Genetic diversity,35,3,2,NA,NA,5,NA,5
+OT,Nassau grouper,Qualitative Exposure,Sargassum influx,17,2,1,1,3,1,NA,5
+OT,Nassau grouper,Qualitative Exposure,Thermocline depth,18,2.4,2,1,1,3,NA,5
+OT,Nassau grouper,Sensitivity,Habitat specificity,21,2.2,3,NA,4,1,NA,5
+OT,Nassau grouper,Sensitivity,Prey specificity,22,2,3,1,3,1,NA,5
+OT,Nassau grouper,Sensitivity,Tolerance to ocean acidification,23,2,3,1,3,1,NA,5
+OT,Nassau grouper,Sensitivity,Complexity in reproductive strategy,24,3.8,3,NA,NA,1,4,5
+OT,Nassau grouper,Sensitivity,Species range,25,2.4,3,NA,3,2,NA,5
+OT,Nassau grouper,Sensitivity,Specificity in early life history requirements,26,3,2,NA,1,3,1,5
+OT,Nassau grouper,Sensitivity,Stock Size Status,27,3.2,2,NA,1,2,2,5
+OT,Nassau grouper,Sensitivity,Other stressors,28,2.4,1,1,2,1,1,5
+OT,Nassau grouper,Sensitivity,Population growth rate,30,3,2,NA,1,3,1,5
+OT,Nassau grouper,Sensitivity,Mobility and dispersal or early life stages,31,2,3,1,3,1,NA,5
+OT,Nassau grouper,Sensitivity,Adult mobility,32,2,3,NA,5,NA,NA,5
+OT,Nassau grouper,Sensitivity,Spawning characteristics,33,3,3,NA,NA,5,NA,5
+OT,Nassau grouper,Sensitivity,Predation and competition dynamics,34,1.6,2,2,3,NA,NA,5
+OT,Nassau grouper,Sensitivity,Genetic diversity,35,2.4,1,NA,3,2,NA,5
+SK,Nassau grouper,Qualitative Exposure,Sargassum influx,17,2.2,2,1,2,2,NA,5
+SK,Nassau grouper,Qualitative Exposure,Thermocline depth,18,1.6,2,2,3,NA,NA,5
+SK,Nassau grouper,Sensitivity,Habitat specificity,21,2.4,3,NA,3,2,NA,5
+SK,Nassau grouper,Sensitivity,Prey specificity,22,2.2,3,1,2,2,NA,5
+SK,Nassau grouper,Sensitivity,Tolerance to ocean acidification,23,2.4,2,NA,3,2,NA,5
+SK,Nassau grouper,Sensitivity,Complexity in reproductive strategy,24,3.8,3,NA,NA,1,4,5
+SK,Nassau grouper,Sensitivity,Species range,25,2.8,3,NA,1,4,NA,5
+SK,Nassau grouper,Sensitivity,Specificity in early life history requirements,26,3,3,NA,1,3,1,5
+SK,Nassau grouper,Sensitivity,Stock Size Status,27,3.8,3,NA,NA,1,4,5
+SK,Nassau grouper,Sensitivity,Other stressors,28,2.4,2,NA,3,2,NA,5
+SK,Nassau grouper,Sensitivity,Population growth rate,30,3.4,3,NA,NA,3,2,5
+SK,Nassau grouper,Sensitivity,Mobility and dispersal or early life stages,31,2.4,3,NA,3,2,NA,5
+SK,Nassau grouper,Sensitivity,Adult mobility,32,2,3,1,3,1,NA,5
+SK,Nassau grouper,Sensitivity,Spawning characteristics,33,3.2,3,NA,NA,4,1,5
+SK,Nassau grouper,Sensitivity,Predation and competition dynamics,34,2,2,1,3,1,NA,5
+SK,Nassau grouper,Sensitivity,Genetic diversity,35,3.4,3,NA,1,1,3,5
+AK,Queen conch,Qualitative Exposure,Sargassum influx,17,2,2,NA,5,NA,NA,5
+AK,Queen conch,Sensitivity,Habitat specificity,21,1.2,3,4,1,NA,NA,5
+AK,Queen conch,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+AK,Queen conch,Sensitivity,Tolerance to ocean acidification,23,4,2,NA,NA,NA,5,5
+AK,Queen conch,Sensitivity,Complexity in reproductive strategy,24,3.6,3,NA,NA,2,3,5
+AK,Queen conch,Sensitivity,Species range,25,1,2,5,NA,NA,NA,5
+AK,Queen conch,Sensitivity,Specificity in early life history requirements,26,1,3,5,NA,NA,NA,5
+AK,Queen conch,Sensitivity,Stock Size Status,27,1.6,2,2,3,NA,NA,5
+AK,Queen conch,Sensitivity,Other stressors,28,1.2,2,4,1,NA,NA,5
+AK,Queen conch,Sensitivity,Population growth rate,30,1.8,3,3,1,NA,1,5
+AK,Queen conch,Sensitivity,Mobility and dispersal or early life stages,31,1.6,3,2,3,NA,NA,5
+AK,Queen conch,Sensitivity,Adult mobility,32,2.8,3,NA,1,4,NA,5
+AK,Queen conch,Sensitivity,Spawning characteristics,33,1.4,3,3,2,NA,NA,5
+AK,Queen conch,Sensitivity,Predation and competition dynamics,34,1,3,5,NA,NA,NA,5
+AK,Queen conch,Sensitivity,Genetic diversity,35,1,3,5,NA,NA,NA,5
+BG,Queen conch,Qualitative Exposure,Sargassum influx,17,3.4,1,NA,NA,3,2,5
+BG,Queen conch,Sensitivity,Habitat specificity,21,2,3,NA,5,NA,NA,5
+BG,Queen conch,Sensitivity,Prey specificity,22,1.6,3,2,3,NA,NA,5
+BG,Queen conch,Sensitivity,Tolerance to ocean acidification,23,4,3,NA,NA,NA,5,5
+BG,Queen conch,Sensitivity,Complexity in reproductive strategy,24,4,3,NA,NA,NA,5,5
+BG,Queen conch,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+BG,Queen conch,Sensitivity,Specificity in early life history requirements,26,3,NA,5,NA,NA,NA,5
+BG,Queen conch,Sensitivity,Stock Size Status,27,1.6,3,2,3,NA,NA,5
+BG,Queen conch,Sensitivity,Other stressors,28,1.2,2,4,1,NA,NA,5
+BG,Queen conch,Sensitivity,Population growth rate,30,1,3,5,NA,NA,NA,5
+BG,Queen conch,Sensitivity,Mobility and dispersal or early life stages,31,1,3,5,NA,NA,NA,5
+BG,Queen conch,Sensitivity,Adult mobility,32,1,3,5,NA,NA,NA,5
+BG,Queen conch,Sensitivity,Spawning characteristics,33,1.2,3,4,1,NA,NA,5
+BG,Queen conch,Sensitivity,Predation and competition dynamics,34,1,3,5,NA,NA,NA,5
+BG,Queen conch,Sensitivity,Genetic diversity,35,1,3,5,NA,NA,NA,5
+OT,Queen conch,Qualitative Exposure,Sargassum influx,17,3.4,1,NA,NA,3,2,5
+OT,Queen conch,Sensitivity,Habitat specificity,21,1.4,3,3,2,NA,NA,5
+OT,Queen conch,Sensitivity,Prey specificity,22,1.4,3,3,2,NA,NA,5
+OT,Queen conch,Sensitivity,Tolerance to ocean acidification,23,3.8,3,NA,NA,1,4,5
+OT,Queen conch,Sensitivity,Complexity in reproductive strategy,24,3,3,NA,1,3,1,5
+OT,Queen conch,Sensitivity,Species range,25,2,3,1,3,1,NA,5
+OT,Queen conch,Sensitivity,Specificity in early life history requirements,26,2,3,1,3,1,NA,5
+OT,Queen conch,Sensitivity,Stock Size Status,27,2.4,2,1,2,1,1,5
+OT,Queen conch,Sensitivity,Other stressors,28,1.2,2,4,1,NA,NA,5
+OT,Queen conch,Sensitivity,Population growth rate,30,2.2,2,1,3,NA,1,5
+OT,Queen conch,Sensitivity,Mobility and dispersal or early life stages,31,2.2,3,NA,4,1,NA,5
+OT,Queen conch,Sensitivity,Adult mobility,32,3,3,NA,NA,5,NA,5
+OT,Queen conch,Sensitivity,Spawning characteristics,33,1.8,3,1,4,NA,NA,5
+OT,Queen conch,Sensitivity,Predation and competition dynamics,34,1.6,3,3,1,1,NA,5
+OT,Queen conch,Sensitivity,Genetic diversity,35,1.4,3,3,2,NA,NA,5
+RA,Queen conch,Qualitative Exposure,Sargassum influx,17,1.2,1,4,1,NA,NA,5
+RA,Queen conch,Sensitivity,Habitat specificity,21,1.4,3,3,2,NA,NA,5
+RA,Queen conch,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+RA,Queen conch,Sensitivity,Tolerance to ocean acidification,23,4,1,NA,NA,NA,5,5
+RA,Queen conch,Sensitivity,Complexity in reproductive strategy,24,3.8,2,NA,NA,1,4,5
+RA,Queen conch,Sensitivity,Species range,25,3,3,NA,NA,5,NA,5
+RA,Queen conch,Sensitivity,Specificity in early life history requirements,26,2.6,2,NA,3,1,1,5
+RA,Queen conch,Sensitivity,Stock Size Status,27,2.6,2,NA,2,3,NA,5
+RA,Queen conch,Sensitivity,Other stressors,28,2.4,1,NA,3,2,NA,5
+RA,Queen conch,Sensitivity,Population growth rate,30,2.6,2,NA,2,3,NA,5
+RA,Queen conch,Sensitivity,Mobility and dispersal or early life stages,31,2,2,NA,5,NA,NA,5
+RA,Queen conch,Sensitivity,Adult mobility,32,2.8,2,NA,1,4,NA,5
+RA,Queen conch,Sensitivity,Spawning characteristics,33,2.6,3,NA,2,3,NA,5
+RA,Queen conch,Sensitivity,Predation and competition dynamics,34,2.8,2,NA,2,2,1,5
+RA,Queen conch,Sensitivity,Genetic diversity,35,2.4,1,NA,3,2,NA,5
+KO,Queen snapper,Sensitivity,Habitat specificity,21,2.8,3,NA,2,2,1,5
+KO,Queen snapper,Sensitivity,Prey specificity,22,1.8,2,1,4,NA,NA,5
+KO,Queen snapper,Sensitivity,Tolerance to ocean acidification,23,2,1,1,3,1,NA,5
+KO,Queen snapper,Sensitivity,Complexity in reproductive strategy,24,2.2,1,NA,4,1,NA,5
+KO,Queen snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+KO,Queen snapper,Sensitivity,Specificity in early life history requirements,26,2.6,2,NA,2,3,NA,5
+KO,Queen snapper,Sensitivity,Stock Size Status,27,2.4,1,NA,3,2,NA,5
+KO,Queen snapper,Sensitivity,Other stressors,28,1.4,1,3,2,NA,NA,5
+KO,Queen snapper,Sensitivity,Population growth rate,30,3.8,3,NA,NA,1,4,5
+KO,Queen snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.6,2,2,3,NA,NA,5
+KO,Queen snapper,Sensitivity,Adult mobility,32,2,1,1,3,1,NA,5
+KO,Queen snapper,Sensitivity,Spawning characteristics,33,2.4,1,1,1,3,NA,5
+KO,Queen snapper,Sensitivity,Predation and competition dynamics,34,2,1,1,3,1,NA,5
+KO,Queen snapper,Sensitivity,Genetic diversity,35,2.6,1,NA,2,3,NA,5
+RG,Queen snapper,Sensitivity,Habitat specificity,21,2.4,3,NA,3,2,NA,5
+RG,Queen snapper,Sensitivity,Prey specificity,22,1.8,2,2,2,1,NA,5
+RG,Queen snapper,Sensitivity,Tolerance to ocean acidification,23,1.8,1,2,2,1,NA,5
+RG,Queen snapper,Sensitivity,Complexity in reproductive strategy,24,2.2,1,1,2,2,NA,5
+RG,Queen snapper,Sensitivity,Species range,25,2.4,3,NA,3,2,NA,5
+RG,Queen snapper,Sensitivity,Specificity in early life history requirements,26,1.8,1,2,2,1,NA,5
+RG,Queen snapper,Sensitivity,Stock Size Status,27,1.4,2,3,2,NA,NA,5
+RG,Queen snapper,Sensitivity,Other stressors,28,1.6,2,3,1,1,NA,5
+RG,Queen snapper,Sensitivity,Population growth rate,30,1.6,2,3,1,1,NA,5
+RG,Queen snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.6,1,3,1,1,NA,5
+RG,Queen snapper,Sensitivity,Adult mobility,32,1.6,2,3,1,1,NA,5
+RG,Queen snapper,Sensitivity,Spawning characteristics,33,1.8,2,2,2,1,NA,5
+RG,Queen snapper,Sensitivity,Predation and competition dynamics,34,2.2,1,1,2,2,NA,5
+RG,Queen snapper,Sensitivity,Genetic diversity,35,1.6,1,3,1,1,NA,5
+SW,Queen snapper,Sensitivity,Habitat specificity,21,3.6,2,NA,NA,2,3,5
+SW,Queen snapper,Sensitivity,Prey specificity,22,1.2,2,4,1,NA,NA,5
+SW,Queen snapper,Sensitivity,Tolerance to ocean acidification,23,3.4,1,NA,NA,3,2,5
+SW,Queen snapper,Sensitivity,Complexity in reproductive strategy,24,3.4,1,NA,NA,3,2,5
+SW,Queen snapper,Sensitivity,Species range,25,2.4,2,NA,3,2,NA,5
+SW,Queen snapper,Sensitivity,Specificity in early life history requirements,26,3,1,NA,1,3,1,5
+SW,Queen snapper,Sensitivity,Stock Size Status,27,2.6,1,NA,3,1,1,5
+SW,Queen snapper,Sensitivity,Other stressors,28,2.6,1,NA,2,3,NA,5
+SW,Queen snapper,Sensitivity,Population growth rate,30,3.4,2,NA,NA,3,2,5
+SW,Queen snapper,Sensitivity,Mobility and dispersal or early life stages,31,2.6,2,NA,2,3,NA,5
+SW,Queen snapper,Sensitivity,Adult mobility,32,1.8,2,2,2,1,NA,5
+SW,Queen snapper,Sensitivity,Spawning characteristics,33,2.2,1,NA,4,1,NA,5
+SW,Queen snapper,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+SW,Queen snapper,Sensitivity,Genetic diversity,35,3.2,1,NA,NA,4,1,5
+WM,Queen snapper,Sensitivity,Habitat specificity,21,3.6,3,NA,NA,2,3,5
+WM,Queen snapper,Sensitivity,Prey specificity,22,3.6,3,NA,NA,2,3,5
+WM,Queen snapper,Sensitivity,Tolerance to ocean acidification,23,3.6,2,NA,NA,2,3,5
+WM,Queen snapper,Sensitivity,Complexity in reproductive strategy,24,3.6,2,NA,NA,2,3,5
+WM,Queen snapper,Sensitivity,Species range,25,3.8,3,NA,NA,1,4,5
+WM,Queen snapper,Sensitivity,Specificity in early life history requirements,26,3.8,2,NA,NA,1,4,5
+WM,Queen snapper,Sensitivity,Stock Size Status,27,2.6,2,NA,3,1,1,5
+WM,Queen snapper,Sensitivity,Other stressors,28,2.8,2,NA,2,2,1,5
+WM,Queen snapper,Sensitivity,Population growth rate,30,1.2,3,4,1,NA,NA,5
+WM,Queen snapper,Sensitivity,Mobility and dispersal or early life stages,31,2.4,3,NA,3,2,NA,5
+WM,Queen snapper,Sensitivity,Adult mobility,32,2.4,3,NA,3,2,NA,5
+WM,Queen snapper,Sensitivity,Spawning characteristics,33,2.6,2,NA,2,3,NA,5
+WM,Queen snapper,Sensitivity,Predation and competition dynamics,34,2.8,2,NA,2,2,1,5
+WM,Queen snapper,Sensitivity,Genetic diversity,35,3.6,2,NA,NA,2,3,5
+CZ,Queen triggerfish,Qualitative Exposure,Sargassum influx,17,3.2,0,NA,1,2,2,5
+CZ,Queen triggerfish,Qualitative Exposure,Thermocline depth,18,2.6,NA,NA,2,3,NA,5
+CZ,Queen triggerfish,Sensitivity,Habitat specificity,21,2,2,1,3,1,NA,5
+CZ,Queen triggerfish,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+CZ,Queen triggerfish,Sensitivity,Tolerance to ocean acidification,23,1.4,1,3,2,NA,NA,5
+CZ,Queen triggerfish,Sensitivity,Complexity in reproductive strategy,24,1.6,2,2,3,NA,NA,5
+CZ,Queen triggerfish,Sensitivity,Species range,25,2,2,1,3,1,NA,5
+CZ,Queen triggerfish,Sensitivity,Specificity in early life history requirements,26,2.2,1,1,2,2,NA,5
+CZ,Queen triggerfish,Sensitivity,Stock Size Status,27,2.2,0,1,2,2,NA,5
+CZ,Queen triggerfish,Sensitivity,Other stressors,28,2.2,0,1,2,2,NA,5
+CZ,Queen triggerfish,Sensitivity,Population growth rate,30,2.2,2,1,2,2,NA,5
+CZ,Queen triggerfish,Sensitivity,Mobility and dispersal or early life stages,31,2.2,2,1,2,2,NA,5
+CZ,Queen triggerfish,Sensitivity,Adult mobility,32,1.8,3,2,2,1,NA,5
+CZ,Queen triggerfish,Sensitivity,Spawning characteristics,33,1.8,2,2,2,1,NA,5
+CZ,Queen triggerfish,Sensitivity,Predation and competition dynamics,34,2,2,1,3,1,NA,5
+CZ,Queen triggerfish,Sensitivity,Genetic diversity,35,2,1,1,3,1,NA,5
+ET,Queen triggerfish,Qualitative Exposure,Sargassum influx,17,1.2,2,4,1,NA,NA,5
+ET,Queen triggerfish,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+ET,Queen triggerfish,Sensitivity,Habitat specificity,21,2.8,3,NA,2,2,1,5
+ET,Queen triggerfish,Sensitivity,Prey specificity,22,2,3,1,3,1,NA,5
+ET,Queen triggerfish,Sensitivity,Tolerance to ocean acidification,23,3,3,NA,NA,5,NA,5
+ET,Queen triggerfish,Sensitivity,Complexity in reproductive strategy,24,1.4,3,3,2,NA,NA,5
+ET,Queen triggerfish,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+ET,Queen triggerfish,Sensitivity,Specificity in early life history requirements,26,2,3,1,3,1,NA,5
+ET,Queen triggerfish,Sensitivity,Stock Size Status,27,1.4,0,3,2,NA,NA,5
+ET,Queen triggerfish,Sensitivity,Other stressors,28,2.6,3,NA,2,3,NA,5
+ET,Queen triggerfish,Sensitivity,Population growth rate,30,3,3,NA,1,3,1,5
+ET,Queen triggerfish,Sensitivity,Mobility and dispersal or early life stages,31,2.2,1,3,NA,NA,2,5
+ET,Queen triggerfish,Sensitivity,Adult mobility,32,3,3,NA,NA,5,NA,5
+ET,Queen triggerfish,Sensitivity,Spawning characteristics,33,2,3,NA,5,NA,NA,5
+ET,Queen triggerfish,Sensitivity,Predation and competition dynamics,34,1,2,5,NA,NA,NA,5
+ET,Queen triggerfish,Sensitivity,Genetic diversity,35,2.8,2,NA,1,4,NA,5
+GR,Queen triggerfish,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+GR,Queen triggerfish,Qualitative Exposure,Thermocline depth,18,1.4,2,3,2,NA,NA,5
+GR,Queen triggerfish,Sensitivity,Habitat specificity,21,2.6,3,NA,2,3,NA,5
+GR,Queen triggerfish,Sensitivity,Prey specificity,22,2.8,3,NA,1,4,NA,5
+GR,Queen triggerfish,Sensitivity,Tolerance to ocean acidification,23,1.6,1,2,3,NA,NA,5
+GR,Queen triggerfish,Sensitivity,Complexity in reproductive strategy,24,2.6,3,NA,2,3,NA,5
+GR,Queen triggerfish,Sensitivity,Species range,25,2.8,3,NA,1,4,NA,5
+GR,Queen triggerfish,Sensitivity,Specificity in early life history requirements,26,1.6,2,2,3,NA,NA,5
+GR,Queen triggerfish,Sensitivity,Stock Size Status,27,1.6,1,2,3,NA,NA,5
+GR,Queen triggerfish,Sensitivity,Other stressors,28,1.4,1,3,2,NA,NA,5
+GR,Queen triggerfish,Sensitivity,Population growth rate,30,1.6,3,3,1,1,NA,5
+GR,Queen triggerfish,Sensitivity,Mobility and dispersal or early life stages,31,4,3,NA,NA,NA,5,5
+GR,Queen triggerfish,Sensitivity,Adult mobility,32,2.2,3,NA,4,1,NA,5
+GR,Queen triggerfish,Sensitivity,Spawning characteristics,33,2.8,3,NA,3,NA,2,5
+GR,Queen triggerfish,Sensitivity,Predation and competition dynamics,34,2.2,3,NA,4,1,NA,5
+GR,Queen triggerfish,Sensitivity,Genetic diversity,35,1.6,2,3,1,1,NA,5
+RL,Queen triggerfish,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+RL,Queen triggerfish,Qualitative Exposure,Thermocline depth,18,1.6,3,2,3,NA,NA,5
+RL,Queen triggerfish,Sensitivity,Habitat specificity,21,3.6,3,NA,NA,2,3,5
+RL,Queen triggerfish,Sensitivity,Prey specificity,22,2.4,3,NA,3,2,NA,5
+RL,Queen triggerfish,Sensitivity,Tolerance to ocean acidification,23,2,3,1,3,1,NA,5
+RL,Queen triggerfish,Sensitivity,Complexity in reproductive strategy,24,3.2,3,NA,1,2,2,5
+RL,Queen triggerfish,Sensitivity,Species range,25,1.4,3,3,2,NA,NA,5
+RL,Queen triggerfish,Sensitivity,Specificity in early life history requirements,26,3,3,NA,1,3,1,5
+RL,Queen triggerfish,Sensitivity,Stock Size Status,27,3.6,1,NA,NA,2,3,5
+RL,Queen triggerfish,Sensitivity,Other stressors,28,3.4,2,NA,1,1,3,5
+RL,Queen triggerfish,Sensitivity,Population growth rate,30,2,2,1,3,1,NA,5
+RL,Queen triggerfish,Sensitivity,Mobility and dispersal or early life stages,31,2.8,1,NA,2,2,1,5
+RL,Queen triggerfish,Sensitivity,Adult mobility,32,3.8,3,NA,NA,1,4,5
+RL,Queen triggerfish,Sensitivity,Spawning characteristics,33,3.2,2,NA,1,2,2,5
+RL,Queen triggerfish,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+RL,Queen triggerfish,Sensitivity,Genetic diversity,35,1.4,2,3,2,NA,NA,5
+CZ,Rainbow parrotfish,Qualitative Exposure,Sargassum influx,17,3.4,0,NA,0,3,2,5
+CZ,Rainbow parrotfish,Qualitative Exposure,Thermocline depth,18,2.6,NA,NA,2,3,NA,5
+CZ,Rainbow parrotfish,Qualitative Exposure,Coral cover,19,3.6,4,NA,NA,2,3,5
+CZ,Rainbow parrotfish,Sensitivity,Habitat specificity,21,3.4,2,NA,NA,3,2,5
+CZ,Rainbow parrotfish,Sensitivity,Prey specificity,22,3.6,2,NA,NA,2,3,5
+CZ,Rainbow parrotfish,Sensitivity,Tolerance to ocean acidification,23,3.6,2,NA,NA,2,3,5
+CZ,Rainbow parrotfish,Sensitivity,Complexity in reproductive strategy,24,3.6,2,NA,NA,2,3,5
+CZ,Rainbow parrotfish,Sensitivity,Species range,25,2,3,1,3,1,NA,5
+CZ,Rainbow parrotfish,Sensitivity,Specificity in early life history requirements,26,2.2,1,1,2,2,NA,5
+CZ,Rainbow parrotfish,Sensitivity,Stock Size Status,27,3,1,NA,1,3,1,5
+CZ,Rainbow parrotfish,Sensitivity,Other stressors,28,3,1,NA,1,3,1,5
+CZ,Rainbow parrotfish,Sensitivity,Population growth rate,30,3.4,1,NA,NA,3,2,5
+CZ,Rainbow parrotfish,Sensitivity,Mobility and dispersal or early life stages,31,3.2,1,NA,1,2,2,5
+CZ,Rainbow parrotfish,Sensitivity,Adult mobility,32,2.8,2,NA,2,2,1,5
+CZ,Rainbow parrotfish,Sensitivity,Spawning characteristics,33,2,2,1,3,1,NA,5
+CZ,Rainbow parrotfish,Sensitivity,Predation and competition dynamics,34,3.2,2,NA,NA,4,1,5
+CZ,Rainbow parrotfish,Sensitivity,Genetic diversity,35,2.6,1,NA,3,1,1,5
+GR,Rainbow parrotfish,Qualitative Exposure,Sargassum influx,17,2.8,1,NA,3,NA,2,5
+GR,Rainbow parrotfish,Qualitative Exposure,Thermocline depth,18,2.6,1,NA,2,3,NA,5
+GR,Rainbow parrotfish,Sensitivity,Habitat specificity,21,3.6,3,NA,NA,2,3,5
+GR,Rainbow parrotfish,Sensitivity,Prey specificity,22,3.4,3,NA,NA,3,2,5
+GR,Rainbow parrotfish,Sensitivity,Tolerance to ocean acidification,23,2.4,3,NA,3,2,NA,5
+GR,Rainbow parrotfish,Sensitivity,Complexity in reproductive strategy,24,1.8,3,1,4,NA,NA,5
+GR,Rainbow parrotfish,Sensitivity,Species range,25,2.6,2,NA,2,3,NA,5
+GR,Rainbow parrotfish,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+GR,Rainbow parrotfish,Sensitivity,Stock Size Status,27,3.8,1,NA,NA,1,4,5
+GR,Rainbow parrotfish,Sensitivity,Other stressors,28,2.4,1,NA,3,2,NA,5
+GR,Rainbow parrotfish,Sensitivity,Population growth rate,30,2.6,2,NA,2,3,NA,5
+GR,Rainbow parrotfish,Sensitivity,Mobility and dispersal or early life stages,31,2.6,2,NA,2,3,NA,5
+GR,Rainbow parrotfish,Sensitivity,Adult mobility,32,1.6,3,2,3,NA,NA,5
+GR,Rainbow parrotfish,Sensitivity,Spawning characteristics,33,2.4,3,NA,3,2,NA,5
+GR,Rainbow parrotfish,Sensitivity,Predation and competition dynamics,34,2.8,1,NA,1,4,NA,5
+GR,Rainbow parrotfish,Sensitivity,Genetic diversity,35,2.2,1,NA,4,1,NA,5
+RE,Rainbow parrotfish,Qualitative Exposure,Sargassum influx,17,4,2,NA,NA,NA,5,5
+RE,Rainbow parrotfish,Qualitative Exposure,Thermocline depth,18,2,1,NA,5,NA,NA,5
+RE,Rainbow parrotfish,Sensitivity,Habitat specificity,21,2.2,3,NA,4,1,NA,5
+RE,Rainbow parrotfish,Sensitivity,Prey specificity,22,3,3,NA,1,3,1,5
+RE,Rainbow parrotfish,Sensitivity,Tolerance to ocean acidification,23,3.8,3,NA,NA,1,4,5
+RE,Rainbow parrotfish,Sensitivity,Complexity in reproductive strategy,24,2.6,3,NA,2,3,NA,5
+RE,Rainbow parrotfish,Sensitivity,Species range,25,2.2,3,NA,4,1,NA,5
+RE,Rainbow parrotfish,Sensitivity,Specificity in early life history requirements,26,3.4,3,NA,NA,3,2,5
+RE,Rainbow parrotfish,Sensitivity,Stock Size Status,27,2,0,NA,5,NA,NA,5
+RE,Rainbow parrotfish,Sensitivity,Other stressors,28,4,1,NA,NA,NA,5,5
+RE,Rainbow parrotfish,Sensitivity,Population growth rate,30,2,0,NA,5,NA,NA,5
+RE,Rainbow parrotfish,Sensitivity,Mobility and dispersal or early life stages,31,2.4,1,NA,3,2,NA,5
+RE,Rainbow parrotfish,Sensitivity,Adult mobility,32,3.4,3,NA,NA,3,2,5
+RE,Rainbow parrotfish,Sensitivity,Spawning characteristics,33,1.8,3,1,4,NA,NA,5
+RE,Rainbow parrotfish,Sensitivity,Predation and competition dynamics,34,1.8,0,1,4,NA,NA,5
+RE,Rainbow parrotfish,Sensitivity,Genetic diversity,35,2.4,0,NA,3,2,NA,5
+RL,Rainbow parrotfish,Qualitative Exposure,Sargassum influx,17,2,1,1,3,1,NA,5
+RL,Rainbow parrotfish,Qualitative Exposure,Thermocline depth,18,2,3,1,3,1,NA,5
+RL,Rainbow parrotfish,Sensitivity,Habitat specificity,21,3.4,3,NA,NA,3,2,5
+RL,Rainbow parrotfish,Sensitivity,Prey specificity,22,3,3,NA,1,3,1,5
+RL,Rainbow parrotfish,Sensitivity,Tolerance to ocean acidification,23,3.4,3,NA,NA,3,2,5
+RL,Rainbow parrotfish,Sensitivity,Complexity in reproductive strategy,24,3.2,3,NA,1,2,2,5
+RL,Rainbow parrotfish,Sensitivity,Species range,25,3.6,3,NA,NA,2,3,5
+RL,Rainbow parrotfish,Sensitivity,Specificity in early life history requirements,26,3.2,3,NA,NA,4,1,5
+RL,Rainbow parrotfish,Sensitivity,Stock Size Status,27,3.6,2,NA,NA,2,3,5
+RL,Rainbow parrotfish,Sensitivity,Other stressors,28,3.6,2,NA,NA,2,3,5
+RL,Rainbow parrotfish,Sensitivity,Population growth rate,30,2.8,3,NA,2,2,1,5
+RL,Rainbow parrotfish,Sensitivity,Mobility and dispersal or early life stages,31,2.8,2,NA,2,2,1,5
+RL,Rainbow parrotfish,Sensitivity,Adult mobility,32,3.8,3,NA,NA,1,4,5
+RL,Rainbow parrotfish,Sensitivity,Spawning characteristics,33,3.2,3,NA,1,2,2,5
+RL,Rainbow parrotfish,Sensitivity,Predation and competition dynamics,34,2.6,3,NA,2,3,NA,5
+RL,Rainbow parrotfish,Sensitivity,Genetic diversity,35,1.6,2,2,3,NA,NA,5
+MS,Red grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+MS,Red grouper,Qualitative Exposure,Thermocline depth,18,1.2,1,4,1,NA,NA,5
+MS,Red grouper,Sensitivity,Habitat specificity,21,3,2,NA,NA,5,NA,5
+MS,Red grouper,Sensitivity,Prey specificity,22,2.4,1,NA,3,2,NA,5
+MS,Red grouper,Sensitivity,Tolerance to ocean acidification,23,1.2,1,4,1,NA,NA,5
+MS,Red grouper,Sensitivity,Complexity in reproductive strategy,24,3.2,2,NA,NA,4,1,5
+MS,Red grouper,Sensitivity,Species range,25,2.2,3,NA,4,1,NA,5
+MS,Red grouper,Sensitivity,Specificity in early life history requirements,26,2.4,1,NA,3,2,NA,5
+MS,Red grouper,Sensitivity,Stock Size Status,27,4,1,NA,NA,NA,5,5
+MS,Red grouper,Sensitivity,Other stressors,28,1,1,5,NA,NA,NA,5
+MS,Red grouper,Sensitivity,Population growth rate,30,2.8,2,NA,1,4,NA,5
+MS,Red grouper,Sensitivity,Mobility and dispersal or early life stages,31,2.2,1,NA,4,1,NA,5
+MS,Red grouper,Sensitivity,Adult mobility,32,3,2,NA,NA,5,NA,5
+MS,Red grouper,Sensitivity,Spawning characteristics,33,2.8,2,NA,1,4,NA,5
+MS,Red grouper,Sensitivity,Predation and competition dynamics,34,1.6,1,2,3,NA,NA,5
+MS,Red grouper,Sensitivity,Genetic diversity,35,2,1,NA,5,NA,NA,5
+OT,Red grouper,Qualitative Exposure,Sargassum influx,17,3,2,NA,1,3,1,5
+OT,Red grouper,Qualitative Exposure,Thermocline depth,18,3,2,NA,1,3,1,5
+OT,Red grouper,Sensitivity,Habitat specificity,21,1.6,3,2,3,NA,NA,5
+OT,Red grouper,Sensitivity,Prey specificity,22,1.2,3,4,1,NA,NA,5
+OT,Red grouper,Sensitivity,Tolerance to ocean acidification,23,3,3,NA,1,3,1,5
+OT,Red grouper,Sensitivity,Complexity in reproductive strategy,24,2.6,1,1,1,2,1,5
+OT,Red grouper,Sensitivity,Species range,25,1.6,3,3,1,1,NA,5
+OT,Red grouper,Sensitivity,Specificity in early life history requirements,26,2.2,1,2,1,1,1,5
+OT,Red grouper,Sensitivity,Stock Size Status,27,2.4,1,1,2,1,1,5
+OT,Red grouper,Sensitivity,Other stressors,28,2,2,1,3,1,NA,5
+OT,Red grouper,Sensitivity,Population growth rate,30,3.8,3,NA,NA,1,4,5
+OT,Red grouper,Sensitivity,Mobility and dispersal or early life stages,31,1.6,1,2,3,NA,NA,5
+OT,Red grouper,Sensitivity,Adult mobility,32,1.8,2,1,4,NA,NA,5
+OT,Red grouper,Sensitivity,Spawning characteristics,33,2.4,2,1,2,1,1,5
+OT,Red grouper,Sensitivity,Predation and competition dynamics,34,1.8,1,2,2,1,NA,5
+OT,Red grouper,Sensitivity,Genetic diversity,35,2.4,1,1,2,1,1,5
+RA,Red grouper,Qualitative Exposure,Sargassum influx,17,1.6,1,2,3,NA,NA,5
+RA,Red grouper,Qualitative Exposure,Thermocline depth,18,1.2,1,4,1,NA,NA,5
+RA,Red grouper,Sensitivity,Habitat specificity,21,2.8,1,NA,1,4,NA,5
+RA,Red grouper,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+RA,Red grouper,Sensitivity,Tolerance to ocean acidification,23,2.6,1,NA,3,1,1,5
+RA,Red grouper,Sensitivity,Complexity in reproductive strategy,24,2.4,2,NA,3,2,NA,5
+RA,Red grouper,Sensitivity,Species range,25,2.8,2,NA,1,4,NA,5
+RA,Red grouper,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+RA,Red grouper,Sensitivity,Stock Size Status,27,3.2,2,NA,1,2,2,5
+RA,Red grouper,Sensitivity,Other stressors,28,1,1,5,NA,NA,NA,5
+RA,Red grouper,Sensitivity,Population growth rate,30,3.8,2,NA,NA,1,4,5
+RA,Red grouper,Sensitivity,Mobility and dispersal or early life stages,31,2,2,NA,5,NA,NA,5
+RA,Red grouper,Sensitivity,Adult mobility,32,1.4,1,3,2,NA,NA,5
+RA,Red grouper,Sensitivity,Spawning characteristics,33,2.8,2,NA,1,4,NA,5
+RA,Red grouper,Sensitivity,Predation and competition dynamics,34,1.4,1,3,2,NA,NA,5
+RA,Red grouper,Sensitivity,Genetic diversity,35,1,1,5,NA,NA,NA,5
+SK,Red grouper,Qualitative Exposure,Sargassum influx,17,2,2,1,3,1,NA,5
+SK,Red grouper,Qualitative Exposure,Thermocline depth,18,2,2,3,2,NA,NA,5
+SK,Red grouper,Sensitivity,Habitat specificity,21,2.6,2,NA,2,3,NA,5
+SK,Red grouper,Sensitivity,Prey specificity,22,1.6,3,2,3,NA,NA,5
+SK,Red grouper,Sensitivity,Tolerance to ocean acidification,23,3.2,2,NA,NA,4,1,5
+SK,Red grouper,Sensitivity,Complexity in reproductive strategy,24,3,2,NA,1,3,1,5
+SK,Red grouper,Sensitivity,Species range,25,2.2,3,NA,4,1,NA,5
+SK,Red grouper,Sensitivity,Specificity in early life history requirements,26,2.6,2,NA,2,3,NA,5
+SK,Red grouper,Sensitivity,Stock Size Status,27,2.8,2,NA,2,2,1,5
+SK,Red grouper,Sensitivity,Other stressors,28,2.4,2,NA,3,2,NA,5
+SK,Red grouper,Sensitivity,Population growth rate,30,3.8,2,NA,NA,1,4,5
+SK,Red grouper,Sensitivity,Mobility and dispersal or early life stages,31,2.4,2,NA,3,2,NA,5
+SK,Red grouper,Sensitivity,Adult mobility,32,2.4,3,NA,3,2,NA,5
+SK,Red grouper,Sensitivity,Spawning characteristics,33,3.2,3,NA,NA,4,1,5
+SK,Red grouper,Sensitivity,Predation and competition dynamics,34,2.4,2,NA,3,2,NA,5
+SK,Red grouper,Sensitivity,Genetic diversity,35,1.8,2,2,2,1,NA,5
+CZ,Red hind,Qualitative Exposure,Sargassum influx,17,3.6,0,NA,NA,2,3,5
+CZ,Red hind,Qualitative Exposure,Thermocline depth,18,2.6,2,NA,2,3,NA,5
+CZ,Red hind,Sensitivity,Habitat specificity,21,2,3,1,3,1,NA,5
+CZ,Red hind,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+CZ,Red hind,Sensitivity,Tolerance to ocean acidification,23,1.4,0,3,2,NA,NA,5
+CZ,Red hind,Sensitivity,Complexity in reproductive strategy,24,3.8,3,NA,NA,1,4,5
+CZ,Red hind,Sensitivity,Species range,25,1.6,3,2,3,NA,NA,5
+CZ,Red hind,Sensitivity,Specificity in early life history requirements,26,2.6,2,NA,2,3,NA,5
+CZ,Red hind,Sensitivity,Stock Size Status,27,3.2,2,NA,NA,4,1,5
+CZ,Red hind,Sensitivity,Other stressors,28,2,1,NA,5,NA,NA,5
+CZ,Red hind,Sensitivity,Population growth rate,30,3.2,2,NA,1,2,2,5
+CZ,Red hind,Sensitivity,Mobility and dispersal or early life stages,31,2.8,2,NA,2,2,1,5
+CZ,Red hind,Sensitivity,Adult mobility,32,1.6,2,2,3,NA,NA,5
+CZ,Red hind,Sensitivity,Spawning characteristics,33,3.2,3,NA,NA,4,1,5
+CZ,Red hind,Sensitivity,Predation and competition dynamics,34,2.4,2,1,1,3,NA,5
+CZ,Red hind,Sensitivity,Genetic diversity,35,1.6,0,2,3,NA,NA,5
+MS,Red hind,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+MS,Red hind,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+MS,Red hind,Sensitivity,Habitat specificity,21,1.6,2,2,3,NA,NA,5
+MS,Red hind,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+MS,Red hind,Sensitivity,Tolerance to ocean acidification,23,2.4,1,NA,3,2,NA,5
+MS,Red hind,Sensitivity,Complexity in reproductive strategy,24,3,3,NA,1,3,1,5
+MS,Red hind,Sensitivity,Species range,25,2,3,NA,5,NA,NA,5
+MS,Red hind,Sensitivity,Specificity in early life history requirements,26,2.2,1,NA,4,1,NA,5
+MS,Red hind,Sensitivity,Stock Size Status,27,3,2,NA,NA,5,NA,5
+MS,Red hind,Sensitivity,Other stressors,28,2.8,1,NA,1,4,NA,5
+MS,Red hind,Sensitivity,Population growth rate,30,2.4,2,1,2,1,1,5
+MS,Red hind,Sensitivity,Mobility and dispersal or early life stages,31,1.8,2,2,2,1,NA,5
+MS,Red hind,Sensitivity,Adult mobility,32,2.2,2,1,2,2,NA,5
+MS,Red hind,Sensitivity,Spawning characteristics,33,3.2,3,NA,NA,4,1,5
+MS,Red hind,Sensitivity,Predation and competition dynamics,34,1.8,1,1,4,NA,NA,5
+MS,Red hind,Sensitivity,Genetic diversity,35,2.4,1,1,2,1,1,5
+OT,Red hind,Qualitative Exposure,Sargassum influx,17,1.2,2,4,1,NA,NA,5
+OT,Red hind,Qualitative Exposure,Thermocline depth,18,2.8,3,NA,1,4,NA,5
+OT,Red hind,Sensitivity,Habitat specificity,21,1.4,3,3,2,NA,NA,5
+OT,Red hind,Sensitivity,Prey specificity,22,1.2,3,4,1,NA,NA,5
+OT,Red hind,Sensitivity,Tolerance to ocean acidification,23,3,3,NA,1,3,1,5
+OT,Red hind,Sensitivity,Complexity in reproductive strategy,24,3.8,3,NA,NA,1,4,5
+OT,Red hind,Sensitivity,Species range,25,2,3,1,3,1,NA,5
+OT,Red hind,Sensitivity,Specificity in early life history requirements,26,2,3,1,3,1,NA,5
+OT,Red hind,Sensitivity,Stock Size Status,27,2.2,3,1,2,2,NA,5
+OT,Red hind,Sensitivity,Other stressors,28,2,3,1,3,1,NA,5
+OT,Red hind,Sensitivity,Population growth rate,30,2.6,3,NA,3,1,1,5
+OT,Red hind,Sensitivity,Mobility and dispersal or early life stages,31,2,3,NA,5,NA,NA,5
+OT,Red hind,Sensitivity,Adult mobility,32,2,3,NA,5,NA,NA,5
+OT,Red hind,Sensitivity,Spawning characteristics,33,3,3,NA,NA,5,NA,5
+OT,Red hind,Sensitivity,Predation and competition dynamics,34,1.8,3,2,2,1,NA,5
+OT,Red hind,Sensitivity,Genetic diversity,35,2.4,2,1,2,1,1,5
+SK,Red hind,Qualitative Exposure,Sargassum influx,17,2.4,2,1,1,3,NA,5
+SK,Red hind,Qualitative Exposure,Thermocline depth,18,1.8,2,2,2,1,NA,5
+SK,Red hind,Sensitivity,Habitat specificity,21,2.2,3,1,2,2,NA,5
+SK,Red hind,Sensitivity,Prey specificity,22,2.2,3,1,2,2,NA,5
+SK,Red hind,Sensitivity,Tolerance to ocean acidification,23,1.6,2,2,3,NA,NA,5
+SK,Red hind,Sensitivity,Complexity in reproductive strategy,24,3.6,3,NA,NA,2,3,5
+SK,Red hind,Sensitivity,Species range,25,2.6,3,NA,2,3,NA,5
+SK,Red hind,Sensitivity,Specificity in early life history requirements,26,2.4,2,NA,3,2,NA,5
+SK,Red hind,Sensitivity,Stock Size Status,27,2,3,1,3,1,NA,5
+SK,Red hind,Sensitivity,Other stressors,28,2.4,2,NA,3,2,NA,5
+SK,Red hind,Sensitivity,Population growth rate,30,2.2,3,NA,4,1,NA,5
+SK,Red hind,Sensitivity,Mobility and dispersal or early life stages,31,2.4,2,NA,3,2,NA,5
+SK,Red hind,Sensitivity,Adult mobility,32,2,3,NA,5,NA,NA,5
+SK,Red hind,Sensitivity,Spawning characteristics,33,3,3,NA,NA,5,NA,5
+SK,Red hind,Sensitivity,Predation and competition dynamics,34,2.8,2,NA,1,4,NA,5
+SK,Red hind,Sensitivity,Genetic diversity,35,2,3,1,3,1,NA,5
+JP,Sea cucumbers,Qualitative Exposure,Sargassum influx,17,3.2,1,NA,1,2,2,5
+JP,Sea cucumbers,Sensitivity,Habitat specificity,21,2.6,2,NA,2,3,NA,5
+JP,Sea cucumbers,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+JP,Sea cucumbers,Sensitivity,Tolerance to ocean acidification,23,3,1,NA,1,3,1,5
+JP,Sea cucumbers,Sensitivity,Complexity in reproductive strategy,24,2.8,1,NA,2,2,1,5
+JP,Sea cucumbers,Sensitivity,Species range,25,2.6,2,NA,2,3,NA,5
+JP,Sea cucumbers,Sensitivity,Specificity in early life history requirements,26,2.4,0,NA,3,2,NA,5
+JP,Sea cucumbers,Sensitivity,Stock Size Status,27,2.6,2,NA,2,3,NA,5
+JP,Sea cucumbers,Sensitivity,Other stressors,28,1.8,0,2,2,1,NA,5
+JP,Sea cucumbers,Sensitivity,Population growth rate,30,2,1,1,3,1,NA,5
+JP,Sea cucumbers,Sensitivity,Mobility and dispersal or early life stages,31,2.2,2,NA,4,1,NA,5
+JP,Sea cucumbers,Sensitivity,Adult mobility,32,2.8,0,NA,1,4,NA,5
+JP,Sea cucumbers,Sensitivity,Spawning characteristics,33,3.6,2,NA,NA,2,3,5
+JP,Sea cucumbers,Sensitivity,Predation and competition dynamics,34,1.8,0,2,2,1,NA,5
+JP,Sea cucumbers,Sensitivity,Genetic diversity,35,2,0,1,3,1,NA,5
+OT,Sea cucumbers,Qualitative Exposure,Sargassum influx,17,1.4,1,3,2,NA,NA,5
+OT,Sea cucumbers,Sensitivity,Habitat specificity,21,1.6,2,3,1,1,NA,5
+OT,Sea cucumbers,Sensitivity,Prey specificity,22,1,1,5,NA,NA,NA,5
+OT,Sea cucumbers,Sensitivity,Tolerance to ocean acidification,23,3,1,NA,1,3,1,5
+OT,Sea cucumbers,Sensitivity,Complexity in reproductive strategy,24,3,2,NA,1,3,1,5
+OT,Sea cucumbers,Sensitivity,Species range,25,1.4,1,3,2,NA,NA,5
+OT,Sea cucumbers,Sensitivity,Specificity in early life history requirements,26,2.4,1,1,2,1,1,5
+OT,Sea cucumbers,Sensitivity,Stock Size Status,27,2.2,1,2,1,1,1,5
+OT,Sea cucumbers,Sensitivity,Other stressors,28,2.2,1,2,1,1,1,5
+OT,Sea cucumbers,Sensitivity,Population growth rate,30,2.2,1,2,1,1,1,5
+OT,Sea cucumbers,Sensitivity,Mobility and dispersal or early life stages,31,2.6,1,1,1,2,1,5
+OT,Sea cucumbers,Sensitivity,Adult mobility,32,3.2,2,NA,NA,4,1,5
+OT,Sea cucumbers,Sensitivity,Spawning characteristics,33,2.6,2,NA,2,3,NA,5
+OT,Sea cucumbers,Sensitivity,Predation and competition dynamics,34,2.2,1,2,1,1,1,5
+OT,Sea cucumbers,Sensitivity,Genetic diversity,35,2.2,1,2,1,1,1,5
+RA,Sea cucumbers,Qualitative Exposure,Sargassum influx,17,1.8,1,1,4,NA,NA,5
+RA,Sea cucumbers,Sensitivity,Habitat specificity,21,2.4,2,1,1,3,NA,5
+RA,Sea cucumbers,Sensitivity,Prey specificity,22,1,2,5,NA,NA,NA,5
+RA,Sea cucumbers,Sensitivity,Tolerance to ocean acidification,23,3.6,1,NA,NA,2,3,5
+RA,Sea cucumbers,Sensitivity,Complexity in reproductive strategy,24,2,2,NA,5,NA,NA,5
+RA,Sea cucumbers,Sensitivity,Species range,25,1.6,1,2,3,NA,NA,5
+RA,Sea cucumbers,Sensitivity,Specificity in early life history requirements,26,1.6,1,2,3,NA,NA,5
+RA,Sea cucumbers,Sensitivity,Stock Size Status,27,2.4,0,NA,3,2,NA,5
+RA,Sea cucumbers,Sensitivity,Other stressors,28,1.8,1,1,4,NA,NA,5
+RA,Sea cucumbers,Sensitivity,Population growth rate,30,2.6,0,NA,2,3,NA,5
+RA,Sea cucumbers,Sensitivity,Mobility and dispersal or early life stages,31,2,2,NA,5,NA,NA,5
+RA,Sea cucumbers,Sensitivity,Adult mobility,32,3,2,NA,NA,5,NA,5
+RA,Sea cucumbers,Sensitivity,Spawning characteristics,33,3,2,NA,NA,5,NA,5
+RA,Sea cucumbers,Sensitivity,Predation and competition dynamics,34,1.8,0,2,2,1,NA,5
+RA,Sea cucumbers,Sensitivity,Genetic diversity,35,2.4,0,NA,3,2,NA,5
+SW,Sea cucumbers,Qualitative Exposure,Sargassum influx,17,3.4,1,NA,NA,3,2,5
+SW,Sea cucumbers,Sensitivity,Habitat specificity,21,1.4,2,3,2,NA,NA,5
+SW,Sea cucumbers,Sensitivity,Prey specificity,22,1,2,5,NA,NA,NA,5
+SW,Sea cucumbers,Sensitivity,Tolerance to ocean acidification,23,3.8,2,NA,NA,1,4,5
+SW,Sea cucumbers,Sensitivity,Complexity in reproductive strategy,24,2.4,1,NA,3,2,NA,5
+SW,Sea cucumbers,Sensitivity,Species range,25,1,2,5,NA,NA,NA,5
+SW,Sea cucumbers,Sensitivity,Specificity in early life history requirements,26,2.4,2,1,2,1,1,5
+SW,Sea cucumbers,Sensitivity,Stock Size Status,27,3.8,2,NA,NA,1,4,5
+SW,Sea cucumbers,Sensitivity,Other stressors,28,2.4,1,1,2,1,1,5
+SW,Sea cucumbers,Sensitivity,Population growth rate,30,1.4,2,3,2,NA,NA,5
+SW,Sea cucumbers,Sensitivity,Mobility and dispersal or early life stages,31,2.4,2,NA,3,2,NA,5
+SW,Sea cucumbers,Sensitivity,Adult mobility,32,2.8,2,NA,1,4,NA,5
+SW,Sea cucumbers,Sensitivity,Spawning characteristics,33,2.6,1,NA,2,3,NA,5
+SW,Sea cucumbers,Sensitivity,Predation and competition dynamics,34,3.4,2,NA,NA,3,2,5
+SW,Sea cucumbers,Sensitivity,Genetic diversity,35,1.6,1,2,3,NA,NA,5
+AK,Silk snapper,Sensitivity,Habitat specificity,21,1.2,2,4,1,NA,NA,5
+AK,Silk snapper,Sensitivity,Prey specificity,22,1.2,2,4,1,NA,NA,5
+AK,Silk snapper,Sensitivity,Tolerance to ocean acidification,23,1.6,2,2,3,NA,NA,5
+AK,Silk snapper,Sensitivity,Complexity in reproductive strategy,24,1.2,2,4,1,NA,NA,5
+AK,Silk snapper,Sensitivity,Species range,25,1,2,5,NA,NA,NA,5
+AK,Silk snapper,Sensitivity,Specificity in early life history requirements,26,1.4,0,3,2,NA,NA,5
+AK,Silk snapper,Sensitivity,Stock Size Status,27,2.8,2,NA,1,4,NA,5
+AK,Silk snapper,Sensitivity,Other stressors,28,1.2,0,4,1,NA,NA,5
+AK,Silk snapper,Sensitivity,Population growth rate,30,2.6,2,1,1,2,1,5
+AK,Silk snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.4,0,3,2,NA,NA,5
+AK,Silk snapper,Sensitivity,Adult mobility,32,1.2,0,4,1,NA,NA,5
+AK,Silk snapper,Sensitivity,Spawning characteristics,33,1.8,2,1,4,NA,NA,5
+AK,Silk snapper,Sensitivity,Predation and competition dynamics,34,2.2,0,2,1,1,1,5
+AK,Silk snapper,Sensitivity,Genetic diversity,35,3,2,NA,NA,5,NA,5
+KO,Silk snapper,Sensitivity,Habitat specificity,21,2,2,NA,5,NA,NA,5
+KO,Silk snapper,Sensitivity,Prey specificity,22,1.2,2,4,1,NA,NA,5
+KO,Silk snapper,Sensitivity,Tolerance to ocean acidification,23,2.2,1,NA,4,1,NA,5
+KO,Silk snapper,Sensitivity,Complexity in reproductive strategy,24,2,2,1,3,1,NA,5
+KO,Silk snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+KO,Silk snapper,Sensitivity,Specificity in early life history requirements,26,2.2,1,1,2,2,NA,5
+KO,Silk snapper,Sensitivity,Stock Size Status,27,2.6,2,NA,2,3,NA,5
+KO,Silk snapper,Sensitivity,Other stressors,28,2,1,1,3,1,NA,5
+KO,Silk snapper,Sensitivity,Population growth rate,30,3.6,2,NA,NA,2,3,5
+KO,Silk snapper,Sensitivity,Mobility and dispersal or early life stages,31,2.4,1,NA,3,2,NA,5
+KO,Silk snapper,Sensitivity,Adult mobility,32,2,1,1,3,1,NA,5
+KO,Silk snapper,Sensitivity,Spawning characteristics,33,2.8,2,NA,1,4,NA,5
+KO,Silk snapper,Sensitivity,Predation and competition dynamics,34,2,1,1,3,1,NA,5
+KO,Silk snapper,Sensitivity,Genetic diversity,35,2.6,2,NA,2,3,NA,5
+RE,Silk snapper,Sensitivity,Habitat specificity,21,1.2,3,4,1,NA,NA,5
+RE,Silk snapper,Sensitivity,Prey specificity,22,1.8,3,1,4,NA,NA,5
+RE,Silk snapper,Sensitivity,Tolerance to ocean acidification,23,1.2,3,4,1,NA,NA,5
+RE,Silk snapper,Sensitivity,Complexity in reproductive strategy,24,2.2,2,NA,4,1,NA,5
+RE,Silk snapper,Sensitivity,Species range,25,1.8,3,1,4,NA,NA,5
+RE,Silk snapper,Sensitivity,Specificity in early life history requirements,26,2.4,1,NA,3,2,NA,5
+RE,Silk snapper,Sensitivity,Stock Size Status,27,2.6,2,NA,2,3,NA,5
+RE,Silk snapper,Sensitivity,Other stressors,28,2.2,1,NA,4,1,NA,5
+RE,Silk snapper,Sensitivity,Population growth rate,30,1.8,2,1,4,NA,NA,5
+RE,Silk snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.2,2,4,1,NA,NA,5
+RE,Silk snapper,Sensitivity,Adult mobility,32,1.2,2,4,1,NA,NA,5
+RE,Silk snapper,Sensitivity,Spawning characteristics,33,1.2,3,4,1,NA,NA,5
+RE,Silk snapper,Sensitivity,Predation and competition dynamics,34,1.4,2,3,2,NA,NA,5
+RE,Silk snapper,Sensitivity,Genetic diversity,35,1.2,0,4,1,NA,NA,5
+RL,Silk snapper,Sensitivity,Habitat specificity,21,3,2,NA,1,3,1,5
+RL,Silk snapper,Sensitivity,Prey specificity,22,2.8,2,NA,2,2,1,5
+RL,Silk snapper,Sensitivity,Tolerance to ocean acidification,23,2,1,1,3,1,NA,5
+RL,Silk snapper,Sensitivity,Complexity in reproductive strategy,24,2.4,2,NA,3,2,NA,5
+RL,Silk snapper,Sensitivity,Species range,25,1.4,2,3,2,NA,NA,5
+RL,Silk snapper,Sensitivity,Specificity in early life history requirements,26,3.4,1,NA,NA,3,2,5
+RL,Silk snapper,Sensitivity,Stock Size Status,27,3.4,1,NA,NA,3,2,5
+RL,Silk snapper,Sensitivity,Other stressors,28,3.4,2,NA,1,1,3,5
+RL,Silk snapper,Sensitivity,Population growth rate,30,2,2,1,3,1,NA,5
+RL,Silk snapper,Sensitivity,Mobility and dispersal or early life stages,31,2.8,1,NA,2,2,1,5
+RL,Silk snapper,Sensitivity,Adult mobility,32,3.8,2,NA,NA,1,4,5
+RL,Silk snapper,Sensitivity,Spawning characteristics,33,3.2,2,NA,1,2,2,5
+RL,Silk snapper,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+RL,Silk snapper,Sensitivity,Genetic diversity,35,1.4,1,3,2,NA,NA,5
+AK,Spiny lobster,Qualitative Exposure,Sargassum influx,17,2.6,0,NA,2,3,NA,5
+AK,Spiny lobster,Sensitivity,Habitat specificity,21,1.2,3,4,1,NA,NA,5
+AK,Spiny lobster,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+AK,Spiny lobster,Sensitivity,Tolerance to ocean acidification,23,2,3,NA,5,NA,NA,5
+AK,Spiny lobster,Sensitivity,Complexity in reproductive strategy,24,1.6,3,2,3,NA,NA,5
+AK,Spiny lobster,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+AK,Spiny lobster,Sensitivity,Specificity in early life history requirements,26,1.4,3,3,2,NA,NA,5
+AK,Spiny lobster,Sensitivity,Stock Size Status,27,1.2,2,4,1,NA,NA,5
+AK,Spiny lobster,Sensitivity,Other stressors,28,2,3,1,3,1,NA,5
+AK,Spiny lobster,Sensitivity,Population growth rate,30,1.6,3,2,3,NA,NA,5
+AK,Spiny lobster,Sensitivity,Mobility and dispersal or early life stages,31,1,3,5,NA,NA,NA,5
+AK,Spiny lobster,Sensitivity,Adult mobility,32,1.4,3,3,2,NA,NA,5
+AK,Spiny lobster,Sensitivity,Spawning characteristics,33,1.4,3,3,2,NA,NA,5
+AK,Spiny lobster,Sensitivity,Predation and competition dynamics,34,1.8,3,1,4,NA,NA,5
+AK,Spiny lobster,Sensitivity,Genetic diversity,35,3,3,NA,NA,5,NA,5
+BG,Spiny lobster,Qualitative Exposure,Sargassum influx,17,4,1,NA,NA,NA,5,5
+BG,Spiny lobster,Sensitivity,Habitat specificity,21,2.2,3,NA,4,1,NA,5
+BG,Spiny lobster,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+BG,Spiny lobster,Sensitivity,Tolerance to ocean acidification,23,2.4,2,NA,3,2,NA,5
+BG,Spiny lobster,Sensitivity,Complexity in reproductive strategy,24,2.2,3,NA,4,1,NA,5
+BG,Spiny lobster,Sensitivity,Species range,25,2,3,NA,5,NA,NA,5
+BG,Spiny lobster,Sensitivity,Specificity in early life history requirements,26,1.4,3,3,2,NA,NA,5
+BG,Spiny lobster,Sensitivity,Stock Size Status,27,1.4,3,3,2,NA,NA,5
+BG,Spiny lobster,Sensitivity,Other stressors,28,1,2,5,NA,NA,NA,5
+BG,Spiny lobster,Sensitivity,Population growth rate,30,1.4,3,3,2,NA,NA,5
+BG,Spiny lobster,Sensitivity,Mobility and dispersal or early life stages,31,1.2,3,4,1,NA,NA,5
+BG,Spiny lobster,Sensitivity,Adult mobility,32,1,3,5,NA,NA,NA,5
+BG,Spiny lobster,Sensitivity,Spawning characteristics,33,1,3,5,NA,NA,NA,5
+BG,Spiny lobster,Sensitivity,Predation and competition dynamics,34,1,3,5,NA,NA,NA,5
+BG,Spiny lobster,Sensitivity,Genetic diversity,35,1,3,5,NA,NA,NA,5
+DB,Spiny lobster,Qualitative Exposure,Sargassum influx,17,1.2,1,4,1,NA,NA,5
+DB,Spiny lobster,Sensitivity,Habitat specificity,21,2.6,3,NA,2,3,NA,5
+DB,Spiny lobster,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+DB,Spiny lobster,Sensitivity,Tolerance to ocean acidification,23,2.4,2,NA,3,2,NA,5
+DB,Spiny lobster,Sensitivity,Complexity in reproductive strategy,24,1.4,2,3,2,NA,NA,5
+DB,Spiny lobster,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+DB,Spiny lobster,Sensitivity,Specificity in early life history requirements,26,3.2,3,NA,1,2,2,5
+DB,Spiny lobster,Sensitivity,Stock Size Status,27,1.8,2,2,2,1,NA,5
+DB,Spiny lobster,Sensitivity,Other stressors,28,2,2,1,3,1,NA,5
+DB,Spiny lobster,Sensitivity,Population growth rate,30,2,2,NA,5,NA,NA,5
+DB,Spiny lobster,Sensitivity,Mobility and dispersal or early life stages,31,1,2,5,NA,NA,NA,5
+DB,Spiny lobster,Sensitivity,Adult mobility,32,2,3,NA,5,NA,NA,5
+DB,Spiny lobster,Sensitivity,Spawning characteristics,33,1.4,3,3,2,NA,NA,5
+DB,Spiny lobster,Sensitivity,Predation and competition dynamics,34,1.4,2,3,2,NA,NA,5
+DB,Spiny lobster,Sensitivity,Genetic diversity,35,1.2,3,4,1,NA,NA,5
+SW,Spiny lobster,Qualitative Exposure,Sargassum influx,17,3.2,1,NA,1,2,2,5
+SW,Spiny lobster,Sensitivity,Habitat specificity,21,1.6,3,2,3,NA,NA,5
+SW,Spiny lobster,Sensitivity,Prey specificity,22,1.2,2,4,1,NA,NA,5
+SW,Spiny lobster,Sensitivity,Tolerance to ocean acidification,23,3.8,2,NA,NA,1,4,5
+SW,Spiny lobster,Sensitivity,Complexity in reproductive strategy,24,1.4,3,3,2,NA,NA,5
+SW,Spiny lobster,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+SW,Spiny lobster,Sensitivity,Specificity in early life history requirements,26,3.8,2,NA,NA,1,4,5
+SW,Spiny lobster,Sensitivity,Stock Size Status,27,2.2,3,1,2,2,NA,5
+SW,Spiny lobster,Sensitivity,Other stressors,28,2.8,2,NA,2,2,1,5
+SW,Spiny lobster,Sensitivity,Population growth rate,30,1.6,2,2,3,NA,NA,5
+SW,Spiny lobster,Sensitivity,Mobility and dispersal or early life stages,31,1.2,2,4,1,NA,NA,5
+SW,Spiny lobster,Sensitivity,Adult mobility,32,1.4,2,3,2,NA,NA,5
+SW,Spiny lobster,Sensitivity,Spawning characteristics,33,2.6,2,NA,2,3,NA,5
+SW,Spiny lobster,Sensitivity,Predation and competition dynamics,34,2.6,2,NA,2,3,NA,5
+SW,Spiny lobster,Sensitivity,Genetic diversity,35,1.4,2,3,2,NA,NA,5
+CZ,Stoplight parrotfish,Qualitative Exposure,Sargassum influx,17,3.2,0,NA,1,2,2,5
+CZ,Stoplight parrotfish,Qualitative Exposure,Thermocline depth,18,2.6,NA,NA,2,3,NA,5
+CZ,Stoplight parrotfish,Qualitative Exposure,Coral cover,19,3.6,2,NA,NA,2,3,5
+CZ,Stoplight parrotfish,Sensitivity,Habitat specificity,21,3.4,2,NA,0,3,2,5
+CZ,Stoplight parrotfish,Sensitivity,Prey specificity,22,3.6,2,NA,NA,2,3,5
+CZ,Stoplight parrotfish,Sensitivity,Tolerance to ocean acidification,23,3.6,0,NA,NA,2,3,5
+CZ,Stoplight parrotfish,Sensitivity,Complexity in reproductive strategy,24,2.4,2,NA,3,2,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Species range,25,1.8,2,2,2,1,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Specificity in early life history requirements,26,2.2,2,1,2,2,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Stock Size Status,27,2,0,1,3,1,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Other stressors,28,2,1,1,3,1,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Population growth rate,30,2,0,1,3,1,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Mobility and dispersal or early life stages,31,2.2,2,1,2,2,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Adult mobility,32,2,2,1,3,1,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Spawning characteristics,33,1.6,2,2,3,NA,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Predation and competition dynamics,34,2.6,2,NA,2,3,NA,5
+CZ,Stoplight parrotfish,Sensitivity,Genetic diversity,35,1.8,0,1,4,NA,NA,5
+GR,Stoplight parrotfish,Qualitative Exposure,Sargassum influx,17,2.4,1,NA,3,2,NA,5
+GR,Stoplight parrotfish,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+GR,Stoplight parrotfish,Sensitivity,Habitat specificity,21,2.8,3,NA,1,4,NA,5
+GR,Stoplight parrotfish,Sensitivity,Prey specificity,22,2.6,3,NA,2,3,NA,5
+GR,Stoplight parrotfish,Sensitivity,Tolerance to ocean acidification,23,2.4,2,NA,3,2,NA,5
+GR,Stoplight parrotfish,Sensitivity,Complexity in reproductive strategy,24,2.2,3,NA,4,1,NA,5
+GR,Stoplight parrotfish,Sensitivity,Species range,25,3,3,NA,2,1,2,5
+GR,Stoplight parrotfish,Sensitivity,Specificity in early life history requirements,26,2.4,1,NA,3,2,NA,5
+GR,Stoplight parrotfish,Sensitivity,Stock Size Status,27,2.4,1,NA,3,2,NA,5
+GR,Stoplight parrotfish,Sensitivity,Other stressors,28,2.6,1,NA,2,3,NA,5
+GR,Stoplight parrotfish,Sensitivity,Population growth rate,30,1.6,2,2,3,NA,NA,5
+GR,Stoplight parrotfish,Sensitivity,Mobility and dispersal or early life stages,31,2.8,3,NA,1,4,NA,5
+GR,Stoplight parrotfish,Sensitivity,Adult mobility,32,1.4,3,3,2,NA,NA,5
+GR,Stoplight parrotfish,Sensitivity,Spawning characteristics,33,1,3,5,NA,NA,NA,5
+GR,Stoplight parrotfish,Sensitivity,Predation and competition dynamics,34,2.6,1,NA,2,3,NA,5
+GR,Stoplight parrotfish,Sensitivity,Genetic diversity,35,1,1,5,NA,NA,NA,5
+RE,Stoplight parrotfish,Qualitative Exposure,Sargassum influx,17,4,2,NA,NA,NA,5,5
+RE,Stoplight parrotfish,Qualitative Exposure,Thermocline depth,18,2,1,NA,5,NA,NA,5
+RE,Stoplight parrotfish,Sensitivity,Habitat specificity,21,2,3,NA,5,NA,NA,5
+RE,Stoplight parrotfish,Sensitivity,Prey specificity,22,2,3,NA,5,NA,NA,5
+RE,Stoplight parrotfish,Sensitivity,Tolerance to ocean acidification,23,3.8,3,NA,NA,1,4,5
+RE,Stoplight parrotfish,Sensitivity,Complexity in reproductive strategy,24,2.6,3,NA,2,3,NA,5
+RE,Stoplight parrotfish,Sensitivity,Species range,25,2.2,3,NA,4,1,NA,5
+RE,Stoplight parrotfish,Sensitivity,Specificity in early life history requirements,26,3.4,3,NA,NA,3,2,5
+RE,Stoplight parrotfish,Sensitivity,Stock Size Status,27,2,0,NA,5,NA,NA,5
+RE,Stoplight parrotfish,Sensitivity,Other stressors,28,4,1,NA,NA,NA,5,5
+RE,Stoplight parrotfish,Sensitivity,Population growth rate,30,2,0,NA,5,NA,NA,5
+RE,Stoplight parrotfish,Sensitivity,Mobility and dispersal or early life stages,31,2.4,1,NA,3,2,NA,5
+RE,Stoplight parrotfish,Sensitivity,Adult mobility,32,2.2,3,NA,4,1,NA,5
+RE,Stoplight parrotfish,Sensitivity,Spawning characteristics,33,1.8,3,1,4,NA,NA,5
+RE,Stoplight parrotfish,Sensitivity,Predation and competition dynamics,34,1.8,0,1,4,NA,NA,5
+RE,Stoplight parrotfish,Sensitivity,Genetic diversity,35,1.8,0,1,4,NA,NA,5
+RL,Stoplight parrotfish,Qualitative Exposure,Sargassum influx,17,2,1,1,3,1,NA,5
+RL,Stoplight parrotfish,Qualitative Exposure,Thermocline depth,18,2,3,1,3,1,NA,5
+RL,Stoplight parrotfish,Sensitivity,Habitat specificity,21,3,3,NA,1,3,1,5
+RL,Stoplight parrotfish,Sensitivity,Prey specificity,22,3,3,NA,1,3,1,5
+RL,Stoplight parrotfish,Sensitivity,Tolerance to ocean acidification,23,3,3,NA,1,3,1,5
+RL,Stoplight parrotfish,Sensitivity,Complexity in reproductive strategy,24,3.2,3,NA,1,2,2,5
+RL,Stoplight parrotfish,Sensitivity,Species range,25,3,3,NA,1,3,1,5
+RL,Stoplight parrotfish,Sensitivity,Specificity in early life history requirements,26,3.2,3,NA,NA,4,1,5
+RL,Stoplight parrotfish,Sensitivity,Stock Size Status,27,3.4,2,NA,NA,3,2,5
+RL,Stoplight parrotfish,Sensitivity,Other stressors,28,3.6,2,NA,NA,2,3,5
+RL,Stoplight parrotfish,Sensitivity,Population growth rate,30,2.8,3,NA,2,2,1,5
+RL,Stoplight parrotfish,Sensitivity,Mobility and dispersal or early life stages,31,2.8,2,NA,2,2,1,5
+RL,Stoplight parrotfish,Sensitivity,Adult mobility,32,3.8,3,NA,NA,1,4,5
+RL,Stoplight parrotfish,Sensitivity,Spawning characteristics,33,3.2,3,NA,1,2,2,5
+RL,Stoplight parrotfish,Sensitivity,Predation and competition dynamics,34,2.6,3,NA,2,3,NA,5
+RL,Stoplight parrotfish,Sensitivity,Genetic diversity,35,1.6,2,2,3,NA,NA,5
+DB,White mullet,Qualitative Exposure,Sargassum influx,17,2.6,2,NA,2,3,NA,5
+DB,White mullet,Sensitivity,Habitat specificity,21,2.4,3,NA,3,2,NA,5
+DB,White mullet,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+DB,White mullet,Sensitivity,Tolerance to ocean acidification,23,1,2,5,NA,NA,NA,5
+DB,White mullet,Sensitivity,Complexity in reproductive strategy,24,1.8,2,2,2,1,NA,5
+DB,White mullet,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+DB,White mullet,Sensitivity,Specificity in early life history requirements,26,1.4,2,3,2,NA,NA,5
+DB,White mullet,Sensitivity,Stock Size Status,27,1.2,2,4,1,NA,NA,5
+DB,White mullet,Sensitivity,Other stressors,28,2.4,2,NA,3,2,NA,5
+DB,White mullet,Sensitivity,Population growth rate,30,2.6,3,NA,3,1,1,5
+DB,White mullet,Sensitivity,Mobility and dispersal or early life stages,31,3,3,NA,NA,5,NA,5
+DB,White mullet,Sensitivity,Adult mobility,32,1.8,3,1,4,NA,NA,5
+DB,White mullet,Sensitivity,Spawning characteristics,33,1.2,3,4,1,NA,NA,5
+DB,White mullet,Sensitivity,Predation and competition dynamics,34,1.2,1,4,1,NA,NA,5
+DB,White mullet,Sensitivity,Genetic diversity,35,1.4,2,3,2,NA,NA,5
+JP,White mullet,Qualitative Exposure,Sargassum influx,17,2.2,0,1,2,2,NA,5
+JP,White mullet,Sensitivity,Habitat specificity,21,1.8,2,1,4,NA,NA,5
+JP,White mullet,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+JP,White mullet,Sensitivity,Tolerance to ocean acidification,23,1,1,5,NA,NA,NA,5
+JP,White mullet,Sensitivity,Complexity in reproductive strategy,24,2.8,1,NA,1,4,NA,5
+JP,White mullet,Sensitivity,Species range,25,2,3,NA,5,NA,NA,5
+JP,White mullet,Sensitivity,Specificity in early life history requirements,26,2.2,2,NA,4,1,NA,5
+JP,White mullet,Sensitivity,Stock Size Status,27,1.8,0,2,2,1,NA,5
+JP,White mullet,Sensitivity,Other stressors,28,1.8,0,2,2,1,NA,5
+JP,White mullet,Sensitivity,Population growth rate,30,2.4,3,NA,3,2,NA,5
+JP,White mullet,Sensitivity,Mobility and dispersal or early life stages,31,2.4,1,NA,3,2,NA,5
+JP,White mullet,Sensitivity,Adult mobility,32,1.4,0,3,2,NA,NA,5
+JP,White mullet,Sensitivity,Spawning characteristics,33,2.2,3,NA,4,1,NA,5
+JP,White mullet,Sensitivity,Predation and competition dynamics,34,2.6,0,NA,2,3,NA,5
+JP,White mullet,Sensitivity,Genetic diversity,35,2,2,1,3,1,NA,5
+RG,White mullet,Qualitative Exposure,Sargassum influx,17,3.2,3,NA,NA,4,1,5
+RG,White mullet,Sensitivity,Habitat specificity,21,2.4,3,NA,3,2,NA,5
+RG,White mullet,Sensitivity,Prey specificity,22,1.4,2,3,2,NA,NA,5
+RG,White mullet,Sensitivity,Tolerance to ocean acidification,23,2.8,1,NA,1,4,NA,5
+RG,White mullet,Sensitivity,Complexity in reproductive strategy,24,2.6,1,NA,2,3,NA,5
+RG,White mullet,Sensitivity,Species range,25,3.2,3,NA,NA,4,1,5
+RG,White mullet,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+RG,White mullet,Sensitivity,Stock Size Status,27,2.6,1,NA,2,3,NA,5
+RG,White mullet,Sensitivity,Other stressors,28,2.6,1,NA,2,3,NA,5
+RG,White mullet,Sensitivity,Population growth rate,30,2.6,2,NA,2,3,NA,5
+RG,White mullet,Sensitivity,Mobility and dispersal or early life stages,31,1.6,1,2,3,NA,NA,5
+RG,White mullet,Sensitivity,Adult mobility,32,1.6,3,2,3,NA,NA,5
+RG,White mullet,Sensitivity,Spawning characteristics,33,1.6,3,2,3,NA,NA,5
+RG,White mullet,Sensitivity,Predation and competition dynamics,34,1.6,2,2,3,NA,NA,5
+RG,White mullet,Sensitivity,Genetic diversity,35,1.2,1,4,1,NA,NA,5
+WM,White mullet,Qualitative Exposure,Sargassum influx,17,3.6,2,NA,NA,2,3,5
+WM,White mullet,Sensitivity,Habitat specificity,21,3.8,2,NA,NA,1,4,5
+WM,White mullet,Sensitivity,Prey specificity,22,2.6,2,NA,2,3,NA,5
+WM,White mullet,Sensitivity,Tolerance to ocean acidification,23,1,2,5,NA,NA,NA,5
+WM,White mullet,Sensitivity,Complexity in reproductive strategy,24,2.6,2,NA,2,3,NA,5
+WM,White mullet,Sensitivity,Species range,25,2.6,2,NA,2,3,NA,5
+WM,White mullet,Sensitivity,Specificity in early life history requirements,26,2.6,2,NA,2,3,NA,5
+WM,White mullet,Sensitivity,Stock Size Status,27,2.6,2,NA,2,3,NA,5
+WM,White mullet,Sensitivity,Other stressors,28,2.6,2,NA,2,3,NA,5
+WM,White mullet,Sensitivity,Population growth rate,30,1,2,5,NA,NA,NA,5
+WM,White mullet,Sensitivity,Mobility and dispersal or early life stages,31,2.8,2,NA,2,2,1,5
+WM,White mullet,Sensitivity,Adult mobility,32,2.6,2,NA,2,3,NA,5
+WM,White mullet,Sensitivity,Spawning characteristics,33,1.8,2,2,2,1,NA,5
+WM,White mullet,Sensitivity,Predation and competition dynamics,34,2.4,2,NA,3,2,NA,5
+WM,White mullet,Sensitivity,Genetic diversity,35,2,2,NA,5,NA,NA,5
+CZ,Yellowfin grouper,Qualitative Exposure,Sargassum influx,17,3.2,0,NA,1,2,2,5
+CZ,Yellowfin grouper,Qualitative Exposure,Thermocline depth,18,3.6,1,NA,NA,2,3,5
+CZ,Yellowfin grouper,Sensitivity,Habitat specificity,21,2.2,1,1,2,2,NA,5
+CZ,Yellowfin grouper,Sensitivity,Prey specificity,22,1.4,1,3,2,NA,NA,5
+CZ,Yellowfin grouper,Sensitivity,Tolerance to ocean acidification,23,1.4,0,3,2,NA,NA,5
+CZ,Yellowfin grouper,Sensitivity,Complexity in reproductive strategy,24,3.8,2,NA,NA,1,4,5
+CZ,Yellowfin grouper,Sensitivity,Species range,25,3,2,NA,1,3,1,5
+CZ,Yellowfin grouper,Sensitivity,Specificity in early life history requirements,26,2.6,1,NA,2,3,NA,5
+CZ,Yellowfin grouper,Sensitivity,Stock Size Status,27,3,2,NA,1,3,1,5
+CZ,Yellowfin grouper,Sensitivity,Other stressors,28,2,0,1,3,1,NA,5
+CZ,Yellowfin grouper,Sensitivity,Population growth rate,30,3.2,2,NA,NA,4,1,5
+CZ,Yellowfin grouper,Sensitivity,Mobility and dispersal or early life stages,31,3,1,NA,1,3,1,5
+CZ,Yellowfin grouper,Sensitivity,Adult mobility,32,2.2,1,1,2,2,NA,5
+CZ,Yellowfin grouper,Sensitivity,Spawning characteristics,33,3.2,2,NA,NA,4,1,5
+CZ,Yellowfin grouper,Sensitivity,Predation and competition dynamics,34,3,1,NA,1,3,1,5
+CZ,Yellowfin grouper,Sensitivity,Genetic diversity,35,2,0,1,3,1,NA,5
+MS,Yellowfin grouper,Qualitative Exposure,Sargassum influx,17,1,1,5,NA,NA,NA,5
+MS,Yellowfin grouper,Qualitative Exposure,Thermocline depth,18,2.4,1,NA,3,2,NA,5
+MS,Yellowfin grouper,Sensitivity,Habitat specificity,21,2.2,2,NA,4,1,NA,5
+MS,Yellowfin grouper,Sensitivity,Prey specificity,22,2.4,1,NA,3,2,NA,5
+MS,Yellowfin grouper,Sensitivity,Tolerance to ocean acidification,23,1.8,1,2,2,1,NA,5
+MS,Yellowfin grouper,Sensitivity,Complexity in reproductive strategy,24,3.2,3,NA,NA,4,1,5
+MS,Yellowfin grouper,Sensitivity,Species range,25,2,3,NA,5,NA,NA,5
+MS,Yellowfin grouper,Sensitivity,Specificity in early life history requirements,26,2.2,1,NA,4,1,NA,5
+MS,Yellowfin grouper,Sensitivity,Stock Size Status,27,3.2,1,NA,NA,4,1,5
+MS,Yellowfin grouper,Sensitivity,Other stressors,28,2.8,1,NA,1,4,NA,5
+MS,Yellowfin grouper,Sensitivity,Population growth rate,30,2.4,2,1,2,1,1,5
+MS,Yellowfin grouper,Sensitivity,Mobility and dispersal or early life stages,31,1.8,2,2,2,1,NA,5
+MS,Yellowfin grouper,Sensitivity,Adult mobility,32,2.2,2,1,2,2,NA,5
+MS,Yellowfin grouper,Sensitivity,Spawning characteristics,33,3.2,2,NA,NA,4,1,5
+MS,Yellowfin grouper,Sensitivity,Predation and competition dynamics,34,1.8,1,1,4,NA,NA,5
+MS,Yellowfin grouper,Sensitivity,Genetic diversity,35,2.4,1,1,2,1,1,5
+RA,Yellowfin grouper,Qualitative Exposure,Sargassum influx,17,2,1,1,3,1,NA,5
+RA,Yellowfin grouper,Qualitative Exposure,Thermocline depth,18,1.4,1,3,2,NA,NA,5
+RA,Yellowfin grouper,Sensitivity,Habitat specificity,21,3,1,NA,1,3,1,5
+RA,Yellowfin grouper,Sensitivity,Prey specificity,22,2,2,NA,5,NA,NA,5
+RA,Yellowfin grouper,Sensitivity,Tolerance to ocean acidification,23,2.6,1,NA,3,1,1,5
+RA,Yellowfin grouper,Sensitivity,Complexity in reproductive strategy,24,2,2,NA,5,NA,NA,5
+RA,Yellowfin grouper,Sensitivity,Species range,25,1.6,2,2,3,NA,NA,5
+RA,Yellowfin grouper,Sensitivity,Specificity in early life history requirements,26,1.6,1,2,3,NA,NA,5
+RA,Yellowfin grouper,Sensitivity,Stock Size Status,27,2.2,2,1,2,2,NA,5
+RA,Yellowfin grouper,Sensitivity,Other stressors,28,2,1,NA,5,NA,NA,5
+RA,Yellowfin grouper,Sensitivity,Population growth rate,30,3.6,2,NA,NA,2,3,5
+RA,Yellowfin grouper,Sensitivity,Mobility and dispersal or early life stages,31,2,2,NA,5,NA,NA,5
+RA,Yellowfin grouper,Sensitivity,Adult mobility,32,1.6,2,2,3,NA,NA,5
+RA,Yellowfin grouper,Sensitivity,Spawning characteristics,33,3,2,NA,NA,5,NA,5
+RA,Yellowfin grouper,Sensitivity,Predation and competition dynamics,34,2.8,1,NA,2,2,1,5
+RA,Yellowfin grouper,Sensitivity,Genetic diversity,35,2.8,1,NA,2,2,1,5
+SK,Yellowfin grouper,Qualitative Exposure,Sargassum influx,17,1.8,2,2,2,1,NA,5
+SK,Yellowfin grouper,Qualitative Exposure,Thermocline depth,18,1.6,2,2,3,NA,NA,5
+SK,Yellowfin grouper,Sensitivity,Habitat specificity,21,1.6,3,2,3,NA,NA,5
+SK,Yellowfin grouper,Sensitivity,Prey specificity,22,1.4,3,3,2,NA,NA,5
+SK,Yellowfin grouper,Sensitivity,Tolerance to ocean acidification,23,2.4,2,NA,3,2,NA,5
+SK,Yellowfin grouper,Sensitivity,Complexity in reproductive strategy,24,3.8,3,NA,NA,1,4,5
+SK,Yellowfin grouper,Sensitivity,Species range,25,2.6,3,NA,2,3,NA,5
+SK,Yellowfin grouper,Sensitivity,Specificity in early life history requirements,26,2.4,2,NA,3,2,NA,5
+SK,Yellowfin grouper,Sensitivity,Stock Size Status,27,3,2,NA,1,3,1,5
+SK,Yellowfin grouper,Sensitivity,Other stressors,28,2,2,NA,5,NA,NA,5
+SK,Yellowfin grouper,Sensitivity,Population growth rate,30,3.6,3,NA,NA,2,3,5
+SK,Yellowfin grouper,Sensitivity,Mobility and dispersal or early life stages,31,2.4,2,NA,3,2,NA,5
+SK,Yellowfin grouper,Sensitivity,Adult mobility,32,2.2,3,NA,4,1,NA,5
+SK,Yellowfin grouper,Sensitivity,Spawning characteristics,33,2.2,3,NA,4,1,NA,5
+SK,Yellowfin grouper,Sensitivity,Predation and competition dynamics,34,1.4,2,3,2,NA,NA,5
+SK,Yellowfin grouper,Sensitivity,Genetic diversity,35,2,2,1,3,1,NA,5
+AA,Yellowtail snapper,Qualitative Exposure,Sargassum influx,17,3,2,NA,1,3,1,5
+AA,Yellowtail snapper,Sensitivity,Habitat specificity,21,2.6,3,NA,2,3,NA,5
+AA,Yellowtail snapper,Sensitivity,Prey specificity,22,1.4,3,3,2,NA,NA,5
+AA,Yellowtail snapper,Sensitivity,Tolerance to ocean acidification,23,2.4,3,NA,3,2,NA,5
+AA,Yellowtail snapper,Sensitivity,Complexity in reproductive strategy,24,2.4,3,NA,3,2,NA,5
+AA,Yellowtail snapper,Sensitivity,Species range,25,1.6,3,2,3,NA,NA,5
+AA,Yellowtail snapper,Sensitivity,Specificity in early life history requirements,26,2.2,3,NA,4,1,NA,5
+AA,Yellowtail snapper,Sensitivity,Stock Size Status,27,2,3,1,3,1,NA,5
+AA,Yellowtail snapper,Sensitivity,Other stressors,28,2.4,3,NA,3,2,NA,5
+AA,Yellowtail snapper,Sensitivity,Population growth rate,30,2.4,3,NA,3,2,NA,5
+AA,Yellowtail snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.4,3,3,2,NA,NA,5
+AA,Yellowtail snapper,Sensitivity,Adult mobility,32,1.6,3,3,1,1,NA,5
+AA,Yellowtail snapper,Sensitivity,Spawning characteristics,33,2.4,3,NA,3,2,NA,5
+AA,Yellowtail snapper,Sensitivity,Predation and competition dynamics,34,1.4,3,3,2,NA,NA,5
+AA,Yellowtail snapper,Sensitivity,Genetic diversity,35,1.6,3,3,1,1,NA,5
+ET,Yellowtail snapper,Qualitative Exposure,Sargassum influx,17,4,2,NA,NA,NA,5,5
+ET,Yellowtail snapper,Sensitivity,Habitat specificity,21,2.6,3,NA,2,3,NA,5
+ET,Yellowtail snapper,Sensitivity,Prey specificity,22,1,3,5,NA,NA,NA,5
+ET,Yellowtail snapper,Sensitivity,Tolerance to ocean acidification,23,2.8,3,NA,2,2,1,5
+ET,Yellowtail snapper,Sensitivity,Complexity in reproductive strategy,24,2,2,NA,5,NA,NA,5
+ET,Yellowtail snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+ET,Yellowtail snapper,Sensitivity,Specificity in early life history requirements,26,2.4,2,NA,3,2,NA,5
+ET,Yellowtail snapper,Sensitivity,Stock Size Status,27,1,3,5,NA,NA,NA,5
+ET,Yellowtail snapper,Sensitivity,Other stressors,28,1.4,2,3,2,NA,NA,5
+ET,Yellowtail snapper,Sensitivity,Population growth rate,30,2.4,3,1,2,1,1,5
+ET,Yellowtail snapper,Sensitivity,Mobility and dispersal or early life stages,31,2,2,NA,5,NA,NA,5
+ET,Yellowtail snapper,Sensitivity,Adult mobility,32,2.4,3,NA,3,2,NA,5
+ET,Yellowtail snapper,Sensitivity,Spawning characteristics,33,1.4,3,3,2,NA,NA,5
+ET,Yellowtail snapper,Sensitivity,Predation and competition dynamics,34,1.4,1,3,2,NA,NA,5
+ET,Yellowtail snapper,Sensitivity,Genetic diversity,35,2,2,NA,5,NA,NA,5
+KO,Yellowtail snapper,Qualitative Exposure,Sargassum influx,17,2,1,NA,5,NA,NA,5
+KO,Yellowtail snapper,Sensitivity,Habitat specificity,21,2.6,3,NA,2,3,NA,5
+KO,Yellowtail snapper,Sensitivity,Prey specificity,22,2.6,2,NA,2,3,NA,5
+KO,Yellowtail snapper,Sensitivity,Tolerance to ocean acidification,23,2,2,1,3,1,NA,5
+KO,Yellowtail snapper,Sensitivity,Complexity in reproductive strategy,24,2.4,2,NA,3,2,NA,5
+KO,Yellowtail snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+KO,Yellowtail snapper,Sensitivity,Specificity in early life history requirements,26,3,2,NA,NA,5,NA,5
+KO,Yellowtail snapper,Sensitivity,Stock Size Status,27,1.4,2,3,2,NA,NA,5
+KO,Yellowtail snapper,Sensitivity,Other stressors,28,2.2,1,NA,4,1,NA,5
+KO,Yellowtail snapper,Sensitivity,Population growth rate,30,2.6,3,1,1,2,1,5
+KO,Yellowtail snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.2,2,4,1,NA,NA,5
+KO,Yellowtail snapper,Sensitivity,Adult mobility,32,2,2,1,3,1,NA,5
+KO,Yellowtail snapper,Sensitivity,Spawning characteristics,33,1.8,3,1,4,NA,NA,5
+KO,Yellowtail snapper,Sensitivity,Predation and competition dynamics,34,2.4,1,NA,3,2,NA,5
+KO,Yellowtail snapper,Sensitivity,Genetic diversity,35,2.4,2,1,1,3,NA,5
+RE,Yellowtail snapper,Qualitative Exposure,Sargassum influx,17,3,1,NA,1,3,1,5
+RE,Yellowtail snapper,Sensitivity,Habitat specificity,21,2.2,3,NA,4,1,NA,5
+RE,Yellowtail snapper,Sensitivity,Prey specificity,22,2,3,NA,5,NA,NA,5
+RE,Yellowtail snapper,Sensitivity,Tolerance to ocean acidification,23,3,3,NA,NA,5,NA,5
+RE,Yellowtail snapper,Sensitivity,Complexity in reproductive strategy,24,2.4,3,NA,3,2,NA,5
+RE,Yellowtail snapper,Sensitivity,Species range,25,1,3,5,NA,NA,NA,5
+RE,Yellowtail snapper,Sensitivity,Specificity in early life history requirements,26,2.2,1,1,2,2,NA,5
+RE,Yellowtail snapper,Sensitivity,Stock Size Status,27,2.4,2,NA,3,2,NA,5
+RE,Yellowtail snapper,Sensitivity,Other stressors,28,2,1,1,3,1,NA,5
+RE,Yellowtail snapper,Sensitivity,Population growth rate,30,2,2,1,3,1,NA,5
+RE,Yellowtail snapper,Sensitivity,Mobility and dispersal or early life stages,31,1.2,2,4,1,NA,NA,5
+RE,Yellowtail snapper,Sensitivity,Adult mobility,32,2,3,NA,5,NA,NA,5
+RE,Yellowtail snapper,Sensitivity,Spawning characteristics,33,2.2,3,NA,4,1,NA,5
+RE,Yellowtail snapper,Sensitivity,Predation and competition dynamics,34,2,2,1,3,1,NA,5
+RE,Yellowtail snapper,Sensitivity,Genetic diversity,35,1,1,5,NA,NA,NA,5
