@@ -309,9 +309,12 @@ attribute_score_table <- attribute_score_table %>%
   )
 
 ## -----------------------------------------------------------------------------
-## Optional: round scores
+## Add sum column
 attribute_score_table <- attribute_score_table %>%
-  mutate(attribute_score = round(attribute_score, 3))
+  mutate(
+    attribute_score = round(attribute_score, 3),
+    n_tallies = tally_L + tally_M + tally_H + tally_VH
+  )
 
 ## -----------------------------------------------------------------------------
 ## Inspect final table
