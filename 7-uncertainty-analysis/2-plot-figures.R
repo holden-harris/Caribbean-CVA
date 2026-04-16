@@ -20,9 +20,10 @@ library(scales)
 ## Directories -----------------------------------------------------------------
 dir_in  <- "./outputs/analyses/1-inputs"
 dir_out <- file.path(dir_in, "figures")
+dir_compiled <- "./outputs/final-scores-compiled/overall-vulnerability-rankings"
+
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
-dir_compiled <- "./outputs/final-scores-compiled/overall-vulnerability-rankings"
 
 ## Output file paths
 f_fig_coverage  <- file.path(dir_out, "fig_reviewer_stock_coverage.png")
@@ -93,7 +94,7 @@ ggsave(f_fig_coverage, p_coverage,
        dpi    = 300)
 
 ##------------------------------------------------------------------------------
-## Figure 2 - Sensitivity tally distributions by attribute
+## Figure 2A - Sensitivity tally distributions by attribute 
 ##   - Pooled tallies across all reviewers and stocks
 ##   - Horizontal stacked bar: proportion Low / Moderate / High / Very High
 ##   - Ordered by pooled mean score ascending (lowest at bottom)
@@ -157,21 +158,52 @@ p_tallies <- ggplot(
   )
 ) +
   geom_col(width = 0.75, position = position_stack(reverse = TRUE), color = 'black') +
-  scale_fill_manual(values = rank_colors, name = "Rank", breaks = rank_levels) +
+  scale_fill_manual(values = rank_colors, name = "Vulnerability rank:", breaks = rank_levels) +
   scale_x_continuous(labels = percent_format(accuracy = 1),
-                     expand  = c(0, 0)) +
+                     expand  = c(0, 0, 0, 0.02)) +
   labs(
     x        = "Proportion of tallies",
     y        = NULL,
     title    = "Sensitivity attribute tally distributions",
 #    subtitle = "Pooled across all stocks and reviewers; ordered by mean score"
   ) +
-  theme_bw(base_size = 11) +
   theme(
-    text            = element_text(color = "black"),
-    axis.text       = element_text(color = "black"),
-    legend.position = "bottom"
+    panel.background = element_rect(fill = "white"),
+    text             = element_text(size = 12, color = "black"),
+    axis.text        = element_text(size = 11, color = "black"),
+    legend.text      = element_text(size = 11, color = "black"),
+    legend.position  = "bottom",
+    axis.line        = element_line(color = "black")
   ); plot(p_tallies)
+
+## Plot sensistivity tally distributions for all species combined
+p_tallies_combined <- ggplot(
+  sens_pooled_long,
+  aes(
+    x    = proportion,
+    y    = factor(attribute_name, levels = attr_order),
+    fill = rank,
+  )
+) +
+  geom_col(width = 0.75, position = position_stack(reverse = TRUE), color = 'black') +
+  scale_fill_manual(values = rank_colors, name = "Vulnerability rank:", breaks = rank_levels) +
+  scale_x_continuous(labels = percent_format(accuracy = 1),
+                     expand  = c(0, 0, 0, 0.02)) +
+  labs(
+    x        = "Proportion of tallies",
+    y        = NULL,
+    title    = "Sensitivity attribute tally distributions",
+    #    subtitle = "Pooled across all stocks and reviewers; ordered by mean score"
+  ) +
+  theme(
+    panel.background = element_rect(fill = "white"),
+    text             = element_text(size = 12, color = "black"),
+    axis.text        = element_text(size = 11, color = "black"),
+    legend.text      = element_text(size = 11, color = "black"),
+    legend.position  = "bottom",
+    axis.line        = element_line(color = "black")
+  ); plot(p_tallies)
+
 
 ggsave(f_fig_tallies, p_tallies,
        width  = 8,
@@ -196,8 +228,8 @@ print(dir_prop, n = 75)
 
 dir_colors <- c(
   "Positive" = "#2c7bb6",
-  "Neutral"  = "#ffffbf",
-  "Negative" = "#d7191c"
+  "Neutral"  = "bisque",
+  "Negative" = "indianred4"
 )
 
 stock_order_dir <- dir_prop %>%
@@ -214,27 +246,27 @@ p_dir <- ggplot(
   )
 ) +
   geom_col(width = 0.75, col = 'black') +
-  scale_fill_manual(values = dir_colors, name = "Effect",
+  scale_fill_manual(values = dir_colors, name = "Directional effect: ",
                     breaks = c("Negative", "Neutral", "Positive")) +
   scale_x_continuous(labels = percent_format(accuracy = 1),
-                     expand  = c(0, 0)) +
+                     expand  = c(0, 0, 0, 0.02)) +
   labs(
-    x        = "Proportion of tallies",
+    x        = "Proportion of reviewer tallies: positive / neutral / negative",
     y        = NULL,
     title    = "Directional effect by stock",
-    subtitle = "Proportion of reviewer tallies: positive / neutral / negative"
   ) +
-  theme_bw(base_size = 11) +
   theme(
-    text            = element_text(color = "black"),
-    axis.text       = element_text(color = "black"),
-    legend.position = "bottom"
+    text            = element_text(size = 12, color = "black"),
+    axis.text       = element_text(size = 11, color = "black"),
+    legend.text     = element_text(size = 11, color = "black"),
+    legend.position = "bottom",
+    axis.line       = element_line(color = "black")
   ); p_dir
 
 ggsave(f_fig_dir, p_dir,
        width  = 7,
        height = max(4, 0.3 * n_distinct(dir_prop$stock_name)),
-       dpi    = 300)
+       dpi    = 1200)
 
 ##------------------------------------------------------------------------------
 ## Figure 4 - Sensitivity attribute score distributions
@@ -261,10 +293,10 @@ p_sens_box <- ggplot(
   )
 ) +
   geom_boxplot(
-    fill          = "white",
+    fill          = "gray80",
     color         = "black",
-    outlier.shape = 19,
-    outlier.size  = 1.5
+    outlier.shape = 1,
+    outlier.size  = 2
   ) +
   scale_x_continuous(
     breaks = 1:4,
@@ -280,12 +312,11 @@ p_sens_box <- ggplot(
   theme(
     text      = element_text(color = "black"),
     axis.text = element_text(color = "black")
-  )
+  ); plot(p_sens_box)
 
 ggsave(f_fig_sens_box, p_sens_box,
        width  = 7,
        height = max(4, 0.35 * n_distinct(sens_scores$attribute_name)),
-       dpi    = 300)
-
+       dpi    = 1200)
 message("Figures written to: ", dir_out)
 
