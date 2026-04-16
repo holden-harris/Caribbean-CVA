@@ -19,6 +19,7 @@ library(tidyr)
 library(readr)
 library(ggplot2)
 library(forcats)
+library(patchwork)
 library(scales)
 
 ## Directories -----------------------------------------------------------------
@@ -109,6 +110,140 @@ quant_exp_conform <- quantitative_exposure_scores %>%
 
 exposure_tallies_long <- bind_rows(qual_exp_conform, quant_exp_conform) %>% 
   arrange(stock_name, attribute_type)
+
+
+##------------------------------------------------------------------------------
+## Figure 1 - Sensitivity attribute score distributions
+##   - Horizontal boxplot per attribute
+##   - x = mean score (1-4) across reviewers for each stock
+##   - y = sensitivity attribute, ordered by median ascending
+##   - Median bar, IQR box, 1.5x IQR whiskers, outlier points
+
+sens_scores <- attr_means %>%
+  filter(attribute_type == "Sensitivity") %>%
+  filter(!is.na(attribute_mean))
+
+attr_box_order <- sens_scores %>%
+  group_by(attribute_name) %>%
+  summarise(med = median(attribute_mean, na.rm = TRUE), .groups = "drop") %>%
+  arrange(med) %>%
+  pull(attribute_name)
+
+p_sens_box <- ggplot(
+  sens_scores,
+  aes(
+    x = attribute_mean,
+    y = factor(attribute_name, levels = attr_box_order)
+  )
+) +
+  geom_boxplot(
+    fill          = "gray80",
+    color         = "black",
+    outlier.shape = 1,
+    outlier.size  = 2
+  ) +
+  scale_x_continuous(
+    breaks = 1:4,
+    labels = c("1\nLow", "2\nModerate", "3\nHigh", "4\nVery High"),
+    limits = c(0.5, 4.5)
+  ) +
+  labs(
+    x     = NULL,
+    y     = NULL,
+    title = "Biological sensitivity attributes"
+  ) +
+  theme_bw(base_size = 11) +
+  theme(
+    text      = element_text(color = "black"),
+    axis.text = element_text(color = "black")
+  ); plot(p_sens_box)
+
+## Write out sensitivity attribute distribution plot
+ggsave(f_fig_sens_box, p_sens_box,
+       width  = 7,
+       height = max(4, 0.35 * n_distinct(sens_scores$attribute_name)),
+       dpi    = 1200)
+
+##------------------------------------------------------------------------------
+## Figure 1B - Exposure attribute score distributions
+##   - Horizontal boxplot per exposure attribute (qualitative + quantitative)
+##   - x = mean score (1-4) per stock; y = attribute ordered by median ascending
+
+exp_scores <- attr_means %>%
+  filter(attribute_type == "Exposure") %>%
+  filter(!is.na(attribute_mean))
+
+exp_box_order <- exp_scores %>%
+  group_by(attribute_name) %>%
+  summarise(med = median(attribute_mean, na.rm = TRUE), .groups = "drop") %>%
+  arrange(med) %>%
+  pull(attribute_name)
+
+p_exp_box <- ggplot(
+  exp_scores,
+  aes(
+    x = attribute_mean,
+    y = factor(attribute_name, levels = exp_box_order)
+  )
+) +
+  geom_boxplot(
+    fill          = "gray80",
+    color         = "black",
+    outlier.shape = 1,
+    outlier.size  = 2
+  ) +
+  scale_x_continuous(
+    breaks = 1:4,
+    labels = c("1\nLow", "2\nModerate", "3\nHigh", "4\nVery High"),
+    limits = c(0.5, 4.5)
+  ) +
+  labs(
+    x     = NULL,
+    y     = NULL,
+    title = "Exposure factors"
+  ) +
+  theme_bw(base_size = 11) +
+  theme(
+    text      = element_text(color = "black"),
+    axis.text = element_text(color = "black")
+  ); p_exp_box
+
+## Write out exposure distribution plot
+ggsave(f_fig_exp_box, p_exp_box,
+       width  = 7,
+       height = max(4, 0.35 * n_distinct(exp_scores$attribute_name)),
+       dpi    = 1200)
+
+##------------------------------------------------------------------------------
+## Combined panel: sensitivity (A) + exposure (B) attribute score distributions
+
+p_combined_box <- p_sens_box + p_exp_box +
+  plot_annotation(tag_levels = "A") &
+  theme(plot.tag = element_text(size = 13, color = "black", face = "bold"))
+plot(p_combined_box)
+
+f_fig_combined_box <- file.path(dir_out, "fig_attribute_score_boxplot_combined.png")
+
+ggsave(f_fig_combined_box, p_combined_box,
+       width  = 14,
+       height = max(4, 0.35 * max(n_distinct(sens_scores$attribute_name),
+                                  n_distinct(exp_scores$attribute_name))),
+       dpi    = 1200)
+
+message("Figures written to: ", dir_out)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ##------------------------------------------------------------------------------
 ## Figure 1 - Reviewer x stock coverage heatmap
@@ -351,109 +486,6 @@ ggsave(f_fig_dir, p_dir,
        width  = 7,
        height = max(4, 0.3 * n_distinct(dir_prop$stock_name)),
        dpi    = 1200)
-
-##------------------------------------------------------------------------------
-## Figure 4 - Sensitivity attribute score distributions
-##   - Horizontal boxplot per attribute
-##   - x = mean score (1-4) across reviewers for each stock
-##   - y = sensitivity attribute, ordered by median ascending
-##   - Median bar, IQR box, 1.5x IQR whiskers, outlier points
-
-sens_scores <- attr_means %>%
-  filter(attribute_type == "Sensitivity") %>%
-  filter(!is.na(attribute_mean))
-
-attr_box_order <- sens_scores %>%
-  group_by(attribute_name) %>%
-  summarise(med = median(attribute_mean, na.rm = TRUE), .groups = "drop") %>%
-  arrange(med) %>%
-  pull(attribute_name)
-
-p_sens_box <- ggplot(
-  sens_scores,
-  aes(
-    x = attribute_mean,
-    y = factor(attribute_name, levels = attr_box_order)
-  )
-) +
-  geom_boxplot(
-    fill          = "gray80",
-    color         = "black",
-    outlier.shape = 1,
-    outlier.size  = 2
-  ) +
-  scale_x_continuous(
-    breaks = 1:4,
-    labels = c("1\nLow", "2\nModerate", "3\nHigh", "4\nVery High"),
-    limits = c(0.5, 4.5)
-  ) +
-  labs(
-    x     = "Score",
-    y     = NULL,
-    title = "Sensitivity attribute score distributions"
-  ) +
-  theme_bw(base_size = 11) +
-  theme(
-    text      = element_text(color = "black"),
-    axis.text = element_text(color = "black")
-  ); plot(p_sens_box)
-
-ggsave(f_fig_sens_box, p_sens_box,
-       width  = 7,
-       height = max(4, 0.35 * n_distinct(sens_scores$attribute_name)),
-       dpi    = 1200)
-
-##------------------------------------------------------------------------------
-## Figure 4B - Exposure attribute score distributions
-##   - Horizontal boxplot per exposure attribute (qualitative + quantitative)
-##   - x = mean score (1-4) per stock; y = attribute ordered by median ascending
-
-exp_scores <- attr_means %>%
-  filter(attribute_type %in% c("Qualitative Exposure", "Quantitative Exposure")) %>%
-  filter(!is.na(attribute_mean))
-
-exp_box_order <- exp_scores %>%
-  group_by(attribute_name) %>%
-  summarise(med = median(attribute_mean, na.rm = TRUE), .groups = "drop") %>%
-  arrange(med) %>%
-  pull(attribute_name)
-
-p_exp_box <- ggplot(
-  exp_scores,
-  aes(
-    x = attribute_mean,
-    y = factor(attribute_name, levels = exp_box_order)
-  )
-) +
-  geom_boxplot(
-    fill          = "gray80",
-    color         = "black",
-    outlier.shape = 1,
-    outlier.size  = 2
-  ) +
-  scale_x_continuous(
-    breaks = 1:4,
-    labels = c("1\nLow", "2\nModerate", "3\nHigh", "4\nVery High"),
-    limits = c(0.5, 4.5)
-  ) +
-  labs(
-    x     = "Score",
-    y     = NULL,
-    title = "Exposure attribute score distributions"
-  ) +
-  theme_bw(base_size = 11) +
-  theme(
-    text      = element_text(color = "black"),
-    axis.text = element_text(color = "black")
-  ); p_exp_box
-
-ggsave(f_fig_exp_box, p_exp_box,
-       width  = 7,
-       height = max(4, 0.35 * n_distinct(exp_scores$attribute_name)),
-       dpi    = 1200)
-
-message("Figures written to: ", dir_out)
-
 
 
 
