@@ -93,7 +93,7 @@ reviewer_stock_coverage <- all_qualitative_tallies_long %>%
 
 n_attributes_expected <- n_distinct(all_qualitative_tallies_long$attribute_name)
 
-## Directional effect totals per stock (used by Figure 3)
+## Directional effect totals per stock (used by Figure 2)
 qa_dir_summary <- directional_effect_tallies_long %>%
   group_by(stock_name, effect_category) %>%
   summarise(total_tally = sum(tally, na.rm = TRUE), .groups = "drop")
