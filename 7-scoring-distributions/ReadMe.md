@@ -1,3 +1,13 @@
+# Script pipeline overview
+
+| Script | Purpose | Reads from | Writes to |
+|--------|---------|------------|-----------|
+| `1-extract-tally-scores.R` | Extract LMHV tally blocks from all reviewer workbooks | `data/final-scores/*.xlsx` | `outputs/analyses/1-inputs/` |
+| `2-finalize-tally-tables.R` | Recode stock names, conform and bind exposure tables, produce long and grouped final tally CSVs | `outputs/analyses/1-inputs/`, `outputs/final-scores-compiled/` | `outputs/final-tallies-long/` |
+| `3-plot-figures.R` | Produce all distribution and summary figures | `outputs/final-tallies-long/`, `outputs/final-scores-compiled/` | `figures/` |
+
+---
+
 # 1-extract-tally-scores.R
 
 ## Purpose                                                                                                                         
@@ -19,9 +29,7 @@ Reads all reviewer scoring workbooks for the Caribbean CVA and extracts the tall
 
   | File | Description |
   |------|-------------|
-  | `data/final-scores/*.xlsx` | One workbook per reviewer. Each workbook contains one sheet per stock, plus non-stock
-  
-  Sheets without data (`Instructions`, `Data Quality`, `Example`) are excluded by the code. 
+  | `data/final-scores/*.xlsx` | One workbook per reviewer. Each workbook contains one sheet per stock, plus non-stock sheets excluded by the code (`Instructions`, `Data Quality`, `Example`). |
 
   ### Workbook layout
 
@@ -138,52 +146,97 @@ Reads all reviewer scoring workbooks for the Caribbean CVA and extracts the tall
 
 ---
 
-# 2-plot-figures.R
+# 2-finalize-tally-tables.R
 
 ## Purpose
-Produces all primary uncertainty and distribution figures for the Caribbean CVA. The script visualizes the spread of reviewer-assigned vulnerability scores and LMHV tally distributions across the 25 assessed stocks, for both biological sensitivity attributes and exposure factors (qualitative + quantitative). 
+Standardizes stock names, conforms and binds the qualitative and quantitative exposure tally tables, and writes two sets of analysis-ready tally CSVs: reviewer-level long tables and stock-level grouped summary tables. Downstream scripts (`3-plot-figures.R`, `8-uncertainty-analysis/`) read from the output directory rather than the raw `1-inputs/` tables.
 
 ## Directory structure
 ```
 project root/
 ├── outputs/
 │   ├── analyses/
-│   │   └── 1-inputs/              ## Input: tally tables from 1-extract-tally-scores.R
+│   │   └── 1-inputs/              # Input: raw tally tables from Script 1
 │   └── final-scores-compiled/
-│       ├── overall-vulnerability-rankings/
-│       │   └── attribute_means_uscar.csv   # Input: per-stock attribute mean scores
-│       └── quantitative-exposure-attribute-scores-all.csv  ## Input: CMIP6 factor scores made from section 2, exposure analysis
-└── figures/                       ## Output: all PNG figures
+│       └── quantitative-exposure-attribute-scores-all.csv  # Input: CMIP6 factor scores
+└── outputs/
+    └── final-tallies-long/        # Output: all six finalized tally tables
 ```
 
 ## Inputs
 
 | File | Description |
 |------|-------------|
-| `outputs/analyses/1-inputs/table_sensitivity_tallies_long.csv` | Reviewer-level tallies for 14 biological sensitivity attributes |
-| `outputs/analyses/1-inputs/table_qualitative_exposure_tallies_long.csv` | Reviewer-level tallies for 2 qualitative exposure attributes (Coral cover excluded) |
-| `outputs/analyses/1-inputs/table_all_qualitative_tallies_long.csv` | Row-bind of sensitivity and qualitative exposure tally tables |
-| `outputs/analyses/1-inputs/table_directional_effect_tallies_long.csv` | Reviewer directional effect tallies (Positive / Neutral / Negative) per stock |
-| `outputs/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv` | Per-stock × attribute mean scores (U.S. Caribbean spatial extent); `attribute_type` ∈ `"Sensitivity"`, `"Exposure"` |
-| `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` | LMHV grid-cell tally counts for 13 CMIP6 exposure factors × 25 stocks × 3 spatial extents |
+| `outputs/analyses/1-inputs/table_sensitivity_tallies_long.csv` | Raw reviewer-level sensitivity tallies |
+| `outputs/analyses/1-inputs/table_directional_effect_tallies_long.csv` | Raw reviewer-level directional effect tallies |
+| `outputs/analyses/1-inputs/table_qualitative_exposure_tallies_long.csv` | Raw reviewer-level qualitative exposure tallies |
+| `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` | LMHV grid-cell tally counts for 13 CMIP6 factors × 25 stocks × 3 spatial extents |
 
+## Workflow
+
+**Stock name standardization.** A canonical named vector `stock_name_recode` maps legacy lowercase stock names (e.g., `"Atlantic thread herring"`, `"Long-spined sea urchin"`) to title-case canonical names (e.g., `"Atlantic Herring"`, `"Diadema"`). Applied via `recode(stock_name, !!!stock_name_recode)` to all tables on read.
+
+**Exposure tally tables.** The qualitative exposure table is processed two ways: (1) kept at reviewer level for the long table; (2) grouped by `stock_name × attribute_name` with tallies summed across reviewers and `n_scorers` added for the final table. The quantitative exposure table is filtered to `spatial_extent == "U.S. Caribbean"` and conformed to matching columns. Both long and final exposure tables are produced by row-binding the qualitative and quantitative conform steps. `Coral cover` rows are excluded from qualitative exposure in both tables.
+
+## Output files — `outputs/final-tallies-long/`
+
+### Set 1 — Reviewer-level long tables
+
+| File | Rows | Key columns |
+|------|------|-------------|
+| `sensitivity_tallies_long.csv` | One row per reviewer × stock × attribute | `reviewer_id`, `stock_name`, `attribute_name`, `tally_L`, `tally_M`, `tally_H`, `tally_VH`, `n_tallies` |
+| `directional_effect_tallies_long.csv` | One row per reviewer × stock × effect category | `reviewer_id`, `stock_name`, `effect_category`, `tally` |
+| `exposure_tallies_long.csv` | One row per reviewer × stock × exposure attribute (qual) or stock × factor (quant) | `reviewer_id` (NA for quant rows), `stock_name`, `attribute_type`, `attribute_name`, `tally_L`, `tally_M`, `tally_H`, `tally_VH`, `n_tallies` |
+
+### Set 2 — Grouped summary tables (one row per stock × grouping variable)
+
+| File | Rows | Key columns |
+|------|------|-------------|
+| `sensitivity_tallies_by_stock.csv` | One row per stock × attribute | `stock_name`, `attribute_name`, `tally_L`, `tally_M`, `tally_H`, `tally_VH`, `n_tallies`, `n_scorers` |
+| `directional_effect_tallies_by_stock.csv` | One row per stock | `stock_name`, `tally_neg`, `tally_neut`, `tally_pos`, `n_tallies`, `n_scorers` |
+| `exposure_tallies_by_stock.csv` | One row per stock × attribute (qual grouped + quant) | `stock_name`, `attribute_type`, `attribute_name`, `tally_L`, `tally_M`, `tally_H`, `tally_VH`, `n_tallies`, `n_scorers` (NA for quant rows) |
+
+---
+
+# 3-plot-figures.R
+
+## Purpose
+Produces all primary distribution and summary figures for the Caribbean CVA. Reads finalized tally tables from `outputs/final-tallies-long/` (produced by `2-finalize-tally-tables.R`) and per-stock attribute mean scores from `outputs/final-scores-compiled/`. Visualizes the spread of reviewer-assigned vulnerability scores and LMHV tally distributions across the 25 assessed stocks, for both biological sensitivity attributes and exposure factors (qualitative + quantitative).
+
+## Directory structure
+```
+project root/
+├── outputs/
+│   ├── analyses/
+│   │   └── 1-inputs/              # Input: table_all_qualitative_tallies_long.csv (QA figure only)
+│   ├── final-tallies-long/        # Input: finalized tally tables from Script 2
+│   └── final-scores-compiled/
+│       └── overall-vulnerability-rankings/
+│           └── attribute_means_uscar.csv   # Input: per-stock attribute mean scores
+└── figures/                       # Output: all PNG figures
+```
+
+## Inputs
+
+| File | Description |
+|------|-------------|
+| `outputs/final-tallies-long/sensitivity_tallies_long.csv` | Reviewer-level sensitivity tallies, stock names standardized |
+| `outputs/final-tallies-long/directional_effect_tallies_long.csv` | Reviewer-level directional effect tallies, stock names standardized |
+| `outputs/final-tallies-long/exposure_tallies_long.csv` | Combined qual + quant exposure tally table, stock names standardized |
+| `outputs/analyses/1-inputs/table_all_qualitative_tallies_long.csv` | Used only for the QA reviewer × stock coverage heatmap |
+| `outputs/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv` | Per-stock × attribute mean scores (U.S. Caribbean); `attribute_type` ∈ `"Sensitivity"`, `"Exposure"` |
 
 ### Data carpentry
 
-**Stock name standardization.** A canonical named vector `stock_name_recode` maps legacy lowercase stock names (e.g., `"Atlantic thread herring"`, `"Long-spined sea urchin"`) to title-case canonical names (e.g., `"Atlantic Herring"`, `"Diadema"`). This recode is applied via `recode(stock_name, !!!stock_name_recode)` to all five input tables on read, ensuring consistent joins and facet labels throughout.
+**Short display labels.** Two named lookup vectors (`attr_short_names`, `exp_attr_short_names`) map full attribute names to abbreviated display labels (≤ 16 characters) used on all figure y-axes. Defined once in the data prep section and referenced by all figures.
 
-**Exposure tally table.** A combined `exposure_tallies_long` table is built by conforming and row-binding two sources:
-- *Qualitative exposure* (`qual_exp_conform`): tallies are summed across reviewers within each stock × attribute, producing one row per stock × attribute with pooled `tally_L / tally_M / tally_H / tally_VH` and `n_tallies`.
-- *Quantitative exposure* (`quant_exp_conform`): filtered to `spatial_extent == "U.S. Caribbean"`, with `full_names` renamed to `attribute_name` and `attribute_type` set to `"Quantitative Exposure"`.
-- *Coral cover exclusion.* Rows with `attribute_name == "Coral cover"` are dropped from `all_qualitative_tallies_long` and from the qualitative exposure conform step. 
+**Directional effect summary.** `qa_dir_summary` is derived by grouping `directional_effect_tallies_long` by `stock_name × effect_category` and summing `tally` across reviewers. Used by Figure 2.
 
-The resulting table has one row per stock × exposure factor (2 qualitative + 13 quantitative = 15 attributes × 25 stocks).
-
-**Short display labels.** Two named lookup vectors (`attr_short_names`, `exp_attr_short_names`) map full attribute names to abbreviated display labels (≤ 16 characters) used on all figure y-axes. These are defined once in the data prep section and referenced by all figures.
+**Exposure pooled summaries.** `exp_pooled` and `exp_pooled_stock` are derived from `exposure_tallies_long` by grouping and summing. Tally units differ by `attribute_type` — qualitative tallies count reviewer votes; quantitative tallies count LMHV grid cells — but both are expressed as proportions and are visually comparable.
 
 ## Output Figures — `figures/`
 
-| File | Figure in script | Description |
+| File | Figure | Description |
 |------|--------|-------------|
 | `fig_sensitivity_attribute_score_boxplot.png` | 1A | Sensitivity attribute score distributions (boxplot) |
 | `fig_exposure_attribute_score_boxplot.png` | 1B | Exposure factor score distributions (boxplot) |
@@ -232,7 +285,7 @@ Horizontal stacked bar chart showing the proportion of reviewer tallies classifi
 
 [`fig_sensitivity_tally_distributions_by_stock.png`](https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_sensitivity_tally_distributions_by_stock.png)
 
-Faceted 5 × 5 panel figure (one panel per stock). Each panel shows one horizontal stacked bar per sensitivity attribute, ordered by pooled mean score ascending. Bar segments show the proportion of reviewer tallies in each LMHV category (Low / Moderate / High / Very High). Y-axis labels use abbreviated names from `attr_short_names`. Colors: Low = `green3`, Moderate = `yellow2`, High = `orange2`, Very High = `red3`. Saved at 12" × 12", 1200 dpi.
+Faceted 5 × 5 panel figure (one panel per stock). Each panel shows one horizontal stacked bar per sensitivity attribute, ordered by pooled mean score ascending. Bar segments show the proportion of reviewer tallies in each LMHV category (Low / Moderate / High / Very High). Y-axis labels use abbreviated names from `attr_short_names`. Colors: Low = `green3`, Moderate = `yellow2`, High = `orange2`, Very High = `red3`. Saved at 8.5" × 11", 900 dpi.
 
 <img src="../figures/fig_sensitivity_tally_distributions_by_stock.png" width="800"/>
 
@@ -240,9 +293,9 @@ Faceted 5 × 5 panel figure (one panel per stock). Each panel shows one horizont
 
 ### Figure 3B — Exposure tally distributions by stock
 
-[`fig_exposure_tally_distributions_by_stock.png`](https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_sensitivity_tally_distributions_by_stock.png)
+[`fig_exposure_tally_distributions_by_stock.png`](https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_exposure_tally_distributions_by_stock.png)
 
-Same structure as Figure 3A, using `exposure_tallies_long` (15 exposure attributes per stock). Tally units differ by attribute type — qualitative tallies count reviewer votes; quantitative tallies count LMHV grid cells — but both are expressed as proportions and are visually comparable. Y-axis labels use abbreviated names from `exp_attr_short_names`. Saved at 12" × 14", 1200 dpi.
+Same structure as Figure 3A, using `exposure_tallies_long` (15 exposure attributes per stock). Tally units differ by attribute type — qualitative tallies count reviewer votes; quantitative tallies count LMHV grid cells — but both are expressed as proportions and are visually comparable. Y-axis labels use abbreviated names from `exp_attr_short_names`. Saved at 8.5" × 11", 900 dpi.
 
 <img src="../figures/fig_exposure_tally_distributions_by_stock.png" width="800"/>
 
