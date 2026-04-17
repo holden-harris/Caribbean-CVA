@@ -4,7 +4,7 @@
 ##
 ## Produces three analysis-ready tally tables written to ./outputs/final-tallies-long/:
 ##   - sensitivity_tallies_long.csv        (reviewer-level; stock names recoded)
-##   - directional_effect_tallies_long.csv (reviewer-level; stock names recoded)
+##   - directional_effect_tallies_long.csv (one row per stock; tally_neg/neut/pos, n_tallies, n_scorers)
 ##   - exposure_tallies_long.csv           (stock x attribute; qual + quant, U.S. Caribbean,
 ##                                          summed across reviewers)
 
@@ -56,7 +56,16 @@ sensitivity_tallies_long <- read.csv(
 
 directional_effect_tallies_long <- read.csv(
   file.path(dir_in, "table_directional_effect_tallies_long.csv")) %>%
-  mutate(stock_name = recode(stock_name, !!!stock_name_recode))
+  mutate(stock_name = recode(stock_name, !!!stock_name_recode)) %>%
+  group_by(stock_name) %>%
+  summarise(
+    tally_neg  = sum(tally[effect_category == "Negative"], na.rm = TRUE),
+    tally_neut = sum(tally[effect_category == "Neutral"],  na.rm = TRUE),
+    tally_pos  = sum(tally[effect_category == "Positive"], na.rm = TRUE),
+    n_scorers  = n_distinct(reviewer_id),
+    .groups    = "drop"
+  ) %>%
+  mutate(n_tallies = tally_neg + tally_neut + tally_pos)
 
 ## Conform and bind exposure tally tables --------------------------------------
 qualitative_exposure_tallies_long <- read.csv(
@@ -91,6 +100,12 @@ quant_exp_conform <- quantitative_exposure_scores %>%
 exposure_tallies_long <- bind_rows(qual_exp_conform, quant_exp_conform) %>%
   arrange(stock_name, attribute_type)
 
+## Row count summary -----------------------------------------------------------
+cat("sensitivity_tallies_long:        ", nrow(sensitivity_tallies_long),        "rows\n")
+cat("directional_effect_tallies_long: ", nrow(directional_effect_tallies_long), "rows\n")
+cat("exposure_tallies_long:           ", nrow(exposure_tallies_long),           "rows\n")
+cat("  distinct attribute names:      ", n_distinct(exposure_tallies_long$attribute_name), "\n")
+
 ## Write outputs ---------------------------------------------------------------
 write.csv(sensitivity_tallies_long,
           file.path(dir_out, "sensitivity_tallies_long.csv"),        row.names = FALSE)
@@ -98,10 +113,4 @@ write.csv(directional_effect_tallies_long,
           file.path(dir_out, "directional_effect_tallies_long.csv"), row.names = FALSE)
 write.csv(exposure_tallies_long,
           file.path(dir_out, "exposure_tallies_long.csv"),           row.names = FALSE)
-
-## Row count summary -----------------------------------------------------------
-cat("sensitivity_tallies_long:        ", nrow(sensitivity_tallies_long),        "rows\n")
-cat("directional_effect_tallies_long: ", nrow(directional_effect_tallies_long), "rows\n")
-cat("exposure_tallies_long:           ", nrow(exposure_tallies_long),           "rows\n")
-cat("  distinct attribute names:      ", n_distinct(exposure_tallies_long$attribute_name), "\n")
 cat("\nDone. Tables written to:", dir_out, "\n")
