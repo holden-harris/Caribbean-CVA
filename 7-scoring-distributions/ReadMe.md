@@ -141,19 +141,19 @@ Reads all reviewer scoring workbooks for the Caribbean CVA and extracts the tall
 # 2-plot-figures.R
 
 ## Purpose
-Produces all primary uncertainty and distribution figures for the Caribbean CVA. The script visualizes the spread of reviewer-assigned vulnerability scores and LMHV tally distributions across the 25 assessed stocks, for both biological sensitivity attributes and exposure factors (qualitative + quantitative). A combined score-distribution panel figure (Figure 1) is the primary publication output; the tally distribution figures (Figure 3) provide per-stock diagnostic detail.
+Produces all primary uncertainty and distribution figures for the Caribbean CVA. The script visualizes the spread of reviewer-assigned vulnerability scores and LMHV tally distributions across the 25 assessed stocks, for both biological sensitivity attributes and exposure factors (qualitative + quantitative). 
 
 ## Directory structure
 ```
 project root/
 ├── outputs/
 │   ├── analyses/
-│   │   └── 1-inputs/              # Input: tally tables from 1-extract-tally-scores.R
+│   │   └── 1-inputs/              ## Input: tally tables from 1-extract-tally-scores.R
 │   └── final-scores-compiled/
 │       ├── overall-vulnerability-rankings/
 │       │   └── attribute_means_uscar.csv   # Input: per-stock attribute mean scores
-│       └── quantitative-exposure-attribute-scores-all.csv  # Input: CMIP6 factor scores
-└── figures/                       # Output: all PNG figures
+│       └── quantitative-exposure-attribute-scores-all.csv  ## Input: CMIP6 factor scores made from section 2, exposure analysis
+└── figures/                       ## Output: all PNG figures
 ```
 
 ## Inputs
@@ -181,11 +181,9 @@ The resulting table has one row per stock × exposure factor (2 qualitative + 13
 
 **Short display labels.** Two named lookup vectors (`attr_short_names`, `exp_attr_short_names`) map full attribute names to abbreviated display labels (≤ 16 characters) used on all figure y-axes. These are defined once in the data prep section and referenced by all figures.
 
-## Outputs
+## Output Figures — `figures/`
 
-### Figures — `figures/`
-
-| File | Figure | Description |
+| File | Figure in script | Description |
 |------|--------|-------------|
 | `fig_sensitivity_attribute_score_boxplot.png` | 1A | Sensitivity attribute score distributions (boxplot) |
 | `fig_exposure_attribute_score_boxplot.png` | 1B | Exposure factor score distributions (boxplot) |
@@ -199,7 +197,7 @@ The resulting table has one row per stock × exposure factor (2 qualitative + 13
 
 ### Figure 1 — Score distributions (combined panel)
 
-Two horizontal boxplot figures are produced and then combined into a single two-panel figure using `patchwork`.
+Two horizontal boxplot figures are produced and then combined into a single two-panel figure.
 
 **Figure 1A — Biological sensitivity attributes** (`fig_sensitivity_attribute_score_boxplot.png`):
 - One box per sensitivity attribute (14 attributes), ordered by median score ascending (bottom to top).
@@ -211,18 +209,20 @@ Two horizontal boxplot figures are produced and then combined into a single two-
 - Attributes cover both qualitative (expert-scored) and quantitative (CMIP6-derived) factors; both use the 1–4 LMHV scale.
 
 **Combined panel** (`fig_attribute_score_boxplot_combined.png`):
-- Figure 1A (panel A) and Figure 1B (panel B) placed side by side at 14" × height.
+- Figure 1A (panel A) and Figure 1B (panel B) placed side by side.
 - Panel tags added via `plot_annotation(tag_levels = "A")`.
 
-<img src="../figures/fig_attribute_score_boxplot_combined.png" width="800"/>
+[`fig_attribute_score_boxplot_combined.png`](https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_attribute_score_boxplot_combined.png)
+
+<img src="../figures/fig_attribute_score_boxplot_combined.png" width="1000"/>
 
 ---
 
 ### Figure 2 — Directional effect summary by stock
 
-(`fig_directional_effect_summary.png`)
+[`fig_directional_effect_summary.png`](https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_directional_effect_summary.png)
 
-Horizontal stacked bar chart showing the proportion of reviewer tallies classified as Positive, Neutral, or Negative for each stock. Stocks are ordered by proportion Negative (ascending). Colors: Positive = `#2c7bb6`, Neutral = `bisque`, Negative = `indianred4`. Data source: `directional_effect_tallies_long`, pooled across all reviewers per stock.
+Horizontal stacked bar chart showing the proportion of reviewer tallies classified as Positive, Neutral, or Negative for each stock. Stocks are ordered by proportion Negative (ascending). Colors: Positive = `blue`, Neutral = `bisque`, Negative = `indianred4`. Data source: `directional_effect_tallies_long`, pooled across all reviewers per stock.
 
 <img src="../figures/fig_directional_effect_summary.png" width="600"/>
 
@@ -230,7 +230,7 @@ Horizontal stacked bar chart showing the proportion of reviewer tallies classifi
 
 ### Figure 3A — Sensitivity tally distributions by stock
 
-(`fig_sensitivity_tally_distributions_by_stock.png`)
+[`fig_sensitivity_tally_distributions_by_stock.png`](https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_sensitivity_tally_distributions_by_stock.png)
 
 Faceted 5 × 5 panel figure (one panel per stock). Each panel shows one horizontal stacked bar per sensitivity attribute, ordered by pooled mean score ascending. Bar segments show the proportion of reviewer tallies in each LMHV category (Low / Moderate / High / Very High). Y-axis labels use abbreviated names from `attr_short_names`. Colors: Low = `green3`, Moderate = `yellow2`, High = `orange2`, Very High = `red3`. Saved at 12" × 12", 1200 dpi.
 
@@ -240,7 +240,7 @@ Faceted 5 × 5 panel figure (one panel per stock). Each panel shows one horizont
 
 ### Figure 3B — Exposure tally distributions by stock
 
-(`fig_exposure_tally_distributions_by_stock.png`)
+[`fig_exposure_tally_distributions_by_stock.png`](https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_sensitivity_tally_distributions_by_stock.png)
 
 Same structure as Figure 3A, using `exposure_tallies_long` (15 exposure attributes per stock). Tally units differ by attribute type — qualitative tallies count reviewer votes; quantitative tallies count LMHV grid cells — but both are expressed as proportions and are visually comparable. Y-axis labels use abbreviated names from `exp_attr_short_names`. Saved at 12" × 14", 1200 dpi.
 
@@ -250,7 +250,7 @@ Same structure as Figure 3A, using `exposure_tallies_long` (15 exposure attribut
 
 ### Figure QA — Reviewer × stock coverage heatmap
 
-(`fig_reviewer_stock_coverage.png`)
+[`fig_reviewer_stock_coverage.png`](https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_reviewer_stock_coverage.png)
 
 Tile heatmap with reviewers on x and stocks on y. Each cell is colored by the count of attributes scored (red = few, blue = full coverage) with the count printed in white. Used to identify reviewer × stock combinations with missing or incomplete assessments.
 
