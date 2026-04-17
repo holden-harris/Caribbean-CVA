@@ -156,7 +156,7 @@ write.csv(directional_effect_final,
 write.csv(exposure_tallies_long,
           file.path(dir_out, "exposure_tallies_long.csv"),           row.names = FALSE)
 write.csv(exposure_final,
-          file.path(dir_out, "exposure__tallies_by_stock.csv"),     row.names = FALSE)
+          file.path(dir_out, "exposure_tallies_by_stock.csv"),     row.names = FALSE)
 
 ################################################################################
 ## Row count summary
