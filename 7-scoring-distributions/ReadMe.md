@@ -1,7 +1,7 @@
 # 1-extract-tally-scores.R
 
 ## Purpose                                                                                                                         
-Reads all reviewer scoring workbooks for the Caribbean CVA and extracts the **FINAL SCORE tally columns** from every stock sheet. The output is a set of long-format tally tables that serve as the primary inputs for the bootstrap uncertainty analysis and leave-one-out influence analysis in subsequent scripts. Quantitative exposure factor scores are not extracted here because they are not tally-based and are held fixed during uncertainty analyses under the NOAA FCVA workflow.
+Reads all reviewer scoring workbooks for the Caribbean CVA and extracts the tally columns from every stock sheet. The output is a set of long-format tally tables that serve as the primary inputs for the bootstrap uncertainty analysis and leave-one-out influence analysis in subsequent scripts. Note that the quantitative exposure factor scores are extracted in [`2-exposure-anomalies/exposure-factor-scores.R`](https://github.com/holden-harris/Caribbean-CVA/tree/main/2-exposure-anomalies) with the workflow described [here](https://github.com/holden-harris/Caribbean-CVA/tree/main/2-exposure-anomalies).
 
 ## Directory structure
   ```
@@ -167,21 +167,33 @@ project root/
 | `outputs/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv` | Per-stock × attribute mean scores (U.S. Caribbean spatial extent); `attribute_type` ∈ `"Sensitivity"`, `"Exposure"` |
 | `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` | LMHV grid-cell tally counts for 13 CMIP6 exposure factors × 25 stocks × 3 spatial extents |
 
-## Workflow
 
 ### Data carpentry
 
 **Stock name standardization.** A canonical named vector `stock_name_recode` maps legacy lowercase stock names (e.g., `"Atlantic thread herring"`, `"Long-spined sea urchin"`) to title-case canonical names (e.g., `"Atlantic Herring"`, `"Diadema"`). This recode is applied via `recode(stock_name, !!!stock_name_recode)` to all five input tables on read, ensuring consistent joins and facet labels throughout.
 
-**Coral cover exclusion.** Rows with `attribute_name == "Coral cover"` are dropped from `all_qualitative_tallies_long` and from the qualitative exposure conform step. This attribute was assessed by only a small subset of reviewers and is excluded from all tally distribution figures.
-
 **Exposure tally table.** A combined `exposure_tallies_long` table is built by conforming and row-binding two sources:
 - *Qualitative exposure* (`qual_exp_conform`): tallies are summed across reviewers within each stock × attribute, producing one row per stock × attribute with pooled `tally_L / tally_M / tally_H / tally_VH` and `n_tallies`.
 - *Quantitative exposure* (`quant_exp_conform`): filtered to `spatial_extent == "U.S. Caribbean"`, with `full_names` renamed to `attribute_name` and `attribute_type` set to `"Quantitative Exposure"`.
+- *Coral cover exclusion.* Rows with `attribute_name == "Coral cover"` are dropped from `all_qualitative_tallies_long` and from the qualitative exposure conform step. 
 
 The resulting table has one row per stock × exposure factor (2 qualitative + 13 quantitative = 15 attributes × 25 stocks).
 
 **Short display labels.** Two named lookup vectors (`attr_short_names`, `exp_attr_short_names`) map full attribute names to abbreviated display labels (≤ 16 characters) used on all figure y-axes. These are defined once in the data prep section and referenced by all figures.
+
+## Outputs
+
+### Figures — `figures/`
+
+| File | Figure | Description |
+|------|--------|-------------|
+| `fig_sensitivity_attribute_score_boxplot.png` | 1A | Sensitivity attribute score distributions (boxplot) |
+| `fig_exposure_attribute_score_boxplot.png` | 1B | Exposure factor score distributions (boxplot) |
+| `fig_attribute_score_boxplot_combined.png` | 1 (combined) | Panels 1A and 1B side by side |
+| `fig_directional_effect_summary.png` | 2 | Directional effect proportions by stock |
+| `fig_sensitivity_tally_distributions_by_stock.png` | 3A | Per-stock sensitivity LMHV tally distributions |
+| `fig_exposure_tally_distributions_by_stock.png` | 3B | Per-stock exposure LMHV tally distributions |
+| `fig_reviewer_stock_coverage.png` | QA | Reviewer × stock attribute coverage heatmap |
 
 ---
 
@@ -245,17 +257,3 @@ Tile heatmap with reviewers on x and stocks on y. Each cell is colored by the co
 <img src="../figures/fig_reviewer_stock_coverage.png" width="600"/>
 
 ---
-
-## Outputs
-
-### Figures — `figures/`
-
-| File | Figure | Description |
-|------|--------|-------------|
-| `fig_sensitivity_attribute_score_boxplot.png` | 1A | Sensitivity attribute score distributions (boxplot) |
-| `fig_exposure_attribute_score_boxplot.png` | 1B | Exposure factor score distributions (boxplot) |
-| `fig_attribute_score_boxplot_combined.png` | 1 (combined) | Panels 1A and 1B side by side |
-| `fig_directional_effect_summary.png` | 2 | Directional effect proportions by stock |
-| `fig_sensitivity_tally_distributions_by_stock.png` | 3A | Per-stock sensitivity LMHV tally distributions |
-| `fig_exposure_tally_distributions_by_stock.png` | 3B | Per-stock exposure LMHV tally distributions |
-| `fig_reviewer_stock_coverage.png` | QA | Reviewer × stock attribute coverage heatmap |
