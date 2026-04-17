@@ -616,7 +616,7 @@ p_coverage <- ggplot(
     axis.text   = element_text(color = "black"),
     axis.text.x = element_text(angle = 45, hjust = 1),
     panel.grid  = element_blank()
-  )
+  ); p_coverage
 
 ggsave(f_fig_coverage, p_coverage,
        width  = 10,
