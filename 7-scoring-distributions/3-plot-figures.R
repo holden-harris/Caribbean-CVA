@@ -1,6 +1,6 @@
 
 ##------------------------------------------------------------------------------
-## `2-plot-figures.R`
+## `3-plot-figures.R`
 ##
 ## Figure 1 - Bar and whisker plots: Score distributions
 ##       1A - Sensitivity attribute distributions
@@ -28,9 +28,10 @@ library(patchwork)
 library(scales)
 
 ## Directories -----------------------------------------------------------------
-dir_in  <- "./outputs/analyses/1-inputs"
+dir_in      <- "./outputs/analyses/1-inputs"
 dir_compiled <- "./outputs/final-scores-compiled/overall-vulnerability-rankings"
-dir_out <- file.path("./figures")
+dir_tallies  <- "./outputs/final-tallies-long"
+dir_out      <- file.path("./figures")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
 ## Output file paths
@@ -76,15 +77,11 @@ stock_name_recode <- c(
 all_qualitative_tallies_long    <- read.csv(file.path(dir_in, "table_all_qualitative_tallies_long.csv")) %>%
   filter(attribute_name != "Coral cover") %>%
   mutate(stock_name = recode(stock_name, !!!stock_name_recode))
-sensitivity_tallies_long        <- read.csv(file.path(dir_in, "table_sensitivity_tallies_long.csv")) %>%
-  mutate(stock_name = recode(stock_name, !!!stock_name_recode))
-directional_effect_tallies_long <- read.csv(file.path(dir_in, "table_directional_effect_tallies_long.csv")) %>%
-  mutate(stock_name = recode(stock_name, !!!stock_name_recode))
+sensitivity_tallies_long        <- read.csv(file.path(dir_tallies, "sensitivity_tallies_long.csv"))
+directional_effect_tallies_long <- read.csv(file.path(dir_tallies, "directional_effect_tallies_long.csv"))
+exposure_tallies_long           <- read.csv(file.path(dir_tallies, "exposure_tallies_long.csv"))
 attr_means                      <- read.csv(file.path(dir_compiled, "attribute_means_uscar.csv")) %>%
   mutate(stock_name = recode(stock_name, !!!stock_name_recode))
-qualitative_exposure_tallies_long <- read.csv(file.path(dir_in, "table_qualitative_exposure_tallies_long.csv"))
-quantitative_exposure_scores      <- read.csv(
-  "./outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv")
 
 ##------------------------------------------------------------------------------
 ## Data prep
@@ -100,32 +97,6 @@ n_attributes_expected <- n_distinct(all_qualitative_tallies_long$attribute_name)
 qa_dir_summary <- directional_effect_tallies_long %>%
   group_by(stock_name, effect_category) %>%
   summarise(total_tally = sum(tally, na.rm = TRUE), .groups = "drop")
-
-##------------------------------------------------------------------------------
-## Conform and row-bind exposure tally tables 
-qual_exp_conform <- qualitative_exposure_tallies_long %>%
-  filter(attribute_name != "Coral cover") %>%
-  mutate(stock_name = recode(stock_name, !!!stock_name_recode)) %>%
-  group_by(stock_name, attribute_type, attribute_name) %>%
-  summarise(
-    tally_L  = sum(tally_L,  na.rm = TRUE),
-    tally_M  = sum(tally_M,  na.rm = TRUE),
-    tally_H  = sum(tally_H,  na.rm = TRUE),
-    tally_VH = sum(tally_VH, na.rm = TRUE),
-    .groups  = "drop"
-  ) %>%
-  mutate(n_tallies = tally_L + tally_M + tally_H + tally_VH)
-
-quant_exp_conform <- quantitative_exposure_scores %>%
-  filter(spatial_extent == "U.S. Caribbean") %>%
-  mutate(attribute_type = "Quantitative Exposure",
-         attribute_name  = full_names,
-         n_tallies = tally_L + tally_M + tally_H + tally_VH) %>%
-  select(stock_name, attribute_type, attribute_name,
-         tally_L, tally_M, tally_H, tally_VH, n_tallies) 
-
-exposure_tallies_long <- bind_rows(qual_exp_conform, quant_exp_conform) %>%
-  arrange(stock_name, attribute_type)
 
 ##------------------------------------------------------------------------------
 ## Short display labels for y-axis (used by boxplots and tally figures)
