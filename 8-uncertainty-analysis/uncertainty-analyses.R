@@ -1,32 +1,38 @@
 ################################################################################
 ##------------------------------------------------------------------------------
 ## Caribbean CVA
-## Script 1. Bootstrap uncertainty analysis and leave-one-out influence analysis
+## Bootstrap uncertainty analysis and leave-one-out influence analysis
 ##
 ## Purpose:
-## - Read compiled Caribbean CVA inputs
+## - Read compiled Caribbean CVA tally inputs and finalized attribute means
 ## - Reproduce baseline Sensitivity, Exposure, and Vulnerability scores
-## - Run bootstrap uncertainty analysis for overall vulnerability
-## - Run leave-one-out influence analysis for Sensitivity attributes and
-##   Exposure factors
-## - Write analysis-ready outputs for QA and figure generation
+##   to verify the FCVA logic model here matches the main scoring script
+## - Bootstrap vulnerability uncertainty (tally draw-pile method)
+## - Bootstrap directional effects uncertainty (tally draw-pile method)
+## - Leave-one-out influence analysis for Sensitivity attributes
+## - Leave-one-out influence analysis for Exposure factors
+## - Save analysis outputs for QA and figure generation
 ##
-## NOAA FCVA workflow
+## NOAA FCVA workflow — Caribbean CVA (4 reviewers x 5 tallies = 20 per attribute)
 ##
-## Step 1. Read and standardize compiled score inputs
-## Step 2. Reproduce baseline component and vulnerability scores
-## Step 3. Bootstrap uncertainty for Sensitivity and Vulnerability
-## Step 4. Run leave-one-out influence analysis
-## Step 5. Save final tables for QA and figures
+## Bootstrap method (Loughran et al. 2025 / HMS CVA):
+##   For each stock x attribute, pool all reviewer tally votes (4 reviewers x 5
+##   tallies = 20 votes) into a draw pile coded 1=Low, 2=Moderate, 3=High,
+##   4=Very High. Sample the pile with replacement (size = 20). Compute the
+##   bootstrap attribute mean as mean(sample). Repeat 10,000 times.
+##   The Exposure component score is held fixed at the finalized baseline value;
+##   only Sensitivity tallies are resampled because only reviewer-entered
+##   qualitative scores have tally-level data.
 ##
-## Notes:
-## - Sensitivity comes from reviewer-entered qualitative attribute scores
-## - Exposure comes from finalized quantitative exposure factor scores
-## - Bootstrap uncertainty resamples individual reviewer Sensitivity scores only
-## - Exposure remains fixed at the baseline finalized score during bootstrap
-## - Leave-one-out analyses are deterministic, not bootstrap-based
-## - This script stops if reproduced baseline scores do not match the
-##   finalized Caribbean CVA outputs
+## Directional effects bootstrap:
+##   Pool all reviewer directional votes (4 reviewers x 4 votes = 16 per stock)
+##   into a draw pile coded +1=Positive, 0=Neutral, -1=Negative.
+##   Sample with replacement. Weighted mean = (n_pos - n_neg) / 16.
+##   Classify: >= +0.33 = Positive, <= -0.33 = Negative, else Neutral.
+##
+## LOO method: deterministic; omit one attribute or factor at a time, rerun
+##   the FCVA logic model on the remaining attributes/factors, record any
+##   change in vulnerability rank.
 
 ##------------------------------------------------------------------------------
 ## Setup
@@ -37,81 +43,100 @@ library(dplyr)
 library(tidyr)
 library(readr)
 library(stringr)
-library(purrr)
-library(tibble)
 
 ##------------------------------------------------------------------------------
 ## Directories
+##
+## proj_dir = "." assumes the script is run from the RStudio project root
+## (C:/Repos/Caribbean-CVA), which is the default when using the .Rproj file.
 
 proj_dir <- "."
-in_dir   <- file.path(proj_dir, "outputs", "final-scores-compiled")
-out_dir  <- file.path(in_dir, "uncertainty-loo")
 
-intermediate_dir <- file.path(out_dir, "intermediate")
-final_dir        <- file.path(out_dir, "final-tables")
+## Input directories
+tallies_dir  <- file.path(proj_dir, "outputs", "final-tallies-long")
+compiled_dir <- file.path(proj_dir, "outputs", "final-scores-compiled",
+                          "overall-vulnerability-rankings")
 
-dir.create(out_dir,          recursive = TRUE, showWarnings = FALSE)
+## Output directories
+out_dir          <- file.path(proj_dir, "outputs", "analyses", "uncertainty-loo")
+intermediate_dir <- file.path(out_dir, "intermediate")   ## validation/QA outputs
+final_dir        <- file.path(out_dir, "final-tables")   ## analysis outputs for figures
+
 dir.create(intermediate_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(final_dir,        recursive = TRUE, showWarnings = FALSE)
 
 ##------------------------------------------------------------------------------
-## Input files
+## Input file paths
 
-f_reviewer_scores <- file.path(in_dir,
-                               "final-attribute-scores",
-                               "table_final_attribute_scores_all.csv")
+## Per-reviewer tally counts — used for bootstrap (draw-pile resampling)
+f_sens_tallies <- file.path(tallies_dir, "sensitivity_tallies_long.csv")
+f_dir_tallies  <- file.path(tallies_dir, "directional_effect_tallies_long.csv")
 
-f_attr_means <- file.path(in_dir,
-                          "overall-vulnerability-rankings",
-                          "attribute_means_uscar.csv")
+## Compiled attribute means — used for LOO and baseline reproduction check
+f_attr_means   <- file.path(compiled_dir, "attribute_means_uscar.csv")
 
-f_vuln <- file.path(in_dir,
-                          "overall-vulnerability-rankings",
-                          "overall_vulnerability_scores_uscar.csv")
+## Finalized baseline vulnerability scores — used for validation and LOO
+f_vuln         <- file.path(compiled_dir, "overall_vulnerability_scores_uscar.csv")
 
 ##------------------------------------------------------------------------------
-## Output files
+## Output file paths
 
-f_precheck_log     <- file.path(intermediate_dir, "01_preanalysis_check_log.csv")
-f_base_comp_repro  <- file.path(intermediate_dir, "02_baseline_reproduced_component_scores.csv")
-f_base_vuln_repro  <- file.path(intermediate_dir, "02_baseline_reproduced_vulnerability_scores.csv")
+## Intermediate (validation/QA)
+f_precheck_log  <- file.path(intermediate_dir, "01_preanalysis_check_log.csv")
+f_base_repro    <- file.path(intermediate_dir, "02_baseline_reproduced_scores.csv")
 
-f_boot_stock <- file.path(final_dir, "table_bootstrap_uncertainty_stock.csv")
-f_boot_sens  <- file.path(final_dir, "table_bootstrap_uncertainty_sensitivity_component.csv")
-f_boot_iter  <- file.path(intermediate_dir, "table_bootstrap_iterations_long.csv")
-
+## Final analysis tables
+f_boot_stock    <- file.path(final_dir, "table_bootstrap_uncertainty_stock.csv")
+f_boot_sens     <- file.path(final_dir, "table_bootstrap_uncertainty_sensitivity_component.csv")
+f_dir_boot      <- file.path(final_dir, "table_directional_effect_bootstrap.csv")
 f_loo_sens_long <- file.path(final_dir, "table_leave_one_out_sensitivity_long.csv")
 f_loo_exp_long  <- file.path(final_dir, "table_leave_one_out_exposure_long.csv")
 f_loo_sens_sum  <- file.path(final_dir, "table_leave_one_out_sensitivity_summary.csv")
 f_loo_exp_sum   <- file.path(final_dir, "table_leave_one_out_exposure_summary.csv")
 
-f_plot_exp  <- file.path(final_dir, "table_exposure_factor_scores_for_plot.csv")
-f_plot_sens <- file.path(final_dir, "table_sensitivity_attribute_scores_for_plot.csv")
+## Figure-ready tables (attribute/factor means joined with baseline ranks)
+f_plot_exp      <- file.path(final_dir, "table_exposure_factor_scores_for_plot.csv")
+f_plot_sens     <- file.path(final_dir, "table_sensitivity_attribute_scores_for_plot.csv")
 
 ##------------------------------------------------------------------------------
 ## Analysis settings
 
-n_boot               <- 10000
-save_iteration_table <- FALSE
-borderline_threshold <- 0.25
-bootstrap_seed       <- 99
+n_boot               <- 10000   ## number of bootstrap iterations
+bootstrap_seed       <- 99      ## random seed — set once before each bootstrap loop
+dir_eff_threshold    <- 0.33    ## ±0.33 directional rank cutoff, matching HMS CVA
+                                ##   w_mean = (n_pos - n_neg) / total_votes in [-1, +1]
+                                ##   for Caribbean: total_votes = 4 reviewers x 4 = 16
+borderline_threshold <- 0.25    ## flag stocks where dominant rank prop < 0.75
 
 ################################################################################
 ##------------------------------------------------------------------------------
 ## Helper functions
+##
+## Only three helper functions are defined here because each is called in
+## multiple places across the script. All other logic is written inline.
 
-## FCVA logic model
-## Thresholds match the main scoring script exactly:
-##   Very High = more than 3 attribute means >= 3.5  (n_ge_3_5 > 3)
-##   High      = more than 2 attribute means >= 3.0  (n_ge_3_0 > 2)
-##   Moderate  = more than 2 attribute means >= 2.5  (n_ge_2_5 > 2)
-##   Low       = all other cases
+## fcva_logic_model()
+## Converts a vector of attribute mean scores (each 1–4) to a component rank
+## and numeric score. Called for: baseline reproduction check, LOO sensitivity,
+## LOO exposure, and the inner bootstrap loop.
+##
+## Thresholds:
+##   Very High: more than 3 attribute means >= 3.5
+##   High:      more than 2 attribute means >= 3.0
+##   Moderate:  more than 2 attribute means >= 2.5
+##   Low:       all other cases
+##
+## Note: these thresholds were calibrated to and are validated against the
+## finalized Caribbean CVA scores in the baseline reproduction check (Step 3).
 
 fcva_logic_model <- function(mean_scores) {
+
+  ## Count attributes meeting each threshold
   n_ge_35 <- sum(mean_scores >= 3.5, na.rm = TRUE)
   n_ge_30 <- sum(mean_scores >= 3.0, na.rm = TRUE)
   n_ge_25 <- sum(mean_scores >= 2.5, na.rm = TRUE)
 
+  ## Cascading threshold rules — most stringent check first
   component_rank <- dplyr::case_when(
     n_ge_35 > 3 ~ "Very High",
     n_ge_30 > 2 ~ "High",
@@ -119,6 +144,7 @@ fcva_logic_model <- function(mean_scores) {
     TRUE        ~ "Low"
   )
 
+  ## Numeric score: Low=1, Moderate=2, High=3, Very High=4
   component_score_numeric <- dplyr::case_when(
     component_rank == "Low"       ~ 1L,
     component_rank == "Moderate"  ~ 2L,
@@ -126,352 +152,278 @@ fcva_logic_model <- function(mean_scores) {
     component_rank == "Very High" ~ 4L
   )
 
+  ## Return as a 1-row tibble so it can be used inside dplyr::summarise() with list()
   tibble::tibble(component_rank, component_score_numeric)
 }
 
-## Vulnerability rank from numeric product score
-assign_vulnerability_rank <- function(vulnerability_score_numeric) {
+## assign_vulnerability_rank()
+## Converts the numeric vulnerability score (sens_num x exp_num) to a rank label.
+## The product of two scores each in {1,2,3,4} yields: 1,2,3,4,6,8,9,12,16.
+## Values 5, 7, 10, 11, 13–15 are structurally impossible and return NA.
+
+assign_vulnerability_rank <- function(v) {
   dplyr::case_when(
-    vulnerability_score_numeric <= 3                                           ~ "Low",
-    vulnerability_score_numeric >= 4  & vulnerability_score_numeric <= 6      ~ "Moderate",
-    vulnerability_score_numeric >= 8  & vulnerability_score_numeric <= 9      ~ "High",
-    vulnerability_score_numeric >= 12 & vulnerability_score_numeric <= 16     ~ "Very High",
-    TRUE                                                                       ~ NA_character_
+    v <= 3             ~ "Low",
+    v >= 4  & v <= 6  ~ "Moderate",
+    v >= 8  & v <= 9  ~ "High",
+    v >= 12 & v <= 16 ~ "Very High",
+    TRUE              ~ NA_character_
   )
 }
 
-## Column existence check
-check_required_columns <- function(dat, required_cols, object_name) {
-  missing_cols <- setdiff(required_cols, names(dat))
-  if (length(missing_cols) > 0) {
-    stop(paste0("Missing required columns in ", object_name, ": ",
-                paste(missing_cols, collapse = ", ")))
-  }
-}
+## assign_directional_rank()
+## Converts a directional weighted mean (range [-1, +1]) to a rank label.
+## w_mean = (n_positive - n_negative) / total_votes
+## Threshold ±0.33 matches the HMS CVA.
 
-## Bootstrap one attribute: resample reviewer scores with replacement
-bootstrap_one_attribute <- function(scores_vec) {
-  samp <- sample(scores_vec, size = length(scores_vec), replace = TRUE)
-  mean(samp, na.rm = TRUE)
-}
-
-## Bootstrap one stock
-bootstrap_one_stock <- function(stock_name_i,
-                                 sens_scores_std,
-                                 baseline_exp_score_num,
-                                 n_boot               = 10000,
-                                 borderline_threshold = 0.25) {
-
-  stock_scores <- sens_scores_std %>%
-    dplyr::filter(stock_name == stock_name_i)
-
-  att_names <- sort(unique(stock_scores$attribute_name))
-
-  ## Pre-split scores by attribute to avoid repeated filter calls in the loop
-  scores_by_att <- split(stock_scores$score, stock_scores$attribute_name)
-
-  iter_results <- purrr::map(seq_len(n_boot), function(i) {
-    boot_means <- vapply(att_names, function(att) {
-      v <- scores_by_att[[att]]
-      if (length(v) == 0 || all(is.na(v))) return(NA_real_)
-      bootstrap_one_attribute(v)
-    }, numeric(1))
-
-    logic    <- fcva_logic_model(boot_means)
-    vuln_num <- logic$component_score_numeric * baseline_exp_score_num
-
-    tibble::tibble(
-      sens_score_numeric = logic$component_score_numeric,
-      sens_rank          = logic$component_rank,
-      vuln_score         = vuln_num,
-      vuln_rank          = assign_vulnerability_rank(vuln_num)
-    )
-  })
-
-  iter_df <- dplyr::bind_rows(iter_results) %>%
-    dplyr::mutate(stock_name = stock_name_i)
-
-  stock_summary <- iter_df %>%
-    dplyr::count(vuln_rank) %>%
-    dplyr::mutate(
-      prop       = n / n_boot,
-      stock_name = stock_name_i
-    )
-
-  top_rank_prop <- max(stock_summary$prop)
-  is_borderline <- top_rank_prop < (1 - borderline_threshold)
-
-  sens_summary <- iter_df %>%
-    dplyr::count(sens_rank) %>%
-    dplyr::mutate(
-      prop       = n / n_boot,
-      stock_name = stock_name_i
-    )
-
-  list(
-    iter_df       = iter_df,
-    stock_summary = stock_summary %>% dplyr::mutate(borderline = is_borderline),
-    sens_summary  = sens_summary
+assign_directional_rank <- function(w_mean, threshold = 0.33) {
+  dplyr::case_when(
+    w_mean <= -threshold ~ "Negative",
+    w_mean >=  threshold ~ "Positive",
+    TRUE                 ~ "Neutral"
   )
-}
-
-## LOO: sensitivity — omit one attribute at a time
-run_loo_sensitivity_one_stock <- function(stock_name_i,
-                                          sens_means_std,
-                                          baseline_exp_score_num,
-                                          baseline_sens_rank,
-                                          baseline_vuln_rank,
-                                          baseline_vuln_score_num) {
-
-  stock_means <- sens_means_std %>%
-    dplyr::filter(stock_name == stock_name_i)
-
-  att_names <- unique(stock_means$attribute_name)
-
-  purrr::map_dfr(att_names, function(att_omit) {
-    reduced       <- stock_means %>% dplyr::filter(attribute_name != att_omit)
-    logic         <- fcva_logic_model(reduced$mean_score)
-    new_vuln_num  <- logic$component_score_numeric * baseline_exp_score_num
-    new_vuln_rank <- assign_vulnerability_rank(new_vuln_num)
-
-    tibble::tibble(
-      stock_name             = stock_name_i,
-      attribute_omitted      = att_omit,
-      baseline_sens_rank     = baseline_sens_rank,
-      new_sens_rank          = logic$component_rank,
-      new_sens_score_numeric = logic$component_score_numeric,
-      baseline_vuln_rank     = baseline_vuln_rank,
-      new_vuln_rank          = new_vuln_rank,
-      baseline_vuln_score    = baseline_vuln_score_num,
-      new_vuln_score         = new_vuln_num,
-      rank_changed           = (new_vuln_rank != baseline_vuln_rank),
-      rank_change_direction  = dplyr::case_when(
-        new_vuln_score > baseline_vuln_score ~ "Higher",
-        new_vuln_score < baseline_vuln_score ~ "Lower",
-        TRUE                                 ~ "No change"
-      )
-    )
-  })
-}
-
-## LOO: exposure — omit one factor at a time
-run_loo_exposure_one_stock <- function(stock_name_i,
-                                       exp_means_std,
-                                       baseline_sens_score_num,
-                                       baseline_exp_rank,
-                                       baseline_vuln_rank,
-                                       baseline_vuln_score_num) {
-
-  stock_means  <- exp_means_std %>%
-    dplyr::filter(stock_name == stock_name_i)
-
-  factor_names <- unique(stock_means$exposure_factor)
-
-  purrr::map_dfr(factor_names, function(fac_omit) {
-    reduced       <- stock_means %>% dplyr::filter(exposure_factor != fac_omit)
-    logic         <- fcva_logic_model(reduced$mean_score)
-    new_vuln_num  <- baseline_sens_score_num * logic$component_score_numeric
-    new_vuln_rank <- assign_vulnerability_rank(new_vuln_num)
-
-    tibble::tibble(
-      stock_name            = stock_name_i,
-      factor_omitted        = fac_omit,
-      baseline_exp_rank     = baseline_exp_rank,
-      new_exp_rank          = logic$component_rank,
-      new_exp_score_numeric = logic$component_score_numeric,
-      baseline_vuln_rank    = baseline_vuln_rank,
-      new_vuln_rank         = new_vuln_rank,
-      baseline_vuln_score   = baseline_vuln_score_num,
-      new_vuln_score        = new_vuln_num,
-      rank_changed          = (new_vuln_rank != baseline_vuln_rank),
-      rank_change_direction = dplyr::case_when(
-        new_vuln_score > baseline_vuln_score ~ "Higher",
-        new_vuln_score < baseline_vuln_score ~ "Lower",
-        TRUE                                 ~ "No change"
-      )
-    )
-  })
 }
 
 ################################################################################
 ##------------------------------------------------------------------------------
-## Step 1 - Read and standardize compiled score inputs
+## Step 1 — Read and standardize inputs
 
-## Individual reviewer Sensitivity scores (for bootstrap)
-reviewer_scores_raw <- readr::read_csv(f_reviewer_scores, show_col_types = FALSE)
+##--- Sensitivity tallies -------------------------------------------------------
+## One row per reviewer x stock x attribute.
+## Columns tally_L/M/H/VH are integer counts of how many of the reviewer's 5
+## tallies fell in each vulnerability bin. NAs in tally columns mean 0 votes.
 
-## Attribute means (Sensitivity + Exposure combined; split below)
+sens_tallies_raw <- readr::read_csv(f_sens_tallies, show_col_types = FALSE)
+
+## Stock name normalization table — applied to both tally files.
+##
+## Tally files use Title Case stock names entered by reviewers; the compiled
+## baseline files use sentence case.  str_to_sentence() handles the 21 stocks
+## that differ only in capitalization.  The four entries below handle stocks
+## whose common names differ beyond simple case (confirmed by cross-referencing
+## sensitivity_tallies_long.csv against overall_vulnerability_scores_uscar.csv).
+tally_name_overrides <- c(
+  "Atlantic Herring" = "Atlantic thread herring",  ## different common name
+  "Diadema"          = "Long-spined sea urchin",   ## different common name
+  "Redhind"          = "Red hind",                 ## missing space
+  "Sea Cucumber"     = "Sea cucumbers"             ## singular vs. plural
+)
+
+## Keep only rows labeled "Sensitivity" in attribute_type.
+## This covers both qualitative Sensitivity attributes (workbook rows 21–28)
+## and Rigidity attributes (rows 30–35); both feed into the Sensitivity component.
+sens_tallies_std <- sens_tallies_raw %>%
+  dplyr::filter(attribute_type == "Sensitivity") %>%
+  dplyr::transmute(
+    ## Apply manual overrides first (4 stocks with name differences beyond case),
+    ## then str_to_sentence() to match the sentence-case baseline naming convention.
+    stock_name     = stringr::str_to_sentence(dplyr::recode(stock_name, !!!tally_name_overrides)),
+    reviewer_id    = reviewer_id,
+    attribute_name = stringr::str_squish(attribute_name),
+    ## NA tally cells = 0 votes in that bin (reviewer placed all 5 tallies elsewhere)
+    tally_L  = tidyr::replace_na(as.integer(tally_L),  0L),
+    tally_M  = tidyr::replace_na(as.integer(tally_M),  0L),
+    tally_H  = tidyr::replace_na(as.integer(tally_H),  0L),
+    tally_VH = tidyr::replace_na(as.integer(tally_VH), 0L),
+    n_tallies = as.integer(n_tallies)
+  )
+
+## Aggregate tallies across all reviewers for each stock x attribute.
+## The result is the draw pile totals used in the bootstrap.
+## Expected draw_pile_size = 4 reviewers x 5 tallies = 20 per attribute.
+sens_tallies_agg <- sens_tallies_std %>%
+  dplyr::group_by(stock_name, attribute_name) %>%
+  dplyr::summarise(
+    total_L        = sum(tally_L),
+    total_M        = sum(tally_M),
+    total_H        = sum(tally_H),
+    total_VH       = sum(tally_VH),
+    draw_pile_size = sum(tally_L + tally_M + tally_H + tally_VH),
+    .groups = "drop"
+  )
+
+##--- Directional effect tallies ------------------------------------------------
+## One row per reviewer x stock x effect category (Positive/Neutral/Negative).
+## Each reviewer assigns 4 votes across the three categories (one per aspect).
+## Caribbean CVA: 4 reviewers x 4 votes = 16 total votes per stock.
+
+dir_tallies_raw <- readr::read_csv(f_dir_tallies, show_col_types = FALSE)
+
+dir_tallies_std <- dir_tallies_raw %>%
+  dplyr::transmute(
+    ## Same name normalization as sens_tallies_std — overrides then str_to_sentence().
+    stock_name      = stringr::str_to_sentence(dplyr::recode(stock_name, !!!tally_name_overrides)),
+    reviewer_id     = reviewer_id,
+    ## Standardize category capitalization (e.g., "positive" -> "Positive")
+    effect_category = stringr::str_to_title(stringr::str_squish(effect_category)),
+    tally           = tidyr::replace_na(as.integer(tally), 0L)
+  )
+
+## Aggregate directional tallies across reviewers and compute baseline
+## directional weighted mean and rank for each stock.
+dir_tallies_agg <- dir_tallies_std %>%
+  dplyr::group_by(stock_name, effect_category) %>%
+  dplyr::summarise(total_tally = sum(tally), .groups = "drop") %>%
+  ## Reshape to wide: one row per stock, columns Positive/Neutral/Negative
+  tidyr::pivot_wider(
+    names_from  = effect_category,
+    values_from = total_tally,
+    values_fill = 0L
+  ) %>%
+  dplyr::mutate(
+    ## Ensure all three columns exist even if no stock had votes in a category
+    Positive = dplyr::coalesce(Positive, 0L),
+    Neutral  = dplyr::coalesce(Neutral,  0L),
+    Negative = dplyr::coalesce(Negative, 0L),
+    ## Total votes in draw pile (should = 16 for most stocks)
+    draw_pile_size  = Positive + Neutral + Negative,
+    ## Baseline directional weighted mean: (pos - neg) / total, range [-1, +1]
+    baseline_w_mean = (Positive - Negative) / draw_pile_size,
+    ## Baseline directional rank using ±0.33 threshold
+    baseline_dir_rank = assign_directional_rank(baseline_w_mean, dir_eff_threshold)
+  )
+
+##--- Attribute means -----------------------------------------------------------
+## Compiled means from the finalized Caribbean CVA scoring.
+## Used for: LOO analyses (Steps 6–7) and baseline reproduction check (Step 3).
+## NOT used for bootstrap — that uses the raw tallies above.
+
 attr_means_raw <- readr::read_csv(f_attr_means, show_col_types = FALSE)
 
-## Baseline vulnerability scores
-vuln_raw <- readr::read_csv(f_vuln, show_col_types = FALSE)
-
-##------------------------------------------------------------------------------
-## Step 1A - Standardize and split inputs
-
-## Individual reviewer Sensitivity + Rigidity scores
-## Both attribute types feed into the Sensitivity component in attribute_means_uscar
-## (rows 21–28 = Sensitivity, rows 30–35 = Rigidity, both labeled "Sensitivity" there)
-sens_scores_std <- reviewer_scores_raw %>%
-  dplyr::filter(Attribute_type %in% c("Sensitivity", "Rigidity")) %>%
-  dplyr::transmute(
-    stock_name     = stock_name,
-    reviewer_id    = Scorer,
-    attribute_name = str_squish(Attribute_name),
-    score          = as.numeric(Final_score)
-  ) %>%
-  dplyr::filter(!is.na(score)) %>%
-  dplyr::arrange(stock_name, reviewer_id, attribute_name)
-
-## Sensitivity attribute means (qualitative reviewer scores)
+## Sensitivity attribute means: qualitative reviewer-scored means.
+## These are the inputs to fcva_logic_model() for the Sensitivity component.
 sens_means_std <- attr_means_raw %>%
   dplyr::filter(attribute_type == "Sensitivity", score_type == "Qualitative") %>%
   dplyr::transmute(
     stock_name     = stock_name,
-    attribute_name = str_squish(attribute_name),
+    attribute_name = stringr::str_squish(attribute_name),
     mean_score     = as.numeric(attribute_mean)
-  ) %>%
-  dplyr::arrange(stock_name, attribute_name)
+  )
 
-## Exposure factor means (calculated quantitative scores)
+## Exposure factor means: quantitative calculated scores.
+## These are the inputs to fcva_logic_model() for the Exposure component.
 exp_means_std <- attr_means_raw %>%
   dplyr::filter(attribute_type == "Exposure", score_type == "Calculated") %>%
   dplyr::transmute(
     stock_name      = stock_name,
-    exposure_factor = str_squish(attribute_name),
+    exposure_factor = stringr::str_squish(attribute_name),
     mean_score      = as.numeric(attribute_mean)
-  ) %>%
-  dplyr::arrange(stock_name, exposure_factor)
-
-## Baseline vulnerability table — rename abbreviated columns
-vuln_std <- vuln_raw %>%
-  dplyr::rename(
-    exposure_score_numeric     = Exp_score,
-    exposure_rank              = Exp_rank,
-    sensitivity_score_numeric  = Sens_score,
-    sensitivity_rank           = Sens_rank,
-    vulnerability_score_numeric = Vuln_score,
-    vulnerability_rank         = Vuln_rank
   )
 
-##------------------------------------------------------------------------------
-## Step 1B - Check required columns
+##--- Baseline vulnerability scores --------------------------------------------
+## Finalized Caribbean CVA vulnerability rankings. Renamed here from abbreviated
+## column names to descriptive names used throughout the rest of the script.
 
-check_required_columns(
-  dat           = sens_scores_std,
-  required_cols = c("stock_name", "reviewer_id", "attribute_name", "score"),
-  object_name   = "sens_scores_std"
-)
+vuln_raw <- readr::read_csv(f_vuln, show_col_types = FALSE)
 
-check_required_columns(
-  dat           = sens_means_std,
-  required_cols = c("stock_name", "attribute_name", "mean_score"),
-  object_name   = "sens_means_std"
-)
-
-check_required_columns(
-  dat           = exp_means_std,
-  required_cols = c("stock_name", "exposure_factor", "mean_score"),
-  object_name   = "exp_means_std"
-)
-
-check_required_columns(
-  dat           = vuln_std,
-  required_cols = c("stock_name",
-                    "exposure_score_numeric",   "exposure_rank",
-                    "sensitivity_score_numeric", "sensitivity_rank",
-                    "vulnerability_score_numeric", "vulnerability_rank"),
-  object_name   = "vuln_std"
-)
+vuln_std <- vuln_raw %>%
+  dplyr::rename(
+    exposure_score_numeric      = Exp_score,
+    exposure_rank               = Exp_rank,
+    sensitivity_score_numeric   = Sens_score,
+    sensitivity_rank            = Sens_rank,
+    vulnerability_score_numeric = Vuln_score,
+    vulnerability_rank          = Vuln_rank
+  )
 
 ################################################################################
 ##------------------------------------------------------------------------------
-## Step 2 - Pre-analysis checks
+## Step 2 — Pre-analysis checks
 
-precheck_log <- tibble::tibble(
-  check_name = character(),
-  status     = character(),
-  detail     = character()
-)
+## Check 1: Each sensitivity tally row must sum to n_tallies (expected = 5).
+## A mismatch means a reviewer row has votes that don't add up to their allotment.
+tally_row_sums <- sens_tallies_std %>%
+  dplyr::mutate(row_total = tally_L + tally_M + tally_H + tally_VH)
 
-## Duplicate reviewer × attribute rows
-dup_sens_scores <- sens_scores_std %>%
-  dplyr::count(stock_name, reviewer_id, attribute_name) %>%
-  dplyr::filter(n > 1)
+bad_tally_rows <- dplyr::filter(tally_row_sums,
+                                !is.na(n_tallies),
+                                row_total != n_tallies)
 
-## Impossible score values (outside 1–4)
-bad_sens_scores <- sens_scores_std %>%
-  dplyr::filter(score < 1 | score > 4)
+## Check 2: Each reviewer x stock in directional tallies should sum to 4
+## (4 directional aspects, 1 vote each per reviewer).
+dir_reviewer_sums <- dir_tallies_std %>%
+  dplyr::group_by(stock_name, reviewer_id) %>%
+  dplyr::summarise(total = sum(tally), .groups = "drop") %>%
+  dplyr::filter(total != 4L)
 
-bad_sens_means <- sens_means_std %>%
-  dplyr::filter(mean_score < 1 | mean_score > 4)
+## Check 3/4: Stock coverage — tallies table and baseline vulnerability table
+## should cover the same set of stocks. Mismatches are flagged as WARNings
+## (not hard stops) because some stocks may have tallies but no baseline score
+## if they were excluded from the final CVA, or vice versa.
+stocks_missing_in_vuln    <- setdiff(unique(sens_tallies_std$stock_name),
+                                     unique(vuln_std$stock_name))
+stocks_missing_in_tallies <- setdiff(unique(vuln_std$stock_name),
+                                     unique(sens_tallies_std$stock_name))
 
-bad_exp_means <- exp_means_std %>%
-  dplyr::filter(mean_score < 1 | mean_score > 4)
-
-## Stocks in reviewer score table that are missing from baseline vulnerability
-stocks_missing_in_vuln <- setdiff(
-  unique(sens_scores_std$stock_name),
-  unique(vuln_std$stock_name)
-)
-
-precheck_log <- dplyr::bind_rows(
-  tibble::tibble(check_name = "duplicate_reviewer_attribute_rows",
-                 status     = ifelse(nrow(dup_sens_scores) == 0, "PASS", "FAIL"),
-                 detail     = paste("n =", nrow(dup_sens_scores))),
-  tibble::tibble(check_name = "reviewer_scores_outside_1_to_4",
-                 status     = ifelse(nrow(bad_sens_scores) == 0, "PASS", "FAIL"),
-                 detail     = paste("n =", nrow(bad_sens_scores))),
-  tibble::tibble(check_name = "sensitivity_means_outside_1_to_4",
-                 status     = ifelse(nrow(bad_sens_means) == 0, "PASS", "FAIL"),
-                 detail     = paste("n =", nrow(bad_sens_means))),
-  tibble::tibble(check_name = "exposure_means_outside_1_to_4",
-                 status     = ifelse(nrow(bad_exp_means) == 0, "PASS", "FAIL"),
-                 detail     = paste("n =", nrow(bad_exp_means))),
-  tibble::tibble(check_name = "stocks_missing_in_baseline_vulnerability_table",
-                 status     = ifelse(length(stocks_missing_in_vuln) == 0, "PASS", "FAIL"),
-                 detail     = paste("n =", length(stocks_missing_in_vuln)))
+precheck_log <- data.frame(
+  check_name = c(
+    "sensitivity_tally_row_sums",
+    "directional_tally_reviewer_sums",
+    "tally_stocks_missing_in_baseline",
+    "baseline_stocks_missing_in_tallies"
+  ),
+  status = c(
+    ifelse(nrow(bad_tally_rows)              == 0, "PASS", "FAIL"),
+    ifelse(nrow(dir_reviewer_sums)           == 0, "PASS", "WARN"),
+    ifelse(length(stocks_missing_in_vuln)    == 0, "PASS", "WARN"),
+    ifelse(length(stocks_missing_in_tallies) == 0, "PASS", "WARN")
+  ),
+  detail = c(
+    paste("n rows with bad sum =", nrow(bad_tally_rows)),
+    paste("n reviewer-stocks with total != 4 =", nrow(dir_reviewer_sums)),
+    paste("n stocks in tallies but not baseline =", length(stocks_missing_in_vuln)),
+    paste("n stocks in baseline but not tallies =", length(stocks_missing_in_tallies))
+  ),
+  stringsAsFactors = FALSE
 )
 
 readr::write_csv(precheck_log, f_precheck_log)
+message("Pre-analysis check results:")
 print(precheck_log)
 
+## FAIL = hard stop. WARN = informational only.
 if (any(precheck_log$status == "FAIL")) {
-  stop("Pre-analysis checks failed. Review ", f_precheck_log)
+  stop("Pre-analysis checks failed. Review: ", f_precheck_log)
 }
 
 ################################################################################
 ##------------------------------------------------------------------------------
-## Step 3 - Reproduce baseline scores and verify against official outputs
+## Step 3 — Reproduce baseline scores (validation gate)
 ##
-## The reproduced baseline MUST match the finalized Caribbean CVA outputs exactly.
-## If it does not, the script stops — which indicates the fcva_logic_model()
-## thresholds above do not match those used in the main scoring script.
+## Apply fcva_logic_model() to the compiled attribute means and confirm that
+## the resulting Sensitivity, Exposure, and Vulnerability ranks match the
+## finalized Caribbean CVA baseline exactly.
+##
+## If they don't match, the logic model thresholds in this script don't agree
+## with the ones used in the main scoring script — do not proceed until fixed.
 
+## Reproduce Sensitivity component scores from sensitivity attribute means
 base_sens_repro <- sens_means_std %>%
   dplyr::group_by(stock_name) %>%
   dplyr::summarise(
-    sens_logic = list(fcva_logic_model(mean_scores = mean_score)),
+    sens_logic = list(fcva_logic_model(mean_score)),
     .groups    = "drop"
   ) %>%
-  tidyr::unnest(cols = c(sens_logic)) %>%
+  tidyr::unnest(cols = sens_logic) %>%
   dplyr::rename(
     sensitivity_rank_repro          = component_rank,
     sensitivity_score_numeric_repro = component_score_numeric
   )
 
+## Reproduce Exposure component scores from exposure factor means
 base_exp_repro <- exp_means_std %>%
   dplyr::group_by(stock_name) %>%
   dplyr::summarise(
-    exp_logic = list(fcva_logic_model(mean_scores = mean_score)),
+    exp_logic = list(fcva_logic_model(mean_score)),
     .groups   = "drop"
   ) %>%
-  tidyr::unnest(cols = c(exp_logic)) %>%
+  tidyr::unnest(cols = exp_logic) %>%
   dplyr::rename(
     exposure_rank_repro          = component_rank,
     exposure_score_numeric_repro = component_score_numeric
   )
 
+## Combine reproduced components and calculate reproduced vulnerability score
 baseline_reproduced <- base_sens_repro %>%
   dplyr::left_join(base_exp_repro, by = "stock_name") %>%
   dplyr::mutate(
@@ -481,193 +433,465 @@ baseline_reproduced <- base_sens_repro %>%
       assign_vulnerability_rank(vulnerability_score_numeric_repro)
   )
 
+## Compare reproduced scores to the official finalized baseline
 baseline_compare <- vuln_std %>%
   dplyr::left_join(baseline_reproduced, by = "stock_name") %>%
   dplyr::mutate(
-    sens_rank_match  = sensitivity_rank  == sensitivity_rank_repro,
-    sens_num_match   = sensitivity_score_numeric  == sensitivity_score_numeric_repro,
-    exp_rank_match   = exposure_rank     == exposure_rank_repro,
-    exp_num_match    = exposure_score_numeric     == exposure_score_numeric_repro,
-    vuln_rank_match  = vulnerability_rank  == vulnerability_rank_repro,
-    vuln_num_match   = vulnerability_score_numeric == vulnerability_score_numeric_repro
+    sens_rank_match = sensitivity_rank        == sensitivity_rank_repro,
+    exp_rank_match  = exposure_rank           == exposure_rank_repro,
+    vuln_rank_match = vulnerability_rank      == vulnerability_rank_repro,
+    vuln_num_match  = vulnerability_score_numeric == vulnerability_score_numeric_repro
   )
 
-readr::write_csv(baseline_reproduced, f_base_vuln_repro)
-readr::write_csv(
-  baseline_reproduced %>%
-    dplyr::select(stock_name,
-                  exposure_rank_repro,   exposure_score_numeric_repro,
-                  sensitivity_rank_repro, sensitivity_score_numeric_repro),
-  f_base_comp_repro
+readr::write_csv(baseline_reproduced, f_base_repro)
+
+## Identify any stocks where reproduced scores don't match
+mismatches <- dplyr::filter(
+  baseline_compare,
+  is.na(sens_rank_match) | !sens_rank_match |
+  is.na(exp_rank_match)  | !exp_rank_match  |
+  is.na(vuln_rank_match) | !vuln_rank_match |
+  is.na(vuln_num_match)  | !vuln_num_match
 )
 
-mismatches <- baseline_compare %>%
-  dplyr::filter(
-    is.na(sens_rank_match) | !sens_rank_match |
-    is.na(sens_num_match)  | !sens_num_match  |
-    is.na(exp_rank_match)  | !exp_rank_match  |
-    is.na(exp_num_match)   | !exp_num_match   |
-    is.na(vuln_rank_match) | !vuln_rank_match |
-    is.na(vuln_num_match)  | !vuln_num_match
-  )
-
 if (nrow(mismatches) > 0) {
-  message("Mismatched stocks:")
-  print(mismatches %>%
-          dplyr::select(stock_name, dplyr::ends_with("_match")),
-        n = 50)
-  stop("Baseline reproduction failed. Review reproduced score tables in ",
-       intermediate_dir)
+  message("Mismatched stocks (reproduced != baseline):")
+  print(dplyr::select(mismatches, stock_name, dplyr::ends_with("_match")), n = 50)
+  stop("Baseline reproduction failed. Check fcva_logic_model() thresholds. ",
+       "Review reproduced scores at: ", f_base_repro)
 }
 
-message("✓ Baseline reproduced successfully for all ", nrow(vuln_std), " stocks.")
+message("\u2713 Baseline reproduced successfully for all ", nrow(vuln_std), " stocks.")
 
 ################################################################################
 ##------------------------------------------------------------------------------
-## Step 4 - Bootstrap uncertainty analysis
+## Step 4 — Bootstrap: Sensitivity component and Vulnerability uncertainty
 ##
 ## For each stock:
-##   - Pool individual reviewer Sensitivity scores within each attribute
-##   - Resample with replacement (n = n_reviewers per attribute per iteration)
-##   - Recalculate bootstrap attribute mean scores
-##   - Apply FCVA logic model for bootstrap Sensitivity component score
-##   - Hold baseline Exposure component score fixed
-##   - Recalculate vulnerability score and rank
-## Summarize proportions across n_boot iterations.
+##   1. Pre-build draw piles once from aggregated tally counts.
+##      Draw pile for attribute j = c(rep(1, total_L), rep(2, total_M),
+##                                    rep(3, total_H), rep(4, total_VH))
+##      Size = 20 (4 reviewers x 5 tallies per attribute).
+##   2. Loop 10,000 times:
+##      a. For each attribute, sample 20 from its draw pile with replacement.
+##      b. Boot attribute mean = mean(sample) — a weighted average of bins 1–4.
+##      c. Feed all attribute boot means into fcva_logic_model() -> sens score.
+##      d. Multiply sens score by fixed baseline exp score -> vuln score -> rank.
+##   3. Tally vuln rank outcomes across 10,000 iterations.
+##      Proportion matching the baseline rank = certainty of that rank.
+##
+## Exposure score is held fixed at the finalized baseline for each stock.
 
 set.seed(bootstrap_seed)
 
+## Stock list: all stocks that have a finalized vulnerability score
 stock_list <- sort(unique(vuln_std$stock_name))
+n_stocks   <- length(stock_list)
 
-message("Running bootstrap (n_boot = ", n_boot, ") for ",
-        length(stock_list), " stocks ...")
+## Full set of rank labels — needed to ensure 0-count categories appear in output
+all_vuln_ranks <- c("Low", "Moderate", "High", "Very High")
+all_sens_ranks <- c("Low", "Moderate", "High", "Very High")
 
-boot_results <- purrr::map(stock_list, function(s) {
-  message("  → ", s)
-  baseline_exp <- vuln_std %>%
-    dplyr::filter(stock_name == s) %>%
-    dplyr::pull(exposure_score_numeric)
-  bootstrap_one_stock(
-    stock_name_i          = s,
-    sens_scores_std       = sens_scores_std,
-    baseline_exp_score_num = baseline_exp,
-    n_boot                = n_boot,
-    borderline_threshold  = borderline_threshold
+## Storage: accumulate one data.frame per stock, combine after the loop
+boot_stock_rows <- vector("list", n_stocks)
+boot_sens_rows  <- vector("list", n_stocks)
+
+message("Running bootstrap (n_boot = ", n_boot, ") for ", n_stocks, " stocks ...")
+
+for (si in seq_along(stock_list)) {
+
+  s <- stock_list[si]
+  message("  \u2192 ", s, "  (", si, " / ", n_stocks, ")")
+
+  ## Baseline exposure score for this stock — held fixed throughout all iterations
+  baseline_exp_num <- vuln_std$exposure_score_numeric[vuln_std$stock_name == s]
+
+  ## Aggregated tally data for this stock (one row per attribute)
+  stock_agg <- sens_tallies_agg[sens_tallies_agg$stock_name == s, ]
+
+  ## Alphabetically sorted attribute names — order must be consistent
+  att_names <- sort(stock_agg$attribute_name)
+  n_atts    <- length(att_names)
+
+  ## Build draw piles once outside the bootstrap loop for efficiency.
+  ## For attribute j: pile = {1 repeated total_L times, 2 repeated total_M times, ...}
+  ## Sampling this pile is equivalent to drawing one of the 20 original tally votes.
+  draw_piles <- vector("list", n_atts)
+  names(draw_piles) <- att_names
+
+  for (ai in seq_len(n_atts)) {
+    att <- att_names[ai]
+    r   <- stock_agg[stock_agg$attribute_name == att, ]
+    draw_piles[[att]] <- c(
+      rep(1L, r$total_L),    ## Low bin: coded 1
+      rep(2L, r$total_M),    ## Moderate bin: coded 2
+      rep(3L, r$total_H),    ## High bin: coded 3
+      rep(4L, r$total_VH)    ## Very High bin: coded 4
+    )
+    ## Verify draw pile size (should = 20 for Caribbean CVA)
+    ## Silently continues if unexpected — precheck above already flagged bad rows
+  }
+
+  ## Pre-allocate vectors to store rank outcomes for each iteration
+  vuln_rank_rec <- character(n_boot)
+  sens_rank_rec <- character(n_boot)
+
+  ## ----- Bootstrap loop --------------------------------------------------------
+  for (bi in seq_len(n_boot)) {
+
+    ## For each attribute: resample its draw pile with replacement,
+    ## compute the bootstrap attribute mean (= weighted average of bins 1–4)
+    boot_att_means <- numeric(n_atts)
+    for (ai in seq_len(n_atts)) {
+      pile <- draw_piles[[att_names[ai]]]
+      ## sample() with replace=TRUE resamples 20 votes from the 20-vote draw pile
+      boot_att_means[ai] <- mean(sample(pile, size = length(pile), replace = TRUE))
+    }
+
+    ## Run FCVA logic model on 14 bootstrapped attribute means
+    logic_result <- fcva_logic_model(boot_att_means)
+
+    ## Vulnerability score = bootstrapped sensitivity score x fixed exposure score
+    vuln_num <- logic_result$component_score_numeric * baseline_exp_num
+
+    ## Store rank labels for this iteration
+    sens_rank_rec[bi] <- logic_result$component_rank
+    vuln_rank_rec[bi] <- assign_vulnerability_rank(vuln_num)
+  }
+  ## ----- End bootstrap loop ----------------------------------------------------
+
+  ## Summarize vulnerability rank distribution across 10,000 iterations.
+  ## Use a named vector initialized to 0 for all 4 ranks so that ranks that
+  ## never appeared still show up in the output with count = 0.
+  vuln_counts <- table(vuln_rank_rec)
+  vuln_n_vec  <- setNames(rep(0L, 4), all_vuln_ranks)
+  vuln_n_vec[names(vuln_counts)] <- as.integer(vuln_counts)
+
+  ## Borderline flag: TRUE if the dominant rank won < 75% of iterations,
+  ## suggesting the ranking could plausibly be one step higher or lower.
+  top_rank_prop <- max(vuln_n_vec) / n_boot
+  is_borderline <- top_rank_prop < (1 - borderline_threshold)
+
+  boot_stock_rows[[si]] <- data.frame(
+    stock_name = s,
+    vuln_rank  = all_vuln_ranks,
+    n          = vuln_n_vec,
+    prop       = round(vuln_n_vec / n_boot, 3),
+    borderline = is_borderline,
+    stringsAsFactors = FALSE,
+    row.names = NULL
   )
-})
 
-## Collect summary tables
-boot_stock_summary <- dplyr::bind_rows(
-  purrr::map(boot_results, "stock_summary")
-) %>%
+  ## Summarize sensitivity component rank distribution
+  sens_counts <- table(sens_rank_rec)
+  sens_n_vec  <- setNames(rep(0L, 4), all_sens_ranks)
+  sens_n_vec[names(sens_counts)] <- as.integer(sens_counts)
+
+  boot_sens_rows[[si]] <- data.frame(
+    stock_name = s,
+    sens_rank  = all_sens_ranks,
+    n          = sens_n_vec,
+    prop       = round(sens_n_vec / n_boot, 3),
+    stringsAsFactors = FALSE,
+    row.names = NULL
+  )
+
+} ## end stock loop
+
+## Combine all stocks and write outputs
+boot_stock_summary <- dplyr::bind_rows(boot_stock_rows) %>%
   dplyr::arrange(stock_name, vuln_rank)
 
-boot_sens_summary <- dplyr::bind_rows(
-  purrr::map(boot_results, "sens_summary")
-) %>%
+boot_sens_summary <- dplyr::bind_rows(boot_sens_rows) %>%
   dplyr::arrange(stock_name, sens_rank)
 
 readr::write_csv(boot_stock_summary, f_boot_stock)
 readr::write_csv(boot_sens_summary,  f_boot_sens)
 
-if (save_iteration_table) {
-  boot_iter_long <- dplyr::bind_rows(purrr::map(boot_results, "iter_df"))
-  readr::write_csv(boot_iter_long, f_boot_iter)
-}
-
-message("✓ Bootstrap complete. Tables written to ", final_dir)
+message("\u2713 Bootstrap complete. Tables written.")
 
 ################################################################################
 ##------------------------------------------------------------------------------
-## Step 5A - Leave-one-out: Sensitivity attributes
+## Step 5 — Bootstrap: Directional Effects uncertainty
 ##
-## Omit one Sensitivity attribute at a time, recompute Sensitivity component
-## score, hold Exposure fixed, recompute vulnerability score and rank.
+## Same tally draw-pile approach applied to Positive/Neutral/Negative votes.
+##   Draw pile = c(rep(+1, n_pos), rep(0, n_neu), rep(-1, n_neg))
+##   Size = 16 (4 reviewers x 4 votes each).
+##   Bootstrap weighted mean = mean(sample), range [-1, +1].
+##     (equivalent to: (n_sampled_pos - n_sampled_neg) / 16)
+##   Directional rank: >= +0.33 = Positive, <= -0.33 = Negative, else Neutral.
+##
+## The proportion of iterations matching the baseline directional rank =
+## the certainty of that classification.
 
-message("Running LOO — Sensitivity attributes ...")
+message("Running directional effects bootstrap ...")
 
-loo_sens_long <- purrr::map_dfr(stock_list, function(s) {
-  row <- vuln_std %>% dplyr::filter(stock_name == s)
-  run_loo_sensitivity_one_stock(
-    stock_name_i            = s,
-    sens_means_std          = sens_means_std,
-    baseline_exp_score_num  = row$exposure_score_numeric,
-    baseline_sens_rank      = row$sensitivity_rank,
-    baseline_vuln_rank      = row$vulnerability_rank,
-    baseline_vuln_score_num = row$vulnerability_score_numeric
+set.seed(bootstrap_seed)
+
+all_dir_ranks <- c("Negative", "Neutral", "Positive")
+
+dir_boot_rows <- vector("list", n_stocks)
+
+for (si in seq_along(stock_list)) {
+
+  s   <- stock_list[si]
+  row <- dir_tallies_agg[dir_tallies_agg$stock_name == s, ]
+
+  ## If no directional data exist for this stock, store NAs and continue
+  if (nrow(row) == 0) {
+    dir_boot_rows[[si]] <- data.frame(
+      stock_name        = s,
+      dir_rank          = all_dir_ranks,
+      n                 = NA_integer_,
+      prop              = NA_real_,
+      baseline_dir_rank = NA_character_,
+      baseline_w_mean   = NA_real_,
+      stringsAsFactors  = FALSE
+    )
+    next
+  }
+
+  ## Build the directional draw pile:
+  ##   +1 for each Positive vote, 0 for Neutral, -1 for Negative.
+  ##   Total size = 16 for a standard 4-reviewer stock.
+  draw_pile <- c(
+    rep( 1L, row$Positive),
+    rep( 0L, row$Neutral),
+    rep(-1L, row$Negative)
   )
-})
+  n_total <- length(draw_pile)
 
+  ## Pre-allocate result vector
+  dir_rank_rec <- character(n_boot)
+
+  ## ----- Directional bootstrap loop -------------------------------------------
+  for (bi in seq_len(n_boot)) {
+
+    ## Resample draw pile with replacement; weighted mean = (pos - neg) / n_total
+    samp   <- sample(draw_pile, size = n_total, replace = TRUE)
+    w_mean <- mean(samp)
+
+    ## Classify using ±0.33 threshold
+    dir_rank_rec[bi] <- if      (w_mean <= -dir_eff_threshold) "Negative"
+                        else if (w_mean >=  dir_eff_threshold) "Positive"
+                        else                                    "Neutral"
+  }
+  ## ----- End directional bootstrap loop ----------------------------------------
+
+  ## Summarize directional rank distribution
+  dir_counts <- table(dir_rank_rec)
+  dir_n_vec  <- setNames(rep(0L, 3), all_dir_ranks)
+  dir_n_vec[names(dir_counts)] <- as.integer(dir_counts)
+
+  dir_boot_rows[[si]] <- data.frame(
+    stock_name        = s,
+    dir_rank          = all_dir_ranks,
+    n                 = dir_n_vec,
+    prop              = round(dir_n_vec / n_boot, 3),
+    ## Repeat baseline values across all 3 rows for easy joining downstream
+    baseline_dir_rank = row$baseline_dir_rank,
+    baseline_w_mean   = round(row$baseline_w_mean, 3),
+    stringsAsFactors  = FALSE,
+    row.names         = NULL
+  )
+
+} ## end stock loop
+
+dir_boot_summary <- dplyr::bind_rows(dir_boot_rows) %>%
+  dplyr::arrange(stock_name, dir_rank)
+
+readr::write_csv(dir_boot_summary, f_dir_boot)
+message("\u2713 Directional effects bootstrap complete.")
+
+################################################################################
+##------------------------------------------------------------------------------
+## Step 6 — Leave-one-out: Sensitivity attributes
+##
+## For each stock x sensitivity attribute:
+##   - Remove that attribute's mean from the set of 14 attribute means.
+##   - Rerun fcva_logic_model() on the remaining 13 attribute means.
+##   - Hold the baseline Exposure component score fixed.
+##   - Compute the new vulnerability score and rank.
+##   - Record whether the vulnerability rank changed and in what direction.
+##
+## Summary: which attributes, if removed, most often change the vulnerability rank?
+## Attributes that cause the most rank changes across stocks are most influential.
+## This is fully deterministic — no randomness, no bootstrapping.
+
+message("Running LOO \u2014 Sensitivity attributes ...")
+
+loo_sens_rows <- list()
+row_idx <- 0L
+
+for (s in stock_list) {
+
+  ## Baseline scores for this stock (fixed throughout all attribute omissions)
+  baseline_row <- vuln_std[vuln_std$stock_name == s, ]
+
+  ## Sensitivity attribute means for this stock
+  att_means <- sens_means_std[sens_means_std$stock_name == s, ]
+  att_names <- unique(att_means$attribute_name)
+
+  for (att_omit in att_names) {
+
+    ## Remove the omitted attribute's row from the mean score set
+    reduced_means <- att_means[att_means$attribute_name != att_omit, ]
+
+    ## Rerun FCVA logic model on the remaining attribute means
+    logic_result <- fcva_logic_model(reduced_means$mean_score)
+
+    ## New vulnerability score = new sensitivity score x fixed baseline exposure score
+    new_vuln_num  <- logic_result$component_score_numeric *
+                       baseline_row$exposure_score_numeric
+    new_vuln_rank <- assign_vulnerability_rank(new_vuln_num)
+
+    ## Did the vulnerability rank change when this attribute was removed?
+    rank_changed <- (new_vuln_rank != baseline_row$vulnerability_rank)
+
+    ## Direction of rank change (compare numeric scores; higher number = higher rank)
+    rank_change_dir <- if      (new_vuln_num > baseline_row$vulnerability_score_numeric) "Higher"
+                       else if (new_vuln_num < baseline_row$vulnerability_score_numeric) "Lower"
+                       else                                                               "No change"
+
+    row_idx <- row_idx + 1L
+    loo_sens_rows[[row_idx]] <- data.frame(
+      stock_name            = s,
+      attribute_omitted     = att_omit,
+      baseline_sens_rank    = baseline_row$sensitivity_rank,
+      new_sens_rank         = logic_result$component_rank,
+      baseline_vuln_rank    = baseline_row$vulnerability_rank,
+      new_vuln_rank         = new_vuln_rank,
+      baseline_vuln_score   = baseline_row$vulnerability_score_numeric,
+      new_vuln_score        = new_vuln_num,
+      rank_changed          = rank_changed,
+      rank_change_direction = rank_change_dir,
+      stringsAsFactors      = FALSE
+    )
+  }
+} ## end stock loop
+
+## Combine all rows
+loo_sens_long <- dplyr::bind_rows(loo_sens_rows)
+
+## Summarize by attribute: count stocks where rank changed, and the direction.
+## Attributes are sorted from most to least influential (most rank changes first).
 loo_sens_summary <- loo_sens_long %>%
   dplyr::group_by(attribute_omitted) %>%
   dplyr::summarise(
     n_stocks_tested   = dplyr::n(),
-    n_rank_changed    = sum(rank_changed, na.rm = TRUE),
-    n_rank_lower      = sum(rank_change_direction == "Lower",    na.rm = TRUE),
-    n_rank_higher     = sum(rank_change_direction == "Higher",   na.rm = TRUE),
-    prop_rank_changed = round(mean(rank_changed, na.rm = TRUE), 3),
+    n_rank_changed    = sum(rank_changed,                      na.rm = TRUE),
+    n_rank_lower      = sum(rank_change_direction == "Lower",  na.rm = TRUE),
+    n_rank_higher     = sum(rank_change_direction == "Higher", na.rm = TRUE),
+    prop_rank_changed = round(mean(rank_changed,               na.rm = TRUE), 3),
     .groups = "drop"
   ) %>%
-  dplyr::arrange(dplyr::desc(n_rank_changed), attribute_omitted)
+  dplyr::arrange(dplyr::desc(n_rank_changed))
 
 readr::write_csv(loo_sens_long,    f_loo_sens_long)
 readr::write_csv(loo_sens_summary, f_loo_sens_sum)
+message("\u2713 Sensitivity LOO complete \u2014 ", nrow(loo_sens_long), " rows written.")
 
-message("✓ Sensitivity LOO complete — ",
-        nrow(loo_sens_long), " rows written.")
-
+################################################################################
 ##------------------------------------------------------------------------------
-## Step 5B - Leave-one-out: Exposure factors
+## Step 7 — Leave-one-out: Exposure factors
 ##
-## Omit one Exposure factor at a time, recompute Exposure component score,
-## hold Sensitivity fixed, recompute vulnerability score and rank.
+## Same structure as Step 6 but for exposure factors:
+##   - Remove one exposure factor mean at a time.
+##   - Rerun fcva_logic_model() on the remaining factor means.
+##   - Hold the baseline Sensitivity component score fixed.
+##   - Compute the new vulnerability score and rank.
 
-message("Running LOO — Exposure factors ...")
+message("Running LOO \u2014 Exposure factors ...")
 
-loo_exp_long <- purrr::map_dfr(stock_list, function(s) {
-  row <- vuln_std %>% dplyr::filter(stock_name == s)
-  run_loo_exposure_one_stock(
-    stock_name_i            = s,
-    exp_means_std           = exp_means_std,
-    baseline_sens_score_num = row$sensitivity_score_numeric,
-    baseline_exp_rank       = row$exposure_rank,
-    baseline_vuln_rank      = row$vulnerability_rank,
-    baseline_vuln_score_num = row$vulnerability_score_numeric
-  )
-})
+loo_exp_rows <- list()
+row_idx <- 0L
+
+for (s in stock_list) {
+
+  ## Baseline scores for this stock
+  baseline_row <- vuln_std[vuln_std$stock_name == s, ]
+
+  ## Exposure factor means for this stock
+  fac_means <- exp_means_std[exp_means_std$stock_name == s, ]
+  fac_names <- unique(fac_means$exposure_factor)
+
+  for (fac_omit in fac_names) {
+
+    ## Remove the omitted factor's row from the mean score set
+    reduced_means <- fac_means[fac_means$exposure_factor != fac_omit, ]
+
+    ## Rerun FCVA logic model on the remaining exposure factor means
+    logic_result <- fcva_logic_model(reduced_means$mean_score)
+
+    ## New vulnerability score = fixed baseline sensitivity score x new exposure score
+    new_vuln_num  <- baseline_row$sensitivity_score_numeric *
+                       logic_result$component_score_numeric
+    new_vuln_rank <- assign_vulnerability_rank(new_vuln_num)
+
+    ## Did the vulnerability rank change?
+    rank_changed <- (new_vuln_rank != baseline_row$vulnerability_rank)
+
+    rank_change_dir <- if      (new_vuln_num > baseline_row$vulnerability_score_numeric) "Higher"
+                       else if (new_vuln_num < baseline_row$vulnerability_score_numeric) "Lower"
+                       else                                                               "No change"
+
+    row_idx <- row_idx + 1L
+    loo_exp_rows[[row_idx]] <- data.frame(
+      stock_name            = s,
+      factor_omitted        = fac_omit,
+      baseline_exp_rank     = baseline_row$exposure_rank,
+      new_exp_rank          = logic_result$component_rank,
+      baseline_vuln_rank    = baseline_row$vulnerability_rank,
+      new_vuln_rank         = new_vuln_rank,
+      baseline_vuln_score   = baseline_row$vulnerability_score_numeric,
+      new_vuln_score        = new_vuln_num,
+      rank_changed          = rank_changed,
+      rank_change_direction = rank_change_dir,
+      stringsAsFactors      = FALSE
+    )
+  }
+} ## end stock loop
+
+loo_exp_long <- dplyr::bind_rows(loo_exp_rows)
 
 loo_exp_summary <- loo_exp_long %>%
   dplyr::group_by(factor_omitted) %>%
   dplyr::summarise(
     n_stocks_tested   = dplyr::n(),
-    n_rank_changed    = sum(rank_changed, na.rm = TRUE),
-    n_rank_lower      = sum(rank_change_direction == "Lower",    na.rm = TRUE),
-    n_rank_higher     = sum(rank_change_direction == "Higher",   na.rm = TRUE),
-    prop_rank_changed = round(mean(rank_changed, na.rm = TRUE), 3),
+    n_rank_changed    = sum(rank_changed,                      na.rm = TRUE),
+    n_rank_lower      = sum(rank_change_direction == "Lower",  na.rm = TRUE),
+    n_rank_higher     = sum(rank_change_direction == "Higher", na.rm = TRUE),
+    prop_rank_changed = round(mean(rank_changed,               na.rm = TRUE), 3),
     .groups = "drop"
   ) %>%
-  dplyr::arrange(dplyr::desc(n_rank_changed), factor_omitted)
+  dplyr::arrange(dplyr::desc(n_rank_changed))
 
 readr::write_csv(loo_exp_long,    f_loo_exp_long)
 readr::write_csv(loo_exp_summary, f_loo_exp_sum)
-
-message("✓ Exposure LOO complete — ",
-        nrow(loo_exp_long), " rows written.")
+message("\u2713 Exposure LOO complete \u2014 ", nrow(loo_exp_long), " rows written.")
 
 ################################################################################
 ##------------------------------------------------------------------------------
-## Step 6 - Save figure-ready descriptive score tables
+## Step 8 — Save figure-ready tables
+##
+## Join each stock's attribute/factor means with its baseline component rank.
+## The figures script uses these tables to plot score distributions across stocks
+## (analogous to Figs 6 and 8 in Loughran et al. 2025).
+## Attribute/factor ordering by median score is handled in the figures script.
 
+## Exposure factor scores — one row per stock x exposure factor,
+## with the baseline exposure component rank attached for coloring in figures.
 plot_exp_scores <- exp_means_std %>%
   dplyr::left_join(
-    vuln_std %>% dplyr::select(stock_name, exposure_rank),
+    dplyr::select(vuln_std, stock_name, exposure_rank),
     by = "stock_name"
   ) %>%
   dplyr::rename(component_rank_baseline = exposure_rank)
 
+## Sensitivity attribute scores — one row per stock x sensitivity attribute.
 plot_sens_scores <- sens_means_std %>%
   dplyr::left_join(
-    vuln_std %>% dplyr::select(stock_name, sensitivity_rank),
+    dplyr::select(vuln_std, stock_name, sensitivity_rank),
     by = "stock_name"
   ) %>%
   dplyr::rename(component_rank_baseline = sensitivity_rank)
@@ -676,7 +900,6 @@ readr::write_csv(plot_exp_scores,  f_plot_exp)
 readr::write_csv(plot_sens_scores, f_plot_sens)
 
 ##------------------------------------------------------------------------------
-## Done
 
 message("Script completed successfully.")
-message("Outputs written to: ", out_dir)
+message("All outputs written to: ", out_dir)
