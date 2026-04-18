@@ -112,8 +112,6 @@ borderline_threshold <- 0.25    ## flag stocks where dominant rank prop < 0.75
 ##------------------------------------------------------------------------------
 ## Helper functions
 ##
-## Only three helper functions are defined here because each is called in
-## multiple places across the script. All other logic is written inline.
 
 ## fcva_logic_model()
 ## Converts a vector of attribute mean scores (each 1–4) to a component rank
