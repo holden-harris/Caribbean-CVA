@@ -45,6 +45,16 @@ library(readr)
 library(stringr)
 
 ##------------------------------------------------------------------------------
+## Analysis settings
+
+n_boot               <- 10000   ## number of bootstrap iterations
+bootstrap_seed       <- 99      ## random seed — set once before each bootstrap loop
+dir_eff_threshold    <- 0.33    ## ±0.33 directional rank cutoff, matching HMS CVA
+                                ##   w_mean = (n_pos - n_neg) / total_votes in [-1, +1]
+                                ##   for Caribbean: total_votes = 4 reviewers x 4 = 16
+borderline_threshold <- 0.25    ## flag stocks where dominant rank prop < 0.75
+
+##------------------------------------------------------------------------------
 ## Directories
 ##
 ## proj_dir = "." assumes the script is run from the RStudio project root
@@ -98,15 +108,7 @@ f_loo_exp_sum   <- file.path(final_dir, "table_leave_one_out_exposure_summary.cs
 f_plot_exp      <- file.path(final_dir, "table_exposure_factor_scores_for_plot.csv")
 f_plot_sens     <- file.path(final_dir, "table_sensitivity_attribute_scores_for_plot.csv")
 
-##------------------------------------------------------------------------------
-## Analysis settings
 
-n_boot               <- 10000   ## number of bootstrap iterations
-bootstrap_seed       <- 99      ## random seed — set once before each bootstrap loop
-dir_eff_threshold    <- 0.33    ## ±0.33 directional rank cutoff, matching HMS CVA
-                                ##   w_mean = (n_pos - n_neg) / total_votes in [-1, +1]
-                                ##   for Caribbean: total_votes = 4 reviewers x 4 = 16
-borderline_threshold <- 0.25    ## flag stocks where dominant rank prop < 0.75
 
 ################################################################################
 ##------------------------------------------------------------------------------
@@ -312,9 +314,9 @@ exp_means_std <- attr_means_raw %>%
 ## Finalized Caribbean CVA vulnerability rankings. Renamed here from abbreviated
 ## column names to descriptive names used throughout the rest of the script.
 
-vuln_raw <- readr::read_csv(f_vuln, show_col_types = FALSE)
+overall_vuln_raw <- readr::read_csv(f_vuln, show_col_types = FALSE)
 
-vuln_std <- vuln_raw %>%
+vuln_std <- overall_vuln_raw %>%
   dplyr::rename(
     exposure_score_numeric      = Exp_score,
     exposure_rank               = Exp_rank,
@@ -345,7 +347,7 @@ dir_reviewer_sums <- dir_tallies_std %>%
   dplyr::filter(total != 4L)
 
 ## Check 3/4: Stock coverage — tallies table and baseline vulnerability table
-## should cover the same set of stocks. Mismatches are flagged as WARNings
+## should cover the same set of stocks. Mismatches are flagged as Warnings
 ## (not hard stops) because some stocks may have tallies but no baseline score
 ## if they were excluded from the final CVA, or vice versa.
 stocks_missing_in_vuln    <- setdiff(unique(sens_tallies_std$stock_name),
@@ -625,9 +627,7 @@ message("\u2713 Bootstrap complete. Tables written.")
 message("Running directional effects bootstrap ...")
 
 set.seed(bootstrap_seed)
-
 all_dir_ranks <- c("Negative", "Neutral", "Positive")
-
 dir_boot_rows <- vector("list", n_stocks)
 
 for (si in seq_along(stock_list)) {
