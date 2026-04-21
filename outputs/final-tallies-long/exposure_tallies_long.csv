@@ -1,0 +1,466 @@
+"reviewer_id","stock_name","attribute_type","attribute_name","tally_L","tally_M","tally_H","tally_VH","n_tallies"
+"AA","Atlantic Herring","Qualitative Exposure","Sargassum influx",NA,3,2,NA,NA
+"BG","Atlantic Herring","Qualitative Exposure","Sargassum influx",NA,NA,4,1,NA
+"DB","Atlantic Herring","Qualitative Exposure","Sargassum influx",NA,2,3,NA,NA
+"RG","Atlantic Herring","Qualitative Exposure","Sargassum influx",NA,3,2,NA,NA
+NA,"Atlantic Herring","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Atlantic Herring","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Atlantic Herring","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Atlantic Herring","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Atlantic Herring","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Atlantic Herring","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Atlantic Herring","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Atlantic Herring","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Atlantic Herring","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Atlantic Herring","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Atlantic Herring","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Atlantic Herring","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Atlantic Herring","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"AA","Ballyhoo","Qualitative Exposure","Sargassum influx",NA,NA,3,2,NA
+"BG","Ballyhoo","Qualitative Exposure","Sargassum influx",NA,2,3,NA,NA
+"JP","Ballyhoo","Qualitative Exposure","Sargassum influx",NA,3,2,NA,NA
+"RG","Ballyhoo","Qualitative Exposure","Sargassum influx",NA,NA,4,1,NA
+NA,"Ballyhoo","Quantitative Exposure","Bottom salinity",0,19,5,0,24
+NA,"Ballyhoo","Quantitative Exposure","Bottom temperature",0,1,10,13,24
+NA,"Ballyhoo","Quantitative Exposure","Chlorophyll-a concentration",23,1,0,0,24
+NA,"Ballyhoo","Quantitative Exposure","Mixed layer depth",24,0,0,0,24
+NA,"Ballyhoo","Quantitative Exposure","Mean sea surface temperature gradient",5,19,0,0,24
+NA,"Ballyhoo","Quantitative Exposure","Oxygen at 200m",0,4,18,2,24
+NA,"Ballyhoo","Quantitative Exposure","Surface pH",0,0,0,24,24
+NA,"Ballyhoo","Quantitative Exposure","Primary production",24,0,0,0,24
+NA,"Ballyhoo","Quantitative Exposure","Precipitation",24,0,0,0,24
+NA,"Ballyhoo","Quantitative Exposure","Sea surface oxygen",0,0,0,24,24
+NA,"Ballyhoo","Quantitative Exposure","Sea surface salinity",0,4,13,7,24
+NA,"Ballyhoo","Quantitative Exposure","Sea surface temperature",0,0,0,24,24
+NA,"Ballyhoo","Quantitative Exposure","Surface wind speed magnitude",24,0,0,0,24
+"BG","Blue Runner","Qualitative Exposure","Sargassum influx",1,4,NA,NA,NA
+"BG","Blue Runner","Qualitative Exposure","Thermocline depth",NA,3,2,NA,NA
+"DB","Blue Runner","Qualitative Exposure","Sargassum influx",NA,3,2,NA,NA
+"DB","Blue Runner","Qualitative Exposure","Thermocline depth",2,2,1,NA,NA
+"RA","Blue Runner","Qualitative Exposure","Sargassum influx",2,3,NA,NA,NA
+"RA","Blue Runner","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+"WM","Blue Runner","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+"WM","Blue Runner","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+NA,"Blue Runner","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Blue Runner","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Blue Runner","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Blue Runner","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Blue Runner","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Blue Runner","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Blue Runner","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Blue Runner","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Blue Runner","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Blue Runner","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Blue Runner","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Blue Runner","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Blue Runner","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"DB","Diadema","Qualitative Exposure","Sargassum influx",1,2,2,NA,NA
+"JP","Diadema","Qualitative Exposure","Sargassum influx",2,3,NA,NA,NA
+"OT","Diadema","Qualitative Exposure","Sargassum influx",2,3,NA,NA,NA
+"SW","Diadema","Qualitative Exposure","Sargassum influx",NA,NA,1,4,NA
+NA,"Diadema","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Diadema","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Diadema","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Diadema","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Diadema","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Diadema","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Diadema","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Diadema","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Diadema","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Diadema","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Diadema","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Diadema","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Diadema","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"AA","Dolphinfish","Qualitative Exposure","Sargassum influx",NA,NA,2,3,NA
+"AA","Dolphinfish","Qualitative Exposure","Thermocline depth",NA,NA,2,3,NA
+"DB","Dolphinfish","Qualitative Exposure","Sargassum influx",NA,3,2,NA,NA
+"DB","Dolphinfish","Qualitative Exposure","Thermocline depth",2,2,1,NA,NA
+"RG","Dolphinfish","Qualitative Exposure","Sargassum influx",NA,NA,3,2,NA
+"RG","Dolphinfish","Qualitative Exposure","Thermocline depth",NA,NA,3,2,NA
+"WM","Dolphinfish","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+"WM","Dolphinfish","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+NA,"Dolphinfish","Quantitative Exposure","Bottom salinity",0,19,5,0,24
+NA,"Dolphinfish","Quantitative Exposure","Bottom temperature",0,1,10,13,24
+NA,"Dolphinfish","Quantitative Exposure","Chlorophyll-a concentration",23,1,0,0,24
+NA,"Dolphinfish","Quantitative Exposure","Mixed layer depth",24,0,0,0,24
+NA,"Dolphinfish","Quantitative Exposure","Mean sea surface temperature gradient",5,19,0,0,24
+NA,"Dolphinfish","Quantitative Exposure","Oxygen at 200m",0,4,18,2,24
+NA,"Dolphinfish","Quantitative Exposure","Surface pH",0,0,0,24,24
+NA,"Dolphinfish","Quantitative Exposure","Primary production",24,0,0,0,24
+NA,"Dolphinfish","Quantitative Exposure","Precipitation",24,0,0,0,24
+NA,"Dolphinfish","Quantitative Exposure","Sea surface oxygen",0,0,0,24,24
+NA,"Dolphinfish","Quantitative Exposure","Sea surface salinity",0,4,13,7,24
+NA,"Dolphinfish","Quantitative Exposure","Sea surface temperature",0,0,0,24,24
+NA,"Dolphinfish","Quantitative Exposure","Surface wind speed magnitude",24,0,0,0,24
+"AK","Gray Angelfish","Qualitative Exposure","Sargassum influx",NA,2,3,NA,NA
+"AK","Gray Angelfish","Qualitative Exposure","Thermocline depth",NA,2,3,NA,NA
+"ET","Gray Angelfish","Qualitative Exposure","Sargassum influx",NA,NA,3,2,NA
+"ET","Gray Angelfish","Qualitative Exposure","Thermocline depth",1,3,1,NA,NA
+"GR","Gray Angelfish","Qualitative Exposure","Sargassum influx",NA,NA,2,3,NA
+"GR","Gray Angelfish","Qualitative Exposure","Thermocline depth",NA,NA,2,3,NA
+"RL","Gray Angelfish","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+"RL","Gray Angelfish","Qualitative Exposure","Thermocline depth",2,3,NA,NA,NA
+NA,"Gray Angelfish","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Gray Angelfish","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Gray Angelfish","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Gray Angelfish","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Gray Angelfish","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Gray Angelfish","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Gray Angelfish","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Gray Angelfish","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Gray Angelfish","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Gray Angelfish","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Gray Angelfish","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Gray Angelfish","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Gray Angelfish","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"AK","Hogfish","Qualitative Exposure","Sargassum influx",NA,NA,3,2,NA
+"AK","Hogfish","Qualitative Exposure","Thermocline depth",4,1,NA,NA,NA
+"GR","Hogfish","Qualitative Exposure","Sargassum influx",NA,1,4,NA,NA
+"GR","Hogfish","Qualitative Exposure","Thermocline depth",2,3,NA,NA,NA
+"MS","Hogfish","Qualitative Exposure","Sargassum influx",NA,3,2,NA,NA
+"MS","Hogfish","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+"RL","Hogfish","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+"RL","Hogfish","Qualitative Exposure","Thermocline depth",2,3,NA,NA,NA
+NA,"Hogfish","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Hogfish","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Hogfish","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Hogfish","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Hogfish","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Hogfish","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Hogfish","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Hogfish","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Hogfish","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Hogfish","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Hogfish","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Hogfish","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Hogfish","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"BG","King Mackerel","Qualitative Exposure","Sargassum influx",NA,5,NA,NA,NA
+"BG","King Mackerel","Qualitative Exposure","Thermocline depth",NA,5,NA,NA,NA
+"RA","King Mackerel","Qualitative Exposure","Sargassum influx",2,3,NA,NA,NA
+"RA","King Mackerel","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+"RG","King Mackerel","Qualitative Exposure","Sargassum influx",NA,1,3,1,NA
+"RG","King Mackerel","Qualitative Exposure","Thermocline depth",NA,2,3,NA,NA
+"WM","King Mackerel","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+"WM","King Mackerel","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+NA,"King Mackerel","Quantitative Exposure","Bottom salinity",0,19,5,0,24
+NA,"King Mackerel","Quantitative Exposure","Bottom temperature",0,1,10,13,24
+NA,"King Mackerel","Quantitative Exposure","Chlorophyll-a concentration",23,1,0,0,24
+NA,"King Mackerel","Quantitative Exposure","Mixed layer depth",24,0,0,0,24
+NA,"King Mackerel","Quantitative Exposure","Mean sea surface temperature gradient",5,19,0,0,24
+NA,"King Mackerel","Quantitative Exposure","Oxygen at 200m",0,4,18,2,24
+NA,"King Mackerel","Quantitative Exposure","Surface pH",0,0,0,24,24
+NA,"King Mackerel","Quantitative Exposure","Primary production",24,0,0,0,24
+NA,"King Mackerel","Quantitative Exposure","Precipitation",24,0,0,0,24
+NA,"King Mackerel","Quantitative Exposure","Sea surface oxygen",0,0,0,24,24
+NA,"King Mackerel","Quantitative Exposure","Sea surface salinity",0,4,13,7,24
+NA,"King Mackerel","Quantitative Exposure","Sea surface temperature",0,0,0,24,24
+NA,"King Mackerel","Quantitative Exposure","Surface wind speed magnitude",24,0,0,0,24
+"AA","Lane Snapper","Qualitative Exposure","Sargassum influx",NA,2,3,NA,NA
+"ET","Lane Snapper","Qualitative Exposure","Sargassum influx",NA,NA,NA,5,NA
+"KO","Lane Snapper","Qualitative Exposure","Sargassum influx",NA,5,NA,NA,NA
+"RE","Lane Snapper","Qualitative Exposure","Sargassum influx",NA,1,3,1,NA
+NA,"Lane Snapper","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Lane Snapper","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Lane Snapper","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Lane Snapper","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Lane Snapper","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Lane Snapper","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Lane Snapper","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Lane Snapper","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Lane Snapper","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Lane Snapper","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Lane Snapper","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Lane Snapper","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Lane Snapper","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"AA","Misty Grouper","Qualitative Exposure","Sargassum influx",5,NA,NA,NA,NA
+"ET","Misty Grouper","Qualitative Exposure","Sargassum influx",5,NA,NA,NA,NA
+"MS","Misty Grouper","Qualitative Exposure","Sargassum influx",5,NA,NA,NA,NA
+"SK","Misty Grouper","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+NA,"Misty Grouper","Quantitative Exposure","Bottom salinity",0,15,5,0,20
+NA,"Misty Grouper","Quantitative Exposure","Bottom temperature",0,0,7,13,20
+NA,"Misty Grouper","Quantitative Exposure","Chlorophyll-a concentration",19,1,0,0,20
+NA,"Misty Grouper","Quantitative Exposure","Mixed layer depth",20,0,0,0,20
+NA,"Misty Grouper","Quantitative Exposure","Mean sea surface temperature gradient",3,17,0,0,20
+NA,"Misty Grouper","Quantitative Exposure","Oxygen at 200m",0,2,16,2,20
+NA,"Misty Grouper","Quantitative Exposure","Surface pH",0,0,0,20,20
+NA,"Misty Grouper","Quantitative Exposure","Primary production",20,0,0,0,20
+NA,"Misty Grouper","Quantitative Exposure","Precipitation",20,0,0,0,20
+NA,"Misty Grouper","Quantitative Exposure","Sea surface oxygen",0,0,0,20,20
+NA,"Misty Grouper","Quantitative Exposure","Sea surface salinity",0,3,10,7,20
+NA,"Misty Grouper","Quantitative Exposure","Sea surface temperature",0,0,0,20,20
+NA,"Misty Grouper","Quantitative Exposure","Surface wind speed magnitude",20,0,0,0,20
+"KO","Mutton Snapper","Qualitative Exposure","Sargassum influx",NA,5,NA,NA,NA
+"RE","Mutton Snapper","Qualitative Exposure","Sargassum influx",NA,1,3,1,NA
+"SK","Mutton Snapper","Qualitative Exposure","Sargassum influx",1,4,NA,NA,NA
+"WM","Mutton Snapper","Qualitative Exposure","Sargassum influx",NA,2,2,1,NA
+NA,"Mutton Snapper","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Mutton Snapper","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Mutton Snapper","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Mutton Snapper","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Mutton Snapper","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Mutton Snapper","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Mutton Snapper","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Mutton Snapper","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Mutton Snapper","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Mutton Snapper","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Mutton Snapper","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Mutton Snapper","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Mutton Snapper","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"CZ","Nassau Grouper","Qualitative Exposure","Sargassum influx",NA,NA,2,3,NA
+"CZ","Nassau Grouper","Qualitative Exposure","Thermocline depth",NA,2,3,NA,NA
+"MS","Nassau Grouper","Qualitative Exposure","Sargassum influx",4,1,NA,NA,NA
+"MS","Nassau Grouper","Qualitative Exposure","Thermocline depth",NA,3,2,NA,NA
+"OT","Nassau Grouper","Qualitative Exposure","Sargassum influx",1,3,1,NA,NA
+"OT","Nassau Grouper","Qualitative Exposure","Thermocline depth",1,1,3,NA,NA
+"SK","Nassau Grouper","Qualitative Exposure","Sargassum influx",1,2,2,NA,NA
+"SK","Nassau Grouper","Qualitative Exposure","Thermocline depth",2,3,NA,NA,NA
+NA,"Nassau Grouper","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Nassau Grouper","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Nassau Grouper","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Nassau Grouper","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Nassau Grouper","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Nassau Grouper","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Nassau Grouper","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Nassau Grouper","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Nassau Grouper","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Nassau Grouper","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Nassau Grouper","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Nassau Grouper","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Nassau Grouper","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"AK","Queen Conch","Qualitative Exposure","Sargassum influx",NA,5,NA,NA,NA
+"BG","Queen Conch","Qualitative Exposure","Sargassum influx",NA,NA,3,2,NA
+"OT","Queen Conch","Qualitative Exposure","Sargassum influx",NA,NA,3,2,NA
+"RA","Queen Conch","Qualitative Exposure","Sargassum influx",4,1,NA,NA,NA
+NA,"Queen Conch","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Queen Conch","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Queen Conch","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Queen Conch","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Queen Conch","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Queen Conch","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Queen Conch","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Queen Conch","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Queen Conch","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Queen Conch","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Queen Conch","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Queen Conch","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Queen Conch","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+NA,"Queen Snapper","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Queen Snapper","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Queen Snapper","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Queen Snapper","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Queen Snapper","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Queen Snapper","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Queen Snapper","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Queen Snapper","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Queen Snapper","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Queen Snapper","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Queen Snapper","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Queen Snapper","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Queen Snapper","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"CZ","Queen Triggerfish","Qualitative Exposure","Sargassum influx",NA,1,2,2,NA
+"CZ","Queen Triggerfish","Qualitative Exposure","Thermocline depth",NA,2,3,NA,NA
+"ET","Queen Triggerfish","Qualitative Exposure","Sargassum influx",4,1,NA,NA,NA
+"ET","Queen Triggerfish","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+"GR","Queen Triggerfish","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+"GR","Queen Triggerfish","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+"RL","Queen Triggerfish","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+"RL","Queen Triggerfish","Qualitative Exposure","Thermocline depth",2,3,NA,NA,NA
+NA,"Queen Triggerfish","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Queen Triggerfish","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Queen Triggerfish","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Queen Triggerfish","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Queen Triggerfish","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Queen Triggerfish","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Queen Triggerfish","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Queen Triggerfish","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Queen Triggerfish","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Queen Triggerfish","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Queen Triggerfish","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Queen Triggerfish","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Queen Triggerfish","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"CZ","Rainbow Parrotfish","Qualitative Exposure","Sargassum influx",NA,0,3,2,NA
+"CZ","Rainbow Parrotfish","Qualitative Exposure","Thermocline depth",NA,2,3,NA,NA
+"GR","Rainbow Parrotfish","Qualitative Exposure","Sargassum influx",NA,3,NA,2,NA
+"GR","Rainbow Parrotfish","Qualitative Exposure","Thermocline depth",NA,2,3,NA,NA
+"RE","Rainbow Parrotfish","Qualitative Exposure","Sargassum influx",NA,NA,NA,5,NA
+"RE","Rainbow Parrotfish","Qualitative Exposure","Thermocline depth",NA,5,NA,NA,NA
+"RL","Rainbow Parrotfish","Qualitative Exposure","Sargassum influx",1,3,1,NA,NA
+"RL","Rainbow Parrotfish","Qualitative Exposure","Thermocline depth",1,3,1,NA,NA
+NA,"Rainbow Parrotfish","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Rainbow Parrotfish","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"MS","Red Grouper","Qualitative Exposure","Sargassum influx",5,NA,NA,NA,NA
+"MS","Red Grouper","Qualitative Exposure","Thermocline depth",4,1,NA,NA,NA
+"OT","Red Grouper","Qualitative Exposure","Sargassum influx",NA,1,3,1,NA
+"OT","Red Grouper","Qualitative Exposure","Thermocline depth",NA,1,3,1,NA
+"RA","Red Grouper","Qualitative Exposure","Sargassum influx",2,3,NA,NA,NA
+"RA","Red Grouper","Qualitative Exposure","Thermocline depth",4,1,NA,NA,NA
+"SK","Red Grouper","Qualitative Exposure","Sargassum influx",1,3,1,NA,NA
+"SK","Red Grouper","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+NA,"Red Grouper","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Red Grouper","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Red Grouper","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Red Grouper","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Red Grouper","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Red Grouper","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Red Grouper","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Red Grouper","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Red Grouper","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Red Grouper","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Red Grouper","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Red Grouper","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Red Grouper","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"CZ","Redhind","Qualitative Exposure","Sargassum influx",NA,NA,2,3,NA
+"CZ","Redhind","Qualitative Exposure","Thermocline depth",NA,2,3,NA,NA
+"MS","Redhind","Qualitative Exposure","Sargassum influx",5,NA,NA,NA,NA
+"MS","Redhind","Qualitative Exposure","Thermocline depth",NA,3,2,NA,NA
+"OT","Redhind","Qualitative Exposure","Sargassum influx",4,1,NA,NA,NA
+"OT","Redhind","Qualitative Exposure","Thermocline depth",NA,1,4,NA,NA
+"SK","Redhind","Qualitative Exposure","Sargassum influx",1,1,3,NA,NA
+"SK","Redhind","Qualitative Exposure","Thermocline depth",2,2,1,NA,NA
+NA,"Redhind","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Redhind","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Redhind","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Redhind","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Redhind","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Redhind","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Redhind","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Redhind","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Redhind","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Redhind","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Redhind","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Redhind","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Redhind","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"JP","Sea Cucumber","Qualitative Exposure","Sargassum influx",NA,1,2,2,NA
+"OT","Sea Cucumber","Qualitative Exposure","Sargassum influx",3,2,NA,NA,NA
+"RA","Sea Cucumber","Qualitative Exposure","Sargassum influx",1,4,NA,NA,NA
+"SW","Sea Cucumber","Qualitative Exposure","Sargassum influx",NA,NA,3,2,NA
+NA,"Sea Cucumber","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Sea Cucumber","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Sea Cucumber","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Sea Cucumber","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Sea Cucumber","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Sea Cucumber","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Sea Cucumber","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Sea Cucumber","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Sea Cucumber","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Sea Cucumber","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Sea Cucumber","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Sea Cucumber","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Sea Cucumber","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+NA,"Silk Snapper","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Silk Snapper","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Silk Snapper","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Silk Snapper","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Silk Snapper","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Silk Snapper","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Silk Snapper","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Silk Snapper","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Silk Snapper","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Silk Snapper","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Silk Snapper","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Silk Snapper","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Silk Snapper","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"AK","Spiny Lobster","Qualitative Exposure","Sargassum influx",NA,2,3,NA,NA
+"BG","Spiny Lobster","Qualitative Exposure","Sargassum influx",NA,NA,NA,5,NA
+"DB","Spiny Lobster","Qualitative Exposure","Sargassum influx",4,1,NA,NA,NA
+"SW","Spiny Lobster","Qualitative Exposure","Sargassum influx",NA,1,2,2,NA
+NA,"Spiny Lobster","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Spiny Lobster","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Spiny Lobster","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Spiny Lobster","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Spiny Lobster","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Spiny Lobster","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Spiny Lobster","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Spiny Lobster","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Spiny Lobster","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Spiny Lobster","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Spiny Lobster","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Spiny Lobster","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Spiny Lobster","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"CZ","Stoplight Parrotfish","Qualitative Exposure","Sargassum influx",NA,1,2,2,NA
+"CZ","Stoplight Parrotfish","Qualitative Exposure","Thermocline depth",NA,2,3,NA,NA
+"GR","Stoplight Parrotfish","Qualitative Exposure","Sargassum influx",NA,3,2,NA,NA
+"GR","Stoplight Parrotfish","Qualitative Exposure","Thermocline depth",NA,3,2,NA,NA
+"RE","Stoplight Parrotfish","Qualitative Exposure","Sargassum influx",NA,NA,NA,5,NA
+"RE","Stoplight Parrotfish","Qualitative Exposure","Thermocline depth",NA,5,NA,NA,NA
+"RL","Stoplight Parrotfish","Qualitative Exposure","Sargassum influx",1,3,1,NA,NA
+"RL","Stoplight Parrotfish","Qualitative Exposure","Thermocline depth",1,3,1,NA,NA
+NA,"Stoplight Parrotfish","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Stoplight Parrotfish","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"DB","White Mullet","Qualitative Exposure","Sargassum influx",NA,2,3,NA,NA
+"JP","White Mullet","Qualitative Exposure","Sargassum influx",1,2,2,NA,NA
+"RG","White Mullet","Qualitative Exposure","Sargassum influx",NA,NA,4,1,NA
+"WM","White Mullet","Qualitative Exposure","Sargassum influx",NA,NA,2,3,NA
+NA,"White Mullet","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"White Mullet","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"White Mullet","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"White Mullet","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"White Mullet","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"White Mullet","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"White Mullet","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"White Mullet","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"White Mullet","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"White Mullet","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"White Mullet","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"White Mullet","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"White Mullet","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"CZ","Yellowfin Grouper","Qualitative Exposure","Sargassum influx",NA,1,2,2,NA
+"CZ","Yellowfin Grouper","Qualitative Exposure","Thermocline depth",NA,NA,2,3,NA
+"MS","Yellowfin Grouper","Qualitative Exposure","Sargassum influx",5,NA,NA,NA,NA
+"MS","Yellowfin Grouper","Qualitative Exposure","Thermocline depth",NA,3,2,NA,NA
+"RA","Yellowfin Grouper","Qualitative Exposure","Sargassum influx",1,3,1,NA,NA
+"RA","Yellowfin Grouper","Qualitative Exposure","Thermocline depth",3,2,NA,NA,NA
+"SK","Yellowfin Grouper","Qualitative Exposure","Sargassum influx",2,2,1,NA,NA
+"SK","Yellowfin Grouper","Qualitative Exposure","Thermocline depth",2,3,NA,NA,NA
+NA,"Yellowfin Grouper","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Yellowfin Grouper","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21
+"AA","Yellowtail Snapper","Qualitative Exposure","Sargassum influx",NA,1,3,1,NA
+"ET","Yellowtail Snapper","Qualitative Exposure","Sargassum influx",NA,NA,NA,5,NA
+"KO","Yellowtail Snapper","Qualitative Exposure","Sargassum influx",NA,5,NA,NA,NA
+"RE","Yellowtail Snapper","Qualitative Exposure","Sargassum influx",NA,1,3,1,NA
+NA,"Yellowtail Snapper","Quantitative Exposure","Bottom salinity",0,16,5,0,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Bottom temperature",0,1,7,13,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Chlorophyll-a concentration",20,1,0,0,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Mixed layer depth",21,0,0,0,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Mean sea surface temperature gradient",3,18,0,0,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Oxygen at 200m",0,3,16,2,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Surface pH",0,0,0,21,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Primary production",21,0,0,0,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Precipitation",21,0,0,0,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Sea surface oxygen",0,0,0,21,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Sea surface salinity",0,4,10,7,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Sea surface temperature",0,0,0,21,21
+NA,"Yellowtail Snapper","Quantitative Exposure","Surface wind speed magnitude",21,0,0,0,21

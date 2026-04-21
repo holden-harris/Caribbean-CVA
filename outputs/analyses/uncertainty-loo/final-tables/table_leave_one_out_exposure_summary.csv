@@ -1,0 +1,14 @@
+factor_omitted,n_stocks_tested,n_rank_changed,n_rank_lower,n_rank_higher,prop_rank_changed
+Bottom temperature,25,25,25,0,1
+Sea surface oxygen,25,25,25,0,1
+Sea surface temperature,25,25,25,0,1
+Surface pH,25,25,25,0,1
+Bottom salinity,25,0,0,0,0
+Chlorophyll-a concentration,25,0,0,0,0
+Mean sea surface temperature gradient,25,0,0,0,0
+Mixed layer depth,25,0,0,0,0
+Oxygen at 200m,25,0,0,0,0
+Precipitation,25,0,0,0,0
+Primary production,25,0,0,0,0
+Sea surface salinity,25,0,0,0,0
+Surface wind speed magnitude,25,0,0,0,0

@@ -1,0 +1,351 @@
+"stock_name","attribute_name","tally_L","tally_M","tally_H","tally_VH","n_scorers","n_tallies"
+"Atlantic Herring","Adult mobility",10,9,1,0,4,20
+"Atlantic Herring","Complexity in reproductive strategy",12,8,0,0,4,20
+"Atlantic Herring","Genetic diversity",17,3,0,0,4,20
+"Atlantic Herring","Habitat specificity",10,6,4,0,4,20
+"Atlantic Herring","Mobility and dispersal or early life stages",5,9,6,0,4,20
+"Atlantic Herring","Other stressors",8,6,6,0,4,20
+"Atlantic Herring","Population growth rate",17,3,0,0,4,20
+"Atlantic Herring","Predation and competition dynamics",6,9,5,0,4,20
+"Atlantic Herring","Prey specificity",5,9,6,0,4,20
+"Atlantic Herring","Spawning characteristics",2,15,3,0,4,20
+"Atlantic Herring","Species range",10,5,5,0,4,20
+"Atlantic Herring","Specificity in early life history requirements",5,8,7,0,4,20
+"Atlantic Herring","Stock Size Status",10,6,4,0,4,20
+"Atlantic Herring","Tolerance to ocean acidification",14,3,3,0,4,20
+"Ballyhoo","Adult mobility",9,11,0,0,4,20
+"Ballyhoo","Complexity in reproductive strategy",9,9,2,0,4,20
+"Ballyhoo","Genetic diversity",18,2,0,0,4,20
+"Ballyhoo","Habitat specificity",16,4,0,0,4,20
+"Ballyhoo","Mobility and dispersal or early life stages",6,7,7,0,4,20
+"Ballyhoo","Other stressors",4,10,6,0,4,20
+"Ballyhoo","Population growth rate",17,3,0,0,4,20
+"Ballyhoo","Predation and competition dynamics",1,14,5,0,4,20
+"Ballyhoo","Prey specificity",14,6,0,0,4,20
+"Ballyhoo","Spawning characteristics",8,7,5,0,4,20
+"Ballyhoo","Species range",7,10,3,0,4,20
+"Ballyhoo","Specificity in early life history requirements",2,9,8,1,4,20
+"Ballyhoo","Stock Size Status",2,9,9,0,4,20
+"Ballyhoo","Tolerance to ocean acidification",19,1,0,0,4,20
+"Blue Runner","Adult mobility",14,5,1,0,4,20
+"Blue Runner","Complexity in reproductive strategy",17,3,0,0,4,20
+"Blue Runner","Genetic diversity",19,1,0,0,4,20
+"Blue Runner","Habitat specificity",15,5,0,0,4,20
+"Blue Runner","Mobility and dispersal or early life stages",11,9,0,0,4,20
+"Blue Runner","Other stressors",15,5,0,0,4,20
+"Blue Runner","Population growth rate",10,9,1,0,4,20
+"Blue Runner","Predation and competition dynamics",4,12,4,0,4,20
+"Blue Runner","Prey specificity",9,11,0,0,4,20
+"Blue Runner","Spawning characteristics",10,6,4,0,4,20
+"Blue Runner","Species range",11,5,3,1,4,20
+"Blue Runner","Specificity in early life history requirements",6,7,6,1,4,20
+"Blue Runner","Stock Size Status",12,8,0,0,4,20
+"Blue Runner","Tolerance to ocean acidification",14,5,1,0,4,20
+"Diadema","Adult mobility",0,9,11,0,4,20
+"Diadema","Complexity in reproductive strategy",1,4,8,7,4,20
+"Diadema","Genetic diversity",0,3,9,8,4,20
+"Diadema","Habitat specificity",7,6,3,4,4,20
+"Diadema","Mobility and dispersal or early life stages",10,10,0,0,4,20
+"Diadema","Other stressors",2,3,4,11,4,20
+"Diadema","Population growth rate",9,7,3,1,4,20
+"Diadema","Predation and competition dynamics",4,4,7,5,4,20
+"Diadema","Prey specificity",14,5,1,0,4,20
+"Diadema","Spawning characteristics",7,9,3,1,4,20
+"Diadema","Species range",14,5,1,0,4,20
+"Diadema","Specificity in early life history requirements",2,6,6,6,4,20
+"Diadema","Stock Size Status",10,5,4,1,4,20
+"Diadema","Tolerance to ocean acidification",0,1,6,13,4,20
+"Dolphinfish","Adult mobility",15,5,0,0,4,20
+"Dolphinfish","Complexity in reproductive strategy",9,7,4,0,4,20
+"Dolphinfish","Genetic diversity",19,1,0,0,4,20
+"Dolphinfish","Habitat specificity",7,9,4,0,4,20
+"Dolphinfish","Mobility and dispersal or early life stages",9,9,2,0,4,20
+"Dolphinfish","Other stressors",14,6,0,0,4,20
+"Dolphinfish","Population growth rate",18,2,0,0,4,20
+"Dolphinfish","Predation and competition dynamics",4,10,6,0,4,20
+"Dolphinfish","Prey specificity",16,4,0,0,4,20
+"Dolphinfish","Spawning characteristics",15,5,0,0,4,20
+"Dolphinfish","Species range",10,3,4,3,4,20
+"Dolphinfish","Specificity in early life history requirements",11,9,0,0,4,20
+"Dolphinfish","Stock Size Status",11,8,1,0,4,20
+"Dolphinfish","Tolerance to ocean acidification",20,0,0,0,4,20
+"Gray Angelfish","Adult mobility",0,3,10,7,4,20
+"Gray Angelfish","Complexity in reproductive strategy",10,3,5,2,4,20
+"Gray Angelfish","Genetic diversity",3,14,3,0,4,20
+"Gray Angelfish","Habitat specificity",1,2,14,3,4,20
+"Gray Angelfish","Mobility and dispersal or early life stages",4,11,4,1,4,20
+"Gray Angelfish","Other stressors",4,10,3,3,4,20
+"Gray Angelfish","Population growth rate",3,8,7,2,4,20
+"Gray Angelfish","Predation and competition dynamics",9,6,5,0,4,20
+"Gray Angelfish","Prey specificity",7,7,5,1,4,20
+"Gray Angelfish","Spawning characteristics",0,6,8,6,4,20
+"Gray Angelfish","Species range",8,6,5,1,4,20
+"Gray Angelfish","Specificity in early life history requirements",1,11,7,1,4,20
+"Gray Angelfish","Stock Size Status",9,6,4,1,4,20
+"Gray Angelfish","Tolerance to ocean acidification",6,12,2,0,4,20
+"Hogfish","Adult mobility",0,7,4,9,4,20
+"Hogfish","Complexity in reproductive strategy",13,3,1,3,4,20
+"Hogfish","Genetic diversity",2,3,7,8,4,20
+"Hogfish","Habitat specificity",4,6,5,5,4,20
+"Hogfish","Mobility and dispersal or early life stages",0,12,7,1,4,20
+"Hogfish","Other stressors",10,6,4,0,4,20
+"Hogfish","Population growth rate",2,9,7,2,4,20
+"Hogfish","Predation and competition dynamics",3,13,4,0,4,20
+"Hogfish","Prey specificity",2,10,2,6,4,20
+"Hogfish","Spawning characteristics",1,8,9,2,4,20
+"Hogfish","Species range",11,3,5,1,4,20
+"Hogfish","Specificity in early life history requirements",2,10,6,2,4,20
+"Hogfish","Stock Size Status",8,8,2,2,4,20
+"Hogfish","Tolerance to ocean acidification",2,11,6,1,4,20
+"King Mackerel","Adult mobility",8,9,3,0,4,20
+"King Mackerel","Complexity in reproductive strategy",14,4,2,0,4,20
+"King Mackerel","Genetic diversity",12,6,2,0,4,20
+"King Mackerel","Habitat specificity",12,5,3,0,4,20
+"King Mackerel","Mobility and dispersal or early life stages",2,7,11,0,4,20
+"King Mackerel","Other stressors",12,5,3,0,4,20
+"King Mackerel","Population growth rate",13,5,2,0,4,20
+"King Mackerel","Predation and competition dynamics",7,11,2,0,4,20
+"King Mackerel","Prey specificity",9,9,2,0,4,20
+"King Mackerel","Spawning characteristics",2,8,10,0,4,20
+"King Mackerel","Species range",0,7,8,5,4,20
+"King Mackerel","Specificity in early life history requirements",0,7,11,2,4,20
+"King Mackerel","Stock Size Status",6,9,5,0,4,20
+"King Mackerel","Tolerance to ocean acidification",7,9,4,0,4,20
+"Lane Snapper","Adult mobility",0,19,1,0,4,20
+"Lane Snapper","Complexity in reproductive strategy",1,9,5,5,4,20
+"Lane Snapper","Genetic diversity",6,8,6,0,4,20
+"Lane Snapper","Habitat specificity",4,9,5,2,4,20
+"Lane Snapper","Mobility and dispersal or early life stages",9,11,0,0,4,20
+"Lane Snapper","Other stressors",0,9,6,5,4,20
+"Lane Snapper","Population growth rate",0,7,12,1,4,20
+"Lane Snapper","Predation and competition dynamics",1,12,7,0,4,20
+"Lane Snapper","Prey specificity",8,11,1,0,4,20
+"Lane Snapper","Spawning characteristics",8,2,10,0,4,20
+"Lane Snapper","Species range",16,4,0,0,4,20
+"Lane Snapper","Specificity in early life history requirements",0,12,7,1,4,20
+"Lane Snapper","Stock Size Status",2,10,8,0,4,20
+"Lane Snapper","Tolerance to ocean acidification",0,4,14,2,4,20
+"Misty Grouper","Adult mobility",0,8,10,2,4,20
+"Misty Grouper","Complexity in reproductive strategy",0,4,7,9,4,20
+"Misty Grouper","Genetic diversity",0,6,11,3,4,20
+"Misty Grouper","Habitat specificity",1,8,8,3,4,20
+"Misty Grouper","Mobility and dispersal or early life stages",0,11,6,3,4,20
+"Misty Grouper","Other stressors",3,8,9,0,4,20
+"Misty Grouper","Population growth rate",0,0,7,13,4,20
+"Misty Grouper","Predation and competition dynamics",4,8,7,1,4,20
+"Misty Grouper","Prey specificity",1,12,7,0,4,20
+"Misty Grouper","Spawning characteristics",0,0,13,7,4,20
+"Misty Grouper","Species range",6,3,10,1,4,20
+"Misty Grouper","Specificity in early life history requirements",2,7,7,4,4,20
+"Misty Grouper","Stock Size Status",0,2,5,13,4,20
+"Misty Grouper","Tolerance to ocean acidification",2,10,8,0,4,20
+"Mutton Snapper","Adult mobility",2,12,6,0,4,20
+"Mutton Snapper","Complexity in reproductive strategy",0,0,11,9,4,20
+"Mutton Snapper","Genetic diversity",2,9,6,3,4,20
+"Mutton Snapper","Habitat specificity",0,8,8,4,4,20
+"Mutton Snapper","Mobility and dispersal or early life stages",8,9,3,0,4,20
+"Mutton Snapper","Other stressors",0,15,4,1,4,20
+"Mutton Snapper","Population growth rate",1,12,5,2,4,20
+"Mutton Snapper","Predation and competition dynamics",1,11,7,1,4,20
+"Mutton Snapper","Prey specificity",0,11,5,4,4,20
+"Mutton Snapper","Spawning characteristics",0,2,10,8,4,20
+"Mutton Snapper","Species range",11,2,3,4,4,20
+"Mutton Snapper","Specificity in early life history requirements",0,5,9,6,4,20
+"Mutton Snapper","Stock Size Status",1,12,6,1,4,20
+"Mutton Snapper","Tolerance to ocean acidification",0,5,12,3,4,20
+"Nassau Grouper","Adult mobility",3,12,5,0,4,20
+"Nassau Grouper","Complexity in reproductive strategy",0,0,7,13,4,20
+"Nassau Grouper","Genetic diversity",2,7,8,3,4,20
+"Nassau Grouper","Habitat specificity",0,13,7,0,4,20
+"Nassau Grouper","Mobility and dispersal or early life stages",2,12,6,0,4,20
+"Nassau Grouper","Other stressors",1,11,7,1,4,20
+"Nassau Grouper","Population growth rate",0,1,14,5,4,20
+"Nassau Grouper","Predation and competition dynamics",9,10,1,0,4,20
+"Nassau Grouper","Prey specificity",8,9,3,0,4,20
+"Nassau Grouper","Spawning characteristics",0,0,17,3,4,20
+"Nassau Grouper","Species range",0,6,14,0,4,20
+"Nassau Grouper","Specificity in early life history requirements",0,4,14,2,4,20
+"Nassau Grouper","Stock Size Status",0,1,7,12,4,20
+"Nassau Grouper","Tolerance to ocean acidification",7,10,3,0,4,20
+"Queen Conch","Adult mobility",5,2,13,0,4,20
+"Queen Conch","Complexity in reproductive strategy",0,1,6,13,4,20
+"Queen Conch","Genetic diversity",13,5,2,0,4,20
+"Queen Conch","Habitat specificity",10,10,0,0,4,20
+"Queen Conch","Mobility and dispersal or early life stages",7,12,1,0,4,20
+"Queen Conch","Other stressors",12,6,2,0,4,20
+"Queen Conch","Population growth rate",9,6,3,2,4,20
+"Queen Conch","Predation and competition dynamics",13,3,3,1,4,20
+"Queen Conch","Prey specificity",15,5,0,0,4,20
+"Queen Conch","Spawning characteristics",8,9,3,0,4,20
+"Queen Conch","Species range",11,3,6,0,4,20
+"Queen Conch","Specificity in early life history requirements",11,6,2,1,4,20
+"Queen Conch","Stock Size Status",5,10,4,1,4,20
+"Queen Conch","Tolerance to ocean acidification",0,0,1,19,4,20
+"Queen Triggerfish","Adult mobility",2,6,8,4,4,20
+"Queen Triggerfish","Complexity in reproductive strategy",5,8,5,2,4,20
+"Queen Triggerfish","Genetic diversity",7,7,6,0,4,20
+"Queen Triggerfish","Habitat specificity",1,7,8,4,4,20
+"Queen Triggerfish","Mobility and dispersal or early life stages",4,4,4,8,4,20
+"Queen Triggerfish","Other stressors",4,7,6,3,4,20
+"Queen Triggerfish","Population growth rate",5,7,7,1,4,20
+"Queen Triggerfish","Predation and competition dynamics",6,10,4,0,4,20
+"Queen Triggerfish","Prey specificity",4,9,7,0,4,20
+"Queen Triggerfish","Spawning characteristics",2,11,3,4,4,20
+"Queen Triggerfish","Species range",9,6,5,0,4,20
+"Queen Triggerfish","Specificity in early life history requirements",4,9,6,1,4,20
+"Queen Triggerfish","Stock Size Status",6,7,4,3,4,20
+"Queen Triggerfish","Tolerance to ocean acidification",6,8,6,0,4,20
+"Queen snapper","Adult mobility",6,9,5,0,4,20
+"Queen snapper","Complexity in reproductive strategy",1,6,8,5,4,20
+"Queen snapper","Genetic diversity",3,3,10,4,4,20
+"Queen snapper","Habitat specificity",0,5,8,7,4,20
+"Queen snapper","Mobility and dispersal or early life stages",5,9,6,0,4,20
+"Queen snapper","Other stressors",6,7,6,1,4,20
+"Queen snapper","Population growth rate",7,2,5,6,4,20
+"Queen snapper","Predation and competition dynamics",2,10,7,1,4,20
+"Queen snapper","Prey specificity",7,7,3,3,4,20
+"Queen snapper","Spawning characteristics",3,9,8,0,4,20
+"Queen snapper","Species range",5,6,5,4,4,20
+"Queen snapper","Specificity in early life history requirements",2,5,8,5,4,20
+"Queen snapper","Stock Size Status",3,11,4,2,4,20
+"Queen snapper","Tolerance to ocean acidification",3,5,7,5,4,20
+"Rainbow Parrotfish","Adult mobility",2,5,6,7,4,20
+"Rainbow Parrotfish","Complexity in reproductive strategy",1,7,7,5,4,20
+"Rainbow Parrotfish","Genetic diversity",2,13,4,1,4,20
+"Rainbow Parrotfish","Habitat specificity",0,4,9,7,4,20
+"Rainbow Parrotfish","Mobility and dispersal or early life stages",0,8,9,3,4,20
+"Rainbow Parrotfish","Other stressors",0,4,7,9,4,20
+"Rainbow Parrotfish","Population growth rate",0,9,8,3,4,20
+"Rainbow Parrotfish","Predation and competition dynamics",1,7,11,1,4,20
+"Rainbow Parrotfish","Prey specificity",0,2,11,7,4,20
+"Rainbow Parrotfish","Spawning characteristics",2,11,5,2,4,20
+"Rainbow Parrotfish","Species range",1,9,7,3,4,20
+"Rainbow Parrotfish","Specificity in early life history requirements",1,4,12,3,4,20
+"Rainbow Parrotfish","Stock Size Status",0,6,6,8,4,20
+"Rainbow Parrotfish","Tolerance to ocean acidification",0,3,8,9,4,20
+"Red Grouper","Adult mobility",4,9,7,0,4,20
+"Red Grouper","Complexity in reproductive strategy",1,5,11,3,4,20
+"Red Grouper","Genetic diversity",8,9,2,1,4,20
+"Red Grouper","Habitat specificity",2,6,12,0,4,20
+"Red Grouper","Mobility and dispersal or early life stages",2,15,3,0,4,20
+"Red Grouper","Other stressors",11,6,3,0,4,20
+"Red Grouper","Population growth rate",0,1,7,12,4,20
+"Red Grouper","Predation and competition dynamics",7,10,3,0,4,20
+"Red Grouper","Prey specificity",9,9,2,0,4,20
+"Red Grouper","Spawning characteristics",1,4,13,2,4,20
+"Red Grouper","Species range",3,10,7,0,4,20
+"Red Grouper","Specificity in early life history requirements",2,8,9,1,4,20
+"Red Grouper","Stock Size Status",1,5,5,9,4,20
+"Red Grouper","Tolerance to ocean acidification",4,5,8,3,4,20
+"Redhind","Adult mobility",3,15,2,0,4,20
+"Redhind","Complexity in reproductive strategy",0,1,7,12,4,20
+"Redhind","Genetic diversity",5,10,3,2,4,20
+"Redhind","Habitat specificity",7,10,3,0,4,20
+"Redhind","Mobility and dispersal or early life stages",2,12,5,1,4,20
+"Redhind","Other stressors",1,12,7,0,4,20
+"Redhind","Population growth rate",1,10,5,4,4,20
+"Redhind","Predation and competition dynamics",4,8,8,0,4,20
+"Redhind","Prey specificity",11,7,2,0,4,20
+"Redhind","Spawning characteristics",0,0,18,2,4,20
+"Redhind","Species range",3,13,4,0,4,20
+"Redhind","Specificity in early life history requirements",1,12,7,0,4,20
+"Redhind","Stock Size Status",2,5,12,1,4,20
+"Redhind","Tolerance to ocean acidification",5,9,5,1,4,20
+"Sea Cucumber","Adult mobility",0,2,17,1,4,20
+"Sea Cucumber","Complexity in reproductive strategy",0,11,7,2,4,20
+"Sea Cucumber","Genetic diversity",5,10,4,1,4,20
+"Sea Cucumber","Habitat specificity",7,6,7,0,4,20
+"Sea Cucumber","Mobility and dispersal or early life stages",1,13,5,1,4,20
+"Sea Cucumber","Other stressors",6,9,3,2,4,20
+"Sea Cucumber","Population growth rate",6,8,5,1,4,20
+"Sea Cucumber","Predation and competition dynamics",6,5,6,3,4,20
+"Sea Cucumber","Prey specificity",20,0,0,0,4,20
+"Sea Cucumber","Spawning characteristics",0,4,13,3,4,20
+"Sea Cucumber","Species range",10,7,3,0,4,20
+"Sea Cucumber","Specificity in early life history requirements",4,10,4,2,4,20
+"Sea Cucumber","Stock Size Status",2,6,7,5,4,20
+"Sea Cucumber","Tolerance to ocean acidification",0,2,9,9,4,20
+"Silk Snapper","Adult mobility",9,5,2,4,4,20
+"Silk Snapper","Complexity in reproductive strategy",5,11,4,0,4,20
+"Silk Snapper","Genetic diversity",7,5,8,0,4,20
+"Silk Snapper","Habitat specificity",8,8,3,1,4,20
+"Silk Snapper","Mobility and dispersal or early life stages",7,8,4,1,4,20
+"Silk Snapper","Other stressors",5,9,3,3,4,20
+"Silk Snapper","Population growth rate",3,8,5,4,4,20
+"Silk Snapper","Predation and competition dynamics",6,9,4,1,4,20
+"Silk Snapper","Prey specificity",9,8,2,1,4,20
+"Silk Snapper","Spawning characteristics",5,7,6,2,4,20
+"Silk Snapper","Species range",14,6,0,0,4,20
+"Silk Snapper","Specificity in early life history requirements",4,7,7,2,4,20
+"Silk Snapper","Stock Size Status",0,5,13,2,4,20
+"Silk Snapper","Tolerance to ocean acidification",7,11,2,0,4,20
+"Spiny Lobster","Adult mobility",11,9,0,0,4,20
+"Spiny Lobster","Complexity in reproductive strategy",8,11,1,0,4,20
+"Spiny Lobster","Genetic diversity",12,3,5,0,4,20
+"Spiny Lobster","Habitat specificity",6,10,4,0,4,20
+"Spiny Lobster","Mobility and dispersal or early life stages",18,2,0,0,4,20
+"Spiny Lobster","Other stressors",7,8,4,1,4,20
+"Spiny Lobster","Population growth rate",7,13,0,0,4,20
+"Spiny Lobster","Predation and competition dynamics",9,8,3,0,4,20
+"Spiny Lobster","Prey specificity",19,1,0,0,4,20
+"Spiny Lobster","Spawning characteristics",11,6,3,0,4,20
+"Spiny Lobster","Species range",15,5,0,0,4,20
+"Spiny Lobster","Specificity in early life history requirements",6,5,3,6,4,20
+"Spiny Lobster","Stock Size Status",10,7,3,0,4,20
+"Spiny Lobster","Tolerance to ocean acidification",0,11,5,4,4,20
+"Stoplight Parrotfish","Adult mobility",4,9,3,4,4,20
+"Stoplight Parrotfish","Complexity in reproductive strategy",0,10,8,2,4,20
+"Stoplight Parrotfish","Genetic diversity",9,11,0,0,4,20
+"Stoplight Parrotfish","Habitat specificity",0,7,10,3,4,20
+"Stoplight Parrotfish","Mobility and dispersal or early life stages",1,8,10,1,4,20
+"Stoplight Parrotfish","Other stressors",1,5,6,8,4,20
+"Stoplight Parrotfish","Population growth rate",3,13,3,1,4,20
+"Stoplight Parrotfish","Predation and competition dynamics",1,10,9,0,4,20
+"Stoplight Parrotfish","Prey specificity",0,8,8,4,4,20
+"Stoplight Parrotfish","Spawning characteristics",8,8,2,2,4,20
+"Stoplight Parrotfish","Species range",2,9,6,3,4,20
+"Stoplight Parrotfish","Specificity in early life history requirements",1,5,11,3,4,20
+"Stoplight Parrotfish","Stock Size Status",1,11,6,2,4,20
+"Stoplight Parrotfish","Tolerance to ocean acidification",0,4,8,8,4,20
+"White Mullet","Adult mobility",6,11,3,0,4,20
+"White Mullet","Complexity in reproductive strategy",2,7,11,0,4,20
+"White Mullet","Genetic diversity",8,11,1,0,4,20
+"White Mullet","Habitat specificity",1,10,5,4,4,20
+"White Mullet","Mobility and dispersal or early life stages",2,8,9,1,4,20
+"White Mullet","Other stressors",2,9,9,0,4,20
+"White Mullet","Population growth rate",5,8,6,1,4,20
+"White Mullet","Predation and competition dynamics",6,9,5,0,4,20
+"White Mullet","Prey specificity",13,4,3,0,4,20
+"White Mullet","Spawning characteristics",8,10,2,0,4,20
+"White Mullet","Species range",5,7,7,1,4,20
+"White Mullet","Specificity in early life history requirements",3,10,7,0,4,20
+"White Mullet","Stock Size Status",6,7,7,0,4,20
+"White Mullet","Tolerance to ocean acidification",15,1,4,0,4,20
+"Yellowfin Grouper","Adult mobility",4,11,5,0,4,20
+"Yellowfin Grouper","Complexity in reproductive strategy",0,5,6,9,4,20
+"Yellowfin Grouper","Genetic diversity",3,10,5,2,4,20
+"Yellowfin Grouper","Habitat specificity",3,10,6,1,4,20
+"Yellowfin Grouper","Mobility and dispersal or early life stages",2,11,6,1,4,20
+"Yellowfin Grouper","Other stressors",1,14,5,0,4,20
+"Yellowfin Grouper","Population growth rate",1,2,9,8,4,20
+"Yellowfin Grouper","Predation and competition dynamics",4,9,5,2,4,20
+"Yellowfin Grouper","Prey specificity",6,12,2,0,4,20
+"Yellowfin Grouper","Spawning characteristics",0,4,14,2,4,20
+"Yellowfin Grouper","Species range",2,11,6,1,4,20
+"Yellowfin Grouper","Specificity in early life history requirements",2,12,6,0,4,20
+"Yellowfin Grouper","Stock Size Status",1,4,12,3,4,20
+"Yellowfin Grouper","Tolerance to ocean acidification",5,10,4,1,4,20
+"Yellowtail Snapper","Adult mobility",4,12,4,0,4,20
+"Yellowtail Snapper","Complexity in reproductive strategy",0,14,6,0,4,20
+"Yellowtail Snapper","Genetic diversity",9,7,4,0,4,20
+"Yellowtail Snapper","Habitat specificity",0,10,10,0,4,20
+"Yellowtail Snapper","Mobility and dispersal or early life stages",11,9,0,0,4,20
+"Yellowtail Snapper","Other stressors",4,12,4,0,4,20
+"Yellowtail Snapper","Population growth rate",3,9,6,2,4,20
+"Yellowtail Snapper","Predation and competition dynamics",7,10,3,0,4,20
+"Yellowtail Snapper","Prey specificity",8,9,3,0,4,20
+"Yellowtail Snapper","Spawning characteristics",4,13,3,0,4,20
+"Yellowtail Snapper","Species range",17,3,0,0,4,20
+"Yellowtail Snapper","Specificity in early life history requirements",1,9,10,0,4,20
+"Yellowtail Snapper","Stock Size Status",9,8,3,0,4,20
+"Yellowtail Snapper","Tolerance to ocean acidification",1,8,10,1,4,20

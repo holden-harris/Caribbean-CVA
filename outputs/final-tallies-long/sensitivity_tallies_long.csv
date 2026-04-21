@@ -1,0 +1,1401 @@
+"reviewer_id","stock_name","attribute_type","attribute_name","row_num","final_score","data_quality_index","tally_L","tally_M","tally_H","tally_VH","n_tallies"
+"AA","Atlantic Herring","Sensitivity","Habitat specificity",21,1.2,2,4,1,NA,NA,5
+"AA","Atlantic Herring","Sensitivity","Prey specificity",22,2.2,2,NA,4,1,NA,5
+"AA","Atlantic Herring","Sensitivity","Tolerance to ocean acidification",23,1,1,5,NA,NA,NA,5
+"AA","Atlantic Herring","Sensitivity","Complexity in reproductive strategy",24,1.8,2,1,4,NA,NA,5
+"AA","Atlantic Herring","Sensitivity","Species range",25,1.4,2,3,2,NA,NA,5
+"AA","Atlantic Herring","Sensitivity","Specificity in early life history requirements",26,2.4,2,NA,3,2,NA,5
+"AA","Atlantic Herring","Sensitivity","Stock Size Status",27,2,1,1,3,1,NA,5
+"AA","Atlantic Herring","Sensitivity","Other stressors",28,1.4,1,3,2,NA,NA,5
+"AA","Atlantic Herring","Sensitivity","Population growth rate",30,1.2,2,4,1,NA,NA,5
+"AA","Atlantic Herring","Sensitivity","Mobility and dispersal or early life stages",31,2.4,1,NA,3,2,NA,5
+"AA","Atlantic Herring","Sensitivity","Adult mobility",32,1.8,2,1,4,NA,NA,5
+"AA","Atlantic Herring","Sensitivity","Spawning characteristics",33,2.2,3,NA,4,1,NA,5
+"AA","Atlantic Herring","Sensitivity","Predation and competition dynamics",34,2,1,1,3,1,NA,5
+"AA","Atlantic Herring","Sensitivity","Genetic diversity",35,1,1,5,NA,NA,NA,5
+"BG","Atlantic Herring","Sensitivity","Habitat specificity",21,1.2,1,4,1,NA,NA,5
+"BG","Atlantic Herring","Sensitivity","Prey specificity",22,2.4,2,NA,3,2,NA,5
+"BG","Atlantic Herring","Sensitivity","Tolerance to ocean acidification",23,1,1,5,NA,NA,NA,5
+"BG","Atlantic Herring","Sensitivity","Complexity in reproductive strategy",24,1.2,2,4,1,NA,NA,5
+"BG","Atlantic Herring","Sensitivity","Species range",25,3,3,NA,NA,5,NA,5
+"BG","Atlantic Herring","Sensitivity","Specificity in early life history requirements",26,1,1,5,NA,NA,NA,5
+"BG","Atlantic Herring","Sensitivity","Stock Size Status",27,1,1,5,NA,NA,NA,5
+"BG","Atlantic Herring","Sensitivity","Other stressors",28,2.6,1,NA,2,3,NA,5
+"BG","Atlantic Herring","Sensitivity","Population growth rate",30,1,3,5,NA,NA,NA,5
+"BG","Atlantic Herring","Sensitivity","Mobility and dispersal or early life stages",31,2.2,2,1,2,2,NA,5
+"BG","Atlantic Herring","Sensitivity","Adult mobility",32,1.8,2,2,2,1,NA,5
+"BG","Atlantic Herring","Sensitivity","Spawning characteristics",33,2.4,2,NA,3,2,NA,5
+"BG","Atlantic Herring","Sensitivity","Predation and competition dynamics",34,2.2,1,1,2,2,NA,5
+"BG","Atlantic Herring","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Habitat specificity",21,2.8,2,NA,1,4,NA,5
+"DB","Atlantic Herring","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Tolerance to ocean acidification",23,1.2,1,4,1,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Complexity in reproductive strategy",24,1.2,2,4,1,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Specificity in early life history requirements",26,2.4,1,NA,3,2,NA,5
+"DB","Atlantic Herring","Sensitivity","Stock Size Status",27,1.2,1,4,1,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Other stressors",28,1,1,5,NA,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Population growth rate",30,1,3,5,NA,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Mobility and dispersal or early life stages",31,1.2,1,4,1,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Adult mobility",32,1,2,5,NA,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Spawning characteristics",33,2,3,NA,5,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Predation and competition dynamics",34,1.2,1,4,1,NA,NA,5
+"DB","Atlantic Herring","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"RG","Atlantic Herring","Sensitivity","Habitat specificity",21,1.6,3,2,3,NA,NA,5
+"RG","Atlantic Herring","Sensitivity","Prey specificity",22,2.6,2,NA,2,3,NA,5
+"RG","Atlantic Herring","Sensitivity","Tolerance to ocean acidification",23,2.6,1,NA,2,3,NA,5
+"RG","Atlantic Herring","Sensitivity","Complexity in reproductive strategy",24,1.4,1,3,2,NA,NA,5
+"RG","Atlantic Herring","Sensitivity","Species range",25,1.6,2,2,3,NA,NA,5
+"RG","Atlantic Herring","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"RG","Atlantic Herring","Sensitivity","Stock Size Status",27,2.6,1,NA,2,3,NA,5
+"RG","Atlantic Herring","Sensitivity","Other stressors",28,2.6,1,NA,2,3,NA,5
+"RG","Atlantic Herring","Sensitivity","Population growth rate",30,1.4,2,3,2,NA,NA,5
+"RG","Atlantic Herring","Sensitivity","Mobility and dispersal or early life stages",31,2.4,1,NA,3,2,NA,5
+"RG","Atlantic Herring","Sensitivity","Adult mobility",32,1.6,3,2,3,NA,NA,5
+"RG","Atlantic Herring","Sensitivity","Spawning characteristics",33,1.6,3,2,3,NA,NA,5
+"RG","Atlantic Herring","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"RG","Atlantic Herring","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Habitat specificity",21,1.4,2,3,2,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Tolerance to ocean acidification",23,1,1,5,NA,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Complexity in reproductive strategy",24,1.2,2,4,1,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Species range",25,1.4,2,3,2,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Specificity in early life history requirements",26,2.4,2,NA,3,2,NA,5
+"AA","Ballyhoo","Sensitivity","Stock Size Status",27,2.6,2,NA,2,3,NA,5
+"AA","Ballyhoo","Sensitivity","Other stressors",28,2.4,1,NA,3,2,NA,5
+"AA","Ballyhoo","Sensitivity","Population growth rate",30,1.2,2,4,1,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Mobility and dispersal or early life stages",31,2.6,1,NA,2,3,NA,5
+"AA","Ballyhoo","Sensitivity","Adult mobility",32,1.8,2,1,4,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Spawning characteristics",33,1.4,3,3,2,NA,NA,5
+"AA","Ballyhoo","Sensitivity","Predation and competition dynamics",34,2.4,2,NA,3,2,NA,5
+"AA","Ballyhoo","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Habitat specificity",21,1,1,5,NA,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Prey specificity",22,1.4,1,3,2,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Tolerance to ocean acidification",23,1,1,5,NA,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Complexity in reproductive strategy",24,2,2,NA,5,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Species range",25,2,3,NA,5,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Specificity in early life history requirements",26,2.2,1,1,2,2,NA,5
+"BG","Ballyhoo","Sensitivity","Stock Size Status",27,2.2,1,1,2,2,NA,5
+"BG","Ballyhoo","Sensitivity","Other stressors",28,1.6,1,2,3,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Population growth rate",30,1,1,5,NA,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Mobility and dispersal or early life stages",31,1.2,1,4,1,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Adult mobility",32,1.8,2,1,4,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Spawning characteristics",33,3,3,NA,NA,5,NA,5
+"BG","Ballyhoo","Sensitivity","Predation and competition dynamics",34,2,1,NA,5,NA,NA,5
+"BG","Ballyhoo","Sensitivity","Genetic diversity",35,1,1,5,NA,NA,NA,5
+"JP","Ballyhoo","Sensitivity","Habitat specificity",21,1,2,5,NA,NA,NA,5
+"JP","Ballyhoo","Sensitivity","Prey specificity",22,1,2,5,NA,NA,NA,5
+"JP","Ballyhoo","Sensitivity","Tolerance to ocean acidification",23,1,1,5,NA,NA,NA,5
+"JP","Ballyhoo","Sensitivity","Complexity in reproductive strategy",24,2.2,0,1,2,2,NA,5
+"JP","Ballyhoo","Sensitivity","Species range",25,1.2,2,4,1,NA,NA,5
+"JP","Ballyhoo","Sensitivity","Specificity in early life history requirements",26,2.4,0,1,2,1,1,5
+"JP","Ballyhoo","Sensitivity","Stock Size Status",27,2,0,1,3,1,NA,5
+"JP","Ballyhoo","Sensitivity","Other stressors",28,1.8,0,2,2,1,NA,5
+"JP","Ballyhoo","Sensitivity","Population growth rate",30,1,3,5,NA,NA,NA,5
+"JP","Ballyhoo","Sensitivity","Mobility and dispersal or early life stages",31,2.8,2,NA,1,4,NA,5
+"JP","Ballyhoo","Sensitivity","Adult mobility",32,1,1,5,NA,NA,NA,5
+"JP","Ballyhoo","Sensitivity","Spawning characteristics",33,1.4,3,3,2,NA,NA,5
+"JP","Ballyhoo","Sensitivity","Predation and competition dynamics",34,2,1,1,3,1,NA,5
+"JP","Ballyhoo","Sensitivity","Genetic diversity",35,1,1,5,NA,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Habitat specificity",21,1.4,3,3,2,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Tolerance to ocean acidification",23,1.2,1,4,1,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Complexity in reproductive strategy",24,1.2,1,4,1,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Species range",25,2.6,3,NA,2,3,NA,5
+"RG","Ballyhoo","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"RG","Ballyhoo","Sensitivity","Stock Size Status",27,2.6,1,NA,2,3,NA,5
+"RG","Ballyhoo","Sensitivity","Other stressors",28,2.6,1,NA,2,3,NA,5
+"RG","Ballyhoo","Sensitivity","Population growth rate",30,1.4,2,3,2,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Mobility and dispersal or early life stages",31,1.6,1,2,3,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Adult mobility",32,1.6,3,2,3,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Spawning characteristics",33,1.6,3,2,3,NA,NA,5
+"RG","Ballyhoo","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"RG","Ballyhoo","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"BG","Blue Runner","Sensitivity","Habitat specificity",21,1,1,5,NA,NA,NA,5
+"BG","Blue Runner","Sensitivity","Prey specificity",22,1.6,1,2,3,NA,NA,5
+"BG","Blue Runner","Sensitivity","Tolerance to ocean acidification",23,1.2,1,4,1,NA,NA,5
+"BG","Blue Runner","Sensitivity","Complexity in reproductive strategy",24,1,1,5,NA,NA,NA,5
+"BG","Blue Runner","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"BG","Blue Runner","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"BG","Blue Runner","Sensitivity","Stock Size Status",27,1,1,5,NA,NA,NA,5
+"BG","Blue Runner","Sensitivity","Other stressors",28,1.2,3,4,1,NA,NA,5
+"BG","Blue Runner","Sensitivity","Population growth rate",30,2,1,1,3,1,NA,5
+"BG","Blue Runner","Sensitivity","Mobility and dispersal or early life stages",31,1,2,5,NA,NA,NA,5
+"BG","Blue Runner","Sensitivity","Adult mobility",32,1,3,5,NA,NA,NA,5
+"BG","Blue Runner","Sensitivity","Spawning characteristics",33,1.2,2,4,1,NA,NA,5
+"BG","Blue Runner","Sensitivity","Predation and competition dynamics",34,1.6,1,2,3,NA,NA,5
+"BG","Blue Runner","Sensitivity","Genetic diversity",35,1,1,5,NA,NA,NA,5
+"DB","Blue Runner","Sensitivity","Habitat specificity",21,1,2,5,NA,NA,NA,5
+"DB","Blue Runner","Sensitivity","Prey specificity",22,1.4,3,3,2,NA,NA,5
+"DB","Blue Runner","Sensitivity","Tolerance to ocean acidification",23,1.2,1,4,1,NA,NA,5
+"DB","Blue Runner","Sensitivity","Complexity in reproductive strategy",24,1.4,2,3,2,NA,NA,5
+"DB","Blue Runner","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"DB","Blue Runner","Sensitivity","Specificity in early life history requirements",26,1,3,5,NA,NA,NA,5
+"DB","Blue Runner","Sensitivity","Stock Size Status",27,1.4,1,3,2,NA,NA,5
+"DB","Blue Runner","Sensitivity","Other stressors",28,1.4,1,3,2,NA,NA,5
+"DB","Blue Runner","Sensitivity","Population growth rate",30,1.4,3,3,2,NA,NA,5
+"DB","Blue Runner","Sensitivity","Mobility and dispersal or early life stages",31,1.4,2,3,2,NA,NA,5
+"DB","Blue Runner","Sensitivity","Adult mobility",32,1,2,5,NA,NA,NA,5
+"DB","Blue Runner","Sensitivity","Spawning characteristics",33,1.2,3,4,1,NA,NA,5
+"DB","Blue Runner","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"DB","Blue Runner","Sensitivity","Genetic diversity",35,1,2,5,NA,NA,NA,5
+"RA","Blue Runner","Sensitivity","Habitat specificity",21,1.6,2,2,3,NA,NA,5
+"RA","Blue Runner","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"RA","Blue Runner","Sensitivity","Tolerance to ocean acidification",23,2,1,1,3,1,NA,5
+"RA","Blue Runner","Sensitivity","Complexity in reproductive strategy",24,1,2,5,NA,NA,NA,5
+"RA","Blue Runner","Sensitivity","Species range",25,3,2,NA,1,3,1,5
+"RA","Blue Runner","Sensitivity","Specificity in early life history requirements",26,3,1,NA,1,3,1,5
+"RA","Blue Runner","Sensitivity","Stock Size Status",27,1.4,1,3,2,NA,NA,5
+"RA","Blue Runner","Sensitivity","Other stressors",28,1.2,1,4,1,NA,NA,5
+"RA","Blue Runner","Sensitivity","Population growth rate",30,1.8,2,1,4,NA,NA,5
+"RA","Blue Runner","Sensitivity","Mobility and dispersal or early life stages",31,2,1,NA,5,NA,NA,5
+"RA","Blue Runner","Sensitivity","Adult mobility",32,2,1,1,3,1,NA,5
+"RA","Blue Runner","Sensitivity","Spawning characteristics",33,2.6,NA,NA,2,3,NA,5
+"RA","Blue Runner","Sensitivity","Predation and competition dynamics",34,1.6,NA,2,3,NA,NA,5
+"RA","Blue Runner","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"WM","Blue Runner","Sensitivity","Habitat specificity",21,1.4,2,3,2,NA,NA,5
+"WM","Blue Runner","Sensitivity","Prey specificity",22,1.8,2,1,4,NA,NA,5
+"WM","Blue Runner","Sensitivity","Tolerance to ocean acidification",23,1,2,5,NA,NA,NA,5
+"WM","Blue Runner","Sensitivity","Complexity in reproductive strategy",24,1.2,2,4,1,NA,NA,5
+"WM","Blue Runner","Sensitivity","Species range",25,1.8,2,1,4,NA,NA,5
+"WM","Blue Runner","Sensitivity","Specificity in early life history requirements",26,1.8,2,1,4,NA,NA,5
+"WM","Blue Runner","Sensitivity","Stock Size Status",27,1.8,2,1,4,NA,NA,5
+"WM","Blue Runner","Sensitivity","Other stressors",28,1.2,2,4,1,NA,NA,5
+"WM","Blue Runner","Sensitivity","Population growth rate",30,1,2,5,NA,NA,NA,5
+"WM","Blue Runner","Sensitivity","Mobility and dispersal or early life stages",31,1.4,2,3,2,NA,NA,5
+"WM","Blue Runner","Sensitivity","Adult mobility",32,1.4,2,3,2,NA,NA,5
+"WM","Blue Runner","Sensitivity","Spawning characteristics",33,1.8,2,2,2,1,NA,5
+"WM","Blue Runner","Sensitivity","Predation and competition dynamics",34,2.4,2,NA,3,2,NA,5
+"WM","Blue Runner","Sensitivity","Genetic diversity",35,1,2,5,NA,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Habitat specificity",21,2.2,3,NA,4,1,NA,5
+"AA","Dolphinfish","Sensitivity","Prey specificity",22,1.2,3,4,1,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Tolerance to ocean acidification",23,1,1,5,NA,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Complexity in reproductive strategy",24,2.4,3,NA,3,2,NA,5
+"AA","Dolphinfish","Sensitivity","Species range",25,2.4,3,NA,3,2,NA,5
+"AA","Dolphinfish","Sensitivity","Specificity in early life history requirements",26,1.4,3,3,2,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Stock Size Status",27,1.4,2,3,2,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Other stressors",28,1.4,2,3,2,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Population growth rate",30,1,2,5,NA,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Mobility and dispersal or early life stages",31,1.6,2,2,3,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Adult mobility",32,1.2,2,4,1,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Spawning characteristics",33,1.2,2,4,1,NA,NA,5
+"AA","Dolphinfish","Sensitivity","Predation and competition dynamics",34,1.8,2,2,2,1,NA,5
+"AA","Dolphinfish","Sensitivity","Genetic diversity",35,1,2,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Habitat specificity",21,1.2,2,4,1,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Tolerance to ocean acidification",23,1,3,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Complexity in reproductive strategy",24,1,3,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Specificity in early life history requirements",26,1.4,1,3,2,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Stock Size Status",27,1,3,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Other stressors",28,1.4,1,3,2,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Population growth rate",30,1,3,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Mobility and dispersal or early life stages",31,1.2,1,4,1,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Adult mobility",32,1,3,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Spawning characteristics",33,1,3,5,NA,NA,NA,5
+"DB","Dolphinfish","Sensitivity","Predation and competition dynamics",34,2.4,3,NA,3,2,NA,5
+"DB","Dolphinfish","Sensitivity","Genetic diversity",35,1,3,5,NA,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Habitat specificity",21,2.6,1,NA,2,3,NA,5
+"RG","Dolphinfish","Sensitivity","Prey specificity",22,1.4,3,3,2,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Tolerance to ocean acidification",23,1,1,5,NA,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Complexity in reproductive strategy",24,2.4,2,NA,3,2,NA,5
+"RG","Dolphinfish","Sensitivity","Species range",25,3.6,3,NA,NA,2,3,5
+"RG","Dolphinfish","Sensitivity","Specificity in early life history requirements",26,1.6,1,2,3,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Stock Size Status",27,1.6,3,2,3,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Other stressors",28,1.2,1,4,1,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Population growth rate",30,1.4,3,3,2,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Mobility and dispersal or early life stages",31,2.4,1,NA,3,2,NA,5
+"RG","Dolphinfish","Sensitivity","Adult mobility",32,1.4,3,3,2,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Spawning characteristics",33,1.4,2,3,2,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Predation and competition dynamics",34,1.6,1,2,3,NA,NA,5
+"RG","Dolphinfish","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Habitat specificity",21,1.4,3,3,2,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Prey specificity",22,1.2,3,4,1,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Tolerance to ocean acidification",23,1,2,5,NA,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Complexity in reproductive strategy",24,1.2,3,4,1,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Specificity in early life history requirements",26,1.4,3,3,2,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Stock Size Status",27,2,2,1,3,1,NA,5
+"WM","Dolphinfish","Sensitivity","Other stressors",28,1.2,2,4,1,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Population growth rate",30,1,3,5,NA,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Mobility and dispersal or early life stages",31,1.4,2,3,2,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Adult mobility",32,1.4,3,3,2,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Spawning characteristics",33,1.4,2,3,2,NA,NA,5
+"WM","Dolphinfish","Sensitivity","Predation and competition dynamics",34,2.6,2,NA,2,3,NA,5
+"WM","Dolphinfish","Sensitivity","Genetic diversity",35,1,3,5,NA,NA,NA,5
+"AK","Gray Angelfish","Sensitivity","Habitat specificity",21,2.4,2,1,1,3,NA,5
+"AK","Gray Angelfish","Sensitivity","Prey specificity",22,1,2,5,NA,NA,NA,5
+"AK","Gray Angelfish","Sensitivity","Tolerance to ocean acidification",23,1.4,2,3,2,NA,NA,5
+"AK","Gray Angelfish","Sensitivity","Complexity in reproductive strategy",24,1,2,5,NA,NA,NA,5
+"AK","Gray Angelfish","Sensitivity","Species range",25,2.4,2,NA,3,2,NA,5
+"AK","Gray Angelfish","Sensitivity","Specificity in early life history requirements",26,2,0,NA,5,NA,NA,5
+"AK","Gray Angelfish","Sensitivity","Stock Size Status",27,1.2,0,4,1,NA,NA,5
+"AK","Gray Angelfish","Sensitivity","Other stressors",28,2,1,1,3,1,NA,5
+"AK","Gray Angelfish","Sensitivity","Population growth rate",30,2,2,2,1,2,NA,5
+"AK","Gray Angelfish","Sensitivity","Mobility and dispersal or early life stages",31,1.2,0,4,1,NA,NA,5
+"AK","Gray Angelfish","Sensitivity","Adult mobility",32,2.4,2,NA,3,2,NA,5
+"AK","Gray Angelfish","Sensitivity","Spawning characteristics",33,3,2,NA,NA,5,NA,5
+"AK","Gray Angelfish","Sensitivity","Predation and competition dynamics",34,1.2,2,4,1,NA,NA,5
+"AK","Gray Angelfish","Sensitivity","Genetic diversity",35,2,0,NA,5,NA,NA,5
+"ET","Gray Angelfish","Sensitivity","Habitat specificity",21,3,3,NA,NA,5,NA,5
+"ET","Gray Angelfish","Sensitivity","Prey specificity",22,1.6,3,2,3,NA,NA,5
+"ET","Gray Angelfish","Sensitivity","Tolerance to ocean acidification",23,2.2,3,NA,4,1,NA,5
+"ET","Gray Angelfish","Sensitivity","Complexity in reproductive strategy",24,1,3,5,NA,NA,NA,5
+"ET","Gray Angelfish","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"ET","Gray Angelfish","Sensitivity","Specificity in early life history requirements",26,2,1,1,3,1,NA,5
+"ET","Gray Angelfish","Sensitivity","Stock Size Status",27,1,1,5,NA,NA,NA,5
+"ET","Gray Angelfish","Sensitivity","Other stressors",28,2,2,1,3,1,NA,5
+"ET","Gray Angelfish","Sensitivity","Population growth rate",30,3,2,NA,2,1,2,5
+"ET","Gray Angelfish","Sensitivity","Mobility and dispersal or early life stages",31,2,2,NA,5,NA,NA,5
+"ET","Gray Angelfish","Sensitivity","Adult mobility",32,3,1,NA,NA,5,NA,5
+"ET","Gray Angelfish","Sensitivity","Spawning characteristics",33,2,2,NA,5,NA,NA,5
+"ET","Gray Angelfish","Sensitivity","Predation and competition dynamics",34,1,1,5,NA,NA,NA,5
+"ET","Gray Angelfish","Sensitivity","Genetic diversity",35,1.6,0,2,3,NA,NA,5
+"GR","Gray Angelfish","Sensitivity","Habitat specificity",21,2.8,3,NA,1,4,NA,5
+"GR","Gray Angelfish","Sensitivity","Prey specificity",22,2.6,3,NA,2,3,NA,5
+"GR","Gray Angelfish","Sensitivity","Tolerance to ocean acidification",23,1.6,3,2,3,NA,NA,5
+"GR","Gray Angelfish","Sensitivity","Complexity in reproductive strategy",24,2.6,3,NA,2,3,NA,5
+"GR","Gray Angelfish","Sensitivity","Species range",25,3,3,NA,1,3,1,5
+"GR","Gray Angelfish","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"GR","Gray Angelfish","Sensitivity","Stock Size Status",27,2.4,1,NA,3,2,NA,5
+"GR","Gray Angelfish","Sensitivity","Other stressors",28,1.6,1,2,3,NA,NA,5
+"GR","Gray Angelfish","Sensitivity","Population growth rate",30,2.6,3,NA,2,3,NA,5
+"GR","Gray Angelfish","Sensitivity","Mobility and dispersal or early life stages",31,2.4,2,NA,3,2,NA,5
+"GR","Gray Angelfish","Sensitivity","Adult mobility",32,4,3,NA,NA,NA,5,5
+"GR","Gray Angelfish","Sensitivity","Spawning characteristics",33,3.8,3,NA,NA,1,4,5
+"GR","Gray Angelfish","Sensitivity","Predation and competition dynamics",34,2.6,1,NA,2,3,NA,5
+"GR","Gray Angelfish","Sensitivity","Genetic diversity",35,2.4,1,NA,3,2,NA,5
+"RL","Gray Angelfish","Sensitivity","Habitat specificity",21,3.6,3,NA,NA,2,3,5
+"RL","Gray Angelfish","Sensitivity","Prey specificity",22,2.8,3,NA,2,2,1,5
+"RL","Gray Angelfish","Sensitivity","Tolerance to ocean acidification",23,2,1,1,3,1,NA,5
+"RL","Gray Angelfish","Sensitivity","Complexity in reproductive strategy",24,3.2,2,NA,1,2,2,5
+"RL","Gray Angelfish","Sensitivity","Species range",25,1.4,3,3,2,NA,NA,5
+"RL","Gray Angelfish","Sensitivity","Specificity in early life history requirements",26,3,3,NA,1,3,1,5
+"RL","Gray Angelfish","Sensitivity","Stock Size Status",27,2.8,2,NA,2,2,1,5
+"RL","Gray Angelfish","Sensitivity","Other stressors",28,3.4,2,NA,1,1,3,5
+"RL","Gray Angelfish","Sensitivity","Population growth rate",30,2,2,1,3,1,NA,5
+"RL","Gray Angelfish","Sensitivity","Mobility and dispersal or early life stages",31,2.8,1,NA,2,2,1,5
+"RL","Gray Angelfish","Sensitivity","Adult mobility",32,3.4,2,NA,NA,3,2,5
+"RL","Gray Angelfish","Sensitivity","Spawning characteristics",33,3.2,2,NA,1,2,2,5
+"RL","Gray Angelfish","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"RL","Gray Angelfish","Sensitivity","Genetic diversity",35,2,2,1,3,1,NA,5
+"AK","Hogfish","Sensitivity","Habitat specificity",21,1.8,3,1,4,NA,NA,5
+"AK","Hogfish","Sensitivity","Prey specificity",22,2,3,NA,5,NA,NA,5
+"AK","Hogfish","Sensitivity","Tolerance to ocean acidification",23,2,3,NA,5,NA,NA,5
+"AK","Hogfish","Sensitivity","Complexity in reproductive strategy",24,1,3,5,NA,NA,NA,5
+"AK","Hogfish","Sensitivity","Species range",25,1,2,5,NA,NA,NA,5
+"AK","Hogfish","Sensitivity","Specificity in early life history requirements",26,2,2,NA,5,NA,NA,5
+"AK","Hogfish","Sensitivity","Stock Size Status",27,1.2,2,4,1,NA,NA,5
+"AK","Hogfish","Sensitivity","Other stressors",28,1,2,5,NA,NA,NA,5
+"AK","Hogfish","Sensitivity","Population growth rate",30,2.8,2,NA,3,NA,2,5
+"AK","Hogfish","Sensitivity","Mobility and dispersal or early life stages",31,2,3,NA,5,NA,NA,5
+"AK","Hogfish","Sensitivity","Adult mobility",32,2.4,3,NA,3,2,NA,5
+"AK","Hogfish","Sensitivity","Spawning characteristics",33,2.2,3,NA,4,1,NA,5
+"AK","Hogfish","Sensitivity","Predation and competition dynamics",34,1.8,2,1,4,NA,NA,5
+"AK","Hogfish","Sensitivity","Genetic diversity",35,4,3,NA,NA,NA,5,5
+"GR","Hogfish","Sensitivity","Habitat specificity",21,3.6,3,NA,NA,2,3,5
+"GR","Hogfish","Sensitivity","Prey specificity",22,4,3,NA,NA,NA,5,5
+"GR","Hogfish","Sensitivity","Tolerance to ocean acidification",23,2.6,2,NA,2,3,NA,5
+"GR","Hogfish","Sensitivity","Complexity in reproductive strategy",24,1.2,3,4,1,NA,NA,5
+"GR","Hogfish","Sensitivity","Species range",25,3.2,3,NA,NA,4,1,5
+"GR","Hogfish","Sensitivity","Specificity in early life history requirements",26,2.8,3,NA,1,4,NA,5
+"GR","Hogfish","Sensitivity","Stock Size Status",27,1.8,1,1,4,NA,NA,5
+"GR","Hogfish","Sensitivity","Other stressors",28,1.2,1,4,1,NA,NA,5
+"GR","Hogfish","Sensitivity","Population growth rate",30,2.2,2,1,2,2,NA,5
+"GR","Hogfish","Sensitivity","Mobility and dispersal or early life stages",31,2.8,3,NA,1,4,NA,5
+"GR","Hogfish","Sensitivity","Adult mobility",32,4,3,NA,NA,NA,5,5
+"GR","Hogfish","Sensitivity","Spawning characteristics",33,3,3,NA,NA,5,NA,5
+"GR","Hogfish","Sensitivity","Predation and competition dynamics",34,2.2,2,NA,4,1,NA,5
+"GR","Hogfish","Sensitivity","Genetic diversity",35,1.6,2,2,3,NA,NA,5
+"MS","Hogfish","Sensitivity","Habitat specificity",21,1.4,2,3,2,NA,NA,5
+"MS","Hogfish","Sensitivity","Prey specificity",22,1.6,2,2,3,NA,NA,5
+"MS","Hogfish","Sensitivity","Tolerance to ocean acidification",23,1.8,1,2,2,1,NA,5
+"MS","Hogfish","Sensitivity","Complexity in reproductive strategy",24,1.2,2,4,1,NA,NA,5
+"MS","Hogfish","Sensitivity","Species range",25,1.2,3,4,1,NA,NA,5
+"MS","Hogfish","Sensitivity","Specificity in early life history requirements",26,1.6,1,2,3,NA,NA,5
+"MS","Hogfish","Sensitivity","Stock Size Status",27,1.4,1,3,2,NA,NA,5
+"MS","Hogfish","Sensitivity","Other stressors",28,2.2,1,1,2,2,NA,5
+"MS","Hogfish","Sensitivity","Population growth rate",30,2.8,1,NA,1,4,NA,5
+"MS","Hogfish","Sensitivity","Mobility and dispersal or early life stages",31,2,1,NA,5,NA,NA,5
+"MS","Hogfish","Sensitivity","Adult mobility",32,2.2,2,NA,4,1,NA,5
+"MS","Hogfish","Sensitivity","Spawning characteristics",33,2,2,1,3,1,NA,5
+"MS","Hogfish","Sensitivity","Predation and competition dynamics",34,1.6,1,2,3,NA,NA,5
+"MS","Hogfish","Sensitivity","Genetic diversity",35,3,1,NA,NA,5,NA,5
+"RL","Hogfish","Sensitivity","Habitat specificity",21,3.4,3,NA,NA,3,2,5
+"RL","Hogfish","Sensitivity","Prey specificity",22,2.8,3,NA,2,2,1,5
+"RL","Hogfish","Sensitivity","Tolerance to ocean acidification",23,2.8,1,NA,2,2,1,5
+"RL","Hogfish","Sensitivity","Complexity in reproductive strategy",24,3.4,2,NA,1,1,3,5
+"RL","Hogfish","Sensitivity","Species range",25,1.8,3,2,2,1,NA,5
+"RL","Hogfish","Sensitivity","Specificity in early life history requirements",26,3.2,2,NA,1,2,2,5
+"RL","Hogfish","Sensitivity","Stock Size Status",27,3.2,2,NA,1,2,2,5
+"RL","Hogfish","Sensitivity","Other stressors",28,2.4,2,NA,3,2,NA,5
+"RL","Hogfish","Sensitivity","Population growth rate",30,2,2,1,3,1,NA,5
+"RL","Hogfish","Sensitivity","Mobility and dispersal or early life stages",31,3,1,NA,1,3,1,5
+"RL","Hogfish","Sensitivity","Adult mobility",32,3.8,3,NA,NA,1,4,5
+"RL","Hogfish","Sensitivity","Spawning characteristics",33,3.2,2,NA,1,2,2,5
+"RL","Hogfish","Sensitivity","Predation and competition dynamics",34,2.6,3,NA,2,3,NA,5
+"RL","Hogfish","Sensitivity","Genetic diversity",35,3.6,1,NA,NA,2,3,5
+"BG","King Mackerel","Sensitivity","Habitat specificity",21,1,2,5,NA,NA,NA,5
+"BG","King Mackerel","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"BG","King Mackerel","Sensitivity","Tolerance to ocean acidification",23,1.8,1,2,2,1,NA,5
+"BG","King Mackerel","Sensitivity","Complexity in reproductive strategy",24,1,2,5,NA,NA,NA,5
+"BG","King Mackerel","Sensitivity","Species range",25,3.6,2,NA,NA,2,3,5
+"BG","King Mackerel","Sensitivity","Specificity in early life history requirements",26,3,2,NA,1,3,1,5
+"BG","King Mackerel","Sensitivity","Stock Size Status",27,1.8,1,2,2,1,NA,5
+"BG","King Mackerel","Sensitivity","Other stressors",28,1.2,2,4,1,NA,NA,5
+"BG","King Mackerel","Sensitivity","Population growth rate",30,1.8,2,2,2,1,NA,5
+"BG","King Mackerel","Sensitivity","Mobility and dispersal or early life stages",31,2.8,2,NA,1,4,NA,5
+"BG","King Mackerel","Sensitivity","Adult mobility",32,1.4,2,3,2,NA,NA,5
+"BG","King Mackerel","Sensitivity","Spawning characteristics",33,2,2,NA,2,3,NA,5
+"BG","King Mackerel","Sensitivity","Predation and competition dynamics",34,1.4,2,3,2,NA,NA,5
+"BG","King Mackerel","Sensitivity","Genetic diversity",35,1.2,2,4,1,NA,NA,5
+"RA","King Mackerel","Sensitivity","Habitat specificity",21,1,2,5,NA,NA,NA,5
+"RA","King Mackerel","Sensitivity","Prey specificity",22,1.2,2,4,1,NA,NA,5
+"RA","King Mackerel","Sensitivity","Tolerance to ocean acidification",23,2,1,1,3,1,NA,5
+"RA","King Mackerel","Sensitivity","Complexity in reproductive strategy",24,1,2,5,NA,NA,NA,5
+"RA","King Mackerel","Sensitivity","Species range",25,2.8,1,NA,2,2,1,5
+"RA","King Mackerel","Sensitivity","Specificity in early life history requirements",26,3,2,NA,1,3,1,5
+"RA","King Mackerel","Sensitivity","Stock Size Status",27,1.4,1,3,2,NA,NA,5
+"RA","King Mackerel","Sensitivity","Other stressors",28,1.2,1,4,1,NA,NA,5
+"RA","King Mackerel","Sensitivity","Population growth rate",30,1.6,2,3,1,1,NA,5
+"RA","King Mackerel","Sensitivity","Mobility and dispersal or early life stages",31,3,2,NA,NA,5,NA,5
+"RA","King Mackerel","Sensitivity","Adult mobility",32,2,1,1,3,1,NA,5
+"RA","King Mackerel","Sensitivity","Spawning characteristics",33,2.6,2,NA,2,3,NA,5
+"RA","King Mackerel","Sensitivity","Predation and competition dynamics",34,1.6,1,2,3,NA,NA,5
+"RA","King Mackerel","Sensitivity","Genetic diversity",35,1.2,0,4,1,NA,NA,5
+"RG","King Mackerel","Sensitivity","Habitat specificity",21,1.6,3,2,3,NA,NA,5
+"RG","King Mackerel","Sensitivity","Prey specificity",22,1.6,2,2,3,NA,NA,5
+"RG","King Mackerel","Sensitivity","Tolerance to ocean acidification",23,1.2,1,4,1,NA,NA,5
+"RG","King Mackerel","Sensitivity","Complexity in reproductive strategy",24,1.2,1,4,1,NA,NA,5
+"RG","King Mackerel","Sensitivity","Species range",25,3.2,3,NA,NA,4,1,5
+"RG","King Mackerel","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"RG","King Mackerel","Sensitivity","Stock Size Status",27,2.6,1,NA,2,3,NA,5
+"RG","King Mackerel","Sensitivity","Other stressors",28,2.6,1,NA,2,3,NA,5
+"RG","King Mackerel","Sensitivity","Population growth rate",30,1.4,3,3,2,NA,NA,5
+"RG","King Mackerel","Sensitivity","Mobility and dispersal or early life stages",31,1.6,1,2,3,NA,NA,5
+"RG","King Mackerel","Sensitivity","Adult mobility",32,1.2,3,4,1,NA,NA,5
+"RG","King Mackerel","Sensitivity","Spawning characteristics",33,2.6,2,NA,2,3,NA,5
+"RG","King Mackerel","Sensitivity","Predation and competition dynamics",34,1.6,1,2,3,NA,NA,5
+"RG","King Mackerel","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"WM","King Mackerel","Sensitivity","Habitat specificity",21,2.6,2,NA,2,3,NA,5
+"WM","King Mackerel","Sensitivity","Prey specificity",22,2.4,2,NA,3,2,NA,5
+"WM","King Mackerel","Sensitivity","Tolerance to ocean acidification",23,2.4,2,NA,3,2,NA,5
+"WM","King Mackerel","Sensitivity","Complexity in reproductive strategy",24,2.4,2,NA,3,2,NA,5
+"WM","King Mackerel","Sensitivity","Species range",25,2,2,NA,5,NA,NA,5
+"WM","King Mackerel","Sensitivity","Specificity in early life history requirements",26,2.4,2,NA,3,2,NA,5
+"WM","King Mackerel","Sensitivity","Stock Size Status",27,2,2,1,3,1,NA,5
+"WM","King Mackerel","Sensitivity","Other stressors",28,1.2,2,4,1,NA,NA,5
+"WM","King Mackerel","Sensitivity","Population growth rate",30,1,2,5,NA,NA,NA,5
+"WM","King Mackerel","Sensitivity","Mobility and dispersal or early life stages",31,2.4,2,NA,3,2,NA,5
+"WM","King Mackerel","Sensitivity","Adult mobility",32,2.4,2,NA,3,2,NA,5
+"WM","King Mackerel","Sensitivity","Spawning characteristics",33,1.8,2,2,2,1,NA,5
+"WM","King Mackerel","Sensitivity","Predation and competition dynamics",34,2.4,2,NA,3,2,NA,5
+"WM","King Mackerel","Sensitivity","Genetic diversity",35,2.4,2,NA,3,2,NA,5
+"AA","Lane Snapper","Sensitivity","Habitat specificity",21,1.4,3,3,2,NA,NA,5
+"AA","Lane Snapper","Sensitivity","Prey specificity",22,1.4,3,3,2,NA,NA,5
+"AA","Lane Snapper","Sensitivity","Tolerance to ocean acidification",23,2.6,2,NA,2,3,NA,5
+"AA","Lane Snapper","Sensitivity","Complexity in reproductive strategy",24,2.4,3,NA,3,2,NA,5
+"AA","Lane Snapper","Sensitivity","Species range",25,1.8,3,1,4,NA,NA,5
+"AA","Lane Snapper","Sensitivity","Specificity in early life history requirements",26,3,2,NA,1,3,1,5
+"AA","Lane Snapper","Sensitivity","Stock Size Status",27,2.4,2,NA,3,2,NA,5
+"AA","Lane Snapper","Sensitivity","Other stressors",28,2.6,2,NA,2,3,NA,5
+"AA","Lane Snapper","Sensitivity","Population growth rate",30,2.6,3,NA,2,3,NA,5
+"AA","Lane Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.4,3,3,2,NA,NA,5
+"AA","Lane Snapper","Sensitivity","Adult mobility",32,2.2,3,NA,4,1,NA,5
+"AA","Lane Snapper","Sensitivity","Spawning characteristics",33,3,3,NA,NA,5,NA,5
+"AA","Lane Snapper","Sensitivity","Predation and competition dynamics",34,2.4,3,NA,3,2,NA,5
+"AA","Lane Snapper","Sensitivity","Genetic diversity",35,2.6,2,NA,2,3,NA,5
+"ET","Lane Snapper","Sensitivity","Habitat specificity",21,2.8,3,NA,2,2,1,5
+"ET","Lane Snapper","Sensitivity","Prey specificity",22,1.2,3,4,1,NA,NA,5
+"ET","Lane Snapper","Sensitivity","Tolerance to ocean acidification",23,3.4,3,NA,NA,3,2,5
+"ET","Lane Snapper","Sensitivity","Complexity in reproductive strategy",24,2.4,2,NA,3,2,NA,5
+"ET","Lane Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"ET","Lane Snapper","Sensitivity","Specificity in early life history requirements",26,2.4,1,NA,3,2,NA,5
+"ET","Lane Snapper","Sensitivity","Stock Size Status",27,2.2,0,1,2,2,NA,5
+"ET","Lane Snapper","Sensitivity","Other stressors",28,2.4,1,NA,3,2,NA,5
+"ET","Lane Snapper","Sensitivity","Population growth rate",30,2.8,3,NA,1,4,NA,5
+"ET","Lane Snapper","Sensitivity","Mobility and dispersal or early life stages",31,2,3,NA,5,NA,NA,5
+"ET","Lane Snapper","Sensitivity","Adult mobility",32,2,1,NA,5,NA,NA,5
+"ET","Lane Snapper","Sensitivity","Spawning characteristics",33,1.2,3,4,1,NA,NA,5
+"ET","Lane Snapper","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"ET","Lane Snapper","Sensitivity","Genetic diversity",35,2,2,NA,5,NA,NA,5
+"KO","Lane Snapper","Sensitivity","Habitat specificity",21,3,2,NA,1,3,1,5
+"KO","Lane Snapper","Sensitivity","Prey specificity",22,2,3,1,3,1,NA,5
+"KO","Lane Snapper","Sensitivity","Tolerance to ocean acidification",23,2.6,2,NA,2,3,NA,5
+"KO","Lane Snapper","Sensitivity","Complexity in reproductive strategy",24,2,2,1,3,1,NA,5
+"KO","Lane Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"KO","Lane Snapper","Sensitivity","Specificity in early life history requirements",26,2.2,2,NA,4,1,NA,5
+"KO","Lane Snapper","Sensitivity","Stock Size Status",27,2.2,1,1,2,2,NA,5
+"KO","Lane Snapper","Sensitivity","Other stressors",28,2.2,1,NA,4,1,NA,5
+"KO","Lane Snapper","Sensitivity","Population growth rate",30,2.4,2,NA,3,2,NA,5
+"KO","Lane Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.6,2,2,3,NA,NA,5
+"KO","Lane Snapper","Sensitivity","Adult mobility",32,2,1,NA,5,NA,NA,5
+"KO","Lane Snapper","Sensitivity","Spawning characteristics",33,1.2,2,4,1,NA,NA,5
+"KO","Lane Snapper","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"KO","Lane Snapper","Sensitivity","Genetic diversity",35,2.4,2,1,1,3,NA,5
+"RE","Lane Snapper","Sensitivity","Habitat specificity",21,1.8,3,1,4,NA,NA,5
+"RE","Lane Snapper","Sensitivity","Prey specificity",22,2,3,NA,5,NA,NA,5
+"RE","Lane Snapper","Sensitivity","Tolerance to ocean acidification",23,3,3,NA,NA,5,NA,5
+"RE","Lane Snapper","Sensitivity","Complexity in reproductive strategy",24,4,3,NA,NA,NA,5,5
+"RE","Lane Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"RE","Lane Snapper","Sensitivity","Specificity in early life history requirements",26,2.2,1,NA,4,1,NA,5
+"RE","Lane Snapper","Sensitivity","Stock Size Status",27,2.4,1,NA,3,2,NA,5
+"RE","Lane Snapper","Sensitivity","Other stressors",28,4,1,NA,NA,NA,5,5
+"RE","Lane Snapper","Sensitivity","Population growth rate",30,3,1,NA,1,3,1,5
+"RE","Lane Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.2,1,4,1,NA,NA,5
+"RE","Lane Snapper","Sensitivity","Adult mobility",32,2,3,NA,5,NA,NA,5
+"RE","Lane Snapper","Sensitivity","Spawning characteristics",33,3,3,NA,NA,5,NA,5
+"RE","Lane Snapper","Sensitivity","Predation and competition dynamics",34,2,2,1,3,1,NA,5
+"RE","Lane Snapper","Sensitivity","Genetic diversity",35,1,0,5,NA,NA,NA,5
+"DB","Diadema","Sensitivity","Habitat specificity",21,1.4,3,3,2,NA,NA,5
+"DB","Diadema","Sensitivity","Prey specificity",22,1.4,3,3,2,NA,NA,5
+"DB","Diadema","Sensitivity","Tolerance to ocean acidification",23,3,2,NA,1,3,1,5
+"DB","Diadema","Sensitivity","Complexity in reproductive strategy",24,2.8,2,NA,2,2,1,5
+"DB","Diadema","Sensitivity","Species range",25,1.2,3,4,1,NA,NA,5
+"DB","Diadema","Sensitivity","Specificity in early life history requirements",26,2.4,2,NA,3,2,NA,5
+"DB","Diadema","Sensitivity","Stock Size Status",27,1.4,2,3,2,NA,NA,5
+"DB","Diadema","Sensitivity","Other stressors",28,1.8,1,2,2,1,NA,5
+"DB","Diadema","Sensitivity","Population growth rate",30,1.4,1,3,2,NA,NA,5
+"DB","Diadema","Sensitivity","Mobility and dispersal or early life stages",31,1.2,2,4,1,NA,NA,5
+"DB","Diadema","Sensitivity","Adult mobility",32,2.8,3,NA,1,4,NA,5
+"DB","Diadema","Sensitivity","Spawning characteristics",33,2,3,NA,5,NA,NA,5
+"DB","Diadema","Sensitivity","Predation and competition dynamics",34,1.6,1,2,3,NA,NA,5
+"DB","Diadema","Sensitivity","Genetic diversity",35,2.6,2,NA,2,3,NA,5
+"JP","Diadema","Sensitivity","Habitat specificity",21,3.4,3,NA,1,1,3,5
+"JP","Diadema","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"JP","Diadema","Sensitivity","Tolerance to ocean acidification",23,3.6,2,NA,NA,2,3,5
+"JP","Diadema","Sensitivity","Complexity in reproductive strategy",24,3.2,3,NA,1,2,2,5
+"JP","Diadema","Sensitivity","Species range",25,2.2,3,NA,4,1,NA,5
+"JP","Diadema","Sensitivity","Specificity in early life history requirements",26,4,3,NA,NA,NA,5,5
+"JP","Diadema","Sensitivity","Stock Size Status",27,1,3,5,NA,NA,NA,5
+"JP","Diadema","Sensitivity","Other stressors",28,4,3,NA,NA,NA,5,5
+"JP","Diadema","Sensitivity","Population growth rate",30,1.8,1,2,2,1,NA,5
+"JP","Diadema","Sensitivity","Mobility and dispersal or early life stages",31,1.2,3,4,1,NA,NA,5
+"JP","Diadema","Sensitivity","Adult mobility",32,2.6,3,NA,2,3,NA,5
+"JP","Diadema","Sensitivity","Spawning characteristics",33,1,2,5,NA,NA,NA,5
+"JP","Diadema","Sensitivity","Predation and competition dynamics",34,3,2,NA,NA,5,NA,5
+"JP","Diadema","Sensitivity","Genetic diversity",35,3.4,2,NA,NA,3,2,5
+"OT","Diadema","Sensitivity","Habitat specificity",21,2.8,3,NA,2,2,1,5
+"OT","Diadema","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"OT","Diadema","Sensitivity","Tolerance to ocean acidification",23,4,3,NA,NA,NA,5,5
+"OT","Diadema","Sensitivity","Complexity in reproductive strategy",24,2.6,2,1,1,2,1,5
+"OT","Diadema","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"OT","Diadema","Sensitivity","Specificity in early life history requirements",26,2.2,1,2,1,1,1,5
+"OT","Diadema","Sensitivity","Stock Size Status",27,2.6,1,1,1,2,1,5
+"OT","Diadema","Sensitivity","Other stressors",28,3,2,NA,1,3,1,5
+"OT","Diadema","Sensitivity","Population growth rate",30,2.2,1,2,1,1,1,5
+"OT","Diadema","Sensitivity","Mobility and dispersal or early life stages",31,1.6,1,2,3,NA,NA,5
+"OT","Diadema","Sensitivity","Adult mobility",32,2.6,3,NA,2,3,NA,5
+"OT","Diadema","Sensitivity","Spawning characteristics",33,2.2,1,2,1,1,1,5
+"OT","Diadema","Sensitivity","Predation and competition dynamics",34,2.2,1,2,1,1,1,5
+"OT","Diadema","Sensitivity","Genetic diversity",35,3,2,NA,1,3,1,5
+"SW","Diadema","Sensitivity","Habitat specificity",21,1.2,2,4,1,NA,NA,5
+"SW","Diadema","Sensitivity","Prey specificity",22,2,2,1,3,1,NA,5
+"SW","Diadema","Sensitivity","Tolerance to ocean acidification",23,3.8,2,NA,NA,1,4,5
+"SW","Diadema","Sensitivity","Complexity in reproductive strategy",24,3.6,3,NA,NA,2,3,5
+"SW","Diadema","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"SW","Diadema","Sensitivity","Specificity in early life history requirements",26,2.6,2,NA,2,3,NA,5
+"SW","Diadema","Sensitivity","Stock Size Status",27,2.2,2,1,2,2,NA,5
+"SW","Diadema","Sensitivity","Other stressors",28,4,3,NA,NA,NA,5,5
+"SW","Diadema","Sensitivity","Population growth rate",30,1.8,2,2,2,1,NA,5
+"SW","Diadema","Sensitivity","Mobility and dispersal or early life stages",31,2,2,NA,5,NA,NA,5
+"SW","Diadema","Sensitivity","Adult mobility",32,2.2,2,NA,4,1,NA,5
+"SW","Diadema","Sensitivity","Spawning characteristics",33,2.4,2,NA,3,2,NA,5
+"SW","Diadema","Sensitivity","Predation and competition dynamics",34,3.8,2,NA,NA,1,4,5
+"SW","Diadema","Sensitivity","Genetic diversity",35,4,3,NA,NA,NA,5,5
+"AA","Misty Grouper","Sensitivity","Habitat specificity",21,3.6,2,NA,NA,2,3,5
+"AA","Misty Grouper","Sensitivity","Prey specificity",22,2.2,2,1,2,2,NA,5
+"AA","Misty Grouper","Sensitivity","Tolerance to ocean acidification",23,2.2,2,1,2,2,NA,5
+"AA","Misty Grouper","Sensitivity","Complexity in reproductive strategy",24,4,2,NA,NA,NA,5,5
+"AA","Misty Grouper","Sensitivity","Species range",25,2.8,3,NA,1,4,NA,5
+"AA","Misty Grouper","Sensitivity","Specificity in early life history requirements",26,3.4,2,NA,NA,3,2,5
+"AA","Misty Grouper","Sensitivity","Stock Size Status",27,3.8,2,NA,NA,1,4,5
+"AA","Misty Grouper","Sensitivity","Other stressors",28,2.6,2,NA,2,3,NA,5
+"AA","Misty Grouper","Sensitivity","Population growth rate",30,3.8,2,NA,NA,1,4,5
+"AA","Misty Grouper","Sensitivity","Mobility and dispersal or early life stages",31,3,2,NA,1,3,1,5
+"AA","Misty Grouper","Sensitivity","Adult mobility",32,3.2,2,NA,NA,4,1,5
+"AA","Misty Grouper","Sensitivity","Spawning characteristics",33,3.6,2,NA,NA,2,3,5
+"AA","Misty Grouper","Sensitivity","Predation and competition dynamics",34,2.6,2,NA,2,3,NA,5
+"AA","Misty Grouper","Sensitivity","Genetic diversity",35,3.6,2,NA,NA,2,3,5
+"ET","Misty Grouper","Sensitivity","Habitat specificity",21,2.4,2,NA,3,2,NA,5
+"ET","Misty Grouper","Sensitivity","Prey specificity",22,2,2,NA,5,NA,NA,5
+"ET","Misty Grouper","Sensitivity","Tolerance to ocean acidification",23,2.4,3,NA,3,2,NA,5
+"ET","Misty Grouper","Sensitivity","Complexity in reproductive strategy",24,2.4,1,NA,3,2,NA,5
+"ET","Misty Grouper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"ET","Misty Grouper","Sensitivity","Specificity in early life history requirements",26,1.8,1,2,2,1,NA,5
+"ET","Misty Grouper","Sensitivity","Stock Size Status",27,2.6,1,NA,2,3,NA,5
+"ET","Misty Grouper","Sensitivity","Other stressors",28,1.4,1,3,2,NA,NA,5
+"ET","Misty Grouper","Sensitivity","Population growth rate",30,3.8,2,NA,NA,1,4,5
+"ET","Misty Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2,1,NA,5,NA,NA,5
+"ET","Misty Grouper","Sensitivity","Adult mobility",32,2,2,NA,5,NA,NA,5
+"ET","Misty Grouper","Sensitivity","Spawning characteristics",33,3,1,NA,NA,5,NA,5
+"ET","Misty Grouper","Sensitivity","Predation and competition dynamics",34,2.4,0,NA,3,2,NA,5
+"ET","Misty Grouper","Sensitivity","Genetic diversity",35,3,1,NA,NA,5,NA,5
+"MS","Misty Grouper","Sensitivity","Habitat specificity",21,2,1,1,3,1,NA,5
+"MS","Misty Grouper","Sensitivity","Prey specificity",22,2.6,1,NA,2,3,NA,5
+"MS","Misty Grouper","Sensitivity","Tolerance to ocean acidification",23,2.2,1,1,2,2,NA,5
+"MS","Misty Grouper","Sensitivity","Complexity in reproductive strategy",24,3.2,1,NA,1,2,2,5
+"MS","Misty Grouper","Sensitivity","Species range",25,2.2,1,1,2,2,NA,5
+"MS","Misty Grouper","Sensitivity","Specificity in early life history requirements",26,2.2,1,NA,4,1,NA,5
+"MS","Misty Grouper","Sensitivity","Stock Size Status",27,4,1,NA,NA,NA,5,5
+"MS","Misty Grouper","Sensitivity","Other stressors",28,2.4,1,NA,3,2,NA,5
+"MS","Misty Grouper","Sensitivity","Population growth rate",30,3.2,1,NA,NA,4,1,5
+"MS","Misty Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2,1,NA,5,NA,NA,5
+"MS","Misty Grouper","Sensitivity","Adult mobility",32,2.8,1,NA,1,4,NA,5
+"MS","Misty Grouper","Sensitivity","Spawning characteristics",33,3.2,1,NA,NA,4,1,5
+"MS","Misty Grouper","Sensitivity","Predation and competition dynamics",34,1.2,1,4,1,NA,NA,5
+"MS","Misty Grouper","Sensitivity","Genetic diversity",35,2.4,1,NA,3,2,NA,5
+"SK","Misty Grouper","Sensitivity","Habitat specificity",21,2.6,2,NA,2,3,NA,5
+"SK","Misty Grouper","Sensitivity","Prey specificity",22,2.4,2,NA,3,2,NA,5
+"SK","Misty Grouper","Sensitivity","Tolerance to ocean acidification",23,2.4,2,NA,3,2,NA,5
+"SK","Misty Grouper","Sensitivity","Complexity in reproductive strategy",24,3.4,2,NA,NA,3,2,5
+"SK","Misty Grouper","Sensitivity","Species range",25,3.2,2,NA,NA,4,1,5
+"SK","Misty Grouper","Sensitivity","Specificity in early life history requirements",26,3.2,2,NA,1,2,2,5
+"SK","Misty Grouper","Sensitivity","Stock Size Status",27,3.8,2,NA,NA,1,4,5
+"SK","Misty Grouper","Sensitivity","Other stressors",28,2.8,2,NA,1,4,NA,5
+"SK","Misty Grouper","Sensitivity","Population growth rate",30,3.8,2,NA,NA,1,4,5
+"SK","Misty Grouper","Sensitivity","Mobility and dispersal or early life stages",31,3.4,2,NA,NA,3,2,5
+"SK","Misty Grouper","Sensitivity","Adult mobility",32,2.8,2,NA,2,2,1,5
+"SK","Misty Grouper","Sensitivity","Spawning characteristics",33,3.6,2,NA,NA,2,3,5
+"SK","Misty Grouper","Sensitivity","Predation and competition dynamics",34,2.8,2,NA,2,2,1,5
+"SK","Misty Grouper","Sensitivity","Genetic diversity",35,2.4,2,NA,3,2,NA,5
+"KO","Mutton Snapper","Sensitivity","Habitat specificity",21,3,2,NA,1,3,1,5
+"KO","Mutton Snapper","Sensitivity","Prey specificity",22,3,2,NA,1,3,1,5
+"KO","Mutton Snapper","Sensitivity","Tolerance to ocean acidification",23,2.6,2,NA,2,3,NA,5
+"KO","Mutton Snapper","Sensitivity","Complexity in reproductive strategy",24,3.2,3,NA,NA,4,1,5
+"KO","Mutton Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"KO","Mutton Snapper","Sensitivity","Specificity in early life history requirements",26,3.2,2,NA,NA,4,1,5
+"KO","Mutton Snapper","Sensitivity","Stock Size Status",27,2.4,1,NA,3,2,NA,5
+"KO","Mutton Snapper","Sensitivity","Other stressors",28,2.2,2,NA,4,1,NA,5
+"KO","Mutton Snapper","Sensitivity","Population growth rate",30,2.6,2,NA,3,1,1,5
+"KO","Mutton Snapper","Sensitivity","Mobility and dispersal or early life stages",31,2,2,1,3,1,NA,5
+"KO","Mutton Snapper","Sensitivity","Adult mobility",32,2.8,3,NA,1,4,NA,5
+"KO","Mutton Snapper","Sensitivity","Spawning characteristics",33,3.2,3,NA,NA,4,1,5
+"KO","Mutton Snapper","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"KO","Mutton Snapper","Sensitivity","Genetic diversity",35,2.8,2,NA,1,4,NA,5
+"RE","Mutton Snapper","Sensitivity","Habitat specificity",21,2.2,3,NA,4,1,NA,5
+"RE","Mutton Snapper","Sensitivity","Prey specificity",22,2,3,NA,5,NA,NA,5
+"RE","Mutton Snapper","Sensitivity","Tolerance to ocean acidification",23,3,3,NA,NA,5,NA,5
+"RE","Mutton Snapper","Sensitivity","Complexity in reproductive strategy",24,4,3,NA,NA,NA,5,5
+"RE","Mutton Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"RE","Mutton Snapper","Sensitivity","Specificity in early life history requirements",26,2.8,1,NA,2,2,1,5
+"RE","Mutton Snapper","Sensitivity","Stock Size Status",27,2.4,2,NA,3,2,NA,5
+"RE","Mutton Snapper","Sensitivity","Other stressors",28,2,1,NA,5,NA,NA,5
+"RE","Mutton Snapper","Sensitivity","Population growth rate",30,3,2,NA,1,3,1,5
+"RE","Mutton Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.2,2,4,1,NA,NA,5
+"RE","Mutton Snapper","Sensitivity","Adult mobility",32,2,3,NA,5,NA,NA,5
+"RE","Mutton Snapper","Sensitivity","Spawning characteristics",33,4,3,NA,NA,NA,5,5
+"RE","Mutton Snapper","Sensitivity","Predation and competition dynamics",34,2,2,1,3,1,NA,5
+"RE","Mutton Snapper","Sensitivity","Genetic diversity",35,2,1,NA,5,NA,NA,5
+"SK","Mutton Snapper","Sensitivity","Habitat specificity",21,2.4,3,NA,3,2,NA,5
+"SK","Mutton Snapper","Sensitivity","Prey specificity",22,2,3,NA,5,NA,NA,5
+"SK","Mutton Snapper","Sensitivity","Tolerance to ocean acidification",23,2,NA,NA,3,2,NA,5
+"SK","Mutton Snapper","Sensitivity","Complexity in reproductive strategy",24,3,3,NA,NA,5,NA,5
+"SK","Mutton Snapper","Sensitivity","Species range",25,2.2,3,1,2,2,NA,5
+"SK","Mutton Snapper","Sensitivity","Specificity in early life history requirements",26,2.4,2,NA,3,2,NA,5
+"SK","Mutton Snapper","Sensitivity","Stock Size Status",27,2,3,1,3,1,NA,5
+"SK","Mutton Snapper","Sensitivity","Other stressors",28,2.2,2,NA,4,1,NA,5
+"SK","Mutton Snapper","Sensitivity","Population growth rate",30,2,3,1,3,1,NA,5
+"SK","Mutton Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.6,3,2,3,NA,NA,5
+"SK","Mutton Snapper","Sensitivity","Adult mobility",32,1.6,3,2,3,NA,NA,5
+"SK","Mutton Snapper","Sensitivity","Spawning characteristics",33,3.2,3,NA,NA,4,1,5
+"SK","Mutton Snapper","Sensitivity","Predation and competition dynamics",34,2.4,2,NA,3,2,NA,5
+"SK","Mutton Snapper","Sensitivity","Genetic diversity",35,1.6,2,2,3,NA,NA,5
+"WM","Mutton Snapper","Sensitivity","Habitat specificity",21,3.6,2,NA,NA,2,3,5
+"WM","Mutton Snapper","Sensitivity","Prey specificity",22,3.6,2,NA,NA,2,3,5
+"WM","Mutton Snapper","Sensitivity","Tolerance to ocean acidification",23,3.6,2,NA,NA,2,3,5
+"WM","Mutton Snapper","Sensitivity","Complexity in reproductive strategy",24,3.6,2,NA,NA,2,3,5
+"WM","Mutton Snapper","Sensitivity","Species range",25,3.8,2,NA,NA,1,4,5
+"WM","Mutton Snapper","Sensitivity","Specificity in early life history requirements",26,3.8,2,NA,NA,1,4,5
+"WM","Mutton Snapper","Sensitivity","Stock Size Status",27,2.6,2,NA,3,1,1,5
+"WM","Mutton Snapper","Sensitivity","Other stressors",28,2.8,2,NA,2,2,1,5
+"WM","Mutton Snapper","Sensitivity","Population growth rate",30,2,2,NA,5,NA,NA,5
+"WM","Mutton Snapper","Sensitivity","Mobility and dispersal or early life stages",31,2.2,2,1,2,2,NA,5
+"WM","Mutton Snapper","Sensitivity","Adult mobility",32,2.4,2,NA,3,2,NA,5
+"WM","Mutton Snapper","Sensitivity","Spawning characteristics",33,2.8,2,NA,2,2,1,5
+"WM","Mutton Snapper","Sensitivity","Predation and competition dynamics",34,2.8,2,NA,2,2,1,5
+"WM","Mutton Snapper","Sensitivity","Genetic diversity",35,3.6,2,NA,NA,2,3,5
+"CZ","Nassau Grouper","Sensitivity","Habitat specificity",21,2.8,2,NA,1,4,NA,5
+"CZ","Nassau Grouper","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"CZ","Nassau Grouper","Sensitivity","Tolerance to ocean acidification",23,1.4,1,3,2,NA,NA,5
+"CZ","Nassau Grouper","Sensitivity","Complexity in reproductive strategy",24,3.8,3,NA,NA,1,4,5
+"CZ","Nassau Grouper","Sensitivity","Species range",25,2.6,3,NA,2,3,NA,5
+"CZ","Nassau Grouper","Sensitivity","Specificity in early life history requirements",26,2.6,2,NA,2,3,NA,5
+"CZ","Nassau Grouper","Sensitivity","Stock Size Status",27,3.2,2,NA,NA,4,1,5
+"CZ","Nassau Grouper","Sensitivity","Other stressors",28,2,2,NA,5,NA,NA,5
+"CZ","Nassau Grouper","Sensitivity","Population growth rate",30,3.2,2,NA,NA,4,1,5
+"CZ","Nassau Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2.4,3,1,1,3,NA,5
+"CZ","Nassau Grouper","Sensitivity","Adult mobility",32,1.6,3,2,3,NA,NA,5
+"CZ","Nassau Grouper","Sensitivity","Spawning characteristics",33,3.2,3,NA,NA,4,1,5
+"CZ","Nassau Grouper","Sensitivity","Predation and competition dynamics",34,1.6,2,2,3,NA,NA,5
+"CZ","Nassau Grouper","Sensitivity","Genetic diversity",35,1.6,2,2,3,NA,NA,5
+"MS","Nassau Grouper","Sensitivity","Habitat specificity",21,2,2,NA,5,NA,NA,5
+"MS","Nassau Grouper","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"MS","Nassau Grouper","Sensitivity","Tolerance to ocean acidification",23,1.4,1,3,2,NA,NA,5
+"MS","Nassau Grouper","Sensitivity","Complexity in reproductive strategy",24,3.2,3,NA,NA,4,1,5
+"MS","Nassau Grouper","Sensitivity","Species range",25,3,3,NA,NA,5,NA,5
+"MS","Nassau Grouper","Sensitivity","Specificity in early life history requirements",26,3,1,NA,NA,5,NA,5
+"MS","Nassau Grouper","Sensitivity","Stock Size Status",27,4,1,NA,NA,NA,5,5
+"MS","Nassau Grouper","Sensitivity","Other stressors",28,2.8,1,NA,1,4,NA,5
+"MS","Nassau Grouper","Sensitivity","Population growth rate",30,3.2,2,NA,NA,4,1,5
+"MS","Nassau Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2,2,NA,5,NA,NA,5
+"MS","Nassau Grouper","Sensitivity","Adult mobility",32,2.8,2,NA,1,4,NA,5
+"MS","Nassau Grouper","Sensitivity","Spawning characteristics",33,3.2,3,NA,NA,4,1,5
+"MS","Nassau Grouper","Sensitivity","Predation and competition dynamics",34,1.2,1,4,1,NA,NA,5
+"MS","Nassau Grouper","Sensitivity","Genetic diversity",35,3,2,NA,NA,5,NA,5
+"OT","Nassau Grouper","Sensitivity","Habitat specificity",21,2.2,3,NA,4,1,NA,5
+"OT","Nassau Grouper","Sensitivity","Prey specificity",22,2,3,1,3,1,NA,5
+"OT","Nassau Grouper","Sensitivity","Tolerance to ocean acidification",23,2,3,1,3,1,NA,5
+"OT","Nassau Grouper","Sensitivity","Complexity in reproductive strategy",24,3.8,3,NA,NA,1,4,5
+"OT","Nassau Grouper","Sensitivity","Species range",25,2.4,3,NA,3,2,NA,5
+"OT","Nassau Grouper","Sensitivity","Specificity in early life history requirements",26,3,2,NA,1,3,1,5
+"OT","Nassau Grouper","Sensitivity","Stock Size Status",27,3.2,2,NA,1,2,2,5
+"OT","Nassau Grouper","Sensitivity","Other stressors",28,2.4,1,1,2,1,1,5
+"OT","Nassau Grouper","Sensitivity","Population growth rate",30,3,2,NA,1,3,1,5
+"OT","Nassau Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2,3,1,3,1,NA,5
+"OT","Nassau Grouper","Sensitivity","Adult mobility",32,2,3,NA,5,NA,NA,5
+"OT","Nassau Grouper","Sensitivity","Spawning characteristics",33,3,3,NA,NA,5,NA,5
+"OT","Nassau Grouper","Sensitivity","Predation and competition dynamics",34,1.6,2,2,3,NA,NA,5
+"OT","Nassau Grouper","Sensitivity","Genetic diversity",35,2.4,1,NA,3,2,NA,5
+"SK","Nassau Grouper","Sensitivity","Habitat specificity",21,2.4,3,NA,3,2,NA,5
+"SK","Nassau Grouper","Sensitivity","Prey specificity",22,2.2,3,1,2,2,NA,5
+"SK","Nassau Grouper","Sensitivity","Tolerance to ocean acidification",23,2.4,2,NA,3,2,NA,5
+"SK","Nassau Grouper","Sensitivity","Complexity in reproductive strategy",24,3.8,3,NA,NA,1,4,5
+"SK","Nassau Grouper","Sensitivity","Species range",25,2.8,3,NA,1,4,NA,5
+"SK","Nassau Grouper","Sensitivity","Specificity in early life history requirements",26,3,3,NA,1,3,1,5
+"SK","Nassau Grouper","Sensitivity","Stock Size Status",27,3.8,3,NA,NA,1,4,5
+"SK","Nassau Grouper","Sensitivity","Other stressors",28,2.4,2,NA,3,2,NA,5
+"SK","Nassau Grouper","Sensitivity","Population growth rate",30,3.4,3,NA,NA,3,2,5
+"SK","Nassau Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2.4,3,NA,3,2,NA,5
+"SK","Nassau Grouper","Sensitivity","Adult mobility",32,2,3,1,3,1,NA,5
+"SK","Nassau Grouper","Sensitivity","Spawning characteristics",33,3.2,3,NA,NA,4,1,5
+"SK","Nassau Grouper","Sensitivity","Predation and competition dynamics",34,2,2,1,3,1,NA,5
+"SK","Nassau Grouper","Sensitivity","Genetic diversity",35,3.4,3,NA,1,1,3,5
+"AK","Queen Conch","Sensitivity","Habitat specificity",21,1.2,3,4,1,NA,NA,5
+"AK","Queen Conch","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"AK","Queen Conch","Sensitivity","Tolerance to ocean acidification",23,4,2,NA,NA,NA,5,5
+"AK","Queen Conch","Sensitivity","Complexity in reproductive strategy",24,3.6,3,NA,NA,2,3,5
+"AK","Queen Conch","Sensitivity","Species range",25,1,2,5,NA,NA,NA,5
+"AK","Queen Conch","Sensitivity","Specificity in early life history requirements",26,1,3,5,NA,NA,NA,5
+"AK","Queen Conch","Sensitivity","Stock Size Status",27,1.6,2,2,3,NA,NA,5
+"AK","Queen Conch","Sensitivity","Other stressors",28,1.2,2,4,1,NA,NA,5
+"AK","Queen Conch","Sensitivity","Population growth rate",30,1.8,3,3,1,NA,1,5
+"AK","Queen Conch","Sensitivity","Mobility and dispersal or early life stages",31,1.6,3,2,3,NA,NA,5
+"AK","Queen Conch","Sensitivity","Adult mobility",32,2.8,3,NA,1,4,NA,5
+"AK","Queen Conch","Sensitivity","Spawning characteristics",33,1.4,3,3,2,NA,NA,5
+"AK","Queen Conch","Sensitivity","Predation and competition dynamics",34,1,3,5,NA,NA,NA,5
+"AK","Queen Conch","Sensitivity","Genetic diversity",35,1,3,5,NA,NA,NA,5
+"BG","Queen Conch","Sensitivity","Habitat specificity",21,2,3,NA,5,NA,NA,5
+"BG","Queen Conch","Sensitivity","Prey specificity",22,1.6,3,2,3,NA,NA,5
+"BG","Queen Conch","Sensitivity","Tolerance to ocean acidification",23,4,3,NA,NA,NA,5,5
+"BG","Queen Conch","Sensitivity","Complexity in reproductive strategy",24,4,3,NA,NA,NA,5,5
+"BG","Queen Conch","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"BG","Queen Conch","Sensitivity","Specificity in early life history requirements",26,3,NA,5,NA,NA,NA,5
+"BG","Queen Conch","Sensitivity","Stock Size Status",27,1.6,3,2,3,NA,NA,5
+"BG","Queen Conch","Sensitivity","Other stressors",28,1.2,2,4,1,NA,NA,5
+"BG","Queen Conch","Sensitivity","Population growth rate",30,1,3,5,NA,NA,NA,5
+"BG","Queen Conch","Sensitivity","Mobility and dispersal or early life stages",31,1,3,5,NA,NA,NA,5
+"BG","Queen Conch","Sensitivity","Adult mobility",32,1,3,5,NA,NA,NA,5
+"BG","Queen Conch","Sensitivity","Spawning characteristics",33,1.2,3,4,1,NA,NA,5
+"BG","Queen Conch","Sensitivity","Predation and competition dynamics",34,1,3,5,NA,NA,NA,5
+"BG","Queen Conch","Sensitivity","Genetic diversity",35,1,3,5,NA,NA,NA,5
+"OT","Queen Conch","Sensitivity","Habitat specificity",21,1.4,3,3,2,NA,NA,5
+"OT","Queen Conch","Sensitivity","Prey specificity",22,1.4,3,3,2,NA,NA,5
+"OT","Queen Conch","Sensitivity","Tolerance to ocean acidification",23,3.8,3,NA,NA,1,4,5
+"OT","Queen Conch","Sensitivity","Complexity in reproductive strategy",24,3,3,NA,1,3,1,5
+"OT","Queen Conch","Sensitivity","Species range",25,2,3,1,3,1,NA,5
+"OT","Queen Conch","Sensitivity","Specificity in early life history requirements",26,2,3,1,3,1,NA,5
+"OT","Queen Conch","Sensitivity","Stock Size Status",27,2.4,2,1,2,1,1,5
+"OT","Queen Conch","Sensitivity","Other stressors",28,1.2,2,4,1,NA,NA,5
+"OT","Queen Conch","Sensitivity","Population growth rate",30,2.2,2,1,3,NA,1,5
+"OT","Queen Conch","Sensitivity","Mobility and dispersal or early life stages",31,2.2,3,NA,4,1,NA,5
+"OT","Queen Conch","Sensitivity","Adult mobility",32,3,3,NA,NA,5,NA,5
+"OT","Queen Conch","Sensitivity","Spawning characteristics",33,1.8,3,1,4,NA,NA,5
+"OT","Queen Conch","Sensitivity","Predation and competition dynamics",34,1.6,3,3,1,1,NA,5
+"OT","Queen Conch","Sensitivity","Genetic diversity",35,1.4,3,3,2,NA,NA,5
+"RA","Queen Conch","Sensitivity","Habitat specificity",21,1.4,3,3,2,NA,NA,5
+"RA","Queen Conch","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"RA","Queen Conch","Sensitivity","Tolerance to ocean acidification",23,4,1,NA,NA,NA,5,5
+"RA","Queen Conch","Sensitivity","Complexity in reproductive strategy",24,3.8,2,NA,NA,1,4,5
+"RA","Queen Conch","Sensitivity","Species range",25,3,3,NA,NA,5,NA,5
+"RA","Queen Conch","Sensitivity","Specificity in early life history requirements",26,2.6,2,NA,3,1,1,5
+"RA","Queen Conch","Sensitivity","Stock Size Status",27,2.6,2,NA,2,3,NA,5
+"RA","Queen Conch","Sensitivity","Other stressors",28,2.4,1,NA,3,2,NA,5
+"RA","Queen Conch","Sensitivity","Population growth rate",30,2.6,2,NA,2,3,NA,5
+"RA","Queen Conch","Sensitivity","Mobility and dispersal or early life stages",31,2,2,NA,5,NA,NA,5
+"RA","Queen Conch","Sensitivity","Adult mobility",32,2.8,2,NA,1,4,NA,5
+"RA","Queen Conch","Sensitivity","Spawning characteristics",33,2.6,3,NA,2,3,NA,5
+"RA","Queen Conch","Sensitivity","Predation and competition dynamics",34,2.8,2,NA,2,2,1,5
+"RA","Queen Conch","Sensitivity","Genetic diversity",35,2.4,1,NA,3,2,NA,5
+"KO","Queen snapper","Sensitivity","Habitat specificity",21,2.8,3,NA,2,2,1,5
+"KO","Queen snapper","Sensitivity","Prey specificity",22,1.8,2,1,4,NA,NA,5
+"KO","Queen snapper","Sensitivity","Tolerance to ocean acidification",23,2,1,1,3,1,NA,5
+"KO","Queen snapper","Sensitivity","Complexity in reproductive strategy",24,2.2,1,NA,4,1,NA,5
+"KO","Queen snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"KO","Queen snapper","Sensitivity","Specificity in early life history requirements",26,2.6,2,NA,2,3,NA,5
+"KO","Queen snapper","Sensitivity","Stock Size Status",27,2.4,1,NA,3,2,NA,5
+"KO","Queen snapper","Sensitivity","Other stressors",28,1.4,1,3,2,NA,NA,5
+"KO","Queen snapper","Sensitivity","Population growth rate",30,3.8,3,NA,NA,1,4,5
+"KO","Queen snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.6,2,2,3,NA,NA,5
+"KO","Queen snapper","Sensitivity","Adult mobility",32,2,1,1,3,1,NA,5
+"KO","Queen snapper","Sensitivity","Spawning characteristics",33,2.4,1,1,1,3,NA,5
+"KO","Queen snapper","Sensitivity","Predation and competition dynamics",34,2,1,1,3,1,NA,5
+"KO","Queen snapper","Sensitivity","Genetic diversity",35,2.6,1,NA,2,3,NA,5
+"RG","Queen snapper","Sensitivity","Habitat specificity",21,2.4,3,NA,3,2,NA,5
+"RG","Queen snapper","Sensitivity","Prey specificity",22,1.8,2,2,2,1,NA,5
+"RG","Queen snapper","Sensitivity","Tolerance to ocean acidification",23,1.8,1,2,2,1,NA,5
+"RG","Queen snapper","Sensitivity","Complexity in reproductive strategy",24,2.2,1,1,2,2,NA,5
+"RG","Queen snapper","Sensitivity","Species range",25,2.4,3,NA,3,2,NA,5
+"RG","Queen snapper","Sensitivity","Specificity in early life history requirements",26,1.8,1,2,2,1,NA,5
+"RG","Queen snapper","Sensitivity","Stock Size Status",27,1.4,2,3,2,NA,NA,5
+"RG","Queen snapper","Sensitivity","Other stressors",28,1.6,2,3,1,1,NA,5
+"RG","Queen snapper","Sensitivity","Population growth rate",30,1.6,2,3,1,1,NA,5
+"RG","Queen snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.6,1,3,1,1,NA,5
+"RG","Queen snapper","Sensitivity","Adult mobility",32,1.6,2,3,1,1,NA,5
+"RG","Queen snapper","Sensitivity","Spawning characteristics",33,1.8,2,2,2,1,NA,5
+"RG","Queen snapper","Sensitivity","Predation and competition dynamics",34,2.2,1,1,2,2,NA,5
+"RG","Queen snapper","Sensitivity","Genetic diversity",35,1.6,1,3,1,1,NA,5
+"SW","Queen snapper","Sensitivity","Habitat specificity",21,3.6,2,NA,NA,2,3,5
+"SW","Queen snapper","Sensitivity","Prey specificity",22,1.2,2,4,1,NA,NA,5
+"SW","Queen snapper","Sensitivity","Tolerance to ocean acidification",23,3.4,1,NA,NA,3,2,5
+"SW","Queen snapper","Sensitivity","Complexity in reproductive strategy",24,3.4,1,NA,NA,3,2,5
+"SW","Queen snapper","Sensitivity","Species range",25,2.4,2,NA,3,2,NA,5
+"SW","Queen snapper","Sensitivity","Specificity in early life history requirements",26,3,1,NA,1,3,1,5
+"SW","Queen snapper","Sensitivity","Stock Size Status",27,2.6,1,NA,3,1,1,5
+"SW","Queen snapper","Sensitivity","Other stressors",28,2.6,1,NA,2,3,NA,5
+"SW","Queen snapper","Sensitivity","Population growth rate",30,3.4,2,NA,NA,3,2,5
+"SW","Queen snapper","Sensitivity","Mobility and dispersal or early life stages",31,2.6,2,NA,2,3,NA,5
+"SW","Queen snapper","Sensitivity","Adult mobility",32,1.8,2,2,2,1,NA,5
+"SW","Queen snapper","Sensitivity","Spawning characteristics",33,2.2,1,NA,4,1,NA,5
+"SW","Queen snapper","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"SW","Queen snapper","Sensitivity","Genetic diversity",35,3.2,1,NA,NA,4,1,5
+"WM","Queen snapper","Sensitivity","Habitat specificity",21,3.6,3,NA,NA,2,3,5
+"WM","Queen snapper","Sensitivity","Prey specificity",22,3.6,3,NA,NA,2,3,5
+"WM","Queen snapper","Sensitivity","Tolerance to ocean acidification",23,3.6,2,NA,NA,2,3,5
+"WM","Queen snapper","Sensitivity","Complexity in reproductive strategy",24,3.6,2,NA,NA,2,3,5
+"WM","Queen snapper","Sensitivity","Species range",25,3.8,3,NA,NA,1,4,5
+"WM","Queen snapper","Sensitivity","Specificity in early life history requirements",26,3.8,2,NA,NA,1,4,5
+"WM","Queen snapper","Sensitivity","Stock Size Status",27,2.6,2,NA,3,1,1,5
+"WM","Queen snapper","Sensitivity","Other stressors",28,2.8,2,NA,2,2,1,5
+"WM","Queen snapper","Sensitivity","Population growth rate",30,1.2,3,4,1,NA,NA,5
+"WM","Queen snapper","Sensitivity","Mobility and dispersal or early life stages",31,2.4,3,NA,3,2,NA,5
+"WM","Queen snapper","Sensitivity","Adult mobility",32,2.4,3,NA,3,2,NA,5
+"WM","Queen snapper","Sensitivity","Spawning characteristics",33,2.6,2,NA,2,3,NA,5
+"WM","Queen snapper","Sensitivity","Predation and competition dynamics",34,2.8,2,NA,2,2,1,5
+"WM","Queen snapper","Sensitivity","Genetic diversity",35,3.6,2,NA,NA,2,3,5
+"CZ","Queen Triggerfish","Sensitivity","Habitat specificity",21,2,2,1,3,1,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Tolerance to ocean acidification",23,1.4,1,3,2,NA,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Complexity in reproductive strategy",24,1.6,2,2,3,NA,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Species range",25,2,2,1,3,1,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Specificity in early life history requirements",26,2.2,1,1,2,2,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Stock Size Status",27,2.2,0,1,2,2,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Other stressors",28,2.2,0,1,2,2,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Population growth rate",30,2.2,2,1,2,2,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Mobility and dispersal or early life stages",31,2.2,2,1,2,2,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Adult mobility",32,1.8,3,2,2,1,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Spawning characteristics",33,1.8,2,2,2,1,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Predation and competition dynamics",34,2,2,1,3,1,NA,5
+"CZ","Queen Triggerfish","Sensitivity","Genetic diversity",35,2,1,1,3,1,NA,5
+"ET","Queen Triggerfish","Sensitivity","Habitat specificity",21,2.8,3,NA,2,2,1,5
+"ET","Queen Triggerfish","Sensitivity","Prey specificity",22,2,3,1,3,1,NA,5
+"ET","Queen Triggerfish","Sensitivity","Tolerance to ocean acidification",23,3,3,NA,NA,5,NA,5
+"ET","Queen Triggerfish","Sensitivity","Complexity in reproductive strategy",24,1.4,3,3,2,NA,NA,5
+"ET","Queen Triggerfish","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"ET","Queen Triggerfish","Sensitivity","Specificity in early life history requirements",26,2,3,1,3,1,NA,5
+"ET","Queen Triggerfish","Sensitivity","Stock Size Status",27,1.4,0,3,2,NA,NA,5
+"ET","Queen Triggerfish","Sensitivity","Other stressors",28,2.6,3,NA,2,3,NA,5
+"ET","Queen Triggerfish","Sensitivity","Population growth rate",30,3,3,NA,1,3,1,5
+"ET","Queen Triggerfish","Sensitivity","Mobility and dispersal or early life stages",31,2.2,1,3,NA,NA,2,5
+"ET","Queen Triggerfish","Sensitivity","Adult mobility",32,3,3,NA,NA,5,NA,5
+"ET","Queen Triggerfish","Sensitivity","Spawning characteristics",33,2,3,NA,5,NA,NA,5
+"ET","Queen Triggerfish","Sensitivity","Predation and competition dynamics",34,1,2,5,NA,NA,NA,5
+"ET","Queen Triggerfish","Sensitivity","Genetic diversity",35,2.8,2,NA,1,4,NA,5
+"GR","Queen Triggerfish","Sensitivity","Habitat specificity",21,2.6,3,NA,2,3,NA,5
+"GR","Queen Triggerfish","Sensitivity","Prey specificity",22,2.8,3,NA,1,4,NA,5
+"GR","Queen Triggerfish","Sensitivity","Tolerance to ocean acidification",23,1.6,1,2,3,NA,NA,5
+"GR","Queen Triggerfish","Sensitivity","Complexity in reproductive strategy",24,2.6,3,NA,2,3,NA,5
+"GR","Queen Triggerfish","Sensitivity","Species range",25,2.8,3,NA,1,4,NA,5
+"GR","Queen Triggerfish","Sensitivity","Specificity in early life history requirements",26,1.6,2,2,3,NA,NA,5
+"GR","Queen Triggerfish","Sensitivity","Stock Size Status",27,1.6,1,2,3,NA,NA,5
+"GR","Queen Triggerfish","Sensitivity","Other stressors",28,1.4,1,3,2,NA,NA,5
+"GR","Queen Triggerfish","Sensitivity","Population growth rate",30,1.6,3,3,1,1,NA,5
+"GR","Queen Triggerfish","Sensitivity","Mobility and dispersal or early life stages",31,4,3,NA,NA,NA,5,5
+"GR","Queen Triggerfish","Sensitivity","Adult mobility",32,2.2,3,NA,4,1,NA,5
+"GR","Queen Triggerfish","Sensitivity","Spawning characteristics",33,2.8,3,NA,3,NA,2,5
+"GR","Queen Triggerfish","Sensitivity","Predation and competition dynamics",34,2.2,3,NA,4,1,NA,5
+"GR","Queen Triggerfish","Sensitivity","Genetic diversity",35,1.6,2,3,1,1,NA,5
+"RL","Queen Triggerfish","Sensitivity","Habitat specificity",21,3.6,3,NA,NA,2,3,5
+"RL","Queen Triggerfish","Sensitivity","Prey specificity",22,2.4,3,NA,3,2,NA,5
+"RL","Queen Triggerfish","Sensitivity","Tolerance to ocean acidification",23,2,3,1,3,1,NA,5
+"RL","Queen Triggerfish","Sensitivity","Complexity in reproductive strategy",24,3.2,3,NA,1,2,2,5
+"RL","Queen Triggerfish","Sensitivity","Species range",25,1.4,3,3,2,NA,NA,5
+"RL","Queen Triggerfish","Sensitivity","Specificity in early life history requirements",26,3,3,NA,1,3,1,5
+"RL","Queen Triggerfish","Sensitivity","Stock Size Status",27,3.6,1,NA,NA,2,3,5
+"RL","Queen Triggerfish","Sensitivity","Other stressors",28,3.4,2,NA,1,1,3,5
+"RL","Queen Triggerfish","Sensitivity","Population growth rate",30,2,2,1,3,1,NA,5
+"RL","Queen Triggerfish","Sensitivity","Mobility and dispersal or early life stages",31,2.8,1,NA,2,2,1,5
+"RL","Queen Triggerfish","Sensitivity","Adult mobility",32,3.8,3,NA,NA,1,4,5
+"RL","Queen Triggerfish","Sensitivity","Spawning characteristics",33,3.2,2,NA,1,2,2,5
+"RL","Queen Triggerfish","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"RL","Queen Triggerfish","Sensitivity","Genetic diversity",35,1.4,2,3,2,NA,NA,5
+"CZ","Rainbow Parrotfish","Sensitivity","Habitat specificity",21,3.4,2,NA,NA,3,2,5
+"CZ","Rainbow Parrotfish","Sensitivity","Prey specificity",22,3.6,2,NA,NA,2,3,5
+"CZ","Rainbow Parrotfish","Sensitivity","Tolerance to ocean acidification",23,3.6,2,NA,NA,2,3,5
+"CZ","Rainbow Parrotfish","Sensitivity","Complexity in reproductive strategy",24,3.6,2,NA,NA,2,3,5
+"CZ","Rainbow Parrotfish","Sensitivity","Species range",25,2,3,1,3,1,NA,5
+"CZ","Rainbow Parrotfish","Sensitivity","Specificity in early life history requirements",26,2.2,1,1,2,2,NA,5
+"CZ","Rainbow Parrotfish","Sensitivity","Stock Size Status",27,3,1,NA,1,3,1,5
+"CZ","Rainbow Parrotfish","Sensitivity","Other stressors",28,3,1,NA,1,3,1,5
+"CZ","Rainbow Parrotfish","Sensitivity","Population growth rate",30,3.4,1,NA,NA,3,2,5
+"CZ","Rainbow Parrotfish","Sensitivity","Mobility and dispersal or early life stages",31,3.2,1,NA,1,2,2,5
+"CZ","Rainbow Parrotfish","Sensitivity","Adult mobility",32,2.8,2,NA,2,2,1,5
+"CZ","Rainbow Parrotfish","Sensitivity","Spawning characteristics",33,2,2,1,3,1,NA,5
+"CZ","Rainbow Parrotfish","Sensitivity","Predation and competition dynamics",34,3.2,2,NA,NA,4,1,5
+"CZ","Rainbow Parrotfish","Sensitivity","Genetic diversity",35,2.6,1,NA,3,1,1,5
+"GR","Rainbow Parrotfish","Sensitivity","Habitat specificity",21,3.6,3,NA,NA,2,3,5
+"GR","Rainbow Parrotfish","Sensitivity","Prey specificity",22,3.4,3,NA,NA,3,2,5
+"GR","Rainbow Parrotfish","Sensitivity","Tolerance to ocean acidification",23,2.4,3,NA,3,2,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Complexity in reproductive strategy",24,1.8,3,1,4,NA,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Species range",25,2.6,2,NA,2,3,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Stock Size Status",27,3.8,1,NA,NA,1,4,5
+"GR","Rainbow Parrotfish","Sensitivity","Other stressors",28,2.4,1,NA,3,2,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Population growth rate",30,2.6,2,NA,2,3,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Mobility and dispersal or early life stages",31,2.6,2,NA,2,3,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Adult mobility",32,1.6,3,2,3,NA,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Spawning characteristics",33,2.4,3,NA,3,2,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Predation and competition dynamics",34,2.8,1,NA,1,4,NA,5
+"GR","Rainbow Parrotfish","Sensitivity","Genetic diversity",35,2.2,1,NA,4,1,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Habitat specificity",21,2.2,3,NA,4,1,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Prey specificity",22,3,3,NA,1,3,1,5
+"RE","Rainbow Parrotfish","Sensitivity","Tolerance to ocean acidification",23,3.8,3,NA,NA,1,4,5
+"RE","Rainbow Parrotfish","Sensitivity","Complexity in reproductive strategy",24,2.6,3,NA,2,3,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Species range",25,2.2,3,NA,4,1,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Specificity in early life history requirements",26,3.4,3,NA,NA,3,2,5
+"RE","Rainbow Parrotfish","Sensitivity","Stock Size Status",27,2,0,NA,5,NA,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Other stressors",28,4,1,NA,NA,NA,5,5
+"RE","Rainbow Parrotfish","Sensitivity","Population growth rate",30,2,0,NA,5,NA,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Mobility and dispersal or early life stages",31,2.4,1,NA,3,2,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Adult mobility",32,3.4,3,NA,NA,3,2,5
+"RE","Rainbow Parrotfish","Sensitivity","Spawning characteristics",33,1.8,3,1,4,NA,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Predation and competition dynamics",34,1.8,0,1,4,NA,NA,5
+"RE","Rainbow Parrotfish","Sensitivity","Genetic diversity",35,2.4,0,NA,3,2,NA,5
+"RL","Rainbow Parrotfish","Sensitivity","Habitat specificity",21,3.4,3,NA,NA,3,2,5
+"RL","Rainbow Parrotfish","Sensitivity","Prey specificity",22,3,3,NA,1,3,1,5
+"RL","Rainbow Parrotfish","Sensitivity","Tolerance to ocean acidification",23,3.4,3,NA,NA,3,2,5
+"RL","Rainbow Parrotfish","Sensitivity","Complexity in reproductive strategy",24,3.2,3,NA,1,2,2,5
+"RL","Rainbow Parrotfish","Sensitivity","Species range",25,3.6,3,NA,NA,2,3,5
+"RL","Rainbow Parrotfish","Sensitivity","Specificity in early life history requirements",26,3.2,3,NA,NA,4,1,5
+"RL","Rainbow Parrotfish","Sensitivity","Stock Size Status",27,3.6,2,NA,NA,2,3,5
+"RL","Rainbow Parrotfish","Sensitivity","Other stressors",28,3.6,2,NA,NA,2,3,5
+"RL","Rainbow Parrotfish","Sensitivity","Population growth rate",30,2.8,3,NA,2,2,1,5
+"RL","Rainbow Parrotfish","Sensitivity","Mobility and dispersal or early life stages",31,2.8,2,NA,2,2,1,5
+"RL","Rainbow Parrotfish","Sensitivity","Adult mobility",32,3.8,3,NA,NA,1,4,5
+"RL","Rainbow Parrotfish","Sensitivity","Spawning characteristics",33,3.2,3,NA,1,2,2,5
+"RL","Rainbow Parrotfish","Sensitivity","Predation and competition dynamics",34,2.6,3,NA,2,3,NA,5
+"RL","Rainbow Parrotfish","Sensitivity","Genetic diversity",35,1.6,2,2,3,NA,NA,5
+"MS","Red Grouper","Sensitivity","Habitat specificity",21,3,2,NA,NA,5,NA,5
+"MS","Red Grouper","Sensitivity","Prey specificity",22,2.4,1,NA,3,2,NA,5
+"MS","Red Grouper","Sensitivity","Tolerance to ocean acidification",23,1.2,1,4,1,NA,NA,5
+"MS","Red Grouper","Sensitivity","Complexity in reproductive strategy",24,3.2,2,NA,NA,4,1,5
+"MS","Red Grouper","Sensitivity","Species range",25,2.2,3,NA,4,1,NA,5
+"MS","Red Grouper","Sensitivity","Specificity in early life history requirements",26,2.4,1,NA,3,2,NA,5
+"MS","Red Grouper","Sensitivity","Stock Size Status",27,4,1,NA,NA,NA,5,5
+"MS","Red Grouper","Sensitivity","Other stressors",28,1,1,5,NA,NA,NA,5
+"MS","Red Grouper","Sensitivity","Population growth rate",30,2.8,2,NA,1,4,NA,5
+"MS","Red Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2.2,1,NA,4,1,NA,5
+"MS","Red Grouper","Sensitivity","Adult mobility",32,3,2,NA,NA,5,NA,5
+"MS","Red Grouper","Sensitivity","Spawning characteristics",33,2.8,2,NA,1,4,NA,5
+"MS","Red Grouper","Sensitivity","Predation and competition dynamics",34,1.6,1,2,3,NA,NA,5
+"MS","Red Grouper","Sensitivity","Genetic diversity",35,2,1,NA,5,NA,NA,5
+"OT","Red Grouper","Sensitivity","Habitat specificity",21,1.6,3,2,3,NA,NA,5
+"OT","Red Grouper","Sensitivity","Prey specificity",22,1.2,3,4,1,NA,NA,5
+"OT","Red Grouper","Sensitivity","Tolerance to ocean acidification",23,3,3,NA,1,3,1,5
+"OT","Red Grouper","Sensitivity","Complexity in reproductive strategy",24,2.6,1,1,1,2,1,5
+"OT","Red Grouper","Sensitivity","Species range",25,1.6,3,3,1,1,NA,5
+"OT","Red Grouper","Sensitivity","Specificity in early life history requirements",26,2.2,1,2,1,1,1,5
+"OT","Red Grouper","Sensitivity","Stock Size Status",27,2.4,1,1,2,1,1,5
+"OT","Red Grouper","Sensitivity","Other stressors",28,2,2,1,3,1,NA,5
+"OT","Red Grouper","Sensitivity","Population growth rate",30,3.8,3,NA,NA,1,4,5
+"OT","Red Grouper","Sensitivity","Mobility and dispersal or early life stages",31,1.6,1,2,3,NA,NA,5
+"OT","Red Grouper","Sensitivity","Adult mobility",32,1.8,2,1,4,NA,NA,5
+"OT","Red Grouper","Sensitivity","Spawning characteristics",33,2.4,2,1,2,1,1,5
+"OT","Red Grouper","Sensitivity","Predation and competition dynamics",34,1.8,1,2,2,1,NA,5
+"OT","Red Grouper","Sensitivity","Genetic diversity",35,2.4,1,1,2,1,1,5
+"RA","Red Grouper","Sensitivity","Habitat specificity",21,2.8,1,NA,1,4,NA,5
+"RA","Red Grouper","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"RA","Red Grouper","Sensitivity","Tolerance to ocean acidification",23,2.6,1,NA,3,1,1,5
+"RA","Red Grouper","Sensitivity","Complexity in reproductive strategy",24,2.4,2,NA,3,2,NA,5
+"RA","Red Grouper","Sensitivity","Species range",25,2.8,2,NA,1,4,NA,5
+"RA","Red Grouper","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"RA","Red Grouper","Sensitivity","Stock Size Status",27,3.2,2,NA,1,2,2,5
+"RA","Red Grouper","Sensitivity","Other stressors",28,1,1,5,NA,NA,NA,5
+"RA","Red Grouper","Sensitivity","Population growth rate",30,3.8,2,NA,NA,1,4,5
+"RA","Red Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2,2,NA,5,NA,NA,5
+"RA","Red Grouper","Sensitivity","Adult mobility",32,1.4,1,3,2,NA,NA,5
+"RA","Red Grouper","Sensitivity","Spawning characteristics",33,2.8,2,NA,1,4,NA,5
+"RA","Red Grouper","Sensitivity","Predation and competition dynamics",34,1.4,1,3,2,NA,NA,5
+"RA","Red Grouper","Sensitivity","Genetic diversity",35,1,1,5,NA,NA,NA,5
+"SK","Red Grouper","Sensitivity","Habitat specificity",21,2.6,2,NA,2,3,NA,5
+"SK","Red Grouper","Sensitivity","Prey specificity",22,1.6,3,2,3,NA,NA,5
+"SK","Red Grouper","Sensitivity","Tolerance to ocean acidification",23,3.2,2,NA,NA,4,1,5
+"SK","Red Grouper","Sensitivity","Complexity in reproductive strategy",24,3,2,NA,1,3,1,5
+"SK","Red Grouper","Sensitivity","Species range",25,2.2,3,NA,4,1,NA,5
+"SK","Red Grouper","Sensitivity","Specificity in early life history requirements",26,2.6,2,NA,2,3,NA,5
+"SK","Red Grouper","Sensitivity","Stock Size Status",27,2.8,2,NA,2,2,1,5
+"SK","Red Grouper","Sensitivity","Other stressors",28,2.4,2,NA,3,2,NA,5
+"SK","Red Grouper","Sensitivity","Population growth rate",30,3.8,2,NA,NA,1,4,5
+"SK","Red Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2.4,2,NA,3,2,NA,5
+"SK","Red Grouper","Sensitivity","Adult mobility",32,2.4,3,NA,3,2,NA,5
+"SK","Red Grouper","Sensitivity","Spawning characteristics",33,3.2,3,NA,NA,4,1,5
+"SK","Red Grouper","Sensitivity","Predation and competition dynamics",34,2.4,2,NA,3,2,NA,5
+"SK","Red Grouper","Sensitivity","Genetic diversity",35,1.8,2,2,2,1,NA,5
+"CZ","Redhind","Sensitivity","Habitat specificity",21,2,3,1,3,1,NA,5
+"CZ","Redhind","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"CZ","Redhind","Sensitivity","Tolerance to ocean acidification",23,1.4,0,3,2,NA,NA,5
+"CZ","Redhind","Sensitivity","Complexity in reproductive strategy",24,3.8,3,NA,NA,1,4,5
+"CZ","Redhind","Sensitivity","Species range",25,1.6,3,2,3,NA,NA,5
+"CZ","Redhind","Sensitivity","Specificity in early life history requirements",26,2.6,2,NA,2,3,NA,5
+"CZ","Redhind","Sensitivity","Stock Size Status",27,3.2,2,NA,NA,4,1,5
+"CZ","Redhind","Sensitivity","Other stressors",28,2,1,NA,5,NA,NA,5
+"CZ","Redhind","Sensitivity","Population growth rate",30,3.2,2,NA,1,2,2,5
+"CZ","Redhind","Sensitivity","Mobility and dispersal or early life stages",31,2.8,2,NA,2,2,1,5
+"CZ","Redhind","Sensitivity","Adult mobility",32,1.6,2,2,3,NA,NA,5
+"CZ","Redhind","Sensitivity","Spawning characteristics",33,3.2,3,NA,NA,4,1,5
+"CZ","Redhind","Sensitivity","Predation and competition dynamics",34,2.4,2,1,1,3,NA,5
+"CZ","Redhind","Sensitivity","Genetic diversity",35,1.6,0,2,3,NA,NA,5
+"MS","Redhind","Sensitivity","Habitat specificity",21,1.6,2,2,3,NA,NA,5
+"MS","Redhind","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"MS","Redhind","Sensitivity","Tolerance to ocean acidification",23,2.4,1,NA,3,2,NA,5
+"MS","Redhind","Sensitivity","Complexity in reproductive strategy",24,3,3,NA,1,3,1,5
+"MS","Redhind","Sensitivity","Species range",25,2,3,NA,5,NA,NA,5
+"MS","Redhind","Sensitivity","Specificity in early life history requirements",26,2.2,1,NA,4,1,NA,5
+"MS","Redhind","Sensitivity","Stock Size Status",27,3,2,NA,NA,5,NA,5
+"MS","Redhind","Sensitivity","Other stressors",28,2.8,1,NA,1,4,NA,5
+"MS","Redhind","Sensitivity","Population growth rate",30,2.4,2,1,2,1,1,5
+"MS","Redhind","Sensitivity","Mobility and dispersal or early life stages",31,1.8,2,2,2,1,NA,5
+"MS","Redhind","Sensitivity","Adult mobility",32,2.2,2,1,2,2,NA,5
+"MS","Redhind","Sensitivity","Spawning characteristics",33,3.2,3,NA,NA,4,1,5
+"MS","Redhind","Sensitivity","Predation and competition dynamics",34,1.8,1,1,4,NA,NA,5
+"MS","Redhind","Sensitivity","Genetic diversity",35,2.4,1,1,2,1,1,5
+"OT","Redhind","Sensitivity","Habitat specificity",21,1.4,3,3,2,NA,NA,5
+"OT","Redhind","Sensitivity","Prey specificity",22,1.2,3,4,1,NA,NA,5
+"OT","Redhind","Sensitivity","Tolerance to ocean acidification",23,3,3,NA,1,3,1,5
+"OT","Redhind","Sensitivity","Complexity in reproductive strategy",24,3.8,3,NA,NA,1,4,5
+"OT","Redhind","Sensitivity","Species range",25,2,3,1,3,1,NA,5
+"OT","Redhind","Sensitivity","Specificity in early life history requirements",26,2,3,1,3,1,NA,5
+"OT","Redhind","Sensitivity","Stock Size Status",27,2.2,3,1,2,2,NA,5
+"OT","Redhind","Sensitivity","Other stressors",28,2,3,1,3,1,NA,5
+"OT","Redhind","Sensitivity","Population growth rate",30,2.6,3,NA,3,1,1,5
+"OT","Redhind","Sensitivity","Mobility and dispersal or early life stages",31,2,3,NA,5,NA,NA,5
+"OT","Redhind","Sensitivity","Adult mobility",32,2,3,NA,5,NA,NA,5
+"OT","Redhind","Sensitivity","Spawning characteristics",33,3,3,NA,NA,5,NA,5
+"OT","Redhind","Sensitivity","Predation and competition dynamics",34,1.8,3,2,2,1,NA,5
+"OT","Redhind","Sensitivity","Genetic diversity",35,2.4,2,1,2,1,1,5
+"SK","Redhind","Sensitivity","Habitat specificity",21,2.2,3,1,2,2,NA,5
+"SK","Redhind","Sensitivity","Prey specificity",22,2.2,3,1,2,2,NA,5
+"SK","Redhind","Sensitivity","Tolerance to ocean acidification",23,1.6,2,2,3,NA,NA,5
+"SK","Redhind","Sensitivity","Complexity in reproductive strategy",24,3.6,3,NA,NA,2,3,5
+"SK","Redhind","Sensitivity","Species range",25,2.6,3,NA,2,3,NA,5
+"SK","Redhind","Sensitivity","Specificity in early life history requirements",26,2.4,2,NA,3,2,NA,5
+"SK","Redhind","Sensitivity","Stock Size Status",27,2,3,1,3,1,NA,5
+"SK","Redhind","Sensitivity","Other stressors",28,2.4,2,NA,3,2,NA,5
+"SK","Redhind","Sensitivity","Population growth rate",30,2.2,3,NA,4,1,NA,5
+"SK","Redhind","Sensitivity","Mobility and dispersal or early life stages",31,2.4,2,NA,3,2,NA,5
+"SK","Redhind","Sensitivity","Adult mobility",32,2,3,NA,5,NA,NA,5
+"SK","Redhind","Sensitivity","Spawning characteristics",33,3,3,NA,NA,5,NA,5
+"SK","Redhind","Sensitivity","Predation and competition dynamics",34,2.8,2,NA,1,4,NA,5
+"SK","Redhind","Sensitivity","Genetic diversity",35,2,3,1,3,1,NA,5
+"JP","Sea Cucumber","Sensitivity","Habitat specificity",21,2.6,2,NA,2,3,NA,5
+"JP","Sea Cucumber","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"JP","Sea Cucumber","Sensitivity","Tolerance to ocean acidification",23,3,1,NA,1,3,1,5
+"JP","Sea Cucumber","Sensitivity","Complexity in reproductive strategy",24,2.8,1,NA,2,2,1,5
+"JP","Sea Cucumber","Sensitivity","Species range",25,2.6,2,NA,2,3,NA,5
+"JP","Sea Cucumber","Sensitivity","Specificity in early life history requirements",26,2.4,0,NA,3,2,NA,5
+"JP","Sea Cucumber","Sensitivity","Stock Size Status",27,2.6,2,NA,2,3,NA,5
+"JP","Sea Cucumber","Sensitivity","Other stressors",28,1.8,0,2,2,1,NA,5
+"JP","Sea Cucumber","Sensitivity","Population growth rate",30,2,1,1,3,1,NA,5
+"JP","Sea Cucumber","Sensitivity","Mobility and dispersal or early life stages",31,2.2,2,NA,4,1,NA,5
+"JP","Sea Cucumber","Sensitivity","Adult mobility",32,2.8,0,NA,1,4,NA,5
+"JP","Sea Cucumber","Sensitivity","Spawning characteristics",33,3.6,2,NA,NA,2,3,5
+"JP","Sea Cucumber","Sensitivity","Predation and competition dynamics",34,1.8,0,2,2,1,NA,5
+"JP","Sea Cucumber","Sensitivity","Genetic diversity",35,2,0,1,3,1,NA,5
+"OT","Sea Cucumber","Sensitivity","Habitat specificity",21,1.6,2,3,1,1,NA,5
+"OT","Sea Cucumber","Sensitivity","Prey specificity",22,1,1,5,NA,NA,NA,5
+"OT","Sea Cucumber","Sensitivity","Tolerance to ocean acidification",23,3,1,NA,1,3,1,5
+"OT","Sea Cucumber","Sensitivity","Complexity in reproductive strategy",24,3,2,NA,1,3,1,5
+"OT","Sea Cucumber","Sensitivity","Species range",25,1.4,1,3,2,NA,NA,5
+"OT","Sea Cucumber","Sensitivity","Specificity in early life history requirements",26,2.4,1,1,2,1,1,5
+"OT","Sea Cucumber","Sensitivity","Stock Size Status",27,2.2,1,2,1,1,1,5
+"OT","Sea Cucumber","Sensitivity","Other stressors",28,2.2,1,2,1,1,1,5
+"OT","Sea Cucumber","Sensitivity","Population growth rate",30,2.2,1,2,1,1,1,5
+"OT","Sea Cucumber","Sensitivity","Mobility and dispersal or early life stages",31,2.6,1,1,1,2,1,5
+"OT","Sea Cucumber","Sensitivity","Adult mobility",32,3.2,2,NA,NA,4,1,5
+"OT","Sea Cucumber","Sensitivity","Spawning characteristics",33,2.6,2,NA,2,3,NA,5
+"OT","Sea Cucumber","Sensitivity","Predation and competition dynamics",34,2.2,1,2,1,1,1,5
+"OT","Sea Cucumber","Sensitivity","Genetic diversity",35,2.2,1,2,1,1,1,5
+"RA","Sea Cucumber","Sensitivity","Habitat specificity",21,2.4,2,1,1,3,NA,5
+"RA","Sea Cucumber","Sensitivity","Prey specificity",22,1,2,5,NA,NA,NA,5
+"RA","Sea Cucumber","Sensitivity","Tolerance to ocean acidification",23,3.6,1,NA,NA,2,3,5
+"RA","Sea Cucumber","Sensitivity","Complexity in reproductive strategy",24,2,2,NA,5,NA,NA,5
+"RA","Sea Cucumber","Sensitivity","Species range",25,1.6,1,2,3,NA,NA,5
+"RA","Sea Cucumber","Sensitivity","Specificity in early life history requirements",26,1.6,1,2,3,NA,NA,5
+"RA","Sea Cucumber","Sensitivity","Stock Size Status",27,2.4,0,NA,3,2,NA,5
+"RA","Sea Cucumber","Sensitivity","Other stressors",28,1.8,1,1,4,NA,NA,5
+"RA","Sea Cucumber","Sensitivity","Population growth rate",30,2.6,0,NA,2,3,NA,5
+"RA","Sea Cucumber","Sensitivity","Mobility and dispersal or early life stages",31,2,2,NA,5,NA,NA,5
+"RA","Sea Cucumber","Sensitivity","Adult mobility",32,3,2,NA,NA,5,NA,5
+"RA","Sea Cucumber","Sensitivity","Spawning characteristics",33,3,2,NA,NA,5,NA,5
+"RA","Sea Cucumber","Sensitivity","Predation and competition dynamics",34,1.8,0,2,2,1,NA,5
+"RA","Sea Cucumber","Sensitivity","Genetic diversity",35,2.4,0,NA,3,2,NA,5
+"SW","Sea Cucumber","Sensitivity","Habitat specificity",21,1.4,2,3,2,NA,NA,5
+"SW","Sea Cucumber","Sensitivity","Prey specificity",22,1,2,5,NA,NA,NA,5
+"SW","Sea Cucumber","Sensitivity","Tolerance to ocean acidification",23,3.8,2,NA,NA,1,4,5
+"SW","Sea Cucumber","Sensitivity","Complexity in reproductive strategy",24,2.4,1,NA,3,2,NA,5
+"SW","Sea Cucumber","Sensitivity","Species range",25,1,2,5,NA,NA,NA,5
+"SW","Sea Cucumber","Sensitivity","Specificity in early life history requirements",26,2.4,2,1,2,1,1,5
+"SW","Sea Cucumber","Sensitivity","Stock Size Status",27,3.8,2,NA,NA,1,4,5
+"SW","Sea Cucumber","Sensitivity","Other stressors",28,2.4,1,1,2,1,1,5
+"SW","Sea Cucumber","Sensitivity","Population growth rate",30,1.4,2,3,2,NA,NA,5
+"SW","Sea Cucumber","Sensitivity","Mobility and dispersal or early life stages",31,2.4,2,NA,3,2,NA,5
+"SW","Sea Cucumber","Sensitivity","Adult mobility",32,2.8,2,NA,1,4,NA,5
+"SW","Sea Cucumber","Sensitivity","Spawning characteristics",33,2.6,1,NA,2,3,NA,5
+"SW","Sea Cucumber","Sensitivity","Predation and competition dynamics",34,3.4,2,NA,NA,3,2,5
+"SW","Sea Cucumber","Sensitivity","Genetic diversity",35,1.6,1,2,3,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Habitat specificity",21,1.2,2,4,1,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Prey specificity",22,1.2,2,4,1,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Tolerance to ocean acidification",23,1.6,2,2,3,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Complexity in reproductive strategy",24,1.2,2,4,1,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Species range",25,1,2,5,NA,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Specificity in early life history requirements",26,1.4,0,3,2,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Stock Size Status",27,2.8,2,NA,1,4,NA,5
+"AK","Silk Snapper","Sensitivity","Other stressors",28,1.2,0,4,1,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Population growth rate",30,2.6,2,1,1,2,1,5
+"AK","Silk Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.4,0,3,2,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Adult mobility",32,1.2,0,4,1,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Spawning characteristics",33,1.8,2,1,4,NA,NA,5
+"AK","Silk Snapper","Sensitivity","Predation and competition dynamics",34,2.2,0,2,1,1,1,5
+"AK","Silk Snapper","Sensitivity","Genetic diversity",35,3,2,NA,NA,5,NA,5
+"KO","Silk Snapper","Sensitivity","Habitat specificity",21,2,2,NA,5,NA,NA,5
+"KO","Silk Snapper","Sensitivity","Prey specificity",22,1.2,2,4,1,NA,NA,5
+"KO","Silk Snapper","Sensitivity","Tolerance to ocean acidification",23,2.2,1,NA,4,1,NA,5
+"KO","Silk Snapper","Sensitivity","Complexity in reproductive strategy",24,2,2,1,3,1,NA,5
+"KO","Silk Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"KO","Silk Snapper","Sensitivity","Specificity in early life history requirements",26,2.2,1,1,2,2,NA,5
+"KO","Silk Snapper","Sensitivity","Stock Size Status",27,2.6,2,NA,2,3,NA,5
+"KO","Silk Snapper","Sensitivity","Other stressors",28,2,1,1,3,1,NA,5
+"KO","Silk Snapper","Sensitivity","Population growth rate",30,3.6,2,NA,NA,2,3,5
+"KO","Silk Snapper","Sensitivity","Mobility and dispersal or early life stages",31,2.4,1,NA,3,2,NA,5
+"KO","Silk Snapper","Sensitivity","Adult mobility",32,2,1,1,3,1,NA,5
+"KO","Silk Snapper","Sensitivity","Spawning characteristics",33,2.8,2,NA,1,4,NA,5
+"KO","Silk Snapper","Sensitivity","Predation and competition dynamics",34,2,1,1,3,1,NA,5
+"KO","Silk Snapper","Sensitivity","Genetic diversity",35,2.6,2,NA,2,3,NA,5
+"RE","Silk Snapper","Sensitivity","Habitat specificity",21,1.2,3,4,1,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Prey specificity",22,1.8,3,1,4,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Tolerance to ocean acidification",23,1.2,3,4,1,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Complexity in reproductive strategy",24,2.2,2,NA,4,1,NA,5
+"RE","Silk Snapper","Sensitivity","Species range",25,1.8,3,1,4,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Specificity in early life history requirements",26,2.4,1,NA,3,2,NA,5
+"RE","Silk Snapper","Sensitivity","Stock Size Status",27,2.6,2,NA,2,3,NA,5
+"RE","Silk Snapper","Sensitivity","Other stressors",28,2.2,1,NA,4,1,NA,5
+"RE","Silk Snapper","Sensitivity","Population growth rate",30,1.8,2,1,4,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.2,2,4,1,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Adult mobility",32,1.2,2,4,1,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Spawning characteristics",33,1.2,3,4,1,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Predation and competition dynamics",34,1.4,2,3,2,NA,NA,5
+"RE","Silk Snapper","Sensitivity","Genetic diversity",35,1.2,0,4,1,NA,NA,5
+"RL","Silk Snapper","Sensitivity","Habitat specificity",21,3,2,NA,1,3,1,5
+"RL","Silk Snapper","Sensitivity","Prey specificity",22,2.8,2,NA,2,2,1,5
+"RL","Silk Snapper","Sensitivity","Tolerance to ocean acidification",23,2,1,1,3,1,NA,5
+"RL","Silk Snapper","Sensitivity","Complexity in reproductive strategy",24,2.4,2,NA,3,2,NA,5
+"RL","Silk Snapper","Sensitivity","Species range",25,1.4,2,3,2,NA,NA,5
+"RL","Silk Snapper","Sensitivity","Specificity in early life history requirements",26,3.4,1,NA,NA,3,2,5
+"RL","Silk Snapper","Sensitivity","Stock Size Status",27,3.4,1,NA,NA,3,2,5
+"RL","Silk Snapper","Sensitivity","Other stressors",28,3.4,2,NA,1,1,3,5
+"RL","Silk Snapper","Sensitivity","Population growth rate",30,2,2,1,3,1,NA,5
+"RL","Silk Snapper","Sensitivity","Mobility and dispersal or early life stages",31,2.8,1,NA,2,2,1,5
+"RL","Silk Snapper","Sensitivity","Adult mobility",32,3.8,2,NA,NA,1,4,5
+"RL","Silk Snapper","Sensitivity","Spawning characteristics",33,3.2,2,NA,1,2,2,5
+"RL","Silk Snapper","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"RL","Silk Snapper","Sensitivity","Genetic diversity",35,1.4,1,3,2,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Habitat specificity",21,1.2,3,4,1,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Tolerance to ocean acidification",23,2,3,NA,5,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Complexity in reproductive strategy",24,1.6,3,2,3,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Specificity in early life history requirements",26,1.4,3,3,2,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Stock Size Status",27,1.2,2,4,1,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Other stressors",28,2,3,1,3,1,NA,5
+"AK","Spiny Lobster","Sensitivity","Population growth rate",30,1.6,3,2,3,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Mobility and dispersal or early life stages",31,1,3,5,NA,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Adult mobility",32,1.4,3,3,2,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Spawning characteristics",33,1.4,3,3,2,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Predation and competition dynamics",34,1.8,3,1,4,NA,NA,5
+"AK","Spiny Lobster","Sensitivity","Genetic diversity",35,3,3,NA,NA,5,NA,5
+"BG","Spiny Lobster","Sensitivity","Habitat specificity",21,2.2,3,NA,4,1,NA,5
+"BG","Spiny Lobster","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Tolerance to ocean acidification",23,2.4,2,NA,3,2,NA,5
+"BG","Spiny Lobster","Sensitivity","Complexity in reproductive strategy",24,2.2,3,NA,4,1,NA,5
+"BG","Spiny Lobster","Sensitivity","Species range",25,2,3,NA,5,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Specificity in early life history requirements",26,1.4,3,3,2,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Stock Size Status",27,1.4,3,3,2,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Other stressors",28,1,2,5,NA,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Population growth rate",30,1.4,3,3,2,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Mobility and dispersal or early life stages",31,1.2,3,4,1,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Adult mobility",32,1,3,5,NA,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Spawning characteristics",33,1,3,5,NA,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Predation and competition dynamics",34,1,3,5,NA,NA,NA,5
+"BG","Spiny Lobster","Sensitivity","Genetic diversity",35,1,3,5,NA,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Habitat specificity",21,2.6,3,NA,2,3,NA,5
+"DB","Spiny Lobster","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Tolerance to ocean acidification",23,2.4,2,NA,3,2,NA,5
+"DB","Spiny Lobster","Sensitivity","Complexity in reproductive strategy",24,1.4,2,3,2,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Specificity in early life history requirements",26,3.2,3,NA,1,2,2,5
+"DB","Spiny Lobster","Sensitivity","Stock Size Status",27,1.8,2,2,2,1,NA,5
+"DB","Spiny Lobster","Sensitivity","Other stressors",28,2,2,1,3,1,NA,5
+"DB","Spiny Lobster","Sensitivity","Population growth rate",30,2,2,NA,5,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Mobility and dispersal or early life stages",31,1,2,5,NA,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Adult mobility",32,2,3,NA,5,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Spawning characteristics",33,1.4,3,3,2,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Predation and competition dynamics",34,1.4,2,3,2,NA,NA,5
+"DB","Spiny Lobster","Sensitivity","Genetic diversity",35,1.2,3,4,1,NA,NA,5
+"SW","Spiny Lobster","Sensitivity","Habitat specificity",21,1.6,3,2,3,NA,NA,5
+"SW","Spiny Lobster","Sensitivity","Prey specificity",22,1.2,2,4,1,NA,NA,5
+"SW","Spiny Lobster","Sensitivity","Tolerance to ocean acidification",23,3.8,2,NA,NA,1,4,5
+"SW","Spiny Lobster","Sensitivity","Complexity in reproductive strategy",24,1.4,3,3,2,NA,NA,5
+"SW","Spiny Lobster","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"SW","Spiny Lobster","Sensitivity","Specificity in early life history requirements",26,3.8,2,NA,NA,1,4,5
+"SW","Spiny Lobster","Sensitivity","Stock Size Status",27,2.2,3,1,2,2,NA,5
+"SW","Spiny Lobster","Sensitivity","Other stressors",28,2.8,2,NA,2,2,1,5
+"SW","Spiny Lobster","Sensitivity","Population growth rate",30,1.6,2,2,3,NA,NA,5
+"SW","Spiny Lobster","Sensitivity","Mobility and dispersal or early life stages",31,1.2,2,4,1,NA,NA,5
+"SW","Spiny Lobster","Sensitivity","Adult mobility",32,1.4,2,3,2,NA,NA,5
+"SW","Spiny Lobster","Sensitivity","Spawning characteristics",33,2.6,2,NA,2,3,NA,5
+"SW","Spiny Lobster","Sensitivity","Predation and competition dynamics",34,2.6,2,NA,2,3,NA,5
+"SW","Spiny Lobster","Sensitivity","Genetic diversity",35,1.4,2,3,2,NA,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Habitat specificity",21,3.4,2,NA,0,3,2,5
+"CZ","Stoplight Parrotfish","Sensitivity","Prey specificity",22,3.6,2,NA,NA,2,3,5
+"CZ","Stoplight Parrotfish","Sensitivity","Tolerance to ocean acidification",23,3.6,0,NA,NA,2,3,5
+"CZ","Stoplight Parrotfish","Sensitivity","Complexity in reproductive strategy",24,2.4,2,NA,3,2,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Species range",25,1.8,2,2,2,1,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Specificity in early life history requirements",26,2.2,2,1,2,2,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Stock Size Status",27,2,0,1,3,1,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Other stressors",28,2,1,1,3,1,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Population growth rate",30,2,0,1,3,1,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Mobility and dispersal or early life stages",31,2.2,2,1,2,2,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Adult mobility",32,2,2,1,3,1,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Spawning characteristics",33,1.6,2,2,3,NA,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Predation and competition dynamics",34,2.6,2,NA,2,3,NA,5
+"CZ","Stoplight Parrotfish","Sensitivity","Genetic diversity",35,1.8,0,1,4,NA,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Habitat specificity",21,2.8,3,NA,1,4,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Prey specificity",22,2.6,3,NA,2,3,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Tolerance to ocean acidification",23,2.4,2,NA,3,2,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Complexity in reproductive strategy",24,2.2,3,NA,4,1,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Species range",25,3,3,NA,2,1,2,5
+"GR","Stoplight Parrotfish","Sensitivity","Specificity in early life history requirements",26,2.4,1,NA,3,2,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Stock Size Status",27,2.4,1,NA,3,2,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Other stressors",28,2.6,1,NA,2,3,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Population growth rate",30,1.6,2,2,3,NA,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Mobility and dispersal or early life stages",31,2.8,3,NA,1,4,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Adult mobility",32,1.4,3,3,2,NA,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Spawning characteristics",33,1,3,5,NA,NA,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Predation and competition dynamics",34,2.6,1,NA,2,3,NA,5
+"GR","Stoplight Parrotfish","Sensitivity","Genetic diversity",35,1,1,5,NA,NA,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Habitat specificity",21,2,3,NA,5,NA,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Prey specificity",22,2,3,NA,5,NA,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Tolerance to ocean acidification",23,3.8,3,NA,NA,1,4,5
+"RE","Stoplight Parrotfish","Sensitivity","Complexity in reproductive strategy",24,2.6,3,NA,2,3,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Species range",25,2.2,3,NA,4,1,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Specificity in early life history requirements",26,3.4,3,NA,NA,3,2,5
+"RE","Stoplight Parrotfish","Sensitivity","Stock Size Status",27,2,0,NA,5,NA,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Other stressors",28,4,1,NA,NA,NA,5,5
+"RE","Stoplight Parrotfish","Sensitivity","Population growth rate",30,2,0,NA,5,NA,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Mobility and dispersal or early life stages",31,2.4,1,NA,3,2,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Adult mobility",32,2.2,3,NA,4,1,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Spawning characteristics",33,1.8,3,1,4,NA,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Predation and competition dynamics",34,1.8,0,1,4,NA,NA,5
+"RE","Stoplight Parrotfish","Sensitivity","Genetic diversity",35,1.8,0,1,4,NA,NA,5
+"RL","Stoplight Parrotfish","Sensitivity","Habitat specificity",21,3,3,NA,1,3,1,5
+"RL","Stoplight Parrotfish","Sensitivity","Prey specificity",22,3,3,NA,1,3,1,5
+"RL","Stoplight Parrotfish","Sensitivity","Tolerance to ocean acidification",23,3,3,NA,1,3,1,5
+"RL","Stoplight Parrotfish","Sensitivity","Complexity in reproductive strategy",24,3.2,3,NA,1,2,2,5
+"RL","Stoplight Parrotfish","Sensitivity","Species range",25,3,3,NA,1,3,1,5
+"RL","Stoplight Parrotfish","Sensitivity","Specificity in early life history requirements",26,3.2,3,NA,NA,4,1,5
+"RL","Stoplight Parrotfish","Sensitivity","Stock Size Status",27,3.4,2,NA,NA,3,2,5
+"RL","Stoplight Parrotfish","Sensitivity","Other stressors",28,3.6,2,NA,NA,2,3,5
+"RL","Stoplight Parrotfish","Sensitivity","Population growth rate",30,2.8,3,NA,2,2,1,5
+"RL","Stoplight Parrotfish","Sensitivity","Mobility and dispersal or early life stages",31,2.8,2,NA,2,2,1,5
+"RL","Stoplight Parrotfish","Sensitivity","Adult mobility",32,3.8,3,NA,NA,1,4,5
+"RL","Stoplight Parrotfish","Sensitivity","Spawning characteristics",33,3.2,3,NA,1,2,2,5
+"RL","Stoplight Parrotfish","Sensitivity","Predation and competition dynamics",34,2.6,3,NA,2,3,NA,5
+"RL","Stoplight Parrotfish","Sensitivity","Genetic diversity",35,1.6,2,2,3,NA,NA,5
+"DB","White Mullet","Sensitivity","Habitat specificity",21,2.4,3,NA,3,2,NA,5
+"DB","White Mullet","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"DB","White Mullet","Sensitivity","Tolerance to ocean acidification",23,1,2,5,NA,NA,NA,5
+"DB","White Mullet","Sensitivity","Complexity in reproductive strategy",24,1.8,2,2,2,1,NA,5
+"DB","White Mullet","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"DB","White Mullet","Sensitivity","Specificity in early life history requirements",26,1.4,2,3,2,NA,NA,5
+"DB","White Mullet","Sensitivity","Stock Size Status",27,1.2,2,4,1,NA,NA,5
+"DB","White Mullet","Sensitivity","Other stressors",28,2.4,2,NA,3,2,NA,5
+"DB","White Mullet","Sensitivity","Population growth rate",30,2.6,3,NA,3,1,1,5
+"DB","White Mullet","Sensitivity","Mobility and dispersal or early life stages",31,3,3,NA,NA,5,NA,5
+"DB","White Mullet","Sensitivity","Adult mobility",32,1.8,3,1,4,NA,NA,5
+"DB","White Mullet","Sensitivity","Spawning characteristics",33,1.2,3,4,1,NA,NA,5
+"DB","White Mullet","Sensitivity","Predation and competition dynamics",34,1.2,1,4,1,NA,NA,5
+"DB","White Mullet","Sensitivity","Genetic diversity",35,1.4,2,3,2,NA,NA,5
+"JP","White Mullet","Sensitivity","Habitat specificity",21,1.8,2,1,4,NA,NA,5
+"JP","White Mullet","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"JP","White Mullet","Sensitivity","Tolerance to ocean acidification",23,1,1,5,NA,NA,NA,5
+"JP","White Mullet","Sensitivity","Complexity in reproductive strategy",24,2.8,1,NA,1,4,NA,5
+"JP","White Mullet","Sensitivity","Species range",25,2,3,NA,5,NA,NA,5
+"JP","White Mullet","Sensitivity","Specificity in early life history requirements",26,2.2,2,NA,4,1,NA,5
+"JP","White Mullet","Sensitivity","Stock Size Status",27,1.8,0,2,2,1,NA,5
+"JP","White Mullet","Sensitivity","Other stressors",28,1.8,0,2,2,1,NA,5
+"JP","White Mullet","Sensitivity","Population growth rate",30,2.4,3,NA,3,2,NA,5
+"JP","White Mullet","Sensitivity","Mobility and dispersal or early life stages",31,2.4,1,NA,3,2,NA,5
+"JP","White Mullet","Sensitivity","Adult mobility",32,1.4,0,3,2,NA,NA,5
+"JP","White Mullet","Sensitivity","Spawning characteristics",33,2.2,3,NA,4,1,NA,5
+"JP","White Mullet","Sensitivity","Predation and competition dynamics",34,2.6,0,NA,2,3,NA,5
+"JP","White Mullet","Sensitivity","Genetic diversity",35,2,2,1,3,1,NA,5
+"RG","White Mullet","Sensitivity","Habitat specificity",21,2.4,3,NA,3,2,NA,5
+"RG","White Mullet","Sensitivity","Prey specificity",22,1.4,2,3,2,NA,NA,5
+"RG","White Mullet","Sensitivity","Tolerance to ocean acidification",23,2.8,1,NA,1,4,NA,5
+"RG","White Mullet","Sensitivity","Complexity in reproductive strategy",24,2.6,1,NA,2,3,NA,5
+"RG","White Mullet","Sensitivity","Species range",25,3.2,3,NA,NA,4,1,5
+"RG","White Mullet","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"RG","White Mullet","Sensitivity","Stock Size Status",27,2.6,1,NA,2,3,NA,5
+"RG","White Mullet","Sensitivity","Other stressors",28,2.6,1,NA,2,3,NA,5
+"RG","White Mullet","Sensitivity","Population growth rate",30,2.6,2,NA,2,3,NA,5
+"RG","White Mullet","Sensitivity","Mobility and dispersal or early life stages",31,1.6,1,2,3,NA,NA,5
+"RG","White Mullet","Sensitivity","Adult mobility",32,1.6,3,2,3,NA,NA,5
+"RG","White Mullet","Sensitivity","Spawning characteristics",33,1.6,3,2,3,NA,NA,5
+"RG","White Mullet","Sensitivity","Predation and competition dynamics",34,1.6,2,2,3,NA,NA,5
+"RG","White Mullet","Sensitivity","Genetic diversity",35,1.2,1,4,1,NA,NA,5
+"WM","White Mullet","Sensitivity","Habitat specificity",21,3.8,2,NA,NA,1,4,5
+"WM","White Mullet","Sensitivity","Prey specificity",22,2.6,2,NA,2,3,NA,5
+"WM","White Mullet","Sensitivity","Tolerance to ocean acidification",23,1,2,5,NA,NA,NA,5
+"WM","White Mullet","Sensitivity","Complexity in reproductive strategy",24,2.6,2,NA,2,3,NA,5
+"WM","White Mullet","Sensitivity","Species range",25,2.6,2,NA,2,3,NA,5
+"WM","White Mullet","Sensitivity","Specificity in early life history requirements",26,2.6,2,NA,2,3,NA,5
+"WM","White Mullet","Sensitivity","Stock Size Status",27,2.6,2,NA,2,3,NA,5
+"WM","White Mullet","Sensitivity","Other stressors",28,2.6,2,NA,2,3,NA,5
+"WM","White Mullet","Sensitivity","Population growth rate",30,1,2,5,NA,NA,NA,5
+"WM","White Mullet","Sensitivity","Mobility and dispersal or early life stages",31,2.8,2,NA,2,2,1,5
+"WM","White Mullet","Sensitivity","Adult mobility",32,2.6,2,NA,2,3,NA,5
+"WM","White Mullet","Sensitivity","Spawning characteristics",33,1.8,2,2,2,1,NA,5
+"WM","White Mullet","Sensitivity","Predation and competition dynamics",34,2.4,2,NA,3,2,NA,5
+"WM","White Mullet","Sensitivity","Genetic diversity",35,2,2,NA,5,NA,NA,5
+"CZ","Yellowfin Grouper","Sensitivity","Habitat specificity",21,2.2,1,1,2,2,NA,5
+"CZ","Yellowfin Grouper","Sensitivity","Prey specificity",22,1.4,1,3,2,NA,NA,5
+"CZ","Yellowfin Grouper","Sensitivity","Tolerance to ocean acidification",23,1.4,0,3,2,NA,NA,5
+"CZ","Yellowfin Grouper","Sensitivity","Complexity in reproductive strategy",24,3.8,2,NA,NA,1,4,5
+"CZ","Yellowfin Grouper","Sensitivity","Species range",25,3,2,NA,1,3,1,5
+"CZ","Yellowfin Grouper","Sensitivity","Specificity in early life history requirements",26,2.6,1,NA,2,3,NA,5
+"CZ","Yellowfin Grouper","Sensitivity","Stock Size Status",27,3,2,NA,1,3,1,5
+"CZ","Yellowfin Grouper","Sensitivity","Other stressors",28,2,0,1,3,1,NA,5
+"CZ","Yellowfin Grouper","Sensitivity","Population growth rate",30,3.2,2,NA,NA,4,1,5
+"CZ","Yellowfin Grouper","Sensitivity","Mobility and dispersal or early life stages",31,3,1,NA,1,3,1,5
+"CZ","Yellowfin Grouper","Sensitivity","Adult mobility",32,2.2,1,1,2,2,NA,5
+"CZ","Yellowfin Grouper","Sensitivity","Spawning characteristics",33,3.2,2,NA,NA,4,1,5
+"CZ","Yellowfin Grouper","Sensitivity","Predation and competition dynamics",34,3,1,NA,1,3,1,5
+"CZ","Yellowfin Grouper","Sensitivity","Genetic diversity",35,2,0,1,3,1,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Habitat specificity",21,2.2,2,NA,4,1,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Prey specificity",22,2.4,1,NA,3,2,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Tolerance to ocean acidification",23,1.8,1,2,2,1,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Complexity in reproductive strategy",24,3.2,3,NA,NA,4,1,5
+"MS","Yellowfin Grouper","Sensitivity","Species range",25,2,3,NA,5,NA,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Specificity in early life history requirements",26,2.2,1,NA,4,1,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Stock Size Status",27,3.2,1,NA,NA,4,1,5
+"MS","Yellowfin Grouper","Sensitivity","Other stressors",28,2.8,1,NA,1,4,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Population growth rate",30,2.4,2,1,2,1,1,5
+"MS","Yellowfin Grouper","Sensitivity","Mobility and dispersal or early life stages",31,1.8,2,2,2,1,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Adult mobility",32,2.2,2,1,2,2,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Spawning characteristics",33,3.2,2,NA,NA,4,1,5
+"MS","Yellowfin Grouper","Sensitivity","Predation and competition dynamics",34,1.8,1,1,4,NA,NA,5
+"MS","Yellowfin Grouper","Sensitivity","Genetic diversity",35,2.4,1,1,2,1,1,5
+"RA","Yellowfin Grouper","Sensitivity","Habitat specificity",21,3,1,NA,1,3,1,5
+"RA","Yellowfin Grouper","Sensitivity","Prey specificity",22,2,2,NA,5,NA,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Tolerance to ocean acidification",23,2.6,1,NA,3,1,1,5
+"RA","Yellowfin Grouper","Sensitivity","Complexity in reproductive strategy",24,2,2,NA,5,NA,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Species range",25,1.6,2,2,3,NA,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Specificity in early life history requirements",26,1.6,1,2,3,NA,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Stock Size Status",27,2.2,2,1,2,2,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Other stressors",28,2,1,NA,5,NA,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Population growth rate",30,3.6,2,NA,NA,2,3,5
+"RA","Yellowfin Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2,2,NA,5,NA,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Adult mobility",32,1.6,2,2,3,NA,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Spawning characteristics",33,3,2,NA,NA,5,NA,5
+"RA","Yellowfin Grouper","Sensitivity","Predation and competition dynamics",34,2.8,1,NA,2,2,1,5
+"RA","Yellowfin Grouper","Sensitivity","Genetic diversity",35,2.8,1,NA,2,2,1,5
+"SK","Yellowfin Grouper","Sensitivity","Habitat specificity",21,1.6,3,2,3,NA,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Prey specificity",22,1.4,3,3,2,NA,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Tolerance to ocean acidification",23,2.4,2,NA,3,2,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Complexity in reproductive strategy",24,3.8,3,NA,NA,1,4,5
+"SK","Yellowfin Grouper","Sensitivity","Species range",25,2.6,3,NA,2,3,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Specificity in early life history requirements",26,2.4,2,NA,3,2,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Stock Size Status",27,3,2,NA,1,3,1,5
+"SK","Yellowfin Grouper","Sensitivity","Other stressors",28,2,2,NA,5,NA,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Population growth rate",30,3.6,3,NA,NA,2,3,5
+"SK","Yellowfin Grouper","Sensitivity","Mobility and dispersal or early life stages",31,2.4,2,NA,3,2,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Adult mobility",32,2.2,3,NA,4,1,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Spawning characteristics",33,2.2,3,NA,4,1,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Predation and competition dynamics",34,1.4,2,3,2,NA,NA,5
+"SK","Yellowfin Grouper","Sensitivity","Genetic diversity",35,2,2,1,3,1,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Habitat specificity",21,2.6,3,NA,2,3,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Prey specificity",22,1.4,3,3,2,NA,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Tolerance to ocean acidification",23,2.4,3,NA,3,2,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Complexity in reproductive strategy",24,2.4,3,NA,3,2,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Species range",25,1.6,3,2,3,NA,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Specificity in early life history requirements",26,2.2,3,NA,4,1,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Stock Size Status",27,2,3,1,3,1,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Other stressors",28,2.4,3,NA,3,2,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Population growth rate",30,2.4,3,NA,3,2,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.4,3,3,2,NA,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Adult mobility",32,1.6,3,3,1,1,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Spawning characteristics",33,2.4,3,NA,3,2,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Predation and competition dynamics",34,1.4,3,3,2,NA,NA,5
+"AA","Yellowtail Snapper","Sensitivity","Genetic diversity",35,1.6,3,3,1,1,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Habitat specificity",21,2.6,3,NA,2,3,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Prey specificity",22,1,3,5,NA,NA,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Tolerance to ocean acidification",23,2.8,3,NA,2,2,1,5
+"ET","Yellowtail Snapper","Sensitivity","Complexity in reproductive strategy",24,2,2,NA,5,NA,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Specificity in early life history requirements",26,2.4,2,NA,3,2,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Stock Size Status",27,1,3,5,NA,NA,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Other stressors",28,1.4,2,3,2,NA,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Population growth rate",30,2.4,3,1,2,1,1,5
+"ET","Yellowtail Snapper","Sensitivity","Mobility and dispersal or early life stages",31,2,2,NA,5,NA,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Adult mobility",32,2.4,3,NA,3,2,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Spawning characteristics",33,1.4,3,3,2,NA,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Predation and competition dynamics",34,1.4,1,3,2,NA,NA,5
+"ET","Yellowtail Snapper","Sensitivity","Genetic diversity",35,2,2,NA,5,NA,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Habitat specificity",21,2.6,3,NA,2,3,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Prey specificity",22,2.6,2,NA,2,3,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Tolerance to ocean acidification",23,2,2,1,3,1,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Complexity in reproductive strategy",24,2.4,2,NA,3,2,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Specificity in early life history requirements",26,3,2,NA,NA,5,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Stock Size Status",27,1.4,2,3,2,NA,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Other stressors",28,2.2,1,NA,4,1,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Population growth rate",30,2.6,3,1,1,2,1,5
+"KO","Yellowtail Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.2,2,4,1,NA,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Adult mobility",32,2,2,1,3,1,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Spawning characteristics",33,1.8,3,1,4,NA,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Predation and competition dynamics",34,2.4,1,NA,3,2,NA,5
+"KO","Yellowtail Snapper","Sensitivity","Genetic diversity",35,2.4,2,1,1,3,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Habitat specificity",21,2.2,3,NA,4,1,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Prey specificity",22,2,3,NA,5,NA,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Tolerance to ocean acidification",23,3,3,NA,NA,5,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Complexity in reproductive strategy",24,2.4,3,NA,3,2,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Species range",25,1,3,5,NA,NA,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Specificity in early life history requirements",26,2.2,1,1,2,2,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Stock Size Status",27,2.4,2,NA,3,2,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Other stressors",28,2,1,1,3,1,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Population growth rate",30,2,2,1,3,1,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Mobility and dispersal or early life stages",31,1.2,2,4,1,NA,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Adult mobility",32,2,3,NA,5,NA,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Spawning characteristics",33,2.2,3,NA,4,1,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Predation and competition dynamics",34,2,2,1,3,1,NA,5
+"RE","Yellowtail Snapper","Sensitivity","Genetic diversity",35,1,1,5,NA,NA,NA,5

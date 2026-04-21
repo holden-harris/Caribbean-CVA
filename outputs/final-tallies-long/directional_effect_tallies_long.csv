@@ -1,0 +1,207 @@
+"reviewer_id","stock_name","effect_category","tally"
+"AA","Atlantic Herring","Positive",1
+"AA","Atlantic Herring","Neutral",3
+"BG","Atlantic Herring","Positive",2
+"BG","Atlantic Herring","Negative",2
+"DB","Atlantic Herring","Positive",1
+"DB","Atlantic Herring","Neutral",2
+"DB","Atlantic Herring","Negative",1
+"RG","Atlantic Herring","Neutral",2
+"RG","Atlantic Herring","Negative",2
+"AA","Ballyhoo","Neutral",4
+"BG","Ballyhoo","Neutral",3
+"BG","Ballyhoo","Negative",1
+"JP","Ballyhoo","Neutral",4
+"RG","Ballyhoo","Neutral",2
+"RG","Ballyhoo","Negative",2
+"BG","Blue Runner","Neutral",4
+"DB","Blue Runner","Positive",2
+"DB","Blue Runner","Neutral",1
+"DB","Blue Runner","Negative",1
+"RA","Blue Runner","Neutral",1
+"RA","Blue Runner","Negative",3
+"WM","Blue Runner","Positive",2
+"WM","Blue Runner","Neutral",2
+"AA","Dolphinfish","Positive",1
+"AA","Dolphinfish","Neutral",3
+"DB","Dolphinfish","Positive",2
+"DB","Dolphinfish","Neutral",2
+"RG","Dolphinfish","Neutral",3
+"RG","Dolphinfish","Negative",1
+"WM","Dolphinfish","Positive",2
+"WM","Dolphinfish","Neutral",2
+"AK","Gray Angelfish","Positive",1
+"AK","Gray Angelfish","Neutral",2
+"AK","Gray Angelfish","Negative",1
+"ET","Gray Angelfish","Neutral",2
+"ET","Gray Angelfish","Negative",2
+"GR","Gray Angelfish","Neutral",1
+"GR","Gray Angelfish","Negative",3
+"RL","Gray Angelfish","Positive",0
+"RL","Gray Angelfish","Neutral",2
+"RL","Gray Angelfish","Negative",2
+"AK","Hogfish","Neutral",2
+"AK","Hogfish","Negative",2
+"GR","Hogfish","Neutral",1
+"GR","Hogfish","Negative",3
+"MS","Hogfish","Positive",1
+"MS","Hogfish","Neutral",2
+"MS","Hogfish","Negative",1
+"RL","Hogfish","Positive",0
+"RL","Hogfish","Neutral",2
+"RL","Hogfish","Negative",2
+"BG","King Mackerel","Neutral",1
+"BG","King Mackerel","Negative",3
+"RA","King Mackerel","Negative",4
+"RG","King Mackerel","Neutral",3
+"RG","King Mackerel","Negative",1
+"WM","King Mackerel","Positive",1
+"WM","King Mackerel","Neutral",2
+"WM","King Mackerel","Negative",1
+"AA","Lane Snapper","Neutral",2
+"AA","Lane Snapper","Negative",2
+"ET","Lane Snapper","Neutral",1
+"ET","Lane Snapper","Negative",3
+"KO","Lane Snapper","Neutral",3
+"KO","Lane Snapper","Negative",1
+"RE","Lane Snapper","Neutral",1
+"RE","Lane Snapper","Negative",3
+"DB","Diadema","Positive",1
+"DB","Diadema","Neutral",2
+"DB","Diadema","Negative",1
+"JP","Diadema","Neutral",2
+"JP","Diadema","Negative",2
+"OT","Diadema","Positive",1
+"OT","Diadema","Neutral",2
+"OT","Diadema","Negative",1
+"SW","Diadema","Neutral",1
+"SW","Diadema","Negative",3
+"AA","Misty Grouper","Neutral",2
+"AA","Misty Grouper","Negative",2
+"ET","Misty Grouper","Neutral",2
+"ET","Misty Grouper","Negative",2
+"MS","Misty Grouper","Neutral",2
+"MS","Misty Grouper","Negative",2
+"SK","Misty Grouper","Neutral",1
+"SK","Misty Grouper","Negative",3
+"KO","Mutton Snapper","Neutral",2
+"KO","Mutton Snapper","Negative",2
+"RE","Mutton Snapper","Neutral",2
+"RE","Mutton Snapper","Negative",2
+"SK","Mutton Snapper","Neutral",1
+"SK","Mutton Snapper","Negative",3
+"WM","Mutton Snapper","Neutral",2
+"WM","Mutton Snapper","Negative",2
+"CZ","Nassau Grouper","Neutral",1
+"CZ","Nassau Grouper","Negative",3
+"MS","Nassau Grouper","Neutral",2
+"MS","Nassau Grouper","Negative",2
+"OT","Nassau Grouper","Neutral",2
+"OT","Nassau Grouper","Negative",2
+"SK","Nassau Grouper","Neutral",1
+"SK","Nassau Grouper","Negative",3
+"AK","Queen Conch","Neutral",3
+"AK","Queen Conch","Negative",1
+"BG","Queen Conch","Negative",4
+"OT","Queen Conch","Neutral",2
+"OT","Queen Conch","Negative",2
+"RA","Queen Conch","Negative",4
+"KO","Queen snapper","Neutral",4
+"RG","Queen snapper","Neutral",3
+"RG","Queen snapper","Negative",1
+"SW","Queen snapper","Neutral",2
+"SW","Queen snapper","Negative",2
+"WM","Queen snapper","Positive",1
+"WM","Queen snapper","Neutral",3
+"CZ","Queen Triggerfish","Neutral",2
+"CZ","Queen Triggerfish","Negative",2
+"ET","Queen Triggerfish","Neutral",1
+"ET","Queen Triggerfish","Negative",3
+"GR","Queen Triggerfish","Neutral",1
+"GR","Queen Triggerfish","Negative",3
+"RL","Queen Triggerfish","Positive",0
+"RL","Queen Triggerfish","Neutral",1
+"RL","Queen Triggerfish","Negative",3
+"CZ","Rainbow Parrotfish","Neutral",1
+"CZ","Rainbow Parrotfish","Negative",3
+"GR","Rainbow Parrotfish","Neutral",1
+"GR","Rainbow Parrotfish","Negative",3
+"RE","Rainbow Parrotfish","Neutral",1
+"RE","Rainbow Parrotfish","Negative",3
+"RL","Rainbow Parrotfish","Positive",0
+"RL","Rainbow Parrotfish","Neutral",1
+"RL","Rainbow Parrotfish","Negative",3
+"MS","Red Grouper","Positive",1
+"MS","Red Grouper","Neutral",2
+"MS","Red Grouper","Negative",1
+"OT","Red Grouper","Neutral",2
+"OT","Red Grouper","Negative",2
+"RA","Red Grouper","Negative",4
+"SK","Red Grouper","Neutral",1
+"SK","Red Grouper","Negative",3
+"CZ","Redhind","Neutral",3
+"CZ","Redhind","Negative",1
+"MS","Redhind","Neutral",2
+"MS","Redhind","Negative",2
+"OT","Redhind","Neutral",3
+"OT","Redhind","Negative",1
+"SK","Redhind","Neutral",1
+"SK","Redhind","Negative",3
+"JP","Sea Cucumber","Positive",1
+"JP","Sea Cucumber","Neutral",2
+"JP","Sea Cucumber","Negative",1
+"OT","Sea Cucumber","Neutral",3
+"OT","Sea Cucumber","Negative",1
+"RA","Sea Cucumber","Neutral",2
+"RA","Sea Cucumber","Negative",2
+"SW","Sea Cucumber","Neutral",1
+"SW","Sea Cucumber","Negative",3
+"AK","Silk Snapper","Neutral",4
+"KO","Silk Snapper","Neutral",3
+"KO","Silk Snapper","Negative",1
+"RE","Silk Snapper","Neutral",3
+"RE","Silk Snapper","Negative",1
+"RL","Silk Snapper","Positive",0
+"RL","Silk Snapper","Neutral",4
+"RL","Silk Snapper","Negative",0
+"AK","Spiny Lobster","Neutral",4
+"BG","Spiny Lobster","Positive",1
+"BG","Spiny Lobster","Negative",3
+"DB","Spiny Lobster","Positive",1
+"DB","Spiny Lobster","Neutral",2
+"DB","Spiny Lobster","Negative",1
+"SW","Spiny Lobster","Neutral",2
+"SW","Spiny Lobster","Negative",2
+"CZ","Stoplight Parrotfish","Neutral",3
+"CZ","Stoplight Parrotfish","Negative",1
+"GR","Stoplight Parrotfish","Neutral",1
+"GR","Stoplight Parrotfish","Negative",3
+"RE","Stoplight Parrotfish","Neutral",1
+"RE","Stoplight Parrotfish","Negative",3
+"RL","Stoplight Parrotfish","Positive",0
+"RL","Stoplight Parrotfish","Neutral",1
+"RL","Stoplight Parrotfish","Negative",3
+"DB","White Mullet","Neutral",2
+"DB","White Mullet","Negative",2
+"JP","White Mullet","Positive",1
+"JP","White Mullet","Neutral",2
+"JP","White Mullet","Negative",1
+"RG","White Mullet","Neutral",2
+"RG","White Mullet","Negative",2
+"WM","White Mullet","Neutral",2
+"WM","White Mullet","Negative",2
+"CZ","Yellowfin Grouper","Neutral",1
+"CZ","Yellowfin Grouper","Negative",3
+"MS","Yellowfin Grouper","Neutral",2
+"MS","Yellowfin Grouper","Negative",2
+"RA","Yellowfin Grouper","Negative",4
+"SK","Yellowfin Grouper","Neutral",1
+"SK","Yellowfin Grouper","Negative",3
+"AA","Yellowtail Snapper","Positive",2
+"AA","Yellowtail Snapper","Neutral",2
+"ET","Yellowtail Snapper","Neutral",2
+"ET","Yellowtail Snapper","Negative",2
+"KO","Yellowtail Snapper","Neutral",3
+"KO","Yellowtail Snapper","Negative",1
+"RE","Yellowtail Snapper","Neutral",3
+"RE","Yellowtail Snapper","Negative",1
