@@ -44,14 +44,25 @@ The LOO analysis is **deterministic** — no randomness. For each stock × attri
 
 ### FCVA logic model
 
-Both analyses use the same logic model implemented as `fcva_logic_model()`. The sensitivity (or exposure) component rank is assigned based on how many attribute means meet each threshold:
+Both analyses use the same logic model implemented as `fcva_logic_model()`. The sensitivity (or exposure) component rank is assigned based on how many attribute means meet each threshold, controlled by the `rank_threshold` setting at the top of `uncertainty-analyses.R`:
 
-| Component rank | Threshold |
-|---------------|-----------|
-| Very High | More than 3 attribute means ≥ 3.5 |
-| High | More than 2 attribute means ≥ 3.0 |
-| Moderate | More than 2 attribute means ≥ 2.5 |
+| Component rank | Rule |
+|---------------|------|
+| Very High | More than `rank_threshold + 1` attribute means ≥ 3.5 |
+| High | More than `rank_threshold` attribute means ≥ 3.0 |
+| Moderate | More than `rank_threshold` attribute means ≥ 2.5 |
 | Low | All other |
+
+The `rank_threshold` option is set using one of the named constants defined in the Analysis settings section:
+
+| Constant | Value | Very High threshold | High / Moderate threshold |
+|----------|-------|--------------------|-----------------------------|
+| `attr_means_current` | 2 | > 3 attribute means ≥ 3.5 | > 2 attribute means ≥ 3.0 / 2.5 |
+| `attr_means_plus1` | 3 | > 4 attribute means ≥ 3.5 | > 3 attribute means ≥ 3.0 / 2.5 |
+| `attr_means_plus2` | 4 | > 5 attribute means ≥ 3.5 | > 4 attribute means ≥ 3.0 / 2.5 |
+| `attr_means_plus3` | 5 | > 6 attribute means ≥ 3.5 | > 5 attribute means ≥ 3.0 / 2.5 |
+
+**This setting must match the one used in `4-final-attribute-exposure-scoring/3-calculate-overall-vulnerability-scores.R` when the finalized baseline scores were produced.** Step 3 of `uncertainty-analyses.R` validates this agreement by reproducing all 25 baseline ranks from scratch and halting if any disagree. The default is `attr_means_current` (the prior FCVA rule), which preserves the behavior used when producing the Caribbean CVA baseline.
 
 The final vulnerability score = Sensitivity score × Exposure score. Possible values and their ranks:
 
@@ -61,8 +72,6 @@ The final vulnerability score = Sensitivity score × Exposure score. Possible va
 | 4–6 | Moderate |
 | 8–9 | High |
 | 12–16 | Very High |
-
-These thresholds are validated against the finalized Caribbean CVA baseline scores during Step 3 of `uncertainty-analyses.R` before any analysis is run.
 
 ### Stock name normalization
 
@@ -119,8 +128,9 @@ Reads the finalized Caribbean CVA tally inputs and compiled attribute means, the
 
 ## Analysis settings
 
-| Setting | Value | Description |
-|---------|-------|-------------|
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `rank_threshold` | `attr_means_current` (2) | FCVA logic model threshold — controls how many attributes must meet each score cutoff to assign a component rank. Must match the setting used in the main scoring script. See [FCVA logic model](#fcva-logic-model) above. |
 | `n_boot` | 10,000 | Number of bootstrap iterations per stock |
 | `bootstrap_seed` | 99 | Random seed set once before each bootstrap loop |
 | `dir_eff_threshold` | 0.33 | ±0.33 directional rank cutoff (matching HMS CVA) |
@@ -132,7 +142,7 @@ Three functions are defined at the top of the script and called in multiple step
 
 | Function | Arguments | Returns | Called in |
 |----------|-----------|---------|-----------|
-| `fcva_logic_model(mean_scores)` | Numeric vector of attribute mean scores (1–4) | 1-row tibble: `component_rank` (character), `component_score_numeric` (integer) | Steps 3, 4, 6, 7 |
+| `fcva_logic_model(mean_scores, rank_threshold)` | Numeric vector of attribute mean scores (1–4); integer threshold controlling how many attributes must meet each cutoff | 1-row tibble: `component_rank` (character), `component_score_numeric` (integer) | Steps 3, 4, 6, 7 |
 | `assign_vulnerability_rank(v)` | Numeric vulnerability score (sens × exp product) | Character rank label (Low / Moderate / High / Very High / NA) | Steps 3, 4, 6, 7 |
 | `assign_directional_rank(w_mean, threshold)` | Directional weighted mean [−1, +1]; threshold (default 0.33) | Character rank label (Negative / Neutral / Positive) | Steps 1, 5 |
 

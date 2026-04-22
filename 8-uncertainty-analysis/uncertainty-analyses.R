@@ -54,6 +54,27 @@ dir_eff_threshold    <- 0.33    ## ±0.33 directional rank cutoff, matching HMS 
                                 ##   for Caribbean: total_votes = 4 reviewers x 4 = 16
 borderline_threshold <- 0.25    ## flag stocks where dominant rank prop < 0.75
 
+################################################################################
+##------------------------------------------------------------------------------
+## Set FCVA logic model threshold
+##
+## Table-based rule used in prior FCVAs:
+## - Very High = more than 3 attribute means >= 3.5
+## - High      = more than 2 attribute means >= 3.0
+## - Moderate  = more than 2 attribute means >= 2.5
+## - Low       = all other cases
+##
+## Options:
+attr_means_current <- 2 ## Current FCVA logic model
+attr_means_plus1   <- 3 ## Shifts +1. E.g., Overall M = more than 3 attribute means >= 2.5; VH = more than 4 attribute means >= 3.5
+attr_means_plus2   <- 4 ## Shifts +2. E.g., Overall M = more than 4 attribute means >= 2.5; VH = more than 5 attribute means >= 3.5
+attr_means_plus3   <- 5 ## Shifts +3. E.g., Overall M = more than 5 attribute means >= 2.5
+
+## User sets logic model — must match the setting used in the main scoring
+## script (4-final-attribute-exposure-scoring/3-calculate-overall-vulnerability-scores.R)
+## so that the baseline reproduction check (Step 3) passes.
+rank_threshold <- attr_means_plus1
+
 ##------------------------------------------------------------------------------
 ## Directories
 ##
@@ -120,28 +141,34 @@ f_plot_sens     <- file.path(final_dir, "table_sensitivity_attribute_scores_for_
 ## and numeric score. Called for: baseline reproduction check, LOO sensitivity,
 ## LOO exposure, and the inner bootstrap loop.
 ##
-## Thresholds:
-##   Very High: more than 3 attribute means >= 3.5
-##   High:      more than 2 attribute means >= 3.0
-##   Moderate:  more than 2 attribute means >= 2.5
+## rank_threshold controls how many attributes must meet each score cutoff:
+##   Very High: more than (rank_threshold + 1) attribute means >= 3.5
+##   High:      more than  rank_threshold      attribute means >= 3.0
+##   Moderate:  more than  rank_threshold      attribute means >= 2.5
 ##   Low:       all other cases
 ##
-## Note: these thresholds were calibrated to and are validated against the
-## finalized Caribbean CVA scores in the baseline reproduction check (Step 3).
+## With rank_threshold = attr_means_current (2):
+##   VH: >3 attrs >= 3.5 | High: >2 attrs >= 3.0 | Moderate: >2 attrs >= 2.5
+## With rank_threshold = attr_means_plus1 (3):
+##   VH: >4 attrs >= 3.5 | High: >3 attrs >= 3.0 | Moderate: >3 attrs >= 2.5
+##
+## Note: rank_threshold must match the setting used in the main scoring script
+## so that the baseline reproduction check (Step 3) passes.
 
-fcva_logic_model <- function(mean_scores) {
+fcva_logic_model <- function(mean_scores, rank_threshold) {
 
   ## Count attributes meeting each threshold
   n_ge_35 <- sum(mean_scores >= 3.5, na.rm = TRUE)
   n_ge_30 <- sum(mean_scores >= 3.0, na.rm = TRUE)
   n_ge_25 <- sum(mean_scores >= 2.5, na.rm = TRUE)
 
-  ## Cascading threshold rules — most stringent check first
+  ## Cascading threshold rules — most stringent check first.
+  ## VH uses rank_threshold + 1 (one level stricter); High/Moderate use rank_threshold.
   component_rank <- dplyr::case_when(
-    n_ge_35 > 3 ~ "Very High",
-    n_ge_30 > 2 ~ "High",
-    n_ge_25 > 2 ~ "Moderate",
-    TRUE        ~ "Low"
+    n_ge_35 > rank_threshold + 1 ~ "Very High",
+    n_ge_30 > rank_threshold     ~ "High",
+    n_ge_25 > rank_threshold     ~ "Moderate",
+    TRUE                         ~ "Low"
   )
 
   ## Numeric score: Low=1, Moderate=2, High=3, Very High=4
@@ -401,7 +428,7 @@ if (any(precheck_log$status == "FAIL")) {
 base_sens_repro <- sens_means_std %>%
   dplyr::group_by(stock_name) %>%
   dplyr::summarise(
-    sens_logic = list(fcva_logic_model(mean_score)),
+    sens_logic = list(fcva_logic_model(mean_score, rank_threshold)),
     .groups    = "drop"
   ) %>%
   tidyr::unnest(cols = sens_logic) %>%
@@ -414,7 +441,7 @@ base_sens_repro <- sens_means_std %>%
 base_exp_repro <- exp_means_std %>%
   dplyr::group_by(stock_name) %>%
   dplyr::summarise(
-    exp_logic = list(fcva_logic_model(mean_score)),
+    exp_logic = list(fcva_logic_model(mean_score, rank_threshold)),
     .groups   = "drop"
   ) %>%
   tidyr::unnest(cols = exp_logic) %>%
@@ -549,7 +576,7 @@ for (si in seq_along(stock_list)) {
     }
 
     ## Run FCVA logic model on 14 bootstrapped attribute means
-    logic_result <- fcva_logic_model(boot_att_means)
+    logic_result <- fcva_logic_model(boot_att_means, rank_threshold)
 
     ## Vulnerability score = bootstrapped sensitivity score x fixed exposure score
     vuln_num <- logic_result$component_score_numeric * baseline_exp_num
@@ -736,7 +763,7 @@ for (s in stock_list) {
     reduced_means <- att_means[att_means$attribute_name != att_omit, ]
 
     ## Rerun FCVA logic model on the remaining attribute means
-    logic_result <- fcva_logic_model(reduced_means$mean_score)
+    logic_result <- fcva_logic_model(reduced_means$mean_score, rank_threshold)
 
     ## New vulnerability score = new sensitivity score x fixed baseline exposure score
     new_vuln_num  <- logic_result$component_score_numeric *
@@ -819,7 +846,7 @@ for (s in stock_list) {
     reduced_means <- fac_means[fac_means$exposure_factor != fac_omit, ]
 
     ## Rerun FCVA logic model on the remaining exposure factor means
-    logic_result <- fcva_logic_model(reduced_means$mean_score)
+    logic_result <- fcva_logic_model(reduced_means$mean_score, rank_threshold)
 
     ## New vulnerability score = fixed baseline sensitivity score x new exposure score
     new_vuln_num  <- baseline_row$sensitivity_score_numeric *

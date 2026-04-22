@@ -174,6 +174,7 @@ p_sens <- ggplot2::ggplot(sens_sum,
 ## Heights are proportional to number of bars: exp = 13 bars, sens = 14 bars.
 fig_loo <- p_exp / p_sens +
   patchwork::plot_layout(heights = c(13, 14))
+fig_loo
 
 ggplot2::ggsave(
   filename = f_out,
