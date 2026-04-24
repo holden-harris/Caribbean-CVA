@@ -178,7 +178,7 @@ $$
 
 where *L*, *M*, *H*, and *VH* are the number of tallies assigned to the four scoring bins.
 
-In the present Caribbean workflow, the compiled qualitative table already contained final reviewer-entered scores on the same 1 to 4 ordinal scale, rather than raw tallies. Therefore, for each stock × sensitivity attribute combination, the attribute mean was calculated as the arithmetic mean of all non-missing reviewer scores. For calculated exposure factors, each stock × factor combination in the U.S. Caribbean had a single derived value from the quantitative exposure analysis, so the factor mean equaled that score. In total, 14 sensitivity attributes and 13 quantitative exposure factors were used in the final component scoring.
+In the present Caribbean workflow, the compiled qualitative table already contained final reviewer-entered scores on the same 1 to 4 ordinal scale, rather than raw tallies. Therefore, for each stock × sensitivity attribute combination, the attribute mean was calculated as the arithmetic mean of all non-missing reviewer scores. For calculated exposure factors, each stock × factor combination in the U.S. Caribbean had a single derived value from the quantitative exposure analysis, so the factor mean equaled that score. In total, 14 sensitivity attributes were used in the sensitivity component scoring for all stocks. The number of exposure factors used in the exposure component scoring varies by stock and is determined by an expert rubric (`data/attribute-list-rubric-completed.csv`), with a maximum of 15 factors (13 quantitative + 2 qualitative); each stock uses only the subset identified as relevant by the CVA reviewers.
 
 ## Step 2. Assign overall sensitivity and exposure component scores using the logic model
 
@@ -190,12 +190,12 @@ For each stock, the number of sensitivity attribute means and exposure factor me
 
 | Overall sensitivity or exposure category | Numeric score | Logic rule |
 |---|---:|---|
-| Very High | 4 | 3 or more attribute or factor means ≥ 3.5 |
-| High | 3 | 2 or more attribute or factor means ≥ 3.0 |
-| Moderate | 2 | 2 or more attribute or factor means ≥ 2.5 |
+| Very High | 4 | More than 3 attribute or factor means ≥ 3.5 |
+| High | 3 | More than 2 attribute or factor means ≥ 3.0 |
+| Moderate | 2 | More than 2 attribute or factor means ≥ 2.5 |
 | Low | 1 | All other cases |
 
-Recent regional CVAs have described these rules as “3 or more” attributes or factors with a mean ≥ 3.5 for a Very High component score, “2 or more” with mean ≥ 3.0 for High, and “2 or more” with mean ≥ 2.5 for Moderate; all other cases are Low.
+Recent regional CVAs have described these rules as “more than 3” attributes or factors with a mean ≥ 3.5 for a Very High component score, “more than 2” with mean ≥ 3.0 for High, and “more than 2” with mean ≥ 2.5 for Moderate; all other cases are Low. These thresholds correspond to `rank_threshold = attr_means_current = 2` in the R script, consistent with the original NOAA FCVA methodology.
 
 ## Step 3. Calculate the overall vulnerability score and rank
 
@@ -238,6 +238,14 @@ The workflow produces three main outputs:
    - Restrict the logic-model step to:
      - qualitative `Sensitivity` attributes
      - calculated `Exposure` attributes
+   - **Apply expert exposure factor filter**
+     - Read `data/attribute-list-rubric-completed.csv` and pivot to long form
+       (`stock_name`, `attribute_name`, `include`). Write the result to
+       `data/exposure-factor-filter-long.csv` for use by downstream scripts.
+     - Retain only exposure factor rows where `include == TRUE` in the rubric.
+       Sensitivity attribute rows are unaffected — all 14 attributes apply to all stocks.
+     - A name-alignment guard confirms all exposure factor names in the attribute means
+       match the rubric before filtering proceeds; mismatches stop execution.
    - For each `stock_name × attribute_type`, calculate:
      - `mean_attribute_score`
      - `sd_attribute_score`
@@ -272,9 +280,10 @@ The workflow produces three main outputs:
 
 | File | Description |
 |------|-------------|
-| `attribute_means_uscar.csv` | Attribute-level mean scores and LMHV bins |
-| `component_scores_uscar.csv` | Exposure and Sensitivity component scores and ranks for each stock |
+| `attribute_means_uscar.csv` | Attribute-level mean scores and LMHV bins for all attributes and factors (complete; unfiltered reference) |
+| `component_scores_uscar.csv` | Exposure and Sensitivity component scores and ranks for each stock; `n_attributes` for the Exposure component now varies by stock reflecting the per-stock expert filter |
 | `overall_vulnerability_scores_uscar.csv` | Final stock-level vulnerability scores and ranks |
+| `data/exposure-factor-filter-long.csv` | Long-form expert rubric filter: one row per stock × exposure factor (375 rows = 15 factors × 25 stocks), with `include` (TRUE/FALSE) indicating expert-approved applicability. Also read by Script 8 (`uncertainty-analyses.R`). |
 
 ### Output directory structure
 ```text
