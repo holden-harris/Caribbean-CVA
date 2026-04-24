@@ -83,6 +83,18 @@ exposure_tallies_long           <- read.csv(file.path(dir_tallies, "exposure_tal
 attr_means                      <- read.csv(file.path(dir_compiled, "attribute_means_uscar.csv")) %>%
   mutate(stock_name = recode(stock_name, !!!stock_name_recode))
 
+## Expert exposure factor filter: approved factor × stock pairs for final analysis.
+## Stock names normalized to Title Case to match exposure_tallies_long and attr_means.
+## Applied to Figures 1B and 3B only; sensitivity figures are unaffected.
+exp_filter_approved <- read.csv("./data/exposure-factor-filter-long.csv",
+                                stringsAsFactors = FALSE) %>%
+  dplyr::filter(include == TRUE) %>%
+  dplyr::mutate(
+    stock_name     = dplyr::recode(stock_name, !!!stock_name_recode),
+    attribute_name = stringr::str_squish(attribute_name)
+  ) %>%
+  dplyr::select(stock_name, attribute_name)
+
 ##------------------------------------------------------------------------------
 ## Data prep
 
@@ -208,6 +220,8 @@ ggsave(f_fig_sens_box, p_sens_box,
 exp_scores <- attr_means %>%
   filter(attribute_type == "Exposure") %>%
   filter(!is.na(attribute_mean)) %>%
+  dplyr::mutate(attribute_name = stringr::str_squish(attribute_name)) %>%
+  dplyr::semi_join(exp_filter_approved, by = c("stock_name", "attribute_name")) %>%
   group_by(attribute_name) %>%
   mutate(attr_median = median(attribute_mean, na.rm = TRUE)) %>%
   ungroup() %>%
@@ -472,25 +486,10 @@ p_tallies <- ggplot(
 ##------------------------------------------------------------------------------
 ## Figure 3B - Exposure tally distributions by attribute (by stock)
 
-exp_pooled <- exposure_tallies_long %>%
-  group_by(attribute_name) %>%
-  summarise(
-    tally_L    = sum(tally_L,  na.rm = TRUE),
-    tally_M    = sum(tally_M,  na.rm = TRUE),
-    tally_H    = sum(tally_H,  na.rm = TRUE),
-    tally_VH   = sum(tally_VH, na.rm = TRUE),
-    pooled_sum = tally_L + tally_M + tally_H + tally_VH,
-    .groups = "drop"
-  ) %>%
-  filter(pooled_sum > 0) %>%
-  mutate(mean_score = (tally_L * 1 + tally_M * 2 + tally_H * 3 + tally_VH * 4) / pooled_sum)
-
-exp_attr_order <- exp_pooled %>% arrange(mean_score) %>% pull(attribute_name)
-
-exp_attr_order_short <- ifelse(exp_attr_order %in% names(exp_attr_short_names),
-                               exp_attr_short_names[exp_attr_order], exp_attr_order)
-
+## Step 1: per-stock tallies filtered to expert-approved factor × stock pairs only
 exp_pooled_stock <- exposure_tallies_long %>%
+  dplyr::mutate(attribute_name = stringr::str_squish(attribute_name)) %>%
+  dplyr::semi_join(exp_filter_approved, by = c("stock_name", "attribute_name")) %>%
   group_by(stock_name, attribute_name) %>%
   summarise(
     tally_L    = sum(tally_L,  na.rm = TRUE),
@@ -507,6 +506,25 @@ exp_pooled_stock <- exposure_tallies_long %>%
     p_high      = tally_H  / pooled_sum,
     p_very_high = tally_VH / pooled_sum
   )
+
+## Step 2: pool across the filtered stocks to derive y-axis ordering by mean score
+exp_pooled <- exp_pooled_stock %>%
+  group_by(attribute_name) %>%
+  summarise(
+    tally_L    = sum(tally_L),
+    tally_M    = sum(tally_M),
+    tally_H    = sum(tally_H),
+    tally_VH   = sum(tally_VH),
+    pooled_sum = sum(pooled_sum),
+    .groups = "drop"
+  ) %>%
+  filter(pooled_sum > 0) %>%
+  mutate(mean_score = (tally_L * 1 + tally_M * 2 + tally_H * 3 + tally_VH * 4) / pooled_sum)
+
+exp_attr_order <- exp_pooled %>% arrange(mean_score) %>% pull(attribute_name)
+
+exp_attr_order_short <- ifelse(exp_attr_order %in% names(exp_attr_short_names),
+                               exp_attr_short_names[exp_attr_order], exp_attr_order)
 
 exp_pooled_stock_long <- exp_pooled_stock %>%
   select(stock_name, attribute_name,
