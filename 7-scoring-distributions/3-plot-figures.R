@@ -60,6 +60,7 @@ stock_name_recode <- c(
   "Mutton snapper"          = "Mutton Snapper",
   "Nassau grouper"          = "Nassau Grouper",
   "Queen conch"             = "Queen Conch",
+  "Queen snapper"           = "Queen Snapper",
   "Queen triggerfish"       = "Queen Triggerfish",
   "Rainbow parrotfish"      = "Rainbow Parrotfish",
   "Red grouper"             = "Red Grouper",

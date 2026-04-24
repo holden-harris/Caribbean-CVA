@@ -1,0 +1,376 @@
+"stock_name","attribute_name","include"
+"Atlantic thread herring","Bottom temperature",FALSE
+"Ballyhoo","Bottom temperature",FALSE
+"Blue runner","Bottom temperature",FALSE
+"Dolphinfish","Bottom temperature",FALSE
+"Gray angelfish","Bottom temperature",TRUE
+"Hogfish","Bottom temperature",TRUE
+"King mackerel","Bottom temperature",FALSE
+"Lane snapper","Bottom temperature",TRUE
+"Long-spined sea urchin","Bottom temperature",TRUE
+"Misty grouper","Bottom temperature",TRUE
+"Mutton snapper","Bottom temperature",TRUE
+"Nassau grouper","Bottom temperature",TRUE
+"Queen conch","Bottom temperature",TRUE
+"Queen snapper","Bottom temperature",TRUE
+"Queen triggerfish","Bottom temperature",TRUE
+"Rainbow parrotfish","Bottom temperature",TRUE
+"Red grouper","Bottom temperature",TRUE
+"Red hind","Bottom temperature",TRUE
+"Sea cucumbers","Bottom temperature",TRUE
+"Silk snapper","Bottom temperature",TRUE
+"Spiny lobster","Bottom temperature",TRUE
+"Stoplight parrotfish","Bottom temperature",TRUE
+"White mullet","Bottom temperature",FALSE
+"Yellowfin grouper","Bottom temperature",TRUE
+"Yellowtail snapper","Bottom temperature",TRUE
+"Atlantic thread herring","Sea surface oxygen",TRUE
+"Ballyhoo","Sea surface oxygen",TRUE
+"Blue runner","Sea surface oxygen",TRUE
+"Dolphinfish","Sea surface oxygen",TRUE
+"Gray angelfish","Sea surface oxygen",TRUE
+"Hogfish","Sea surface oxygen",TRUE
+"King mackerel","Sea surface oxygen",TRUE
+"Lane snapper","Sea surface oxygen",TRUE
+"Long-spined sea urchin","Sea surface oxygen",TRUE
+"Misty grouper","Sea surface oxygen",FALSE
+"Mutton snapper","Sea surface oxygen",TRUE
+"Nassau grouper","Sea surface oxygen",FALSE
+"Queen conch","Sea surface oxygen",TRUE
+"Queen snapper","Sea surface oxygen",FALSE
+"Queen triggerfish","Sea surface oxygen",TRUE
+"Rainbow parrotfish","Sea surface oxygen",TRUE
+"Red grouper","Sea surface oxygen",FALSE
+"Red hind","Sea surface oxygen",FALSE
+"Sea cucumbers","Sea surface oxygen",TRUE
+"Silk snapper","Sea surface oxygen",FALSE
+"Spiny lobster","Sea surface oxygen",TRUE
+"Stoplight parrotfish","Sea surface oxygen",TRUE
+"White mullet","Sea surface oxygen",TRUE
+"Yellowfin grouper","Sea surface oxygen",FALSE
+"Yellowtail snapper","Sea surface oxygen",TRUE
+"Atlantic thread herring","Sea surface temperature",TRUE
+"Ballyhoo","Sea surface temperature",TRUE
+"Blue runner","Sea surface temperature",TRUE
+"Dolphinfish","Sea surface temperature",TRUE
+"Gray angelfish","Sea surface temperature",TRUE
+"Hogfish","Sea surface temperature",TRUE
+"King mackerel","Sea surface temperature",TRUE
+"Lane snapper","Sea surface temperature",TRUE
+"Long-spined sea urchin","Sea surface temperature",TRUE
+"Misty grouper","Sea surface temperature",TRUE
+"Mutton snapper","Sea surface temperature",TRUE
+"Nassau grouper","Sea surface temperature",TRUE
+"Queen conch","Sea surface temperature",TRUE
+"Queen snapper","Sea surface temperature",FALSE
+"Queen triggerfish","Sea surface temperature",TRUE
+"Rainbow parrotfish","Sea surface temperature",TRUE
+"Red grouper","Sea surface temperature",TRUE
+"Red hind","Sea surface temperature",TRUE
+"Sea cucumbers","Sea surface temperature",TRUE
+"Silk snapper","Sea surface temperature",FALSE
+"Spiny lobster","Sea surface temperature",TRUE
+"Stoplight parrotfish","Sea surface temperature",TRUE
+"White mullet","Sea surface temperature",FALSE
+"Yellowfin grouper","Sea surface temperature",TRUE
+"Yellowtail snapper","Sea surface temperature",TRUE
+"Atlantic thread herring","Surface pH",FALSE
+"Ballyhoo","Surface pH",TRUE
+"Blue runner","Surface pH",FALSE
+"Dolphinfish","Surface pH",FALSE
+"Gray angelfish","Surface pH",TRUE
+"Hogfish","Surface pH",TRUE
+"King mackerel","Surface pH",FALSE
+"Lane snapper","Surface pH",TRUE
+"Long-spined sea urchin","Surface pH",TRUE
+"Misty grouper","Surface pH",TRUE
+"Mutton snapper","Surface pH",TRUE
+"Nassau grouper","Surface pH",TRUE
+"Queen conch","Surface pH",TRUE
+"Queen snapper","Surface pH",FALSE
+"Queen triggerfish","Surface pH",TRUE
+"Rainbow parrotfish","Surface pH",TRUE
+"Red grouper","Surface pH",TRUE
+"Red hind","Surface pH",TRUE
+"Sea cucumbers","Surface pH",TRUE
+"Silk snapper","Surface pH",FALSE
+"Spiny lobster","Surface pH",TRUE
+"Stoplight parrotfish","Surface pH",TRUE
+"White mullet","Surface pH",FALSE
+"Yellowfin grouper","Surface pH",TRUE
+"Yellowtail snapper","Surface pH",TRUE
+"Atlantic thread herring","Bottom salinity",FALSE
+"Ballyhoo","Bottom salinity",FALSE
+"Blue runner","Bottom salinity",FALSE
+"Dolphinfish","Bottom salinity",FALSE
+"Gray angelfish","Bottom salinity",FALSE
+"Hogfish","Bottom salinity",FALSE
+"King mackerel","Bottom salinity",FALSE
+"Lane snapper","Bottom salinity",FALSE
+"Long-spined sea urchin","Bottom salinity",TRUE
+"Misty grouper","Bottom salinity",FALSE
+"Mutton snapper","Bottom salinity",FALSE
+"Nassau grouper","Bottom salinity",FALSE
+"Queen conch","Bottom salinity",TRUE
+"Queen snapper","Bottom salinity",TRUE
+"Queen triggerfish","Bottom salinity",FALSE
+"Rainbow parrotfish","Bottom salinity",FALSE
+"Red grouper","Bottom salinity",FALSE
+"Red hind","Bottom salinity",FALSE
+"Sea cucumbers","Bottom salinity",TRUE
+"Silk snapper","Bottom salinity",TRUE
+"Spiny lobster","Bottom salinity",TRUE
+"Stoplight parrotfish","Bottom salinity",FALSE
+"White mullet","Bottom salinity",FALSE
+"Yellowfin grouper","Bottom salinity",FALSE
+"Yellowtail snapper","Bottom salinity",FALSE
+"Atlantic thread herring","Chlorophyll-a concentration",TRUE
+"Ballyhoo","Chlorophyll-a concentration",TRUE
+"Blue runner","Chlorophyll-a concentration",TRUE
+"Dolphinfish","Chlorophyll-a concentration",TRUE
+"Gray angelfish","Chlorophyll-a concentration",TRUE
+"Hogfish","Chlorophyll-a concentration",TRUE
+"King mackerel","Chlorophyll-a concentration",TRUE
+"Lane snapper","Chlorophyll-a concentration",TRUE
+"Long-spined sea urchin","Chlorophyll-a concentration",TRUE
+"Misty grouper","Chlorophyll-a concentration",TRUE
+"Mutton snapper","Chlorophyll-a concentration",TRUE
+"Nassau grouper","Chlorophyll-a concentration",TRUE
+"Queen conch","Chlorophyll-a concentration",TRUE
+"Queen snapper","Chlorophyll-a concentration",TRUE
+"Queen triggerfish","Chlorophyll-a concentration",TRUE
+"Rainbow parrotfish","Chlorophyll-a concentration",TRUE
+"Red grouper","Chlorophyll-a concentration",TRUE
+"Red hind","Chlorophyll-a concentration",TRUE
+"Sea cucumbers","Chlorophyll-a concentration",TRUE
+"Silk snapper","Chlorophyll-a concentration",TRUE
+"Spiny lobster","Chlorophyll-a concentration",TRUE
+"Stoplight parrotfish","Chlorophyll-a concentration",TRUE
+"White mullet","Chlorophyll-a concentration",TRUE
+"Yellowfin grouper","Chlorophyll-a concentration",TRUE
+"Yellowtail snapper","Chlorophyll-a concentration",TRUE
+"Atlantic thread herring","Mean sea surface temperature gradient",FALSE
+"Ballyhoo","Mean sea surface temperature gradient",FALSE
+"Blue runner","Mean sea surface temperature gradient",FALSE
+"Dolphinfish","Mean sea surface temperature gradient",FALSE
+"Gray angelfish","Mean sea surface temperature gradient",FALSE
+"Hogfish","Mean sea surface temperature gradient",FALSE
+"King mackerel","Mean sea surface temperature gradient",FALSE
+"Lane snapper","Mean sea surface temperature gradient",FALSE
+"Long-spined sea urchin","Mean sea surface temperature gradient",FALSE
+"Misty grouper","Mean sea surface temperature gradient",FALSE
+"Mutton snapper","Mean sea surface temperature gradient",FALSE
+"Nassau grouper","Mean sea surface temperature gradient",FALSE
+"Queen conch","Mean sea surface temperature gradient",FALSE
+"Queen snapper","Mean sea surface temperature gradient",TRUE
+"Queen triggerfish","Mean sea surface temperature gradient",FALSE
+"Rainbow parrotfish","Mean sea surface temperature gradient",FALSE
+"Red grouper","Mean sea surface temperature gradient",FALSE
+"Red hind","Mean sea surface temperature gradient",FALSE
+"Sea cucumbers","Mean sea surface temperature gradient",FALSE
+"Silk snapper","Mean sea surface temperature gradient",TRUE
+"Spiny lobster","Mean sea surface temperature gradient",FALSE
+"Stoplight parrotfish","Mean sea surface temperature gradient",FALSE
+"White mullet","Mean sea surface temperature gradient",FALSE
+"Yellowfin grouper","Mean sea surface temperature gradient",FALSE
+"Yellowtail snapper","Mean sea surface temperature gradient",FALSE
+"Atlantic thread herring","Mixed layer depth",FALSE
+"Ballyhoo","Mixed layer depth",FALSE
+"Blue runner","Mixed layer depth",TRUE
+"Dolphinfish","Mixed layer depth",TRUE
+"Gray angelfish","Mixed layer depth",TRUE
+"Hogfish","Mixed layer depth",TRUE
+"King mackerel","Mixed layer depth",TRUE
+"Lane snapper","Mixed layer depth",TRUE
+"Long-spined sea urchin","Mixed layer depth",FALSE
+"Misty grouper","Mixed layer depth",TRUE
+"Mutton snapper","Mixed layer depth",TRUE
+"Nassau grouper","Mixed layer depth",TRUE
+"Queen conch","Mixed layer depth",TRUE
+"Queen snapper","Mixed layer depth",TRUE
+"Queen triggerfish","Mixed layer depth",TRUE
+"Rainbow parrotfish","Mixed layer depth",TRUE
+"Red grouper","Mixed layer depth",TRUE
+"Red hind","Mixed layer depth",TRUE
+"Sea cucumbers","Mixed layer depth",FALSE
+"Silk snapper","Mixed layer depth",TRUE
+"Spiny lobster","Mixed layer depth",FALSE
+"Stoplight parrotfish","Mixed layer depth",TRUE
+"White mullet","Mixed layer depth",FALSE
+"Yellowfin grouper","Mixed layer depth",TRUE
+"Yellowtail snapper","Mixed layer depth",TRUE
+"Atlantic thread herring","Oxygen at 200m",FALSE
+"Ballyhoo","Oxygen at 200m",FALSE
+"Blue runner","Oxygen at 200m",FALSE
+"Dolphinfish","Oxygen at 200m",TRUE
+"Gray angelfish","Oxygen at 200m",FALSE
+"Hogfish","Oxygen at 200m",FALSE
+"King mackerel","Oxygen at 200m",FALSE
+"Lane snapper","Oxygen at 200m",FALSE
+"Long-spined sea urchin","Oxygen at 200m",FALSE
+"Misty grouper","Oxygen at 200m",FALSE
+"Mutton snapper","Oxygen at 200m",FALSE
+"Nassau grouper","Oxygen at 200m",FALSE
+"Queen conch","Oxygen at 200m",FALSE
+"Queen snapper","Oxygen at 200m",TRUE
+"Queen triggerfish","Oxygen at 200m",FALSE
+"Rainbow parrotfish","Oxygen at 200m",FALSE
+"Red grouper","Oxygen at 200m",FALSE
+"Red hind","Oxygen at 200m",FALSE
+"Sea cucumbers","Oxygen at 200m",FALSE
+"Silk snapper","Oxygen at 200m",TRUE
+"Spiny lobster","Oxygen at 200m",FALSE
+"Stoplight parrotfish","Oxygen at 200m",FALSE
+"White mullet","Oxygen at 200m",FALSE
+"Yellowfin grouper","Oxygen at 200m",FALSE
+"Yellowtail snapper","Oxygen at 200m",FALSE
+"Atlantic thread herring","Precipitation",TRUE
+"Ballyhoo","Precipitation",TRUE
+"Blue runner","Precipitation",FALSE
+"Dolphinfish","Precipitation",FALSE
+"Gray angelfish","Precipitation",TRUE
+"Hogfish","Precipitation",TRUE
+"King mackerel","Precipitation",TRUE
+"Lane snapper","Precipitation",TRUE
+"Long-spined sea urchin","Precipitation",TRUE
+"Misty grouper","Precipitation",FALSE
+"Mutton snapper","Precipitation",TRUE
+"Nassau grouper","Precipitation",FALSE
+"Queen conch","Precipitation",TRUE
+"Queen snapper","Precipitation",FALSE
+"Queen triggerfish","Precipitation",TRUE
+"Rainbow parrotfish","Precipitation",TRUE
+"Red grouper","Precipitation",FALSE
+"Red hind","Precipitation",FALSE
+"Sea cucumbers","Precipitation",TRUE
+"Silk snapper","Precipitation",FALSE
+"Spiny lobster","Precipitation",TRUE
+"Stoplight parrotfish","Precipitation",TRUE
+"White mullet","Precipitation",FALSE
+"Yellowfin grouper","Precipitation",FALSE
+"Yellowtail snapper","Precipitation",TRUE
+"Atlantic thread herring","Primary production",TRUE
+"Ballyhoo","Primary production",TRUE
+"Blue runner","Primary production",TRUE
+"Dolphinfish","Primary production",TRUE
+"Gray angelfish","Primary production",TRUE
+"Hogfish","Primary production",TRUE
+"King mackerel","Primary production",TRUE
+"Lane snapper","Primary production",TRUE
+"Long-spined sea urchin","Primary production",TRUE
+"Misty grouper","Primary production",TRUE
+"Mutton snapper","Primary production",TRUE
+"Nassau grouper","Primary production",TRUE
+"Queen conch","Primary production",TRUE
+"Queen snapper","Primary production",FALSE
+"Queen triggerfish","Primary production",TRUE
+"Rainbow parrotfish","Primary production",TRUE
+"Red grouper","Primary production",TRUE
+"Red hind","Primary production",TRUE
+"Sea cucumbers","Primary production",TRUE
+"Silk snapper","Primary production",FALSE
+"Spiny lobster","Primary production",TRUE
+"Stoplight parrotfish","Primary production",TRUE
+"White mullet","Primary production",TRUE
+"Yellowfin grouper","Primary production",TRUE
+"Yellowtail snapper","Primary production",TRUE
+"Atlantic thread herring","Sea surface salinity",TRUE
+"Ballyhoo","Sea surface salinity",TRUE
+"Blue runner","Sea surface salinity",FALSE
+"Dolphinfish","Sea surface salinity",FALSE
+"Gray angelfish","Sea surface salinity",TRUE
+"Hogfish","Sea surface salinity",TRUE
+"King mackerel","Sea surface salinity",FALSE
+"Lane snapper","Sea surface salinity",TRUE
+"Long-spined sea urchin","Sea surface salinity",TRUE
+"Misty grouper","Sea surface salinity",FALSE
+"Mutton snapper","Sea surface salinity",TRUE
+"Nassau grouper","Sea surface salinity",FALSE
+"Queen conch","Sea surface salinity",TRUE
+"Queen snapper","Sea surface salinity",FALSE
+"Queen triggerfish","Sea surface salinity",TRUE
+"Rainbow parrotfish","Sea surface salinity",TRUE
+"Red grouper","Sea surface salinity",FALSE
+"Red hind","Sea surface salinity",FALSE
+"Sea cucumbers","Sea surface salinity",TRUE
+"Silk snapper","Sea surface salinity",FALSE
+"Spiny lobster","Sea surface salinity",TRUE
+"Stoplight parrotfish","Sea surface salinity",TRUE
+"White mullet","Sea surface salinity",FALSE
+"Yellowfin grouper","Sea surface salinity",FALSE
+"Yellowtail snapper","Sea surface salinity",TRUE
+"Atlantic thread herring","Surface wind speed magnitude",FALSE
+"Ballyhoo","Surface wind speed magnitude",TRUE
+"Blue runner","Surface wind speed magnitude",TRUE
+"Dolphinfish","Surface wind speed magnitude",TRUE
+"Gray angelfish","Surface wind speed magnitude",TRUE
+"Hogfish","Surface wind speed magnitude",TRUE
+"King mackerel","Surface wind speed magnitude",TRUE
+"Lane snapper","Surface wind speed magnitude",TRUE
+"Long-spined sea urchin","Surface wind speed magnitude",TRUE
+"Misty grouper","Surface wind speed magnitude",FALSE
+"Mutton snapper","Surface wind speed magnitude",TRUE
+"Nassau grouper","Surface wind speed magnitude",FALSE
+"Queen conch","Surface wind speed magnitude",TRUE
+"Queen snapper","Surface wind speed magnitude",FALSE
+"Queen triggerfish","Surface wind speed magnitude",TRUE
+"Rainbow parrotfish","Surface wind speed magnitude",TRUE
+"Red grouper","Surface wind speed magnitude",FALSE
+"Red hind","Surface wind speed magnitude",FALSE
+"Sea cucumbers","Surface wind speed magnitude",TRUE
+"Silk snapper","Surface wind speed magnitude",FALSE
+"Spiny lobster","Surface wind speed magnitude",TRUE
+"Stoplight parrotfish","Surface wind speed magnitude",TRUE
+"White mullet","Surface wind speed magnitude",FALSE
+"Yellowfin grouper","Surface wind speed magnitude",FALSE
+"Yellowtail snapper","Surface wind speed magnitude",TRUE
+"Atlantic thread herring","Thermocline depth",FALSE
+"Ballyhoo","Thermocline depth",FALSE
+"Blue runner","Thermocline depth",TRUE
+"Dolphinfish","Thermocline depth",TRUE
+"Gray angelfish","Thermocline depth",TRUE
+"Hogfish","Thermocline depth",TRUE
+"King mackerel","Thermocline depth",TRUE
+"Lane snapper","Thermocline depth",FALSE
+"Long-spined sea urchin","Thermocline depth",FALSE
+"Misty grouper","Thermocline depth",FALSE
+"Mutton snapper","Thermocline depth",FALSE
+"Nassau grouper","Thermocline depth",TRUE
+"Queen conch","Thermocline depth",FALSE
+"Queen snapper","Thermocline depth",FALSE
+"Queen triggerfish","Thermocline depth",TRUE
+"Rainbow parrotfish","Thermocline depth",TRUE
+"Red grouper","Thermocline depth",TRUE
+"Red hind","Thermocline depth",TRUE
+"Sea cucumbers","Thermocline depth",FALSE
+"Silk snapper","Thermocline depth",FALSE
+"Spiny lobster","Thermocline depth",FALSE
+"Stoplight parrotfish","Thermocline depth",TRUE
+"White mullet","Thermocline depth",FALSE
+"Yellowfin grouper","Thermocline depth",TRUE
+"Yellowtail snapper","Thermocline depth",FALSE
+"Atlantic thread herring","Sargassum influx",TRUE
+"Ballyhoo","Sargassum influx",TRUE
+"Blue runner","Sargassum influx",TRUE
+"Dolphinfish","Sargassum influx",TRUE
+"Gray angelfish","Sargassum influx",TRUE
+"Hogfish","Sargassum influx",TRUE
+"King mackerel","Sargassum influx",TRUE
+"Lane snapper","Sargassum influx",TRUE
+"Long-spined sea urchin","Sargassum influx",TRUE
+"Misty grouper","Sargassum influx",TRUE
+"Mutton snapper","Sargassum influx",TRUE
+"Nassau grouper","Sargassum influx",TRUE
+"Queen conch","Sargassum influx",TRUE
+"Queen snapper","Sargassum influx",FALSE
+"Queen triggerfish","Sargassum influx",TRUE
+"Rainbow parrotfish","Sargassum influx",TRUE
+"Red grouper","Sargassum influx",TRUE
+"Red hind","Sargassum influx",TRUE
+"Sea cucumbers","Sargassum influx",TRUE
+"Silk snapper","Sargassum influx",FALSE
+"Spiny lobster","Sargassum influx",TRUE
+"Stoplight parrotfish","Sargassum influx",TRUE
+"White mullet","Sargassum influx",TRUE
+"Yellowfin grouper","Sargassum influx",TRUE
+"Yellowtail snapper","Sargassum influx",TRUE
