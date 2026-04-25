@@ -2,10 +2,11 @@
 
 ## Project Overview
 
-This repository contains the full analytical pipeline for a **Climate Vulnerability Assessment (CVA)** of 25 fish and invertebrate stocks managed in the U.S. Caribbean. The CVA evaluates each stock's overall climate vulnerability by combining two independently scored components — **sensitivity** (how biologically susceptible is the stock to climate change?) and **exposure** (how much is the stock's habitat projected to change?) — following the NOAA Fisheries Climate Vulnerability Assessment (FCVA) framework established by Morrison et al. (2015) and applied in recent regional CVAs including Loughran et al. (2025).
+This repository contains the full analytical pipeline for a **Climate Vulnerability Assessment (CVA)** of 25 fish and invertebrate stocks managed in the U.S. Caribbean. The CVA evaluates each stock's overall climate vulnerability by combining two independently scored components — **sensitivity** (how biologically susceptible is the stock to climate change?) and **exposure** (how much is the stock's habitat projected to change?) — following the NOAA Fisheries Climate Vulnerability Assessment (FCVA) framework established by Morrison et al. (2015) and applied in recent regional CVAs. 
 
 Analyses were conducted by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/).  
-All code and materials are available under an open-access license, as per Creative Commons CC0 1.0.  
+
+All code and materials are available under an open-access license, as per the Creative Commons CC0 1.0 license.  
 We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work.
 
 ---
@@ -356,7 +357,7 @@ Produces attribute score boxplots (using `attribute_means_uscar.csv`) and per-st
 
 **Scripts:** `8-uncertainty-analysis/uncertainty-analyses.R`, `2-make-uncertainty-figures.R`
 
-Quantifies the statistical robustness of the final CVA vulnerability rankings using two complementary analyses following Loughran et al. (2025):
+Quantifies the statistical robustness of the final CVA vulnerability rankings using two complementary analyses following FCVA methods.
 
 #### Bootstrap resampling
 
@@ -508,113 +509,7 @@ Up to 15 exposure factors are evaluated per stock — 13 quantitative factors de
 
 ---
 
-## Methods
-
-### Goals and Scope
-
-The overall goal of the exposure factor analyses is to compare projected future ocean conditions against their past. To do so, we utilize spatially explicit ocean model projections (both historical and future ocean projections) to create a standardized anomaly map (i.e., a static comparison) and provide accompanying analyses. The values of the standardized anomalies are expressed in standard deviation units, which allows the result to be comparable across variables. For each exposure factor anomaly, we mapped the gridded cells of the standardized exposure anomaly and overlapped a given species distribution. Values from the overlapped cells were then compiled into frequency distributions (histograms) and categorized (bar plots).
-
-The exposure overlap analyses below are presented within three geographic scopes:
-1. A given species distribution within the Western Atlantic Ocean (5°S–72°N, 99°W–40°W),
-2. The wider Caribbean region (6°N–28°N, 92°W–57°W), and
-3. The U.S. Caribbean (16°N–20°N, 69°W–63°W).
-
-The spatial scale of the analysis will have differing implications for a species' ecology and its management. All three spatial scales are presented for use at the discretion of the expert reviewers.
-
-### Calculating Gridded Standardized Exposure Factor Anomalies
-
-Similar to the HMS CVA, we utilized projections from the Coupled Model Intercomparison Project Phase 6 (CMIP6) multi-model ensemble under the SSP5-8.5 scenario, which is consistent with past NOAA CVAs. This scenario represents the highest greenhouse gas emissions pathway and likely represents the greatest changes that we can reasonably expect for the exposure factor; it should be considered an upper bound for CMIP6 projections.
-
-Monthly outputs for each exposure factor (e.g., sea surface temperature) were obtained at a grid cell resolution of 1° latitude × 1° longitude. To calculate detrended standardized anomalies, a unitless value (z) was computed for each 1° × 1° grid cell as the difference between the future and historical values divided by the historical standard deviation:
-
-z = (μ future − μ historical) / σ historical,
-
-where μ future is the mean of a given grid cell for months during 2020–2049, μ historical is the mean of a given grid cell for months during 1985–2014, and σ is the interannual standard deviation during the same historical baseline period (1985–2014). Dividing by the historical baseline standard deviation converts z into standard deviation units (σ).
-
-A positive standardized anomaly value (+σ) means the exposure factor is projected to increase compared to the historical baseline, while a negative value (–σ) indicates a decrease.
-
-### Calculating Quantitative Exposure Scores
-
-For a given species or stock and exposure factor, standardized anomalies from the gridded overlapped area were grouped into 0.25 standard deviation bins. These bins were then coded by their absolute value in the following categories (LMHV): Low (|σ| < 0.5), Moderate (0.5 ≤ |σ| < 1.5), High (1.5 ≤ |σ| < 2.0), Very High (|σ| ≥ 2.0). A weighted average score was calculated as:
-
-Weighted Average = (1L + 2M + 3H + 4V) / (L + M + H + V)
-
-where L, M, H, and V are the total counts of cells in each category. This score ranges from 1 (all Low) to 4 (all Very High) and is used as the calculated exposure score for each stock × factor in Modules 4 and 7.
-
-### NOAA FCVA Logic Model
-
-Overall climate vulnerability was calculated using the NOAA FCVA framework. For each stock, attribute-level means are calculated (as the arithmetic mean of non-missing reviewer scores for qualitative attributes, or the calculated weighted-average score for quantitative exposure factors). The logic model then assigns component scores based on how many attribute or factor means exceed specified thresholds:
-
-| Overall component rank | Numeric score | Logic rule |
-|---|---:|---|
-| Very High | 4 | More than 3 attribute or factor means ≥ 3.5 |
-| High | 3 | More than 2 attribute or factor means ≥ 3.0 |
-| Moderate | 2 | More than 2 attribute or factor means ≥ 2.5 |
-| Low | 1 | All other cases |
-
-The final vulnerability score is the product of Sensitivity score × Exposure score, assigned to a rank as follows:
-
-| Exposure × Sensitivity score | Overall vulnerability rank |
-|---:|---|
-| 1–3 | Low |
-| 4–6 | Moderate |
-| 8–9 | High |
-| 12–16 | Very High |
-
----
-
-## Exposure Overlap Analysis
-
-<p align="center">
-  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/outputs/exposure-overlap-12panel/King-Mackerel/Exposure-Overlap-12panel/King-Mackerel_Exposure-Overlap_o200.png?raw=true" 
-       alt="King Mackerel – Exposure Overlap (o200)" 
-       width="700"/>
-</p>
-
-#### Figure 1: Example of exposure overlap analysis for King Mackerel (*Scomberomorus cavalla*) and dissolved oxygen at 200 m (o200).
-
-The exposure overlap analysis figure is a 3 × 4 panel grid organized in two dimensions. The three columns represent the three nested geographic extents.
-- **Left column (A, D, G)** represents the species' range within the Western Atlantic for stock-wide context.
-- **Middle column (B, E, H)** crops the map for the wider Caribbean and panels in this column only show values for grid cells within this region.
-- **Right column (C, F, I)** further crops the map and only includes grid cells in the U.S. federally-managed waters offshore Puerto Rico and the USVI.
-
-The four rows represent overlap analyses for a given standardized exposure factor anomaly (σ).
-- **Row 1 (A–C): Spatial overlap maps.** Gridded maps of the standardized CMIP6 exposure factor anomaly grid cells (1°×1° cells) that overlap with a given species' distribution. Standardized anomalies are expressed in σ-units (change relative to the detrended interannual variability of the 1985–2014 baseline).
-- **Row 2 (D–F): Categorical summations.** Total count of standardized exposure factor anomaly values within five signed categories (< −1.5σ, −1.5 to −0.5σ, −0.5 to +0.5σ, +0.5 to +1.5σ, > +1.5σ), with proportions indicated.
-- **Row 3 (G–I): Frequency distributions.** Frequency histograms (y-axis = percentage) in 0.25σ bins, color-coded at four LMHV exposure levels based on absolute value.
-- **Row 4 (J–L): LMHV summary and weighted averages.** Proportions of Low, Moderate, High, and Very High anomalies (absolute values) with weighted average score in the top-left corner.
-
-Exposure overlap figures for all species are available here: https://github.com/holden-harris/Caribbean-CVA/tree/main/outputs/exposure-overlap-12panel
-
----
-
-## Oceanographic Exposure Variables
-
-For each species under CVA review, exposure analyses were conducted for the following 13 oceanographic exposure variables.
-
-| Abbreviation | Full Variable Name | Description |
-|---|---|---|
-| **bs** | Bottom Salinity | Mean salinity near the seafloor. Important for benthic organisms sensitive to freshwater inputs or stratification. |
-| **bt** | Bottom Temperature | Mean temperature near the seafloor, influencing demersal fish and benthic invertebrates. |
-| **chl** | Chlorophyll-a Concentration | A proxy for phytoplankton biomass, indicating primary productivity and food availability at the base of the food web. |
-| **mld** | Mixed Layer Depth | Depth of the upper, well-mixed surface ocean layer, affecting nutrient availability, light, and stratification. |
-| **msstg** | Mean Sea Surface Temperature Gradient | Spatial temperature gradient at the surface; an indicator of thermal fronts, ocean circulation, and habitat boundaries. |
-| **o200** | Oxygen at 200 m | Dissolved oxygen concentration at ~200 meters depth; reflects mid-water oxygen availability and deoxygenation trends. |
-| **ph** | Surface pH | Measure of ocean acidity (linked to CO₂ uptake and ocean acidification). Lower values = more acidic. |
-| **pp** | Primary Production | Gross primary productivity of phytoplankton; determines energy input to marine food webs. |
-| **precip** | Precipitation | Rainfall over the ocean, relevant for freshwater input, stratification, and coastal salinity changes. |
-| **sso** | Sea Surface Oxygen | Dissolved oxygen concentration at the surface, important for respiration of pelagic species. |
-| **sss** | Sea Surface Salinity | Surface salt concentration, reflecting freshwater input, evaporation, and circulation. |
-| **sst** | Sea Surface Temperature | Temperature of the upper ocean, widely used as a climate indicator and driver of species distributions. |
-| **swsm** | Surface Wind Speed Magnitude | Intensity of winds at the ocean surface, a driver of mixing, upwelling, and surface currents. |
-
----
-
 ## Acknowledgements
-
-Analyses were conducted by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/). These were built on the efforts from past CVAs.  
-All code and materials are available under an open-access license, as per Creative Commons CC0 1.0.  
-We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work.
 
 **References:**
 
