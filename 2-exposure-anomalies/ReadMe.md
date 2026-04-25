@@ -166,24 +166,6 @@ ylim_nwa <- c( -5,  72)
 ```
 ---
 
-## Workflow Modules
-This repository contains the following three scripts. 
-
-#### 1. Query attributes from FishBase  
-- **Code:** [Query-species-attributes-from-FishBase.R](https://github.com/holden-harris/Caribbean-CVA/blob/main/Query-species-attributes-from-FishBase.R)  
-- **Docs:** [Query-species-attributes.md](https://github.com/holden-harris/Caribbean-CVA/blob/main/Query-species-attributes.md)  
-- **Overview:** This script automates the extraction of species-level traits and environmental attributes from [FishBase](https://www.fishbase.org) using the [`rfishbase`](https://github.com/ropensci/rfishbase) R package. 
-
-#### 2. Make distribution maps  
-- **Code:** [Make-species-distribution-maps.R](https://github.com/holden-harris/Caribbean-CVA/blob/main/Make-species-distribution-maps.R)  
-- **Docs:** [Make-species-distribution-maps.md](https://github.com/holden-harris/Caribbean-CVA/blob/main/Make-species-distribution-maps..md)  
-- **Overview:** This script loops through all species distribution shapefiles in `./data/species-distribution-shapefiles/` and produces standardized PNG maps showing each species' range within a Caribbean bounding box. The loop automates map creation for any number of shapefiles in the directory.
-
-#### 3. Conduct exposure overlap analyses  
-- **Code:** [Exposure-anomalies.R](https://github.com/holden-harris/Caribbean-CVA/blob/main/Exposure-anomalies.R)  
-- **Docs:** [Exposure-anomalies.md](https://github.com/holden-harris/Caribbean-CVA/blob/main/Exposure-anomalies.md)  
-- **Overview:** This script synthesizes spatial biological and oceanographic information to help evaluate climate exposures for federally managed and ecologically important species in the U.S. Caribbean. The first set of maps produced shows a species' distribution at two scales and exposure factors at four scales. These provide context for the **exposure overlap figures**, which display the spatial overlap between the species distribution and the anomalies, along with a histogram of this data and a categorical bar summary. For the Caribbean CVA, the workflow to produce these maps involves looping over 25 species and 13 exposure factors, resulting in a total of 650 pages. These are grouped into PDFs by species and exposure factor for review by the CVA experts. 
-
 ### Directory Structure
 ```
 Caribbean-CVA/
@@ -209,9 +191,7 @@ Caribbean-CVA/
 ---
 
 
-## Setup
-
-# Workflow and functions
+### Loops to Produce the Maps
 
 #### 1) Outer loop: per species shapefile
 **Function:** `process_species(sp_file)`
@@ -225,8 +205,6 @@ Caribbean-CVA/
   - `.../<species-slug>_Exposure-Overlap.pdf`
 - **Hold devices open** for the inner loop to append one page per exposure factor.
 
-
----
 
 #### 2) Inner loop: per exposure factor (NetCDF anomaly file)
 **Driver:** a `for` loop over `nc_files` inside `process_species()`.
