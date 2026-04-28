@@ -295,3 +295,50 @@ outputs/
         ├── attribute_means_uscar.csv
         ├── component_scores_uscar.csv
         └── overall_vulnerability_scores_uscar.csv
+```
+
+# `4-plot-overall-vulnerability.R`
+
+Produces the two-panel publication figure summarizing overall climate vulnerability (Panel A) and dominant directional effect (Panel B) for all 25 Caribbean CVA stocks.
+
+## Inputs
+
+| File | Location | Description |
+|------|----------|-------------|
+| `overall_vulnerability_scores_uscar.csv` | `outputs/final-scores-compiled/overall-vulnerability-rankings/` | Stock-level exposure, sensitivity, and vulnerability scores and ranks |
+| `table_bootstrap_uncertainty_stock.csv` | `outputs/analyses/uncertainty-loo/final-tables/` | Bootstrap certainty by stock and vulnerability rank (proportion of 10,000 iterations matching assigned rank) |
+| `table_directional_effect_bootstrap.csv` | `outputs/analyses/uncertainty-loo/final-tables/` | Bootstrap certainty by stock and directional effect category |
+| `directional_effect_tallies_by_stock.csv` | `outputs/final-tallies-long/` | Reviewer tally counts (negative, neutral, positive) per stock |
+
+## Output
+
+| File | Location | Description |
+|------|----------|-------------|
+| `fig_overall_vulnerability.png` | `figures/` | Two-panel figure (Panel A: vulnerability grid; Panel B: directional effect) |
+
+## Panel A — Overall Vulnerability Grid
+
+Panel A is a 4×4 colored tile matrix where the x-axis is **Climate Exposure rank** (Low → Very High) and the y-axis is **Biological Sensitivity rank** (Low → Very High). Each cell is filled with the overall vulnerability color derived from the FCVA scoring logic (Vuln_score = Exp_score × Sens_score; thresholds: ≤3 = Low, ≤6 = Moderate, ≤9 = High, >9 = Very High). Stock names are placed in the cell corresponding to their assigned Exposure and Sensitivity ranks. Within each occupied cell, stocks are stacked vertically in descending order of bootstrap certainty (most certain at top).
+
+The Very High sensitivity row is rendered at reduced height because no stocks fall in that row.
+
+## Panel B — Directional Effect
+
+Panel B is a three-column colored tile table (Negative, Neutral, Positive) showing the dominant directional effect assigned to each stock by plurality of reviewer tallies. Stocks are stacked within each column in descending order of directional-effect bootstrap certainty.
+
+## Font Encoding
+
+Text face and color encode bootstrap certainty consistently across both panels:
+
+| Certainty | Bootstrap proportion | Font face | Text color |
+|-----------|---------------------|-----------|------------|
+| Very High | > 95% | Bold | Black |
+| High | 90–95% | Italic | Black |
+| Moderate | 67–89% | Bold | White |
+| Low | ≤ 66% | Italic | White |
+
+Panel A certainty is drawn from `table_bootstrap_uncertainty_stock.csv` (vulnerability rank bootstrap). Panel B certainty is drawn from `table_directional_effect_bootstrap.csv` (directional effect bootstrap).
+
+## Stock Name Recoding
+
+Stock names in the vulnerability and bootstrap tables use sentence-case canonical names (e.g., "Atlantic thread herring"). The `stock_name_recode` lookup converts these to the Title Case display names used in the tally tables and figure labels (e.g., "Atlantic Herring"). Four names require non-trivial remapping: Atlantic Herring → Atlantic thread herring, Diadema → Long-spined sea urchin, Redhind → Red hind, Sea Cucumber → Sea cucumbers.
