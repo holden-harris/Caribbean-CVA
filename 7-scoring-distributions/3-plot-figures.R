@@ -277,19 +277,33 @@ ggsave(f_fig_exp_box, p_exp_box,
        dpi    = 1200)
 
 ##------------------------------------------------------------------------------
-## Combined panel: sensitivity (A) + exposure (B) attribute score distributions
+## Combined panels: sensitivity (A) + exposure (B) attribute score distributions
+## Two layouts saved: side-by-side (horizontal) and stacked (vertical)
 
-p_combined_box <- p_sens_box + p_exp_box +
-  plot_annotation(tag_levels = "A") &
-  theme(plot.tag = element_text(size = 13, color = "black", face = "bold"))
-plot(p_combined_box)
+tag_theme <- theme(plot.tag = element_text(size = 13, color = "black", face = "bold"))
 
-f_fig_combined_box <- file.path(dir_out, "fig_attribute_score_boxplot_combined.png")
+## Horizontal: panels side-by-side
+p_combined_box_h <- p_exp_box + p_sens_box 
+   plot_annotation(tag_levels = "A") & tag_theme
+plot(p_combined_box_h)
 
-ggsave(f_fig_combined_box, p_combined_box,
+ggsave(file.path(dir_out, "fig_attribute_score_boxplot_combined_horizontal.png"),
+       p_combined_box_h,
        width  = 14,
        height = max(4, 0.35 * max(n_distinct(sens_scores$attribute_name),
                                   n_distinct(exp_scores$attribute_name))),
+       dpi    = 1200)
+
+## Vertical: panels stacked
+p_combined_box_v <-  p_exp_box / p_sens_box +
+  plot_annotation(tag_levels = "A") & tag_theme
+plot(p_combined_box_v)
+
+ggsave(file.path(dir_out, "fig_attribute_score_boxplot_combined_vertical.png"),
+       p_combined_box_v,
+       width  = 7,
+       height = max(6, 0.35 * (n_distinct(sens_scores$attribute_name) +
+                               n_distinct(exp_scores$attribute_name))),
        dpi    = 1200)
 
 message("Figures written to: ", dir_out)
