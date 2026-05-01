@@ -1,10 +1,6 @@
 # Caribbean CVA – Generating Species Distribution Maps
 
-This script loops through all species distribution shapefiles in `./data/species-distribution-shapefiles/` and produces standardized PNG maps showing each species' range within a Caribbean bounding box. The loop automates map creation for any number of shapefiles in the directory.
-
-- All maps share the same bounding box, symbology, and formatting, making them visually comparable.
-- Utility functions make it easy to adapt the script to other projects or naming conventions.
-- By saving maps as PNGs in a standard folder, outputs can be tracked and displayed directly on GitHub.
+This script loops through all species distribution shapefiles in `./data/species-distribution-shapefiles/` and produces standardized PNG maps showing each species' range within a Caribbean bounding box. The loop automates map creation for any number of shapefiles in the directory. All maps share the same bounding box, symbology, and formatting.
 
 ---
 
