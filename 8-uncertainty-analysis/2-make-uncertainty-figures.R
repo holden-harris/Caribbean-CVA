@@ -133,9 +133,9 @@ rank_colors <- c(
 ## negative signal is directly readable as bar length.
 dir_levels <- c("Negative", "Neutral", "Positive")
 dir_colors <- c(
-  "Negative" = "#D55E00",   ## Okabe-Ito vermillion (bad climate effect)
-  "Neutral"  = "gray75",
-  "Positive" = "#0072B2"    ## Okabe-Ito blue (good climate effect)
+  "Negative" = "orchid3",
+  "Neutral"  = "bisque3",
+  "Positive" = "#2980b9"
 )
 
 ##------------------------------------------------------------------------------

@@ -327,9 +327,9 @@ dir_prop <- qa_dir_summary %>%
 print(dir_prop, n = 75)
 
 dir_colors <- c(
-  "Positive" = "#2c7bb6",
-  "Neutral"  = "bisque",
-  "Negative" = "indianred4"
+  "Negative" = "orchid3",
+  "Neutral"  = "bisque3",
+  "Positive" = "#2980b9"
 )
 
 stock_order_dir <- dir_prop %>%
