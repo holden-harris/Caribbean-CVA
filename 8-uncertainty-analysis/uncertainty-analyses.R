@@ -121,7 +121,7 @@ f_precheck_log  <- file.path(intermediate_dir, "01_preanalysis_check_log.csv")
 f_base_repro    <- file.path(intermediate_dir, "02_baseline_reproduced_scores.csv")
 
 ## Final analysis tables
-f_boot_stock    <- file.path(final_dir, "table_bootstrap_uncertainty_stock.csv")
+f_boot_stock    <- file.path(final_dir, "")
 f_boot_sens     <- file.path(final_dir, "table_bootstrap_uncertainty_sensitivity_component.csv")
 f_dir_boot      <- file.path(final_dir, "table_directional_effect_bootstrap.csv")
 f_loo_sens_long <- file.path(final_dir, "table_leave_one_out_sensitivity_long.csv")
@@ -132,6 +132,7 @@ f_loo_exp_sum   <- file.path(final_dir, "table_leave_one_out_exposure_summary.cs
 ## Figure-ready tables (attribute/factor means joined with baseline ranks)
 f_plot_exp      <- file.path(final_dir, "table_exposure_factor_scores_for_plot.csv")
 f_plot_sens     <- file.path(final_dir, "table_sensitivity_attribute_scores_for_plot.csv")
+f_boot_final    <- file.path(final_dir, "table_bootstrap_final_summary.csv")
 
 
 
@@ -939,6 +940,73 @@ plot_sens_scores <- sens_means_std %>%
 
 readr::write_csv(plot_exp_scores,  f_plot_exp)
 readr::write_csv(plot_sens_scores, f_plot_sens)
+
+################################################################################
+##------------------------------------------------------------------------------
+## Step 9 — Final bootstrap summary table
+##
+## Joins baseline CVA scores (vuln_std) with vulnerability bootstrap proportions
+## (boot_stock_summary) into a single wide-format CSV. One row per stock.
+## Proportions rounded to 2 decimal places. Borderline stocks (dominant rank
+## prop < 0.75) flagged with a † suffix on the stock name.
+
+abbrev_rank <- function(x) {
+  dplyr::case_when(
+    x == "Very High" ~ "VH",
+    x == "High"      ~ "H",
+    x == "Moderate"  ~ "M",
+    x == "Low"       ~ "L",
+    TRUE             ~ NA_character_
+  )
+}
+
+## Pivot bootstrap proportions long → wide; keep borderline flag.
+boot_wide <- boot_stock_summary %>%
+  dplyr::select(stock_name, vuln_rank, prop, borderline) %>%
+  dplyr::mutate(prop = round(prop, 2)) %>%
+  tidyr::pivot_wider(
+    names_from  = vuln_rank,
+    values_from = prop
+  ) %>%
+  dplyr::mutate(
+    Low         = dplyr::coalesce(Low,         0),
+    Moderate    = dplyr::coalesce(Moderate,    0),
+    High        = dplyr::coalesce(High,        0),
+    `Very High` = dplyr::coalesce(`Very High`, 0)
+  )
+
+## Join baseline scores, sort, flag borderlines, rename columns.
+boot_final_summary <- vuln_std %>%
+  dplyr::select(stock_name, n_Exp_fact,
+                exposure_rank, sensitivity_rank, vulnerability_rank) %>%
+  dplyr::inner_join(boot_wide, by = "stock_name") %>%
+  dplyr::mutate(
+    vuln_rank_ord = factor(
+      vulnerability_rank,
+      levels  = c("Very High", "High", "Moderate", "Low"),
+      ordered = TRUE
+    )
+  ) %>%
+  dplyr::arrange(vuln_rank_ord, stock_name) %>%
+  dplyr::select(-vuln_rank_ord) %>%
+  dplyr::mutate(
+    stock_name = dplyr::if_else(borderline, paste0(stock_name, "†"), stock_name)
+  ) %>%
+  dplyr::transmute(
+    `Stock`         = stock_name,
+    `N Exp factors` = n_Exp_fact,
+    `Exp`           = abbrev_rank(exposure_rank),
+    `Sens`          = abbrev_rank(sensitivity_rank),
+    `Vul`           = abbrev_rank(vulnerability_rank),
+    `L`             = Low,
+    `M`             = Moderate,
+    `H`             = High,
+    `VH`            = `Very High`
+  )
+
+readr::write_csv(boot_final_summary, f_boot_final)
+message("✓ Step 9 complete — bootstrap final summary written: ",
+        nrow(boot_final_summary), " stocks.")
 
 ##------------------------------------------------------------------------------
 
