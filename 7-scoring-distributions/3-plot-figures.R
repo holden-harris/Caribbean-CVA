@@ -327,9 +327,9 @@ dir_prop <- qa_dir_summary %>%
 print(dir_prop, n = 75)
 
 dir_colors <- c(
-  "Negative" = "orchid3",
+  "Negative" = "brown3",
   "Neutral"  = "bisque3",
-  "Positive" = "#2980b9"
+  "Positive" = "turquoise4"
 )
 
 stock_order_dir <- dir_prop %>%
@@ -353,7 +353,7 @@ p_dir <- ggplot(
   labs(
     x        = "Proportion of reviewer tallies",
     y        = NULL,
-    title    = "Directional effect",
+#    title    = "Directional effect",
   ) +
   theme(
     panel.background = element_rect(fill = "white"),

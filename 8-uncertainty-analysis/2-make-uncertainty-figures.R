@@ -133,9 +133,9 @@ rank_colors <- c(
 ## negative signal is directly readable as bar length.
 dir_levels <- c("Negative", "Neutral", "Positive")
 dir_colors <- c(
-  "Negative" = "orchid3",
+  "Negative" = "brown3",
   "Neutral"  = "bisque3",
-  "Positive" = "#2980b9"
+  "Positive" = "turquoise4"
 )
 
 ##------------------------------------------------------------------------------
@@ -187,6 +187,9 @@ sens_sum <- sens_sum %>%
     short_name = forcats::fct_reorder(short_name, n_rank_changed)
   )
 
+loo_x_max_exp  <- ceiling(max(exp_sum$n_rank_changed,  na.rm = TRUE) / 4) * 4
+loo_x_max_sens <- ceiling(max(sens_sum$n_rank_changed, na.rm = TRUE) / 4) * 4
+
 ##--- Panel A — Exposure factors ------------------------------------------------
 
 p_exp <- ggplot2::ggplot(exp_sum,
@@ -194,8 +197,8 @@ p_exp <- ggplot2::ggplot(exp_sum,
   ggplot2::geom_col(fill = "black", width = 0.65) +
   ggplot2::scale_x_continuous(
     name   = "Number of Changes in Climate Vulnerability",
-    limits = c(0, 25),
-    breaks = seq(0, 25, by = 5),
+    limits = c(0, loo_x_max_exp),
+    breaks = seq(0, loo_x_max_exp, by = 5),
     expand = ggplot2::expansion(mult = c(0, 0.02))
   ) +
   ggplot2::labs(tag = "A") +
@@ -208,8 +211,8 @@ p_sens <- ggplot2::ggplot(sens_sum,
   ggplot2::geom_col(fill = "black", width = 0.65) +
   ggplot2::scale_x_continuous(
     name   = "Number of Changes in Climate Vulnerability",
-    limits = c(0, 25),
-    breaks = seq(0, 25, by = 5),
+    limits = c(0, loo_x_max_sens),
+    breaks = seq(0, loo_x_max_sens, by = 1),
     expand = ggplot2::expansion(mult = c(0, 0.02))
   ) +
   ggplot2::labs(tag = "B") +
@@ -413,7 +416,7 @@ p_boot_vuln <- ggplot2::ggplot(
     ## Extra right margin so indicator squares and "Baseline" text are not
     ## clipped by the outer figure boundary (they sit ~6% past x = 1.0)
     plot.margin      = ggplot2::margin(t = 8, r = 48, b = 4, l = 4, unit = "pt")
-  )
+  ); p_boot_vuln
 
 ##--- Prep Panel B data: directional effect bootstrap --------------------------
 
