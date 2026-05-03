@@ -4,7 +4,7 @@
 
 | Script | Purpose | Reads from | Writes to |
 |--------|---------|------------|-----------|
-| `uncertainty-analyses.R` | Run bootstrap resampling and leave-one-out influence analyses; validate baseline score reproduction | `outputs/final-tallies-long/`, `outputs/final-scores-compiled/` | `outputs/analyses/uncertainty-loo/` |
+| `uncertainty-analyses.R` | Validate baseline score reproduction; run bootstrap resampling and leave-one-out influence analyses; produce final bootstrap summary table | `outputs/final-tallies-long/`, `outputs/final-scores-compiled/` | `outputs/analyses/uncertainty-loo/` |
 | `2-make-uncertainty-figures.R` | Produce LOO influence bar chart and bootstrap uncertainty stacked bar chart | `outputs/analyses/uncertainty-loo/final-tables/`, `outputs/final-scores-compiled/` | `figures/` |
 
 ---
@@ -111,7 +111,8 @@ outputs/analyses/uncertainty-loo/   # All analysis outputs (created by Script 1)
     ├── table_leave_one_out_exposure_long.csv
     ├── table_leave_one_out_exposure_summary.csv
     ├── table_sensitivity_attribute_scores_for_plot.csv
-    └── table_exposure_factor_scores_for_plot.csv
+    ├── table_exposure_factor_scores_for_plot.csv
+    └── table_bootstrap_final_summary.csv
 
 figures/                            # Figures produced by Script 2
 ├── fig_loo_bar_plots.png
@@ -229,6 +230,10 @@ Same structure as Step 6 but for exposure factors. Each stock is tested only aga
 
 Joins each stock's per-attribute mean scores (sensitivity and exposure) with that stock's baseline component rank. These tables are used by downstream scripts to produce score distribution figures.
 
+### Step 9 — Final bootstrap summary table
+
+Joins the bootstrap vulnerability rank distribution (`boot_stock_summary`) with the finalized baseline scores (`vuln_std`) into a single wide-format CSV — one row per stock. Vulnerability rank proportions are rounded to 2 decimal places. Stocks whose dominant bootstrap rank proportion fell below 0.75 (`borderline = TRUE`) receive a `†` suffix on their stock name. Rows are sorted by baseline vulnerability rank descending (Very High → High → Moderate → Low), then alphabetically within each rank group.
+
 ## Output files
 
 ### Intermediate (validation and QA) — `outputs/analyses/uncertainty-loo/intermediate/`
@@ -251,6 +256,7 @@ Joins each stock's per-attribute mean scores (sensitivity and exposure) with tha
 | `table_leave_one_out_exposure_summary.csv` | Varies (one row per factor present in any stock's approved subset; `n_stocks_tested` varies by factor) | `factor_omitted`, `n_stocks_tested`, `n_rank_changed`, `n_rank_lower`, `n_rank_higher`, `prop_rank_changed` |
 | `table_sensitivity_attribute_scores_for_plot.csv` | 350 | `stock_name`, `attribute_name`, `mean_score`, `component_rank_baseline` |
 | `table_exposure_factor_scores_for_plot.csv` | Varies (one row per stock × expert-approved exposure factor) | `stock_name`, `exposure_factor`, `mean_score`, `component_rank_baseline` |
+| `table_bootstrap_final_summary.csv` | 25 | `Stock`, `N Exp factors`, `Exp`, `Sens`, `Vul`, `L`, `M`, `H`, `VH`; one row per stock with abbreviated baseline ranks, number of expert-approved exposure factors, and bootstrap proportion in each vulnerability rank (2 dp); borderline stocks flagged with † in `Stock` |
 
 ---
 
