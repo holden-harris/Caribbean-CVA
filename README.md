@@ -1,19 +1,10 @@
 # Caribbean-CVA
 
-> **Summary:** This repository contains the complete analytical pipeline for a NOAA Fisheries Climate Vulnerability Assessment (CVA) of 25 fish and invertebrate stocks managed in the U.S. Caribbean. Stocks are ranked by overall climate vulnerability — the product of independently scored **sensitivity** (biological susceptibility) and **exposure** (projected habitat change) components — following the FCVA framework of Morrison et al. (2015). The pipeline runs from raw CMIP6 oceanographic projections and IUCN species ranges (Module 2) through expert reviewer workbook extraction (Modules 3–7) to bootstrap and leave-one-out uncertainty analyses (Module 8). All analyses are in R; final figures and ranked scores are written to `figures/` and `outputs/final-scores-compiled/`. Conducted by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/).
+> **Summary:** This repository contains the complete analytical pipeline for a NOAA Fisheries Climate Vulnerability Assessment (CVA) of 25 fish and invertebrate stocks managed in the U.S. Caribbean, following the NOAA Fisheries Climate Vulnerability Assessment framework. This workflow includes processing oceanographic projections and IUCN species ranges (Module 1-2), expert reviewer workbook extraction and synthesis (Modules 3–7), and uncertainty analyses via bootstrap resampling and leave-one-out re-analyses (Module 8). 
 
----
+All data syntheses and analyses are in R. Final figures and ranked scores are written to `figures/` and `outputs/final-scores-compiled/`. 
 
-## Project Overview
-
-This repository contains the full analytical pipeline for a **Climate Vulnerability Assessment (CVA)** of 25 fish and invertebrate stocks managed in the U.S. Caribbean. The CVA evaluates each stock's overall climate vulnerability by combining two independently scored components — **sensitivity** (how biologically susceptible is the stock to climate change?) and **exposure** (how much is the stock's habitat projected to change?) — following the NOAA Fisheries Climate Vulnerability Assessment (FCVA) framework established by Morrison et al. (2015) and applied in recent regional CVAs. 
-
-Analyses were conducted by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/).  
-
-All code and materials are available under an open-access license, as per the Creative Commons CC0 1.0 license.  
-We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work.
-
----
+All code and materials were developed by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/), and are available under an open-access license, as per the Creative Commons CC0 1.0 license.  We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work.
 
 ## Workflow Modules
 
