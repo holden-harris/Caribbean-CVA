@@ -327,7 +327,7 @@ dir_prop <- qa_dir_summary %>%
 print(dir_prop, n = 75)
 
 dir_colors <- c(
-  "Negative" = "brown3",
+  "Negative" = "brown4",
   "Neutral"  = "bisque3",
   "Positive" = "turquoise4"
 )
@@ -404,11 +404,12 @@ sens_pooled <- sensitivity_tallies_long %>%
 
 rank_levels <- c("Low", "Moderate", "High", "Very High")
 rank_colors <- c(
-  "Low"       = "green3",
+  "Low"       = "green2",
   "Moderate"  = "yellow2",
-  "High"      = "orange2",
-  "Very High" = "red3"
+  "High"      = "orange1",
+  "Very High" = "red2"
 )
+
 
 ## attr_order: attribute ordering by overall mean score (used across all Figure 2 plots)
 attr_order <- sens_pooled %>%
