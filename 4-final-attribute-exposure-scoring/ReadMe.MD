@@ -191,8 +191,8 @@ For each stock, the number of sensitivity attribute means and exposure factor me
 | Overall sensitivity or exposure category | Numeric score | Logic rule |
 |---|---:|---|
 | Very High | 4 | More than 3 attribute or factor means ≥ 3.5 |
-| High | 3 | More than 2 attribute or factor means ≥ 3.0 |
-| Moderate | 2 | More than 2 attribute or factor means ≥ 2.5 |
+| High | 3 | 2 or more attribute or factor means ≥ 3.0 |
+| Moderate | 2 | 2 or more attribute or factor means ≥ 2.5 |
 | Low | 1 | All other cases |
 
 Recent regional CVAs have described these rules as “more than 3” attributes or factors with a mean ≥ 3.5 for a Very High component score, “more than 2” with mean ≥ 3.0 for High, and “more than 2” with mean ≥ 2.5 for Moderate; all other cases are Low. These thresholds correspond to `rank_threshold = attr_means_current = 2` in the R script, consistent with the original NOAA FCVA methodology.
