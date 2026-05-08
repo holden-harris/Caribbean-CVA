@@ -43,9 +43,9 @@ source("9-distributional-change-potential/2-bootstrap-distributional-change.R")
 ## =============================================================================
 
 ## Module 10 — All publication figures
-source("10-figures/1-plot-scoring-distributions.R")    # score distributions + tally panels
-source("10-figures/2-plot-uncertainty-figures.R")      # LOO bar charts + bootstrap uncertainty
-source("10-figures/3-plot-distributional-change.R")    # DCP ranks + DCP vs. vulnerability
-source("10-figures/4-plot-overall-vulnerability.R")    # overall vulnerability grid + directional effect
+source("10-figures/1-plot-scoring-distributions.R")    ## score distributions + tally panels
+source("10-figures/2-plot-uncertainty-figures.R")      ## LOO bar charts + bootstrap uncertainty
+source("10-figures/3-plot-distributional-change.R")    ## DCP ranks + DCP vs. vulnerability
+source("10-figures/4-plot-overall-vulnerability.R")    ## overall vulnerability grid + directional effect
 
 cat("\n=== All analyses and figures complete ===\n")

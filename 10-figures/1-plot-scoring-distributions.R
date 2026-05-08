@@ -18,6 +18,7 @@
 
 ## Libraries -------------------------------------------------------------------
 rm(list = ls()); gc()
+source("config.R")
 windows()
 library(dplyr)
 library(tidyr)
@@ -43,36 +44,7 @@ f_fig_sens_box         <- file.path(dir_out, "fig_sensitivity_attribute_score_bo
 f_fig_exp_tallies_stock <- file.path(dir_out, "fig_exposure_tally_distributions_by_stock.png")
 f_fig_exp_box          <- file.path(dir_out, "fig_exposure_attribute_score_boxplot.png")
 
-## Canonical stock name lookup (applied to all tables on read)
-stock_name_recode <- c(
-  "Atlantic thread herring" = "Atlantic Herring",
-  "Long-spined sea urchin"  = "Diadema",
-  "Red hind"                = "Redhind",
-  "Sea cucumbers"           = "Sea Cucumber",
-  "Ballyhoo"                = "Ballyhoo",
-  "Blue runner"             = "Blue Runner",
-  "Dolphinfish"             = "Dolphinfish",
-  "Gray angelfish"          = "Gray Angelfish",
-  "Hogfish"                 = "Hogfish",
-  "King mackerel"           = "King Mackerel",
-  "Lane snapper"            = "Lane Snapper",
-  "Misty grouper"           = "Misty Grouper",
-  "Mutton snapper"          = "Mutton Snapper",
-  "Nassau grouper"          = "Nassau Grouper",
-  "Queen conch"             = "Queen Conch",
-  "Queen snapper"           = "Queen Snapper",
-  "Queen triggerfish"       = "Queen Triggerfish",
-  "Rainbow parrotfish"      = "Rainbow Parrotfish",
-  "Red grouper"             = "Red Grouper",
-  "Redhind"                 = "Red Hind",
-  "Sea cucumber"            = "Sea Cucumber",
-  "Silk snapper"            = "Silk Snapper",
-  "Spiny lobster"           = "Spiny Lobster",
-  "Stoplight parrotfish"    = "Stoplight Parrotfish",
-  "White mullet"            = "White Mullet",
-  "Yellowfin grouper"       = "Yellowfin Grouper",
-  "Yellowtail snapper"      = "Yellowtail Snapper"
-)
+## stock_name_recode sourced from config.R
 
 ## Input data
 all_qualitative_tallies_long    <- read.csv(file.path(dir_in, "table_all_qualitative_tallies_long.csv")) %>%
@@ -111,43 +83,8 @@ qa_dir_summary <- directional_effect_tallies_long %>%
   group_by(stock_name, effect_category) %>%
   summarise(total_tally = sum(tally, na.rm = TRUE), .groups = "drop")
 
-##------------------------------------------------------------------------------
 ## Short display labels for y-axis (used by boxplots and tally figures)
-
-attr_short_names <- c(
-  "Adult mobility"                                 = "Adult mobility",
-  "Complexity in reproductive strategy"            = "Reprod. complex.",
-  "Genetic diversity"                              = "Genetic divers.",
-  "Habitat specificity"                            = "Habitat specif.",
-  "Mobility and dispersal or early life stages"    = "Early life disp.",
-  "Other stressors"                                = "Other stressors",
-  "Population growth rate"                         = "Pop. growth rate",
-  "Predation and competition dynamics"             = "Pred. and compet.",
-  "Prey specificity"                               = "Prey specif.",
-  "Spawning characteristics"                       = "Spawning charact.",
-  "Species range"                                  = "Species range",
-  "Specificity in early life history requirements" = "Early life req.",
-  "Stock Size Status"                              = "Stock size",
-  "Tolerance to ocean acidification"               = "OA tolerance"
-)
-
-exp_attr_short_names <- c(
-  "Bottom salinity"                       = "Bott. sal.",
-  "Bottom temperature"                    = "Bott. temp.",
-  "Chlorophyll-a concentration"           = "Chl-a",
-  "Mean sea surface temperature gradient" = "SST gradient",
-  "Mixed layer depth"                     = "Mixed layer",
-  "Oxygen at 200m"                        = "O2 at 200m",
-  "Precipitation"                         = "Precip.",
-  "Primary production"                    = "Primary prod.",
-  "Sea surface oxygen"                    = "Surf. 02",
-  "Sea surface salinity"                  = "Surf. sal.",
-  "Sea surface temperature"               = "Surf. temp.",
-  "Surface pH"                            = "Surf. pH",
-  "Surface wind speed magnitude"          = "Wind speed",
-  "Sargassum influx"                      = "Sargassum",
-  "Thermocline depth"                     = "Thermocl. depth"
-)
+## attr_short_names, exp_attr_short_names sourced from config.R
 
 ##------------------------------------------------------------------------------
 ## Figure 1 - Score distributions
@@ -326,11 +263,7 @@ dir_prop <- qa_dir_summary %>%
   )
 print(dir_prop, n = 75)
 
-dir_colors <- c(
-  "Negative" = "brown4",
-  "Neutral"  = "bisque3",
-  "Positive" = "turquoise4"
-)
+## dir_colors sourced from config.R (standardized to brown3)
 
 stock_order_dir <- dir_prop %>%
   filter(effect_category == "Negative") %>%
@@ -402,7 +335,8 @@ sens_pooled <- sensitivity_tallies_long %>%
                      tally_H * 3 + tally_VH * 4) / pooled_sum
   )
 
-rank_levels <- c("Low", "Moderate", "High", "Very High")
+## rank_levels sourced from config.R
+## Lighter tally-bar palette (intentional local override of config rank_colors)
 rank_colors <- c(
   "Low"       = "green2",
   "Moderate"  = "yellow2",

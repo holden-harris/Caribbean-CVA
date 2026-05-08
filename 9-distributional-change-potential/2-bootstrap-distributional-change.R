@@ -36,6 +36,7 @@
 ## Setup
 
 rm(list = ls()); gc()
+source("config.R")
 
 library(dplyr)
 library(tidyr)
@@ -44,11 +45,10 @@ library(stringr)
 
 ##------------------------------------------------------------------------------
 ## Configuration — must match Script 1 and Module 8
+## rank_threshold, borderline_prop sourced from config.R
 
-rank_threshold       <- 1       ## FCVA logic model threshold
-bootstrap_seed       <- 99      ## matches Module 8
-borderline_threshold <- 0.25    ## flag stocks where dominant prop < 0.75
-n_boot               <- 10000
+bootstrap_seed <- 99    ## matches Module 8
+n_boot         <- 10000
 
 ## Target attributes — same as Script 1
 target_attributes <- c(
@@ -309,7 +309,7 @@ for (si in seq_along(stock_list)) {
     prop_VH       = n_vec["Very High"] / n_boot,
     dominant_rank = dom_rank,
     dominant_prop = dom_prop,
-    borderline    = dom_prop < (1 - borderline_threshold),
+    borderline    = dom_prop < borderline_prop,
     stringsAsFactors = FALSE
   )
 }

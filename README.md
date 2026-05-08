@@ -1,14 +1,39 @@
 # Caribbean-CVA
 
-> **Summary:** This repository contains the complete analytical pipeline for a NOAA Fisheries Climate Vulnerability Assessment (CVA) of 25 fish and invertebrate stocks managed in the U.S. Caribbean, following the NOAA Fisheries Climate Vulnerability Assessment framework. This workflow includes processing oceanographic projections and IUCN species ranges (Modules 1–2), expert reviewer workbook extraction and synthesis (Modules 3–7), uncertainty analyses via bootstrap resampling and leave-one-out re-analyses (Module 8), and potential for distributional change analysis (Module 9). 
+> **Summary:** This repository contains the complete analytical pipeline for a NOAA Fisheries Climate Vulnerability Assessment (CVA) of 25 fish and invertebrate stocks managed in the U.S. Caribbean, following the NOAA Fisheries Climate Vulnerability Assessment framework. This workflow includes processing oceanographic projections and IUCN species ranges (Modules 1–2), expert reviewer workbook extraction and synthesis (Modules 3–7), uncertainty analyses via bootstrap resampling and leave-one-out re-analyses (Module 8), potential for distributional change analysis (Module 9), and publication figure generation (Module 10).
 
-All data syntheses and analyses are in R. Final figures and ranked scores are written to `figures/` and `outputs/final-scores-compiled/`. 
+All data syntheses and analyses are in R. Final figures and ranked scores are written to `figures/` and `outputs/final-scores-compiled/`.
+
+**To run the full pipeline:** open `Caribbean-CVA.Rproj` in RStudio and source `run-all.R` from the project root. This runs all analysis scripts (Modules 4–9) in dependency order, then all figure scripts (Module 10).
 
 All code and materials were developed by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/), and are available under an open-access license, as per the Creative Commons CC0 1.0 license.  We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work.
 
+## Shared Configuration (`config.R`)
+
+`config.R` at the project root is sourced by every analysis and figure script immediately after `rm(list = ls())`. It is the single authoritative location for all constants shared across the pipeline:
+
+| Constant | Value | Used in |
+|---|---|---|
+| `rank_threshold` | `1L` | FCVA logic model (Modules 4, 8, 9) |
+| `dir_eff_threshold` | `1/3` | Directional effect classification (Module 5, 8) |
+| `borderline_prop` | `0.75` | Bootstrap borderline flag (Modules 8, 9) |
+| `cert_very_high / cert_high / cert_moderate` | `0.95 / 0.90 / 0.67` | Bootstrap certainty bins (Module 10) |
+| `rank_levels` | `c("Low","Moderate","High","Very High")` | Ordered factor levels across all scripts |
+| `rank_colors` | green3 / yellow2 / orange2 / red3 | Standard rank palette (Module 10 Scripts 2 & 3) |
+| `dir_levels` / `dir_colors` | Negative / Neutral / Positive | Directional effect palette (Module 10) |
+| `stock_name_recode` | 27-entry lookup | Display-name normalization in all figure scripts |
+| `attr_short_names` | 14 sensitivity attribute short labels | Axis labels in Module 10 Scripts 1 & 2 |
+| `exp_attr_short_names` | 15 exposure factor short labels | Axis labels in Module 10 Scripts 1 & 2 |
+
+Scripts with intentionally different palettes define local overrides that shadow the config values (Module 10 Script 1 uses lighter tally-bar colors; Module 10 Script 4 uses hex `vuln_colors` for the tile grid).
+
+**To change the logic model or threshold:** edit the relevant constant in `config.R` and re-run `run-all.R`. No individual script needs to be touched.
+
+---
+
 ## Workflow Modules
 
-The project is organized into ten numbered workflow modules. Each module has its own subdirectory with scripts and a `ReadMe` file.
+The project is organized into eleven numbered workflow modules. Each module has its own subdirectory with scripts and a `ReadMe` file. The pipeline is split into two phases: **Analyses (Modules 4–9)** produce all data outputs; **Figures (Module 10)** reads those outputs and produces all publication figures. Use `run-all.R` at the project root to execute both phases in order.
 
 | Module | Folder | Purpose | Key outputs |
 |--------|--------|---------|-------------|
@@ -16,12 +41,13 @@ The project is organized into ten numbered workflow modules. Each module has its
 | 1 | `1-make-species-distribution-maps/` | Generate standardized PNG distribution maps for all 25 species from IUCN shapefiles | `outputs/disbribution-maps/*.png` |
 | 2 | `2-exposure-anomalies/` | Calculate CMIP6-based standardized anomaly maps; produce 12-panel exposure-overlap figures reviewed by CVA experts; extract quantitative exposure scores | `outputs/exposure-overlap-12panel/`, `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` |
 | 3 | `3-prelim-sensitivity-attribute-scoring/` | Extract and summarize preliminary sensitivity-attribute tallies from pre-workshop reviewer workbooks; generate per-stock LMHV summary plots for workshop preparation | `data/preliminary-scores/score_table_all.csv`, `outputs/prework/` |
-| 4 | `4-final-attribute-exposure-scoring/` | Extract final reviewer scores, calculate attribute means, apply NOAA FCVA logic model to produce stock-level sensitivity, exposure, and overall vulnerability scores | `outputs/final-scores-compiled/overall-vulnerability-rankings/`, `figures/fig_overall_vulnerability.png` |
+| 4 | `4-final-attribute-exposure-scoring/` | Extract final reviewer scores, calculate attribute means, apply NOAA FCVA logic model to produce stock-level sensitivity, exposure, and overall vulnerability scores | `outputs/final-scores-compiled/overall-vulnerability-rankings/` |
 | 5 | `5-final-directional-effect-scoring/` | Extract directional-effect tallies (Positive / Neutral / Negative) from final workbooks; calculate stock-level directional-effect index | `outputs/final-scores-compiled/directional-effect/directional_effect_summary_by-stock.csv` |
 | 6 | `6-final-data-quality-scoring/` | Extract reviewer data-quality scores (0–3) for each attribute; summarize and rank overall data quality per stock | `outputs/final-scores-compiled/data-quality/overall_data_quality_summary_by_stock.csv` |
-| 7 | `7-scoring-distributions/` | Extract LMHV tally distributions from final workbooks; produce attribute score boxplots and tally-distribution figures | `outputs/final-tallies-long/`, `figures/fig_*_tally_distributions_by_stock.png`, `figures/fig_*_attribute_score_boxplot.png` |
-| 8 | `8-uncertainty-analysis/` | Bootstrap resampling and leave-one-out influence analyses; quantify statistical robustness of final vulnerability rankings | `outputs/analyses/uncertainty-loo/`, `figures/fig_bootstrap_uncertainty.png`, `figures/fig_loo_bar_plots.png` |
-| 9 | `9-distributional-change-potential/` | Calculate and visualize each stock's potential for distributional shift using four BSAs; bootstrap uncertainty via draw-pile resampling | `outputs/distributional_change_potential_uscar.csv`, `outputs/distributional_change_bootstrap_uscar.csv`, `figures/fig_distributional_change_ranks.png`, `figures/fig_distributional_change_vs_vulnerability.png` |
+| 7 | `7-scoring-distributions/` | Extract LMHV tally distributions from final workbooks; finalize long-format tally tables for uncertainty analysis and figures | `outputs/final-tallies-long/` |
+| 8 | `8-uncertainty-analysis/` | Bootstrap resampling and leave-one-out influence analyses; quantify statistical robustness of final vulnerability rankings | `outputs/analyses/uncertainty-loo/` |
+| 9 | `9-distributional-change-potential/` | Calculate each stock's potential for distributional shift using four sensitivity attributes; bootstrap uncertainty via draw-pile resampling | `outputs/distribution-change-potential/` |
+| 10 | `10-figures/` | Produce all publication figures from analysis outputs (Modules 4–9); no new data are generated here | `figures/fig_*.png` (all 11 publication figures) |
 
 ---
 
@@ -29,6 +55,10 @@ The project is organized into ten numbered workflow modules. Each module has its
 
 ```
 Caribbean-CVA/
+│
+├── config.R                                             # Shared constants (logic model thresholds,
+│                                                        #   colors, stock name recode, display labels)
+├── run-all.R                                            # Master orchestration: Phase 1 analyses → Phase 2 figures
 │
 ├── 0-query-species-attributes-from-FishBase/
 │   ├── Query-species-attributes-from-FishBase.R
@@ -51,7 +81,6 @@ Caribbean-CVA/
 │   ├── 1-extract-final-scores-from-all-reviewers.R
 │   ├── 2-summarize-attribute-scores.R
 │   ├── 3-calculate-overall-vulnerability-scores.R
-│   ├── 4-plot-overall-vulnerability.R
 │   └── ReadMe.MD
 │
 ├── 5-final-directional-effect-scoring/
@@ -67,19 +96,22 @@ Caribbean-CVA/
 ├── 7-scoring-distributions/
 │   ├── 1-extract-tally-scores.R
 │   ├── 2-finalize-tally-tables.R
-│   ├── 3-plot-figures.R
 │   └── ReadMe.md
 │
 ├── 8-uncertainty-analysis/
 │   ├── uncertainty-analyses.R
-│   ├── 2-make-uncertainty-figures.R
 │   └── ReadMe.MD
 │
 ├── 9-distributional-change-potential/
 │   ├── 1-calculate-distributional-change-potential.R
 │   ├── 2-bootstrap-distributional-change.R
-│   ├── 3-plot-distributional-change.R
 │   └── ReadMe.md
+│
+├── 10-figures/
+│   ├── 1-plot-scoring-distributions.R                  # Score boxplots, tally distributions, directional effect
+│   ├── 2-plot-uncertainty-figures.R                    # LOO bar charts, bootstrap uncertainty panels
+│   ├── 3-plot-distributional-change.R                  # DCP rank column chart, DCP vs. vulnerability cross-plot
+│   └── 4-plot-overall-vulnerability.R                  # Overall vulnerability grid + directional effect panel
 │
 ├── data/
 │   ├── cmip6/                                       # CMIP6 NetCDF exposure files (*.nc)
@@ -132,18 +164,18 @@ Caribbean-CVA/
 │   │
 │   └── prework/                                     # Pre-workshop summaries and figures (Module 3)
 │
-├── figures/                                         # All final publication figures
-│   ├── fig_overall_vulnerability.png                # Module 4
-│   ├── fig_attribute_score_boxplot_combined.png     # Module 7
-│   ├── fig_sensitivity_attribute_score_boxplot.png  # Module 7
-│   ├── fig_exposure_attribute_score_boxplot.png     # Module 7
-│   ├── fig_directional_effect_summary.png           # Module 7
-│   ├── fig_sensitivity_tally_distributions_by_stock.png  # Module 7
-│   ├── fig_exposure_tally_distributions_by_stock.png     # Module 7
-│   ├── fig_loo_bar_plots.png                        # Module 8
-│   ├── fig_bootstrap_uncertainty.png               # Module 8
-│   ├── fig_distributional_change_ranks.png         # Module 9
-│   └── fig_distributional_change_vs_vulnerability.png  # Module 9
+├── figures/                                         # All final publication figures (produced by Module 10)
+│   ├── fig_overall_vulnerability.png                # Module 10 Script 4
+│   ├── fig_attribute_score_boxplot_combined.png     # Module 10 Script 1
+│   ├── fig_sensitivity_attribute_score_boxplot.png  # Module 10 Script 1
+│   ├── fig_exposure_attribute_score_boxplot.png     # Module 10 Script 1
+│   ├── fig_directional_effect_summary.png           # Module 10 Script 1
+│   ├── fig_sensitivity_tally_distributions_by_stock.png  # Module 10 Script 1
+│   ├── fig_exposure_tally_distributions_by_stock.png     # Module 10 Script 1
+│   ├── fig_loo_bar_plots.png                        # Module 10 Script 2
+│   ├── fig_bootstrap_uncertainty.png                # Module 10 Script 2
+│   ├── fig_distributional_change_ranks.png          # Module 10 Script 3
+│   └── fig_distributional_change_vs_vulnerability.png  # Module 10 Script 3
 │
 └── resources/
     └── HMS/                                         # Reference code from Loughran et al. 2025
@@ -225,10 +257,29 @@ The diagram below shows the key file dependencies across modules. Modules in **b
                                          Module 9 (Distributional change potential)
                                                      │
                                                      ▼
-                         outputs/distributional_change_potential_uscar.csv
-                         outputs/distributional_change_bootstrap_uscar.csv
-                         figures/fig_distributional_change_ranks.png
-                         figures/fig_distributional_change_vs_vulnerability.png
+                         outputs/distribution-change-potential/
+                           distributional_change_potential_uscar.csv
+                           distributional_change_bootstrap_uscar.csv
+
+ ═══════════════════════════════════════════════════════
+  PHASE 2 — Figures (Module 10)
+  Reads all analysis outputs above; writes figures/ only
+ ═══════════════════════════════════════════════════════
+
+ outputs/final-scores-compiled/ ────────────────────┐
+ outputs/final-tallies-long/ ───────────────────────┤
+ outputs/analyses/uncertainty-loo/ ─────────────────┤
+ outputs/distribution-change-potential/ ────────────┤
+                                                     ▼
+                                         Module 10 (Figures)
+                                                     │
+                    ┌────────────────────────────────┤
+                    │                                │
+                    ▼                                ▼
+            figures/fig_overall_vulnerability.png    figures/fig_distributional_change_*.png
+            figures/fig_*_score_boxplot_*.png        figures/fig_bootstrap_uncertainty.png
+            figures/fig_directional_effect_*.png     figures/fig_loo_bar_plots.png
+            figures/fig_*_tally_distributions_*.png
 ```
 
 ---
@@ -279,7 +330,7 @@ Reads preliminary reviewer workbooks from `data/preliminary-scores/` and compile
 
 ### Module 4 — Final Attribute and Exposure Scoring
 
-**Scripts:** `4-final-attribute-exposure-scoring/1-extract-final-scores-from-all-reviewers.R`, `2-summarize-attribute-scores.R`, `3-calculate-overall-vulnerability-scores.R`, `4-plot-overall-vulnerability.R`
+**Scripts:** `4-final-attribute-exposure-scoring/1-extract-final-scores-from-all-reviewers.R`, `2-summarize-attribute-scores.R`, `3-calculate-overall-vulnerability-scores.R`
 
 The core vulnerability scoring workflow. Extracts final reviewer-entered scores from completed workbooks, combines them with quantitative exposure scores from Module 2, and applies the NOAA FCVA logic model to assign overall sensitivity, exposure, and vulnerability ranks.
 
@@ -307,10 +358,6 @@ Calculates attribute-level mean scores, applies the FCVA logic model to assign s
 | `component_scores_uscar.csv` | Sensitivity and Exposure component scores and ranks per stock |
 | `overall_vulnerability_scores_uscar.csv` | Final vulnerability score and rank per stock |
 | `data/exposure-factor-filter-long.csv` | Long-form expert rubric: 375 rows (15 factors × 25 stocks), `include` column (TRUE/FALSE) |
-
-#### Script 4 — Plot overall vulnerability
-
-Produces the combined vulnerability summary figure (`figures/fig_overall_vulnerability.png`) showing exposure vs. sensitivity component scores, directional effect, and data quality rank.
 
 ---
 
@@ -349,9 +396,9 @@ Overall data quality per stock is ranked by the proportion of scores ≥ 2: High
 
 ### Module 7 — Scoring Distributions
 
-**Scripts:** `7-scoring-distributions/1-extract-tally-scores.R`, `2-finalize-tally-tables.R`, `3-plot-figures.R`
+**Scripts:** `7-scoring-distributions/1-extract-tally-scores.R`, `2-finalize-tally-tables.R`
 
-Extracts and visualizes the full LMHV tally distributions from the final reviewer workbooks. Unlike Module 4 (which uses final reviewer-entered scores), this module reads the tally columns (columns M–P) to capture the full distribution of reviewer votes across the four ordinal bins.
+Extracts the full LMHV tally distributions from the final reviewer workbooks. Unlike Module 4 (which uses final reviewer-entered scores), this module reads the tally columns (columns M–P) to capture the full distribution of reviewer votes across the four ordinal bins. Figures from these tables are produced by Module 10 Script 1.
 
 #### Script 1 — Extract tally scores
 
@@ -361,19 +408,15 @@ Reads tally columns (M–P) from three workbook sections per stock sheet: Qualit
 
 Recodes stock names to canonical form (see Stock Name Normalization below), binds qualitative and quantitative exposure tables, and writes the finalized long-format and grouped tally tables to `outputs/final-tallies-long/`.
 
-#### Script 3 — Plot figures
-
-Produces attribute score boxplots (using `attribute_means_uscar.csv`) and per-stock LMHV tally distribution figures. Exposure figures are filtered to expert-approved factor × stock pairs using `data/exposure-factor-filter-long.csv`.
-
-**Key outputs (in `figures/`):** `fig_attribute_score_boxplot_combined.png`, `fig_directional_effect_summary.png`, `fig_sensitivity_tally_distributions_by_stock.png`, `fig_exposure_tally_distributions_by_stock.png`
+**Key outputs (in `outputs/final-tallies-long/`):** `sensitivity_tallies_long.csv`, `directional_effect_tallies_long.csv`, `exposure_tallies_long.csv`, and corresponding grouped-by-stock versions.
 
 ---
 
 ### Module 8 — Uncertainty Analysis
 
-**Scripts:** `8-uncertainty-analysis/uncertainty-analyses.R`, `2-make-uncertainty-figures.R`
+**Script:** `8-uncertainty-analysis/uncertainty-analyses.R`
 
-Quantifies the statistical robustness of the final CVA vulnerability rankings using two complementary analyses following FCVA methods.
+Quantifies the statistical robustness of the final CVA vulnerability rankings using two complementary analyses following FCVA methods. Figures from these outputs are produced by Module 10 Script 2.
 
 #### Bootstrap resampling
 
@@ -387,7 +430,7 @@ A deterministic analysis. For each stock × attribute (or factor), the attribute
 
 #### Baseline validation
 
-As a QA step, `uncertainty-analyses.R` reproduces all 25 baseline vulnerability ranks from the tally inputs and halts if any disagree with `overall_vulnerability_scores_uscar.csv`. The `rank_threshold` setting must match the value used in Module 4 Script 3 (default: `attr_means_current` = 2, corresponding to the prior NOAA FCVA rule).
+As a QA step, `uncertainty-analyses.R` reproduces all 25 baseline vulnerability ranks from the tally inputs and halts if any disagree with `overall_vulnerability_scores_uscar.csv`. The `rank_threshold` used here is sourced from `config.R` (default: `1`), and must match the value in Module 4 Script 3.
 
 **Reads from:**
 - `outputs/final-tallies-long/sensitivity_tallies_long.csv`
@@ -396,15 +439,15 @@ As a QA step, `uncertainty-analyses.R` reproduces all 25 baseline vulnerability 
 - `outputs/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv`
 - `data/exposure-factor-filter-long.csv`
 
-**Key outputs:** `outputs/analyses/uncertainty-loo/final-tables/`, `figures/fig_bootstrap_uncertainty.png`, `figures/fig_loo_bar_plots.png`
+**Key outputs:** `outputs/analyses/uncertainty-loo/final-tables/`
 
 ---
 
 ### Module 9 — Potential for Distributional Change
 
-**Scripts:** `9-distributional-change-potential/1-calculate-distributional-change-potential.R`, `2-bootstrap-distributional-change.R`, `3-plot-distributional-change.R`
+**Scripts:** `9-distributional-change-potential/1-calculate-distributional-change-potential.R`, `2-bootstrap-distributional-change.R`
 
-Calculates each stock's potential for distributional shift under changing environmental conditions, following the methodology of prior NOAA CVAs (HMS: Loughran et al. 2025; South Atlantic: Craig et al. 2025; GoM: Quinlan et al. 2023). Four sensitivity attributes are used; three movement-related attributes are inverted (`5 − mean`) before the FCVA logic model is applied.
+Calculates each stock's potential for distributional shift under changing environmental conditions, following the methodology of prior NOAA CVAs (HMS: Loughran et al. 2025; South Atlantic: Craig et al. 2025; GoM: Quinlan et al. 2023). Four sensitivity attributes are used; three movement-related attributes are inverted (`5 − mean`) before the FCVA logic model is applied. Figures from these outputs are produced by Module 10 Script 3.
 
 **Attribute set and inversion logic:**
 
@@ -419,24 +462,55 @@ Calculates each stock's potential for distributional shift under changing enviro
 
 #### Script 1 — Baseline DCP scores
 
-Reads `attribute_means_uscar.csv`, applies inversion, and applies the FCVA logic model (same `rank_threshold = 2` as Modules 4 and 8) to produce a DCP rank for each stock.
+Reads `attribute_means_uscar.csv`, applies inversion, and applies the FCVA logic model (same `rank_threshold` as Modules 4 and 8, sourced from `config.R`) to produce a DCP rank for each stock.
 
 #### Script 2 — Bootstrap uncertainty
 
 Mirrors Module 8: builds 20-vote draw piles from `sensitivity_tallies_long.csv` (swapping tally counts for inverted attributes), runs a baseline reproduction gate, then executes 10,000 bootstrap iterations with `bootstrap_seed = 99`. Stocks are flagged borderline if the dominant rank accounts for fewer than 75% of iterations.
 
-#### Script 3 — Figures
-
-Produces two publication figures:
-- **Figure A** (`fig_distributional_change_ranks.png`) — stacked column showing stocks by DCP rank category with certainty-encoded font
-- **Figure B** (`fig_distributional_change_vs_vulnerability.png`) — 4×4 cross-plot of DCP rank vs. overall climate vulnerability; the High/VH vulnerability + Low/Moderate DCP quadrant identifies stocks of highest management concern
-
 **Reads from:**
 - `outputs/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv`
 - `outputs/final-tallies-long/sensitivity_tallies_long.csv`
-- `outputs/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv`
 
-**Key outputs:** `outputs/distributional_change_potential_uscar.csv`, `outputs/distributional_change_bootstrap_uscar.csv`, `figures/fig_distributional_change_ranks.png`, `figures/fig_distributional_change_vs_vulnerability.png`
+**Key outputs:** `outputs/distribution-change-potential/distributional_change_potential_uscar.csv`, `outputs/distribution-change-potential/distributional_change_bootstrap_uscar.csv`
+
+---
+
+### Module 10 — Figures
+
+**Scripts:** `10-figures/1-plot-scoring-distributions.R`, `2-plot-uncertainty-figures.R`, `3-plot-distributional-change.R`, `4-plot-overall-vulnerability.R`
+
+Produces all 11 publication figures. This module has no analysis logic — it reads finalized outputs from Modules 4–9 and writes PNG files to `figures/`. All four scripts source `config.R` for shared color palettes, display labels, and stock name recoding.
+
+#### Script 1 — Score distributions
+
+Produces attribute score boxplots (using `attribute_means_uscar.csv`) and per-stock LMHV tally distribution figures. Exposure figures are filtered to expert-approved factor × stock pairs using `data/exposure-factor-filter-long.csv`. Also produces the directional effect summary bar chart.
+
+**Key outputs:** `fig_attribute_score_boxplot_combined.png`, `fig_sensitivity_attribute_score_boxplot.png`, `fig_exposure_attribute_score_boxplot.png`, `fig_directional_effect_summary.png`, `fig_sensitivity_tally_distributions_by_stock.png`, `fig_exposure_tally_distributions_by_stock.png`
+
+#### Script 2 — Uncertainty figures
+
+Produces LOO influence bar charts and bootstrap uncertainty stacked-bar panels for both sensitivity ranks and directional effects.
+
+**Key outputs:** `fig_loo_bar_plots.png`, `fig_bootstrap_uncertainty.png`
+
+#### Script 3 — Distributional change figures
+
+Produces two publication figures from Module 9 outputs:
+- **Figure A** (`fig_distributional_change_ranks.png`) — stacked column showing stocks by DCP rank category with certainty-encoded font
+- **Figure B** (`fig_distributional_change_vs_vulnerability.png`) — 4×4 cross-plot of DCP rank vs. overall climate vulnerability; the High/VH vulnerability + Low/Moderate DCP quadrant identifies stocks of highest management concern
+
+#### Script 4 — Overall vulnerability
+
+Produces the combined vulnerability summary figure (`fig_overall_vulnerability.png`) as a two-panel layout:
+- **Panel A** — 4×4 tile grid: Climate Exposure rank (x) × Biological Sensitivity rank (y); stock labels colored and styled by bootstrap certainty
+- **Panel B** — Directional effect column chart; stock labels styled by bootstrap certainty
+
+**Reads from:**
+- `outputs/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv`
+- `outputs/final-tallies-long/directional_effect_tallies_by_stock.csv`
+- `outputs/analyses/uncertainty-loo/final-tables/table_bootstrap_uncertainty_stock.csv`
+- `outputs/analyses/uncertainty-loo/final-tables/table_directional_effect_bootstrap.csv`
 
 ---
 
@@ -450,13 +524,18 @@ The table below lists the files consumed by more than one module.
 | `quantitative-exposure-attribute-scores-all.csv` | Module 2 | Module 4 Script 2, Module 7 Script 2 | `stock_name`, `attribute_name`, `spatial_extent`, `score` |
 | `table_final_attribute_scores_all.csv` | Module 4 Script 1 | Module 4 Script 2 | `stock_name`, `Attribute_name`, `Attribute_type`, `Final_score`, `Scorer` |
 | `final_scores_uscar.csv` | Module 4 Script 2 | Module 4 Script 3 | `stock_name`, `attribute_type`, `score_type`, `attribute_name`, `scorer`, `score` |
-| `attribute_means_uscar.csv` | Module 4 Script 3 | Module 7 Script 3, Module 8, Module 9 Script 1 | `stock_name`, `attribute_type`, `score_type`, `attribute_name`, `attribute_mean` |
-| `overall_vulnerability_scores_uscar.csv` | Module 4 Script 3 | Module 4 Script 4, Module 7 Script 3, Module 8, Module 9 Script 3 | `stock_name`, `Exp_score`, `Exp_rank`, `Sens_score`, `Sens_rank`, `Vuln_score`, `Vuln_rank` |
-| `data/exposure-factor-filter-long.csv` | Module 4 Script 3 | Module 7 Script 3, Module 8 | `stock_name`, `attribute_name`, `include` (TRUE/FALSE) |
-| `directional_effect_summary_by-stock.csv` | Module 5 | Module 4 Script 4, Module 7 Script 3 | `stock_name`, `Positive`, `Neutral`, `Negative`, `wt_avg`, `directional_effect` |
-| `overall_data_quality_summary_by_stock.csv` | Module 6 | Module 4 Script 4 | `stock_name`, `prop_ge_2`, `data_quality_rank` |
-| `sensitivity_tallies_long.csv` | Module 7 Script 2 | Module 8, Module 9 Script 2 | `reviewer_id`, `stock_name`, `attribute_name`, `tally_L`, `tally_M`, `tally_H`, `tally_VH` |
+| `attribute_means_uscar.csv` | Module 4 Script 3 | Module 8, Module 9 Script 1, Module 10 Scripts 1 & 4 | `stock_name`, `attribute_type`, `score_type`, `attribute_name`, `attribute_mean` |
+| `overall_vulnerability_scores_uscar.csv` | Module 4 Script 3 | Module 8, Module 10 Scripts 3 & 4 | `stock_name`, `Exp_score`, `Exp_rank`, `Sens_score`, `Sens_rank`, `Vuln_score`, `Vuln_rank` |
+| `data/exposure-factor-filter-long.csv` | Module 4 Script 3 | Module 8, Module 10 Script 1 | `stock_name`, `attribute_name`, `include` (TRUE/FALSE) |
+| `directional_effect_summary_by-stock.csv` | Module 5 | Module 10 Script 1 | `stock_name`, `Positive`, `Neutral`, `Negative`, `wt_avg`, `directional_effect` |
+| `overall_data_quality_summary_by_stock.csv` | Module 6 | Module 10 Script 4 | `stock_name`, `prop_ge_2`, `data_quality_rank` |
+| `sensitivity_tallies_long.csv` | Module 7 Script 2 | Module 8, Module 9 Script 2, Module 10 Script 1 | `reviewer_id`, `stock_name`, `attribute_name`, `tally_L`, `tally_M`, `tally_H`, `tally_VH` |
 | `directional_effect_tallies_long.csv` | Module 7 Script 2 | Module 8 | `reviewer_id`, `stock_name`, `effect_category`, `tally` |
+| `directional_effect_tallies_by_stock.csv` | Module 7 Script 2 | Module 10 Script 4 | `stock_name`, `tally_neg`, `tally_neut`, `tally_pos`, `n_tallies` |
+| `table_bootstrap_uncertainty_stock.csv` | Module 8 | Module 10 Scripts 2 & 4 | `stock_name`, `vuln_rank`, `prop` |
+| `table_directional_effect_bootstrap.csv` | Module 8 | Module 10 Scripts 2 & 4 | `stock_name`, `dir_rank`, `prop` |
+| `distributional_change_potential_uscar.csv` | Module 9 Script 1 | Module 9 Script 2, Module 10 Script 3 | `stock_name`, `dcp_rank`, `dcp_numeric` |
+| `distributional_change_bootstrap_uscar.csv` | Module 9 Script 2 | Module 10 Script 3 | `stock_name`, `dominant_rank`, `dominant_prop`, `borderline` |
 
 ---
 
@@ -496,18 +575,21 @@ The following 25 stocks were assessed. **Canonical names** are sentence case and
 
 ### Stock Name Normalization
 
-Reviewer workbooks use **Title Case** stock names (e.g., "Blue Runner"). Compiled output files use **sentence case** (e.g., "Blue runner"). Four stocks additionally have substantively different names between workbooks and outputs, requiring explicit manual overrides before the sentence-case conversion is applied:
+Stock names appear in multiple forms across the pipeline:
+- **Compiled analysis outputs** (e.g., `overall_vulnerability_scores_uscar.csv`) use **sentence case** (e.g., `"Red hind"`, `"Atlantic thread herring"`).
+- **Reviewer workbooks and tally files** use **Title Case** (e.g., `"Red Hind"`, `"Redhind"`, `"Atlantic Herring"`).
 
-| Workbook name | Canonical output name | Reason |
+All figure scripts (Module 10) normalize stock names to a consistent **Title Case display form** using the canonical `stock_name_recode` lookup defined in `config.R`. This lookup handles both simple capitalization differences and the four stocks whose workbook names differ substantively from their assessment names:
+
+| Input name (analysis outputs or tallies) | Display name (figures) | Reason |
 |---|---|---|
-| Atlantic Herring | Atlantic thread herring | Different common name |
-| Diadema | Long-spined sea urchin | Different common name |
-| Redhind | Red hind | Missing space |
-| Sea Cucumber | Sea cucumbers | Singular vs. plural |
+| `Atlantic thread herring` | `Atlantic Herring` | Different common name |
+| `Long-spined sea urchin` | `Diadema` | Different common name |
+| `Red hind` | `Red Hind` | Capitalization + two-word form |
+| `Redhind` | `Red Hind` | Workbook single-word form |
+| `Sea cucumbers` | `Sea Cucumber` | Plural vs. singular |
 
-The normalization is a two-step process applied in Modules 4, 7, and 8:
-1. Apply the four manual overrides above.
-2. Apply `stringr::str_to_sentence()` to convert remaining Title Case names to sentence case.
+The analysis modules (4, 7, 8, 9) use a complementary normalization: four manual overrides followed by `stringr::str_to_sentence()`, which converts workbook Title Case names into the sentence-case form used in compiled outputs.
 
 > **Note — output figure directories:** The `outputs/exposure-overlap-12panel/` subdirectories use Title Case hyphenated slugs (e.g., `King-Mackerel/`, `Red-Hind/`) derived from the original workbook names, not the canonical sentence-case names used in CSV outputs.
 
@@ -532,7 +614,7 @@ Fourteen sensitivity attributes are scored for all 25 stocks. Attributes from wo
 | 13 | Stock Size Status |
 | 14 | Tolerance to ocean acidification |
 
-> **Naming note — "Stock Size Status":** This attribute appears in reviewer workbooks as "Stock Size/Status" (with slash). The `standardize_attribute_names()` function in Module 7 Script 1 removes the slash, producing "Stock Size Status" in the tally tables. However, `attribute_means_uscar.csv` (produced by Module 4 Script 3) stores the attribute as "Stock size/status" (sentence case, with slash). The figure scripts in Modules 7 and 8 handle this mismatch with an explicit `dplyr::recode()` call. The canonical form for lookups and figure labels is **"Stock Size Status"** (no slash).
+> **Naming note — "Stock Size Status":** This attribute appears in reviewer workbooks as "Stock Size/Status" (with slash). The `standardize_attribute_names()` function in Module 7 Script 1 removes the slash, producing "Stock Size Status" in the tally tables. However, `attribute_means_uscar.csv` (produced by Module 4 Script 3) stores the attribute as "Stock size/status" (sentence case, with slash). The figure scripts in Module 10 handle this mismatch with an explicit `dplyr::recode()` call. The canonical form for lookups and figure labels is **"Stock Size Status"** (no slash).
 
 ### Exposure Factors
 

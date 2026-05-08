@@ -38,6 +38,7 @@
 ## Setup
 
 rm(list = ls()); gc()
+source("config.R")
 
 library(dplyr)
 library(tidyr)
@@ -46,34 +47,10 @@ library(stringr)
 
 ##------------------------------------------------------------------------------
 ## Analysis settings
+## rank_threshold, dir_eff_threshold, borderline_prop sourced from config.R
 
-n_boot               <- 10000   ## number of bootstrap iterations
-bootstrap_seed       <- 99      ## random seed — set once before each bootstrap loop
-dir_eff_threshold    <- 0.33    ## ±0.33 directional rank cutoff, matching HMS CVA
-                                ##   w_mean = (n_pos - n_neg) / total_votes in [-1, +1]
-                                ##   for Caribbean: total_votes = 4 reviewers x 4 = 16
-borderline_threshold <- 0.25    ## flag stocks where dominant rank prop < 0.75
-
-################################################################################
-##------------------------------------------------------------------------------
-## Set FCVA logic model threshold
-##
-## Table-based rule used in prior FCVAs:
-## - Very High = 3 or more attribute means >= 3.5
-## - High      = 2 or more attribute means >= 3.0
-## - Moderate  = 2 or more attribute means >= 2.5
-## - Low       = all other cases
-##
-## Options:
-attr_means_current <- 1 ## Current FCVA logic model
-attr_means_plus1   <- 2 ## Shifts +1. E.g., Overall M = more than 2 attribute means >= 2.5; VH = more than 3 attribute means >= 3.5
-attr_means_plus2   <- 3 ## Shifts +2. E.g., Overall M = more than 3 attribute means >= 2.5; VH = more than 4 attribute means >= 3.5
-attr_means_plus3   <- 4 ## Shifts +3. E.g., Overall M = more than 4 attribute means >= 2.5
-
-## User sets logic model — must match the setting used in the main scoring
-## script (4-final-attribute-exposure-scoring/3-calculate-overall-vulnerability-scores.R)
-## so that the baseline reproduction check (Step 3) passes.
-rank_threshold <- attr_means_current
+n_boot         <- 10000  ## number of bootstrap iterations
+bootstrap_seed <- 99     ## random seed — set once before each bootstrap loop
 
 ##------------------------------------------------------------------------------
 ## Directories
@@ -618,7 +595,7 @@ for (si in seq_along(stock_list)) {
   ## Borderline flag: TRUE if the dominant rank won < 75% of iterations,
   ## suggesting the ranking could plausibly be one step higher or lower.
   top_rank_prop <- max(vuln_n_vec) / n_boot
-  is_borderline <- top_rank_prop < (1 - borderline_threshold)
+  is_borderline <- top_rank_prop < borderline_prop
 
   boot_stock_rows[[si]] <- data.frame(
     stock_name = s,

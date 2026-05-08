@@ -5,6 +5,7 @@
 ## Set up
 
 rm(list = ls()); gc()
+source("config.R")
 library(dplyr)
 
 in_dir      <- "./outputs/final-scores-compiled/directional-effect"
@@ -36,10 +37,10 @@ directional_effect_summary <- directional_effect_table %>%
     ),
     overall = dplyr::case_when(
       is.na(wt_avg)            ~ NA_character_,
-      wt_avg <= -0.333         ~ "negative",
-      wt_avg >=  0.333         ~ "positive",
-      wt_avg >  -0.333 &
-        wt_avg <  0.333        ~ "neutral"
+      wt_avg <= -dir_eff_threshold         ~ "negative",
+      wt_avg >=  dir_eff_threshold         ~ "positive",
+      wt_avg >  -dir_eff_threshold &
+        wt_avg <  dir_eff_threshold        ~ "neutral"
     )
   ); print(directional_effect_summary, n = 30)
 
@@ -92,10 +93,10 @@ stock_directional_summary <- directional_effect_table %>%
     ),
     overall = dplyr::case_when(
       is.na(wt_avg)            ~ NA_character_,
-      wt_avg <= -0.333         ~ "negative",
-      wt_avg >=  0.333         ~ "positive",
-      wt_avg >  -0.333 &
-        wt_avg <  0.333        ~ "neutral"
+      wt_avg <= -dir_eff_threshold         ~ "negative",
+      wt_avg >=  dir_eff_threshold         ~ "positive",
+      wt_avg >  -dir_eff_threshold &
+        wt_avg <  dir_eff_threshold        ~ "neutral"
     )
   ) %>%
   dplyr::rename(

@@ -29,6 +29,7 @@
 ##------------------------------------------------------------------------------
 
 rm(list = ls()); gc()
+source("config.R")
 
 library(dplyr)
 library(tidyr)
@@ -72,71 +73,8 @@ f_vuln <- file.path(proj_dir, "outputs", "final-scores-compiled",
 f_fig1 <- file.path(dir_out, "fig_loo_bar_plots.png")
 f_fig2 <- file.path(dir_out, "fig_bootstrap_uncertainty.png")
 
-##------------------------------------------------------------------------------
-## Short display name lookup tables  (used only by Figure 1)
-##
-## Copied from 7-scoring-distributions/3-plot-figures.R (lines 104-137).
-## Keys   = full attribute/factor names as stored in the LOO CSV files.
-## Values = abbreviated labels for the y-axis of the bar charts.
-
-attr_short_names <- c(
-  "Adult mobility"                                 = "Adult mobility",
-  "Complexity in reproductive strategy"            = "Reprod. complex.",
-  "Genetic diversity"                              = "Genetic divers.",
-  "Habitat specificity"                            = "Habitat specif.",
-  "Mobility and dispersal or early life stages"    = "Early life disp.",
-  "Other stressors"                                = "Other stressors",
-  "Population growth rate"                         = "Pop. growth rate",
-  "Predation and competition dynamics"             = "Pred. and compet.",
-  "Prey specificity"                               = "Prey specif.",
-  "Spawning characteristics"                       = "Spawning charact.",
-  "Species range"                                  = "Species range",
-  "Specificity in early life history requirements" = "Early life req.",
-  "Stock Size Status"                              = "Stock size",
-  "Tolerance to ocean acidification"               = "OA tolerance"
-)
-
-exp_attr_short_names <- c(
-  "Bottom salinity"                       = "Bott. sal.",
-  "Bottom temperature"                    = "Bott. temp.",
-  "Chlorophyll-a concentration"           = "Chl-a",
-  "Mean sea surface temperature gradient" = "SST gradient",
-  "Mixed layer depth"                     = "Mixed layer",
-  "Oxygen at 200m"                        = "O2 at 200m",
-  "Precipitation"                         = "Precip.",
-  "Primary production"                    = "Primary prod.",
-  "Sea surface oxygen"                    = "Surf. O2",
-  "Sea surface salinity"                  = "Surf. sal.",
-  "Sea surface temperature"               = "Surf. temp.",
-  "Surface pH"                            = "Surf. pH",
-  "Surface wind speed magnitude"          = "Wind speed",
-  "Sargassum influx"                      = "Sargassum",
-  "Thermocline depth"                     = "Thermocl. depth"
-)
-
-##------------------------------------------------------------------------------
-## Color palettes and factor level vectors  (shared across both figures)
-##
-## Vulnerability rank colors match 7-scoring-distributions/3-plot-figures.R
-## for visual consistency across all CVA figures.
-
-rank_levels <- c("Low", "Moderate", "High", "Very High")
-rank_colors <- c(
-  "Low"       = "green3",
-  "Moderate"  = "yellow2",
-  "High"      = "orange2",
-  "Very High" = "red3"
-)
-
-## Directional effect colors use the Okabe-Ito colorblind-safe palette.
-## Stacking order: Negative first (anchored at x = 0) so the dominant
-## negative signal is directly readable as bar length.
-dir_levels <- c("Negative", "Neutral", "Positive")
-dir_colors <- c(
-  "Negative" = "brown3",
-  "Neutral"  = "bisque3",
-  "Positive" = "turquoise4"
-)
+## attr_short_names, exp_attr_short_names, rank_levels, rank_colors,
+## dir_levels, dir_colors sourced from config.R
 
 ##------------------------------------------------------------------------------
 ## Shared ggplot theme  (used by all panels in both figures)

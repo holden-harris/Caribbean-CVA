@@ -40,6 +40,7 @@
 ## Setup
 
 rm(list = ls()); gc()
+source("config.R")
 
 library(dplyr)
 library(tidyr)
@@ -48,9 +49,7 @@ library(stringr)
 
 ##------------------------------------------------------------------------------
 ## Configuration
-
-## FCVA logic model threshold — must match Module 4 Script 3 and Module 8
-rank_threshold <- 1
+## rank_threshold sourced from config.R
 
 ## Exact attribute names as they appear in attribute_means_uscar.csv.
 ## If these strings do not match the CSV, the script halts with a clear error.

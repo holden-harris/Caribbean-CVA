@@ -42,6 +42,7 @@
 ## Setup
 
 rm(list = ls()); gc()
+source("config.R")
 
 library(ggplot2)
 library(dplyr)
@@ -69,18 +70,16 @@ f_fig_cross <- file.path(fig_dir,      "fig_distributional_change_vs_vulnerabili
 ##------------------------------------------------------------------------------
 ## Shared constants
 
-rank_order  <- c("Low", "Moderate", "High", "Very High")
-rank_levels <- c("Low", "Moderate", "High", "Very High")
+rank_order <- rank_levels   # from config; alias used throughout this script
+rank_num   <- c("Low" = 1, "Moderate" = 2, "High" = 3, "Very High" = 4)
 
-## Standardized CVA color palette (matches CVA project convention)
+## DCP figure color palette — uses yellow4 to distinguish from uncertainty figures
 rank_colors <- c(
   "Low"       = "green3",
   "Moderate"  = "yellow4",
   "High"      = "orange2",
   "Very High" = "red3"
 )
-
-rank_num <- c("Low" = 1, "Moderate" = 2, "High" = 3, "Very High" = 4)
 
 ## Overall vulnerability abbreviations for stock labels
 vuln_abbrev_map <- c(
@@ -90,37 +89,7 @@ vuln_abbrev_map <- c(
   "Very High" = "VH"
 )
 
-## Canonical stock name lookup: CSV sentence-case names → display names.
-## Applied to all tables on read so figure labels use project-standard names.
-stock_name_recode <- c(
-  "Atlantic thread herring" = "Atlantic Herring",
-  "Long-spined sea urchin"  = "Diadema",
-  "Red hind"                = "Redhind",
-  "Sea cucumbers"           = "Sea Cucumber",
-  "Ballyhoo"                = "Ballyhoo",
-  "Blue runner"             = "Blue Runner",
-  "Dolphinfish"             = "Dolphinfish",
-  "Gray angelfish"          = "Gray Angelfish",
-  "Hogfish"                 = "Hogfish",
-  "King mackerel"           = "King Mackerel",
-  "Lane snapper"            = "Lane Snapper",
-  "Misty grouper"           = "Misty Grouper",
-  "Mutton snapper"          = "Mutton Snapper",
-  "Nassau grouper"          = "Nassau Grouper",
-  "Queen conch"             = "Queen Conch",
-  "Queen snapper"           = "Queen Snapper",
-  "Queen triggerfish"       = "Queen Triggerfish",
-  "Rainbow parrotfish"      = "Rainbow Parrotfish",
-  "Red grouper"             = "Red Grouper",
-  "Redhind"                 = "Red Hind",
-  "Sea cucumber"            = "Sea Cucumber",
-  "Silk snapper"            = "Silk Snapper",
-  "Spiny lobster"           = "Spiny Lobster",
-  "Stoplight parrotfish"    = "Stoplight Parrotfish",
-  "White mullet"            = "White Mullet",
-  "Yellowfin grouper"       = "Yellowfin Grouper",
-  "Yellowtail snapper"      = "Yellowtail Snapper"
-)
+## stock_name_recode sourced from config.R
 
 ##------------------------------------------------------------------------------
 ## Read data
@@ -160,10 +129,10 @@ dcp_plot <- dcp_full %>%
     dcp_rank  = factor(dcp_rank,  levels = rank_order),
     Vuln_rank = factor(Vuln_rank, levels = rank_order),
     certainty = dplyr::case_when(
-      dominant_prop >  0.95 ~ "Very High",
-      dominant_prop >= 0.90 ~ "High",
-      dominant_prop >= 0.67 ~ "Moderate",
-      TRUE                  ~ "Low"
+      dominant_prop >  cert_very_high ~ "Very High",
+      dominant_prop >= cert_high      ~ "High",
+      dominant_prop >= cert_moderate  ~ "Moderate",
+      TRUE                            ~ "Low"
     ),
     ## Numeric order for within-column sorting: 1 = most certain (top of column)
     certainty_order = dplyr::case_when(
