@@ -2,200 +2,235 @@ stock_name,factor_omitted,baseline_exp_rank,new_exp_rank,baseline_vuln_rank,new_
 Atlantic thread herring,Chlorophyll-a concentration,High,High,Low,Low,3,3,FALSE,No change
 Atlantic thread herring,Precipitation,High,High,Low,Low,3,3,FALSE,No change
 Atlantic thread herring,Primary production,High,High,Low,Low,3,3,FALSE,No change
-Atlantic thread herring,Sea surface oxygen,High,Low,Low,Low,3,1,FALSE,Lower
-Atlantic thread herring,Sea surface salinity,High,Low,Low,Low,3,1,FALSE,Lower
-Atlantic thread herring,Sea surface temperature,High,Low,Low,Low,3,1,FALSE,Lower
-Ballyhoo,Chlorophyll-a concentration,High,High,Low,Low,3,3,FALSE,No change
-Ballyhoo,Precipitation,High,High,Low,Low,3,3,FALSE,No change
-Ballyhoo,Primary production,High,High,Low,Low,3,3,FALSE,No change
-Ballyhoo,Sea surface oxygen,High,High,Low,Low,3,3,FALSE,No change
-Ballyhoo,Sea surface salinity,High,High,Low,Low,3,3,FALSE,No change
-Ballyhoo,Sea surface temperature,High,High,Low,Low,3,3,FALSE,No change
-Ballyhoo,Surface pH,High,High,Low,Low,3,3,FALSE,No change
-Ballyhoo,Surface wind speed magnitude,High,High,Low,Low,3,3,FALSE,No change
-Blue runner,Chlorophyll-a concentration,Low,Low,Low,Low,1,1,FALSE,No change
-Blue runner,Mixed layer depth,Low,Low,Low,Low,1,1,FALSE,No change
-Blue runner,Primary production,Low,Low,Low,Low,1,1,FALSE,No change
-Blue runner,Sea surface oxygen,Low,Low,Low,Low,1,1,FALSE,No change
-Blue runner,Sea surface temperature,Low,Low,Low,Low,1,1,FALSE,No change
-Blue runner,Surface wind speed magnitude,Low,Low,Low,Low,1,1,FALSE,No change
-Dolphinfish,Chlorophyll-a concentration,Moderate,Moderate,Low,Low,2,2,FALSE,No change
-Dolphinfish,Mixed layer depth,Moderate,Moderate,Low,Low,2,2,FALSE,No change
-Dolphinfish,Oxygen at 200m,Moderate,Low,Low,Low,2,1,FALSE,Lower
-Dolphinfish,Primary production,Moderate,Moderate,Low,Low,2,2,FALSE,No change
-Dolphinfish,Sea surface oxygen,Moderate,Low,Low,Low,2,1,FALSE,Lower
-Dolphinfish,Sea surface temperature,Moderate,Low,Low,Low,2,1,FALSE,Lower
-Dolphinfish,Surface wind speed magnitude,Moderate,Moderate,Low,Low,2,2,FALSE,No change
-Gray angelfish,Bottom temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Gray angelfish,Chlorophyll-a concentration,Very High,Very High,High,High,8,8,FALSE,No change
-Gray angelfish,Mixed layer depth,Very High,Very High,High,High,8,8,FALSE,No change
-Gray angelfish,Precipitation,Very High,Very High,High,High,8,8,FALSE,No change
-Gray angelfish,Primary production,Very High,Very High,High,High,8,8,FALSE,No change
-Gray angelfish,Sea surface oxygen,Very High,High,High,Moderate,8,6,TRUE,Lower
-Gray angelfish,Sea surface salinity,Very High,Very High,High,High,8,8,FALSE,No change
-Gray angelfish,Sea surface temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Gray angelfish,Surface pH,Very High,High,High,Moderate,8,6,TRUE,Lower
-Gray angelfish,Surface wind speed magnitude,Very High,Very High,High,High,8,8,FALSE,No change
-Hogfish,Bottom temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Hogfish,Chlorophyll-a concentration,Very High,Very High,High,High,8,8,FALSE,No change
-Hogfish,Mixed layer depth,Very High,Very High,High,High,8,8,FALSE,No change
-Hogfish,Precipitation,Very High,Very High,High,High,8,8,FALSE,No change
-Hogfish,Primary production,Very High,Very High,High,High,8,8,FALSE,No change
-Hogfish,Sea surface oxygen,Very High,High,High,Moderate,8,6,TRUE,Lower
-Hogfish,Sea surface salinity,Very High,Very High,High,High,8,8,FALSE,No change
-Hogfish,Sea surface temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Hogfish,Surface pH,Very High,High,High,Moderate,8,6,TRUE,Lower
-Hogfish,Surface wind speed magnitude,Very High,Very High,High,High,8,8,FALSE,No change
-King mackerel,Chlorophyll-a concentration,Low,Low,Low,Low,1,1,FALSE,No change
-King mackerel,Mixed layer depth,Low,Low,Low,Low,1,1,FALSE,No change
-King mackerel,Precipitation,Low,Low,Low,Low,1,1,FALSE,No change
-King mackerel,Primary production,Low,Low,Low,Low,1,1,FALSE,No change
-King mackerel,Sea surface oxygen,Low,Low,Low,Low,1,1,FALSE,No change
-King mackerel,Sea surface temperature,Low,Low,Low,Low,1,1,FALSE,No change
-King mackerel,Surface wind speed magnitude,Low,Low,Low,Low,1,1,FALSE,No change
-Lane snapper,Bottom temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
+Atlantic thread herring,Sea surface oxygen,High,High,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Sea surface salinity,High,High,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Sea surface temperature,High,High,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Sargassum influx,High,High,Low,Low,3,3,FALSE,No change
+Ballyhoo,Chlorophyll-a concentration,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Ballyhoo,Precipitation,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Ballyhoo,Primary production,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Ballyhoo,Sea surface oxygen,Very High,High,Moderate,Low,4,3,TRUE,Lower
+Ballyhoo,Sea surface salinity,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Ballyhoo,Sea surface temperature,Very High,High,Moderate,Low,4,3,TRUE,Lower
+Ballyhoo,Surface pH,Very High,High,Moderate,Low,4,3,TRUE,Lower
+Ballyhoo,Surface wind speed magnitude,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Ballyhoo,Sargassum influx,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Blue runner,Chlorophyll-a concentration,High,High,Low,Low,3,3,FALSE,No change
+Blue runner,Mixed layer depth,High,High,Low,Low,3,3,FALSE,No change
+Blue runner,Primary production,High,High,Low,Low,3,3,FALSE,No change
+Blue runner,Sea surface oxygen,High,Low,Low,Low,3,1,FALSE,Lower
+Blue runner,Sea surface temperature,High,Low,Low,Low,3,1,FALSE,Lower
+Blue runner,Surface wind speed magnitude,High,High,Low,Low,3,3,FALSE,No change
+Blue runner,Sargassum influx,High,High,Low,Low,3,3,FALSE,No change
+Blue runner,Thermocline depth,High,High,Low,Low,3,3,FALSE,No change
+Dolphinfish,Chlorophyll-a concentration,High,High,Low,Low,3,3,FALSE,No change
+Dolphinfish,Mixed layer depth,High,High,Low,Low,3,3,FALSE,No change
+Dolphinfish,Oxygen at 200m,High,High,Low,Low,3,3,FALSE,No change
+Dolphinfish,Primary production,High,High,Low,Low,3,3,FALSE,No change
+Dolphinfish,Sea surface oxygen,High,Moderate,Low,Low,3,2,FALSE,Lower
+Dolphinfish,Sea surface temperature,High,Moderate,Low,Low,3,2,FALSE,Lower
+Dolphinfish,Surface wind speed magnitude,High,High,Low,Low,3,3,FALSE,No change
+Dolphinfish,Sargassum influx,High,High,Low,Low,3,3,FALSE,No change
+Dolphinfish,Thermocline depth,High,High,Low,Low,3,3,FALSE,No change
+Gray angelfish,Bottom temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Precipitation,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Sea surface oxygen,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Sea surface salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Sea surface temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Surface pH,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Surface wind speed magnitude,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Gray angelfish,Thermocline depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Bottom temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Precipitation,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Sea surface oxygen,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Sea surface salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Sea surface temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Surface pH,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Surface wind speed magnitude,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Hogfish,Thermocline depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+King mackerel,Chlorophyll-a concentration,High,High,Moderate,Moderate,6,6,FALSE,No change
+King mackerel,Mixed layer depth,High,High,Moderate,Moderate,6,6,FALSE,No change
+King mackerel,Precipitation,High,High,Moderate,Moderate,6,6,FALSE,No change
+King mackerel,Primary production,High,High,Moderate,Moderate,6,6,FALSE,No change
+King mackerel,Sea surface oxygen,High,Low,Moderate,Low,6,2,TRUE,Lower
+King mackerel,Sea surface temperature,High,Low,Moderate,Low,6,2,TRUE,Lower
+King mackerel,Surface wind speed magnitude,High,High,Moderate,Moderate,6,6,FALSE,No change
+King mackerel,Sargassum influx,High,High,Moderate,Moderate,6,6,FALSE,No change
+King mackerel,Thermocline depth,High,High,Moderate,Moderate,6,6,FALSE,No change
+Lane snapper,Bottom temperature,Very High,Very High,High,High,8,8,FALSE,No change
 Lane snapper,Chlorophyll-a concentration,Very High,Very High,High,High,8,8,FALSE,No change
 Lane snapper,Mixed layer depth,Very High,Very High,High,High,8,8,FALSE,No change
 Lane snapper,Precipitation,Very High,Very High,High,High,8,8,FALSE,No change
 Lane snapper,Primary production,Very High,Very High,High,High,8,8,FALSE,No change
-Lane snapper,Sea surface oxygen,Very High,High,High,Moderate,8,6,TRUE,Lower
+Lane snapper,Sea surface oxygen,Very High,Very High,High,High,8,8,FALSE,No change
 Lane snapper,Sea surface salinity,Very High,Very High,High,High,8,8,FALSE,No change
-Lane snapper,Sea surface temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Lane snapper,Surface pH,Very High,High,High,Moderate,8,6,TRUE,Lower
+Lane snapper,Sea surface temperature,Very High,Very High,High,High,8,8,FALSE,No change
+Lane snapper,Surface pH,Very High,Very High,High,High,8,8,FALSE,No change
 Lane snapper,Surface wind speed magnitude,Very High,Very High,High,High,8,8,FALSE,No change
+Lane snapper,Sargassum influx,Very High,Very High,High,High,8,8,FALSE,No change
 Long-spined sea urchin,Bottom salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Long-spined sea urchin,Bottom temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Long-spined sea urchin,Bottom temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Long-spined sea urchin,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Long-spined sea urchin,Precipitation,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Long-spined sea urchin,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Long-spined sea urchin,Sea surface oxygen,Very High,High,Very High,High,12,9,TRUE,Lower
+Long-spined sea urchin,Sea surface oxygen,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Long-spined sea urchin,Sea surface salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Long-spined sea urchin,Sea surface temperature,Very High,High,Very High,High,12,9,TRUE,Lower
-Long-spined sea urchin,Surface pH,Very High,High,Very High,High,12,9,TRUE,Lower
+Long-spined sea urchin,Sea surface temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Surface pH,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Long-spined sea urchin,Surface wind speed magnitude,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Misty grouper,Bottom temperature,High,Low,High,Low,9,3,TRUE,Lower
-Misty grouper,Chlorophyll-a concentration,High,High,High,High,9,9,FALSE,No change
-Misty grouper,Mixed layer depth,High,High,High,High,9,9,FALSE,No change
-Misty grouper,Primary production,High,High,High,High,9,9,FALSE,No change
-Misty grouper,Sea surface temperature,High,Low,High,Low,9,3,TRUE,Lower
-Misty grouper,Surface pH,High,Low,High,Low,9,3,TRUE,Lower
-Mutton snapper,Bottom temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Long-spined sea urchin,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Misty grouper,Bottom temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Misty grouper,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Misty grouper,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Misty grouper,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Misty grouper,Sea surface temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Misty grouper,Surface pH,Very High,High,Very High,High,12,9,TRUE,Lower
+Misty grouper,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Bottom temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Mutton snapper,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Mutton snapper,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Mutton snapper,Precipitation,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Mutton snapper,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Mutton snapper,Sea surface oxygen,Very High,High,Very High,High,12,9,TRUE,Lower
+Mutton snapper,Sea surface oxygen,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Mutton snapper,Sea surface salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Mutton snapper,Sea surface temperature,Very High,High,Very High,High,12,9,TRUE,Lower
-Mutton snapper,Surface pH,Very High,High,Very High,High,12,9,TRUE,Lower
+Mutton snapper,Sea surface temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Surface pH,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Mutton snapper,Surface wind speed magnitude,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Nassau grouper,Bottom temperature,High,Low,High,Low,9,3,TRUE,Lower
-Nassau grouper,Chlorophyll-a concentration,High,High,High,High,9,9,FALSE,No change
-Nassau grouper,Mixed layer depth,High,High,High,High,9,9,FALSE,No change
-Nassau grouper,Primary production,High,High,High,High,9,9,FALSE,No change
-Nassau grouper,Sea surface temperature,High,Low,High,Low,9,3,TRUE,Lower
-Nassau grouper,Surface pH,High,Low,High,Low,9,3,TRUE,Lower
-Queen conch,Bottom salinity,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Queen conch,Bottom temperature,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Queen conch,Chlorophyll-a concentration,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Queen conch,Mixed layer depth,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Queen conch,Precipitation,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Queen conch,Primary production,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Queen conch,Sea surface oxygen,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Queen conch,Sea surface salinity,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Queen conch,Sea surface temperature,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Queen conch,Surface pH,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Queen conch,Surface wind speed magnitude,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Queen snapper,Bottom salinity,Low,Low,Low,Low,2,2,FALSE,No change
-Queen snapper,Bottom temperature,Low,Low,Low,Low,2,2,FALSE,No change
-Queen snapper,Chlorophyll-a concentration,Low,Low,Low,Low,2,2,FALSE,No change
-Queen snapper,Mean sea surface temperature gradient,Low,Low,Low,Low,2,2,FALSE,No change
-Queen snapper,Mixed layer depth,Low,Low,Low,Low,2,2,FALSE,No change
-Queen snapper,Oxygen at 200m,Low,Low,Low,Low,2,2,FALSE,No change
-Queen triggerfish,Bottom temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
+Mutton snapper,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Nassau grouper,Bottom temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Nassau grouper,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Nassau grouper,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Nassau grouper,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Nassau grouper,Sea surface temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Nassau grouper,Surface pH,Very High,High,Very High,High,12,9,TRUE,Lower
+Nassau grouper,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Nassau grouper,Thermocline depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Bottom salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Bottom temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Precipitation,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Sea surface oxygen,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Sea surface salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Sea surface temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Surface pH,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Surface wind speed magnitude,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen conch,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Queen snapper,Bottom salinity,Moderate,Moderate,Moderate,Moderate,4,4,FALSE,No change
+Queen snapper,Bottom temperature,Moderate,Low,Moderate,Low,4,2,TRUE,Lower
+Queen snapper,Chlorophyll-a concentration,Moderate,Moderate,Moderate,Moderate,4,4,FALSE,No change
+Queen snapper,Mean sea surface temperature gradient,Moderate,Moderate,Moderate,Moderate,4,4,FALSE,No change
+Queen snapper,Mixed layer depth,Moderate,Moderate,Moderate,Moderate,4,4,FALSE,No change
+Queen snapper,Oxygen at 200m,Moderate,Low,Moderate,Low,4,2,TRUE,Lower
+Queen triggerfish,Bottom temperature,Very High,Very High,High,High,8,8,FALSE,No change
 Queen triggerfish,Chlorophyll-a concentration,Very High,Very High,High,High,8,8,FALSE,No change
 Queen triggerfish,Mixed layer depth,Very High,Very High,High,High,8,8,FALSE,No change
 Queen triggerfish,Precipitation,Very High,Very High,High,High,8,8,FALSE,No change
 Queen triggerfish,Primary production,Very High,Very High,High,High,8,8,FALSE,No change
-Queen triggerfish,Sea surface oxygen,Very High,High,High,Moderate,8,6,TRUE,Lower
+Queen triggerfish,Sea surface oxygen,Very High,Very High,High,High,8,8,FALSE,No change
 Queen triggerfish,Sea surface salinity,Very High,Very High,High,High,8,8,FALSE,No change
-Queen triggerfish,Sea surface temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Queen triggerfish,Surface pH,Very High,High,High,Moderate,8,6,TRUE,Lower
+Queen triggerfish,Sea surface temperature,Very High,Very High,High,High,8,8,FALSE,No change
+Queen triggerfish,Surface pH,Very High,Very High,High,High,8,8,FALSE,No change
 Queen triggerfish,Surface wind speed magnitude,Very High,Very High,High,High,8,8,FALSE,No change
-Rainbow parrotfish,Bottom temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Queen triggerfish,Sargassum influx,Very High,Very High,High,High,8,8,FALSE,No change
+Queen triggerfish,Thermocline depth,Very High,Very High,High,High,8,8,FALSE,No change
+Rainbow parrotfish,Bottom temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Rainbow parrotfish,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Rainbow parrotfish,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Rainbow parrotfish,Precipitation,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Rainbow parrotfish,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Rainbow parrotfish,Sea surface oxygen,Very High,High,Very High,High,12,9,TRUE,Lower
+Rainbow parrotfish,Sea surface oxygen,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Rainbow parrotfish,Sea surface salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Rainbow parrotfish,Sea surface temperature,Very High,High,Very High,High,12,9,TRUE,Lower
-Rainbow parrotfish,Surface pH,Very High,High,Very High,High,12,9,TRUE,Lower
+Rainbow parrotfish,Sea surface temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Surface pH,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Rainbow parrotfish,Surface wind speed magnitude,Very High,Very High,Very High,Very High,12,12,FALSE,No change
-Red grouper,Bottom temperature,High,Low,Moderate,Low,6,2,TRUE,Lower
-Red grouper,Chlorophyll-a concentration,High,High,Moderate,Moderate,6,6,FALSE,No change
-Red grouper,Mixed layer depth,High,High,Moderate,Moderate,6,6,FALSE,No change
-Red grouper,Primary production,High,High,Moderate,Moderate,6,6,FALSE,No change
-Red grouper,Sea surface temperature,High,Low,Moderate,Low,6,2,TRUE,Lower
-Red grouper,Surface pH,High,Low,Moderate,Low,6,2,TRUE,Lower
-Red hind,Bottom temperature,High,Low,Moderate,Low,6,2,TRUE,Lower
-Red hind,Chlorophyll-a concentration,High,High,Moderate,Moderate,6,6,FALSE,No change
-Red hind,Mixed layer depth,High,High,Moderate,Moderate,6,6,FALSE,No change
-Red hind,Primary production,High,High,Moderate,Moderate,6,6,FALSE,No change
-Red hind,Sea surface temperature,High,Low,Moderate,Low,6,2,TRUE,Lower
-Red hind,Surface pH,High,Low,Moderate,Low,6,2,TRUE,Lower
+Rainbow parrotfish,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Thermocline depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red grouper,Bottom temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Red grouper,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red grouper,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red grouper,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red grouper,Sea surface temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Red grouper,Surface pH,Very High,High,Very High,High,12,9,TRUE,Lower
+Red grouper,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red grouper,Thermocline depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red hind,Bottom temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Red hind,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red hind,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red hind,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red hind,Sea surface temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Red hind,Surface pH,Very High,High,Very High,High,12,9,TRUE,Lower
+Red hind,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Red hind,Thermocline depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
 Sea cucumbers,Bottom salinity,Very High,Very High,High,High,8,8,FALSE,No change
-Sea cucumbers,Bottom temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
+Sea cucumbers,Bottom temperature,Very High,Very High,High,High,8,8,FALSE,No change
 Sea cucumbers,Chlorophyll-a concentration,Very High,Very High,High,High,8,8,FALSE,No change
 Sea cucumbers,Precipitation,Very High,Very High,High,High,8,8,FALSE,No change
 Sea cucumbers,Primary production,Very High,Very High,High,High,8,8,FALSE,No change
-Sea cucumbers,Sea surface oxygen,Very High,High,High,Moderate,8,6,TRUE,Lower
+Sea cucumbers,Sea surface oxygen,Very High,Very High,High,High,8,8,FALSE,No change
 Sea cucumbers,Sea surface salinity,Very High,Very High,High,High,8,8,FALSE,No change
-Sea cucumbers,Sea surface temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Sea cucumbers,Surface pH,Very High,High,High,Moderate,8,6,TRUE,Lower
+Sea cucumbers,Sea surface temperature,Very High,Very High,High,High,8,8,FALSE,No change
+Sea cucumbers,Surface pH,Very High,Very High,High,High,8,8,FALSE,No change
 Sea cucumbers,Surface wind speed magnitude,Very High,Very High,High,High,8,8,FALSE,No change
-Silk snapper,Bottom salinity,Low,Low,Low,Low,1,1,FALSE,No change
-Silk snapper,Bottom temperature,Low,Low,Low,Low,1,1,FALSE,No change
-Silk snapper,Chlorophyll-a concentration,Low,Low,Low,Low,1,1,FALSE,No change
-Silk snapper,Mean sea surface temperature gradient,Low,Low,Low,Low,1,1,FALSE,No change
-Silk snapper,Mixed layer depth,Low,Low,Low,Low,1,1,FALSE,No change
-Silk snapper,Oxygen at 200m,Low,Low,Low,Low,1,1,FALSE,No change
+Sea cucumbers,Sargassum influx,Very High,Very High,High,High,8,8,FALSE,No change
+Silk snapper,Bottom salinity,Moderate,Moderate,Moderate,Moderate,4,4,FALSE,No change
+Silk snapper,Bottom temperature,Moderate,Low,Moderate,Low,4,2,TRUE,Lower
+Silk snapper,Chlorophyll-a concentration,Moderate,Moderate,Moderate,Moderate,4,4,FALSE,No change
+Silk snapper,Mean sea surface temperature gradient,Moderate,Moderate,Moderate,Moderate,4,4,FALSE,No change
+Silk snapper,Mixed layer depth,Moderate,Moderate,Moderate,Moderate,4,4,FALSE,No change
+Silk snapper,Oxygen at 200m,Moderate,Low,Moderate,Low,4,2,TRUE,Lower
 Spiny lobster,Bottom salinity,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Spiny lobster,Bottom temperature,Very High,High,Moderate,Low,4,3,TRUE,Lower
+Spiny lobster,Bottom temperature,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
 Spiny lobster,Chlorophyll-a concentration,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
 Spiny lobster,Precipitation,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
 Spiny lobster,Primary production,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Spiny lobster,Sea surface oxygen,Very High,High,Moderate,Low,4,3,TRUE,Lower
+Spiny lobster,Sea surface oxygen,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
 Spiny lobster,Sea surface salinity,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Spiny lobster,Sea surface temperature,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Spiny lobster,Surface pH,Very High,High,Moderate,Low,4,3,TRUE,Lower
+Spiny lobster,Sea surface temperature,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Surface pH,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
 Spiny lobster,Surface wind speed magnitude,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Stoplight parrotfish,Bottom temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Stoplight parrotfish,Chlorophyll-a concentration,Very High,Very High,High,High,8,8,FALSE,No change
-Stoplight parrotfish,Mixed layer depth,Very High,Very High,High,High,8,8,FALSE,No change
-Stoplight parrotfish,Precipitation,Very High,Very High,High,High,8,8,FALSE,No change
-Stoplight parrotfish,Primary production,Very High,Very High,High,High,8,8,FALSE,No change
-Stoplight parrotfish,Sea surface oxygen,Very High,High,High,Moderate,8,6,TRUE,Lower
-Stoplight parrotfish,Sea surface salinity,Very High,Very High,High,High,8,8,FALSE,No change
-Stoplight parrotfish,Sea surface temperature,Very High,High,High,Moderate,8,6,TRUE,Lower
-Stoplight parrotfish,Surface pH,Very High,High,High,Moderate,8,6,TRUE,Lower
-Stoplight parrotfish,Surface wind speed magnitude,Very High,Very High,High,High,8,8,FALSE,No change
-White mullet,Chlorophyll-a concentration,Low,Low,Low,Low,1,1,FALSE,No change
-White mullet,Primary production,Low,Low,Low,Low,1,1,FALSE,No change
-White mullet,Sea surface oxygen,Low,Low,Low,Low,1,1,FALSE,No change
-Yellowfin grouper,Bottom temperature,High,Low,Moderate,Low,6,2,TRUE,Lower
-Yellowfin grouper,Chlorophyll-a concentration,High,High,Moderate,Moderate,6,6,FALSE,No change
-Yellowfin grouper,Mixed layer depth,High,High,Moderate,Moderate,6,6,FALSE,No change
-Yellowfin grouper,Primary production,High,High,Moderate,Moderate,6,6,FALSE,No change
-Yellowfin grouper,Sea surface temperature,High,Low,Moderate,Low,6,2,TRUE,Lower
-Yellowfin grouper,Surface pH,High,Low,Moderate,Low,6,2,TRUE,Lower
-Yellowtail snapper,Bottom temperature,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Yellowtail snapper,Chlorophyll-a concentration,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Yellowtail snapper,Mixed layer depth,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Yellowtail snapper,Precipitation,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Yellowtail snapper,Primary production,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Yellowtail snapper,Sea surface oxygen,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Yellowtail snapper,Sea surface salinity,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
-Yellowtail snapper,Sea surface temperature,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Yellowtail snapper,Surface pH,Very High,High,Moderate,Low,4,3,TRUE,Lower
-Yellowtail snapper,Surface wind speed magnitude,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Sargassum influx,Very High,Very High,Moderate,Moderate,4,4,FALSE,No change
+Stoplight parrotfish,Bottom temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Precipitation,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Sea surface oxygen,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Sea surface salinity,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Sea surface temperature,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Surface pH,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Surface wind speed magnitude,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Stoplight parrotfish,Thermocline depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+White mullet,Chlorophyll-a concentration,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+White mullet,Primary production,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+White mullet,Sea surface oxygen,Moderate,Low,Low,Low,2,1,FALSE,Lower
+White mullet,Sargassum influx,Moderate,Low,Low,Low,2,1,FALSE,Lower
+Yellowfin grouper,Bottom temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Yellowfin grouper,Chlorophyll-a concentration,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Yellowfin grouper,Mixed layer depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Yellowfin grouper,Primary production,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Yellowfin grouper,Sea surface temperature,Very High,High,Very High,High,12,9,TRUE,Lower
+Yellowfin grouper,Surface pH,Very High,High,Very High,High,12,9,TRUE,Lower
+Yellowfin grouper,Sargassum influx,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Yellowfin grouper,Thermocline depth,Very High,Very High,Very High,Very High,12,12,FALSE,No change
+Yellowtail snapper,Bottom temperature,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Chlorophyll-a concentration,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Mixed layer depth,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Precipitation,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Primary production,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Sea surface oxygen,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Sea surface salinity,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Sea surface temperature,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Surface pH,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Surface wind speed magnitude,Very High,Very High,High,High,8,8,FALSE,No change
+Yellowtail snapper,Sargassum influx,Very High,Very High,High,High,8,8,FALSE,No change

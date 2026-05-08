@@ -1,26 +1,26 @@
 stock_name,prop_L,prop_M,prop_H,prop_VH,dominant_rank,dominant_prop,borderline
-Atlantic thread herring,0.002,0.5709,0.4271,0,Moderate,0.5709,TRUE
-Ballyhoo,0.0047,0.5561,0.4392,0,Moderate,0.5561,TRUE
-Blue runner,0,0,1,0,High,1,FALSE
-Dolphinfish,0,0.1488,0.8512,0,High,0.8512,FALSE
-Gray angelfish,1,0,0,0,Low,1,FALSE
-Hogfish,0.9988,0.0012,0,0,Low,0.9988,FALSE
-King mackerel,0.0017,0.6882,0.3101,0,Moderate,0.6882,TRUE
-Lane snapper,0.0801,0.875,0.0449,0,Moderate,0.875,FALSE
-Long-spined sea urchin,0.6376,0.3624,0,0,Low,0.6376,TRUE
-Misty grouper,0.9654,0.0346,0,0,Low,0.9654,FALSE
-Mutton snapper,0.9113,0.0887,0,0,Low,0.9113,FALSE
-Nassau grouper,0.0016,0.9984,0,0,Moderate,0.9984,FALSE
-Queen conch,0.2642,0.7034,0.0324,0,Moderate,0.7034,TRUE
-Queen snapper,0.639,0.3584,0.0026,0,Low,0.639,TRUE
-Queen triggerfish,0.9968,0.0032,0,0,Low,0.9968,FALSE
-Rainbow parrotfish,0.9977,0.0023,0,0,Low,0.9977,FALSE
-Red grouper,0.4402,0.5595,3e-4,0,Moderate,0.5595,TRUE
-Red hind,0.0396,0.908,0.0524,0,Moderate,0.908,FALSE
-Sea cucumbers,1,0,0,0,Low,1,FALSE
-Silk snapper,0.0417,0.7063,0.252,0,Moderate,0.7063,TRUE
-Spiny lobster,0,0.2036,0.7964,0,High,0.7964,FALSE
-Stoplight parrotfish,0.8024,0.1976,0,0,Low,0.8024,FALSE
-White mullet,0.7189,0.2811,0,0,Low,0.7189,TRUE
-Yellowfin grouper,0.1238,0.8745,0.0017,0,Moderate,0.8745,FALSE
-Yellowtail snapper,0.4103,0.5897,0,0,Moderate,0.5897,TRUE
+Atlantic thread herring,0,0.0209,0.979,1e-4,High,0.979,FALSE
+Ballyhoo,0,0,0.9993,7e-4,High,0.9993,FALSE
+Blue runner,0,0,0.3155,0.6845,Very High,0.6845,TRUE
+Dolphinfish,0,9e-4,0.9949,0.0042,High,0.9949,FALSE
+Gray angelfish,0.9912,0.0088,0,0,Low,0.9912,FALSE
+Hogfish,0.6682,0.3318,0,0,Low,0.6682,TRUE
+King mackerel,0,0.0314,0.9686,0,High,0.9686,FALSE
+Lane snapper,0,0.5569,0.4431,0,Moderate,0.5569,TRUE
+Long-spined sea urchin,0.0611,0.6914,0.2475,0,Moderate,0.6914,TRUE
+Misty grouper,0.7793,0.2207,0,0,Low,0.7793,FALSE
+Mutton snapper,0.0059,0.8977,0.0964,0,Moderate,0.8977,FALSE
+Nassau grouper,0,0.9719,0.0281,0,Moderate,0.9719,FALSE
+Queen conch,0,0.0043,0.9957,0,High,0.9957,FALSE
+Queen snapper,0.0012,0.7063,0.2925,0,Moderate,0.7063,TRUE
+Queen triggerfish,0.9382,0.0618,0,0,Low,0.9382,FALSE
+Rainbow parrotfish,0.9125,0.0875,0,0,Low,0.9125,FALSE
+Red grouper,0.0035,0.9028,0.0937,0,Moderate,0.9028,FALSE
+Red hind,0,0.2763,0.7237,0,High,0.7237,TRUE
+Sea cucumbers,0.0626,0.9243,0.0131,0,Moderate,0.9243,FALSE
+Silk snapper,0,0.2757,0.7243,0,High,0.7243,TRUE
+Spiny lobster,0,0,0.9946,0.0054,High,0.9946,FALSE
+Stoplight parrotfish,0.3476,0.6512,0.0012,0,Moderate,0.6512,TRUE
+White mullet,0.2033,0.7896,0.0071,0,Moderate,0.7896,FALSE
+Yellowfin grouper,0.0035,0.9381,0.0584,0,Moderate,0.9381,FALSE
+Yellowtail snapper,0,0.43,0.57,0,High,0.57,TRUE

@@ -1,26 +1,26 @@
 stock_name,sensitivity_rank_repro,sensitivity_score_numeric_repro,exposure_rank_repro,exposure_score_numeric_repro,vulnerability_score_numeric_repro,vulnerability_rank_repro
 Atlantic thread herring,Low,1,High,3,3,Low
-Ballyhoo,Low,1,High,3,3,Low
-Blue runner,Low,1,Low,1,1,Low
-Dolphinfish,Low,1,Moderate,2,2,Low
-Gray angelfish,Moderate,2,Very High,4,8,High
-Hogfish,Moderate,2,Very High,4,8,High
-King mackerel,Low,1,Low,1,1,Low
+Ballyhoo,Low,1,Very High,4,4,Moderate
+Blue runner,Low,1,High,3,3,Low
+Dolphinfish,Low,1,High,3,3,Low
+Gray angelfish,High,3,Very High,4,12,Very High
+Hogfish,High,3,Very High,4,12,Very High
+King mackerel,Moderate,2,High,3,6,Moderate
 Lane snapper,Moderate,2,Very High,4,8,High
 Long-spined sea urchin,High,3,Very High,4,12,Very High
-Misty grouper,High,3,High,3,9,High
+Misty grouper,High,3,Very High,4,12,Very High
 Mutton snapper,High,3,Very High,4,12,Very High
-Nassau grouper,High,3,High,3,9,High
-Queen conch,Low,1,Very High,4,4,Moderate
-Queen snapper,Moderate,2,Low,1,2,Low
+Nassau grouper,High,3,Very High,4,12,Very High
+Queen conch,High,3,Very High,4,12,Very High
+Queen snapper,Moderate,2,Moderate,2,4,Moderate
 Queen triggerfish,Moderate,2,Very High,4,8,High
 Rainbow parrotfish,High,3,Very High,4,12,Very High
-Red grouper,Moderate,2,High,3,6,Moderate
-Red hind,Moderate,2,High,3,6,Moderate
+Red grouper,High,3,Very High,4,12,Very High
+Red hind,High,3,Very High,4,12,Very High
 Sea cucumbers,Moderate,2,Very High,4,8,High
-Silk snapper,Low,1,Low,1,1,Low
+Silk snapper,Moderate,2,Moderate,2,4,Moderate
 Spiny lobster,Low,1,Very High,4,4,Moderate
-Stoplight parrotfish,Moderate,2,Very High,4,8,High
-White mullet,Low,1,Low,1,1,Low
-Yellowfin grouper,Moderate,2,High,3,6,Moderate
-Yellowtail snapper,Low,1,Very High,4,4,Moderate
+Stoplight parrotfish,High,3,Very High,4,12,Very High
+White mullet,Low,1,Moderate,2,2,Low
+Yellowfin grouper,High,3,Very High,4,12,Very High
+Yellowtail snapper,Moderate,2,Very High,4,8,High

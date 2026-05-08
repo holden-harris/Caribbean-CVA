@@ -1,14 +1,16 @@
 factor_omitted,n_stocks_tested,n_rank_changed,n_rank_lower,n_rank_higher,prop_rank_changed
-Bottom temperature,19,17,17,0,0.895
-Sea surface temperature,22,17,19,0,0.773
-Surface pH,18,17,17,0,0.944
-Sea surface oxygen,18,12,14,0,0.667
+Bottom temperature,19,7,7,0,0.368
+Sea surface temperature,22,7,9,0,0.318
+Surface pH,18,6,6,0,0.333
+Oxygen at 200m,3,2,2,0,0.667
+Sea surface oxygen,18,2,5,0,0.111
 Bottom salinity,6,0,0,0,0
 Chlorophyll-a concentration,25,0,0,0,0
 Mean sea surface temperature gradient,2,0,0,0,0
 Mixed layer depth,19,0,0,0,0
-Oxygen at 200m,3,0,1,0,0
 Precipitation,15,0,0,0,0
 Primary production,23,0,0,0,0
-Sea surface salinity,14,0,1,0,0
+Sargassum influx,23,0,1,0,0
+Sea surface salinity,14,0,0,0,0
 Surface wind speed magnitude,16,0,0,0,0
+Thermocline depth,12,0,0,0,0

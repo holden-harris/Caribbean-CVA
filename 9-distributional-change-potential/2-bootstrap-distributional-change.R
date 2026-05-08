@@ -45,7 +45,7 @@ library(stringr)
 ##------------------------------------------------------------------------------
 ## Configuration — must match Script 1 and Module 8
 
-rank_threshold       <- 2       ## FCVA logic model threshold
+rank_threshold       <- 1       ## FCVA logic model threshold
 bootstrap_seed       <- 99      ## matches Module 8
 borderline_threshold <- 0.25    ## flag stocks where dominant prop < 0.75
 n_boot               <- 10000

@@ -1,15 +1,15 @@
 attribute_omitted,n_stocks_tested,n_rank_changed,n_rank_lower,n_rank_higher,prop_rank_changed
+Complexity in reproductive strategy,25,3,3,0,0.12
+Population growth rate,25,3,3,0,0.12
+Tolerance to ocean acidification,25,3,3,0,0.12
 Adult mobility,25,2,2,0,0.08
-Habitat specificity,25,2,2,0,0.08
 Spawning characteristics,25,2,2,0,0.08
-Complexity in reproductive strategy,25,1,1,0,0.04
-Mobility and dispersal or early life stages,25,1,1,0,0.04
+Stock size/status,25,2,2,0,0.08
+Genetic diversity,25,1,1,0,0.04
+Habitat specificity,25,1,1,0,0.04
+Other stressors,25,1,1,0,0.04
+Species range,25,1,1,0,0.04
 Specificity in early life history requirements,25,1,1,0,0.04
-Genetic diversity,25,0,0,0,0
-Other stressors,25,0,0,0,0
-Population growth rate,25,0,0,0,0
+Mobility and dispersal or early life stages,25,0,0,0,0
 Predation and competition dynamics,25,0,0,0,0
 Prey specificity,25,0,0,0,0
-Species range,25,0,0,0,0
-Stock size/status,25,0,0,0,0
-Tolerance to ocean acidification,25,0,0,0,0

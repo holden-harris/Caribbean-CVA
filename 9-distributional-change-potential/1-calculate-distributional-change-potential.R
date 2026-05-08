@@ -50,7 +50,7 @@ library(stringr)
 ## Configuration
 
 ## FCVA logic model threshold — must match Module 4 Script 3 and Module 8
-rank_threshold <- 2
+rank_threshold <- 1
 
 ## Exact attribute names as they appear in attribute_means_uscar.csv.
 ## If these strings do not match the CSV, the script halts with a clear error.
@@ -90,10 +90,10 @@ f_out        <- file.path(out_dir,      "distributional_change_potential_uscar.c
 ## Converts a vector of attribute mean scores (each 1–4) to a component rank
 ## and numeric score using the same cascading threshold rules as Modules 4 and 8.
 ##
-## With rank_threshold = 2 (attr_means_current):
-##   Very High: > 3 attribute means >= 3.5
-##   High:      > 2 attribute means >= 3.0
-##   Moderate:  > 2 attribute means >= 2.5
+## With rank_threshold = 1 (attr_means_current):
+##   Very High: 3 or more attribute means >= 3.5
+##   High:      2 or more attribute means >= 3.0
+##   Moderate:  2 or more attribute means >= 2.5
 ##   Low:       all other cases
 
 fcva_logic_model <- function(mean_scores, rank_threshold) {

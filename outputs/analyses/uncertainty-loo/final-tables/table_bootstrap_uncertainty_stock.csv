@@ -1,101 +1,101 @@
 stock_name,vuln_rank,n,prop,borderline
 Atlantic thread herring,High,0,0,FALSE
-Atlantic thread herring,Low,10000,1,FALSE
-Atlantic thread herring,Moderate,0,0,FALSE
+Atlantic thread herring,Low,9999,1,FALSE
+Atlantic thread herring,Moderate,1,0,FALSE
 Atlantic thread herring,Very High,0,0,FALSE
-Ballyhoo,High,0,0,FALSE
-Ballyhoo,Low,9981,0.998,FALSE
-Ballyhoo,Moderate,19,0.002,FALSE
+Ballyhoo,High,722,0.072,FALSE
+Ballyhoo,Low,0,0,FALSE
+Ballyhoo,Moderate,9278,0.928,FALSE
 Ballyhoo,Very High,0,0,FALSE
 Blue runner,High,0,0,FALSE
 Blue runner,Low,10000,1,FALSE
 Blue runner,Moderate,0,0,FALSE
 Blue runner,Very High,0,0,FALSE
 Dolphinfish,High,0,0,FALSE
-Dolphinfish,Low,10000,1,FALSE
-Dolphinfish,Moderate,0,0,FALSE
+Dolphinfish,Low,9996,1,FALSE
+Dolphinfish,Moderate,4,0,FALSE
 Dolphinfish,Very High,0,0,FALSE
-Gray angelfish,High,7662,0.766,FALSE
-Gray angelfish,Low,0,0,FALSE
-Gray angelfish,Moderate,7,0.001,FALSE
-Gray angelfish,Very High,2331,0.233,FALSE
-Hogfish,High,9441,0.944,FALSE
-Hogfish,Low,0,0,FALSE
-Hogfish,Moderate,42,0.004,FALSE
-Hogfish,Very High,517,0.052,FALSE
-King mackerel,High,0,0,FALSE
-King mackerel,Low,10000,1,FALSE
-King mackerel,Moderate,0,0,FALSE
+Gray angelfish,High,2771,0.277,TRUE
+Gray angelfish,Low,0,0,TRUE
+Gray angelfish,Moderate,0,0,TRUE
+Gray angelfish,Very High,7229,0.723,TRUE
+Hogfish,High,4854,0.485,TRUE
+Hogfish,Low,0,0,TRUE
+Hogfish,Moderate,1,0,TRUE
+Hogfish,Very High,5145,0.514,TRUE
+King mackerel,High,177,0.018,FALSE
+King mackerel,Low,110,0.011,FALSE
+King mackerel,Moderate,9713,0.971,FALSE
 King mackerel,Very High,0,0,FALSE
-Lane snapper,High,9916,0.992,FALSE
+Lane snapper,High,9281,0.928,FALSE
 Lane snapper,Low,0,0,FALSE
-Lane snapper,Moderate,37,0.004,FALSE
-Lane snapper,Very High,47,0.005,FALSE
-Long-spined sea urchin,High,567,0.057,FALSE
+Lane snapper,Moderate,0,0,FALSE
+Lane snapper,Very High,719,0.072,FALSE
+Long-spined sea urchin,High,21,0.002,FALSE
 Long-spined sea urchin,Low,0,0,FALSE
 Long-spined sea urchin,Moderate,0,0,FALSE
-Long-spined sea urchin,Very High,9433,0.943,FALSE
-Misty grouper,High,9901,0.99,FALSE
+Long-spined sea urchin,Very High,9979,0.998,FALSE
+Misty grouper,High,0,0,FALSE
 Misty grouper,Low,0,0,FALSE
 Misty grouper,Moderate,0,0,FALSE
-Misty grouper,Very High,99,0.01,FALSE
-Mutton snapper,High,1944,0.194,FALSE
+Misty grouper,Very High,10000,1,FALSE
+Mutton snapper,High,27,0.003,FALSE
 Mutton snapper,Low,0,0,FALSE
 Mutton snapper,Moderate,0,0,FALSE
-Mutton snapper,Very High,8056,0.806,FALSE
-Nassau grouper,High,10000,1,FALSE
+Mutton snapper,Very High,9973,0.997,FALSE
+Nassau grouper,High,0,0,FALSE
 Nassau grouper,Low,0,0,FALSE
 Nassau grouper,Moderate,0,0,FALSE
-Nassau grouper,Very High,0,0,FALSE
-Queen conch,High,3726,0.373,TRUE
-Queen conch,Low,0,0,TRUE
-Queen conch,Moderate,6272,0.627,TRUE
-Queen conch,Very High,2,0,TRUE
+Nassau grouper,Very High,10000,1,FALSE
+Queen conch,High,0,0,FALSE
+Queen conch,Low,0,0,FALSE
+Queen conch,Moderate,0,0,FALSE
+Queen conch,Very High,10000,1,FALSE
 Queen snapper,High,0,0,FALSE
-Queen snapper,Low,10000,1,FALSE
-Queen snapper,Moderate,0,0,FALSE
+Queen snapper,Low,0,0,FALSE
+Queen snapper,Moderate,10000,1,FALSE
 Queen snapper,Very High,0,0,FALSE
-Queen triggerfish,High,9175,0.917,FALSE
+Queen triggerfish,High,9352,0.935,FALSE
 Queen triggerfish,Low,0,0,FALSE
-Queen triggerfish,Moderate,792,0.079,FALSE
-Queen triggerfish,Very High,33,0.003,FALSE
-Rainbow parrotfish,High,10,0.001,FALSE
+Queen triggerfish,Moderate,57,0.006,FALSE
+Queen triggerfish,Very High,591,0.059,FALSE
+Rainbow parrotfish,High,1,0,FALSE
 Rainbow parrotfish,Low,0,0,FALSE
 Rainbow parrotfish,Moderate,0,0,FALSE
-Rainbow parrotfish,Very High,9990,0.999,FALSE
-Red grouper,High,1906,0.191,FALSE
+Rainbow parrotfish,Very High,9999,1,FALSE
+Red grouper,High,2088,0.209,FALSE
 Red grouper,Low,0,0,FALSE
-Red grouper,Moderate,8094,0.809,FALSE
-Red grouper,Very High,0,0,FALSE
-Red hind,High,335,0.034,FALSE
-Red hind,Low,429,0.043,FALSE
-Red hind,Moderate,9236,0.924,FALSE
-Red hind,Very High,0,0,FALSE
-Sea cucumbers,High,7708,0.771,FALSE
-Sea cucumbers,Low,0,0,FALSE
-Sea cucumbers,Moderate,0,0,FALSE
-Sea cucumbers,Very High,2292,0.229,FALSE
+Red grouper,Moderate,0,0,FALSE
+Red grouper,Very High,7912,0.791,FALSE
+Red hind,High,0,0,FALSE
+Red hind,Low,0,0,FALSE
+Red hind,Moderate,0,0,FALSE
+Red hind,Very High,10000,1,FALSE
+Sea cucumbers,High,3006,0.301,TRUE
+Sea cucumbers,Low,0,0,TRUE
+Sea cucumbers,Moderate,0,0,TRUE
+Sea cucumbers,Very High,6994,0.699,TRUE
 Silk snapper,High,0,0,FALSE
-Silk snapper,Low,10000,1,FALSE
-Silk snapper,Moderate,0,0,FALSE
+Silk snapper,Low,2354,0.235,FALSE
+Silk snapper,Moderate,7646,0.765,FALSE
 Silk snapper,Very High,0,0,FALSE
-Spiny lobster,High,10,0.001,FALSE
-Spiny lobster,Low,0,0,FALSE
-Spiny lobster,Moderate,9990,0.999,FALSE
-Spiny lobster,Very High,0,0,FALSE
-Stoplight parrotfish,High,7607,0.761,FALSE
-Stoplight parrotfish,Low,0,0,FALSE
-Stoplight parrotfish,Moderate,0,0,FALSE
-Stoplight parrotfish,Very High,2393,0.239,FALSE
-White mullet,High,0,0,FALSE
-White mullet,Low,10000,1,FALSE
-White mullet,Moderate,0,0,FALSE
-White mullet,Very High,0,0,FALSE
-Yellowfin grouper,High,3459,0.346,TRUE
-Yellowfin grouper,Low,0,0,TRUE
-Yellowfin grouper,Moderate,6541,0.654,TRUE
-Yellowfin grouper,Very High,0,0,TRUE
-Yellowtail snapper,High,3035,0.304,TRUE
+Spiny lobster,High,3885,0.388,TRUE
+Spiny lobster,Low,0,0,TRUE
+Spiny lobster,Moderate,6103,0.61,TRUE
+Spiny lobster,Very High,12,0.001,TRUE
+Stoplight parrotfish,High,2703,0.27,TRUE
+Stoplight parrotfish,Low,0,0,TRUE
+Stoplight parrotfish,Moderate,0,0,TRUE
+Stoplight parrotfish,Very High,7297,0.73,TRUE
+White mullet,High,0,0,TRUE
+White mullet,Low,3226,0.323,TRUE
+White mullet,Moderate,6774,0.677,TRUE
+White mullet,Very High,0,0,TRUE
+Yellowfin grouper,High,1283,0.128,FALSE
+Yellowfin grouper,Low,0,0,FALSE
+Yellowfin grouper,Moderate,0,0,FALSE
+Yellowfin grouper,Very High,8717,0.872,FALSE
+Yellowtail snapper,High,7101,0.71,TRUE
 Yellowtail snapper,Low,0,0,TRUE
-Yellowtail snapper,Moderate,6965,0.697,TRUE
+Yellowtail snapper,Moderate,2899,0.29,TRUE
 Yellowtail snapper,Very High,0,0,TRUE
