@@ -1,12 +1,12 @@
 # Caribbean-CVA
 
-> **Summary:** This repository contains the complete analytical pipeline for a NOAA Fisheries Climate Vulnerability Assessment (CVA) of 25 fish and invertebrate stocks managed in the U.S. Caribbean, following the NOAA Fisheries Climate Vulnerability Assessment framework. This workflow includes processing oceanographic projections and IUCN species ranges (Modules 1–2), expert reviewer workbook extraction and synthesis (Modules 3–7), uncertainty analyses via bootstrap resampling and leave-one-out re-analyses (Module 8), potential for distributional change analysis (Module 9), and publication figure generation (Module 10).
+**Summary:** This repository contains the complete analytical pipeline for a NOAA Fisheries Climate Vulnerability Assessment (CVA) of 25 fish and invertebrate stocks managed in the U.S. Caribbean, following the NOAA Fisheries Climate Vulnerability Assessment framework. This workflow includes processing oceanographic projections and IUCN species ranges (Modules 1–2), expert reviewer workbook extraction and synthesis (Modules 3–7), uncertainty analyses via bootstrap resampling and leave-one-out re-analyses (Module 8), potential for distributional change analysis (Module 9), and publication figure generation (Module 10).
 
 All data syntheses and analyses are in R. Final figures and ranked scores are written to `figures/` and `outputs/final-scores-compiled/`.
 
 **To run the full pipeline:** open `Caribbean-CVA.Rproj` in RStudio and source `run-all.R` from the project root. This runs all analysis scripts (Modules 4–9) in dependency order, then all figure scripts (Module 10).
 
-All code and materials were developed by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/), and are available under an open-access license, as per the Creative Commons CC0 1.0 license.  We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work.
+All code and materials were developed by Harris Analytics & Research LLC in support of [Isla Mar 501c3](https://www.islamar.org/), and are available under an open-access license, as per the Creative Commons CC0 1.0 license. 
 
 ## Shared Configuration (`config.R`)
 
@@ -458,7 +458,7 @@ Calculates each stock's potential for distributional shift under changing enviro
 | Mobility and dispersal or early life stages | Inverted |
 | Species range | Not inverted (analog for Sensitivity to Temperature) |
 
-> **Open decision:** `Species range` substitutes for "Sensitivity to Temperature" used in prior CVAs. Confirm with the project lead before finalizing. See `9-distributional-change-potential/ReadMe.md` for rationale and alternatives.
+> **Open decision:** `Species range` substitutes for "Sensitivity to Temperature" used in prior CVAs. See `9-distributional-change-potential/ReadMe.md` for rationale and alternatives.
 
 #### Script 1 — Baseline DCP scores
 
@@ -466,7 +466,7 @@ Reads `attribute_means_uscar.csv`, applies inversion, and applies the FCVA logic
 
 #### Script 2 — Bootstrap uncertainty
 
-Mirrors Module 8: builds 20-vote draw piles from `sensitivity_tallies_long.csv` (swapping tally counts for inverted attributes), runs a baseline reproduction gate, then executes 10,000 bootstrap iterations with `bootstrap_seed = 99`. Stocks are flagged borderline if the dominant rank accounts for fewer than 75% of iterations.
+Mirrors Module 8: builds 20-vote draw piles from `sensitivity_tallies_long.csv` (swapping tally counts for inverted attributes), runs a baseline reproduction gate, then executes 10,000 bootstrap iterations with `bootstrap_seed = 99`. Stocks are flagged borderline if the dominant rank accounts for fewer than 75% of iterations. 
 
 **Reads from:**
 - `outputs/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv`
@@ -648,6 +648,8 @@ Up to 15 exposure factors are evaluated per stock — 13 quantitative factors de
 ---
 
 ## Acknowledgements
+
+We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work.
 
 **References:**
 
