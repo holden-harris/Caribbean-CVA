@@ -14,16 +14,16 @@ The project is organized into eleven numbered workflow modules. Each module has 
 
 | Module | Folder | Purpose | Key outputs |
 |--------|--------|---------|-------------|
-| 0 | `0-query-species-attributes-from-FishBase/` | Query biological traits and life-history attributes from FishBase via the `rfishbase` R package | `fishbase_species_attributes.csv` |
-| 1 | `1-make-species-distribution-maps/` | Generate standardized PNG distribution maps for all 25 species from IUCN shapefiles | `outputs/disbribution-maps/*.png` |
-| 2 | `2-exposure-anomalies/` | Calculate CMIP6-based standardized anomaly maps; produce 12-panel exposure-overlap figures reviewed by CVA experts; extract quantitative exposure scores | `outputs/exposure-overlap-12panel/`, `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` |
-| 3 | `3-prelim-sensitivity-attribute-scoring/` | Extract and summarize preliminary sensitivity-attribute tallies from pre-workshop reviewer workbooks; generate per-stock LMHV summary plots for workshop preparation | `data/preliminary-scores/score_table_all.csv`, `outputs/prework/` |
-| 4 | `4-final-attribute-exposure-scoring/` | Extract final reviewer scores, calculate attribute means, apply NOAA FCVA logic model to produce stock-level sensitivity, exposure, and overall vulnerability scores | `outputs/final-scores-compiled/overall-vulnerability-rankings/` |
-| 5 | `5-final-directional-effect-scoring/` | Extract directional-effect tallies (Positive / Neutral / Negative) from final workbooks; calculate stock-level directional-effect index | `outputs/final-scores-compiled/directional-effect/directional_effect_summary_by-stock.csv` |
-| 6 | `6-final-data-quality-scoring/` | Extract reviewer data-quality scores (0–3) for each attribute; summarize and rank overall data quality per stock | `outputs/final-scores-compiled/data-quality/overall_data_quality_summary_by_stock.csv` |
-| 7 | `7-scoring-distributions/` | Extract LMHV tally distributions from final workbooks; finalize long-format tally tables for uncertainty analysis and figures | `outputs/final-tallies-long/` |
-| 8 | `8-uncertainty-analysis/` | Bootstrap resampling and leave-one-out influence analyses; quantify statistical robustness of final vulnerability rankings | `outputs/analyses/uncertainty-loo/` |
-| 9 | `9-distributional-change-potential/` | Calculate each stock's potential for distributional shift using four sensitivity attributes; bootstrap uncertainty via draw-pile resampling | `outputs/distribution-change-potential/` |
+| 0 | `00-query-species-attributes-from-FishBase/` | Query biological traits and life-history attributes from FishBase via the `rfishbase` R package | `fishbase_species_attributes.csv` |
+| 1 | `01-make-species-distribution-maps/` | Generate standardized PNG distribution maps for all 25 species from IUCN shapefiles | `outputs/disbribution-maps/*.png` |
+| 2 | `02-exposure-anomalies/` | Calculate CMIP6-based standardized anomaly maps; produce 12-panel exposure-overlap figures reviewed by CVA experts; extract quantitative exposure scores | `outputs/exposure-overlap-12panel/`, `outputs/final-scores-compiled/quantitative-exposure-attribute-scores-all.csv` |
+| 3 | `03-prelim-sensitivity-attribute-scoring/` | Extract and summarize preliminary sensitivity-attribute tallies from pre-workshop reviewer workbooks; generate per-stock LMHV summary plots for workshop preparation | `data/preliminary-scores/score_table_all.csv`, `outputs/prework/` |
+| 4 | `04-final-attribute-exposure-scoring/` | Extract final reviewer scores, calculate attribute means, apply NOAA FCVA logic model to produce stock-level sensitivity, exposure, and overall vulnerability scores | `outputs/final-scores-compiled/overall-vulnerability-rankings/` |
+| 5 | `05-final-directional-effect-scoring/` | Extract directional-effect tallies (Positive / Neutral / Negative) from final workbooks; calculate stock-level directional-effect index | `outputs/final-scores-compiled/directional-effect/directional_effect_summary_by-stock.csv` |
+| 6 | `06-final-data-quality-scoring/` | Extract reviewer data-quality scores (0–3) for each attribute; summarize and rank overall data quality per stock | `outputs/final-scores-compiled/data-quality/overall_data_quality_summary_by_stock.csv` |
+| 7 | `07-scoring-distributions/` | Extract LMHV tally distributions from final workbooks; finalize long-format tally tables for uncertainty analysis and figures | `outputs/final-tallies-long/` |
+| 8 | `08-uncertainty-analysis/` | Bootstrap resampling and leave-one-out influence analyses; quantify statistical robustness of final vulnerability rankings | `outputs/analyses/uncertainty-loo/` |
+| 9 | `09-distributional-change-potential/` | Calculate each stock's potential for distributional shift using four sensitivity attributes; bootstrap uncertainty via draw-pile resampling | `outputs/distribution-change-potential/` |
 | 10 | `10-figures/` | Produce all publication figures from analysis outputs (Modules 4–9); no new data are generated here | `figures/fig_*.png` (all 11 publication figures) |
 
 ---
@@ -60,49 +60,49 @@ Caribbean-CVA/
 │                                                        #   colors, stock name recode, display labels)
 ├── run-all.R                                            # Master orchestration: Phase 1 analyses → Phase 2 figures
 │
-├── 0-query-species-attributes-from-FishBase/
+├── 00-query-species-attributes-from-FishBase/
 │   ├── Query-species-attributes-from-FishBase.R
 │   └── ReadMe.md
 │
-├── 1-make-species-distribution-maps/
+├── 01-make-species-distribution-maps/
 │   ├── Make-species-distribution-maps.R
 │   └── ReadMe.md
 │
-├── 2-exposure-anomalies/
+├── 02-exposure-anomalies/
 │   ├── Exposure-anomalies.R
 │   └── ReadMe.md
 │
-├── 3-prelim-sensitivity-attribute-scoring/
+├── 03-prelim-sensitivity-attribute-scoring/
 │   ├── 1-extract-scores.R
 │   ├── 2-prework-scoring-summaries.R
 │   └── ReadMe.md
 │
-├── 4-final-attribute-exposure-scoring/
+├── 04-final-attribute-exposure-scoring/
 │   ├── 1-extract-final-scores-from-all-reviewers.R
 │   ├── 2-summarize-attribute-scores.R
 │   ├── 3-calculate-overall-vulnerability-scores.R
 │   └── ReadMe.MD
 │
-├── 5-final-directional-effect-scoring/
+├── 05-final-directional-effect-scoring/
 │   ├── 1-extract-directional-effect.R
 │   ├── 2-summarize-directional-effect.R
 │   └── ReadMe.MD
 │
-├── 6-final-data-quality-scoring/
+├── 06-final-data-quality-scoring/
 │   ├── 1-extract-data-quality-scores.R
 │   ├── 2-summarize-data-quality-scores.R
 │   └── ReadMe.md
 │
-├── 7-scoring-distributions/
+├── 07-scoring-distributions/
 │   ├── 1-extract-tally-scores.R
 │   ├── 2-finalize-tally-tables.R
 │   └── ReadMe.md
 │
-├── 8-uncertainty-analysis/
+├── 08-uncertainty-analysis/
 │   ├── uncertainty-analyses.R
 │   └── ReadMe.MD
 │
-├── 9-distributional-change-potential/
+├── 09-distributional-change-potential/
 │   ├── 1-calculate-distributional-change-potential.R
 │   ├── 2-bootstrap-distributional-change.R
 │   └── ReadMe.md
@@ -288,7 +288,7 @@ The diagram below shows the key file dependencies across modules. Modules in **b
 
 ### Module 0 — Query Species Attributes from FishBase
 
-**Script:** `0-query-species-attributes-from-FishBase/Query-species-attributes-from-FishBase.R`
+**Script:** `00-query-species-attributes-from-FishBase/Query-species-attributes-from-FishBase.R`
 
 Queries biological traits and life-history parameters from [FishBase](https://www.fishbase.org) using the [`rfishbase`](https://github.com/ropensci/rfishbase) R package. Reads a `species-list.csv` with scientific names and retrieves species summaries, growth parameters (Von Bertalanffy K and L∞), reproductive mode, trophic level, and depth range. Outputs a single compiled `fishbase_species_attributes.csv`. Results are used as reference material during expert scoring.
 
@@ -296,7 +296,7 @@ Queries biological traits and life-history parameters from [FishBase](https://ww
 
 ### Module 1 — Make Species Distribution Maps
 
-**Script:** `1-make-species-distribution-maps/Make-species-distribution-maps.R`
+**Script:** `01-make-species-distribution-maps/Make-species-distribution-maps.R`
 
 Loops through all species shapefiles in `data/species-distribution-shapefiles/` and produces standardized PNG distribution maps within a Caribbean bounding box (6°N–27.8°N, 92°W–57°W). All 25 maps use consistent symbology. Outputs are saved to `outputs/disbribution-maps/` (one PNG per species).
 
@@ -304,7 +304,7 @@ Loops through all species shapefiles in `data/species-distribution-shapefiles/` 
 
 ### Module 2 — Exposure Anomalies
 
-**Script:** `2-exposure-anomalies/Exposure-anomalies.R`
+**Script:** `02-exposure-anomalies/Exposure-anomalies.R`
 
 Synthesizes CMIP6 multi-model ensemble projections with IUCN species range polygons to produce per-species, per-exposure-factor overlap analyses at three geographic scales (Western Atlantic, Caribbean Sea, U.S. Caribbean). Produces a 12-panel exposure-overlap figure for every stock × exposure factor combination (25 species × 13 factors = 325 figures) for expert review.
 
@@ -316,7 +316,7 @@ Also calculates and exports quantitative exposure scores as a weighted average (
 
 ### Module 3 — Preliminary Sensitivity Attribute Scoring
 
-**Scripts:** `3-prelim-sensitivity-attribute-scoring/1-extract-scores.R`, `2-prework-scoring-summaries.R`
+**Scripts:** `03-prelim-sensitivity-attribute-scoring/1-extract-scores.R`, `2-prework-scoring-summaries.R`
 
 Reads preliminary reviewer workbooks from `data/preliminary-scores/` and compiles LMHV tally scores into a master table. Calculates HMS-style weighted means and standard deviations per stock × attribute, and generates per-species stacked-bar panel plots (multi-page PDF) for use in reviewer orientation and pre-workshop preparation.
 
@@ -330,7 +330,7 @@ Reads preliminary reviewer workbooks from `data/preliminary-scores/` and compile
 
 ### Module 4 — Final Attribute and Exposure Scoring
 
-**Scripts:** `4-final-attribute-exposure-scoring/1-extract-final-scores-from-all-reviewers.R`, `2-summarize-attribute-scores.R`, `3-calculate-overall-vulnerability-scores.R`
+**Scripts:** `04-final-attribute-exposure-scoring/1-extract-final-scores-from-all-reviewers.R`, `2-summarize-attribute-scores.R`, `3-calculate-overall-vulnerability-scores.R`
 
 The core vulnerability scoring workflow. Extracts final reviewer-entered scores from completed workbooks, combines them with quantitative exposure scores from Module 2, and applies the NOAA FCVA logic model to assign overall sensitivity, exposure, and vulnerability ranks.
 
@@ -363,7 +363,7 @@ Calculates attribute-level mean scores, applies the FCVA logic model to assign s
 
 ### Module 5 — Final Directional Effect Scoring
 
-**Scripts:** `5-final-directional-effect-scoring/1-extract-directional-effect.R`, `2-summarize-directional-effect.R`
+**Scripts:** `05-final-directional-effect-scoring/1-extract-directional-effect.R`, `2-summarize-directional-effect.R`
 
 Extracts reviewer directional-effect tallies (Positive / Neutral / Negative, rows 38–40, column M) from final workbooks. Four reviewers × 4 tallies per stock = 16 expected total tallies per stock. Calculates a stock-level directional-effect index as:
 
@@ -377,7 +377,7 @@ Classification thresholds: ≤ −0.333 = Negative, −0.333 to +0.333 = Neutral
 
 ### Module 6 — Final Data Quality Scoring
 
-**Scripts:** `6-final-data-quality-scoring/1-extract-data-quality-scores.R`, `2-summarize-data-quality-scores.R`
+**Scripts:** `06-final-data-quality-scoring/1-extract-data-quality-scores.R`, `2-summarize-data-quality-scores.R`
 
 Extracts reviewer-assigned data-quality scores (0–3) from the final workbooks for each attribute and stock. Scores reflect the quality of the evidence underlying each attribute rating:
 
@@ -396,7 +396,7 @@ Overall data quality per stock is ranked by the proportion of scores ≥ 2: High
 
 ### Module 7 — Scoring Distributions
 
-**Scripts:** `7-scoring-distributions/1-extract-tally-scores.R`, `2-finalize-tally-tables.R`
+**Scripts:** `07-scoring-distributions/1-extract-tally-scores.R`, `2-finalize-tally-tables.R`
 
 Extracts the full LMHV tally distributions from the final reviewer workbooks. Unlike Module 4 (which uses final reviewer-entered scores), this module reads the tally columns (columns M–P) to capture the full distribution of reviewer votes across the four ordinal bins. Figures from these tables are produced by Module 10 Script 1.
 
@@ -414,7 +414,7 @@ Recodes stock names to canonical form (see Stock Name Normalization below), bind
 
 ### Module 8 — Uncertainty Analysis
 
-**Script:** `8-uncertainty-analysis/uncertainty-analyses.R`
+**Script:** `08-uncertainty-analysis/uncertainty-analyses.R`
 
 Quantifies the statistical robustness of the final CVA vulnerability rankings using two complementary analyses following FCVA methods. Figures from these outputs are produced by Module 10 Script 2.
 
@@ -445,7 +445,7 @@ As a QA step, `uncertainty-analyses.R` reproduces all 25 baseline vulnerability 
 
 ### Module 9 — Potential for Distributional Change
 
-**Scripts:** `9-distributional-change-potential/1-calculate-distributional-change-potential.R`, `2-bootstrap-distributional-change.R`
+**Scripts:** `09-distributional-change-potential/1-calculate-distributional-change-potential.R`, `2-bootstrap-distributional-change.R`
 
 Calculates each stock's potential for distributional shift under changing environmental conditions, following the methodology of prior NOAA CVAs (HMS: Loughran et al. 2025; South Atlantic: Craig et al. 2025; GoM: Quinlan et al. 2023). Four sensitivity attributes are used; three movement-related attributes are inverted (`5 − mean`) before the FCVA logic model is applied. Figures from these outputs are produced by Module 10 Script 3.
 
@@ -458,7 +458,7 @@ Calculates each stock's potential for distributional shift under changing enviro
 | Mobility and dispersal or early life stages | Inverted |
 | Species range | Not inverted (analog for Sensitivity to Temperature) |
 
-> **Open decision:** `Species range` substitutes for "Sensitivity to Temperature" used in prior CVAs. See `9-distributional-change-potential/ReadMe.md` for rationale and alternatives.
+> **Open decision:** `Species range` substitutes for "Sensitivity to Temperature" used in prior CVAs. See `09-distributional-change-potential/ReadMe.md` for rationale and alternatives.
 
 #### Script 1 — Baseline DCP scores
 
@@ -527,8 +527,8 @@ The table below lists the files consumed by more than one module.
 | `attribute_means_uscar.csv` | Module 4 Script 3 | Module 8, Module 9 Script 1, Module 10 Scripts 1 & 4 | `stock_name`, `attribute_type`, `score_type`, `attribute_name`, `attribute_mean` |
 | `overall_vulnerability_scores_uscar.csv` | Module 4 Script 3 | Module 8, Module 10 Scripts 3 & 4 | `stock_name`, `Exp_score`, `Exp_rank`, `Sens_score`, `Sens_rank`, `Vuln_score`, `Vuln_rank` |
 | `data/exposure-factor-filter-long.csv` | Module 4 Script 3 | Module 8, Module 10 Script 1 | `stock_name`, `attribute_name`, `include` (TRUE/FALSE) |
-| `directional_effect_summary_by-stock.csv` | Module 5 | Module 10 Script 1 | `stock_name`, `Positive`, `Neutral`, `Negative`, `wt_avg`, `directional_effect` |
-| `overall_data_quality_summary_by_stock.csv` | Module 6 | Module 10 Script 4 | `stock_name`, `prop_ge_2`, `data_quality_rank` |
+| `directional_effect_summary_by-stock.csv` | Module 5 | Not consumed downstream (standalone supplementary output) | `stock_name`, `Positive`, `Neutral`, `Negative`, `wt_avg`, `directional_effect` |
+| `overall_data_quality_summary_by_stock.csv` | Module 6 | Not consumed downstream (standalone supplementary output) | `stock_name`, `prop_ge_2`, `data_quality_rank` |
 | `sensitivity_tallies_long.csv` | Module 7 Script 2 | Module 8, Module 9 Script 2, Module 10 Script 1 | `reviewer_id`, `stock_name`, `attribute_name`, `tally_L`, `tally_M`, `tally_H`, `tally_VH` |
 | `directional_effect_tallies_long.csv` | Module 7 Script 2 | Module 8 | `reviewer_id`, `stock_name`, `effect_category`, `tally` |
 | `directional_effect_tallies_by_stock.csv` | Module 7 Script 2 | Module 10 Script 4 | `stock_name`, `tally_neg`, `tally_neut`, `tally_pos`, `n_tallies` |
