@@ -49,6 +49,27 @@ Scripts with intentionally different palettes define local overrides that shadow
 
 To change the logic model or threshold, edit the relevant constant in `config.R` and re-run `run-all.R`. No individual script needs to be touched.
 
+### Adjustable logic model for overall vulnerability
+
+The `rank_threshold` constant controls how many attributes must exceed each score cutoff before a Sensitivity or Exposure component is assigned a given rank. It is applied identically in Modules 04, 08, and 09. The logic model evaluates each condition in order; the first condition met wins:
+
+| Condition | Score cutoff | Attributes required (at `rank_threshold = 1`) | Component rank |
+|---|---|---|---|
+| `n_attrs with mean ≥ 3.5  >  rank_threshold + 1` | ≥ 3.5 | ≥ 3 | Very High |
+| `n_attrs with mean ≥ 3.0  >  rank_threshold`     | ≥ 3.0 | ≥ 2 | High |
+| `n_attrs with mean ≥ 2.5  >  rank_threshold`     | ≥ 2.5 | ≥ 2 | Moderate |
+| Otherwise | — | 0 or 1 attribute meets any threshold | Low |
+
+The default value of `1` matches the standard NOAA FCVA methodology. Changing it shifts every rank boundary uniformly:
+
+| `rank_threshold` | Model character | Very High requires | High / Moderate require |
+|---|---|---|---|
+| `0L` | More permissive | ≥ 2 attributes with mean ≥ 3.5 | ≥ 1 attribute at respective cutoff |
+| `1L` | **Standard NOAA FCVA (current)** | ≥ 3 attributes with mean ≥ 3.5 | ≥ 2 attributes at respective cutoff |
+| `2L` | More restrictive | ≥ 4 attributes with mean ≥ 3.5 | ≥ 3 attributes at respective cutoff |
+
+To apply a different threshold, change `rank_threshold` in `config.R` and re-run `run-all.R` to propagate updated ranks through all analyses and figures.
+
 ---
 
 ## Directory Structure
