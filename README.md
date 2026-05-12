@@ -668,7 +668,7 @@ Up to 15 exposure factors are evaluated per stock — 13 quantitative factors de
 
 ## Acknowledgements
 
-We thank Dan Crear (ICATTC) and Tyler Loughran (NOAA) for their assistance in this work.
+We thank Tyler Loughran (NOAA) and Dan Crear (ICATTC) for their assistance in this work.
 
 **References:**
 
