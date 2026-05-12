@@ -6,11 +6,35 @@
 ################################################################################
 
 ## --- FCVA Logic Model ---------------------------------------------------------
+##
+## rank_threshold sets the minimum number of attributes that must meet each score
+## cutoff before a component rank of Moderate or higher is assigned. It is applied
+## per stock × component (Sensitivity and Exposure) in Modules 04, 08, and 09.
+##
+## Logic model (from 04-final-attribute-exposure-scoring/3-calculate-overall-vulnerability-scores.R):
+##   Very High : n attributes with mean ≥ 3.5  >  rank_threshold + 1
+##   High      : n attributes with mean ≥ 3.0  >  rank_threshold
+##   Moderate  : n attributes with mean ≥ 2.5  >  rank_threshold
+##   Low       : otherwise (evaluated in order; first condition met wins)
+##
+## Current setting — rank_threshold = 1 (standard NOAA FCVA model):
+##   Very High  →  ≥ 3 attributes with mean ≥ 3.5
+##   High       →  ≥ 2 attributes with mean ≥ 3.0
+##   Moderate   →  ≥ 2 attributes with mean ≥ 2.5
+##   Low        →  0 or 1 attribute meeting any threshold above
+##
+## To apply a more restrictive model (fewer High / Very High outcomes):
+##   rank_threshold <- 2L  →  Very High ≥ 4 attrs; High / Moderate ≥ 3 attrs
+##
+## To apply a more permissive model (more High / Very High outcomes):
+##   rank_threshold <- 0L  →  Very High ≥ 2 attrs; High / Moderate ≥ 1 attr
+##
+## After changing rank_threshold, re-run the full pipeline (run-all.R) to
+## propagate updated ranks through all analyses and figures.
 
-rank_threshold    <- 1L   # n attrs above cutoff required for Moderate/High rank;
-                          # Very High requires rank_threshold + 2
-dir_eff_threshold <- 1/3  # |weighted mean| cutoff for Neg/Pos directional classification
-borderline_prop   <- 0.75 # bootstrap dominant-rank prop below which a stock is borderline
+rank_threshold    <- 1L
+dir_eff_threshold <- 1/3  ## |weighted mean| cutoff for Neg/Pos directional classification
+borderline_prop   <- 0.75 ## bootstrap dominant-rank prop below which a stock is borderline
 
 ## --- Bootstrap certainty bins -------------------------------------------------
 
@@ -26,6 +50,9 @@ rank_levels <- c("Low", "Moderate", "High", "Very High")
 ## Scripts with intentionally different palettes define local overrides:
 ##   10-figures/1-plot-scoring-distributions.R  uses lighter tally-bar colors
 ##   10-figures/4-plot-overall-vulnerability.R  uses hex vuln_colors for the tile grid
+##   These colors allow white and black writing to show. The local colors use brighter 
+##   and oranges where the white doesn't show up. 
+
 rank_colors <- c(
   "Low"       = "green3",
   "Moderate"  = "yellow2",
