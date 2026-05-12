@@ -1,27 +1,26 @@
-,,Overall Ranks,,,Bootstrap Results,,,,,,,
-Stock,N Exp factors,Exp,Sens,Vul,L,M,H,VH,,,,
-Diadema,11,VH,H,VH,0,0,0,1.00,,,,
-Misty Grouper,7,VH,H,VH,0,0,0,1.00,,,,
-Mutton Snapper,11,VH,H,VH,0,0,0,1.00,,,,
-Nassau Grouper,8,VH,H,VH,0,0,0,1.00,,,,
-Queen Conch,12,VH,H,VH,0,0,0,1.00,,,,
-Rainbow Parrotfish,12,VH,H,VH,0,0,0,1.00,,,,
-Red Hind,8,VH,H,VH,0,0,0,1.00,,,,
-Yellowfin Grouper,8,VH,H,VH,0,0,0.13,0.87,,,,
-Red Grouper,8,VH,H,VH,0,0,0.21,0.79,,,,
-Stoplight Parrotfish,12,VH,H,VH,0,0,0.27,0.73,,,,
-Gray Angelfish,12,VH,H,VH,0,0,0.28,0.72,,,,
-Hogfish,12,VH,H,VH,0,0,0.48,0.51,,,,
-Sea Cucumbers,11,VH,M,H,0,0,0.3,0.7,,,,
-Queen Triggerfish,12,VH,M,H,0,0.01,0.94,0.06,,,,
-Lane Snapper,11,VH,M,H,0,0,0.93,0.07,,,,
-Yellowtail Snapper�,11,VH,M,H,0,0.29,0.71,0,,,,
-Queen Snapper,6,M,M,M,0,1.00,0,0,,,,
-King Mackerel,9,H,M,M,0.01,0.97,0.02,0,,,,
-Ballyhoo,9,VH,L,M,0,0.93,0.07,0,,,,
-Silk Snapper,6,M,M,M,0.23,0.76,0,0,,,,
-Spiny Lobster,11,VH,L,M,0,0.61,0.39,0,,,,
-White Mullet,4,M,L,L,0.32,0.68,0,0,,,,
-Atlantic Herring,7,H,L,L,1.00,0,0,0,,,,
-Blue Runner,8,H,L,L,1.00,0,0,0,,,,
-Dolphinfish,9,H,L,L,1.00,0,0,0,,,,
+Stock,N Exp factors,Exp,Sens,Vul,L,M,H,VH
+Gray angelfish†,12,VH,H,VH,0,0,0.28,0.72
+Hogfish†,12,VH,H,VH,0,0,0.48,0.51
+Long-spined sea urchin,11,VH,H,VH,0,0,0,1
+Misty grouper,7,VH,H,VH,0,0,0,1
+Mutton snapper,11,VH,H,VH,0,0,0,1
+Nassau grouper,8,VH,H,VH,0,0,0,1
+Queen conch,12,VH,H,VH,0,0,0,1
+Rainbow parrotfish,12,VH,H,VH,0,0,0,1
+Red grouper,8,VH,H,VH,0,0,0.21,0.79
+Red hind,8,VH,H,VH,0,0,0,1
+Stoplight parrotfish†,12,VH,H,VH,0,0,0.27,0.73
+Yellowfin grouper,8,VH,H,VH,0,0,0.13,0.87
+Lane snapper,11,VH,M,H,0,0,0.93,0.07
+Queen triggerfish,12,VH,M,H,0,0.01,0.94,0.06
+Sea cucumbers†,11,VH,M,H,0,0,0.3,0.7
+Yellowtail snapper†,11,VH,M,H,0,0.29,0.71,0
+Ballyhoo,9,VH,L,M,0,0.93,0.07,0
+King mackerel,9,H,M,M,0.01,0.97,0.02,0
+Queen snapper,6,M,M,M,0,1,0,0
+Silk snapper,6,M,M,M,0.23,0.76,0,0
+Spiny lobster†,11,VH,L,M,0,0.61,0.39,0
+Atlantic thread herring,7,H,L,L,1,0,0,0
+Blue runner,8,H,L,L,1,0,0,0
+Dolphinfish,9,H,L,L,1,0,0,0
+White mullet†,4,M,L,L,0.32,0.68,0,0

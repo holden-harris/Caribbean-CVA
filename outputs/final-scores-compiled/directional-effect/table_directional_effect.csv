@@ -1,207 +1,207 @@
 "SourceFile","Scorer","stock_name","row_idx","Directional_effect","Directional_score"
-"file730c5ce16eb3.xlsx","AA","Atlantic thread herring",38,"Positive",1
-"file730c5ce16eb3.xlsx","AA","Atlantic thread herring",39,"Neutral",3
-"file730c5ce16eb3.xlsx","AA","Ballyhoo",39,"Neutral",4
-"file730c5ce16eb3.xlsx","AA","Dolphinfish",38,"Positive",1
-"file730c5ce16eb3.xlsx","AA","Dolphinfish",39,"Neutral",3
-"file730c5ce16eb3.xlsx","AA","Lane snapper",39,"Neutral",2
-"file730c5ce16eb3.xlsx","AA","Lane snapper",40,"Negative",2
-"file730c5ce16eb3.xlsx","AA","Misty grouper",39,"Neutral",2
-"file730c5ce16eb3.xlsx","AA","Misty grouper",40,"Negative",2
-"file730c5ce16eb3.xlsx","AA","Yellowtail snapper",38,"Positive",2
-"file730c5ce16eb3.xlsx","AA","Yellowtail snapper",39,"Neutral",2
-"file730c4844503.xlsx","AK","Gray angelfish",38,"Positive",1
-"file730c4844503.xlsx","AK","Gray angelfish",39,"Neutral",2
-"file730c4844503.xlsx","AK","Gray angelfish",40,"Negative",1
-"file730c4844503.xlsx","AK","Hogfish",39,"Neutral",2
-"file730c4844503.xlsx","AK","Hogfish",40,"Negative",2
-"file730c4844503.xlsx","AK","Queen conch",39,"Neutral",3
-"file730c4844503.xlsx","AK","Queen conch",40,"Negative",1
-"file730c4844503.xlsx","AK","Silk snapper",39,"Neutral",4
-"file730c4844503.xlsx","AK","Spiny lobster",39,"Neutral",4
-"file730c3d545d5.xlsx","BG","Atlantic thread herring",38,"Positive",2
-"file730c3d545d5.xlsx","BG","Atlantic thread herring",40,"Negative",2
-"file730c3d545d5.xlsx","BG","Ballyhoo",39,"Neutral",4
-"file730c3d545d5.xlsx","BG","Ballyhoo",40,"Negative",1
-"file730c3d545d5.xlsx","BG","Blue runner",39,"Neutral",4
-"file730c3d545d5.xlsx","BG","King mackerel",39,"Neutral",1
-"file730c3d545d5.xlsx","BG","King mackerel",40,"Negative",3
-"file730c3d545d5.xlsx","BG","Queen conch",40,"Negative",4
-"file730c3d545d5.xlsx","BG","Spiny lobster",38,"Positive",1
-"file730c3d545d5.xlsx","BG","Spiny lobster",40,"Negative",3
-"file730c30402a71.xlsx","CZ","Nassau grouper",39,"Neutral",1
-"file730c30402a71.xlsx","CZ","Nassau grouper",40,"Negative",3
-"file730c30402a71.xlsx","CZ","Queen triggerfish",39,"Neutral",2
-"file730c30402a71.xlsx","CZ","Queen triggerfish",40,"Negative",2
-"file730c30402a71.xlsx","CZ","Rainbow parrotfish",39,"Neutral",1
-"file730c30402a71.xlsx","CZ","Rainbow parrotfish",40,"Negative",3
-"file730c30402a71.xlsx","CZ","Red hind",39,"Neutral",3
-"file730c30402a71.xlsx","CZ","Red hind",40,"Negative",1
-"file730c30402a71.xlsx","CZ","Stoplight parrotfish",39,"Neutral",3
-"file730c30402a71.xlsx","CZ","Stoplight parrotfish",40,"Negative",1
-"file730c30402a71.xlsx","CZ","Yellowfin grouper",39,"Neutral",1
-"file730c30402a71.xlsx","CZ","Yellowfin grouper",40,"Negative",3
-"file730c59c37675.xlsx","DB","Atlantic thread herring",38,"Positive",1
-"file730c59c37675.xlsx","DB","Atlantic thread herring",39,"Neutral",2
-"file730c59c37675.xlsx","DB","Atlantic thread herring",40,"Negative",1
-"file730c59c37675.xlsx","DB","Blue runner",38,"Positive",2
-"file730c59c37675.xlsx","DB","Blue runner",39,"Neutral",1
-"file730c59c37675.xlsx","DB","Blue runner",40,"Negative",1
-"file730c59c37675.xlsx","DB","Dolphinfish",38,"Positive",2
-"file730c59c37675.xlsx","DB","Dolphinfish",39,"Neutral",2
-"file730c59c37675.xlsx","DB","Long-spined sea urchin",38,"Positive",1
-"file730c59c37675.xlsx","DB","Long-spined sea urchin",39,"Neutral",2
-"file730c59c37675.xlsx","DB","Long-spined sea urchin",40,"Negative",1
-"file730c59c37675.xlsx","DB","Spiny lobster",38,"Positive",1
-"file730c59c37675.xlsx","DB","Spiny lobster",39,"Neutral",2
-"file730c59c37675.xlsx","DB","Spiny lobster",40,"Negative",1
-"file730c59c37675.xlsx","DB","White mullet",39,"Neutral",2
-"file730c59c37675.xlsx","DB","White mullet",40,"Negative",2
-"file730ca0a76d.xlsx","ET","Gray angelfish",39,"Neutral",2
-"file730ca0a76d.xlsx","ET","Gray angelfish",40,"Negative",2
-"file730ca0a76d.xlsx","ET","Lane snapper",39,"Neutral",1
-"file730ca0a76d.xlsx","ET","Lane snapper",40,"Negative",3
-"file730ca0a76d.xlsx","ET","Misty grouper",39,"Neutral",2
-"file730ca0a76d.xlsx","ET","Misty grouper",40,"Negative",2
-"file730ca0a76d.xlsx","ET","Queen triggerfish",39,"Neutral",1
-"file730ca0a76d.xlsx","ET","Queen triggerfish",40,"Negative",3
-"file730ca0a76d.xlsx","ET","Yellowtail snapper",39,"Neutral",2
-"file730ca0a76d.xlsx","ET","Yellowtail snapper",40,"Negative",2
-"file730c30552a3.xlsx","GR","Gray angelfish",39,"Neutral",1
-"file730c30552a3.xlsx","GR","Gray angelfish",40,"Negative",3
-"file730c30552a3.xlsx","GR","Hogfish",39,"Neutral",1
-"file730c30552a3.xlsx","GR","Hogfish",40,"Negative",3
-"file730c30552a3.xlsx","GR","Queen triggerfish",39,"Neutral",1
-"file730c30552a3.xlsx","GR","Queen triggerfish",40,"Negative",3
-"file730c30552a3.xlsx","GR","Rainbow parrotfish",39,"Neutral",1
-"file730c30552a3.xlsx","GR","Rainbow parrotfish",40,"Negative",3
-"file730c30552a3.xlsx","GR","Stoplight parrotfish",39,"Neutral",1
-"file730c30552a3.xlsx","GR","Stoplight parrotfish",40,"Negative",3
-"file730c759f5539.xlsx","JP","Ballyhoo",39,"Neutral",4
-"file730c759f5539.xlsx","JP","Long-spined sea urchin",39,"Neutral",3
-"file730c759f5539.xlsx","JP","Long-spined sea urchin",40,"Negative",2
-"file730c759f5539.xlsx","JP","Sea cucumbers",38,"Positive",1
-"file730c759f5539.xlsx","JP","Sea cucumbers",39,"Neutral",2
-"file730c759f5539.xlsx","JP","Sea cucumbers",40,"Negative",1
-"file730c759f5539.xlsx","JP","White mullet",38,"Positive",1
-"file730c759f5539.xlsx","JP","White mullet",39,"Neutral",2
-"file730c759f5539.xlsx","JP","White mullet",40,"Negative",1
-"file730c6a813a74.xlsx","KO","Lane snapper",39,"Neutral",3
-"file730c6a813a74.xlsx","KO","Lane snapper",40,"Negative",1
-"file730c6a813a74.xlsx","KO","Mutton snapper",39,"Neutral",2
-"file730c6a813a74.xlsx","KO","Mutton snapper",40,"Negative",2
-"file730c6a813a74.xlsx","KO","Queen snapper",39,"Neutral",4
-"file730c6a813a74.xlsx","KO","Silk snapper",39,"Neutral",3
-"file730c6a813a74.xlsx","KO","Silk snapper",40,"Negative",1
-"file730c6a813a74.xlsx","KO","Yellowtail snapper",39,"Neutral",3
-"file730c6a813a74.xlsx","KO","Yellowtail snapper",40,"Negative",1
-"file730c4c547c5b.xlsx","MS","Hogfish",38,"Positive",1
-"file730c4c547c5b.xlsx","MS","Hogfish",39,"Neutral",2
-"file730c4c547c5b.xlsx","MS","Hogfish",40,"Negative",1
-"file730c4c547c5b.xlsx","MS","Misty grouper",39,"Neutral",2
-"file730c4c547c5b.xlsx","MS","Misty grouper",40,"Negative",2
-"file730c4c547c5b.xlsx","MS","Nassau grouper",39,"Neutral",2
-"file730c4c547c5b.xlsx","MS","Nassau grouper",40,"Negative",2
-"file730c4c547c5b.xlsx","MS","Red grouper",38,"Positive",1
-"file730c4c547c5b.xlsx","MS","Red grouper",39,"Neutral",2
-"file730c4c547c5b.xlsx","MS","Red grouper",40,"Negative",1
-"file730c4c547c5b.xlsx","MS","Red hind",39,"Neutral",2
-"file730c4c547c5b.xlsx","MS","Red hind",40,"Negative",2
-"file730c4c547c5b.xlsx","MS","Yellowfin grouper",39,"Neutral",2
-"file730c4c547c5b.xlsx","MS","Yellowfin grouper",40,"Negative",2
-"file730c25962281.xlsx","OT","Long-spined sea urchin",38,"Positive",1
-"file730c25962281.xlsx","OT","Long-spined sea urchin",39,"Neutral",2
-"file730c25962281.xlsx","OT","Long-spined sea urchin",40,"Negative",1
-"file730c25962281.xlsx","OT","Nassau grouper",39,"Neutral",2
-"file730c25962281.xlsx","OT","Nassau grouper",40,"Negative",2
-"file730c25962281.xlsx","OT","Queen conch",39,"Neutral",2
-"file730c25962281.xlsx","OT","Queen conch",40,"Negative",2
-"file730c25962281.xlsx","OT","Red grouper",39,"Neutral",2
-"file730c25962281.xlsx","OT","Red grouper",40,"Negative",2
-"file730c25962281.xlsx","OT","Red hind",39,"Neutral",3
-"file730c25962281.xlsx","OT","Red hind",40,"Negative",1
-"file730c25962281.xlsx","OT","Sea cucumbers",39,"Neutral",3
-"file730c25962281.xlsx","OT","Sea cucumbers",40,"Negative",1
-"file730c4d8e31f.xlsx","RA","Blue runner",39,"Neutral",1
-"file730c4d8e31f.xlsx","RA","Blue runner",40,"Negative",3
-"file730c4d8e31f.xlsx","RA","King mackerel",40,"Negative",4
-"file730c4d8e31f.xlsx","RA","Queen conch",40,"Negative",4
-"file730c4d8e31f.xlsx","RA","Red grouper",40,"Negative",4
-"file730c4d8e31f.xlsx","RA","Sea cucumbers",39,"Neutral",2
-"file730c4d8e31f.xlsx","RA","Sea cucumbers",40,"Negative",2
-"file730c4d8e31f.xlsx","RA","Yellowfin grouper",40,"Negative",4
-"file730cb336a65.xlsx","RE","Lane snapper",39,"Neutral",1
-"file730cb336a65.xlsx","RE","Lane snapper",40,"Negative",3
-"file730cb336a65.xlsx","RE","Mutton snapper",39,"Neutral",2
-"file730cb336a65.xlsx","RE","Mutton snapper",40,"Negative",2
-"file730cb336a65.xlsx","RE","Rainbow parrotfish",39,"Neutral",1
-"file730cb336a65.xlsx","RE","Rainbow parrotfish",40,"Negative",3
-"file730cb336a65.xlsx","RE","Silk snapper",39,"Neutral",3
-"file730cb336a65.xlsx","RE","Silk snapper",40,"Negative",1
-"file730cb336a65.xlsx","RE","Stoplight parrotfish",39,"Neutral",1
-"file730cb336a65.xlsx","RE","Stoplight parrotfish",40,"Negative",3
-"file730cb336a65.xlsx","RE","Yellowtail snapper",39,"Neutral",3
-"file730cb336a65.xlsx","RE","Yellowtail snapper",40,"Negative",1
-"file730c5f4b4c12.xlsx","RG","Atlantic thread herring",39,"Neutral",2
-"file730c5f4b4c12.xlsx","RG","Atlantic thread herring",40,"Negative",2
-"file730c5f4b4c12.xlsx","RG","Ballyhoo",39,"Neutral",2
-"file730c5f4b4c12.xlsx","RG","Ballyhoo",40,"Negative",2
-"file730c5f4b4c12.xlsx","RG","Dolphinfish",39,"Neutral",3
-"file730c5f4b4c12.xlsx","RG","Dolphinfish",40,"Negative",1
-"file730c5f4b4c12.xlsx","RG","King mackerel",39,"Neutral",3
-"file730c5f4b4c12.xlsx","RG","King mackerel",40,"Negative",1
-"file730c5f4b4c12.xlsx","RG","Queen snapper",39,"Neutral",3
-"file730c5f4b4c12.xlsx","RG","Queen snapper",40,"Negative",1
-"file730c5f4b4c12.xlsx","RG","White mullet",39,"Neutral",2
-"file730c5f4b4c12.xlsx","RG","White mullet",40,"Negative",2
-"file730c39d03343.xlsx","RL","Gray angelfish",38,"Positive",0
-"file730c39d03343.xlsx","RL","Gray angelfish",39,"Neutral",2
-"file730c39d03343.xlsx","RL","Gray angelfish",40,"Negative",2
-"file730c39d03343.xlsx","RL","Hogfish",38,"Positive",0
-"file730c39d03343.xlsx","RL","Hogfish",39,"Neutral",2
-"file730c39d03343.xlsx","RL","Hogfish",40,"Negative",2
-"file730c39d03343.xlsx","RL","Queen triggerfish",38,"Positive",0
-"file730c39d03343.xlsx","RL","Queen triggerfish",39,"Neutral",1
-"file730c39d03343.xlsx","RL","Queen triggerfish",40,"Negative",3
-"file730c39d03343.xlsx","RL","Rainbow parrotfish",38,"Positive",0
-"file730c39d03343.xlsx","RL","Rainbow parrotfish",39,"Neutral",1
-"file730c39d03343.xlsx","RL","Rainbow parrotfish",40,"Negative",3
-"file730c39d03343.xlsx","RL","Silk snapper",38,"Positive",0
-"file730c39d03343.xlsx","RL","Silk snapper",39,"Neutral",4
-"file730c39d03343.xlsx","RL","Silk snapper",40,"Negative",0
-"file730c39d03343.xlsx","RL","Stoplight parrotfish",38,"Positive",0
-"file730c39d03343.xlsx","RL","Stoplight parrotfish",39,"Neutral",1
-"file730c39d03343.xlsx","RL","Stoplight parrotfish",40,"Negative",3
-"file730c1e976488.xlsx","SK","Misty grouper",39,"Neutral",1
-"file730c1e976488.xlsx","SK","Misty grouper",40,"Negative",3
-"file730c1e976488.xlsx","SK","Mutton snapper",39,"Neutral",1
-"file730c1e976488.xlsx","SK","Mutton snapper",40,"Negative",3
-"file730c1e976488.xlsx","SK","Nassau grouper",39,"Neutral",1
-"file730c1e976488.xlsx","SK","Nassau grouper",40,"Negative",3
-"file730c1e976488.xlsx","SK","Red grouper",39,"Neutral",1
-"file730c1e976488.xlsx","SK","Red grouper",40,"Negative",3
-"file730c1e976488.xlsx","SK","Red hind",39,"Neutral",1
-"file730c1e976488.xlsx","SK","Red hind",40,"Negative",3
-"file730c1e976488.xlsx","SK","Yellowfin grouper",39,"Neutral",1
-"file730c1e976488.xlsx","SK","Yellowfin grouper",40,"Negative",3
-"file730c7d34663d.xlsx","SW","Long-spined sea urchin",39,"Neutral",1
-"file730c7d34663d.xlsx","SW","Long-spined sea urchin",40,"Negative",3
-"file730c7d34663d.xlsx","SW","Queen snapper",39,"Neutral",2
-"file730c7d34663d.xlsx","SW","Queen snapper",40,"Negative",2
-"file730c7d34663d.xlsx","SW","Sea cucumbers",39,"Neutral",1
-"file730c7d34663d.xlsx","SW","Sea cucumbers",40,"Negative",3
-"file730c7d34663d.xlsx","SW","Spiny lobster",39,"Neutral",2
-"file730c7d34663d.xlsx","SW","Spiny lobster",40,"Negative",2
-"file730c40186318.xlsx","WM","Blue runner",38,"Positive",2
-"file730c40186318.xlsx","WM","Blue runner",39,"Neutral",2
-"file730c40186318.xlsx","WM","Dolphinfish",38,"Positive",2
-"file730c40186318.xlsx","WM","Dolphinfish",39,"Neutral",2
-"file730c40186318.xlsx","WM","King mackerel",38,"Positive",1
-"file730c40186318.xlsx","WM","King mackerel",39,"Neutral",2
-"file730c40186318.xlsx","WM","King mackerel",40,"Negative",1
-"file730c40186318.xlsx","WM","Mutton snapper",39,"Neutral",2
-"file730c40186318.xlsx","WM","Mutton snapper",40,"Negative",2
-"file730c40186318.xlsx","WM","Queen snapper",38,"Positive",1
-"file730c40186318.xlsx","WM","Queen snapper",39,"Neutral",3
-"file730c40186318.xlsx","WM","White mullet",39,"Neutral",2
-"file730c40186318.xlsx","WM","White mullet",40,"Negative",2
+"file70bc1af41c59.xlsx","AA","Atlantic thread herring",38,"Positive",1
+"file70bc1af41c59.xlsx","AA","Atlantic thread herring",39,"Neutral",3
+"file70bc1af41c59.xlsx","AA","Ballyhoo",39,"Neutral",4
+"file70bc1af41c59.xlsx","AA","Dolphinfish",38,"Positive",1
+"file70bc1af41c59.xlsx","AA","Dolphinfish",39,"Neutral",3
+"file70bc1af41c59.xlsx","AA","Lane snapper",39,"Neutral",2
+"file70bc1af41c59.xlsx","AA","Lane snapper",40,"Negative",2
+"file70bc1af41c59.xlsx","AA","Misty grouper",39,"Neutral",2
+"file70bc1af41c59.xlsx","AA","Misty grouper",40,"Negative",2
+"file70bc1af41c59.xlsx","AA","Yellowtail snapper",38,"Positive",2
+"file70bc1af41c59.xlsx","AA","Yellowtail snapper",39,"Neutral",2
+"file70bc5feb7dc5.xlsx","AK","Gray angelfish",38,"Positive",1
+"file70bc5feb7dc5.xlsx","AK","Gray angelfish",39,"Neutral",2
+"file70bc5feb7dc5.xlsx","AK","Gray angelfish",40,"Negative",1
+"file70bc5feb7dc5.xlsx","AK","Hogfish",39,"Neutral",2
+"file70bc5feb7dc5.xlsx","AK","Hogfish",40,"Negative",2
+"file70bc5feb7dc5.xlsx","AK","Queen conch",39,"Neutral",3
+"file70bc5feb7dc5.xlsx","AK","Queen conch",40,"Negative",1
+"file70bc5feb7dc5.xlsx","AK","Silk snapper",39,"Neutral",4
+"file70bc5feb7dc5.xlsx","AK","Spiny lobster",39,"Neutral",4
+"file70bc6b996d23.xlsx","BG","Atlantic thread herring",38,"Positive",2
+"file70bc6b996d23.xlsx","BG","Atlantic thread herring",40,"Negative",2
+"file70bc6b996d23.xlsx","BG","Ballyhoo",39,"Neutral",3
+"file70bc6b996d23.xlsx","BG","Ballyhoo",40,"Negative",1
+"file70bc6b996d23.xlsx","BG","Blue runner",39,"Neutral",4
+"file70bc6b996d23.xlsx","BG","King mackerel",39,"Neutral",1
+"file70bc6b996d23.xlsx","BG","King mackerel",40,"Negative",3
+"file70bc6b996d23.xlsx","BG","Queen conch",40,"Negative",4
+"file70bc6b996d23.xlsx","BG","Spiny lobster",38,"Positive",1
+"file70bc6b996d23.xlsx","BG","Spiny lobster",40,"Negative",3
+"file70bccdb75b0.xlsx","CZ","Nassau grouper",39,"Neutral",1
+"file70bccdb75b0.xlsx","CZ","Nassau grouper",40,"Negative",3
+"file70bccdb75b0.xlsx","CZ","Queen triggerfish",39,"Neutral",2
+"file70bccdb75b0.xlsx","CZ","Queen triggerfish",40,"Negative",2
+"file70bccdb75b0.xlsx","CZ","Rainbow parrotfish",39,"Neutral",1
+"file70bccdb75b0.xlsx","CZ","Rainbow parrotfish",40,"Negative",3
+"file70bccdb75b0.xlsx","CZ","Red hind",39,"Neutral",3
+"file70bccdb75b0.xlsx","CZ","Red hind",40,"Negative",1
+"file70bccdb75b0.xlsx","CZ","Stoplight parrotfish",39,"Neutral",3
+"file70bccdb75b0.xlsx","CZ","Stoplight parrotfish",40,"Negative",1
+"file70bccdb75b0.xlsx","CZ","Yellowfin grouper",39,"Neutral",1
+"file70bccdb75b0.xlsx","CZ","Yellowfin grouper",40,"Negative",3
+"file70bc2b7448f0.xlsx","DB","Atlantic thread herring",38,"Positive",1
+"file70bc2b7448f0.xlsx","DB","Atlantic thread herring",39,"Neutral",2
+"file70bc2b7448f0.xlsx","DB","Atlantic thread herring",40,"Negative",1
+"file70bc2b7448f0.xlsx","DB","Blue runner",38,"Positive",2
+"file70bc2b7448f0.xlsx","DB","Blue runner",39,"Neutral",1
+"file70bc2b7448f0.xlsx","DB","Blue runner",40,"Negative",1
+"file70bc2b7448f0.xlsx","DB","Dolphinfish",38,"Positive",2
+"file70bc2b7448f0.xlsx","DB","Dolphinfish",39,"Neutral",2
+"file70bc2b7448f0.xlsx","DB","Long-spined sea urchin",38,"Positive",1
+"file70bc2b7448f0.xlsx","DB","Long-spined sea urchin",39,"Neutral",2
+"file70bc2b7448f0.xlsx","DB","Long-spined sea urchin",40,"Negative",1
+"file70bc2b7448f0.xlsx","DB","Spiny lobster",38,"Positive",1
+"file70bc2b7448f0.xlsx","DB","Spiny lobster",39,"Neutral",2
+"file70bc2b7448f0.xlsx","DB","Spiny lobster",40,"Negative",1
+"file70bc2b7448f0.xlsx","DB","White mullet",39,"Neutral",2
+"file70bc2b7448f0.xlsx","DB","White mullet",40,"Negative",2
+"file70bc64a538f2.xlsx","ET","Gray angelfish",39,"Neutral",2
+"file70bc64a538f2.xlsx","ET","Gray angelfish",40,"Negative",2
+"file70bc64a538f2.xlsx","ET","Lane snapper",39,"Neutral",1
+"file70bc64a538f2.xlsx","ET","Lane snapper",40,"Negative",3
+"file70bc64a538f2.xlsx","ET","Misty grouper",39,"Neutral",2
+"file70bc64a538f2.xlsx","ET","Misty grouper",40,"Negative",2
+"file70bc64a538f2.xlsx","ET","Queen triggerfish",39,"Neutral",1
+"file70bc64a538f2.xlsx","ET","Queen triggerfish",40,"Negative",3
+"file70bc64a538f2.xlsx","ET","Yellowtail snapper",39,"Neutral",2
+"file70bc64a538f2.xlsx","ET","Yellowtail snapper",40,"Negative",2
+"file70bc55fe27d5.xlsx","GR","Gray angelfish",39,"Neutral",1
+"file70bc55fe27d5.xlsx","GR","Gray angelfish",40,"Negative",3
+"file70bc55fe27d5.xlsx","GR","Hogfish",39,"Neutral",1
+"file70bc55fe27d5.xlsx","GR","Hogfish",40,"Negative",3
+"file70bc55fe27d5.xlsx","GR","Queen triggerfish",39,"Neutral",1
+"file70bc55fe27d5.xlsx","GR","Queen triggerfish",40,"Negative",3
+"file70bc55fe27d5.xlsx","GR","Rainbow parrotfish",39,"Neutral",1
+"file70bc55fe27d5.xlsx","GR","Rainbow parrotfish",40,"Negative",3
+"file70bc55fe27d5.xlsx","GR","Stoplight parrotfish",39,"Neutral",1
+"file70bc55fe27d5.xlsx","GR","Stoplight parrotfish",40,"Negative",3
+"file70bca73108b.xlsx","JP","Ballyhoo",39,"Neutral",4
+"file70bca73108b.xlsx","JP","Long-spined sea urchin",39,"Neutral",2
+"file70bca73108b.xlsx","JP","Long-spined sea urchin",40,"Negative",2
+"file70bca73108b.xlsx","JP","Sea cucumbers",38,"Positive",1
+"file70bca73108b.xlsx","JP","Sea cucumbers",39,"Neutral",2
+"file70bca73108b.xlsx","JP","Sea cucumbers",40,"Negative",1
+"file70bca73108b.xlsx","JP","White mullet",38,"Positive",1
+"file70bca73108b.xlsx","JP","White mullet",39,"Neutral",2
+"file70bca73108b.xlsx","JP","White mullet",40,"Negative",1
+"file70bc3db2cdd.xlsx","KO","Lane snapper",39,"Neutral",3
+"file70bc3db2cdd.xlsx","KO","Lane snapper",40,"Negative",1
+"file70bc3db2cdd.xlsx","KO","Mutton snapper",39,"Neutral",2
+"file70bc3db2cdd.xlsx","KO","Mutton snapper",40,"Negative",2
+"file70bc3db2cdd.xlsx","KO","Queen snapper",39,"Neutral",4
+"file70bc3db2cdd.xlsx","KO","Silk snapper",39,"Neutral",3
+"file70bc3db2cdd.xlsx","KO","Silk snapper",40,"Negative",1
+"file70bc3db2cdd.xlsx","KO","Yellowtail snapper",39,"Neutral",3
+"file70bc3db2cdd.xlsx","KO","Yellowtail snapper",40,"Negative",1
+"file70bc69b47caf.xlsx","MS","Hogfish",38,"Positive",1
+"file70bc69b47caf.xlsx","MS","Hogfish",39,"Neutral",2
+"file70bc69b47caf.xlsx","MS","Hogfish",40,"Negative",1
+"file70bc69b47caf.xlsx","MS","Misty grouper",39,"Neutral",2
+"file70bc69b47caf.xlsx","MS","Misty grouper",40,"Negative",2
+"file70bc69b47caf.xlsx","MS","Nassau grouper",39,"Neutral",2
+"file70bc69b47caf.xlsx","MS","Nassau grouper",40,"Negative",2
+"file70bc69b47caf.xlsx","MS","Red grouper",38,"Positive",1
+"file70bc69b47caf.xlsx","MS","Red grouper",39,"Neutral",2
+"file70bc69b47caf.xlsx","MS","Red grouper",40,"Negative",1
+"file70bc69b47caf.xlsx","MS","Red hind",39,"Neutral",2
+"file70bc69b47caf.xlsx","MS","Red hind",40,"Negative",2
+"file70bc69b47caf.xlsx","MS","Yellowfin grouper",39,"Neutral",2
+"file70bc69b47caf.xlsx","MS","Yellowfin grouper",40,"Negative",2
+"file70bc52923286.xlsx","OT","Long-spined sea urchin",38,"Positive",1
+"file70bc52923286.xlsx","OT","Long-spined sea urchin",39,"Neutral",2
+"file70bc52923286.xlsx","OT","Long-spined sea urchin",40,"Negative",1
+"file70bc52923286.xlsx","OT","Nassau grouper",39,"Neutral",2
+"file70bc52923286.xlsx","OT","Nassau grouper",40,"Negative",2
+"file70bc52923286.xlsx","OT","Queen conch",39,"Neutral",2
+"file70bc52923286.xlsx","OT","Queen conch",40,"Negative",2
+"file70bc52923286.xlsx","OT","Red grouper",39,"Neutral",2
+"file70bc52923286.xlsx","OT","Red grouper",40,"Negative",2
+"file70bc52923286.xlsx","OT","Red hind",39,"Neutral",3
+"file70bc52923286.xlsx","OT","Red hind",40,"Negative",1
+"file70bc52923286.xlsx","OT","Sea cucumbers",39,"Neutral",3
+"file70bc52923286.xlsx","OT","Sea cucumbers",40,"Negative",1
+"file70bc49b4947.xlsx","RA","Blue runner",39,"Neutral",1
+"file70bc49b4947.xlsx","RA","Blue runner",40,"Negative",3
+"file70bc49b4947.xlsx","RA","King mackerel",40,"Negative",4
+"file70bc49b4947.xlsx","RA","Queen conch",40,"Negative",4
+"file70bc49b4947.xlsx","RA","Red grouper",40,"Negative",4
+"file70bc49b4947.xlsx","RA","Sea cucumbers",39,"Neutral",2
+"file70bc49b4947.xlsx","RA","Sea cucumbers",40,"Negative",2
+"file70bc49b4947.xlsx","RA","Yellowfin grouper",40,"Negative",4
+"file70bc78a3742.xlsx","RE","Lane snapper",39,"Neutral",1
+"file70bc78a3742.xlsx","RE","Lane snapper",40,"Negative",3
+"file70bc78a3742.xlsx","RE","Mutton snapper",39,"Neutral",2
+"file70bc78a3742.xlsx","RE","Mutton snapper",40,"Negative",2
+"file70bc78a3742.xlsx","RE","Rainbow parrotfish",39,"Neutral",1
+"file70bc78a3742.xlsx","RE","Rainbow parrotfish",40,"Negative",3
+"file70bc78a3742.xlsx","RE","Silk snapper",39,"Neutral",3
+"file70bc78a3742.xlsx","RE","Silk snapper",40,"Negative",1
+"file70bc78a3742.xlsx","RE","Stoplight parrotfish",39,"Neutral",1
+"file70bc78a3742.xlsx","RE","Stoplight parrotfish",40,"Negative",3
+"file70bc78a3742.xlsx","RE","Yellowtail snapper",39,"Neutral",3
+"file70bc78a3742.xlsx","RE","Yellowtail snapper",40,"Negative",1
+"file70bc529d726e.xlsx","RG","Atlantic thread herring",39,"Neutral",2
+"file70bc529d726e.xlsx","RG","Atlantic thread herring",40,"Negative",2
+"file70bc529d726e.xlsx","RG","Ballyhoo",39,"Neutral",2
+"file70bc529d726e.xlsx","RG","Ballyhoo",40,"Negative",2
+"file70bc529d726e.xlsx","RG","Dolphinfish",39,"Neutral",3
+"file70bc529d726e.xlsx","RG","Dolphinfish",40,"Negative",1
+"file70bc529d726e.xlsx","RG","King mackerel",39,"Neutral",3
+"file70bc529d726e.xlsx","RG","King mackerel",40,"Negative",1
+"file70bc529d726e.xlsx","RG","Queen snapper",39,"Neutral",3
+"file70bc529d726e.xlsx","RG","Queen snapper",40,"Negative",1
+"file70bc529d726e.xlsx","RG","White mullet",39,"Neutral",2
+"file70bc529d726e.xlsx","RG","White mullet",40,"Negative",2
+"file70bc6e6d79f6.xlsx","RL","Gray angelfish",38,"Positive",0
+"file70bc6e6d79f6.xlsx","RL","Gray angelfish",39,"Neutral",2
+"file70bc6e6d79f6.xlsx","RL","Gray angelfish",40,"Negative",2
+"file70bc6e6d79f6.xlsx","RL","Hogfish",38,"Positive",0
+"file70bc6e6d79f6.xlsx","RL","Hogfish",39,"Neutral",2
+"file70bc6e6d79f6.xlsx","RL","Hogfish",40,"Negative",2
+"file70bc6e6d79f6.xlsx","RL","Queen triggerfish",38,"Positive",0
+"file70bc6e6d79f6.xlsx","RL","Queen triggerfish",39,"Neutral",1
+"file70bc6e6d79f6.xlsx","RL","Queen triggerfish",40,"Negative",3
+"file70bc6e6d79f6.xlsx","RL","Rainbow parrotfish",38,"Positive",0
+"file70bc6e6d79f6.xlsx","RL","Rainbow parrotfish",39,"Neutral",1
+"file70bc6e6d79f6.xlsx","RL","Rainbow parrotfish",40,"Negative",3
+"file70bc6e6d79f6.xlsx","RL","Silk snapper",38,"Positive",0
+"file70bc6e6d79f6.xlsx","RL","Silk snapper",39,"Neutral",4
+"file70bc6e6d79f6.xlsx","RL","Silk snapper",40,"Negative",0
+"file70bc6e6d79f6.xlsx","RL","Stoplight parrotfish",38,"Positive",0
+"file70bc6e6d79f6.xlsx","RL","Stoplight parrotfish",39,"Neutral",1
+"file70bc6e6d79f6.xlsx","RL","Stoplight parrotfish",40,"Negative",3
+"file70bc2ef758f5.xlsx","SK","Misty grouper",39,"Neutral",1
+"file70bc2ef758f5.xlsx","SK","Misty grouper",40,"Negative",3
+"file70bc2ef758f5.xlsx","SK","Mutton snapper",39,"Neutral",1
+"file70bc2ef758f5.xlsx","SK","Mutton snapper",40,"Negative",3
+"file70bc2ef758f5.xlsx","SK","Nassau grouper",39,"Neutral",1
+"file70bc2ef758f5.xlsx","SK","Nassau grouper",40,"Negative",3
+"file70bc2ef758f5.xlsx","SK","Red grouper",39,"Neutral",1
+"file70bc2ef758f5.xlsx","SK","Red grouper",40,"Negative",3
+"file70bc2ef758f5.xlsx","SK","Red hind",39,"Neutral",1
+"file70bc2ef758f5.xlsx","SK","Red hind",40,"Negative",3
+"file70bc2ef758f5.xlsx","SK","Yellowfin grouper",39,"Neutral",1
+"file70bc2ef758f5.xlsx","SK","Yellowfin grouper",40,"Negative",3
+"file70bc437c167e.xlsx","SW","Long-spined sea urchin",39,"Neutral",1
+"file70bc437c167e.xlsx","SW","Long-spined sea urchin",40,"Negative",3
+"file70bc437c167e.xlsx","SW","Queen snapper",39,"Neutral",2
+"file70bc437c167e.xlsx","SW","Queen snapper",40,"Negative",2
+"file70bc437c167e.xlsx","SW","Sea cucumbers",39,"Neutral",1
+"file70bc437c167e.xlsx","SW","Sea cucumbers",40,"Negative",3
+"file70bc437c167e.xlsx","SW","Spiny lobster",39,"Neutral",2
+"file70bc437c167e.xlsx","SW","Spiny lobster",40,"Negative",2
+"file70bc572646e0.xlsx","WM","Blue runner",38,"Positive",2
+"file70bc572646e0.xlsx","WM","Blue runner",39,"Neutral",2
+"file70bc572646e0.xlsx","WM","Dolphinfish",38,"Positive",2
+"file70bc572646e0.xlsx","WM","Dolphinfish",39,"Neutral",2
+"file70bc572646e0.xlsx","WM","King mackerel",38,"Positive",1
+"file70bc572646e0.xlsx","WM","King mackerel",39,"Neutral",2
+"file70bc572646e0.xlsx","WM","King mackerel",40,"Negative",1
+"file70bc572646e0.xlsx","WM","Mutton snapper",39,"Neutral",2
+"file70bc572646e0.xlsx","WM","Mutton snapper",40,"Negative",2
+"file70bc572646e0.xlsx","WM","Queen snapper",38,"Positive",1
+"file70bc572646e0.xlsx","WM","Queen snapper",39,"Neutral",3
+"file70bc572646e0.xlsx","WM","White mullet",39,"Neutral",2
+"file70bc572646e0.xlsx","WM","White mullet",40,"Negative",2
