@@ -1,6 +1,6 @@
-# Table Inventory — Caribbean CVA Pipeline
+# Outputs Inventory — Caribbean CVA Pipeline
 
-51 CSV outputs across Modules 00–10, in pipeline order.
+51 CSV outputs and 13 figures across Modules 00–10, in pipeline order.
 
 | Column | Content |
 |---|---|
@@ -70,3 +70,33 @@
 | distributional_​change_​full_​uscar.csv | Combined baseline DCP scores and bootstrap uncertainty results in a single table | 09 | `2-bootstrap-distributional-change.R` | `outputs/distribution-change-potential/` | 1 per stock | `stock_name, adult_mobility_inverted, habitat_specificity_inverted, early_life_dispersal_inverted, species_range, dcp_rank, dcp_numeric, prop_L, prop_M, prop_H, prop_VH, dominant_rank, dominant_prop, borderline` | `10/3-plot-distributional-change.R` | final | wide |
 | table_​directional_​effect_​results.csv | Publication results table: directional effect category, weighted mean, tally counts, and bootstrap proportions by stock | 10 | `5-produce-results-tables.R` | `outputs/tables/` | 1 per stock | `Stock, Vuln_rank, Dir_effect, Wt_mean, N_negative, N_neutral, N_positive, N_tallies, Boot_Negative, Boot_Neutral, Boot_Positive, Dominant_prop, Borderline` | — | final | wide |
 | table_​data_​quality_​results.csv | Publication results table: data quality rank, proportion ≥ 2, mean score, and tier counts by stock | 10 | `5-produce-results-tables.R` | `outputs/tables/` | 1 per stock | `Stock, Vuln_rank, Data_quality_rank, Prop_ge_2, Mean_score, N_adequate, N_limited, N_expert, N_nodata` | — | final | wide |
+
+---
+
+## Figure outputs
+
+13 PNG figures written to `figures/` at the repo root (Module 10).
+
+| Column | Content |
+|---|---|
+| `figure` | PNG filename (no path) |
+| `description` | What the figure shows |
+| `script` | Script in `10-figures/` that writes the file |
+| `reads` | CSV inputs consumed (comma-separated) |
+| `type` | `main` / `QA` |
+
+| figure | description | script | reads | type |
+|---|---|---|---|---|
+| fig_​sensitivity_​attribute_​score_​boxplot.png | Box plots of final sensitivity attribute scores across all reviewers, one panel per stock | `1-plot-scoring-distributions.R` | `sensitivity_tallies_long.csv` | main |
+| fig_​exposure_​attribute_​score_​boxplot.png | Box plots of final exposure attribute scores across all reviewers, one panel per stock | `1-plot-scoring-distributions.R` | `exposure_tallies_long.csv` | main |
+| fig_​attribute_​score_​boxplot_​combined_​horizontal.png | Combined sensitivity + exposure score box plots, horizontal layout | `1-plot-scoring-distributions.R` | `sensitivity_tallies_long.csv`, `exposure_tallies_long.csv` | main |
+| fig_​attribute_​score_​boxplot_​combined_​vertical.png | Combined sensitivity + exposure score box plots, vertical layout | `1-plot-scoring-distributions.R` | `sensitivity_tallies_long.csv`, `exposure_tallies_long.csv` | main |
+| fig_​directional_​effect_​summary.png | Summary bar chart of directional effect tally counts per stock | `1-plot-scoring-distributions.R` | `directional_effect_tallies_by_stock.csv` | main |
+| fig_​sensitivity_​tally_​distributions_​by_​stock.png | Stacked bar charts of L/M/H/VH tally proportions for each sensitivity attribute, faceted by stock | `1-plot-scoring-distributions.R` | `sensitivity_tallies_by_stock.csv` | main |
+| fig_​exposure_​tally_​distributions_​by_​stock.png | Stacked bar charts of L/M/H/VH tally proportions for each exposure attribute, faceted by stock | `1-plot-scoring-distributions.R` | `exposure_tallies_by_stock.csv` | main |
+| fig_​reviewer_​stock_​coverage.png | Heatmap of reviewer x stock coverage (QA check for completeness) | `1-plot-scoring-distributions.R` | `qa_reviewer_stock_coverage.csv` | QA |
+| fig_​loo_​bar_​plots.png | Leave-one-out influence bar plots showing rank change frequency per omitted attribute or exposure factor | `2-plot-uncertainty-figures.R` | `table_leave_one_out_sensitivity_summary.csv`, `table_leave_one_out_exposure_summary.csv`, `table_sensitivity_attribute_scores_for_plot.csv`, `table_exposure_factor_scores_for_plot.csv` | main |
+| fig_​bootstrap_​uncertainty.png | Bootstrap rank distribution plots for overall vulnerability, sensitivity, and exposure components | `2-plot-uncertainty-figures.R` | `table_bootstrap_uncertainty_stock.csv`, `table_bootstrap_uncertainty_sensitivity_component.csv` | main |
+| fig_​distributional_​change_​ranks.png | Bootstrap rank distribution for distributional change potential (DCP) per stock | `3-plot-distributional-change.R` | `distributional_change_full_uscar.csv` | main |
+| fig_​distributional_​change_​vs_​vulnerability.png | Scatter/bubble plot of DCP rank vs. overall vulnerability rank per stock | `3-plot-distributional-change.R` | `distributional_change_full_uscar.csv`, `overall_vulnerability_scores_uscar.csv` | main |
+| fig_​overall_​vulnerability.png | Overall vulnerability ranking figure: exposure vs. sensitivity component scores with vulnerability rank overlaid | `4-plot-overall-vulnerability.R` | `component_scores_uscar.csv`, `overall_vulnerability_scores_uscar.csv` | main |
