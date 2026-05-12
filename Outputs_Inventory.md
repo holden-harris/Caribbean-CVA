@@ -1,6 +1,8 @@
-# Outputs Inventory — Caribbean CVA Pipeline
+# Outputs Inventory in the Caribbean CVA Pipeline
 
 51 CSV outputs and 13 figures across Modules 00–10, in pipeline order.
+
+# Tables 
 
 | Column | Content |
 |---|---|
@@ -15,7 +17,6 @@
 | `type` | `intermediate` / `final` / `figure-input` / `QA` |
 | `format` | `long` / `wide` |
 
----
 
 | table | description | module | script | output-dir | rows | columns | consumed-by | type | format |
 |---|---|---|---|---|---|---|---|---|---|
@@ -73,7 +74,8 @@
 
 ---
 
-## Figure outputs
+
+# Figures
 
 13 PNG figures written to `figures/` at the repo root (Module 10).
 
