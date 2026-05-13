@@ -29,11 +29,11 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 | Script | Variable | Figures affected | Values | Reason |
 |--------|----------|-----------------|--------|--------|
-| Script 1 | `rank_colors` (local, overwrites config value) | Tally bar charts (Figures 3 & 4) | Low = `green2`, Moderate = `yellow2`, High = `orange1`, Very High = `red2` | Lighter shades for stacked bars; boxplot fill uses a separate continuous gradient matching the config palette |
-| Script 1 | Inline gradient in `scale_fill_gradientn` | Boxplots (Figure 2) | Continuous `green3` → `yellow2` → `orange2` → `red3` | Gradient scale keyed to attribute median; same hues as config but applied as a continuous scale, not a discrete vector |
+| Script 1 | `rank_colors` (local, overwrites config value) | Tally bar charts | Low = `green2`, Moderate = `yellow2`, High = `orange1`, Very High = `red2` | Lighter shades for stacked bars; boxplot fill uses a separate continuous gradient matching the config palette |
+| Script 1 | Inline gradient in `scale_fill_gradientn` | Boxplots | Continuous `green3` → `yellow2` → `orange2` → `red3` | Gradient scale keyed to attribute median; same hues as config but applied as a continuous scale, not a discrete vector |
 | Script 1 | Inline gradient in `scale_fill_gradient` | Reviewer coverage heatmap (QA) | Low = `#d9534f` → High = `#2c7bb6` | Red-to-blue diverging scale to highlight incomplete reviewer × stock combinations |
-| Script 3 | `rank_colors` (local, overwrites config value) | DCP column chart and cross-plot (Figure 9) | Low = `green3`, Moderate = **`yellow4`**, High = `orange2`, Very High = `red3` | `yellow4` (darker than config's `yellow2`) visually distinguishes DCP figures from the uncertainty figures in Script 2 |
-| Script 4 | `vuln_colors` (new variable, does not overwrite) | Vulnerability tile grid (Figure 1, Panel A) | Low = `#2d9a27`, Moderate = `yellow3`, High = `#e87722`, Very High = `#cc2222` | Hex values provide sufficient contrast for both black and white overlaid text; config `rank_colors` are not used in Panel A |
+| Script 3 | `rank_colors` (local, overwrites config value) | DCP column chart and cross-plot | Low = `green3`, Moderate = **`yellow4`**, High = `orange2`, Very High = `red3` | `yellow4` (darker than config's `yellow2`) visually distinguishes DCP figures from the bootstrap uncertainty figures in Script 2 |
+| Script 4 | `vuln_colors` (new variable, does not overwrite) | Vulnerability tile grid (Panel A) | Low = `#2d9a27`, Moderate = `yellow3`, High = `#e87722`, Very High = `#cc2222` | Hex values provide sufficient contrast for both black and white overlaid text; config `rank_colors` are not used in Panel A |
 
 ---
 
@@ -54,16 +54,69 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Outputs
 
-| File | Description |
-|------|-------------|
-| `figures/fig_exposure_attribute_score_boxplot.png` | Horizontal boxplots of mean exposure factor scores across all expert-approved stock × factor pairs. One box per exposure factor, ordered by ascending median. Box fill is a continuous green-to-red gradient keyed to the attribute-level median score (1 = Low, 4 = Very High). Center bar = median; box = IQR; whiskers = 1.5×IQR; open circles mark outliers. Saved at 1200 dpi. |
-| `figures/fig_sensitivity_attribute_score_boxplot.png` | Same layout for all 14 biological sensitivity attributes applied across all 25 stocks. Saved at 1200 dpi. |
-| `figures/fig_attribute_score_boxplot_combined_horizontal.png` | Exposure and Sensitivity boxplot panels arranged side-by-side. Saved at 1200 dpi. |
-| `figures/fig_attribute_score_boxplot_combined_vertical.png` | Exposure and Sensitivity boxplot panels stacked vertically. Saved at 1200 dpi. |
-| `figures/fig_exposure_tally_distributions_by_stock.png` | Faceted horizontal stacked bars (one facet per stock, 5 columns). Within each facet, bars show the proportion of tallies in each vulnerability rank category for each expert-approved exposure factor × stock pair. Factors ordered on the y-axis by ascending pooled mean score. Uses local lighter tally-bar palette. Saved at 8.5 × 11 in, 900 dpi. |
-| `figures/fig_sensitivity_tally_distributions_by_stock.png` | Same layout for biological sensitivity attributes. Up to 20 pooled tallies (4 reviewers × 5 tallies) per attribute per stock. Saved at 8.5 × 11 in, 900 dpi. |
-| `figures/fig_directional_effect_summary.png` | Horizontal stacked bar per stock showing proportions of reviewer tallies assigned Negative, Neutral, or Positive directional effect. 16 pooled tallies per stock (4 reviewers × 4 tallies). Stocks ordered by ascending proportion negative (stock with lowest negative proportion at bottom). Uses `dir_colors` from `config.R`. Saved at 1200 dpi. |
-| `figures/fig_reviewer_stock_coverage.png` | QA heatmap of reviewer × stock showing the count of attributes scored per combination. Red (#d9534f) indicates incomplete scoring; blue (#2c7bb6) indicates a fully scored combination. Used to verify data collection completeness. Saved at 300 dpi. |
+**`figures/fig_exposure_attribute_score_boxplot.png`** — Horizontal boxplots of mean exposure factor scores across all expert-approved stock × factor pairs. One box per exposure factor, ordered by ascending median. Box fill is a continuous green-to-red gradient keyed to the attribute-level median score (1 = Low, 4 = Very High). Center bar = median; box = IQR; whiskers = 1.5×IQR; open circles mark outliers. Saved at 1200 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_exposure_attribute_score_boxplot.png?raw=true"
+       alt="Exposure attribute score boxplot"
+       width="700"/>
+</p>
+
+**`figures/fig_sensitivity_attribute_score_boxplot.png`** — Same layout for all 14 biological sensitivity attributes applied across all 25 stocks. Saved at 1200 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_sensitivity_attribute_score_boxplot.png?raw=true"
+       alt="Sensitivity attribute score boxplot"
+       width="700"/>
+</p>
+
+**`figures/fig_attribute_score_boxplot_combined_horizontal.png`** — Exposure and Sensitivity boxplot panels arranged side-by-side. Saved at 1200 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_attribute_score_boxplot_combined_horizontal.png?raw=true"
+       alt="Combined attribute score boxplots (horizontal)"
+       width="900"/>
+</p>
+
+**`figures/fig_attribute_score_boxplot_combined_vertical.png`** — Exposure and Sensitivity boxplot panels stacked vertically. Saved at 1200 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_attribute_score_boxplot_combined_vertical.png?raw=true"
+       alt="Combined attribute score boxplots (vertical)"
+       width="700"/>
+</p>
+
+**`figures/fig_exposure_tally_distributions_by_stock.png`** — Faceted horizontal stacked bars (one facet per stock, 5 columns). Within each facet, bars show the proportion of tallies in each vulnerability rank category for each expert-approved exposure factor × stock pair. Factors ordered on the y-axis by ascending pooled mean score. Uses local lighter tally-bar palette. Saved at 8.5 × 11 in, 900 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_exposure_tally_distributions_by_stock.png?raw=true"
+       alt="Exposure tally distributions by stock"
+       width="700"/>
+</p>
+
+**`figures/fig_sensitivity_tally_distributions_by_stock.png`** — Same layout for biological sensitivity attributes. Up to 20 pooled tallies (4 reviewers × 5 tallies) per attribute per stock. Saved at 8.5 × 11 in, 900 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_sensitivity_tally_distributions_by_stock.png?raw=true"
+       alt="Sensitivity tally distributions by stock"
+       width="700"/>
+</p>
+
+**`figures/fig_directional_effect_summary.png`** — Horizontal stacked bar per stock showing proportions of reviewer tallies assigned Negative, Neutral, or Positive directional effect. 16 pooled tallies per stock (4 reviewers × 4 tallies). Stocks ordered by ascending proportion negative (stock with lowest negative proportion at bottom). Uses `dir_colors` from `config.R`. Saved at 1200 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_directional_effect_summary.png?raw=true"
+       alt="Directional effect summary by stock"
+       width="700"/>
+</p>
+
+**`figures/fig_reviewer_stock_coverage.png`** — QA heatmap of reviewer × stock showing the count of attributes scored per combination. Red (#d9534f) indicates incomplete scoring; blue (#2c7bb6) indicates a fully scored combination. Used to verify data collection completeness. Saved at 300 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_reviewer_stock_coverage.png?raw=true"
+       alt="Reviewer × stock coverage heatmap"
+       width="700"/>
+</p>
 
 ### Workflow
 1. Source `config.R` for rank/directional effect levels, `rank_colors`, `dir_colors`, `attr_short_names`, `exp_attr_short_names`, and `stock_name_recode`.
@@ -93,23 +146,34 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Outputs
 
-| File | Description |
-|------|-------------|
-| `figures/fig_loo_bar_plots.png` | **Panel A:** Horizontal bar chart showing the number of stocks (out of 25) whose vulnerability rank changed when each exposure factor was omitted, ordered by descending influence (most influential at top). **Panel B:** Same for each biological sensitivity attribute. Bars are solid black. X-axes scale independently. Panels combined via patchwork with heights proportional to bar count (13 exposure factors, 14 sensitivity attributes). Saved at 6.5 × 9 in, 300 dpi. |
-| `figures/fig_bootstrap_uncertainty.png` | **Panel A:** Horizontal stacked bars showing proportion of 10,000 bootstrap iterations in each vulnerability rank (Low/Moderate/High/Very High) per stock. Dashed vertical line at 75% borderline threshold. Borderline stocks (dominant proportion < 75%) are marked with an asterisk (*). Right-margin filled square shows finalized baseline rank. Gray horizontal lines separate baseline vulnerability rank groups (Moderate/High/Very High, bottom to top). **Panel B:** Same layout for directional effect bootstrap (Negative/Neutral/Positive). Stocks ordered top-to-bottom by descending baseline vulnerability rank; within each rank group, stocks sorted by ascending dominant bootstrap proportion so the most uncertain stocks cluster at rank-group boundaries. Panels use equal heights (25 stocks each). Saved at 7.5 × 12 in, 300 dpi. |
+**`figures/fig_loo_bar_plots.png`** — **Panel A:** Horizontal bar chart showing the number of stocks (out of 25) whose vulnerability rank changed when each exposure factor was omitted, ordered by descending influence (most influential at top). **Panel B:** Same for each biological sensitivity attribute. Bars are solid black. X-axes scale independently. Panels combined via patchwork with heights proportional to bar count (13 exposure factors, 14 sensitivity attributes). Saved at 6.5 × 9 in, 300 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_loo_bar_plots.png?raw=true"
+       alt="Leave-one-out influence analysis"
+       width="700"/>
+</p>
+
+**`figures/fig_bootstrap_uncertainty.png`** — **Panel A:** Horizontal stacked bars showing proportion of 10,000 bootstrap iterations in each vulnerability rank (Low/Moderate/High/Very High) per stock. Dashed vertical line at 75% borderline threshold. Borderline stocks (dominant proportion < 75%) are marked with an asterisk (*). Right-margin filled square shows finalized baseline rank. Gray horizontal lines separate baseline vulnerability rank groups (Moderate/High/Very High, bottom to top). **Panel B:** Same layout for directional effect bootstrap (Negative/Neutral/Positive). Stocks ordered top-to-bottom by descending baseline vulnerability rank; within each rank group, stocks sorted by ascending dominant bootstrap proportion so the most uncertain stocks cluster at rank-group boundaries. Panels use equal heights (25 stocks each). Saved at 7.5 × 12 in, 300 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_bootstrap_uncertainty.png?raw=true"
+       alt="Bootstrap resampling uncertainty"
+       width="700"/>
+</p>
 
 ### Colors
-- LOO bars (Figure 6): solid `black` fill — no rank-coded palette
-- Bootstrap vulnerability bars (Figure 7, Panel A): `rank_colors` from `config.R`
-- Bootstrap directional effect bars (Figure 7, Panel B): `dir_colors` from `config.R`
+- LOO bars: solid `black` fill — no rank-coded palette
+- Bootstrap vulnerability bars (Panel A): `rank_colors` from `config.R`
+- Bootstrap directional effect bars (Panel B): `dir_colors` from `config.R`
 
 ### Workflow
 1. Source `config.R` for `rank_levels`, `rank_colors`, `dir_levels`, `dir_colors`, `attr_short_names`, `exp_attr_short_names`.
 2. Recode "Stock size/status" → "Stock Size Status" before applying `attr_short_names` lookup (CSV column name differs from config key).
-3. Build Figure 6: one panel each for exposure (LOO) and sensitivity (LOO), ordered by descending influence.
-4. Compute stock ordering for Figure 7: primary sort by baseline vulnerability rank (Very High → Low, top to bottom); secondary sort by dominant bootstrap proportion ascending within each rank group.
-5. Build Figure 7, Panel A (bootstrap vulnerability) with baseline rank indicator squares and 75% reference line.
-6. Build Figure 7, Panel B (bootstrap directional) using the same stock order as Panel A for row-for-row comparison.
+3. Build LOO figure: one panel each for exposure and sensitivity, ordered by descending influence.
+4. Compute stock ordering for bootstrap figure: primary sort by baseline vulnerability rank (Very High → Low, top to bottom); secondary sort by dominant bootstrap proportion ascending within each rank group.
+5. Build bootstrap vulnerability panel with baseline rank indicator squares and 75% reference line.
+6. Build bootstrap directional effect panel using the same stock order as the vulnerability panel for row-for-row comparison.
 
 ---
 
@@ -126,13 +190,24 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Outputs
 
-| File | Description |
-|------|-------------|
-| `figures/fig_distributional_change_ranks.png` | One solid-colored column per DCP rank (Low/Moderate/High/Very High). Column height = number of stocks in that category. Stock names stacked inside each column, ordered by bootstrap certainty (highest certainty at top), then alphabetically within each certainty tier. Label format: "Stock name (V)" where V = vulnerability abbreviation (L/M/H/VH). Text color/face encodes bootstrap certainty: very high (>95%) = black bold, high (90–95%) = black italic, moderate (67–89%) = white bold, low (<67%) = white italic. Y-axis ceiling rounded up to the nearest multiple of 3. Saved at 10 × 8 in, 1200 dpi. |
-| `figures/fig_distributional_change_vs_vulnerability.png` | 4×4 tile grid with DCP rank on the x-axis and overall vulnerability rank on the y-axis. Cells are filled by overall vulnerability rank. Stock names are placed within each cell with y-offsets to separate multiple stocks in the same cell. Same certainty-encoded text color and face as the column chart. Saved at 9 × 7 in, 1000 dpi. |
+**`figures/fig_distributional_change_ranks.png`** — One solid-colored column per DCP rank (Low/Moderate/High/Very High). Column height = number of stocks in that category. Stock names stacked inside each column, ordered by bootstrap certainty (highest certainty at top), then alphabetically within each certainty tier. Label format: "Stock name (V)" where V = vulnerability abbreviation (L/M/H/VH). Text color/face encodes bootstrap certainty: very high (>95%) = black bold, high (90–95%) = black italic, moderate (67–89%) = white bold, low (<67%) = white italic. Y-axis ceiling rounded up to the nearest multiple of 3. Saved at 10 × 8 in, 1200 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_distributional_change_ranks.png?raw=true"
+       alt="Distributional change potential by rank"
+       width="700"/>
+</p>
+
+**`figures/fig_distributional_change_vs_vulnerability.png`** — 4×4 tile grid with DCP rank on the x-axis and overall vulnerability rank on the y-axis. Cells are filled by overall vulnerability rank. Stock names are placed within each cell with y-offsets to separate multiple stocks in the same cell. Same certainty-encoded text color and face as the column chart. Saved at 9 × 7 in, 1000 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_distributional_change_vs_vulnerability.png?raw=true"
+       alt="Distributional change potential vs. overall vulnerability"
+       width="700"/>
+</p>
 
 ### Colors
-- Column and tile fill: local `rank_colors` override — Low = `green3`, Moderate = **`yellow4`**, High = `orange2`, Very High = `red3`. Only Moderate differs from `config.R` (yellow4 is darker than yellow2), deliberately chosen so the DCP column chart is visually distinct from Figure 7's uncertainty bars.
+- Column and tile fill: local `rank_colors` override — Low = `green3`, Moderate = **`yellow4`**, High = `orange2`, Very High = `red3`. Only Moderate differs from `config.R` (yellow4 is darker than yellow2), deliberately chosen so the DCP figures are visually distinct from the bootstrap uncertainty bars in Script 2.
 - Text color: black (very high / high certainty) or white (moderate / low certainty), derived from `dominant_prop` thresholds in `config.R`.
 
 ### Workflow
@@ -159,9 +234,13 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Output
 
-| File | Description |
-|------|-------------|
-| `figures/fig_overall_vulnerability.png` | **Panel A:** 4×4 tile grid (x = Climate Exposure rank, y = Biological Sensitivity rank). Background tile fill reflects the expected FCVA vulnerability rank for each Exposure × Sensitivity combination, calculated as the product of numeric rank values (score = exp_num × sens_num: ≤3 = Low, ≤6 = Moderate, ≤9 = High, >9 = Very High). The Very High sensitivity row is rendered as a thin tile (height 0.3, centered at y = 3.65) because no stocks fall there; all other rows use standard height 1. Stock names placed in cells with y-offsets for multiple stocks. **Panel B:** Three columns (Negative, Neutral, Positive) with stock names stacked in each directional effect category, ordered by descending bootstrap certainty. Both panels encode certainty via text color and face: very high (>95%) = black bold, high (90–95%) = black italic, moderate (67–89%) = white bold, low (<67%) = white italic. Panel A uses vulnerability bootstrap certainty; Panel B uses directional effect bootstrap certainty. Panels combined via patchwork (Panel A height 2×, Panel B height 1×). Saved at 8 × 11.5 in, 1000 dpi. |
+**`figures/fig_overall_vulnerability.png`** — **Panel A:** 4×4 tile grid (x = Climate Exposure rank, y = Biological Sensitivity rank). Background tile fill reflects the expected FCVA vulnerability rank for each Exposure × Sensitivity combination, calculated as the product of numeric rank values (score = exp_num × sens_num: ≤3 = Low, ≤6 = Moderate, ≤9 = High, >9 = Very High). The Very High sensitivity row is rendered as a thin tile (height 0.3, centered at y = 3.65) because no stocks fall there; all other rows use standard height 1. Stock names placed in cells with y-offsets for multiple stocks. **Panel B:** Three columns (Negative, Neutral, Positive) with stock names stacked in each directional effect category, ordered by descending bootstrap certainty. Both panels encode certainty via text color and face: very high (>95%) = black bold, high (90–95%) = black italic, moderate (67–89%) = white bold, low (<67%) = white italic. Panel A uses vulnerability bootstrap certainty; Panel B uses directional effect bootstrap certainty. Panels combined via patchwork (Panel A height 2×, Panel B height 1×). Saved at 8 × 11.5 in, 1000 dpi.
+
+<p align="center">
+  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_overall_vulnerability.png?raw=true"
+       alt="Overall climate vulnerability and directional effect"
+       width="700"/>
+</p>
 
 ### Colors
 - Panel A tile fill: local `vuln_colors` — Low = `#2d9a27`, Moderate = `yellow3`, High = `#e87722`, Very High = `#cc2222`. These values (not `rank_colors` from `config.R`) were selected to provide adequate contrast for overlaid white and black stock name text against the tile background.
