@@ -54,30 +54,6 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Outputs
 
-**`figures/fig_exposure_attribute_score_boxplot.png`** — Horizontal boxplots of mean exposure factor scores across all expert-approved stock × factor pairs. One box per exposure factor, ordered by ascending median. Box fill is a continuous green-to-red gradient keyed to the attribute-level median score (1 = Low, 4 = Very High). Center bar = median; box = IQR; whiskers = 1.5×IQR; open circles mark outliers. Saved at 1200 dpi.
-
-<p align="center">
-  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_exposure_attribute_score_boxplot.png?raw=true"
-       alt="Exposure attribute score boxplot"
-       width="700"/>
-</p>
-
-**`figures/fig_sensitivity_attribute_score_boxplot.png`** — Same layout for all 14 biological sensitivity attributes applied across all 25 stocks. Saved at 1200 dpi.
-
-<p align="center">
-  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_sensitivity_attribute_score_boxplot.png?raw=true"
-       alt="Sensitivity attribute score boxplot"
-       width="700"/>
-</p>
-
-**`figures/fig_attribute_score_boxplot_combined_horizontal.png`** — Exposure and Sensitivity boxplot panels arranged side-by-side. Saved at 1200 dpi.
-
-<p align="center">
-  <img src="https://github.com/holden-harris/Caribbean-CVA/blob/main/figures/fig_attribute_score_boxplot_combined_horizontal.png?raw=true"
-       alt="Combined attribute score boxplots (horizontal)"
-       width="900"/>
-</p>
-
 **`figures/fig_attribute_score_boxplot_combined_vertical.png`** — Exposure and Sensitivity boxplot panels stacked vertically. Saved at 1200 dpi.
 
 <p align="center">
