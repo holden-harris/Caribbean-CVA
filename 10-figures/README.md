@@ -2,9 +2,9 @@
 
 ## Overview
 
-This module is the final output stage of the Caribbean CVA pipeline. The five R scripts here consume pre-computed CSV files produced by Modules 04–09 and generate all publication figures and summary tables. No FCVA scoring logic is applied — all ranks and scores are read directly from existing CSVs. Run all scripts from the RStudio project root (the `.Rproj` file location), which sets the working directory to `C:/Repos/Caribbean-CVA/`.
+This module is the final output stage of the Caribbean CVA pipeline. The five R scripts here consume pre-computed CSV files produced by Modules 04–09 and generate all publication figures and summary tables. No FCVA scoring logic is applied. All ranks and scores are read directly from existing CSVs. Run all scripts from the RStudio project root (the `.Rproj` file location), which sets the working directory to `C:/Repos/Caribbean-CVA/`.
 
-The shared configuration file `config.R` at the project root is sourced at the top of every script. Changing any threshold in `config.R` (e.g., `rank_threshold`, `borderline_prop`) requires re-running Modules 04–09 before Module 10 figures will reflect the update — figure scripts read only pre-computed CSVs and will not recalculate ranks on their own.
+The shared configuration file `config.R` at the project root is sourced at the top of every script. Changing any threshold in `config.R` (e.g., `rank_threshold`, `borderline_prop`) requires re-running Modules 04–09 before Module 10 figures will reflect the updates. Figure scripts read only pre-computed CSVs and will not recalculate ranks on their own.
 
 ---
 
