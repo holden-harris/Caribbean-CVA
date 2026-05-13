@@ -54,16 +54,16 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Outputs
 
-| File | Manuscript figure | Description |
-|------|------------------|-------------|
-| `figures/fig_exposure_attribute_score_boxplot.png` | Figure 2A | Horizontal boxplots of mean exposure factor scores across all expert-approved stock × factor pairs. One box per exposure factor, ordered by ascending median. Box fill is a continuous green-to-red gradient keyed to the attribute-level median score (1 = Low, 4 = Very High). Center bar = median; box = IQR; whiskers = 1.5×IQR; open circles mark outliers. Saved at 1200 dpi. |
-| `figures/fig_sensitivity_attribute_score_boxplot.png` | Figure 2B | Same layout for all 14 biological sensitivity attributes applied across all 25 stocks. Saved at 1200 dpi. |
-| `figures/fig_attribute_score_boxplot_combined_horizontal.png` | Figure 2 (horizontal) | Exposure (Panel A) and Sensitivity (Panel B) boxplot panels arranged side-by-side. Saved at 1200 dpi. |
-| `figures/fig_attribute_score_boxplot_combined_vertical.png` | Figure 2 (vertical) | Exposure (Panel A) and Sensitivity (Panel B) boxplot panels stacked vertically. Saved at 1200 dpi. |
-| `figures/fig_exposure_tally_distributions_by_stock.png` | Figure 3 | Faceted horizontal stacked bars (one facet per stock, 5 columns). Within each facet, bars show the proportion of tallies in each vulnerability rank category for each expert-approved exposure factor × stock pair. Factors ordered on the y-axis by ascending pooled mean score. Uses local lighter tally-bar palette. Saved at 8.5 × 11 in, 900 dpi. |
-| `figures/fig_sensitivity_tally_distributions_by_stock.png` | Figure 4 | Same layout for biological sensitivity attributes. Up to 20 pooled tallies (4 reviewers × 5 tallies) per attribute per stock. Saved at 8.5 × 11 in, 900 dpi. |
-| `figures/fig_directional_effect_summary.png` | Figure 5 | Horizontal stacked bar per stock showing proportions of reviewer tallies assigned Negative, Neutral, or Positive directional effect. 16 pooled tallies per stock (4 reviewers × 4 tallies). Stocks ordered by ascending proportion negative (stock with lowest negative proportion at bottom). Uses `dir_colors` from `config.R`. Saved at 1200 dpi. |
-| `figures/fig_reviewer_stock_coverage.png` | QA (not in manuscript) | Heatmap of reviewer × stock showing the count of attributes scored per combination. Red (#d9534f) indicates incomplete scoring; blue (#2c7bb6) indicates a fully scored combination. Used to verify data collection completeness. Saved at 300 dpi. |
+| File | Description |
+|------|-------------|
+| `figures/fig_exposure_attribute_score_boxplot.png` | Horizontal boxplots of mean exposure factor scores across all expert-approved stock × factor pairs. One box per exposure factor, ordered by ascending median. Box fill is a continuous green-to-red gradient keyed to the attribute-level median score (1 = Low, 4 = Very High). Center bar = median; box = IQR; whiskers = 1.5×IQR; open circles mark outliers. Saved at 1200 dpi. |
+| `figures/fig_sensitivity_attribute_score_boxplot.png` | Same layout for all 14 biological sensitivity attributes applied across all 25 stocks. Saved at 1200 dpi. |
+| `figures/fig_attribute_score_boxplot_combined_horizontal.png` | Exposure and Sensitivity boxplot panels arranged side-by-side. Saved at 1200 dpi. |
+| `figures/fig_attribute_score_boxplot_combined_vertical.png` | Exposure and Sensitivity boxplot panels stacked vertically. Saved at 1200 dpi. |
+| `figures/fig_exposure_tally_distributions_by_stock.png` | Faceted horizontal stacked bars (one facet per stock, 5 columns). Within each facet, bars show the proportion of tallies in each vulnerability rank category for each expert-approved exposure factor × stock pair. Factors ordered on the y-axis by ascending pooled mean score. Uses local lighter tally-bar palette. Saved at 8.5 × 11 in, 900 dpi. |
+| `figures/fig_sensitivity_tally_distributions_by_stock.png` | Same layout for biological sensitivity attributes. Up to 20 pooled tallies (4 reviewers × 5 tallies) per attribute per stock. Saved at 8.5 × 11 in, 900 dpi. |
+| `figures/fig_directional_effect_summary.png` | Horizontal stacked bar per stock showing proportions of reviewer tallies assigned Negative, Neutral, or Positive directional effect. 16 pooled tallies per stock (4 reviewers × 4 tallies). Stocks ordered by ascending proportion negative (stock with lowest negative proportion at bottom). Uses `dir_colors` from `config.R`. Saved at 1200 dpi. |
+| `figures/fig_reviewer_stock_coverage.png` | QA heatmap of reviewer × stock showing the count of attributes scored per combination. Red (#d9534f) indicates incomplete scoring; blue (#2c7bb6) indicates a fully scored combination. Used to verify data collection completeness. Saved at 300 dpi. |
 
 ### Workflow
 1. Source `config.R` for rank/directional effect levels, `rank_colors`, `dir_colors`, `attr_short_names`, `exp_attr_short_names`, and `stock_name_recode`.
@@ -93,10 +93,10 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Outputs
 
-| File | Manuscript figure | Description |
-|------|------------------|-------------|
-| `figures/fig_loo_bar_plots.png` | Figure 6 | **Panel A:** Horizontal bar chart showing the number of stocks (out of 25) whose vulnerability rank changed when each exposure factor was omitted, ordered by descending influence (most influential at top). **Panel B:** Same for each biological sensitivity attribute. Bars are solid black. X-axes scale independently. Panels combined via patchwork with heights proportional to bar count (13 exposure factors, 14 sensitivity attributes). Saved at 6.5 × 9 in, 300 dpi. |
-| `figures/fig_bootstrap_uncertainty.png` | Figure 7 | **Panel A:** Horizontal stacked bars showing proportion of 10,000 bootstrap iterations in each vulnerability rank (Low/Moderate/High/Very High) per stock. Dashed vertical line at 75% borderline threshold. Borderline stocks (dominant proportion < 75%) are marked with an asterisk (*). Right-margin filled square shows finalized baseline rank. Gray horizontal lines separate baseline vulnerability rank groups (Moderate/High/Very High, bottom to top). **Panel B:** Same layout for directional effect bootstrap (Negative/Neutral/Positive). Stocks ordered top-to-bottom by descending baseline vulnerability rank; within each rank group, stocks sorted by ascending dominant bootstrap proportion so the most uncertain stocks cluster at rank-group boundaries. Panels use equal heights (25 stocks each). Saved at 7.5 × 12 in, 300 dpi. |
+| File | Description |
+|------|-------------|
+| `figures/fig_loo_bar_plots.png` | **Panel A:** Horizontal bar chart showing the number of stocks (out of 25) whose vulnerability rank changed when each exposure factor was omitted, ordered by descending influence (most influential at top). **Panel B:** Same for each biological sensitivity attribute. Bars are solid black. X-axes scale independently. Panels combined via patchwork with heights proportional to bar count (13 exposure factors, 14 sensitivity attributes). Saved at 6.5 × 9 in, 300 dpi. |
+| `figures/fig_bootstrap_uncertainty.png` | **Panel A:** Horizontal stacked bars showing proportion of 10,000 bootstrap iterations in each vulnerability rank (Low/Moderate/High/Very High) per stock. Dashed vertical line at 75% borderline threshold. Borderline stocks (dominant proportion < 75%) are marked with an asterisk (*). Right-margin filled square shows finalized baseline rank. Gray horizontal lines separate baseline vulnerability rank groups (Moderate/High/Very High, bottom to top). **Panel B:** Same layout for directional effect bootstrap (Negative/Neutral/Positive). Stocks ordered top-to-bottom by descending baseline vulnerability rank; within each rank group, stocks sorted by ascending dominant bootstrap proportion so the most uncertain stocks cluster at rank-group boundaries. Panels use equal heights (25 stocks each). Saved at 7.5 × 12 in, 300 dpi. |
 
 ### Colors
 - LOO bars (Figure 6): solid `black` fill — no rank-coded palette
@@ -126,10 +126,10 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Outputs
 
-| File | Manuscript figure | Description |
-|------|------------------|-------------|
-| `figures/fig_distributional_change_ranks.png` | Figure 9 (column chart) | One solid-colored column per DCP rank (Low/Moderate/High/Very High). Column height = number of stocks in that category. Stock names stacked inside each column, ordered by bootstrap certainty (highest certainty at top), then alphabetically within each certainty tier. Label format: "Stock name (V)" where V = vulnerability abbreviation (L/M/H/VH). Text color/face encodes bootstrap certainty: very high (>95%) = black bold, high (90–95%) = black italic, moderate (67–89%) = white bold, low (<67%) = white italic. Y-axis ceiling rounded up to the nearest multiple of 3. Saved at 10 × 8 in, 1200 dpi. |
-| `figures/fig_distributional_change_vs_vulnerability.png` | Figure 9 (cross-plot) | 4×4 tile grid with DCP rank on the x-axis and overall vulnerability rank on the y-axis. Cells are filled by overall vulnerability rank. Stock names are placed within each cell with y-offsets to separate multiple stocks in the same cell. Same certainty-encoded text color and face as the column chart. Saved at 9 × 7 in, 1000 dpi. |
+| File | Description |
+|------|-------------|
+| `figures/fig_distributional_change_ranks.png` | One solid-colored column per DCP rank (Low/Moderate/High/Very High). Column height = number of stocks in that category. Stock names stacked inside each column, ordered by bootstrap certainty (highest certainty at top), then alphabetically within each certainty tier. Label format: "Stock name (V)" where V = vulnerability abbreviation (L/M/H/VH). Text color/face encodes bootstrap certainty: very high (>95%) = black bold, high (90–95%) = black italic, moderate (67–89%) = white bold, low (<67%) = white italic. Y-axis ceiling rounded up to the nearest multiple of 3. Saved at 10 × 8 in, 1200 dpi. |
+| `figures/fig_distributional_change_vs_vulnerability.png` | 4×4 tile grid with DCP rank on the x-axis and overall vulnerability rank on the y-axis. Cells are filled by overall vulnerability rank. Stock names are placed within each cell with y-offsets to separate multiple stocks in the same cell. Same certainty-encoded text color and face as the column chart. Saved at 9 × 7 in, 1000 dpi. |
 
 ### Colors
 - Column and tile fill: local `rank_colors` override — Low = `green3`, Moderate = **`yellow4`**, High = `orange2`, Very High = `red3`. Only Moderate differs from `config.R` (yellow4 is darker than yellow2), deliberately chosen so the DCP column chart is visually distinct from Figure 7's uncertainty bars.
@@ -159,9 +159,9 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Output
 
-| File | Manuscript figure | Description |
-|------|------------------|-------------|
-| `figures/fig_overall_vulnerability.png` | Figure 1 | **Panel A:** 4×4 tile grid (x = Climate Exposure rank, y = Biological Sensitivity rank). Background tile fill reflects the expected FCVA vulnerability rank for each Exposure × Sensitivity combination, calculated as the product of numeric rank values (score = exp_num × sens_num: ≤3 = Low, ≤6 = Moderate, ≤9 = High, >9 = Very High). The Very High sensitivity row is rendered as a thin tile (height 0.3, centered at y = 3.65) because no stocks fall there; all other rows use standard height 1. Stock names placed in cells with y-offsets for multiple stocks. **Panel B:** Three columns (Negative, Neutral, Positive) with stock names stacked in each directional effect category, ordered by descending bootstrap certainty. Both panels encode certainty via text color and face: very high (>95%) = black bold, high (90–95%) = black italic, moderate (67–89%) = white bold, low (<67%) = white italic. Panel A uses vulnerability bootstrap certainty; Panel B uses directional effect bootstrap certainty. Panels combined via patchwork (Panel A height 2×, Panel B height 1×). Saved at 8 × 11.5 in, 1000 dpi. |
+| File | Description |
+|------|-------------|
+| `figures/fig_overall_vulnerability.png` | **Panel A:** 4×4 tile grid (x = Climate Exposure rank, y = Biological Sensitivity rank). Background tile fill reflects the expected FCVA vulnerability rank for each Exposure × Sensitivity combination, calculated as the product of numeric rank values (score = exp_num × sens_num: ≤3 = Low, ≤6 = Moderate, ≤9 = High, >9 = Very High). The Very High sensitivity row is rendered as a thin tile (height 0.3, centered at y = 3.65) because no stocks fall there; all other rows use standard height 1. Stock names placed in cells with y-offsets for multiple stocks. **Panel B:** Three columns (Negative, Neutral, Positive) with stock names stacked in each directional effect category, ordered by descending bootstrap certainty. Both panels encode certainty via text color and face: very high (>95%) = black bold, high (90–95%) = black italic, moderate (67–89%) = white bold, low (<67%) = white italic. Panel A uses vulnerability bootstrap certainty; Panel B uses directional effect bootstrap certainty. Panels combined via patchwork (Panel A height 2×, Panel B height 1×). Saved at 8 × 11.5 in, 1000 dpi. |
 
 ### Colors
 - Panel A tile fill: local `vuln_colors` — Low = `#2d9a27`, Moderate = `yellow3`, High = `#e87722`, Very High = `#cc2222`. These values (not `rank_colors` from `config.R`) were selected to provide adequate contrast for overlaid white and black stock name text against the tile background.
@@ -196,12 +196,12 @@ These colors appear in the script as a literal named vector or hex string — wi
 
 ### Outputs
 
-| File | Manuscript table | Columns |
-|------|-----------------|---------|
-| `outputs/tables/table_directional_effect_results.csv` | Results Table 3 | Stock, Vuln_rank, Dir_effect, Wt_mean, N_negative, N_neutral, N_positive, N_tallies, Boot_Negative, Boot_Neutral, Boot_Positive, Dominant_prop, Borderline |
-| `outputs/tables/table_data_quality_results.csv` | Results Table 2 | Stock, Vuln_rank, Data_quality_rank, Prop_ge_2, Mean_score, N_adequate, N_limited, N_expert, N_nodata |
+| File | Columns |
+|------|---------|
+| `outputs/tables/table_directional_effect_results.csv` | Stock, Vuln_rank, Dir_effect, Wt_mean, N_negative, N_neutral, N_positive, N_tallies, Boot_Negative, Boot_Neutral, Boot_Positive, Dominant_prop, Borderline |
+| `outputs/tables/table_data_quality_results.csv` | Stock, Vuln_rank, Data_quality_rank, Prop_ge_2, Mean_score, N_adequate, N_limited, N_expert, N_nodata |
 
-Both tables are sorted by descending vulnerability rank, then descending dominant vulnerability bootstrap proportion within each rank group, then alphabetical by stock name — matching the row order in Results Table 1 and Figure 7.
+Both tables are sorted by descending vulnerability rank, then descending dominant vulnerability bootstrap proportion within each rank group, then alphabetical by stock name.
 
 ### Workflow
 1. Source `config.R` for `rank_levels`, `borderline_prop`, and `stock_name_recode`.
