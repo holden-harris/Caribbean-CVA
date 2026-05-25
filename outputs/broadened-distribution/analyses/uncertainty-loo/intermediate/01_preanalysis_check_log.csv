@@ -1,0 +1,5 @@
+check_name,status,detail
+sensitivity_tally_row_sums,PASS,n rows with bad sum = 0
+directional_tally_reviewer_sums,PASS,n reviewer-stocks with total != 4 = 0
+tally_stocks_missing_in_baseline,PASS,n stocks in tallies but not baseline = 0
+baseline_stocks_missing_in_tallies,PASS,n stocks in baseline but not tallies = 0

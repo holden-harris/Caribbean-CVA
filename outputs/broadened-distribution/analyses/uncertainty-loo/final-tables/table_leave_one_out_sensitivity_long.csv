@@ -1,0 +1,351 @@
+stock_name,attribute_omitted,baseline_sens_rank,new_sens_rank,baseline_vuln_rank,new_vuln_rank,baseline_vuln_score,new_vuln_score,rank_changed,rank_change_direction
+Atlantic thread herring,Adult mobility,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Complexity in reproductive strategy,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Genetic diversity,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Habitat specificity,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Mobility and dispersal or early life stages,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Other stressors,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Population growth rate,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Predation and competition dynamics,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Prey specificity,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Spawning characteristics,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Species range,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Specificity in early life history requirements,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Stock size/status,Low,Low,Low,Low,3,3,FALSE,No change
+Atlantic thread herring,Tolerance to ocean acidification,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Adult mobility,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Complexity in reproductive strategy,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Genetic diversity,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Habitat specificity,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Mobility and dispersal or early life stages,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Other stressors,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Population growth rate,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Predation and competition dynamics,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Prey specificity,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Spawning characteristics,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Species range,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Specificity in early life history requirements,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Stock size/status,Low,Low,Low,Low,3,3,FALSE,No change
+Ballyhoo,Tolerance to ocean acidification,Low,Low,Low,Low,3,3,FALSE,No change
+Blue runner,Adult mobility,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Complexity in reproductive strategy,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Genetic diversity,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Habitat specificity,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Mobility and dispersal or early life stages,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Other stressors,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Population growth rate,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Predation and competition dynamics,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Prey specificity,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Spawning characteristics,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Species range,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Specificity in early life history requirements,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Stock size/status,Low,Low,Low,Low,1,1,FALSE,No change
+Blue runner,Tolerance to ocean acidification,Low,Low,Low,Low,1,1,FALSE,No change
+Dolphinfish,Adult mobility,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Complexity in reproductive strategy,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Genetic diversity,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Habitat specificity,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Mobility and dispersal or early life stages,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Other stressors,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Population growth rate,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Predation and competition dynamics,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Prey specificity,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Spawning characteristics,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Species range,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Specificity in early life history requirements,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Stock size/status,Low,Low,Low,Low,2,2,FALSE,No change
+Dolphinfish,Tolerance to ocean acidification,Low,Low,Low,Low,2,2,FALSE,No change
+Gray angelfish,Adult mobility,Moderate,Low,High,Moderate,8,4,TRUE,Lower
+Gray angelfish,Complexity in reproductive strategy,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Genetic diversity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Habitat specificity,Moderate,Low,High,Moderate,8,4,TRUE,Lower
+Gray angelfish,Mobility and dispersal or early life stages,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Other stressors,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Population growth rate,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Predation and competition dynamics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Prey specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Spawning characteristics,Moderate,Low,High,Moderate,8,4,TRUE,Lower
+Gray angelfish,Species range,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Specificity in early life history requirements,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Stock size/status,Moderate,Moderate,High,High,8,8,FALSE,No change
+Gray angelfish,Tolerance to ocean acidification,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Adult mobility,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Complexity in reproductive strategy,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Genetic diversity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Habitat specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Mobility and dispersal or early life stages,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Other stressors,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Population growth rate,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Predation and competition dynamics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Prey specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Spawning characteristics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Species range,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Specificity in early life history requirements,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Stock size/status,Moderate,Moderate,High,High,8,8,FALSE,No change
+Hogfish,Tolerance to ocean acidification,Moderate,Moderate,High,High,8,8,FALSE,No change
+King mackerel,Adult mobility,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Complexity in reproductive strategy,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Genetic diversity,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Habitat specificity,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Mobility and dispersal or early life stages,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Other stressors,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Population growth rate,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Predation and competition dynamics,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Prey specificity,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Spawning characteristics,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Species range,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Specificity in early life history requirements,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Stock size/status,Low,Low,Low,Low,1,1,FALSE,No change
+King mackerel,Tolerance to ocean acidification,Low,Low,Low,Low,1,1,FALSE,No change
+Lane snapper,Adult mobility,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Complexity in reproductive strategy,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Genetic diversity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Habitat specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Mobility and dispersal or early life stages,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Other stressors,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Population growth rate,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Predation and competition dynamics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Prey specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Spawning characteristics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Species range,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Specificity in early life history requirements,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Stock size/status,Moderate,Moderate,High,High,8,8,FALSE,No change
+Lane snapper,Tolerance to ocean acidification,Moderate,Moderate,High,High,8,8,FALSE,No change
+Long-spined sea urchin,Adult mobility,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Complexity in reproductive strategy,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Genetic diversity,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Habitat specificity,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Mobility and dispersal or early life stages,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Other stressors,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Population growth rate,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Predation and competition dynamics,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Prey specificity,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Spawning characteristics,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Species range,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Specificity in early life history requirements,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Stock size/status,High,High,Very High,Very High,12,12,FALSE,No change
+Long-spined sea urchin,Tolerance to ocean acidification,High,High,Very High,Very High,12,12,FALSE,No change
+Misty grouper,Adult mobility,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Complexity in reproductive strategy,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Genetic diversity,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Habitat specificity,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Mobility and dispersal or early life stages,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Other stressors,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Population growth rate,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Predation and competition dynamics,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Prey specificity,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Spawning characteristics,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Species range,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Specificity in early life history requirements,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Stock size/status,High,High,High,High,9,9,FALSE,No change
+Misty grouper,Tolerance to ocean acidification,High,High,High,High,9,9,FALSE,No change
+Mutton snapper,Adult mobility,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Complexity in reproductive strategy,High,Moderate,Very High,High,12,8,TRUE,Lower
+Mutton snapper,Genetic diversity,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Habitat specificity,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Mobility and dispersal or early life stages,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Other stressors,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Population growth rate,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Predation and competition dynamics,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Prey specificity,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Spawning characteristics,High,Moderate,Very High,High,12,8,TRUE,Lower
+Mutton snapper,Species range,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Specificity in early life history requirements,High,Moderate,Very High,High,12,8,TRUE,Lower
+Mutton snapper,Stock size/status,High,High,Very High,Very High,12,12,FALSE,No change
+Mutton snapper,Tolerance to ocean acidification,High,High,Very High,Very High,12,12,FALSE,No change
+Nassau grouper,Adult mobility,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Complexity in reproductive strategy,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Genetic diversity,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Habitat specificity,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Mobility and dispersal or early life stages,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Other stressors,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Population growth rate,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Predation and competition dynamics,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Prey specificity,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Spawning characteristics,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Species range,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Specificity in early life history requirements,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Stock size/status,High,High,High,High,9,9,FALSE,No change
+Nassau grouper,Tolerance to ocean acidification,High,High,High,High,9,9,FALSE,No change
+Queen conch,Adult mobility,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Complexity in reproductive strategy,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Genetic diversity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Habitat specificity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Mobility and dispersal or early life stages,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Other stressors,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Population growth rate,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Predation and competition dynamics,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Prey specificity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Spawning characteristics,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Species range,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Specificity in early life history requirements,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Stock size/status,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen conch,Tolerance to ocean acidification,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Queen snapper,Adult mobility,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Complexity in reproductive strategy,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Genetic diversity,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Habitat specificity,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Mobility and dispersal or early life stages,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Other stressors,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Population growth rate,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Predation and competition dynamics,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Prey specificity,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Spawning characteristics,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Species range,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Specificity in early life history requirements,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Stock size/status,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen snapper,Tolerance to ocean acidification,Moderate,Moderate,Low,Low,2,2,FALSE,No change
+Queen triggerfish,Adult mobility,Moderate,Low,High,Moderate,8,4,TRUE,Lower
+Queen triggerfish,Complexity in reproductive strategy,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Genetic diversity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Habitat specificity,Moderate,Low,High,Moderate,8,4,TRUE,Lower
+Queen triggerfish,Mobility and dispersal or early life stages,Moderate,Low,High,Moderate,8,4,TRUE,Lower
+Queen triggerfish,Other stressors,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Population growth rate,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Predation and competition dynamics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Prey specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Spawning characteristics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Species range,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Specificity in early life history requirements,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Stock size/status,Moderate,Moderate,High,High,8,8,FALSE,No change
+Queen triggerfish,Tolerance to ocean acidification,Moderate,Moderate,High,High,8,8,FALSE,No change
+Rainbow parrotfish,Adult mobility,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Complexity in reproductive strategy,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Genetic diversity,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Habitat specificity,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Mobility and dispersal or early life stages,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Other stressors,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Population growth rate,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Predation and competition dynamics,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Prey specificity,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Spawning characteristics,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Species range,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Specificity in early life history requirements,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Stock size/status,High,High,Very High,Very High,12,12,FALSE,No change
+Rainbow parrotfish,Tolerance to ocean acidification,High,High,Very High,Very High,12,12,FALSE,No change
+Red grouper,Adult mobility,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Complexity in reproductive strategy,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Genetic diversity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Habitat specificity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Mobility and dispersal or early life stages,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Other stressors,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Population growth rate,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Predation and competition dynamics,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Prey specificity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Spawning characteristics,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Species range,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Specificity in early life history requirements,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Stock size/status,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red grouper,Tolerance to ocean acidification,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Adult mobility,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Complexity in reproductive strategy,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Genetic diversity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Habitat specificity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Mobility and dispersal or early life stages,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Other stressors,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Population growth rate,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Predation and competition dynamics,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Prey specificity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Spawning characteristics,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Species range,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Specificity in early life history requirements,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Stock size/status,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Red hind,Tolerance to ocean acidification,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Sea cucumbers,Adult mobility,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Complexity in reproductive strategy,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Genetic diversity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Habitat specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Mobility and dispersal or early life stages,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Other stressors,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Population growth rate,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Predation and competition dynamics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Prey specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Spawning characteristics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Species range,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Specificity in early life history requirements,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Stock size/status,Moderate,Moderate,High,High,8,8,FALSE,No change
+Sea cucumbers,Tolerance to ocean acidification,Moderate,Moderate,High,High,8,8,FALSE,No change
+Silk snapper,Adult mobility,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Complexity in reproductive strategy,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Genetic diversity,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Habitat specificity,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Mobility and dispersal or early life stages,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Other stressors,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Population growth rate,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Predation and competition dynamics,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Prey specificity,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Spawning characteristics,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Species range,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Specificity in early life history requirements,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Stock size/status,Low,Low,Low,Low,1,1,FALSE,No change
+Silk snapper,Tolerance to ocean acidification,Low,Low,Low,Low,1,1,FALSE,No change
+Spiny lobster,Adult mobility,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Complexity in reproductive strategy,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Genetic diversity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Habitat specificity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Mobility and dispersal or early life stages,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Other stressors,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Population growth rate,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Predation and competition dynamics,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Prey specificity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Spawning characteristics,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Species range,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Specificity in early life history requirements,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Stock size/status,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Spiny lobster,Tolerance to ocean acidification,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Stoplight parrotfish,Adult mobility,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Complexity in reproductive strategy,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Genetic diversity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Habitat specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Mobility and dispersal or early life stages,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Other stressors,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Population growth rate,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Predation and competition dynamics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Prey specificity,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Spawning characteristics,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Species range,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Specificity in early life history requirements,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Stock size/status,Moderate,Moderate,High,High,8,8,FALSE,No change
+Stoplight parrotfish,Tolerance to ocean acidification,Moderate,Moderate,High,High,8,8,FALSE,No change
+White mullet,Adult mobility,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Complexity in reproductive strategy,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Genetic diversity,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Habitat specificity,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Mobility and dispersal or early life stages,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Other stressors,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Population growth rate,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Predation and competition dynamics,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Prey specificity,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Spawning characteristics,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Species range,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Specificity in early life history requirements,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Stock size/status,Low,Low,Low,Low,1,1,FALSE,No change
+White mullet,Tolerance to ocean acidification,Low,Low,Low,Low,1,1,FALSE,No change
+Yellowfin grouper,Adult mobility,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Complexity in reproductive strategy,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Genetic diversity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Habitat specificity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Mobility and dispersal or early life stages,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Other stressors,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Population growth rate,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Predation and competition dynamics,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Prey specificity,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Spawning characteristics,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Species range,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Specificity in early life history requirements,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Stock size/status,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowfin grouper,Tolerance to ocean acidification,Moderate,Moderate,Moderate,Moderate,6,6,FALSE,No change
+Yellowtail snapper,Adult mobility,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Complexity in reproductive strategy,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Genetic diversity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Habitat specificity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Mobility and dispersal or early life stages,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Other stressors,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Population growth rate,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Predation and competition dynamics,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Prey specificity,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Spawning characteristics,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Species range,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Specificity in early life history requirements,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Stock size/status,Low,Low,Moderate,Moderate,4,4,FALSE,No change
+Yellowtail snapper,Tolerance to ocean acidification,Low,Low,Moderate,Moderate,4,4,FALSE,No change

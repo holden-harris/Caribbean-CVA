@@ -8,6 +8,11 @@
 ## Run from the Caribbean-CVA RStudio project root (.Rproj file location).
 ## Each sourced script calls rm(list = ls()) internally, so environment state
 ## does not carry between scripts.
+##
+## TO SWITCH RUNS: edit active_run in config.R, then re-run this script.
+##   active_run <- "broadened_distribution"   (rank_threshold = 2L, 14 attributes)
+##   active_run <- "cross_region_comparable"  (rank_threshold = 1L, 12 attributes)
+## Outputs for each run land in outputs/{run_label}/ and figures/{run_label}/.
 ################################################################################
 
 ## =============================================================================

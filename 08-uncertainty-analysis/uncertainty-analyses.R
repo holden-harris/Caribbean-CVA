@@ -62,11 +62,11 @@ proj_dir <- "."
 
 ## Input directories
 tallies_dir  <- file.path(proj_dir, "outputs", "final-tallies-long")
-compiled_dir <- file.path(proj_dir, "outputs", "final-scores-compiled",
-                          "overall-vulnerability-rankings")
+compiled_dir <- file.path(proj_dir, "outputs", run_label,
+                          "final-scores-compiled", "overall-vulnerability-rankings")
 
 ## Output directories
-out_dir          <- file.path(proj_dir, "outputs", "analyses", "uncertainty-loo")
+out_dir          <- file.path(proj_dir, "outputs", run_label, "analyses", "uncertainty-loo")
 intermediate_dir <- file.path(out_dir, "intermediate")   ## validation/QA outputs
 final_dir        <- file.path(out_dir, "final-tables")   ## analysis outputs for figures
 
@@ -203,6 +203,14 @@ assign_directional_rank <- function(w_mean, threshold = 0.33) {
 ## tallies fell in each vulnerability bin. NAs in tally columns mean 0 votes.
 
 sens_tallies_raw <- readr::read_csv(f_sens_tallies, show_col_types = FALSE)
+
+## Drop sensitivity attributes excluded by the active run configuration.
+## For cross_region_comparable this removes "Genetic diversity" and
+## "Predation and competition dynamics" from the bootstrap draw pile.
+if (length(sens_attrs_drop) > 0) {
+  sens_tallies_raw <- sens_tallies_raw %>%
+    dplyr::filter(!attribute_name %in% sens_attrs_drop)
+}
 
 ## Stock name normalization table — applied to both tally files.
 ##

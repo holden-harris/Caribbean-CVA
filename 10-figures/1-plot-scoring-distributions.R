@@ -29,10 +29,10 @@ library(patchwork)
 library(scales)
 
 ## Directories -----------------------------------------------------------------
-dir_in      <- "./outputs/analyses/1-inputs"
-dir_compiled <- "./outputs/final-scores-compiled/overall-vulnerability-rankings"
+dir_in       <- "./outputs/analyses/1-inputs"
+dir_compiled <- file.path("outputs", run_label, "final-scores-compiled", "overall-vulnerability-rankings")
 dir_tallies  <- "./outputs/final-tallies-long"
-dir_out      <- file.path("./figures")
+dir_out      <- file.path("figures", run_label)
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
 ## Output file paths

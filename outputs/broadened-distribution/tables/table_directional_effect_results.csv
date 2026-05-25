@@ -1,0 +1,26 @@
+Stock,Vuln_rank,Dir_effect,Wt_mean,N_negative,N_neutral,N_positive,N_tallies,Boot_Negative,Boot_Neutral,Boot_Positive,Dominant_prop,Borderline
+Rainbow Parrotfish,Very High,Negative,-0.75,12,4,0,16,1,0,0,1,FALSE
+Diadema,Very High,Neutral,-0.312,7,7,2,16,0.44,0.56,0,0.56,TRUE
+Mutton Snapper,Very High,Negative,-0.562,9,7,0,16,0.964,0.036,0,0.964,FALSE
+Nassau Grouper,High,Negative,-0.625,10,6,0,16,0.989,0.011,0,0.989,FALSE
+Lane Snapper,High,Negative,-0.562,9,7,0,16,0.96,0.04,0,0.96,FALSE
+Misty Grouper,High,Negative,-0.562,9,7,0,16,0.961,0.039,0,0.961,FALSE
+Hogfish,High,Negative,-0.438,8,7,1,16,0.73,0.27,0,0.73,TRUE
+Queen Triggerfish,High,Negative,-0.688,11,5,0,16,0.998,0.002,0,0.998,FALSE
+Sea Cucumber,High,Negative,-0.375,7,8,1,16,0.59,0.41,0,0.59,TRUE
+Gray Angelfish,High,Negative,-0.438,8,7,1,16,0.734,0.266,0,0.734,TRUE
+Stoplight Parrotfish,High,Negative,-0.625,10,6,0,16,0.99,0.01,0,0.99,FALSE
+Spiny Lobster,Moderate,Neutral,-0.25,6,8,2,16,0.285,0.715,0,0.715,TRUE
+Red Hind,Moderate,Negative,-0.438,7,9,0,16,0.774,0.226,0,0.774,FALSE
+Red Grouper,Moderate,Negative,-0.562,10,5,1,16,0.923,0.077,0,0.923,FALSE
+Yellowtail Snapper,Moderate,Neutral,-0.125,4,10,2,16,0.068,0.931,0.001,0.931,FALSE
+Yellowfin Grouper,Moderate,Negative,-0.75,12,4,0,16,1,0,0,1,FALSE
+Queen Conch,Moderate,Negative,-0.688,11,5,0,16,0.998,0.002,0,0.998,FALSE
+Atlantic Herring,Low,Neutral,-0.062,5,7,4,16,0.067,0.92,0.014,0.92,FALSE
+Blue Runner,Low,Neutral,0,4,8,4,16,0.023,0.953,0.024,0.953,FALSE
+Dolphinfish,Low,Neutral,0.25,1,10,5,16,0,0.76,0.24,0.76,FALSE
+King Mackerel,Low,Negative,-0.5,9,6,1,16,0.844,0.156,0,0.844,FALSE
+Queen Snapper,Low,Neutral,-0.125,3,12,1,16,0.039,0.961,0,0.961,FALSE
+Silk Snapper,Low,Neutral,-0.125,2,14,0,16,0.008,0.992,0,0.992,FALSE
+White Mullet,Low,Negative,-0.375,7,8,1,16,0.593,0.407,0,0.593,TRUE
+Ballyhoo,Low,Neutral,-0.188,3,13,0,16,0.061,0.939,0,0.939,FALSE

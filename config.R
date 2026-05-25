@@ -11,28 +11,61 @@
 ## cutoff before a component rank of Moderate or higher is assigned. It is applied
 ## per stock × component (Sensitivity and Exposure) in Modules 04, 08, and 09.
 ##
-## Logic model (from 04-final-attribute-exposure-scoring/3-calculate-overall-vulnerability-scores.R):
+## Logic model:
 ##   Very High : n attributes with mean ≥ 3.5  >  rank_threshold + 1
 ##   High      : n attributes with mean ≥ 3.0  >  rank_threshold
 ##   Moderate  : n attributes with mean ≥ 2.5  >  rank_threshold
 ##   Low       : otherwise (evaluated in order; first condition met wins)
 ##
-## Current setting — rank_threshold = 1 (standard NOAA FCVA model):
+## attr_means_current (rank_threshold = 1L — standard NOAA FCVA):
 ##   Very High  →  ≥ 3 attributes with mean ≥ 3.5
 ##   High       →  ≥ 2 attributes with mean ≥ 3.0
 ##   Moderate   →  ≥ 2 attributes with mean ≥ 2.5
-##   Low        →  0 or 1 attribute meeting any threshold above
 ##
-## To apply a more restrictive model (fewer High / Very High outcomes):
-##   rank_threshold <- 2L  →  Very High ≥ 4 attrs; High / Moderate ≥ 3 attrs
+## attr_means_plus1 (rank_threshold = 2L — revised, broader distribution):
+##   Very High  →  ≥ 4 attributes with mean ≥ 3.5
+##   High       →  ≥ 3 attributes with mean ≥ 3.0
+##   Moderate   →  ≥ 3 attributes with mean ≥ 2.5
 ##
-## To apply a more permissive model (more High / Very High outcomes):
-##   rank_threshold <- 0L  →  Very High ≥ 2 attrs; High / Moderate ≥ 1 attr
-##
-## After changing rank_threshold, re-run the full pipeline (run-all.R) to
-## propagate updated ranks through all analyses and figures.
+## rank_threshold is set automatically from the active run config below.
+## Do not set rank_threshold directly — change active_run instead.
 
-rank_threshold    <- 1L
+## --- Run configurations -------------------------------------------------------
+##
+## Two named configurations:
+##
+##   broadened_distribution   — Revised FCVA (attr_means_plus1, rank_threshold = 2L);
+##                              all 14 biological sensitivity attributes.
+##                              Produces broader relative distribution (3 VH, 9 High).
+##                              Use for CFMC conservation priority-setting.
+##
+##   cross_region_comparable  — Standard NOAA FCVA (attr_means_current, rank_threshold = 1L);
+##                              12 biological sensitivity attributes (drops "Genetic diversity"
+##                              and "Predation and competition dynamics").
+##                              Results directly comparable to other NOAA FCVAs.
+##
+## To switch runs: change the active_run line below, then re-run run-all.R.
+
+run_configs <- list(
+  broadened_distribution = list(
+    rank_threshold  = 2L,
+    sens_attrs_drop = character(0),
+    run_label       = "broadened-distribution"
+  ),
+  cross_region_comparable = list(
+    rank_threshold  = 1L,
+    sens_attrs_drop = c("Genetic diversity", "Predation and competition dynamics"),
+    run_label       = "cross-region-comparable"
+  )
+)
+
+#active_run <- "broadened_distribution"   ## <-- change this line to switch runs
+active_run <- "cross_region_comparable"
+
+rank_threshold  <- run_configs[[active_run]]$rank_threshold
+sens_attrs_drop <- run_configs[[active_run]]$sens_attrs_drop
+run_label       <- run_configs[[active_run]]$run_label
+
 dir_eff_threshold <- 1/3  ## |weighted mean| cutoff for Neg/Pos directional classification
 borderline_prop   <- 0.75 ## bootstrap dominant-rank prop below which a stock is borderline
 

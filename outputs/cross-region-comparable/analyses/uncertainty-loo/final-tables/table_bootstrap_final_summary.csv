@@ -1,0 +1,26 @@
+Stock,N Exp factors,Exp,Sens,Vul,L,M,H,VH
+Gray angelfish†,12,VH,H,VH,0,0,0.29,0.71
+Long-spined sea urchin,11,VH,H,VH,0,0,0.04,0.96
+Misty grouper,7,VH,H,VH,0,0,0,1
+Mutton snapper,11,VH,H,VH,0,0,0,1
+Nassau grouper,8,VH,H,VH,0,0,0,1
+Queen conch,12,VH,H,VH,0,0,0,1
+Rainbow parrotfish,12,VH,H,VH,0,0,0,1
+Red grouper,8,VH,H,VH,0,0,0.21,0.79
+Red hind,8,VH,H,VH,0,0,0,1
+Stoplight parrotfish†,12,VH,H,VH,0,0,0.26,0.74
+Yellowfin grouper,8,VH,H,VH,0,0,0.12,0.88
+Hogfish,12,VH,M,H,0,0,0.92,0.08
+Lane snapper,11,VH,M,H,0,0,0.92,0.08
+Queen triggerfish,12,VH,M,H,0,0.01,0.94,0.06
+Sea cucumbers†,11,VH,M,H,0,0,0.3,0.7
+Yellowtail snapper†,11,VH,M,H,0,0.29,0.71,0
+Ballyhoo,9,VH,L,M,0,0.93,0.07,0
+King mackerel,9,H,M,M,0.01,0.97,0.01,0
+Queen snapper,6,M,M,M,0,1,0,0
+Silk snapper,6,M,M,M,0.24,0.76,0,0
+Spiny lobster†,11,VH,L,M,0,0.61,0.39,0
+Atlantic thread herring,7,H,L,L,1,0,0,0
+Blue runner,8,H,L,L,1,0,0,0
+Dolphinfish,9,H,L,L,1,0,0,0
+White mullet†,4,M,L,L,0.32,0.68,0,0

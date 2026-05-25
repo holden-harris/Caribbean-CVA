@@ -1,0 +1,301 @@
+stock_name,attribute_name,mean_score,component_rank_baseline
+Atlantic thread herring,Adult mobility,1.55,Low
+Atlantic thread herring,Complexity in reproductive strategy,1.4,Low
+Atlantic thread herring,Habitat specificity,1.7,Low
+Atlantic thread herring,Mobility and dispersal or early life stages,2.05,Low
+Atlantic thread herring,Other stressors,1.9,Low
+Atlantic thread herring,Population growth rate,1.15,Low
+Atlantic thread herring,Prey specificity,2.05,Low
+Atlantic thread herring,Spawning characteristics,2.05,Low
+Atlantic thread herring,Species range,1.75,Low
+Atlantic thread herring,Specificity in early life history requirements,2.1,Low
+Atlantic thread herring,Stock size/status,1.7,Low
+Atlantic thread herring,Tolerance to ocean acidification,1.45,Low
+Ballyhoo,Adult mobility,1.55,Low
+Ballyhoo,Complexity in reproductive strategy,1.65,Low
+Ballyhoo,Habitat specificity,1.2,Low
+Ballyhoo,Mobility and dispersal or early life stages,2.05,Low
+Ballyhoo,Other stressors,2.1,Low
+Ballyhoo,Population growth rate,1.15,Low
+Ballyhoo,Prey specificity,1.3,Low
+Ballyhoo,Spawning characteristics,1.85,Low
+Ballyhoo,Species range,1.8,Low
+Ballyhoo,Specificity in early life history requirements,2.4,Low
+Ballyhoo,Stock size/status,2.35,Low
+Ballyhoo,Tolerance to ocean acidification,1.05,Low
+Blue runner,Adult mobility,1.35,Low
+Blue runner,Complexity in reproductive strategy,1.15,Low
+Blue runner,Habitat specificity,1.25,Low
+Blue runner,Mobility and dispersal or early life stages,1.45,Low
+Blue runner,Other stressors,1.25,Low
+Blue runner,Population growth rate,1.55,Low
+Blue runner,Prey specificity,1.55,Low
+Blue runner,Spawning characteristics,1.7,Low
+Blue runner,Species range,1.7,Low
+Blue runner,Specificity in early life history requirements,2.1,Low
+Blue runner,Stock size/status,1.4,Low
+Blue runner,Tolerance to ocean acidification,1.35,Low
+Dolphinfish,Adult mobility,1.25,Low
+Dolphinfish,Complexity in reproductive strategy,1.75,Low
+Dolphinfish,Habitat specificity,1.85,Low
+Dolphinfish,Mobility and dispersal or early life stages,1.65,Low
+Dolphinfish,Other stressors,1.3,Low
+Dolphinfish,Population growth rate,1.1,Low
+Dolphinfish,Prey specificity,1.2,Low
+Dolphinfish,Spawning characteristics,1.25,Low
+Dolphinfish,Species range,2,Low
+Dolphinfish,Specificity in early life history requirements,1.45,Low
+Dolphinfish,Stock size/status,1.5,Low
+Dolphinfish,Tolerance to ocean acidification,1,Low
+Gray angelfish,Adult mobility,3.2,High
+Gray angelfish,Complexity in reproductive strategy,1.95,High
+Gray angelfish,Habitat specificity,2.95,High
+Gray angelfish,Mobility and dispersal or early life stages,2.1,High
+Gray angelfish,Other stressors,2.25,High
+Gray angelfish,Population growth rate,2.4,High
+Gray angelfish,Prey specificity,2,High
+Gray angelfish,Spawning characteristics,3,High
+Gray angelfish,Species range,1.95,High
+Gray angelfish,Specificity in early life history requirements,2.4,High
+Gray angelfish,Stock size/status,1.85,High
+Gray angelfish,Tolerance to ocean acidification,1.8,High
+Hogfish,Adult mobility,3.1,Moderate
+Hogfish,Complexity in reproductive strategy,1.7,Moderate
+Hogfish,Habitat specificity,2.55,Moderate
+Hogfish,Mobility and dispersal or early life stages,2.45,Moderate
+Hogfish,Other stressors,1.7,Moderate
+Hogfish,Population growth rate,2.45,Moderate
+Hogfish,Prey specificity,2.6,Moderate
+Hogfish,Spawning characteristics,2.6,Moderate
+Hogfish,Species range,1.8,Moderate
+Hogfish,Specificity in early life history requirements,2.4,Moderate
+Hogfish,Stock size/status,1.9,Moderate
+Hogfish,Tolerance to ocean acidification,2.3,Moderate
+King mackerel,Adult mobility,1.75,Moderate
+King mackerel,Complexity in reproductive strategy,1.4,Moderate
+King mackerel,Habitat specificity,1.55,Moderate
+King mackerel,Mobility and dispersal or early life stages,2.45,Moderate
+King mackerel,Other stressors,1.55,Moderate
+King mackerel,Population growth rate,1.45,Moderate
+King mackerel,Prey specificity,1.65,Moderate
+King mackerel,Spawning characteristics,2.25,Moderate
+King mackerel,Species range,2.9,Moderate
+King mackerel,Specificity in early life history requirements,2.75,Moderate
+King mackerel,Stock size/status,1.95,Moderate
+King mackerel,Tolerance to ocean acidification,1.85,Moderate
+Lane snapper,Adult mobility,2.05,Moderate
+Lane snapper,Complexity in reproductive strategy,2.7,Moderate
+Lane snapper,Habitat specificity,2.25,Moderate
+Lane snapper,Mobility and dispersal or early life stages,1.55,Moderate
+Lane snapper,Other stressors,2.8,Moderate
+Lane snapper,Population growth rate,2.7,Moderate
+Lane snapper,Prey specificity,1.65,Moderate
+Lane snapper,Spawning characteristics,2.1,Moderate
+Lane snapper,Species range,1.2,Moderate
+Lane snapper,Specificity in early life history requirements,2.45,Moderate
+Lane snapper,Stock size/status,2.3,Moderate
+Lane snapper,Tolerance to ocean acidification,2.9,Moderate
+Long-spined sea urchin,Adult mobility,2.55,High
+Long-spined sea urchin,Complexity in reproductive strategy,3.05,High
+Long-spined sea urchin,Habitat specificity,2.2,High
+Long-spined sea urchin,Mobility and dispersal or early life stages,1.5,High
+Long-spined sea urchin,Other stressors,3.2,High
+Long-spined sea urchin,Population growth rate,1.8,High
+Long-spined sea urchin,Prey specificity,1.35,High
+Long-spined sea urchin,Spawning characteristics,1.9,High
+Long-spined sea urchin,Species range,1.35,High
+Long-spined sea urchin,Specificity in early life history requirements,2.8,High
+Long-spined sea urchin,Stock size/status,1.8,High
+Long-spined sea urchin,Tolerance to ocean acidification,3.6,High
+Misty grouper,Adult mobility,2.7,High
+Misty grouper,Complexity in reproductive strategy,3.25,High
+Misty grouper,Habitat specificity,2.65,High
+Misty grouper,Mobility and dispersal or early life stages,2.6,High
+Misty grouper,Other stressors,2.3,High
+Misty grouper,Population growth rate,3.65,High
+Misty grouper,Prey specificity,2.3,High
+Misty grouper,Spawning characteristics,3.35,High
+Misty grouper,Species range,2.3,High
+Misty grouper,Specificity in early life history requirements,2.65,High
+Misty grouper,Stock size/status,3.55,High
+Misty grouper,Tolerance to ocean acidification,2.3,High
+Mutton snapper,Adult mobility,2.2,High
+Mutton snapper,Complexity in reproductive strategy,3.45,High
+Mutton snapper,Habitat specificity,2.8,High
+Mutton snapper,Mobility and dispersal or early life stages,1.75,High
+Mutton snapper,Other stressors,2.3,High
+Mutton snapper,Population growth rate,2.4,High
+Mutton snapper,Prey specificity,2.65,High
+Mutton snapper,Spawning characteristics,3.3,High
+Mutton snapper,Species range,2,High
+Mutton snapper,Specificity in early life history requirements,3.05,High
+Mutton snapper,Stock size/status,2.35,High
+Mutton snapper,Tolerance to ocean acidification,2.8,High
+Nassau grouper,Adult mobility,2.1,High
+Nassau grouper,Complexity in reproductive strategy,3.65,High
+Nassau grouper,Habitat specificity,2.35,High
+Nassau grouper,Mobility and dispersal or early life stages,2.2,High
+Nassau grouper,Other stressors,2.4,High
+Nassau grouper,Population growth rate,3.2,High
+Nassau grouper,Prey specificity,1.75,High
+Nassau grouper,Spawning characteristics,3.15,High
+Nassau grouper,Species range,2.7,High
+Nassau grouper,Specificity in early life history requirements,2.9,High
+Nassau grouper,Stock size/status,3.55,High
+Nassau grouper,Tolerance to ocean acidification,1.8,High
+Queen conch,Adult mobility,2.4,High
+Queen conch,Complexity in reproductive strategy,3.6,High
+Queen conch,Habitat specificity,1.5,High
+Queen conch,Mobility and dispersal or early life stages,1.7,High
+Queen conch,Other stressors,1.5,High
+Queen conch,Population growth rate,1.9,High
+Queen conch,Prey specificity,1.25,High
+Queen conch,Spawning characteristics,1.75,High
+Queen conch,Species range,1.75,High
+Queen conch,Specificity in early life history requirements,2.15,High
+Queen conch,Stock size/status,2.05,High
+Queen conch,Tolerance to ocean acidification,3.95,High
+Queen snapper,Adult mobility,1.95,Moderate
+Queen snapper,Complexity in reproductive strategy,2.85,Moderate
+Queen snapper,Habitat specificity,3.1,Moderate
+Queen snapper,Mobility and dispersal or early life stages,2.05,Moderate
+Queen snapper,Other stressors,2.1,Moderate
+Queen snapper,Population growth rate,2.5,Moderate
+Queen snapper,Prey specificity,2.1,Moderate
+Queen snapper,Spawning characteristics,2.25,Moderate
+Queen snapper,Species range,2.4,Moderate
+Queen snapper,Specificity in early life history requirements,2.8,Moderate
+Queen snapper,Stock size/status,2.25,Moderate
+Queen snapper,Tolerance to ocean acidification,2.7,Moderate
+Queen triggerfish,Adult mobility,2.7,Moderate
+Queen triggerfish,Complexity in reproductive strategy,2.2,Moderate
+Queen triggerfish,Habitat specificity,2.75,Moderate
+Queen triggerfish,Mobility and dispersal or early life stages,2.8,Moderate
+Queen triggerfish,Other stressors,2.4,Moderate
+Queen triggerfish,Population growth rate,2.2,Moderate
+Queen triggerfish,Prey specificity,2.15,Moderate
+Queen triggerfish,Spawning characteristics,2.45,Moderate
+Queen triggerfish,Species range,1.8,Moderate
+Queen triggerfish,Specificity in early life history requirements,2.2,Moderate
+Queen triggerfish,Stock size/status,2.2,Moderate
+Queen triggerfish,Tolerance to ocean acidification,2,Moderate
+Rainbow parrotfish,Adult mobility,2.9,High
+Rainbow parrotfish,Complexity in reproductive strategy,2.8,High
+Rainbow parrotfish,Habitat specificity,3.15,High
+Rainbow parrotfish,Mobility and dispersal or early life stages,2.75,High
+Rainbow parrotfish,Other stressors,3.25,High
+Rainbow parrotfish,Population growth rate,2.7,High
+Rainbow parrotfish,Prey specificity,3.25,High
+Rainbow parrotfish,Spawning characteristics,2.35,High
+Rainbow parrotfish,Species range,2.6,High
+Rainbow parrotfish,Specificity in early life history requirements,2.85,High
+Rainbow parrotfish,Stock size/status,3.1,High
+Rainbow parrotfish,Tolerance to ocean acidification,3.3,High
+Red grouper,Adult mobility,2.15,High
+Red grouper,Complexity in reproductive strategy,2.8,High
+Red grouper,Habitat specificity,2.5,High
+Red grouper,Mobility and dispersal or early life stages,2.05,High
+Red grouper,Other stressors,1.6,High
+Red grouper,Population growth rate,3.55,High
+Red grouper,Prey specificity,1.65,High
+Red grouper,Spawning characteristics,2.8,High
+Red grouper,Species range,2.2,High
+Red grouper,Specificity in early life history requirements,2.45,High
+Red grouper,Stock size/status,3.1,High
+Red grouper,Tolerance to ocean acidification,2.5,High
+Red hind,Adult mobility,1.95,High
+Red hind,Complexity in reproductive strategy,3.55,High
+Red hind,Habitat specificity,1.8,High
+Red hind,Mobility and dispersal or early life stages,2.25,High
+Red hind,Other stressors,2.3,High
+Red hind,Population growth rate,2.6,High
+Red hind,Prey specificity,1.55,High
+Red hind,Spawning characteristics,3.1,High
+Red hind,Species range,2.05,High
+Red hind,Specificity in early life history requirements,2.3,High
+Red hind,Stock size/status,2.6,High
+Red hind,Tolerance to ocean acidification,2.1,High
+Sea cucumbers,Adult mobility,2.95,Moderate
+Sea cucumbers,Complexity in reproductive strategy,2.55,Moderate
+Sea cucumbers,Habitat specificity,2,Moderate
+Sea cucumbers,Mobility and dispersal or early life stages,2.3,Moderate
+Sea cucumbers,Other stressors,2.05,Moderate
+Sea cucumbers,Population growth rate,2.05,Moderate
+Sea cucumbers,Prey specificity,1,Moderate
+Sea cucumbers,Spawning characteristics,2.95,Moderate
+Sea cucumbers,Species range,1.65,Moderate
+Sea cucumbers,Specificity in early life history requirements,2.2,Moderate
+Sea cucumbers,Stock size/status,2.75,Moderate
+Sea cucumbers,Tolerance to ocean acidification,3.35,Moderate
+Silk snapper,Adult mobility,2.05,Moderate
+Silk snapper,Complexity in reproductive strategy,1.95,Moderate
+Silk snapper,Habitat specificity,1.85,Moderate
+Silk snapper,Mobility and dispersal or early life stages,1.95,Moderate
+Silk snapper,Other stressors,2.2,Moderate
+Silk snapper,Population growth rate,2.5,Moderate
+Silk snapper,Prey specificity,1.75,Moderate
+Silk snapper,Spawning characteristics,2.25,Moderate
+Silk snapper,Species range,1.3,Moderate
+Silk snapper,Specificity in early life history requirements,2.35,Moderate
+Silk snapper,Stock size/status,2.85,Moderate
+Silk snapper,Tolerance to ocean acidification,1.75,Moderate
+Spiny lobster,Adult mobility,1.45,Low
+Spiny lobster,Complexity in reproductive strategy,1.65,Low
+Spiny lobster,Habitat specificity,1.9,Low
+Spiny lobster,Mobility and dispersal or early life stages,1.1,Low
+Spiny lobster,Other stressors,1.95,Low
+Spiny lobster,Population growth rate,1.65,Low
+Spiny lobster,Prey specificity,1.05,Low
+Spiny lobster,Spawning characteristics,1.6,Low
+Spiny lobster,Species range,1.25,Low
+Spiny lobster,Specificity in early life history requirements,2.45,Low
+Spiny lobster,Stock size/status,1.65,Low
+Spiny lobster,Tolerance to ocean acidification,2.65,Low
+Stoplight parrotfish,Adult mobility,2.35,High
+Stoplight parrotfish,Complexity in reproductive strategy,2.6,High
+Stoplight parrotfish,Habitat specificity,2.8,High
+Stoplight parrotfish,Mobility and dispersal or early life stages,2.55,High
+Stoplight parrotfish,Other stressors,3.05,High
+Stoplight parrotfish,Population growth rate,2.1,High
+Stoplight parrotfish,Prey specificity,2.8,High
+Stoplight parrotfish,Spawning characteristics,1.9,High
+Stoplight parrotfish,Species range,2.5,High
+Stoplight parrotfish,Specificity in early life history requirements,2.8,High
+Stoplight parrotfish,Stock size/status,2.45,High
+Stoplight parrotfish,Tolerance to ocean acidification,3.2,High
+White mullet,Adult mobility,1.85,Low
+White mullet,Complexity in reproductive strategy,2.45,Low
+White mullet,Habitat specificity,2.6,Low
+White mullet,Mobility and dispersal or early life stages,2.45,Low
+White mullet,Other stressors,2.35,Low
+White mullet,Population growth rate,2.15,Low
+White mullet,Prey specificity,1.5,Low
+White mullet,Spawning characteristics,1.7,Low
+White mullet,Species range,2.2,Low
+White mullet,Specificity in early life history requirements,2.2,Low
+White mullet,Stock size/status,2.05,Low
+White mullet,Tolerance to ocean acidification,1.45,Low
+Yellowfin grouper,Adult mobility,2.05,High
+Yellowfin grouper,Complexity in reproductive strategy,3.2,High
+Yellowfin grouper,Habitat specificity,2.25,High
+Yellowfin grouper,Mobility and dispersal or early life stages,2.3,High
+Yellowfin grouper,Other stressors,2.2,High
+Yellowfin grouper,Population growth rate,3.2,High
+Yellowfin grouper,Prey specificity,1.8,High
+Yellowfin grouper,Spawning characteristics,2.9,High
+Yellowfin grouper,Species range,2.3,High
+Yellowfin grouper,Specificity in early life history requirements,2.2,High
+Yellowfin grouper,Stock size/status,2.85,High
+Yellowfin grouper,Tolerance to ocean acidification,2.05,High
+Yellowtail snapper,Adult mobility,2,Moderate
+Yellowtail snapper,Complexity in reproductive strategy,2.3,Moderate
+Yellowtail snapper,Habitat specificity,2.5,Moderate
+Yellowtail snapper,Mobility and dispersal or early life stages,1.45,Moderate
+Yellowtail snapper,Other stressors,2,Moderate
+Yellowtail snapper,Population growth rate,2.35,Moderate
+Yellowtail snapper,Prey specificity,1.75,Moderate
+Yellowtail snapper,Spawning characteristics,1.95,Moderate
+Yellowtail snapper,Species range,1.15,Moderate
+Yellowtail snapper,Specificity in early life history requirements,2.45,Moderate
+Yellowtail snapper,Stock size/status,1.7,Moderate
+Yellowtail snapper,Tolerance to ocean acidification,2.55,Moderate

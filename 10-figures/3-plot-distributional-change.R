@@ -55,10 +55,10 @@ library(stringr)
 ## (C:/Repos/Caribbean-CVA), which is the default when using the .Rproj file.
 
 proj_dir     <- "."
-compiled_dir <- file.path(proj_dir, "outputs", "final-scores-compiled",
-                          "overall-vulnerability-rankings")
-out_dir      <- file.path(proj_dir, "outputs", "distribution-change-potential")
-fig_dir      <- file.path(proj_dir, "figures")
+compiled_dir <- file.path(proj_dir, "outputs", run_label,
+                          "final-scores-compiled", "overall-vulnerability-rankings")
+out_dir      <- file.path(proj_dir, "outputs", run_label, "distribution-change-potential")
+fig_dir      <- file.path(proj_dir, "figures", run_label)
 
 dir.create(fig_dir, showWarnings = FALSE, recursive = TRUE)
 

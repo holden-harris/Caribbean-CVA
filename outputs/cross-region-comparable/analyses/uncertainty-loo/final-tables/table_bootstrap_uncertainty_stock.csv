@@ -1,0 +1,101 @@
+stock_name,vuln_rank,n,prop,borderline
+Atlantic thread herring,High,0,0,FALSE
+Atlantic thread herring,Low,9998,1,FALSE
+Atlantic thread herring,Moderate,2,0,FALSE
+Atlantic thread herring,Very High,0,0,FALSE
+Ballyhoo,High,710,0.071,FALSE
+Ballyhoo,Low,0,0,FALSE
+Ballyhoo,Moderate,9290,0.929,FALSE
+Ballyhoo,Very High,0,0,FALSE
+Blue runner,High,0,0,FALSE
+Blue runner,Low,10000,1,FALSE
+Blue runner,Moderate,0,0,FALSE
+Blue runner,Very High,0,0,FALSE
+Dolphinfish,High,0,0,FALSE
+Dolphinfish,Low,10000,1,FALSE
+Dolphinfish,Moderate,0,0,FALSE
+Dolphinfish,Very High,0,0,FALSE
+Gray angelfish,High,2860,0.286,TRUE
+Gray angelfish,Low,0,0,TRUE
+Gray angelfish,Moderate,0,0,TRUE
+Gray angelfish,Very High,7140,0.714,TRUE
+Hogfish,High,9178,0.918,FALSE
+Hogfish,Low,0,0,FALSE
+Hogfish,Moderate,37,0.004,FALSE
+Hogfish,Very High,785,0.078,FALSE
+King mackerel,High,150,0.015,FALSE
+King mackerel,Low,109,0.011,FALSE
+King mackerel,Moderate,9741,0.974,FALSE
+King mackerel,Very High,0,0,FALSE
+Lane snapper,High,9166,0.917,FALSE
+Lane snapper,Low,0,0,FALSE
+Lane snapper,Moderate,0,0,FALSE
+Lane snapper,Very High,834,0.083,FALSE
+Long-spined sea urchin,High,440,0.044,FALSE
+Long-spined sea urchin,Low,0,0,FALSE
+Long-spined sea urchin,Moderate,0,0,FALSE
+Long-spined sea urchin,Very High,9560,0.956,FALSE
+Misty grouper,High,0,0,FALSE
+Misty grouper,Low,0,0,FALSE
+Misty grouper,Moderate,0,0,FALSE
+Misty grouper,Very High,10000,1,FALSE
+Mutton snapper,High,21,0.002,FALSE
+Mutton snapper,Low,0,0,FALSE
+Mutton snapper,Moderate,0,0,FALSE
+Mutton snapper,Very High,9979,0.998,FALSE
+Nassau grouper,High,0,0,FALSE
+Nassau grouper,Low,0,0,FALSE
+Nassau grouper,Moderate,0,0,FALSE
+Nassau grouper,Very High,10000,1,FALSE
+Queen conch,High,0,0,FALSE
+Queen conch,Low,0,0,FALSE
+Queen conch,Moderate,0,0,FALSE
+Queen conch,Very High,10000,1,FALSE
+Queen snapper,High,0,0,FALSE
+Queen snapper,Low,0,0,FALSE
+Queen snapper,Moderate,10000,1,FALSE
+Queen snapper,Very High,0,0,FALSE
+Queen triggerfish,High,9382,0.938,FALSE
+Queen triggerfish,Low,0,0,FALSE
+Queen triggerfish,Moderate,67,0.007,FALSE
+Queen triggerfish,Very High,551,0.055,FALSE
+Rainbow parrotfish,High,2,0,FALSE
+Rainbow parrotfish,Low,0,0,FALSE
+Rainbow parrotfish,Moderate,0,0,FALSE
+Rainbow parrotfish,Very High,9998,1,FALSE
+Red grouper,High,2081,0.208,FALSE
+Red grouper,Low,0,0,FALSE
+Red grouper,Moderate,0,0,FALSE
+Red grouper,Very High,7919,0.792,FALSE
+Red hind,High,1,0,FALSE
+Red hind,Low,0,0,FALSE
+Red hind,Moderate,0,0,FALSE
+Red hind,Very High,9999,1,FALSE
+Sea cucumbers,High,3044,0.304,TRUE
+Sea cucumbers,Low,0,0,TRUE
+Sea cucumbers,Moderate,0,0,TRUE
+Sea cucumbers,Very High,6956,0.696,TRUE
+Silk snapper,High,0,0,FALSE
+Silk snapper,Low,2403,0.24,FALSE
+Silk snapper,Moderate,7597,0.76,FALSE
+Silk snapper,Very High,0,0,FALSE
+Spiny lobster,High,3864,0.386,TRUE
+Spiny lobster,Low,0,0,TRUE
+Spiny lobster,Moderate,6126,0.613,TRUE
+Spiny lobster,Very High,10,0.001,TRUE
+Stoplight parrotfish,High,2604,0.26,TRUE
+Stoplight parrotfish,Low,0,0,TRUE
+Stoplight parrotfish,Moderate,0,0,TRUE
+Stoplight parrotfish,Very High,7396,0.74,TRUE
+White mullet,High,0,0,TRUE
+White mullet,Low,3234,0.323,TRUE
+White mullet,Moderate,6766,0.677,TRUE
+White mullet,Very High,0,0,TRUE
+Yellowfin grouper,High,1225,0.122,FALSE
+Yellowfin grouper,Low,0,0,FALSE
+Yellowfin grouper,Moderate,0,0,FALSE
+Yellowfin grouper,Very High,8775,0.877,FALSE
+Yellowtail snapper,High,7115,0.712,TRUE
+Yellowtail snapper,Low,0,0,TRUE
+Yellowtail snapper,Moderate,2885,0.288,TRUE
+Yellowtail snapper,Very High,0,0,TRUE

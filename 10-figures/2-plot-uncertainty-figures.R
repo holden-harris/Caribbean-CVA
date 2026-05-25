@@ -42,11 +42,11 @@ library(patchwork)
 ## Directories
 
 proj_dir <- "."
-dir_out  <- file.path(proj_dir, "figures")
+dir_out  <- file.path(proj_dir, "figures", run_label)
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
 ## All analysis outputs live under this subdirectory
-loo_dir <- file.path(proj_dir, "outputs", "analyses", "uncertainty-loo",
+loo_dir <- file.path(proj_dir, "outputs", run_label, "analyses", "uncertainty-loo",
                      "final-tables")
 
 ##------------------------------------------------------------------------------
@@ -63,8 +63,8 @@ f_dir_boot     <- file.path(loo_dir, "table_directional_effect_bootstrap.csv")
 
 ## Baseline vulnerability scores — used to establish the stock ordering for
 ## Figure 2 (primary sort key = baseline Vuln_rank)
-f_vuln <- file.path(proj_dir, "outputs", "final-scores-compiled",
-                    "overall-vulnerability-rankings",
+f_vuln <- file.path(proj_dir, "outputs", run_label,
+                    "final-scores-compiled", "overall-vulnerability-rankings",
                     "overall_vulnerability_scores_uscar.csv")
 
 ##------------------------------------------------------------------------------

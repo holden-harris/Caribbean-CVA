@@ -72,7 +72,7 @@ inverted_attrs <- c(
 
 proj_dir     <- "."
 tallies_dir  <- file.path(proj_dir, "outputs", "final-tallies-long")
-out_dir      <- file.path(proj_dir, "outputs", "distribution-change-potential")
+out_dir      <- file.path(proj_dir, "outputs", run_label, "distribution-change-potential")
 
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 

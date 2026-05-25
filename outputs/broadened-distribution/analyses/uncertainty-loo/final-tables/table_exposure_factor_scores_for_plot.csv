@@ -1,0 +1,236 @@
+stock_name,exposure_factor,mean_score,component_rank_baseline
+Atlantic thread herring,Chlorophyll-a concentration,1.05,High
+Atlantic thread herring,Precipitation,1,High
+Atlantic thread herring,Primary production,1,High
+Atlantic thread herring,Sea surface oxygen,4,High
+Atlantic thread herring,Sea surface salinity,3.14,High
+Atlantic thread herring,Sea surface temperature,4,High
+Atlantic thread herring,Sargassum influx,2.65,High
+Ballyhoo,Chlorophyll-a concentration,1.04,High
+Ballyhoo,Precipitation,1,High
+Ballyhoo,Primary production,1,High
+Ballyhoo,Sea surface oxygen,4,High
+Ballyhoo,Sea surface salinity,3.12,High
+Ballyhoo,Sea surface temperature,4,High
+Ballyhoo,Surface pH,4,High
+Ballyhoo,Surface wind speed magnitude,1,High
+Ballyhoo,Sargassum influx,2.9,High
+Blue runner,Chlorophyll-a concentration,1.05,Low
+Blue runner,Mixed layer depth,1,Low
+Blue runner,Primary production,1,Low
+Blue runner,Sea surface oxygen,4,Low
+Blue runner,Sea surface temperature,4,Low
+Blue runner,Surface wind speed magnitude,1,Low
+Blue runner,Sargassum influx,1.8,Low
+Blue runner,Thermocline depth,1.75,Low
+Dolphinfish,Chlorophyll-a concentration,1.04,Moderate
+Dolphinfish,Mixed layer depth,1,Moderate
+Dolphinfish,Oxygen at 200m,2.92,Moderate
+Dolphinfish,Primary production,1,Moderate
+Dolphinfish,Sea surface oxygen,4,Moderate
+Dolphinfish,Sea surface temperature,4,Moderate
+Dolphinfish,Surface wind speed magnitude,1,Moderate
+Dolphinfish,Sargassum influx,2.7,Moderate
+Dolphinfish,Thermocline depth,2.55,Moderate
+Gray angelfish,Bottom temperature,3.57,Very High
+Gray angelfish,Chlorophyll-a concentration,1.05,Very High
+Gray angelfish,Mixed layer depth,1,Very High
+Gray angelfish,Precipitation,1,Very High
+Gray angelfish,Primary production,1,Very High
+Gray angelfish,Sea surface oxygen,4,Very High
+Gray angelfish,Sea surface salinity,3.14,Very High
+Gray angelfish,Sea surface temperature,4,Very High
+Gray angelfish,Surface pH,4,Very High
+Gray angelfish,Surface wind speed magnitude,1,Very High
+Gray angelfish,Sargassum influx,2.75,Very High
+Gray angelfish,Thermocline depth,2.45,Very High
+Hogfish,Bottom temperature,3.57,Very High
+Hogfish,Chlorophyll-a concentration,1.05,Very High
+Hogfish,Mixed layer depth,1,Very High
+Hogfish,Precipitation,1,Very High
+Hogfish,Primary production,1,Very High
+Hogfish,Sea surface oxygen,4,Very High
+Hogfish,Sea surface salinity,3.14,Very High
+Hogfish,Sea surface temperature,4,Very High
+Hogfish,Surface pH,4,Very High
+Hogfish,Surface wind speed magnitude,1,Very High
+Hogfish,Sargassum influx,2.5,Very High
+Hogfish,Thermocline depth,1.45,Very High
+King mackerel,Chlorophyll-a concentration,1.04,Low
+King mackerel,Mixed layer depth,1,Low
+King mackerel,Precipitation,1,Low
+King mackerel,Primary production,1,Low
+King mackerel,Sea surface oxygen,4,Low
+King mackerel,Sea surface temperature,4,Low
+King mackerel,Surface wind speed magnitude,1,Low
+King mackerel,Sargassum influx,2,Low
+King mackerel,Thermocline depth,1.85,Low
+Lane snapper,Bottom temperature,3.57,Very High
+Lane snapper,Chlorophyll-a concentration,1.05,Very High
+Lane snapper,Mixed layer depth,1,Very High
+Lane snapper,Precipitation,1,Very High
+Lane snapper,Primary production,1,Very High
+Lane snapper,Sea surface oxygen,4,Very High
+Lane snapper,Sea surface salinity,3.14,Very High
+Lane snapper,Sea surface temperature,4,Very High
+Lane snapper,Surface pH,4,Very High
+Lane snapper,Surface wind speed magnitude,1,Very High
+Lane snapper,Sargassum influx,2.9,Very High
+Long-spined sea urchin,Bottom salinity,2.24,Very High
+Long-spined sea urchin,Bottom temperature,3.57,Very High
+Long-spined sea urchin,Chlorophyll-a concentration,1.05,Very High
+Long-spined sea urchin,Precipitation,1,Very High
+Long-spined sea urchin,Primary production,1,Very High
+Long-spined sea urchin,Sea surface oxygen,4,Very High
+Long-spined sea urchin,Sea surface salinity,3.14,Very High
+Long-spined sea urchin,Sea surface temperature,4,Very High
+Long-spined sea urchin,Surface pH,4,Very High
+Long-spined sea urchin,Surface wind speed magnitude,1,Very High
+Long-spined sea urchin,Sargassum influx,2.3,Very High
+Misty grouper,Bottom temperature,3.65,High
+Misty grouper,Chlorophyll-a concentration,1.05,High
+Misty grouper,Mixed layer depth,1,High
+Misty grouper,Primary production,1,High
+Misty grouper,Sea surface temperature,4,High
+Misty grouper,Surface pH,4,High
+Misty grouper,Sargassum influx,1.1,High
+Mutton snapper,Bottom temperature,3.57,Very High
+Mutton snapper,Chlorophyll-a concentration,1.05,Very High
+Mutton snapper,Mixed layer depth,1,Very High
+Mutton snapper,Precipitation,1,Very High
+Mutton snapper,Primary production,1,Very High
+Mutton snapper,Sea surface oxygen,4,Very High
+Mutton snapper,Sea surface salinity,3.14,Very High
+Mutton snapper,Sea surface temperature,4,Very High
+Mutton snapper,Surface pH,4,Very High
+Mutton snapper,Surface wind speed magnitude,1,Very High
+Mutton snapper,Sargassum influx,2.4,Very High
+Nassau grouper,Bottom temperature,3.57,High
+Nassau grouper,Chlorophyll-a concentration,1.05,High
+Nassau grouper,Mixed layer depth,1,High
+Nassau grouper,Primary production,1,High
+Nassau grouper,Sea surface temperature,4,High
+Nassau grouper,Surface pH,4,High
+Nassau grouper,Sargassum influx,2.25,High
+Nassau grouper,Thermocline depth,2.25,High
+Queen conch,Bottom salinity,2.24,Very High
+Queen conch,Bottom temperature,3.57,Very High
+Queen conch,Chlorophyll-a concentration,1.05,Very High
+Queen conch,Mixed layer depth,1,Very High
+Queen conch,Precipitation,1,Very High
+Queen conch,Primary production,1,Very High
+Queen conch,Sea surface oxygen,4,Very High
+Queen conch,Sea surface salinity,3.14,Very High
+Queen conch,Sea surface temperature,4,Very High
+Queen conch,Surface pH,4,Very High
+Queen conch,Surface wind speed magnitude,1,Very High
+Queen conch,Sargassum influx,2.5,Very High
+Queen snapper,Bottom salinity,2.24,Low
+Queen snapper,Bottom temperature,3.57,Low
+Queen snapper,Chlorophyll-a concentration,1.05,Low
+Queen snapper,Mean sea surface temperature gradient,1.86,Low
+Queen snapper,Mixed layer depth,1,Low
+Queen snapper,Oxygen at 200m,2.95,Low
+Queen triggerfish,Bottom temperature,3.57,Very High
+Queen triggerfish,Chlorophyll-a concentration,1.05,Very High
+Queen triggerfish,Mixed layer depth,1,Very High
+Queen triggerfish,Precipitation,1,Very High
+Queen triggerfish,Primary production,1,Very High
+Queen triggerfish,Sea surface oxygen,4,Very High
+Queen triggerfish,Sea surface salinity,3.14,Very High
+Queen triggerfish,Sea surface temperature,4,Very High
+Queen triggerfish,Surface pH,4,Very High
+Queen triggerfish,Surface wind speed magnitude,1,Very High
+Queen triggerfish,Sargassum influx,1.8,Very High
+Queen triggerfish,Thermocline depth,1.75,Very High
+Rainbow parrotfish,Bottom temperature,3.57,Very High
+Rainbow parrotfish,Chlorophyll-a concentration,1.05,Very High
+Rainbow parrotfish,Mixed layer depth,1,Very High
+Rainbow parrotfish,Precipitation,1,Very High
+Rainbow parrotfish,Primary production,1,Very High
+Rainbow parrotfish,Sea surface oxygen,4,Very High
+Rainbow parrotfish,Sea surface salinity,3.14,Very High
+Rainbow parrotfish,Sea surface temperature,4,Very High
+Rainbow parrotfish,Surface pH,4,Very High
+Rainbow parrotfish,Surface wind speed magnitude,1,Very High
+Rainbow parrotfish,Sargassum influx,3.05,Very High
+Rainbow parrotfish,Thermocline depth,2.3,Very High
+Red grouper,Bottom temperature,3.57,High
+Red grouper,Chlorophyll-a concentration,1.05,High
+Red grouper,Mixed layer depth,1,High
+Red grouper,Primary production,1,High
+Red grouper,Sea surface temperature,4,High
+Red grouper,Surface pH,4,High
+Red grouper,Sargassum influx,1.9,High
+Red grouper,Thermocline depth,1.85,High
+Red hind,Bottom temperature,3.57,High
+Red hind,Chlorophyll-a concentration,1.05,High
+Red hind,Mixed layer depth,1,High
+Red hind,Primary production,1,High
+Red hind,Sea surface temperature,4,High
+Red hind,Surface pH,4,High
+Red hind,Sargassum influx,2.05,High
+Red hind,Thermocline depth,2.4,High
+Sea cucumbers,Bottom salinity,2.24,Very High
+Sea cucumbers,Bottom temperature,3.57,Very High
+Sea cucumbers,Chlorophyll-a concentration,1.05,Very High
+Sea cucumbers,Precipitation,1,Very High
+Sea cucumbers,Primary production,1,Very High
+Sea cucumbers,Sea surface oxygen,4,Very High
+Sea cucumbers,Sea surface salinity,3.14,Very High
+Sea cucumbers,Sea surface temperature,4,Very High
+Sea cucumbers,Surface pH,4,Very High
+Sea cucumbers,Surface wind speed magnitude,1,Very High
+Sea cucumbers,Sargassum influx,2.45,Very High
+Silk snapper,Bottom salinity,2.24,Low
+Silk snapper,Bottom temperature,3.57,Low
+Silk snapper,Chlorophyll-a concentration,1.05,Low
+Silk snapper,Mean sea surface temperature gradient,1.86,Low
+Silk snapper,Mixed layer depth,1,Low
+Silk snapper,Oxygen at 200m,2.95,Low
+Spiny lobster,Bottom salinity,2.24,Very High
+Spiny lobster,Bottom temperature,3.57,Very High
+Spiny lobster,Chlorophyll-a concentration,1.05,Very High
+Spiny lobster,Precipitation,1,Very High
+Spiny lobster,Primary production,1,Very High
+Spiny lobster,Sea surface oxygen,4,Very High
+Spiny lobster,Sea surface salinity,3.14,Very High
+Spiny lobster,Sea surface temperature,4,Very High
+Spiny lobster,Surface pH,4,Very High
+Spiny lobster,Surface wind speed magnitude,1,Very High
+Spiny lobster,Sargassum influx,2.75,Very High
+Stoplight parrotfish,Bottom temperature,3.57,Very High
+Stoplight parrotfish,Chlorophyll-a concentration,1.05,Very High
+Stoplight parrotfish,Mixed layer depth,1,Very High
+Stoplight parrotfish,Precipitation,1,Very High
+Stoplight parrotfish,Primary production,1,Very High
+Stoplight parrotfish,Sea surface oxygen,4,Very High
+Stoplight parrotfish,Sea surface salinity,3.14,Very High
+Stoplight parrotfish,Sea surface temperature,4,Very High
+Stoplight parrotfish,Surface pH,4,Very High
+Stoplight parrotfish,Surface wind speed magnitude,1,Very High
+Stoplight parrotfish,Sargassum influx,2.9,Very High
+Stoplight parrotfish,Thermocline depth,2.25,Very High
+White mullet,Chlorophyll-a concentration,1.05,Low
+White mullet,Primary production,1,Low
+White mullet,Sea surface oxygen,4,Low
+White mullet,Sargassum influx,2.9,Low
+Yellowfin grouper,Bottom temperature,3.57,High
+Yellowfin grouper,Chlorophyll-a concentration,1.05,High
+Yellowfin grouper,Mixed layer depth,1,High
+Yellowfin grouper,Primary production,1,High
+Yellowfin grouper,Sea surface temperature,4,High
+Yellowfin grouper,Surface pH,4,High
+Yellowfin grouper,Sargassum influx,2,High
+Yellowfin grouper,Thermocline depth,2.25,High
+Yellowtail snapper,Bottom temperature,3.57,Very High
+Yellowtail snapper,Chlorophyll-a concentration,1.05,Very High
+Yellowtail snapper,Mixed layer depth,1,Very High
+Yellowtail snapper,Precipitation,1,Very High
+Yellowtail snapper,Primary production,1,Very High
+Yellowtail snapper,Sea surface oxygen,4,Very High
+Yellowtail snapper,Sea surface salinity,3.14,Very High
+Yellowtail snapper,Sea surface temperature,4,Very High
+Yellowtail snapper,Surface pH,4,Very High
+Yellowtail snapper,Surface wind speed magnitude,1,Very High
+Yellowtail snapper,Sargassum influx,3,Very High

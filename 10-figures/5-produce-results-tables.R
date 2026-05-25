@@ -43,17 +43,17 @@ library(readr)
 ## File paths
 
 proj_dir <- "."
-out_dir  <- file.path(proj_dir, "outputs", "tables")
+out_dir  <- file.path(proj_dir, "outputs", run_label, "tables")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
-f_vuln      <- file.path(proj_dir, "outputs", "final-scores-compiled",
-                         "overall-vulnerability-rankings",
+f_vuln      <- file.path(proj_dir, "outputs", run_label,
+                         "final-scores-compiled", "overall-vulnerability-rankings",
                          "overall_vulnerability_scores_uscar.csv")
 f_dir_tally <- file.path(proj_dir, "outputs", "final-tallies-long",
                          "directional_effect_tallies_by_stock.csv")
-f_dir_boot  <- file.path(proj_dir, "outputs", "analyses", "uncertainty-loo",
+f_dir_boot  <- file.path(proj_dir, "outputs", run_label, "analyses", "uncertainty-loo",
                          "final-tables", "table_directional_effect_bootstrap.csv")
-f_vuln_boot <- file.path(proj_dir, "outputs", "analyses", "uncertainty-loo",
+f_vuln_boot <- file.path(proj_dir, "outputs", run_label, "analyses", "uncertainty-loo",
                          "final-tables", "table_bootstrap_uncertainty_stock.csv")
 f_dq        <- file.path(proj_dir, "outputs", "final-scores-compiled",
                          "data-quality", "overall_data_quality_summary_by_stock.csv")
