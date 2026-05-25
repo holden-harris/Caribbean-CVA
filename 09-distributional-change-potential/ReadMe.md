@@ -31,9 +31,9 @@ Prior NOAA CVAs use a "Sensitivity to Temperature" attribute derived from known 
 
 | File | Produced by | Used in |
 |------|-------------|---------|
-| `outputs/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv` | Module 4 Script 3 | Script 1 |
+| `outputs/{run_label}/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv` | Module 4 Script 3 | Script 1 |
 | `outputs/final-tallies-long/sensitivity_tallies_long.csv` | Module 7 Script 2 | Script 2 |
-| `outputs/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv` | Module 4 Script 3 | Script 3 |
+| `outputs/{run_label}/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv` | Module 4 Script 3 | Script 3 |
 
 ---
 
@@ -41,11 +41,11 @@ Prior NOAA CVAs use a "Sensitivity to Temperature" attribute derived from known 
 
 | File | Description |
 |------|-------------|
-| `outputs/distribution-change-potential/distributional_change_potential_uscar.csv` | Baseline DCP scores and ranks for all 25 stocks |
-| `outputs/distribution-change-potential/distributional_change_bootstrap_uscar.csv` | Bootstrap rank-proportion distribution and borderline flags |
-| `outputs/distribution-change-potential/distributional_change_full_uscar.csv` | Scripts 1 + 2 joined; primary input for Script 3 |
-| `figures/fig_distributional_change_ranks.png` | Figure A: stocks by DCP rank category |
-| `figures/fig_distributional_change_vs_vulnerability.png` | Figure B: DCP vs. overall climate vulnerability cross-plot |
+| `outputs/{run_label}/distribution-change-potential/distributional_change_potential_uscar.csv` | Baseline DCP scores and ranks for all 25 stocks |
+| `outputs/{run_label}/distribution-change-potential/distributional_change_bootstrap_uscar.csv` | Bootstrap rank-proportion distribution and borderline flags |
+| `outputs/{run_label}/distribution-change-potential/distributional_change_full_uscar.csv` | Scripts 1 + 2 joined; primary input for Script 3 |
+| `figures/{run_label}/fig_distributional_change_ranks.png` | Figure A: stocks by DCP rank category |
+| `figures/{run_label}/fig_distributional_change_vs_vulnerability.png` | Figure B: DCP vs. overall climate vulnerability cross-plot |
 
 ---
 
@@ -65,7 +65,7 @@ Script 2 requires the output of Script 1. Script 3 requires the output of Script
 
 **Inversion rule.** For movement attributes, the transformed score is `5 − original_mean`, mapping Low (1) → Very High (4), Moderate (2) → High (3), High (3) → Moderate (2), Very High (4) → Low (1). After inversion, a high value indicates high propensity to shift across all four attributes.
 
-**FCVA logic model.** Identical to Modules 4 and 8. With `rank_threshold = 2`:
+**FCVA logic model.** Identical to Modules 4 and 8. `rank_threshold` is sourced from `config.R` via `active_run` (`broadened_distribution` = 2L; `cross_region_comparable` = 1L). Example with `rank_threshold = 2`:
 
 | DCP Rank | Condition |
 |----------|-----------|

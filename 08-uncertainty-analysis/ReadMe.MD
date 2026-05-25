@@ -4,8 +4,8 @@
 
 | Script | Purpose | Reads from | Writes to |
 |--------|---------|------------|-----------|
-| `uncertainty-analyses.R` | Validate baseline score reproduction; run bootstrap resampling and leave-one-out influence analyses; produce final bootstrap summary table | `outputs/final-tallies-long/`, `outputs/final-scores-compiled/` | `outputs/analyses/uncertainty-loo/` |
-| `2-make-uncertainty-figures.R` | Produce LOO influence bar chart and bootstrap uncertainty stacked bar chart | `outputs/analyses/uncertainty-loo/final-tables/`, `outputs/final-scores-compiled/` | `figures/` |
+| `uncertainty-analyses.R` | Validate baseline score reproduction; run bootstrap resampling and leave-one-out influence analyses; produce final bootstrap summary table | `outputs/final-tallies-long/`, `outputs/{run_label}/final-scores-compiled/` | `outputs/{run_label}/analyses/uncertainty-loo/` |
+| `2-make-uncertainty-figures.R` | Produce LOO influence bar chart and bootstrap uncertainty stacked bar chart | `outputs/{run_label}/analyses/uncertainty-loo/final-tables/`, `outputs/{run_label}/final-scores-compiled/` | `figures/{run_label}/` |
 
 ---
 
@@ -55,14 +55,12 @@ Both analyses use the same logic model implemented as `fcva_logic_model()`. The 
 
 The `rank_threshold` option is set using one of the named constants defined in the Analysis settings section:
 
-| Constant | Value | Very High threshold | High / Moderate threshold |
-|----------|-------|--------------------|-----------------------------|
-| `attr_means_current` | 2 | > 3 attribute means ≥ 3.5 | > 2 attribute means ≥ 3.0 / 2.5 |
-| `attr_means_plus1` | 3 | > 4 attribute means ≥ 3.5 | > 3 attribute means ≥ 3.0 / 2.5 |
-| `attr_means_plus2` | 4 | > 5 attribute means ≥ 3.5 | > 4 attribute means ≥ 3.0 / 2.5 |
-| `attr_means_plus3` | 5 | > 6 attribute means ≥ 3.5 | > 5 attribute means ≥ 3.0 / 2.5 |
+| Constant | rank_threshold value | Very High threshold | High / Moderate threshold |
+|----------|---------------------|--------------------|-----------------------------|
+| `attr_means_current` | 1 | > 2 attribute means ≥ 3.5 (i.e., ≥ 3) | > 1 attribute means ≥ 3.0 / 2.5 (i.e., ≥ 2) |
+| `attr_means_plus1` | 2 | > 3 attribute means ≥ 3.5 (i.e., ≥ 4) | > 2 attribute means ≥ 3.0 / 2.5 (i.e., ≥ 3) |
 
-**This setting must match the one used in `4-final-attribute-exposure-scoring/3-calculate-overall-vulnerability-scores.R` when the finalized baseline scores were produced.** Step 3 of `uncertainty-analyses.R` validates this agreement by reproducing all 25 baseline ranks from scratch and halting if any disagree. The default is `attr_means_current` (the prior FCVA rule), which preserves the behavior used when producing the Caribbean CVA baseline.
+**The active run's `rank_threshold` and `sens_attrs_drop` are sourced from `config.R` via `active_run`.** For `broadened_distribution` the setting is `attr_means_plus1` (`rank_threshold = 2L`, all 14 sensitivity attributes); for `cross_region_comparable` it is `attr_means_current` (`rank_threshold = 1L`, 12 attributes — drops Genetic diversity and Predation and competition dynamics). Step 3 of `uncertainty-analyses.R` validates this agreement by reproducing all 25 baseline ranks from scratch and halting if any disagree.
 
 The final vulnerability score = Sensitivity score × Exposure score. Possible values and their ranks:
 
@@ -98,11 +96,11 @@ Tally input files (`final-tallies-long/`) use Title Case stock names as entered 
 ├── 2-make-uncertainty-figures.R    # Script 2: figures
 └── ReadMe.MD                       # This file
 
-outputs/analyses/uncertainty-loo/   # All analysis outputs (created by Script 1)
-├── intermediate/                   # Validation and QA tables
+outputs/{run_label}/analyses/uncertainty-loo/   # All analysis outputs (created by Script 1)
+├── intermediate/                              # Validation and QA tables
 │   ├── 01_preanalysis_check_log.csv
 │   └── 02_baseline_reproduced_scores.csv
-└── final-tables/                   # Analysis outputs used for figures
+└── final-tables/                              # Analysis outputs used for figures
     ├── table_bootstrap_uncertainty_stock.csv
     ├── table_bootstrap_uncertainty_sensitivity_component.csv
     ├── table_directional_effect_bootstrap.csv
@@ -114,7 +112,7 @@ outputs/analyses/uncertainty-loo/   # All analysis outputs (created by Script 1)
     ├── table_exposure_factor_scores_for_plot.csv
     └── table_bootstrap_final_summary.csv
 
-figures/                            # Figures produced by Script 2
+figures/{run_label}/                           # Figures produced by Script 2
 ├── fig_loo_bar_plots.png
 └── fig_bootstrap_uncertainty.png
 ```
@@ -131,7 +129,7 @@ Reads the finalized Caribbean CVA tally inputs and compiled attribute means, the
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `rank_threshold` | `attr_means_current` (2) | FCVA logic model threshold — controls how many attributes must meet each score cutoff to assign a component rank. Must match the setting used in the main scoring script. See [FCVA logic model](#fcva-logic-model) above. |
+| `rank_threshold` | sourced from `config.R` via `active_run` | FCVA logic model threshold — controls how many attributes must meet each score cutoff to assign a component rank. `broadened_distribution` = 2L; `cross_region_comparable` = 1L. See [FCVA logic model](#fcva-logic-model) above. |
 | `n_boot` | 10,000 | Number of bootstrap iterations per stock |
 | `bootstrap_seed` | 99 | Random seed set once before each bootstrap loop |
 | `dir_eff_threshold` | 0.33 | ±0.33 directional rank cutoff (matching HMS CVA) |
@@ -153,8 +151,8 @@ Three functions are defined at the top of the script and called in multiple step
 |------|-------------|---------|
 | `outputs/final-tallies-long/sensitivity_tallies_long.csv` | Per-reviewer × stock × attribute tally counts (`tally_L`, `tally_M`, `tally_H`, `tally_VH`, `n_tallies`); one row per reviewer × stock × attribute | Steps 1, 2, 4 |
 | `outputs/final-tallies-long/directional_effect_tallies_long.csv` | Per-reviewer × stock × effect category tally counts; one row per reviewer × stock × category | Steps 1, 2, 5 |
-| `outputs/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv` | Compiled mean scores per stock × attribute for both Sensitivity and Exposure; filtered by `attribute_type` and `score_type` in Step 1 | Steps 1, 3, 6, 7, 8 |
-| `outputs/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv` | Finalized baseline vulnerability scores and ranks for all 25 stocks | Steps 1, 3, 4, 6, 7 |
+| `outputs/{run_label}/final-scores-compiled/overall-vulnerability-rankings/attribute_means_uscar.csv` | Compiled mean scores per stock × attribute for both Sensitivity and Exposure; filtered by `attribute_type` and `score_type` in Step 1 | Steps 1, 3, 6, 7, 8 |
+| `outputs/{run_label}/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv` | Finalized baseline vulnerability scores and ranks for all 25 stocks | Steps 1, 3, 4, 6, 7 |
 | `data/exposure-factor-filter-long.csv` | Expert rubric filter: one row per stock × exposure factor with `include` (TRUE/FALSE) indicating which factors apply per stock. Generated by `4-final-attribute-exposure-scoring/3-calculate-overall-vulnerability-scores.R` and must exist before running this script. | Step 1 |
 
 ## Workflow
@@ -236,14 +234,14 @@ Joins the bootstrap vulnerability rank distribution (`boot_stock_summary`) with 
 
 ## Output files
 
-### Intermediate (validation and QA) — `outputs/analyses/uncertainty-loo/intermediate/`
+### Intermediate (validation and QA) — `outputs/{run_label}/analyses/uncertainty-loo/intermediate/`
 
 | File | Rows | Contents |
 |------|------|----------|
 | `01_preanalysis_check_log.csv` | 4 | One row per check; columns: `check_name`, `status` (PASS / FAIL / WARN), `detail` |
 | `02_baseline_reproduced_scores.csv` | 25 | Reproduced Sensitivity, Exposure, and Vulnerability scores for all stocks; used to confirm the validation gate passed |
 
-### Final analysis tables — `outputs/analyses/uncertainty-loo/final-tables/`
+### Final analysis tables — `outputs/{run_label}/analyses/uncertainty-loo/final-tables/`
 
 | File | Rows | Key columns |
 |------|------|-------------|
@@ -270,13 +268,13 @@ Reads the LOO summary tables and bootstrap output tables produced by `uncertaint
 
 | File | Used by |
 |------|---------|
-| `outputs/analyses/uncertainty-loo/final-tables/table_leave_one_out_exposure_summary.csv` | Figure 1, Panel A |
-| `outputs/analyses/uncertainty-loo/final-tables/table_leave_one_out_sensitivity_summary.csv` | Figure 1, Panel B |
-| `outputs/analyses/uncertainty-loo/final-tables/table_bootstrap_uncertainty_stock.csv` | Figure 2, Panel A |
-| `outputs/analyses/uncertainty-loo/final-tables/table_directional_effect_bootstrap.csv` | Figure 2, Panel B |
-| `outputs/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv` | Figure 2 (stock ordering) |
+| `outputs/{run_label}/analyses/uncertainty-loo/final-tables/table_leave_one_out_exposure_summary.csv` | Figure 1, Panel A |
+| `outputs/{run_label}/analyses/uncertainty-loo/final-tables/table_leave_one_out_sensitivity_summary.csv` | Figure 1, Panel B |
+| `outputs/{run_label}/analyses/uncertainty-loo/final-tables/table_bootstrap_uncertainty_stock.csv` | Figure 2, Panel A |
+| `outputs/{run_label}/analyses/uncertainty-loo/final-tables/table_directional_effect_bootstrap.csv` | Figure 2, Panel B |
+| `outputs/{run_label}/final-scores-compiled/overall-vulnerability-rankings/overall_vulnerability_scores_uscar.csv` | Figure 2 (stock ordering) |
 
-## Output figures — `figures/`
+## Output figures — `figures/{run_label}/`
 
 ---
 
