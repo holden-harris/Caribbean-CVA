@@ -69,6 +69,8 @@ The default value of `1` matches the standard NOAA FCVA methodology. Changing it
 | `1L` | `attr_means_current` | Standard NOAA FCVA (`cross_region_comparable` run) | ≥ 3 attributes with mean ≥ 3.5 | ≥ 2 attributes at respective cutoff |
 | `2L` | `attr_means_plus1` | Revised / broader distribution (`broadened_distribution` run) | ≥ 4 attributes with mean ≥ 3.5 | ≥ 3 attributes at respective cutoff |
 
+### Key Runs: Broadened Distribution and Cross-region Comparable
+
 To switch runs, set `active_run` in `config.R` to one of the two named configurations and re-run `run-all.R`:
 
 | `active_run` | FCVA logic model | Sensitivity attributes | Purpose |
